@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import HomeView from '../views/HomeView.vue'
 import DashboardView from '../views/DashboardView.vue'
 import RoadmapView from '../views/RoadmapView.vue'
 import WatSimulator from '../views/WatSimulator.vue'
@@ -11,6 +12,11 @@ const router = createRouter({
   routes: [
     {
       path: '/',
+      name: 'home',
+      component: HomeView,
+    },
+    {
+      path: '/dashboard',
       name: 'dashboard',
       component: DashboardView,
     },

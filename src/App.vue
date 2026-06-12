@@ -1,10 +1,13 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterLink, RouterView, useRoute } from 'vue-router'
 import { ref, onMounted, computed } from 'vue'
 import { usePreparationStore } from './stores/preparation'
 
 const store = usePreparationStore()
 const streak = ref(1)
+const route = useRoute()
+
+const isLandingPage = computed(() => route.path === '/')
 
 const rankTitle = computed(() => {
   if (store.xp >= 1000) {
@@ -32,7 +35,17 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="app-container">
+  <!-- Full Screen Landing Page Layout -->
+  <div v-if="isLandingPage" class="landing-layout">
+    <RouterView v-slot="{ Component }">
+      <Transition name="fade" mode="out-in">
+        <component :is="Component" />
+      </Transition>
+    </RouterView>
+  </div>
+
+  <!-- Normal Interactive App Layout -->
+  <div v-else class="app-container">
     <!-- Main Top Header -->
     <header class="app-header glass-card">
       <div class="header-logo">
@@ -86,7 +99,7 @@ onMounted(() => {
       <!-- Side Navigation Panel -->
       <aside class="navigation-panel glass-card">
         <nav class="nav-menu">
-          <RouterLink to="/" class="nav-item" active-class="active">
+          <RouterLink to="/dashboard" class="nav-item" active-class="active">
             <svg
               class="nav-icon"
               viewBox="0 0 24 24"
