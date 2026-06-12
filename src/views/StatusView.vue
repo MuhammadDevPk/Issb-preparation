@@ -252,7 +252,7 @@ const checkApprovalStatus = async () => {
 </script>
 
 <template>
-  <div class="status-page flex-center">
+  <div class="status-page">
     <div class="status-container glass-card" :class="{ 'border-rejected': status === 'rejected' }">
       <!-- Top header bar -->
       <div class="status-header" @click="goHome" title="Return to Home Page">
@@ -567,10 +567,15 @@ const checkApprovalStatus = async () => {
 <style scoped>
 .status-page {
   min-height: 100vh;
-  padding: 2rem;
+  padding: 4rem 2rem;
   background: radial-gradient(circle at 10% 20%,
       rgba(2, 132, 199, 0.05) 0%,
       rgba(241, 245, 249, 1) 90%);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2.5rem;
+  flex-wrap: wrap;
 }
 
 .status-container {
