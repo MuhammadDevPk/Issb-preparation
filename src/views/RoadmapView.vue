@@ -634,8 +634,7 @@ const launchSimulator = (path) => {
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.85); /* Slightly darker solid overlay instead of blur */
   z-index: 1000;
   padding: 2rem;
 }
