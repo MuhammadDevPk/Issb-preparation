@@ -507,6 +507,107 @@ const activeSimulatorSubTab = ref('wat') // wat, sct, srt
       </div>
     </section>
 
+    <!-- Student Testimonials Section -->
+    <section class="reviews-section">
+      <div class="section-header">
+        <span class="badge badge-accent">Success Stories</span>
+        <h2>Recommended Candidates & Cadet Reviews</h2>
+        <p>See how real candidates used the Command Portal to bypass expensive coaching camps and secure recommendation for the Pakistan Army.</p>
+      </div>
+
+      <div class="reviews-grid">
+        <!-- Card 1 -->
+        <div class="review-card glass-card">
+          <div class="review-header">
+            <div class="avatar-circle">MS</div>
+            <div class="candidate-info">
+              <h4>MUHAMMAD SAEED UR REHMAN</h4>
+              <span class="badge-branch">Pakistan Army — Approved</span>
+            </div>
+          </div>
+          <div class="stars-row">★★★★★</div>
+          <p class="review-text">
+            "The timed Word Association simulator was a lifesaver. I used to freeze during standard book practice. The portal's automatic 10-second projector clock trained my brain to write spontaneous, positive sentences. Recommended for PMA 153!"
+          </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="review-card glass-card">
+          <div class="review-header">
+            <div class="avatar-circle">AB</div>
+            <div class="candidate-info">
+              <h4>Aftab</h4>
+              <span class="badge-branch">Pakistan Army — Approved</span>
+            </div>
+          </div>
+          <div class="stars-row">★★★★★</div>
+          <p class="review-text">
+            "Coaching academies charge Rs. 35,000 and teach memorized sentences that selectors reject immediately. This portal teaches you how to project your true Officer-Like Qualities. Got recommended in my first attempt."
+          </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="review-card glass-card">
+          <div class="review-header">
+            <div class="avatar-circle">IA</div>
+            <div class="candidate-info">
+              <h4>Imtiaz Ali</h4>
+              <span class="badge-branch">Pakistan Army — Approved</span>
+            </div>
+          </div>
+          <div class="stars-row">★★★★★</div>
+          <p class="review-text">
+            "The GTO Individual Obstacles planner is pure science. I mapped my run to score 32 points without burning out. The solved English and Urdu Sentence Completion playbooks were also highly accurate."
+          </p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="review-card glass-card">
+          <div class="review-header">
+            <div class="avatar-circle">MR</div>
+            <div class="candidate-info">
+              <h4>Moiz Rashid</h4>
+              <span class="badge-branch">Pakistan Army — Approved</span>
+            </div>
+          </div>
+          <div class="stars-row">★★★★★</div>
+          <p class="review-text">
+            "Most people fail the screening tests on Day 1. The Day-by-Day Roadmap here structures everything so you know exactly what is coming. Outstanding platform for Army candidates."
+          </p>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="review-card glass-card">
+          <div class="review-header">
+            <div class="avatar-circle">AW</div>
+            <div class="candidate-info">
+              <h4>Awais</h4>
+              <span class="badge-branch">Pakistan Army — Approved</span>
+            </div>
+          </div>
+          <div class="stars-row">★★★★★</div>
+          <p class="review-text">
+            "I got my access for just Rs. 100 by sharing my referral link with 7 of my academy classmates! The support desk resolved my activation within minutes. Truly cadet-friendly."
+          </p>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="review-card glass-card">
+          <div class="review-header">
+            <div class="avatar-circle">TI</div>
+            <div class="candidate-info">
+              <h4>Taimoor Iqbal</h4>
+              <span class="badge-branch">Pakistan Army — Approved</span>
+            </div>
+          </div>
+          <div class="stars-row">★★★★★</div>
+          <p class="review-text">
+            "Highly recommended. The psychologist simulators (WAT, SCT, SRT) are identical to the actual ISSB testing projection screens. If you want to bypass the academy fees, this is your best bet."
+          </p>
+        </div>
+      </div>
+    </section>
+
     <!-- Premium Upgrade / Pricing Section -->
     <section class="pricing-section" id="pricing">
       <div class="section-header">
@@ -1814,5 +1915,93 @@ const activeSimulatorSubTab = ref('wat') // wat, sct, srt
   .tab-btn {
     flex: 1 1 100%;
   }
+}
+
+/* Reviews Section Styles */
+.reviews-section {
+  padding: 5rem 2rem;
+  background: #ffffff;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.review-card {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.02);
+  transition: all var(--transition-smooth);
+}
+
+.review-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  border-color: var(--accent-cyan);
+}
+
+.review-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.avatar-circle {
+  width: 46px;
+  height: 46px;
+  background: rgba(3, 194, 252, 0.08);
+  color: var(--accent-cyan);
+  border: 1.5px solid var(--accent-cyan);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.candidate-info h4 {
+  margin: 0 0 0.15rem 0;
+  font-size: 1.05rem;
+  color: var(--text-primary);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.badge-branch {
+  font-size: 0.72rem;
+  color: var(--accent-green);
+  font-weight: 600;
+  background: rgba(34, 197, 94, 0.08);
+  padding: 0.15rem 0.4rem;
+  border-radius: var(--border-radius-sm);
+  display: inline-block;
+}
+
+.stars-row {
+  color: #fbbf24;
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+  margin: 0;
+  line-height: 1;
+}
+
+.review-text {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin: 0;
+  font-style: italic;
 }
 </style>
