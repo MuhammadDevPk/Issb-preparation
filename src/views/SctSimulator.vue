@@ -278,10 +278,10 @@ const timeTaken = computed(() => {
 }
 
 .config-panel {
-  background: rgba(255, 255, 255, 0.01);
+  background: var(--bg-panel-solid);
   padding: 1.25rem;
   border-radius: var(--border-radius-md);
-  border: 1px solid rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
 }
 
 .lang-selector {
@@ -374,8 +374,8 @@ const timeTaken = computed(() => {
   max-block-size: 450px;
   overflow-y: auto;
   padding: 0.5rem;
-  background: rgba(8, 12, 20, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.03);
+  background: var(--bg-panel-solid);
+  border: 1px solid var(--border-color);
   border-radius: var(--border-radius-md);
   display: flex;
   flex-direction: column;
@@ -387,14 +387,14 @@ const timeTaken = computed(() => {
   align-items: center;
   gap: 1rem;
   padding: 0.5rem 1rem;
-  background: rgba(255, 255, 255, 0.01);
+  background: var(--bg-panel);
   border-radius: var(--border-radius-sm);
-  border: 1px solid transparent;
+  border: 1px solid var(--border-color);
 }
 
 .sentence-row:focus-within {
-  border-color: rgba(0, 242, 254, 0.15);
-  background: rgba(0, 242, 254, 0.02);
+  border-color: var(--accent-cyan);
+  background: var(--bg-panel-solid);
 }
 
 .row-num {
@@ -478,7 +478,7 @@ const timeTaken = computed(() => {
 .table-container {
   max-block-size: 450px;
   overflow-y: auto;
-  border: 1px solid rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
   border-radius: var(--border-radius-md);
 }
 
@@ -495,7 +495,7 @@ const timeTaken = computed(() => {
 }
 
 .results-table th {
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--bg-panel-solid);
   font-family: var(--font-heading);
   font-weight: 500;
   color: var(--text-secondary);
@@ -537,8 +537,9 @@ const timeTaken = computed(() => {
 
 .check-item {
   padding: 1rem;
-  background: rgba(255, 255, 255, 0.01);
+  background: var(--bg-panel-solid);
   border-radius: var(--border-radius-md);
+  border: 1px solid var(--border-color);
 }
 
 .check-item strong {

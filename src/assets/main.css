@@ -35,31 +35,31 @@
     --font-heading: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --font-body: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
-    /* Theme Colors (Solid Command Center palette - no laggy blur) */
-    --bg-primary: #0b0f19;
-    --bg-secondary: #111827;
-    --bg-panel: #1f2937;
-    --bg-panel-solid: #374151;
+    /* Theme Colors (Solid Light Command Center palette - Anti-Lag) */
+    --bg-primary: #f1f5f9; /* Soft light slate background */
+    --bg-secondary: #ffffff; /* Solid white panels/sidebars */
+    --bg-panel: #ffffff;
+    --bg-panel-solid: #f8fafc; /* Subtle off-white for internal cards */
     
-    --border-color: rgba(3, 194, 252, 0.18);
-    --border-color-hover: rgba(3, 194, 252, 0.45);
+    --border-color: rgba(3, 194, 252, 0.22); /* Light sky blue outlines */
+    --border-color-hover: rgba(3, 194, 252, 0.55);
     
-    --accent-cyan: #03c2fc;
-    --accent-cyan-glow: rgba(3, 194, 252, 0.25);
+    --accent-cyan: #0284c7; /* Vibrant readable sky blue for text and triggers */
+    --accent-cyan-glow: rgba(3, 194, 252, 0.15);
     
-    --accent-gold: #ffbe3b;
-    --accent-gold-glow: rgba(255, 190, 59, 0.25);
+    --accent-gold: #b45309; /* Deep warning gold/amber */
+    --accent-gold-glow: rgba(245, 158, 11, 0.12);
     
-    --accent-green: #00ff87;
-    --accent-green-glow: rgba(0, 255, 135, 0.2);
+    --accent-green: #15803d; /* Military success green */
+    --accent-green-glow: rgba(34, 197, 94, 0.12);
     
-    --accent-red: #ff4d6d;
-    --accent-red-glow: rgba(255, 77, 109, 0.2);
+    --accent-red: #b91c1c; /* Warning red */
+    --accent-red-glow: rgba(239, 68, 68, 0.12);
 
     /* Text Colors */
-    --text-primary: #ffffff;
-    --text-secondary: #f3f4f6;
-    --text-muted: #9ca3af;
+    --text-primary: #0f172a; /* High contrast dark charcoal for headings */
+    --text-secondary: #334155; /* Medium charcoal for paragraphs */
+    --text-muted: #64748b; /* Muted gray for meta text */
 
     /* Spacing & Sizing */
     --glass-blur: none;
@@ -82,13 +82,14 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
     font-weight: 600;
+    color: var(--text-primary);
     letter-spacing: -0.02em;
     line-height: 1.25;
   }
 }
 
 @layer components {
-  /* Futuristic Scrollbar */
+  /* Scrollbar */
   ::-webkit-scrollbar {
     inline-size: 8px;
     block-size: 8px;
@@ -97,19 +98,19 @@
     background: var(--bg-primary);
   }
   ::-webkit-scrollbar-thumb {
-    background: rgba(0, 242, 254, 0.2);
+    background: rgba(3, 194, 252, 0.2);
     border-radius: var(--border-radius-sm);
   }
   ::-webkit-scrollbar-thumb:hover {
     background: var(--accent-cyan);
   }
 
-  /* Solid Panel Card (Anti-Lag) */
+  /* Solid Card Panel */
   .glass-card {
     background: var(--bg-panel);
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius-lg);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.35);
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.05), 0 1px 3px 0 rgba(0, 0, 0, 0.01);
     padding: 1.5rem;
     transition: transform var(--transition-smooth), border-color var(--transition-smooth), box-shadow var(--transition-smooth);
   }
@@ -117,7 +118,7 @@
   .glass-card.interactive:hover {
     transform: translateY(-4px);
     border-color: var(--border-color-hover);
-    box-shadow: 0 12px 40px 0 rgba(0, 242, 254, 0.15), 0 8px 32px 0 rgba(0, 0, 0, 0.35);
+    box-shadow: 0 8px 30px 0 rgba(3, 194, 252, 0.1), 0 4px 20px 0 rgba(0, 0, 0, 0.05);
     cursor: pointer;
   }
 
@@ -130,52 +131,54 @@
     padding: 0.75rem 1.5rem;
     font-family: var(--font-heading);
     font-size: 0.95rem;
-    font-weight: 500;
+    font-weight: 600;
     border-radius: var(--border-radius-md);
     cursor: pointer;
     transition: all var(--transition-smooth);
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    border: 1px solid transparent;
   }
 
   .btn-primary {
-    background: linear-gradient(135deg, rgba(0, 242, 254, 0.15), rgba(0, 242, 254, 0.05));
-    border: 1px solid var(--accent-cyan);
-    color: var(--accent-cyan);
-    box-shadow: 0 0 15px rgba(0, 242, 254, 0.15);
+    background: var(--accent-cyan);
+    border-color: var(--accent-cyan);
+    color: #ffffff;
+    box-shadow: 0 2px 8px var(--accent-cyan-glow);
   }
 
   .btn-primary:hover:not(:disabled) {
-    background: var(--accent-cyan);
-    color: var(--bg-primary);
-    box-shadow: 0 0 25px rgba(0, 242, 254, 0.4);
+    background: #0270a5;
+    border-color: #0270a5;
+    box-shadow: 0 4px 15px var(--accent-cyan-glow);
     transform: translateY(-2px);
   }
 
   .btn-secondary {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: #ffffff;
+    border-color: #cbd5e1;
     color: var(--text-secondary);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
   }
 
   .btn-secondary:hover:not(:disabled) {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.2);
+    background: #f8fafc;
+    border-color: #94a3b8;
     color: var(--text-primary);
     transform: translateY(-2px);
   }
 
   .btn-success {
-    background: linear-gradient(135deg, rgba(0, 255, 135, 0.15), rgba(0, 255, 135, 0.05));
-    border: 1px solid var(--accent-green);
-    color: var(--accent-green);
-    box-shadow: 0 0 15px rgba(0, 255, 135, 0.15);
+    background: #16a34a;
+    border-color: #16a34a;
+    color: #ffffff;
+    box-shadow: 0 2px 8px var(--accent-green-glow);
   }
 
   .btn-success:hover:not(:disabled) {
-    background: var(--accent-green);
-    color: var(--bg-primary);
-    box-shadow: 0 0 25px rgba(0, 255, 135, 0.4);
+    background: #15803d;
+    border-color: #15803d;
+    box-shadow: 0 4px 15px var(--accent-green-glow);
     transform: translateY(-2px);
   }
 
@@ -196,7 +199,7 @@
   .form-label {
     font-family: var(--font-heading);
     font-size: 0.9rem;
-    font-weight: 500;
+    font-weight: 600;
     color: var(--text-secondary);
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -205,8 +208,8 @@
   .form-input, .form-textarea, .form-select {
     width: 100%;
     padding: 0.75rem 1rem;
-    background: rgba(8, 12, 20, 0.6);
-    border: 1px solid var(--border-color);
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
     border-radius: var(--border-radius-md);
     color: var(--text-primary);
     transition: all var(--transition-smooth);
@@ -215,8 +218,8 @@
   .form-input:focus, .form-textarea:focus, .form-select:focus {
     outline: none;
     border-color: var(--accent-cyan);
-    box-shadow: 0 0 15px rgba(0, 242, 254, 0.15);
-    background: rgba(8, 12, 20, 0.85);
+    box-shadow: 0 0 10px var(--accent-cyan-glow);
+    background: #ffffff;
   }
 
   .form-textarea {
@@ -224,13 +227,13 @@
     min-block-size: 100px;
   }
 
-  /* Custom Badge tags */
+  /* Custom Badges */
   .badge {
     display: inline-flex;
     align-items: center;
     padding: 0.25rem 0.75rem;
     font-size: 0.75rem;
-    font-weight: 600;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     border-radius: 9999px;
@@ -238,37 +241,37 @@
   }
 
   .badge-cyan {
-    background: rgba(0, 242, 254, 0.1);
+    background: var(--accent-cyan-glow);
     color: var(--accent-cyan);
-    border-color: rgba(0, 242, 254, 0.2);
+    border-color: rgba(3, 194, 252, 0.25);
   }
 
   .badge-gold {
-    background: rgba(255, 190, 59, 0.1);
+    background: var(--accent-gold-glow);
     color: var(--accent-gold);
-    border-color: rgba(255, 190, 59, 0.2);
+    border-color: rgba(245, 158, 11, 0.25);
   }
 
   .badge-green {
-    background: rgba(0, 255, 135, 0.1);
+    background: var(--accent-green-glow);
     color: var(--accent-green);
-    border-color: rgba(0, 255, 135, 0.2);
+    border-color: rgba(34, 197, 94, 0.25);
   }
 
   .badge-red {
-    background: rgba(255, 77, 109, 0.1);
+    background: var(--accent-red-glow);
     color: var(--accent-red);
-    border-color: rgba(255, 77, 109, 0.2);
+    border-color: rgba(239, 68, 68, 0.25);
   }
 }
 
 @layer utilities {
   .text-glow {
-    text-shadow: 0 0 10px var(--accent-cyan-glow);
+    text-shadow: 0 0 8px rgba(3, 194, 252, 0.15);
   }
   
   .text-glow-gold {
-    text-shadow: 0 0 10px var(--accent-gold-glow);
+    text-shadow: 0 0 8px rgba(245, 158, 11, 0.15);
   }
 
   .flex-center {
@@ -293,10 +296,10 @@
 /* Animations */
 @keyframes pulse-cyan {
   0%, 100% {
-    box-shadow: 0 0 15px rgba(0, 242, 254, 0.15);
+    box-shadow: 0 0 10px rgba(3, 194, 252, 0.1);
   }
   50% {
-    box-shadow: 0 0 30px rgba(0, 242, 254, 0.45);
+    box-shadow: 0 0 20px rgba(3, 194, 252, 0.3);
   }
 }
 

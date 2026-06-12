@@ -159,7 +159,7 @@ const avgLength = computed(() => {
         <!-- Timer ring -->
         <div class="mini-timer">
           <svg viewBox="0 0 36 36" class="timer-svg">
-            <circle class="timer-bg" cx="18" cy="18" r="16" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="3" />
+            <circle class="timer-bg" cx="18" cy="18" r="16" fill="none" stroke="#e2e8f0" stroke-width="3" />
             <circle class="timer-progress" cx="18" cy="18" r="16" fill="none" stroke="var(--accent-cyan)" stroke-width="3"
                     :stroke-dasharray="2 * Math.PI * 16"
                     :stroke-dashoffset="2 * Math.PI * 16 * (1 - timeLeft / timerDuration)" />
@@ -295,10 +295,10 @@ const avgLength = computed(() => {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1.5rem;
-  background: rgba(255, 255, 255, 0.01);
+  background: var(--bg-panel-solid);
   padding: 1.25rem;
   border-radius: var(--border-radius-md);
-  border: 1px solid rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
 }
 
 .badge-row {
@@ -419,7 +419,7 @@ const avgLength = computed(() => {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-block-end: 1px solid rgba(255, 255, 255, 0.05);
+  border-block-end: 1px solid rgba(0, 0, 0, 0.06);
   padding-block-end: 1rem;
   flex-wrap: wrap;
   gap: 1rem;
@@ -471,7 +471,7 @@ const avgLength = computed(() => {
 .table-container {
   max-block-size: 400px;
   overflow-y: auto;
-  border: 1px solid rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
   border-radius: var(--border-radius-md);
 }
 
@@ -484,11 +484,11 @@ const avgLength = computed(() => {
 
 .results-table th, .results-table td {
   padding: 0.75rem 1rem;
-  border-block-end: 1px solid rgba(255, 255, 255, 0.03);
+  border-block-end: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .results-table th {
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--bg-panel-solid);
   font-family: var(--font-heading);
   font-weight: 500;
   color: var(--text-secondary);
@@ -526,8 +526,9 @@ const avgLength = computed(() => {
 
 .check-item {
   padding: 1rem;
-  background: rgba(255, 255, 255, 0.01);
+  background: var(--bg-panel-solid);
   border-radius: var(--border-radius-md);
+  border: 1px solid var(--border-color);
 }
 
 .check-item strong {

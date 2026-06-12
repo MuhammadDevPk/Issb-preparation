@@ -270,10 +270,10 @@ const goToRoadmap = () => {
 }
 
 .metrics-row {
-  background: rgba(255, 255, 255, 0.01);
+  background: var(--bg-panel-solid);
   padding: 0.75rem;
   border-radius: var(--border-radius-md);
-  border: 1px solid rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
 }
 
 .metric-box {
@@ -297,9 +297,9 @@ const goToRoadmap = () => {
 .timeline-container {
   max-block-size: 300px;
   overflow-y: auto;
-  border: 1px solid rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
   border-radius: var(--border-radius-md);
-  background: rgba(8, 12, 20, 0.4);
+  background: var(--bg-panel-solid);
   padding: 0.5rem;
 }
 
@@ -320,9 +320,9 @@ const goToRoadmap = () => {
   align-items: center;
   gap: 0.75rem;
   padding: 0.5rem 0.75rem;
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--bg-panel);
   border-radius: var(--border-radius-sm);
-  border: 1px solid rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
 }
 
 .seq-num {
@@ -368,10 +368,10 @@ const goToRoadmap = () => {
 }
 
 .advisor-box {
-  background: rgba(255, 255, 255, 0.01);
+  background: var(--bg-panel-solid);
   padding: 1rem;
   border-radius: var(--border-radius-md);
-  border: 1px solid rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
 }
 
 .advisor-box .title {

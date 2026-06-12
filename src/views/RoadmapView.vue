@@ -450,8 +450,8 @@ const launchSimulator = (path) => {
   flex-direction: column;
   align-items: flex-start;
   padding: 0.85rem 1rem;
-  background: rgba(255, 255, 255, 0.01);
-  border: 1px solid rgba(255, 255, 255, 0.03);
+  background: var(--bg-panel-solid);
+  border: 1px solid var(--border-color);
   border-radius: var(--border-radius-md);
   cursor: pointer;
   text-align: left;
@@ -459,13 +459,13 @@ const launchSimulator = (path) => {
 }
 
 .test-menu-item:hover {
-  background: rgba(255, 255, 255, 0.03);
-  border-color: rgba(255, 255, 255, 0.08);
+  background: var(--bg-primary);
+  border-color: var(--border-color-hover);
 }
 
 .test-menu-item.active {
-  background: rgba(0, 242, 254, 0.04);
-  border-color: rgba(0, 242, 254, 0.15);
+  background: var(--accent-cyan-glow);
+  border-color: var(--accent-cyan);
 }
 
 .test-menu-item.active .test-name {
@@ -496,8 +496,8 @@ const launchSimulator = (path) => {
   inline-size: 8px;
   block-size: 8px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: #cbd5e1;
+  border: 1px solid #94a3b8;
 }
 
 .status-dot.completed {
@@ -518,7 +518,7 @@ const launchSimulator = (path) => {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-block-end: 1px solid rgba(255, 255, 255, 0.05);
+  border-block-end: 1px solid rgba(0, 0, 0, 0.06);
   padding-block-end: 1rem;
   flex-wrap: wrap;
   gap: 1rem;
@@ -555,10 +555,10 @@ const launchSimulator = (path) => {
 }
 
 .segment {
-  background: rgba(255, 255, 255, 0.01);
+  background: var(--bg-panel-solid);
   padding: 1.25rem;
   border-radius: var(--border-radius-md);
-  border: 1px solid rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
 }
 
 .segment h4 {

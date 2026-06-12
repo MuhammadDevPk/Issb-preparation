@@ -286,10 +286,10 @@ const totalAnswered = computed(() => {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1.5rem;
-  background: rgba(255, 255, 255, 0.01);
+  background: var(--bg-panel-solid);
   padding: 1.25rem;
   border-radius: var(--border-radius-md);
-  border: 1px solid rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
 }
 
 .tactical-tips {
@@ -344,10 +344,10 @@ const totalAnswered = computed(() => {
 .timer-bar-container {
   flex: 1;
   block-size: 8px;
-  background: rgba(255, 255, 255, 0.05);
+  background: #cbd5e1;
   border-radius: 999px;
   overflow: hidden;
-  border: 1px solid rgba(0, 242, 254, 0.08);
+  border: 1px solid var(--border-color);
 }
 
 .timer-bar {
@@ -367,9 +367,11 @@ const totalAnswered = computed(() => {
 .situation-display-area {
   margin-block: 2rem;
   padding: 2rem;
-  background: rgba(8, 12, 20, 0.5);
+  background: var(--bg-panel-solid);
   border-radius: var(--border-radius-lg);
   border-inline-start: 4px solid var(--accent-cyan);
+  border: 1px solid var(--border-color);
+  border-inline-start-width: 4px;
 }
 
 .situation-desc {
@@ -460,7 +462,7 @@ const totalAnswered = computed(() => {
 .table-container {
   max-block-size: 450px;
   overflow-y: auto;
-  border: 1px solid rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
   border-radius: var(--border-radius-md);
 }
 
@@ -477,7 +479,7 @@ const totalAnswered = computed(() => {
 }
 
 .results-table th {
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--bg-panel-solid);
   font-family: var(--font-heading);
   font-weight: 500;
   color: var(--text-secondary);
@@ -519,8 +521,9 @@ const totalAnswered = computed(() => {
 
 .check-item {
   padding: 1rem;
-  background: rgba(255, 255, 255, 0.01);
+  background: var(--bg-panel-solid);
   border-radius: var(--border-radius-md);
+  border: 1px solid var(--border-color);
 }
 
 .check-item strong {

@@ -100,7 +100,7 @@ const goToRoadmap = () => {
       <div class="hero-right flex-center">
         <div class="progress-circle-container">
           <svg class="circle-svg" viewBox="0 0 100 100">
-            <circle class="circle-bg" cx="50" cy="50" r="40" stroke="rgba(255,255,255,0.03)" stroke-width="8" fill="none" />
+            <circle class="circle-bg" cx="50" cy="50" r="40" stroke="#cbd5e1" stroke-width="8" fill="none" />
             <circle class="circle-progress" cx="50" cy="50" r="40" stroke="var(--accent-cyan)" stroke-width="8" fill="none"
                     :stroke-dasharray="2 * Math.PI * 40"
                     :stroke-dashoffset="2 * Math.PI * 40 * (1 - progressPercent / 100)" />
@@ -304,7 +304,7 @@ const goToRoadmap = () => {
   justify-content: space-between;
   gap: 2rem;
   padding: 2rem;
-  background: linear-gradient(135deg, rgba(15, 22, 38, 0.8), rgba(8, 12, 20, 0.9));
+  background: linear-gradient(135deg, rgba(3, 194, 252, 0.12), rgba(3, 194, 252, 0.03));
 }
 
 .hero-left {
@@ -382,7 +382,7 @@ const goToRoadmap = () => {
   gap: 0.75rem;
   margin-block-end: 1rem;
   padding-block-end: 0.5rem;
-  border-block-end: 1px solid rgba(255, 255, 255, 0.05);
+  border-block-end: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .card-icon {
@@ -445,7 +445,7 @@ const goToRoadmap = () => {
   align-items: center;
   margin-block-end: 1.5rem;
   padding-block-end: 1rem;
-  border-block-end: 1px solid rgba(255, 255, 255, 0.05);
+  border-block-end: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .profiler-header .desc {
@@ -480,10 +480,10 @@ const goToRoadmap = () => {
 }
 
 .dimension-section {
-  background: rgba(255, 255, 255, 0.01);
+  background: var(--bg-panel-solid);
   padding: 1.25rem;
   border-radius: var(--border-radius-md);
-  border: 1px solid rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
 }
 
 .dim-title {
@@ -551,7 +551,7 @@ const goToRoadmap = () => {
 .profiler-footer {
   justify-content: space-between;
   padding-block-start: 1rem;
-  border-block-start: 1px solid rgba(255, 255, 255, 0.05);
+  border-block-start: 1px solid rgba(0, 0, 0, 0.06);
   flex-wrap: wrap;
   gap: 1rem;
 }
