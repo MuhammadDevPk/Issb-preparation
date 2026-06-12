@@ -2,9 +2,12 @@
 import { computed, ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { usePreparationStore } from '../stores/preparation'
+import { useAuthStore } from '../stores/auth'
+import { supabase } from '../supabase'
 
 const store = usePreparationStore()
 const router = useRouter()
+const authStore = useAuthStore()
 
 // 14 Officer Like Qualities (OLQs) divided into 4 Dimensions
 const olqs = ref([
@@ -132,6 +135,93 @@ const lowestTraits = computed(() => {
   return [...olqs.value].sort((a, b) => a.score - b.score).slice(0, 3)
 })
 
+// Referral Module properties
+const referralCode = computed(() => authStore.profile?.referral_code || '')
+const referralClicks = computed(() => authStore.profile?.referral_clicks || 0)
+const referrals = ref([])
+const appSettings = ref({
+  course_price: 1499,
+  referral_bonus: 200,
+  max_discount_pct: 90,
+  max_discount_amount: 1400,
+})
+
+const isLoadingReferrals = ref(false)
+
+const referralLink = computed(() => {
+  if (!referralCode.value) return ''
+  return window.location.origin + '/r/' + referralCode.value
+})
+
+const copyStatus = ref('Copy Link')
+const copyReferralLink = async () => {
+  if (!referralLink.value) return
+  try {
+    await navigator.clipboard.writeText(referralLink.value)
+    copyStatus.value = 'Copied!'
+    setTimeout(() => {
+      copyStatus.value = 'Copy Link'
+    }, 2000)
+  } catch (err) {
+    console.error('Failed to copy text: ', err)
+  }
+}
+
+// Pricing Math
+const paidReferralsCount = computed(() => {
+  return referrals.value.filter((r) => r.status === 'approved').length
+})
+
+const totalBonusEarned = computed(() => {
+  return paidReferralsCount.value * appSettings.value.referral_bonus
+})
+
+const maxDiscountAllowed = computed(() => {
+  if (
+    appSettings.value.max_discount_amount !== null &&
+    appSettings.value.max_discount_amount !== undefined
+  ) {
+    return appSettings.value.max_discount_amount
+  }
+  return Math.floor(
+    appSettings.value.course_price * (appSettings.value.max_discount_pct / 100),
+  )
+})
+
+const finalCoursePrice = computed(() => {
+  const discount = Math.min(totalBonusEarned.value, maxDiscountAllowed.value)
+  return Math.max(appSettings.value.course_price - discount, 0)
+})
+
+const fetchReferralStats = async () => {
+  if (!authStore.user) return
+  isLoadingReferrals.value = true
+  try {
+    // 1. Fetch settings
+    const { data: settingsData, error: settingsError } = await supabase
+      .from('app_settings')
+      .select('*')
+      .eq('id', 1)
+      .single()
+    if (!settingsError && settingsData) {
+      appSettings.value = settingsData
+    }
+
+    // 2. Fetch referrals
+    const { data: referralsData, error: referralsError } = await supabase
+      .from('profiles')
+      .select('id, full_name, status, created_at')
+      .eq('referred_by', authStore.user.id)
+    if (!referralsError && referralsData) {
+      referrals.value = referralsData
+    }
+  } catch (e) {
+    console.error('Error fetching referral stats:', e)
+  } finally {
+    isLoadingReferrals.value = false
+  }
+}
+
 onMounted(() => {
   // Load saved self-assessment if exists
   const savedOlqs = localStorage.getItem('issb_olq_self_assessment')
@@ -147,6 +237,7 @@ onMounted(() => {
       console.error(e)
     }
   }
+  fetchReferralStats()
 })
 
 const saveAssessment = () => {
@@ -317,6 +408,113 @@ const goToRoadmap = () => {
         </ul>
         <div class="action-recommendation badge badge-green">
           RECOMMENDED PATH: Be genuine, cooperative, and physically alert!
+        </div>
+      </div>
+    </section>
+
+    <!-- Referral Module System Card -->
+    <section class="referral-system-section glass-card">
+      <div class="referral-header">
+        <div>
+          <span class="badge badge-cyan">Earn & Discount Program</span>
+          <h3>Candidate Referral Network</h3>
+          <p class="desc">
+            Invite friends to prepare together. Get <strong>PKR {{ appSettings.referral_bonus }}</strong> off your course price for each friend who registers and activates their account!
+          </p>
+        </div>
+        
+        <div class="pricing-discount-display">
+          <div class="discount-pill">
+            <span class="lbl">Your Course Price:</span>
+            <span class="val text-cyan">PKR {{ finalCoursePrice }}</span>
+            <span class="sub text-muted" v-if="totalBonusEarned > 0">(Discount: -PKR {{ Math.min(totalBonusEarned, maxDiscountAllowed) }})</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="referral-grid">
+        <!-- Share Link Panel -->
+        <div class="referral-card-panel bg-light">
+          <h4>Your Unique Invite Link</h4>
+          <p>Copy and share this referral URL with other candidates:</p>
+          
+          <div class="share-input-wrapper">
+            <input type="text" readonly :value="referralLink" class="form-input share-url-input" />
+            <button class="btn btn-primary btn-copy" @click="copyReferralLink">
+              <span>{{ copyStatus }}</span>
+            </button>
+          </div>
+
+          <div class="referral-rules">
+            <h5>Program Rules & Limits:</h5>
+            <ul>
+              <li>Get +PKR {{ appSettings.referral_bonus }} deduction for every friend who completes payment.</li>
+              <li>Base Course Fee: <strong>PKR {{ appSettings.course_price }}</strong></li>
+              <li>Deductions stop after reaching a max discount of <strong>PKR {{ maxDiscountAllowed }}</strong> (Min price: <strong>PKR {{ Math.max(appSettings.course_price - maxDiscountAllowed, 0) }}</strong>).</li>
+              <li>You can refer unlimited friends, even after hitting the maximum discount limit!</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Metrics Dashboard -->
+        <div class="referral-card-panel bg-light">
+          <h4>Your Referrals Analytics</h4>
+          
+          <div class="metrics-summary-grid">
+            <div class="metric-box">
+              <span class="val text-cyan">{{ referralClicks }}</span>
+              <span class="lbl">Link Clicks</span>
+            </div>
+            <div class="metric-box">
+              <span class="val">{{ referrals.length }}</span>
+              <span class="lbl">Registrations</span>
+            </div>
+            <div class="metric-box">
+              <span class="val text-green">{{ paidReferralsCount }}</span>
+              <span class="lbl">Paid Referrals</span>
+            </div>
+            <div class="metric-box">
+              <span class="val text-gold">PKR {{ totalBonusEarned }}</span>
+              <span class="lbl">Earned Bonus</span>
+            </div>
+          </div>
+
+          <!-- Referral candidates list -->
+          <div class="referrals-list-wrapper">
+            <h5>Referred Candidates ({{ referrals.length }})</h5>
+            <div v-if="isLoadingReferrals" class="referrals-list-loading">
+              <span class="spinner"></span> Loading stats...
+            </div>
+            <div v-else-if="referrals.length === 0" class="referrals-empty">
+              No friends have registered using your code yet. Share your link above to get started!
+            </div>
+            <div v-else class="referrals-table-container">
+              <table class="referrals-mini-table">
+                <thead>
+                  <tr>
+                    <th>Candidate</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="refCandidate in referrals" :key="refCandidate.id">
+                    <td>
+                      <span class="ref-name">{{ refCandidate.full_name || 'Candidate Joined' }}</span>
+                    </td>
+                    <td>
+                      <span class="badge badge-mini" :class="{
+                        'badge-mini-green': refCandidate.status === 'approved',
+                        'badge-mini-cyan': refCandidate.status === 'pending',
+                        'badge-mini-red': refCandidate.status === 'rejected'
+                      }">
+                        {{ refCandidate.status === 'approved' ? 'Paid / Active' : refCandidate.status }}
+                      </span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -792,6 +990,253 @@ const goToRoadmap = () => {
   }
 
   .dimensions-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Referral System Card styles */
+.referral-system-section {
+  border-block-start: 4px solid var(--accent-cyan);
+}
+
+.referral-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-block-end: 1.5rem;
+  padding-block-end: 1rem;
+  border-block-end: 1px solid rgba(0, 0, 0, 0.06);
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.referral-header .desc {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  margin-top: 0.35rem;
+  line-height: 1.45;
+}
+
+.pricing-discount-display {
+  display: flex;
+  align-items: center;
+}
+
+.discount-pill {
+  background: white;
+  border: 1px solid var(--border-color);
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--border-radius-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.discount-pill .lbl {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.discount-pill .val {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+.discount-pill .sub {
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.referral-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.referral-card-panel {
+  padding: 1.5rem;
+  border-radius: var(--border-radius-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.referral-card-panel.bg-light {
+  background: #f8fafc;
+  border: 1px solid var(--border-color);
+}
+
+.referral-card-panel h4 {
+  font-size: 1.05rem;
+  color: var(--text-primary);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  padding-bottom: 0.5rem;
+}
+
+.share-input-wrapper {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.share-url-input {
+  font-family: monospace;
+  font-size: 0.8rem;
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  padding: 0.5rem;
+  flex: 1;
+}
+
+.btn-copy {
+  padding: 0 1rem;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.referral-rules {
+  margin-top: 0.5rem;
+}
+
+.referral-rules h5 {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.referral-rules ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.metrics-summary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.metric-box {
+  background: white;
+  border: 1px solid var(--border-color);
+  padding: 1rem;
+  border-radius: var(--border-radius-md);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.metric-box .val {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.metric-box .lbl {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.referrals-list-wrapper {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.referrals-list-wrapper h5 {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+
+.referrals-list-loading,
+.referrals-empty {
+  background: white;
+  border: 1px solid var(--border-color);
+  padding: 1.5rem 1rem;
+  border-radius: var(--border-radius-md);
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.referrals-table-container {
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.referrals-mini-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.82rem;
+}
+
+.referrals-mini-table th,
+.referrals-mini-table td {
+  padding: 0.6rem 0.85rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.referrals-mini-table th {
+  background: #f1f5f9;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-size: 0.72rem;
+}
+
+.referrals-mini-table tr:last-child td {
+  border-bottom: none;
+}
+
+.ref-name {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.badge-mini {
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--border-radius-sm);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.badge-mini-green {
+  background: rgba(34, 197, 94, 0.1);
+  color: #15803d;
+}
+
+.badge-mini-cyan {
+  background: var(--accent-cyan-glow);
+  color: #0369a1;
+}
+
+.badge-mini-red {
+  background: rgba(239, 68, 68, 0.1);
+  color: #b91c1c;
+}
+
+@media (max-width: 992px) {
+  .referral-grid {
     grid-template-columns: 1fr;
   }
 }

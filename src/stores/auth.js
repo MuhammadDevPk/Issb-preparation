@@ -66,7 +66,7 @@ export const useAuthStore = defineStore('auth', () => {
   }
 
   const register = async (email, password, metadata) => {
-    // metadata includes full_name, whatsapp, target_branch
+    // metadata includes full_name, whatsapp, target_branch, referred_by_code
     const { data, error } = await supabase.auth.signUp({
       email,
       password,
@@ -75,6 +75,7 @@ export const useAuthStore = defineStore('auth', () => {
           full_name: metadata.full_name,
           whatsapp: metadata.whatsapp,
           target_branch: metadata.target_branch,
+          referred_by_code: metadata.referred_by_code,
         },
       },
     })

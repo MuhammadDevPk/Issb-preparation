@@ -34,6 +34,23 @@ const router = createRouter({
       meta: { guestOnly: true },
     },
     {
+      path: '/r/:code',
+      name: 'referral',
+      beforeEnter: async (to, from, next) => {
+        const code = to.params.code
+        if (code) {
+          try {
+            const { supabase } = await import('../supabase')
+            await supabase.rpc('increment_referral_clicks', { ref_code: code })
+            localStorage.setItem('issb_referred_by_code', code)
+          } catch (e) {
+            console.error('Failed to increment referral clicks:', e)
+          }
+        }
+        next({ name: 'register' })
+      },
+    },
+    {
       path: '/status',
       name: 'status',
       component: StatusView,

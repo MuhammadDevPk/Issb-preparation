@@ -1,8 +1,32 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import { supabase } from '../supabase'
 
 const router = useRouter()
+
+const appSettings = ref({
+  course_price: 1499,
+})
+
+const fetchSettings = async () => {
+  try {
+    const { data, error } = await supabase
+      .from('app_settings')
+      .select('course_price')
+      .eq('id', 1)
+      .single()
+    if (!error && data) {
+      appSettings.value = data
+    }
+  } catch (e) {
+    console.error('Error fetching settings:', e)
+  }
+}
+
+onMounted(() => {
+  fetchSettings()
+})
 
 // Lead Form State
 const leadName = ref('')
@@ -54,12 +78,7 @@ const goToPortal = () => {
     <header class="landing-nav">
       <div class="nav-logo">
         <svg class="icon-logo" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M12 2L2 22H22L12 2Z"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linejoin="round"
-          />
+          <path d="M12 2L2 22H22L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
           <path d="M12 6L5 20H19L12 6Z" fill="currentColor" opacity="0.3" />
           <circle cx="12" cy="14" r="2" fill="currentColor" />
         </svg>
@@ -70,13 +89,7 @@ const goToPortal = () => {
       </div>
       <button @click="goToPortal" class="btn btn-nav-portal">
         Go to Portal
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          class="arrow-icon"
-        >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-icon">
           <line x1="5" y1="12" x2="19" y2="12" />
           <polyline points="12 5 19 12 12 19" />
         </svg>
@@ -88,9 +101,7 @@ const goToPortal = () => {
       <div class="hero-content">
         <span class="badge badge-accent">100% Target-Oriented Prep Portal</span>
         <h1>
-          Stop Preparing Generically. <br /><span class="highlight"
-            >Unlock Your Recommendation.</span
-          >
+          Stop Preparing Generically. <br /><span class="highlight">Unlock Your Recommendation.</span>
         </h1>
         <p class="hero-subtitle">
           Most ISSB candidates fail not because they lack potential, but because they study outdated
@@ -132,34 +143,17 @@ const goToPortal = () => {
         <form @submit.prevent="handleLeadSubmit" class="lead-form" v-if="!formSubmitted">
           <div class="form-group">
             <label for="name">Full Name</label>
-            <input
-              v-model="leadName"
-              type="text"
-              id="name"
-              placeholder="e.g. Muhammad Ali"
-              required
-            />
+            <input v-model="leadName" type="text" id="name" placeholder="e.g. Muhammad Ali" required />
           </div>
 
           <div class="form-group">
             <label for="email">Email Address</label>
-            <input
-              v-model="leadEmail"
-              type="email"
-              id="email"
-              placeholder="e.g. name@example.com"
-              required
-            />
+            <input v-model="leadEmail" type="email" id="email" placeholder="e.g. name@example.com" required />
           </div>
 
           <div class="form-group">
             <label for="whatsapp">WhatsApp/Phone Number (Optional)</label>
-            <input
-              v-model="leadWhatsapp"
-              type="tel"
-              id="whatsapp"
-              placeholder="e.g. +92 300 1234567"
-            />
+            <input v-model="leadWhatsapp" type="tel" id="whatsapp" placeholder="e.g. +92 300 1234567" />
           </div>
 
           <div class="form-group">
@@ -173,13 +167,7 @@ const goToPortal = () => {
 
           <button type="submit" class="btn btn-submit-lead">
             Get Started Free
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              class="btn-icon"
-            >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon">
               <line x1="5" y1="12" x2="19" y2="12" />
               <polyline points="12 5 19 12 12 19" />
             </svg>
@@ -188,13 +176,7 @@ const goToPortal = () => {
 
         <div class="form-success-state" v-else>
           <div class="success-icon-wrapper">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="3"
-              class="success-svg"
-            >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="success-svg">
               <polyline points="20 6 9 17 4 12" />
             </svg>
           </div>
@@ -395,8 +377,8 @@ const goToPortal = () => {
         <div class="pricing-checkout-card">
           <div class="card-badge">Limited Time Offer</div>
           <div class="price-box">
-            <span class="price-slashed">PKR 4,000</span>
-            <span class="price-current">PKR 1,499</span>
+            <span class="price-slashed">PKR {{ appSettings.course_price * 2.5 }}</span>
+            <span class="price-current">PKR {{ appSettings.course_price }}</span>
             <span class="price-sub text-muted">Lifetime Access Pass</span>
           </div>
 
@@ -406,7 +388,7 @@ const goToPortal = () => {
             <div class="instruction-step">
               <span class="step-num">1</span>
               <div>
-                <p>Send <strong>PKR 1,499</strong> via <strong>JazzCash</strong> to:</p>
+                <p>Send <strong>PKR {{ appSettings.course_price }}</strong> via <strong>EasyPaisa</strong> to:</p>
                 <div class="payment-credentials">
                   <div class="credential-row">
                     <span class="cred-label">Number:</span>
@@ -438,15 +420,11 @@ const goToPortal = () => {
             </div>
           </div>
 
-          <a
-            href="https://wa.me/923456047058?text=Hi%20Umar,%20I%20have%20sent%20the%20payment%20of%20PKR%201499%20for%20the%20ISSB%20Premium%20Course.%20Please%20activate%20my%20access.%20Here%20is%20my%20screenshot."
-            target="_blank"
-            class="btn btn-whatsapp-checkout"
-          >
+          <a :href="`https://wa.me/923456047058?text=Hi%20Umar,%20I%20have%20sent%20the%20payment%20of%20PKR%20${appSettings.course_price}%20for%20the%20ISSB%20Premium%20Course.%20Please%20activate%20my%20access.%20Here%20is%20my%20screenshot.`"
+            target="_blank" class="btn btn-whatsapp-checkout">
             <svg viewBox="0 0 24 24" fill="currentColor" class="wa-icon">
               <path
-                d="M12.012 2c-5.506 0-9.988 4.482-9.988 9.988 0 1.76.459 3.479 1.332 4.996L2 22l5.176-1.357c1.47.8 3.123 1.22 4.825 1.22h.005c5.507 0 9.993-4.482 9.993-9.988 0-2.67-1.036-5.18-2.922-7.067C17.189 3.036 14.68 2 12.012 2zm5.727 14.04c-.25.707-1.458 1.299-2.012 1.353-.5.05-1.153.228-3.353-.678-2.812-1.16-4.63-4.026-4.77-4.215-.14-.189-1.144-1.52-1.144-2.898 0-1.38.723-2.054.98-2.324.25-.27.56-.34.75-.34h.54c.18 0 .42-.07.66.5.25.61.85 2.073.924 2.223.08.15.13.32.03.52-.1.2-.15.3-.3.47-.15.17-.32.39-.46.52-.16.15-.33.32-.14.65.19.32.85 1.402 1.83 2.274.98.872 1.802 1.14 2.062 1.274.26.13.41.11.56-.06.15-.17.65-.75.82-.99.18-.25.35-.2.6-.1.24.1 1.55.73 1.81.86.27.13.44.2.51.32.07.12.07.7-.18 1.407z"
-              />
+                d="M12.012 2c-5.506 0-9.988 4.482-9.988 9.988 0 1.76.459 3.479 1.332 4.996L2 22l5.176-1.357c1.47.8 3.123 1.22 4.825 1.22h.005c5.507 0 9.993-4.482 9.993-9.988 0-2.67-1.036-5.18-2.922-7.067C17.189 3.036 14.68 2 12.012 2zm5.727 14.04c-.25.707-1.458 1.299-2.012 1.353-.5.05-1.153.228-3.353-.678-2.812-1.16-4.63-4.026-4.77-4.215-.14-.189-1.144-1.52-1.144-2.898 0-1.38.723-2.054.98-2.324.25-.27.56-.34.75-.34h.54c.18 0 .42-.07.66.5.25.61.85 2.073.924 2.223.08.15.13.32.03.52-.1.2-.15.3-.3.47-.15.17-.32.39-.46.52-.16.15-.33.32-.14.65.19.32.85 1.402 1.83 2.274.98.872 1.802 1.14 2.062 1.274.26.13.41.11.56-.06.15-.17.65-.75.82-.99.18-.25.35-.2.6-.1.24.1 1.55.73 1.81.86.27.13.44.2.51.32.07.12.07.7-.18 1.407z" />
             </svg>
             Send Payment Screenshot
           </a>

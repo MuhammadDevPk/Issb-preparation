@@ -22,8 +22,31 @@ const filePreview = ref(null)
 const isSubmitting = ref(false)
 const errorMessage = ref('')
 const uploadProgressText = ref('')
+const referredByCode = ref('')
+
+const appSettings = ref({
+  course_price: 1499,
+  referral_bonus: 200,
+})
+
+const fetchSettings = async () => {
+  try {
+    const { data, error } = await supabase
+      .from('app_settings')
+      .select('*')
+      .eq('id', 1)
+      .single()
+    if (!error && data) {
+      appSettings.value = data
+    }
+  } catch (e) {
+    console.error('Error fetching settings:', e)
+  }
+}
 
 onMounted(() => {
+  referredByCode.value = localStorage.getItem('issb_referred_by_code') || ''
+  fetchSettings()
   // Pre-fill fields if candidate submitted the lead capture form on the home page
   if (route.query.name) fullName.value = route.query.name
   if (route.query.email) email.value = route.query.email
@@ -75,10 +98,6 @@ const removeSelectedFile = () => {
 }
 
 const handleRegister = async () => {
-  if (!selectedFile.value) {
-    errorMessage.value = 'Please upload your payment screenshot to register.'
-    return
-  }
   if (!fullName.value || !email.value || !password.value) {
     errorMessage.value = 'Please fill out all required fields.'
     return
@@ -89,11 +108,14 @@ const handleRegister = async () => {
   uploadProgressText.value = 'Creating candidate account...'
 
   try {
+    const refCode = referredByCode.value || null
+
     // 1. Sign up candidate via Auth Store
     const regResult = await authStore.register(email.value, password.value, {
       full_name: fullName.value,
       whatsapp: whatsapp.value,
       target_branch: targetBranch.value,
+      referred_by_code: refCode,
     })
 
     if (!regResult.user) {
@@ -101,42 +123,52 @@ const handleRegister = async () => {
     }
 
     const userId = regResult.user.id
-    uploadProgressText.value = 'Uploading payment screenshot...'
+    let publicUrl = ''
 
-    // 2. Upload payment screenshot to storage bucket
-    const file = selectedFile.value
-    const fileExt = file.name.split('.').pop()
-    const fileName = `${userId}/${Date.now()}.${fileExt}`
+    if (selectedFile.value) {
+      uploadProgressText.value = 'Uploading payment screenshot...'
 
-    const { error: uploadError } = await supabase.storage
-      .from('payment_screenshots')
-      .upload(fileName, file, {
-        cacheControl: '3600',
-        upsert: true,
-      })
+      // 2. Upload payment screenshot to storage bucket
+      const file = selectedFile.value
+      const fileExt = file.name.split('.').pop()
+      const fileName = `${userId}/${Date.now()}.${fileExt}`
 
-    if (uploadError) {
-      console.error('Storage upload error:', uploadError)
-      throw new Error(
-        'Payment screenshot upload failed, but your account was created. Please log in and re-upload the receipt on the status page.',
-      )
+      const { error: uploadError } = await supabase.storage
+        .from('payment_screenshots')
+        .upload(fileName, file, {
+          cacheControl: '3600',
+          upsert: true,
+        })
+
+      if (uploadError) {
+        console.error('Storage upload error:', uploadError)
+        throw new Error(
+          'Payment screenshot upload failed, but your account was created. Please log in and upload the receipt on the status page.',
+        )
+      }
+
+      // 3. Retrieve public URL
+      uploadProgressText.value = 'Saving receipt information...'
+      const {
+        data: { publicUrl: url },
+      } = supabase.storage.from('payment_screenshots').getPublicUrl(fileName)
+      publicUrl = url
+
+      // 4. Update student profile with receipt url
+      const { error: updateError } = await supabase
+        .from('profiles')
+        .update({ payment_screenshot_url: publicUrl })
+        .eq('id', userId)
+
+      if (updateError) {
+        console.error('Profile update error:', updateError)
+        throw new Error('Failed to save receipt link. Please contact support.')
+      }
     }
 
-    // 3. Retrieve public URL
-    uploadProgressText.value = 'Saving receipt information...'
-    const {
-      data: { publicUrl },
-    } = supabase.storage.from('payment_screenshots').getPublicUrl(fileName)
-
-    // 4. Update student profile with receipt url
-    const { error: updateError } = await supabase
-      .from('profiles')
-      .update({ payment_screenshot_url: publicUrl })
-      .eq('id', userId)
-
-    if (updateError) {
-      console.error('Profile update error:', updateError)
-      throw new Error('Failed to save receipt link. Please contact support.')
+    // Clear the referral code from local storage since registration succeeded
+    if (refCode) {
+      localStorage.removeItem('issb_referred_by_code')
     }
 
     // Success - redirect to status page
@@ -175,12 +207,7 @@ const goHome = () => {
       <div class="instructions-panel glass-card">
         <div class="panel-header" @click="goHome">
           <svg class="icon-logo" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M12 2L2 22H22L12 2Z"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linejoin="round"
-            />
+            <path d="M12 2L2 22H22L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
             <path d="M12 6L5 20H19L12 6Z" fill="currentColor" opacity="0.3" />
             <circle cx="12" cy="14" r="2" fill="currentColor" />
           </svg>
@@ -191,8 +218,8 @@ const goHome = () => {
         <div class="pricing-overview">
           <span class="badge badge-cyan">LIFETIME ACCESS PASS</span>
           <div class="price-box">
-            <span class="slashed-price">PKR 4,000</span>
-            <span class="current-price">PKR 1,499</span>
+            <span class="slashed-price">PKR {{ appSettings.course_price * 2.5 }}</span>
+            <span class="current-price">PKR {{ appSettings.course_price }}</span>
           </div>
           <p class="price-desc">
             Gain unlimited access to 1000+ solved WAT sentences, 500+ SCT keys, 100+ Situation
@@ -206,10 +233,10 @@ const goHome = () => {
           <div class="step">
             <span class="step-badge">1</span>
             <div class="step-info">
-              <p>Transfer <strong>PKR 1,499</strong> via <strong>JazzCash</strong> to:</p>
+              <p>Transfer <strong>PKR {{ appSettings.course_price }}</strong> via <strong>EasyPaisa</strong> to:</p>
               <div class="payment-details">
                 <div class="detail-row">
-                  <span class="lbl">JazzCash Number:</span>
+                  <span class="lbl">EasyPaisa Number:</span>
                   <span class="val highlight-text">03458643910</span>
                 </div>
                 <div class="detail-row">
@@ -242,12 +269,9 @@ const goHome = () => {
 
         <div class="support-contact">
           <p>Need support or instant activation?</p>
-          <a
-            href="https://wa.me/923458643910?text=Hi%20Umar,%20I'm%20registering%20on%20the%20ISSB%20Preparation%20Portal%20and%20need%20assistance."
-            target="_blank"
-            class="whatsapp-link"
-          >
-            WhatsApp Admin: 03458643910
+          <a href="https://wa.me/923456047058?text=Hi%20Umar,%20I'm%20registering%20on%20the%20ISSB%20Preparation%20Portal%20and%20need%20assistance."
+            target="_blank" class="whatsapp-link">
+            WhatsApp Admin: 03456047058
           </a>
         </div>
       </div>
@@ -256,18 +280,20 @@ const goHome = () => {
       <div class="form-panel glass-card">
         <div class="form-title">
           <h3>Candidate Registration</h3>
-          <p>Submit your details and payment screenshot to request access.</p>
+          <p>Submit your details to register. You can upload payment screenshot now or later.</p>
+        </div>
+
+        <!-- Referral Code Active Banner -->
+        <div v-if="referredByCode" class="referral-banner">
+          <span class="referral-banner-icon">🎁</span>
+          <span class="referral-banner-text">
+            Referred by code: <strong>{{ referredByCode }}</strong>. You qualify for discounted course pricing.
+          </span>
         </div>
 
         <!-- Error Alert -->
         <div v-if="errorMessage" class="error-alert">
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            class="alert-icon"
-          >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="alert-icon">
             <circle cx="12" cy="12" r="10" />
             <line x1="12" y1="8" x2="12" y2="12" />
             <line x1="12" y1="16" x2="12.01" y2="16" />
@@ -279,56 +305,28 @@ const goHome = () => {
           <div class="form-row">
             <div class="form-group">
               <label for="fullName" class="form-label">Full Name *</label>
-              <input
-                v-model="fullName"
-                type="text"
-                id="fullName"
-                class="form-input"
-                placeholder="e.g. Muhammad Ali"
-                required
-                :disabled="isSubmitting"
-              />
+              <input v-model="fullName" type="text" id="fullName" class="form-input" placeholder="e.g. Muhammad Ali"
+                required :disabled="isSubmitting" />
             </div>
 
             <div class="form-group">
               <label for="email" class="form-label">Email Address *</label>
-              <input
-                v-model="email"
-                type="email"
-                id="email"
-                class="form-input"
-                placeholder="e.g. name@example.com"
-                required
-                :disabled="isSubmitting"
-              />
+              <input v-model="email" type="email" id="email" class="form-input" placeholder="e.g. name@example.com"
+                required :disabled="isSubmitting" />
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-group">
               <label for="password" class="form-label">Password *</label>
-              <input
-                v-model="password"
-                type="password"
-                id="password"
-                class="form-input"
-                placeholder="Min 6 characters"
-                required
-                minlength="6"
-                :disabled="isSubmitting"
-              />
+              <input v-model="password" type="password" id="password" class="form-input" placeholder="Min 6 characters"
+                required minlength="6" :disabled="isSubmitting" />
             </div>
 
             <div class="form-group">
               <label for="whatsapp" class="form-label">WhatsApp Number (Optional)</label>
-              <input
-                v-model="whatsapp"
-                type="tel"
-                id="whatsapp"
-                class="form-input"
-                placeholder="e.g. +92 300 1234567"
-                :disabled="isSubmitting"
-              />
+              <input v-model="whatsapp" type="tel" id="whatsapp" class="form-input" placeholder="e.g. +92 300 1234567"
+                :disabled="isSubmitting" />
             </div>
           </div>
 
@@ -347,61 +345,39 @@ const goHome = () => {
 
           <!-- Screenshot upload area -->
           <div class="form-group">
-            <label class="form-label">Payment Receipt Screenshot *</label>
-            <input
-              ref="fileInput"
-              type="file"
-              accept="image/*"
-              style="display: none"
-              @change="handleFileChange"
-              :disabled="isSubmitting"
-            />
+            <label class="form-label">Payment Receipt Screenshot (Optional)</label>
+            <input ref="fileInput" type="file" accept="image/*" style="display: none" @change="handleFileChange"
+              :disabled="isSubmitting" />
 
             <div v-if="!selectedFile" class="upload-dropzone" @click="triggerFileInput">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                class="upload-icon"
-              >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="upload-icon">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12" />
               </svg>
               <span>Click to Upload Payment Screenshot</span>
-              <p class="upload-hint">Format: PNG, JPG, JPEG (Max 5MB)</p>
+              <p class="upload-hint">Format: PNG, JPG, JPEG (Max 5MB) | Can be uploaded later</p>
             </div>
 
             <div v-else class="upload-preview-card">
               <div class="preview-info">
                 <span class="file-name">{{ selectedFile.name }}</span>
-                <span class="file-size"
-                  >({{ (selectedFile.size / 1024 / 1024).toFixed(2) }} MB)</span
-                >
+                <span class="file-size">({{ (selectedFile.size / 1024 / 1024).toFixed(2) }} MB)</span>
               </div>
               <div class="preview-img-container">
                 <img :src="filePreview" alt="Receipt preview" class="preview-img" />
               </div>
-              <button
-                type="button"
-                class="btn-remove-file"
-                @click="removeSelectedFile"
-                :disabled="isSubmitting"
-              >
+              <button type="button" class="btn-remove-file" @click="removeSelectedFile" :disabled="isSubmitting">
                 Remove Screenshot
               </button>
             </div>
           </div>
 
-          <button
-            type="submit"
-            class="btn btn-primary btn-submit"
-            :disabled="isSubmitting || !selectedFile"
-          >
+          <button type="submit" class="btn btn-primary btn-submit" :disabled="isSubmitting">
             <span v-if="isSubmitting" class="flex-center gap-xs">
               <span class="spinner"></span>
               <span>{{ uploadProgressText }}</span>
             </span>
-            <span v-else>Register & Request Access</span>
+            <span v-else-if="selectedFile">Register & Request Access</span>
+            <span v-else>Register (Pay/Upload Later)</span>
           </button>
         </form>
 
@@ -420,11 +396,9 @@ const goHome = () => {
 .register-page {
   min-height: 100vh;
   padding: 2rem;
-  background: radial-gradient(
-    circle at 10% 20%,
-    rgba(2, 132, 199, 0.05) 0%,
-    rgba(241, 245, 249, 1) 90%
-  );
+  background: radial-gradient(circle at 10% 20%,
+      rgba(2, 132, 199, 0.05) 0%,
+      rgba(241, 245, 249, 1) 90%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -730,6 +704,27 @@ const goHome = () => {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+}
+
+.referral-banner {
+  background: var(--accent-cyan-glow);
+  color: #0369a1;
+  border: 1px solid rgba(3, 194, 252, 0.25);
+  padding: 0.75rem 1rem;
+  border-radius: var(--border-radius-md);
+  font-size: 0.88rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.referral-banner-icon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.referral-banner-text {
+  line-height: 1.4;
 }
 
 .alert-icon {

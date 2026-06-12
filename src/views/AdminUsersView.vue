@@ -145,8 +145,62 @@ const filteredProfiles = computed(() => {
   })
 })
 
+// Settings Panel State
+const settings = ref({
+  course_price: 1499,
+  referral_bonus: 200,
+  max_discount_pct: 90,
+  max_discount_amount: 1400,
+})
+const isSavingSettings = ref(false)
+const settingsSuccessMessage = ref('')
+
+const fetchSettings = async () => {
+  try {
+    const { data, error } = await supabase
+      .from('app_settings')
+      .select('*')
+      .eq('id', 1)
+      .single()
+    if (error) throw error
+    if (data) {
+      settings.value = data
+    }
+  } catch (e) {
+    console.error('Error fetching settings:', e)
+  }
+}
+
+const saveSettings = async () => {
+  isSavingSettings.value = true
+  settingsSuccessMessage.value = ''
+  try {
+    const { error } = await supabase
+      .from('app_settings')
+      .update({
+        course_price: settings.value.course_price,
+        referral_bonus: settings.value.referral_bonus,
+        max_discount_pct: settings.value.max_discount_pct,
+        max_discount_amount: settings.value.max_discount_amount,
+      })
+      .eq('id', 1)
+
+    if (error) throw error
+    settingsSuccessMessage.value = 'Settings updated successfully!'
+    setTimeout(() => {
+      settingsSuccessMessage.value = ''
+    }, 3000)
+  } catch (e) {
+    console.error('Error saving settings:', e)
+    alert('Failed to save settings: ' + e.message)
+  } finally {
+    isSavingSettings.value = false
+  }
+}
+
 onMounted(() => {
   fetchProfiles()
+  fetchSettings()
 })
 </script>
 
@@ -186,7 +240,7 @@ onMounted(() => {
     </div>
 
     <!-- Filters panel -->
-    <div class="filters-panel glass-card">
+    <div v-if="activeStatusTab !== 'settings'" class="filters-panel glass-card">
       <div class="search-box">
         <svg
           viewBox="0 0 24 24"
@@ -246,10 +300,18 @@ onMounted(() => {
       >
         Rejected ({{ profiles.filter((p) => p.status === 'rejected').length }})
       </button>
+      <button
+        @click="activeStatusTab = 'settings'"
+        class="tab-btn"
+        :class="{ active: activeStatusTab === 'settings' }"
+        style="border-color: var(--accent-gold); color: var(--accent-gold);"
+      >
+        Portal Settings ⚙️
+      </button>
     </div>
 
-    <!-- Candidates Table -->
-    <div class="table-container glass-card">
+    <!-- Candidates Table or Settings Form -->
+    <div v-if="activeStatusTab !== 'settings'" class="table-container glass-card">
       <div v-if="isLoading" class="table-loading flex-center">
         <span class="spinner"></span>
         <span>Retrieving candidate pool records...</span>
@@ -352,6 +414,88 @@ onMounted(() => {
           </tr>
         </tbody>
       </table>
+    </div>
+
+    <!-- Portal Settings Panel -->
+    <div v-else class="settings-panel-container glass-card">
+      <div class="settings-section-header">
+        <h3>Portal Referral & Price Settings</h3>
+        <p>Configure course price, referral reward, and maximum allowed discounts.</p>
+      </div>
+
+      <div v-if="settingsSuccessMessage" class="success-banner-settings">
+        <span>{{ settingsSuccessMessage }}</span>
+      </div>
+
+      <form @submit.prevent="saveSettings" class="settings-form">
+        <div class="form-row-settings">
+          <div class="form-group-settings">
+            <label for="coursePrice" class="form-label-settings">Base Course Price (PKR) *</label>
+            <input
+              v-model.number="settings.course_price"
+              type="number"
+              id="coursePrice"
+              class="form-input"
+              required
+              min="0"
+              :disabled="isSavingSettings"
+            />
+            <span class="input-hint">The base price a student sees on registration.</span>
+          </div>
+
+          <div class="form-group-settings">
+            <label for="referralBonus" class="form-label-settings">Referral Bonus per Paid User (PKR) *</label>
+            <input
+              v-model.number="settings.referral_bonus"
+              type="number"
+              id="referralBonus"
+              class="form-input"
+              required
+              min="0"
+              :disabled="isSavingSettings"
+            />
+            <span class="input-hint">Deducted from referrer's price for each referred paid user.</span>
+          </div>
+        </div>
+
+        <div class="form-row-settings">
+          <div class="form-group-settings">
+            <label for="maxDiscountPct" class="form-label-settings">Max Discount Percentage Cap (%) *</label>
+            <input
+              v-model.number="settings.max_discount_pct"
+              type="number"
+              id="maxDiscountPct"
+              class="form-input"
+              required
+              min="0"
+              max="100"
+              :disabled="isSavingSettings"
+            />
+            <span class="input-hint">Maximum percent discount allowed (e.g. 90%).</span>
+          </div>
+
+          <div class="form-group-settings">
+            <label for="maxDiscountAmount" class="form-label-settings">Max Discount Flat Cap (PKR) *</label>
+            <input
+              v-model.number="settings.max_discount_amount"
+              type="number"
+              id="maxDiscountAmount"
+              class="form-input"
+              required
+              min="0"
+              :disabled="isSavingSettings"
+            />
+            <span class="input-hint">Maximum flat deduction allowed (e.g. 1400 PKR).</span>
+          </div>
+        </div>
+
+        <div class="settings-actions">
+          <button type="submit" class="btn btn-primary" :disabled="isSavingSettings">
+            <span v-if="isSavingSettings" class="spinner"></span>
+            <span v-else>Save Settings</span>
+          </button>
+        </div>
+      </form>
     </div>
 
     <!-- Lightbox Modal for Payment Screenshot Preview -->
@@ -749,6 +893,82 @@ onMounted(() => {
 @media (max-width: 768px) {
   .filters-panel {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Portal Settings Styling */
+.settings-panel-container {
+  padding: 2.5rem;
+  border-top: 4px solid var(--accent-gold);
+}
+
+.settings-section-header {
+  margin-bottom: 2rem;
+}
+
+.settings-section-header h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.25rem;
+  color: var(--text-primary);
+}
+
+.settings-section-header p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.success-banner-settings {
+  background: var(--accent-green-glow);
+  color: var(--accent-green);
+  border: 1px solid rgba(34, 197, 94, 0.25);
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--border-radius-md);
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.settings-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-row-settings {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.form-group-settings {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-label-settings {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.input-hint {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.settings-actions {
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid var(--border-color);
+  padding-top: 1.5rem;
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .form-row-settings {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 }
 </style>
