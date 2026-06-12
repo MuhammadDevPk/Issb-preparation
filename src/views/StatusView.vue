@@ -127,12 +127,36 @@ const handleSignOut = async () => {
   }
 }
 
+const goHome = () => {
+  router.push('/')
+}
+
 const checkApprovalStatus = async () => {
-  if (authStore.user) {
-    await authStore.fetchProfile(authStore.user.id)
-    if (authStore.profile?.status === 'approved') {
-      router.push('/dashboard')
+  isSubmitting.value = true
+  errorMessage.value = ''
+  try {
+    if (!authStore.user) {
+      await authStore.initialize()
     }
+    if (authStore.user) {
+      await authStore.fetchProfile(authStore.user.id)
+      if (authStore.profile?.status === 'approved') {
+        router.push('/dashboard')
+      } else {
+        alert(
+          'Your payment verification status is still: ' +
+            authStore.profile?.status?.toUpperCase() +
+            '.\n\nIf you have already uploaded a screenshot of your JazzCash receipt, please wait for admin verification (usually takes 1-2 hours) or message our support team on WhatsApp.'
+        )
+      }
+    } else {
+      router.push('/login')
+    }
+  } catch (e) {
+    console.error('Error checking status:', e)
+    errorMessage.value = 'Failed to fetch status: ' + e.message
+  } finally {
+    isSubmitting.value = false
   }
 }
 </script>
@@ -142,7 +166,7 @@ const checkApprovalStatus = async () => {
     <div class="status-container glass-card" :class="{ 'border-rejected': status === 'rejected' }">
       
       <!-- Top header bar -->
-      <div class="status-header">
+      <div class="status-header" @click="goHome" title="Return to Home Page">
         <svg class="icon-logo" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M12 2L2 22H22L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
           <path d="M12 6L5 20H19L12 6Z" fill="currentColor" opacity="0.3" />
@@ -279,8 +303,16 @@ const checkApprovalStatus = async () => {
         </div>
       </div>
 
-      <!-- Action panel footer (Logout) -->
+      <!-- Action panel footer (Logout & Nav) -->
       <div class="status-footer">
+        <div class="footer-nav-links">
+          <button @click="goHome" class="link-btn-nav">
+            ← Return to Home Landing Page
+          </button>
+          <button v-if="status === 'approved'" @click="router.push('/dashboard')" class="link-btn-nav text-green-link">
+            Go to Dashboard →
+          </button>
+        </div>
         <button @click="handleSignOut" class="btn-logout">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="logout-icon">
             <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
@@ -322,6 +354,12 @@ const checkApprovalStatus = async () => {
   align-items: center;
   gap: 0.25rem;
   text-align: center;
+  cursor: pointer;
+  transition: opacity var(--transition-smooth);
+}
+
+.status-header:hover {
+  opacity: 0.85;
 }
 
 .icon-logo {
@@ -653,6 +691,36 @@ const checkApprovalStatus = async () => {
   border-top: 1px solid var(--border-color);
   padding-top: 1.5rem;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.footer-nav-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  font-size: 0.88rem;
+  border-bottom: 1px dashed rgba(0,0,0,0.06);
+  padding-bottom: 0.75rem;
+}
+
+.link-btn-nav {
+  background: transparent;
+  border: none;
+  color: var(--accent-cyan);
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: var(--font-heading);
+}
+
+.link-btn-nav:hover {
+  text-decoration: underline;
+}
+
+.text-green-link {
+  color: #15803d;
 }
 
 .btn-logout {
