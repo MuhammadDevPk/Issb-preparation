@@ -2,18 +2,21 @@
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { supabase } from '../supabase'
+import { useAuthStore } from '../stores/auth'
 
 const router = useRouter()
+const authStore = useAuthStore()
 
 const appSettings = ref({
   course_price: 1499,
+  referral_bonus: 200,
 })
 
 const fetchSettings = async () => {
   try {
     const { data, error } = await supabase
       .from('app_settings')
-      .select('course_price')
+      .select('*')
       .eq('id', 1)
       .single()
     if (!error && data) {
@@ -28,48 +31,30 @@ onMounted(() => {
   fetchSettings()
 })
 
-// Lead Form State
-const leadName = ref('')
-const leadEmail = ref('')
-const leadWhatsapp = ref('')
-const leadBranch = ref('army')
-const formSubmitted = ref(false)
+const goToRegister = () => {
+  router.push('/register')
+}
 
-const handleLeadSubmit = () => {
-  if (!leadName.value || !leadEmail.value) return
-
-  // Save lead mock-locally for reference
-  const lead = {
-    name: leadName.value,
-    email: leadEmail.value,
-    whatsapp: leadWhatsapp.value,
-    branch: leadBranch.value,
-    date: new Date().toISOString(),
-  }
-
-  const existingLeads = JSON.parse(localStorage.getItem('issb_leads') || '[]')
-  existingLeads.push(lead)
-  localStorage.setItem('issb_leads', JSON.stringify(existingLeads))
-
-  formSubmitted.value = true
-
-  // Redirect to register with query parameters
-  setTimeout(() => {
-    router.push({
-      path: '/register',
-      query: {
-        name: leadName.value,
-        email: leadEmail.value,
-        whatsapp: leadWhatsapp.value,
-        branch: leadBranch.value,
-      },
-    })
-  }, 1000)
+const goToLogin = () => {
+  router.push('/login')
 }
 
 const goToPortal = () => {
-  router.push('/login')
+  if (authStore.user) {
+    if (authStore.profile?.status === 'approved') {
+      router.push('/dashboard')
+    } else {
+      router.push('/status')
+    }
+  } else {
+    router.push('/register')
+  }
 }
+
+// Interactive Portal Showcase State
+const activeShowcaseTab = ref('dashboard') // dashboard, roadmap, simulators, obstacles, support
+const activeRoadmapSubTab = ref('day1') // day1, day2, day3, day4, day5
+const activeSimulatorSubTab = ref('wat') // wat, sct, srt
 </script>
 
 <template>
@@ -126,71 +111,86 @@ const goToPortal = () => {
         </div>
 
         <div class="hero-actions">
-          <a href="#lead-form" class="btn btn-primary btn-large">Start Preparing Now</a>
+          <button @click="goToPortal" class="btn btn-primary btn-large">Start Preparing Now</button>
           <button @click="goToPortal" class="btn btn-secondary btn-large">
             Explore Portal First
           </button>
         </div>
       </div>
 
-      <!-- Lead Capture Form Card -->
-      <div class="hero-form-card" id="lead-form">
-        <div class="form-header" v-if="!formSubmitted">
-          <h3>Unlock Free Access</h3>
-          <p>Get access to the 5-Day roadmap, simulators, and study guides instantly.</p>
+      <!-- Interactive Psychologist Simulator Preview Mockup -->
+      <div class="hero-simulator-preview-card">
+        <div class="simulator-header">
+          <div class="header-status">
+            <span class="pulse-dot"></span>
+            <span class="status-label">PSYCHOLOGIST TIMED ENGINE</span>
+          </div>
+          <div class="test-label">Word Association Test (WAT)</div>
         </div>
 
-        <form @submit.prevent="handleLeadSubmit" class="lead-form" v-if="!formSubmitted">
-          <div class="form-group">
-            <label for="name">Full Name</label>
-            <input v-model="leadName" type="text" id="name" placeholder="e.g. Muhammad Ali" required />
+        <div class="simulator-body">
+          <div class="word-card">
+            <span class="card-hint">DAY 2 TEST 1 — SCREEN FLASH</span>
+            <div class="flashed-word">CRISIS</div>
           </div>
 
-          <div class="form-group">
-            <label for="email">Email Address</label>
-            <input v-model="leadEmail" type="email" id="email" placeholder="e.g. name@example.com" required />
+          <div class="timer-widget">
+            <div class="circular-progress">
+              <svg viewBox="0 0 100 100" class="progress-ring">
+                <circle cx="50" cy="50" r="40" class="bg-circle" />
+                <circle cx="50" cy="50" r="40" class="active-circle" />
+              </svg>
+              <div class="timer-value">
+                <span class="seconds">07</span>
+                <span class="unit">sec</span>
+              </div>
+            </div>
+            <div class="timer-desc">Time remaining to write and auto-submit response.</div>
           </div>
 
-          <div class="form-group">
-            <label for="whatsapp">WhatsApp/Phone Number (Optional)</label>
-            <input v-model="leadWhatsapp" type="tel" id="whatsapp" placeholder="e.g. +92 300 1234567" />
+          <div class="response-preview">
+            <span class="preview-label">Subconscious Candidate Response</span>
+            <div class="mock-input">
+              A leader resolves the <span class="typing-cursor">crisis with swift action.</span>
+            </div>
           </div>
 
-          <div class="form-group">
-            <label for="branch">Target Force Branch</label>
-            <select v-model="leadBranch" id="branch">
-              <option value="army">Pakistan Army (PMA/TCC/Direct)</option>
-              <option value="navy">Pakistan Navy (PN Cadet/SSC)</option>
-              <option value="airforce">Pakistan Air Force (CAE/GD Pilot/SSC)</option>
-            </select>
+          <div class="olq-tagging">
+            <span class="olq-header">Detected Officer-Like Qualities (OLQ):</span>
+            <div class="olq-tags">
+              <span class="olq-tag tag-success">+ Initiative</span>
+              <span class="olq-tag tag-success">+ Practical Intel</span>
+              <span class="olq-tag tag-success">+ Courage</span>
+            </div>
           </div>
-
-          <button type="submit" class="btn btn-submit-lead">
-            Get Started Free
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon">
-              <line x1="5" y1="12" x2="19" y2="12" />
-              <polyline points="12 5 19 12 12 19" />
-            </svg>
-          </button>
-        </form>
-
-        <div class="form-success-state" v-else>
-          <div class="success-icon-wrapper">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="success-svg">
-              <polyline points="20 6 9 17 4 12" />
-            </svg>
-          </div>
-          <h4>Access Granted!</h4>
-          <p>Redirecting you to your preparation command dashboard...</p>
         </div>
+
+        <div class="simulator-footer">
+          <p>Traditional books teach faked, robotic sentences that get you rejected. The simulator trains your natural response speed under stress.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Referral Highlight Banner -->
+    <section class="referral-highlight-banner">
+      <div class="banner-content">
+        <div class="banner-badge">EARN YOUR PASSPORT FOR Rs. 100</div>
+        <h2>Can't Afford the Course? Get it for Rs. 100 dynamically!</h2>
+        <p class="banner-desc">
+          No upfront payment required! Simply sign up, copy your unique referral link, and invite other candidates. 
+          For every friend who signs up and registers, your course fee is slashed. 
+          With just a few referrals, you can get full lifetime premium access to all simulators and solved playbooks for as low as <strong>PKR 100</strong>!
+          Start sharing your link instantly upon free registration.
+        </p>
+        <button @click="goToPortal" class="btn btn-banner-cta">Get Your Referral Link Now</button>
       </div>
     </section>
 
     <!-- Why Candidates Fail / Succeed Section -->
     <section class="insights-section">
       <div class="section-header">
-        <h2>The Core Difference: Failure vs. Recommendation</h2>
-        <p>Understanding what the board is looking for determines your final result.</p>
+        <h2>The Academy Trap vs. The Scientific Command Portal</h2>
+        <p>Why standard coaching academies lead to rejection and how to prepare with precision.</p>
       </div>
 
       <div class="insights-grid">
@@ -202,23 +202,19 @@ const goToPortal = () => {
               <line x1="9" y1="9" x2="15" y2="15" />
             </svg>
           </div>
-          <h3>Why 95% of Candidates Fail</h3>
+          <h3>The Outdated Academy Trap (95% Rejection)</h3>
           <ul class="insight-list">
             <li>
-              <strong>Memorized Responses:</strong> Writing textbook answers for WAT/SCT that clash
-              with self-descriptions.
+              <strong>Memorized Standard Sentences:</strong> Copying typical guidebook answers (e.g. writing "Atom is a power" for ATOM) that psychologists easily detect as fake and robotic.
             </li>
             <li>
-              <strong>Faked Personalities:</strong> Trying to project a "superman" military identity
-              instead of showing genuine traits.
+              <strong>Robotic Super-Soldier Profiles:</strong> Faking answers to look perfect while contradicting your Day 1 Bio-data, resulting in rejection due to lack of consistency.
             </li>
             <li>
-              <strong>Lack of Timed Speed:</strong> Panicking and leaving sheets blank during
-              rapid-fire psychologist tests.
+              <strong>Outdated Paper Booklets:</strong> Memorizing list words without practicing against the strict 10-second projector screen, causing candidates to freeze at the actual ISSB.
             </li>
             <li>
-              <strong>Aggressive Domination:</strong> Shouting or trying to overpower the group
-              during GTO task debates.
+              <strong>Hostel & Camps Charges:</strong> Wasting Rs. 25,000 to Rs. 40,000 on general classes that fail to provide real-time testing simulation.
             </li>
           </ul>
         </div>
@@ -230,25 +226,231 @@ const goToPortal = () => {
               <polyline points="22 4 12 14.01 9 11.01" />
             </svg>
           </div>
-          <h3>How to Guarantee Recommendation</h3>
+          <h3>The ISSB Command Portal (Recommended Path)</h3>
           <ul class="insight-list">
             <li>
-              <strong>Subconscious Honesty:</strong> Projecting natural, authentic responses that
-              align with bio-data.
+              <strong>Genuine Subconscious Alignment:</strong> We train you to write natural, positive responses matching your profile so you pass the psychological screening.
             </li>
             <li>
-              <strong>Logical Problem Solving:</strong> Approaching GTO planning and SRT crises with
-              practical, step-by-step solutions.
+              <strong>Interactive Timed Simulators:</strong> Practice WAT, SCT, and SRT tests using the exact timer cycles of the selection board.
             </li>
             <li>
-              <strong>Officer-Like Qualities (OLQ):</strong> Consciously showing responsibility,
-              teamwork, courage, and determination.
+              <strong>Solved Playbook Libraries:</strong> Instant access to 1000+ positive WAT sentences, 500+ SCT sheets, and GTO obstacle planners.
             </li>
             <li>
-              <strong>Timed Confidence:</strong> Training your speed so responses flow automatically
-              under pressure.
+              <strong>Dynamic Referral Discounts:</strong> Earn deductions of <strong>PKR {{ appSettings.referral_bonus }}</strong> per referral. Drop the price to just Rs. 100.
             </li>
           </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portal Tour & Screenshots Showcase Section -->
+    <section class="portal-showcase-section">
+      <div class="section-header">
+        <span class="badge badge-accent">Interactive Tour</span>
+        <h2>Explore Inside the Command Center Portal</h2>
+        <p>See exactly what you will access after registration. We hide nothing because our system is built with scientific, high-fidelity prep tools.</p>
+      </div>
+
+      <div class="showcase-container">
+        <!-- Main Tabs Selector -->
+        <div class="showcase-tabs">
+          <button @click="activeShowcaseTab = 'dashboard'" :class="['tab-btn', { active: activeShowcaseTab === 'dashboard' }]">
+            <span class="tab-num">01</span> Central Dashboard
+          </button>
+          <button @click="activeShowcaseTab = 'roadmap'" :class="['tab-btn', { active: activeShowcaseTab === 'roadmap' }]">
+            <span class="tab-num">02</span> 5-Day Roadmap
+          </button>
+          <button @click="activeShowcaseTab = 'simulators'" :class="['tab-btn', { active: activeShowcaseTab === 'simulators' }]">
+            <span class="tab-num">03</span> Timed Simulators
+          </button>
+          <button @click="activeShowcaseTab = 'obstacles'" :class="['tab-btn', { active: activeShowcaseTab === 'obstacles' }]">
+            <span class="tab-num">04</span> GTO Obstacle Planner
+          </button>
+          <button @click="activeShowcaseTab = 'support'" :class="['tab-btn', { active: activeShowcaseTab === 'support' }]">
+            <span class="tab-num">05</span> Ideas & Complaints
+          </button>
+        </div>
+
+        <!-- Showcase Panels Content -->
+        <div class="showcase-panels glass-card">
+          <!-- 1. CENTRAL DASHBOARD -->
+          <div v-if="activeShowcaseTab === 'dashboard'" class="showcase-panel fade-in">
+            <div class="panel-layout">
+              <div class="panel-preview">
+                <img src="/media/images/dashboard/dashboard.jpg" alt="ISSB Command Portal Central Dashboard" class="screenshot-img" />
+              </div>
+              <div class="panel-info">
+                <h3>Your Central Hub for Officer Preparation</h3>
+                <p class="panel-desc">
+                  This dashboard tracks your active preparation and personality profiling in real-time. It maps your progress directly to the core assessment indicators used at selection boards.
+                </p>
+                <ul class="panel-features-list">
+                  <li>
+                    <strong>Dynamic Streak Tracker:</strong> Built-in psychological triggers keeping you focused day-by-day.
+                  </li>
+                  <li>
+                    <strong>Cadet Rank Progression:</strong> Earn preparation experience (XP) and watch your rank grow from Cadet to Captain.
+                  </li>
+                  <li>
+                    <strong>OLQ Quick Profiler Summary:</strong> Get immediate visual analysis of your strengths and weaknesses across planning, dynamic, and leadership traits.
+                  </li>
+                </ul>
+                <button @click="goToPortal" class="btn btn-primary">Enter Dashboard Now</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. 5-DAY ROADMAP -->
+          <div v-if="activeShowcaseTab === 'roadmap'" class="showcase-panel fade-in">
+            <div class="roadmap-subtabs">
+              <button @click="activeRoadmapSubTab = 'day1'" :class="['subtab-btn', { active: activeRoadmapSubTab === 'day1' }]">Day 1: Arrival</button>
+              <button @click="activeRoadmapSubTab = 'day2'" :class="['subtab-btn', { active: activeRoadmapSubTab === 'day2' }]">Day 2: Psychologist</button>
+              <button @click="activeRoadmapSubTab = 'day3'" :class="['subtab-btn', { active: activeRoadmapSubTab === 'day3' }]">Day 3: GTO Tasks</button>
+              <button @click="activeRoadmapSubTab = 'day4'" :class="['subtab-btn', { active: activeRoadmapSubTab === 'day4' }]">Day 4: Individual</button>
+              <button @click="activeRoadmapSubTab = 'day5'" :class="['subtab-btn', { active: activeRoadmapSubTab === 'day5' }]">Day 5: Conference</button>
+            </div>
+            
+            <div class="panel-layout">
+              <!-- Day 1 Panel -->
+              <div v-if="activeRoadmapSubTab === 'day1'" class="panel-preview fade-in">
+                <img src="/media/images/dashboard/5-Day Roadmap(Day 1: Arrival & Screening).jpg" alt="Roadmap Day 1" class="screenshot-img" />
+              </div>
+              <!-- Day 2 Panel -->
+              <div v-if="activeRoadmapSubTab === 'day2'" class="panel-preview fade-in">
+                <img src="/media/images/dashboard/5-Day Roadmap(Day 2: Psychologist Day).jpg" alt="Roadmap Day 2" class="screenshot-img" />
+              </div>
+              <!-- Day 3 Panel -->
+              <div v-if="activeRoadmapSubTab === 'day3'" class="panel-preview fade-in">
+                <img src="/media/images/dashboard/5-Day Roadmap(Day 3: GTO Tasks (Indoor & Out)).jpg" alt="Roadmap Day 3" class="screenshot-img" />
+              </div>
+              <!-- Day 4 Panel -->
+              <div v-if="activeRoadmapSubTab === 'day4'" class="panel-preview fade-in">
+                <img src="/media/images/dashboard/5-Day Roadmap(Day 4: Individual Tasks & Interview).jpg" alt="Roadmap Day 4" class="screenshot-img" />
+              </div>
+              <!-- Day 5 Panel -->
+              <div v-if="activeRoadmapSubTab === 'day5'" class="panel-preview fade-in">
+                <img src="/media/images/dashboard/5-Day Roadmap(Day 5: Conference & Results).jpg" alt="Roadmap Day 5" class="screenshot-img" />
+              </div>
+
+              <div class="panel-info">
+                <h3>The Complete 5-Day Training Curriculum</h3>
+                <p class="panel-desc">
+                  Traditional guides present information as a massive list. Our roadmap structures it into the exact chronologic sequence you will encounter. Each day includes:
+                </p>
+                <ul class="panel-features-list">
+                  <li>
+                    <strong>Detailed Test Guidelines:</strong> Explaining what the test is, who conducts it, what common traps lead to failures, and what traits to project.
+                  </li>
+                  <li>
+                    <strong>Drive-Linked PDF Viewers:</strong> Read official worksheets and recommended cadet experiences directly inside the portal without any downloading lag.
+                  </li>
+                  <li>
+                    <strong>Targeted Simulators:</strong> Access practicing simulators matched exactly to that day's scheduled psychologist testing.
+                  </li>
+                </ul>
+                <button @click="goToPortal" class="btn btn-primary">Open Roadmap Checklists</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. TIMED SIMULATORS -->
+          <div v-if="activeShowcaseTab === 'simulators'" class="showcase-panel fade-in">
+            <div class="roadmap-subtabs">
+              <button @click="activeSimulatorSubTab = 'wat'" :class="['subtab-btn', { active: activeSimulatorSubTab === 'wat' }]">WAT Simulator</button>
+              <button @click="activeSimulatorSubTab = 'sct'" :class="['subtab-btn', { active: activeSimulatorSubTab === 'sct' }]">SCT Sheet Trainer</button>
+              <button @click="activeSimulatorSubTab = 'srt'" :class="['subtab-btn', { active: activeSimulatorSubTab === 'srt' }]">SRT Crisis Trainer</button>
+            </div>
+            
+            <div class="panel-layout">
+              <!-- WAT Simulator -->
+              <div v-if="activeSimulatorSubTab === 'wat'" class="panel-preview fade-in">
+                <img src="/media/images/dashboard/wat simulator.jpg" alt="WAT Simulator" class="screenshot-img" />
+              </div>
+              <!-- SCT Simulator -->
+              <div v-if="activeSimulatorSubTab === 'sct'" class="panel-preview fade-in">
+                <img src="/media/images/dashboard/SCT Simulator.jpg" alt="SCT Simulator" class="screenshot-img" />
+              </div>
+              <!-- SRT Simulator -->
+              <div v-if="activeSimulatorSubTab === 'srt'" class="panel-preview fade-in">
+                <img src="/media/images/dashboard/SRT Trainer.jpg" alt="SRT Trainer" class="screenshot-img" />
+              </div>
+
+              <div class="panel-info">
+                <h3>Subconscious Stress Testing Engine</h3>
+                <p class="panel-desc">
+                  This is the crown jewel of our preparation system. Selectors check your subconscious reactions. We train you to write positive, authentic responses under strict timing:
+                </p>
+                <ul class="panel-features-list">
+                  <li>
+                    <strong>Word Association Test (WAT):</strong> Auto-advancing words on a strict 10-second projector clock.
+                  </li>
+                  <li>
+                    <strong>Sentence Completion Test (SCT):</strong> Practice sheets in Roman Urdu and English with a running 6-minute clock.
+                  </li>
+                  <li>
+                    <strong>Situation Reaction Test (SRT):</strong> Crisis-control scenarios prompting practical leadership reactions in 30 seconds.
+                  </li>
+                </ul>
+                <button @click="goToPortal" class="btn btn-primary">Launch Projector Simulator</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. GTO OBSTACLE PLANNER -->
+          <div v-if="activeShowcaseTab === 'obstacles'" class="showcase-panel fade-in">
+            <div class="panel-layout">
+              <div class="panel-preview">
+                <img src="/media/images/dashboard/GTO Obstacles.jpg" alt="GTO Obstacle sequence planner" class="screenshot-img" />
+              </div>
+              <div class="panel-info">
+                <h3>Interactive GTO Individual Obstacles Planner</h3>
+                <p class="panel-desc">
+                  Candidates often fail individual GTO tasks because of physical exhaustion. Our interactive planner teaches you to formulate a tactical strategy before stepping onto the physical rope:
+                </p>
+                <ul class="panel-features-list">
+                  <li>
+                    <strong>Target Points Calculator:</strong> Drag and drop obstacles into your custom sequence (e.g. Tarzan Swing, Zig-Zag, Rope Climb) to calculate total possible scores (target is 30+).
+                  </li>
+                  <li>
+                    <strong>Fatigue & Energy Indexing:</strong> Displays warnings if you schedule physically exhausting tasks near the end of your 3-minute sequence.
+                  </li>
+                  <li>
+                    <strong>Safety & Tactical Guidelines:</strong> Rules and safety instructions to pass GTO inspection cleanly.
+                  </li>
+                </ul>
+                <button @click="goToPortal" class="btn btn-primary">Plan GTO Route</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. IDEAS & COMPLAINTS -->
+          <div v-if="activeShowcaseTab === 'support'" class="showcase-panel fade-in">
+            <div class="panel-layout">
+              <div class="panel-preview">
+                <img src="/media/images/dashboard/Complaints and Ideas.jpg" alt="Ideas and Complaints board" class="screenshot-img" />
+              </div>
+              <div class="panel-info">
+                <h3>Improvements Suggestion Board & Private Helpdesk</h3>
+                <p class="panel-desc">
+                  We believe in constant improvement. The portal includes a community module where candidates participate in shaping the curriculum:
+                </p>
+                <ul class="panel-features-list">
+                  <li>
+                    <strong>Public Improvement Requests:</strong> Propose new simulator features or guides. Other users can upvote/downvote suggestions with live percentage ratings.
+                  </li>
+                  <li>
+                    <strong>Private Complaint Helpdesk:</strong> Submit bugs or activation requests directly. Checked privately by the admin.
+                  </li>
+                  <li>
+                    <strong>Active Community Voice:</strong> Direct control of updates via candidate majority consensus.
+                  </li>
+                </ul>
+                <button @click="goToPortal" class="btn btn-primary">Submit Feature Request</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -378,12 +580,26 @@ const goToPortal = () => {
           <div class="card-badge">Limited Time Offer</div>
           <div class="price-box">
             <span class="price-slashed">PKR {{ appSettings.course_price * 2.5 }}</span>
-            <span class="price-current">PKR {{ appSettings.course_price }}</span>
-            <span class="price-sub text-muted">Lifetime Access Pass</span>
+            <div class="price-current-container">
+              <span class="price-current">PKR {{ appSettings.course_price }}</span>
+              <span class="price-or">OR</span>
+              <span class="price-referral">PKR 100*</span>
+            </div>
+            <span class="price-sub text-muted">*Get it for PKR 100 by inviting friends via referrals!</span>
+          </div>
+
+          <div class="referral-checkout-details">
+            <div class="ref-callout">
+              <span class="fire-icon">🔥</span>
+              <strong>Zero-Upfront Referral Option:</strong>
+            </div>
+            <p>
+              You don't need to pay upfront! Register, copy your referral link from the dashboard/status page, and earn <strong>PKR {{ appSettings.referral_bonus }}</strong> discount on each registration. Invite friends to bring your bill down to the PKR 100 minimum!
+            </p>
           </div>
 
           <div class="payment-instructions">
-            <h4>How to Unlock Course Instantly:</h4>
+            <h4>Or Pay Full to Unlock Instantly:</h4>
 
             <div class="instruction-step">
               <span class="step-num">1</span>
@@ -601,123 +817,354 @@ const goToPortal = () => {
   font-size: 1rem;
 }
 
-/* Form Card */
-.hero-form-card {
+/* Simulator Mockup Card */
+.hero-simulator-preview-card {
   background: #ffffff;
   border: 1px solid var(--border-color);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
   border-radius: var(--border-radius-lg);
-  padding: 2.5rem;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  overflow: hidden;
+  border-top: 4px solid var(--accent-cyan);
 }
 
-.form-header h3 {
-  font-size: 1.4rem;
-  color: var(--text-primary);
-  margin: 0 0 0.35rem 0;
+.simulator-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1rem;
 }
 
-.form-header p {
-  font-size: 0.9rem;
+.header-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent-red);
+  border-radius: 50%;
+  animation: pulse-recording 1.5s infinite;
+}
+
+@keyframes pulse-recording {
+  0% { opacity: 0.3; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.1); }
+  100% { opacity: 0.3; transform: scale(0.9); }
+}
+
+.status-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
   color: var(--text-secondary);
-  margin: 0;
-  line-height: 1.4;
 }
 
-.lead-form {
+.test-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  background: rgba(3, 194, 252, 0.08);
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--border-radius-sm);
+}
+
+.simulator-body {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
 }
 
-.form-group {
+.word-card {
+  background: #f8fafc;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  padding: 1.25rem;
+  text-align: center;
+  position: relative;
+}
+
+.card-hint {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.flashed-word {
+  font-size: 2.2rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+}
+
+.timer-widget {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  background: #f8fafc;
+  padding: 0.75rem 1rem;
+  border-radius: var(--border-radius-md);
+  border: 1px dashed rgba(3, 194, 252, 0.3);
+}
+
+.circular-progress {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
+}
+
+.progress-ring {
+  transform: rotate(-90deg);
+  width: 50px;
+  height: 50px;
+}
+
+.progress-ring circle {
+  fill: none;
+  stroke-width: 6;
+}
+
+.progress-ring .bg-circle {
+  stroke: var(--border-color);
+}
+
+.progress-ring .active-circle {
+  stroke: var(--accent-cyan);
+  stroke-dasharray: 251.2;
+  stroke-dashoffset: 70; /* Mock showing 7/10s left */
+  stroke-linecap: round;
+}
+
+.timer-value {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.timer-value .seconds {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.timer-value .unit {
+  font-size: 0.55rem;
+  color: var(--text-muted);
+}
+
+.timer-desc {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.response-preview {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
 }
 
-.form-group label {
-  font-size: 0.85rem;
-  font-weight: 500;
+.preview-label {
+  font-size: 0.75rem;
+  font-weight: 600;
   color: var(--text-secondary);
 }
 
-.form-group input,
-.form-group select {
-  padding: 0.75rem 1rem;
-  border: 1.5px solid var(--border-color);
-  border-radius: var(--border-radius-md);
-  font-size: 0.95rem;
-  background: #f8fafc;
-  color: var(--text-primary);
-  transition: all var(--transition-smooth);
-}
-
-.form-group input:focus,
-.form-group select:focus {
-  outline: none;
-  border-color: var(--accent-cyan);
+.mock-input {
   background: #ffffff;
-}
-
-.btn-submit-lead {
-  background: var(--accent-cyan);
-  color: #ffffff;
-  border: none;
-  padding: 0.85rem;
+  border: 1.5px solid var(--accent-cyan);
   border-radius: var(--border-radius-md);
-  font-size: 1rem;
-  font-weight: 600;
+  padding: 0.75rem 1rem;
+  font-size: 0.92rem;
+  color: var(--text-primary);
   display: flex;
-  justify-content: center;
   align-items: center;
+  min-height: 42px;
+  position: relative;
+}
+
+.typing-cursor {
+  border-right: 2px solid var(--accent-cyan);
+  padding-right: 2px;
+  animation: cursor-blink 0.8s infinite;
+}
+
+@keyframes cursor-blink {
+  0%, 100% { border-right-color: transparent; }
+  50% { border-right-color: var(--accent-cyan); }
+}
+
+.olq-tagging {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.olq-header {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.olq-tags {
+  display: flex;
+  flex-wrap: wrap;
   gap: 0.5rem;
-  cursor: pointer;
-  transition: all var(--transition-smooth);
-  margin-top: 0.5rem;
 }
 
-.btn-submit-lead:hover {
-  background: #02a3d4;
-  transform: translateY(-1px);
+.olq-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
 }
 
-.form-success-state {
+.tag-success {
+  background: rgba(34, 197, 94, 0.1);
+  color: var(--accent-green);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+.simulator-footer {
+  border-top: 1px solid var(--border-color);
+  padding-top: 1rem;
+}
+
+.simulator-footer p {
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+  text-align: center;
+}
+
+/* Referral Highlight Banner */
+.referral-highlight-banner {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #ffffff;
+  padding: 4rem 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.banner-content {
+  max-width: 850px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 3rem 0;
-  gap: 1rem;
+  gap: 1.25rem;
 }
 
-.success-icon-wrapper {
-  width: 60px;
-  height: 60px;
-  background: rgba(34, 197, 94, 0.1);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--accent-green);
+.banner-badge {
+  background: rgba(3, 194, 252, 0.15);
+  color: var(--accent-cyan);
+  border: 1px solid rgba(3, 194, 252, 0.3);
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
 }
 
-.success-svg {
-  width: 30px;
-  height: 30px;
+.banner-content h2 {
+  font-size: 2.2rem;
+  font-family: var(--font-heading);
+  margin: 0;
+  color: #ffffff;
+  line-height: 1.25;
 }
 
-.form-success-state h4 {
-  font-size: 1.35rem;
+.banner-desc {
+  font-size: 1.05rem;
+  color: #94a3b8;
+  line-height: 1.6;
   margin: 0;
 }
 
-.form-success-state p {
+.btn-banner-cta {
+  background: var(--accent-cyan);
+  color: #ffffff;
+  border: none;
+  padding: 0.85rem 2rem;
+  border-radius: var(--border-radius-md);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-smooth);
+  margin-top: 1rem;
+}
+
+.btn-banner-cta:hover {
+  background: #02a3d4;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(3, 194, 252, 0.3);
+}
+
+/* Pricing Upgrade details */
+.price-current-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.price-or {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  background: var(--border-color);
+  padding: 0.15rem 0.4rem;
+  border-radius: var(--border-radius-sm);
+}
+
+.price-referral {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--accent-green);
+  font-family: var(--font-heading);
+}
+
+.referral-checkout-details {
+  background: rgba(34, 197, 94, 0.05);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+  border-radius: var(--border-radius-md);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.ref-callout {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--accent-green);
   font-size: 0.95rem;
+}
+
+.referral-checkout-details p {
+  margin: 0;
+  font-size: 0.88rem;
   color: var(--text-secondary);
+  line-height: 1.45;
 }
 
 /* Insights Section */
@@ -1149,5 +1596,220 @@ const goToPortal = () => {
 .wa-icon {
   width: 20px;
   height: 20px;
+}
+
+/* Portal Showcase Section */
+.portal-showcase-section {
+  padding: 5rem 2rem;
+  background: #f8fafc;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.showcase-container {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.showcase-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tab-btn {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  padding: 1rem 1.25rem;
+  text-align: left;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-smooth);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.tab-btn:hover {
+  border-color: var(--accent-cyan);
+  color: var(--text-primary);
+  background: rgba(3, 194, 252, 0.02);
+}
+
+.tab-btn.active {
+  background: var(--accent-cyan);
+  color: #ffffff;
+  border-color: var(--accent-cyan);
+  box-shadow: 0 4px 15px rgba(3, 194, 252, 0.2);
+}
+
+.tab-num {
+  font-size: 0.8rem;
+  font-family: var(--font-heading);
+  opacity: 0.8;
+  background: rgba(0, 0, 0, 0.05);
+  padding: 0.15rem 0.35rem;
+  border-radius: var(--border-radius-sm);
+}
+
+.tab-btn.active .tab-num {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.showcase-panels {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  padding: 2rem;
+  min-height: 520px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+}
+
+.showcase-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.roadmap-subtabs {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1rem;
+}
+
+.subtab-btn {
+  background: #f1f5f9;
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  padding: 0.4rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-smooth);
+}
+
+.subtab-btn:hover {
+  background: #e2e8f0;
+  color: var(--text-primary);
+}
+
+.subtab-btn.active {
+  background: #0f172a;
+  color: #ffffff;
+  border-color: #0f172a;
+}
+
+.panel-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.panel-preview {
+  background: #f1f5f9;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  display: flex;
+}
+
+.screenshot-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.5s var(--transition-smooth);
+}
+
+.screenshot-img:hover {
+  transform: scale(1.02);
+}
+
+.panel-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
+
+.panel-info h3 {
+  font-size: 1.5rem;
+  font-family: var(--font-heading);
+  margin: 0;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.panel-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.panel-features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-left: 1.25rem;
+  margin: 0;
+}
+
+.panel-features-list li {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.panel-features-list li strong {
+  color: var(--text-primary);
+}
+
+/* Animations */
+.fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 992px) {
+  .showcase-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .showcase-tabs {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
+  .tab-btn {
+    flex: 1 1 calc(50% - 0.5rem);
+  }
+  
+  .panel-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .tab-btn {
+    flex: 1 1 100%;
+  }
 }
 </style>
