@@ -10,6 +10,7 @@ import LoginView from '../views/LoginView.vue'
 import RegisterView from '../views/RegisterView.vue'
 import StatusView from '../views/StatusView.vue'
 import AdminUsersView from '../views/AdminUsersView.vue'
+import SupportView from '../views/SupportView.vue'
 import { useAuthStore } from '../stores/auth'
 
 const router = createRouter({
@@ -79,6 +80,12 @@ const router = createRouter({
       name: 'admin-users',
       component: AdminUsersView,
       meta: { requiresAuth: true, requiresAdmin: true },
+    },
+    {
+      path: '/support',
+      name: 'support',
+      component: SupportView,
+      meta: { requiresAuth: true },
     },
   ],
 })

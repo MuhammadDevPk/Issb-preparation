@@ -209,6 +209,19 @@ onMounted(() => {
             <span>GTO Obstacles</span>
           </RouterLink>
 
+          <RouterLink to="/support" class="nav-item" active-class="active">
+            <svg
+              class="nav-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+            </svg>
+            <span>Complaints & Ideas</span>
+          </RouterLink>
+
           <!-- Admin Section -->
           <template v-if="authStore.profile?.role === 'admin'">
             <div class="nav-section-title">ADMIN CONTROL</div>
