@@ -69,7 +69,7 @@ export const usePreparationStore = defineStore('preparation', () => {
   const addXP = (amount) => {
     xp.value += amount
     localStorage.setItem('issb_xp', xp.value.toString())
-    
+
     // Dispatch custom event to notify App.vue rank update
     window.dispatchEvent(new CustomEvent('issb-xp-updated', { detail: xp.value }))
   }
@@ -132,6 +132,6 @@ export const usePreparationStore = defineStore('preparation', () => {
     saveSctSession,
     saveSrtSession,
     saveObstacleRoute,
-    clearHistory
+    clearHistory,
   }
 })

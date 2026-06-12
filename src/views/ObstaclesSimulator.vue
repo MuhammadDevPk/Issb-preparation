@@ -7,15 +7,78 @@ const store = usePreparationStore()
 const router = useRouter()
 
 const obstacles = [
-  { id: 'boxing_ring', name: 'Boxing Ring', points: 1, difficulty: 'Easy', fatigue: 10, desc: 'Jump over the outer rope, roll under the center bar, and hop out the other side.' },
-  { id: 'double_ditch', name: 'Double Ditch', points: 2, difficulty: 'Easy', fatigue: 15, desc: 'Jump across a 6-foot ditch, land on the middle step, and jump across the second ditch.' },
-  { id: 'zig_zag', name: 'Zig-Zag Balance', points: 4, difficulty: 'Medium', fatigue: 10, desc: 'Walk quickly across narrow wooden planks set at angles without losing balance.' },
-  { id: 'high_jump', name: 'High Jump', points: 5, difficulty: 'Medium', fatigue: 25, desc: 'Clear a 3.5-foot high bar without knocking it over. Requires lower-body explosion.' },
-  { id: 'hanging_plank', name: 'Hanging Plank', points: 6, difficulty: 'Medium', fatigue: 20, desc: 'Climb a ladder, run across a suspended plank that swings, and jump down.' },
-  { id: 'monkey_bridge', name: 'Monkey Bridge', points: 7, difficulty: 'Hard', fatigue: 30, desc: 'Walk across a single thick steel cable while holding onto an upper hand-rope.' },
-  { id: 'tarzan_swing', name: 'Tarzan Swing', points: 8, difficulty: 'Hard', fatigue: 35, desc: 'Climb to a platform, grab a heavy rope, swing across a ditch, and land safely on a line.' },
-  { id: 'rope_climb', name: 'Rope Climbing', points: 9, difficulty: 'Hard', fatigue: 45, desc: 'Climb up a vertical 12-foot rope using hand-over-hand grip and slide down.' },
-  { id: 'tarzan_wall', name: 'Tarzan Wall', points: 10, difficulty: 'Hard', fatigue: 40, desc: 'Run, jump to grab the edge of an 8-foot high wall, pull yourself up, and drop down.' }
+  {
+    id: 'boxing_ring',
+    name: 'Boxing Ring',
+    points: 1,
+    difficulty: 'Easy',
+    fatigue: 10,
+    desc: 'Jump over the outer rope, roll under the center bar, and hop out the other side.',
+  },
+  {
+    id: 'double_ditch',
+    name: 'Double Ditch',
+    points: 2,
+    difficulty: 'Easy',
+    fatigue: 15,
+    desc: 'Jump across a 6-foot ditch, land on the middle step, and jump across the second ditch.',
+  },
+  {
+    id: 'zig_zag',
+    name: 'Zig-Zag Balance',
+    points: 4,
+    difficulty: 'Medium',
+    fatigue: 10,
+    desc: 'Walk quickly across narrow wooden planks set at angles without losing balance.',
+  },
+  {
+    id: 'high_jump',
+    name: 'High Jump',
+    points: 5,
+    difficulty: 'Medium',
+    fatigue: 25,
+    desc: 'Clear a 3.5-foot high bar without knocking it over. Requires lower-body explosion.',
+  },
+  {
+    id: 'hanging_plank',
+    name: 'Hanging Plank',
+    points: 6,
+    difficulty: 'Medium',
+    fatigue: 20,
+    desc: 'Climb a ladder, run across a suspended plank that swings, and jump down.',
+  },
+  {
+    id: 'monkey_bridge',
+    name: 'Monkey Bridge',
+    points: 7,
+    difficulty: 'Hard',
+    fatigue: 30,
+    desc: 'Walk across a single thick steel cable while holding onto an upper hand-rope.',
+  },
+  {
+    id: 'tarzan_swing',
+    name: 'Tarzan Swing',
+    points: 8,
+    difficulty: 'Hard',
+    fatigue: 35,
+    desc: 'Climb to a platform, grab a heavy rope, swing across a ditch, and land safely on a line.',
+  },
+  {
+    id: 'rope_climb',
+    name: 'Rope Climbing',
+    points: 9,
+    difficulty: 'Hard',
+    fatigue: 45,
+    desc: 'Climb up a vertical 12-foot rope using hand-over-hand grip and slide down.',
+  },
+  {
+    id: 'tarzan_wall',
+    name: 'Tarzan Wall',
+    points: 10,
+    difficulty: 'Hard',
+    fatigue: 40,
+    desc: 'Run, jump to grab the edge of an 8-foot high wall, pull yourself up, and drop down.',
+  },
 ]
 
 const plannedRoute = ref([]) // Array of obstacle objects representing sequence
@@ -23,7 +86,7 @@ const plannedRoute = ref([]) // Array of obstacle objects representing sequence
 const addToRoute = (obs) => {
   plannedRoute.value.push({
     ...obs,
-    uniqueId: Date.now() + Math.random().toString(36).substr(2, 5)
+    uniqueId: Date.now() + Math.random().toString(36).substr(2, 5),
   })
   saveRouteToStore()
 }
@@ -39,7 +102,7 @@ const clearRoute = () => {
 }
 
 const saveRouteToStore = () => {
-  const ids = plannedRoute.value.map(o => o.id)
+  const ids = plannedRoute.value.map((o) => o.id)
   store.saveObstacleRoute(ids)
 }
 
@@ -54,11 +117,11 @@ const totalFatigue = computed(() => {
 // Calculate tactical tips dynamically based on route sequence
 const tacticalTips = computed(() => {
   const tips = []
-  
+
   if (plannedRoute.value.length === 0) {
     tips.push({
       type: 'info',
-      text: 'Click obstacles below to start planning your sequence. Aim for a route that maximizes your points.'
+      text: 'Click obstacles below to start planning your sequence. Aim for a route that maximizes your points.',
     })
     return tips
   }
@@ -67,22 +130,22 @@ const tacticalTips = computed(() => {
   if (totalPoints.value < 30) {
     tips.push({
       type: 'warn',
-      text: `Your current planned score is ${totalPoints.value} points. At ISSB, a highly recommended candidate aims for at least 30+ points by completing obstacles fast and repeating high-value ones.`
+      text: `Your current planned score is ${totalPoints.value} points. At ISSB, a highly recommended candidate aims for at least 30+ points by completing obstacles fast and repeating high-value ones.`,
     })
   } else {
     tips.push({
       type: 'success',
-      text: `Excellent! Your planned score is ${totalPoints.value} points. This score shows top-tier physical capability and aggression.`
+      text: `Excellent! Your planned score is ${totalPoints.value} points. This score shows top-tier physical capability and aggression.`,
     })
   }
 
   // Fatigue sequence checks
   const lastThree = plannedRoute.value.slice(-3)
-  const heavyFinishers = lastThree.filter(o => o.id === 'rope_climb' || o.id === 'tarzan_wall')
+  const heavyFinishers = lastThree.filter((o) => o.id === 'rope_climb' || o.id === 'tarzan_wall')
   if (heavyFinishers.length > 0) {
     tips.push({
       type: 'danger',
-      text: 'Tactical Warning: Placing Rope Climbing or Tarzan Wall at the end of your run is risky. Due to severe forearm fatigue and lactic acid build-up, you may slip. Move these high-effort tasks to the middle of your run.'
+      text: 'Tactical Warning: Placing Rope Climbing or Tarzan Wall at the end of your run is risky. Due to severe forearm fatigue and lactic acid build-up, you may slip. Move these high-effort tasks to the middle of your run.',
     })
   }
 
@@ -90,7 +153,7 @@ const tacticalTips = computed(() => {
   if (plannedRoute.value[0]?.points >= 8) {
     tips.push({
       type: 'warn',
-      text: 'Physiological Tip: Starting with a 8-10 points obstacle (like Tarzan Wall) immediately without warm-up can cause muscle pulls. Try starting with Boxing Ring or Zig-Zag to get your heart rate up.'
+      text: 'Physiological Tip: Starting with a 8-10 points obstacle (like Tarzan Wall) immediately without warm-up can cause muscle pulls. Try starting with Boxing Ring or Zig-Zag to get your heart rate up.',
     })
   }
 
@@ -110,11 +173,19 @@ const goToRoadmap = () => {
           <span class="badge badge-cyan">GTO Tasks</span>
           <h2>GTO Individual Obstacles Route Planner</h2>
           <p>
-            Individual Obstacles test your physical courage, agility, determination, and spatial decision-making under stress. You have exactly **3 minutes** to clear as many obstacles as possible. Create a strategy to cross them in the most efficient sequence.
+            Individual Obstacles test your physical courage, agility, determination, and spatial
+            decision-making under stress. You have exactly **3 minutes** to clear as many obstacles
+            as possible. Create a strategy to cross them in the most efficient sequence.
           </p>
         </div>
         <button class="btn btn-secondary back-btn" @click="goToRoadmap">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            class="btn-icon"
+          >
             <polyline points="15 18 9 12 15 6" />
           </svg>
           <span>Roadmap</span>
@@ -128,18 +199,28 @@ const goToRoadmap = () => {
       <aside class="route-panel glass-card border-blue">
         <div class="panel-header">
           <h3>Your Planned Route</h3>
-          <button class="btn btn-secondary btn-sm" @click="clearRoute" :disabled="plannedRoute.length === 0">RESET</button>
+          <button
+            class="btn btn-secondary btn-sm"
+            @click="clearRoute"
+            :disabled="plannedRoute.length === 0"
+          >
+            RESET
+          </button>
         </div>
 
         <!-- Metric summaries -->
         <div class="metrics-row grid-2">
           <div class="metric-box">
             <span class="lbl">Planned Score</span>
-            <span class="val text-glow" :class="totalPoints >= 30 ? 'text-green' : 'text-gold'">{{ totalPoints }} pts</span>
+            <span class="val text-glow" :class="totalPoints >= 30 ? 'text-green' : 'text-gold'"
+              >{{ totalPoints }} pts</span
+            >
           </div>
           <div class="metric-box">
             <span class="lbl">Fatigue Index</span>
-            <span class="val" :class="totalFatigue > 200 ? 'text-red' : 'text-cyan'">{{ totalFatigue }}</span>
+            <span class="val" :class="totalFatigue > 200 ? 'text-red' : 'text-cyan'">{{
+              totalFatigue
+            }}</span>
           </div>
         </div>
 
@@ -156,7 +237,13 @@ const goToRoadmap = () => {
                 <span class="points-label">{{ obs.points }} Points</span>
               </div>
               <button class="remove-btn" @click="removeFromRoute(index)">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="close-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  class="close-icon"
+                >
                   <line x1="18" y1="6" x2="6" y2="18" />
                   <line x1="6" y1="6" x2="18" y2="18" />
                 </svg>
@@ -169,7 +256,12 @@ const goToRoadmap = () => {
         <div class="advisor-box">
           <h4 class="title text-glow">Tactical Advisor Feedback</h4>
           <div class="tips-list">
-            <div v-for="(tip, idx) in tacticalTips" :key="idx" class="tip-card" :class="'tip-' + tip.type">
+            <div
+              v-for="(tip, idx) in tacticalTips"
+              :key="idx"
+              class="tip-card"
+              :class="'tip-' + tip.type"
+            >
               <span class="tip-dot"></span>
               <p>{{ tip.text }}</p>
             </div>
@@ -183,21 +275,40 @@ const goToRoadmap = () => {
         <p class="subtitle">Click an obstacle to append it to your running sequence.</p>
 
         <div class="deck-grid grid-3">
-          <div v-for="obs in obstacles" :key="obs.id"
-               class="obstacle-card glass-card interactive"
-               @click="addToRoute(obs)">
+          <div
+            v-for="obs in obstacles"
+            :key="obs.id"
+            class="obstacle-card glass-card interactive"
+            @click="addToRoute(obs)"
+          >
             <div class="card-top">
-              <span class="badge" :class="obs.points >= 8 ? 'badge-red' : obs.points >= 5 ? 'badge-gold' : 'badge-cyan'">
+              <span
+                class="badge"
+                :class="
+                  obs.points >= 8 ? 'badge-red' : obs.points >= 5 ? 'badge-gold' : 'badge-cyan'
+                "
+              >
                 {{ obs.points }} PTS
               </span>
-              <span class="diff-label" :class="obs.difficulty === 'Hard' ? 'text-red' : obs.difficulty === 'Medium' ? 'text-gold' : 'text-green'">
+              <span
+                class="diff-label"
+                :class="
+                  obs.difficulty === 'Hard'
+                    ? 'text-red'
+                    : obs.difficulty === 'Medium'
+                      ? 'text-gold'
+                      : 'text-green'
+                "
+              >
                 {{ obs.difficulty }}
               </span>
             </div>
             <h4>{{ obs.name }}</h4>
             <p class="obs-desc">{{ obs.desc }}</p>
             <div class="card-bottom">
-              <span class="fatigue-lbl">Fatigue: <strong>{{ obs.fatigue }}</strong></span>
+              <span class="fatigue-lbl"
+                >Fatigue: <strong>{{ obs.fatigue }}</strong></span
+              >
               <span class="add-indicator text-glow">+ Add to Route</span>
             </div>
           </div>
@@ -404,10 +515,18 @@ const goToRoadmap = () => {
   flex-shrink: 0;
 }
 
-.tip-info .tip-dot { background: var(--accent-cyan); }
-.tip-warn .tip-dot { background: var(--accent-gold); }
-.tip-danger .tip-dot { background: var(--accent-red); }
-.tip-success .tip-dot { background: var(--accent-green); }
+.tip-info .tip-dot {
+  background: var(--accent-cyan);
+}
+.tip-warn .tip-dot {
+  background: var(--accent-gold);
+}
+.tip-danger .tip-dot {
+  background: var(--accent-red);
+}
+.tip-success .tip-dot {
+  background: var(--accent-green);
+}
 
 /* Deck Panel */
 .deck-panel {

@@ -37,9 +37,14 @@ onMounted(() => {
     <header class="app-header glass-card">
       <div class="header-logo">
         <svg class="icon-logo" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 2L2 22H22L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-          <path d="M12 6L5 20H19L12 6Z" fill="currentColor" opacity="0.3"/>
-          <circle cx="12" cy="14" r="2" fill="currentColor"/>
+          <path
+            d="M12 2L2 22H22L12 2Z"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linejoin="round"
+          />
+          <path d="M12 6L5 20H19L12 6Z" fill="currentColor" opacity="0.3" />
+          <circle cx="12" cy="14" r="2" fill="currentColor" />
         </svg>
         <div class="logo-text">
           <h1>ISSB COMMAND</h1>
@@ -51,7 +56,9 @@ onMounted(() => {
         <!-- Streak Widget -->
         <div class="status-widget streak-widget">
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M8.5 14.5A2.5 2.5 0 0011 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 11-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 002.5 2.5z"/>
+            <path
+              d="M8.5 14.5A2.5 2.5 0 0011 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 11-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 002.5 2.5z"
+            />
           </svg>
           <div class="widget-details">
             <span class="label">Daily Streak</span>
@@ -66,7 +73,10 @@ onMounted(() => {
             <span class="value text-glow">{{ rankTitle }}</span>
           </div>
           <div class="rank-progress-container">
-            <div class="rank-progress-bar" :style="{ width: Math.min((experience / 1000) * 100, 100) + '%' }"></div>
+            <div
+              class="rank-progress-bar"
+              :style="{ width: Math.min((experience / 1000) * 100, 100) + '%' }"
+            ></div>
           </div>
         </div>
       </div>
@@ -77,7 +87,13 @@ onMounted(() => {
       <aside class="navigation-panel glass-card">
         <nav class="nav-menu">
           <RouterLink to="/" class="nav-item" active-class="active">
-            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg
+              class="nav-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
               <rect x="3" y="3" width="7" height="9" rx="1" />
               <rect x="14" y="3" width="7" height="5" rx="1" />
               <rect x="14" y="12" width="7" height="9" rx="1" />
@@ -87,7 +103,13 @@ onMounted(() => {
           </RouterLink>
 
           <RouterLink to="/roadmap" class="nav-item" active-class="active">
-            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg
+              class="nav-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
               <path d="M9 18l6-6-6-6" />
               <circle cx="12" cy="12" r="10" />
             </svg>
@@ -97,32 +119,62 @@ onMounted(() => {
           <div class="nav-section-title">TEST SIMULATORS</div>
 
           <RouterLink to="/simulator/wat" class="nav-item" active-class="active">
-            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 20h9M3 20v-8c0-2.2 1.8-4 4-4h10c2.2 0 4 1.8 4 4v8M3 12h18M9 8V4m6 4V4"/>
+            <svg
+              class="nav-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M12 20h9M3 20v-8c0-2.2 1.8-4 4-4h10c2.2 0 4 1.8 4 4v8M3 12h18M9 8V4m6 4V4" />
             </svg>
             <span>WAT Simulator</span>
           </RouterLink>
 
           <RouterLink to="/simulator/sct" class="nav-item" active-class="active">
-            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7M18.5 2.5a2.121 2.121 0 113 3L12 15l-4 1 1-4 9.5-9.5z"/>
+            <svg
+              class="nav-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7M18.5 2.5a2.121 2.121 0 113 3L12 15l-4 1 1-4 9.5-9.5z"
+              />
             </svg>
             <span>SCT Simulator</span>
           </RouterLink>
 
           <RouterLink to="/simulator/srt" class="nav-item" active-class="active">
-            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
-              <line x1="12" y1="9" x2="12" y2="13"/>
-              <line x1="12" y1="17" x2="12.01" y2="17"/>
+            <svg
+              class="nav-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"
+              />
+              <line x1="12" y1="9" x2="12" y2="13" />
+              <line x1="12" y1="17" x2="12.01" y2="17" />
             </svg>
             <span>SRT Trainer</span>
           </RouterLink>
 
           <RouterLink to="/simulator/obstacles" class="nav-item" active-class="active">
-            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M20 9.586V19a2 2 0 01-2 2H6a2 2 0 01-2-2V9.586a2 2 0 01.586-1.414l7-7a2 2 0 012.828 0l7 7A2 2 0 0120 9.586z"/>
-              <path d="M12 12v6M9 15h6"/>
+            <svg
+              class="nav-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                d="M20 9.586V19a2 2 0 01-2 2H6a2 2 0 01-2-2V9.586a2 2 0 01.586-1.414l7-7a2 2 0 012.828 0l7 7A2 2 0 0120 9.586z"
+              />
+              <path d="M12 12v6M9 15h6" />
             </svg>
             <span>GTO Obstacles</span>
           </RouterLink>
@@ -357,7 +409,7 @@ onMounted(() => {
   .main-layout {
     grid-template-columns: 1fr;
   }
-  
+
   .navigation-panel {
     display: none; /* In a production mobile layout, we would toggle or use a bottom bar */
   }

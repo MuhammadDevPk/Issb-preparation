@@ -12,23 +12,61 @@ const timerLeft = ref(360) // 6 minutes (360s) for 26 sentences
 let testTimer = null
 
 const englishStarters = [
-  'He was afraid of', 'My father', 'At night', 'The main problem', 
-  'During crisis', 'In his opinion', 'She wanted to', 'The teacher', 
-  'It is hard to', 'A true friend', 'He failed because', 'My mother always', 
-  'If he becomes a commander', 'In dark rooms', 'Money is', 'Under stress he', 
-  'The officer', 'To tell the truth', 'He feels sad when', 'My team', 
-  'The decision was', 'Women are', 'A soldier\'s duty', 'He was upset by', 
-  'During discussion he', 'The future is'
+  'He was afraid of',
+  'My father',
+  'At night',
+  'The main problem',
+  'During crisis',
+  'In his opinion',
+  'She wanted to',
+  'The teacher',
+  'It is hard to',
+  'A true friend',
+  'He failed because',
+  'My mother always',
+  'If he becomes a commander',
+  'In dark rooms',
+  'Money is',
+  'Under stress he',
+  'The officer',
+  'To tell the truth',
+  'He feels sad when',
+  'My team',
+  'The decision was',
+  'Women are',
+  "A soldier's duty",
+  'He was upset by',
+  'During discussion he',
+  'The future is',
 ]
 
 const urduStarters = [
-  'Mujhe darr hai', 'Mere waalid', 'Raat ke waqt', 'Asal masla', 
-  'Mushkil waqt mein', 'Uss ki nazar mein', 'Woh chahta tha', 'Ustaad ne', 
-  'Yeh mushkil hai', 'Sacha dost', 'Woh nakaam hua kyunke', 'Meri waalida hamesha', 
-  'Agar woh commander bana', 'Andheray mein', 'Paisa', 'Dabaao mein woh', 
-  'Officer ne', 'Sach baat yeh hai', 'Woh udaas hota hai jab', 'Meri team', 
-  'Faisla', 'Khawateen', 'Soldier ka farz', 'Woh pareshan hua', 
-  'Guftagu ke dauraan', 'Mustaqbil'
+  'Mujhe darr hai',
+  'Mere waalid',
+  'Raat ke waqt',
+  'Asal masla',
+  'Mushkil waqt mein',
+  'Uss ki nazar mein',
+  'Woh chahta tha',
+  'Ustaad ne',
+  'Yeh mushkil hai',
+  'Sacha dost',
+  'Woh nakaam hua kyunke',
+  'Meri waalida hamesha',
+  'Agar woh commander bana',
+  'Andheray mein',
+  'Paisa',
+  'Dabaao mein woh',
+  'Officer ne',
+  'Sach baat yeh hai',
+  'Woh udaas hota hai jab',
+  'Meri team',
+  'Faisla',
+  'Khawateen',
+  'Soldier ka farz',
+  'Woh pareshan hua',
+  'Guftagu ke dauraan',
+  'Mustaqbil',
 ]
 
 const currentStarters = computed(() => {
@@ -41,7 +79,7 @@ const startTest = () => {
   completions.value = Array(26).fill('')
   testState.value = 'active'
   timerLeft.value = 360
-  
+
   clearInterval(testTimer)
   testTimer = setInterval(() => {
     timerLeft.value--
@@ -54,13 +92,13 @@ const startTest = () => {
 const submitSheet = () => {
   clearInterval(testTimer)
   testState.value = 'results'
-  
+
   // Format responses
   const formattedResponses = currentStarters.value.map((starter, idx) => {
     return {
       index: idx + 1,
       prompt: starter,
-      text: completions.value[idx].trim()
+      text: completions.value[idx].trim(),
     }
   })
 
@@ -68,7 +106,7 @@ const submitSheet = () => {
   store.saveSctSession({
     date: new Date().toLocaleString(),
     language: selectedLanguage.value,
-    responses: formattedResponses
+    responses: formattedResponses,
   })
 }
 
@@ -88,7 +126,7 @@ onUnmounted(() => {
 
 // Analytics calculations
 const completedCount = computed(() => {
-  return completions.value.filter(c => c.trim().length > 0).length
+  return completions.value.filter((c) => c.trim().length > 0).length
 })
 
 const timeTaken = computed(() => {
@@ -103,19 +141,27 @@ const timeTaken = computed(() => {
       <span class="badge badge-cyan">Psychology Simulators</span>
       <h2>Sentence Completion Test (SCT) Simulator</h2>
       <p>
-        The Sentence Completion Test evaluates emotional conflicts, maturity, family relationships, and social adjustment. In ISSB, you get **26 incomplete sentences** and exactly **6 minutes** to finish them. Complete them fast and naturally.
+        The Sentence Completion Test evaluates emotional conflicts, maturity, family relationships,
+        and social adjustment. In ISSB, you get **26 incomplete sentences** and exactly **6
+        minutes** to finish them. Complete them fast and naturally.
       </p>
 
       <div class="config-panel">
         <div class="form-group">
           <label class="form-label">Select Language Sheet</label>
           <div class="lang-selector">
-            <button class="btn" :class="selectedLanguage === 'english' ? 'btn-primary' : 'btn-secondary'"
-                    @click="selectedLanguage = 'english'">
+            <button
+              class="btn"
+              :class="selectedLanguage === 'english' ? 'btn-primary' : 'btn-secondary'"
+              @click="selectedLanguage = 'english'"
+            >
               English Sentence Sheet
             </button>
-            <button class="btn ml-2" :class="selectedLanguage === 'urdu' ? 'btn-primary' : 'btn-secondary'"
-                    @click="selectedLanguage = 'urdu'">
+            <button
+              class="btn ml-2"
+              :class="selectedLanguage === 'urdu' ? 'btn-primary' : 'btn-secondary'"
+              @click="selectedLanguage = 'urdu'"
+            >
               Roman Urdu Sheet (e.g. "Raat ke waqt...")
             </button>
           </div>
@@ -125,16 +171,32 @@ const timeTaken = computed(() => {
       <div class="tactical-tips border-gold">
         <h5>SCT Strategic Guidance:</h5>
         <ul>
-          <li><strong>Complete Every Sentence:</strong> Leaving blank sheets displays hesitation or emotional blockages. Work at a speed of ~14s per sentence.</li>
-          <li><strong>Show Active Agency:</strong> Write completions showing resolution, work, or duty. (e.g. for "He failed because" -> write <em>"his efforts were insufficient but he resolved to try harder"</em>).</li>
-          <li><strong>Family Harmony:</strong> For "My father", write highly positive/respectful sentences showing good upbringing.</li>
+          <li>
+            <strong>Complete Every Sentence:</strong> Leaving blank sheets displays hesitation or
+            emotional blockages. Work at a speed of ~14s per sentence.
+          </li>
+          <li>
+            <strong>Show Active Agency:</strong> Write completions showing resolution, work, or
+            duty. (e.g. for "He failed because" -> write
+            <em>"his efforts were insufficient but he resolved to try harder"</em>).
+          </li>
+          <li>
+            <strong>Family Harmony:</strong> For "My father", write highly positive/respectful
+            sentences showing good upbringing.
+          </li>
         </ul>
       </div>
 
       <div class="flex-center">
         <button class="btn btn-primary btn-large" @click="startTest">
           <span>START 6-MINUTE TIMED RUN</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            class="btn-icon"
+          >
             <polygon points="5 3 19 12 5 21 5 3" />
           </svg>
         </button>
@@ -159,10 +221,13 @@ const timeTaken = computed(() => {
         <div v-for="(starter, index) in currentStarters" :key="index" class="sentence-row">
           <span class="row-num">{{ index + 1 }}.</span>
           <span class="starter-label">{{ starter }}...</span>
-          <input type="text" class="form-input sentence-input"
-                 v-model="completions[index]"
-                 placeholder="Type completion..."
-                 :tabindex="index + 1" />
+          <input
+            type="text"
+            class="form-input sentence-input"
+            v-model="completions[index]"
+            placeholder="Type completion..."
+            :tabindex="index + 1"
+          />
         </div>
       </div>
 
@@ -181,7 +246,9 @@ const timeTaken = computed(() => {
           <span class="badge badge-green">Added to Practice Records (+100 XP)</span>
         </div>
         <div class="actions">
-          <button class="btn btn-secondary mr-2" @click="testState = 'setup'">Select Another Sheet</button>
+          <button class="btn btn-secondary mr-2" @click="testState = 'setup'">
+            Select Another Sheet
+          </button>
           <button class="btn btn-primary" @click="goToRoadmap">Return to Roadmap</button>
         </div>
       </div>
@@ -190,7 +257,9 @@ const timeTaken = computed(() => {
       <div class="results-metrics grid-3">
         <div class="glass-card metric-item border-blue">
           <span class="lbl">Unfinished Sentences</span>
-          <span class="val" :class="(26 - completedCount) > 2 ? 'text-red' : 'text-green'">{{ 26 - completedCount }}</span>
+          <span class="val" :class="26 - completedCount > 2 ? 'text-red' : 'text-green'">{{
+            26 - completedCount
+          }}</span>
           <span class="desc">Aim for 0 to 2 blank sheets max.</span>
         </div>
         <div class="glass-card metric-item border-green">
@@ -224,8 +293,12 @@ const timeTaken = computed(() => {
                   <td>{{ idx + 1 }}</td>
                   <td class="starter-col">{{ starter }}...</td>
                   <td class="completion-col">
-                    <span v-if="!completions[idx].trim()" class="text-red italic">Left Empty (Timed Out)</span>
-                    <span v-else class="text-highlight"><strong>{{ completions[idx] }}</strong></span>
+                    <span v-if="!completions[idx].trim()" class="text-red italic"
+                      >Left Empty (Timed Out)</span
+                    >
+                    <span v-else class="text-highlight"
+                      ><strong>{{ completions[idx] }}</strong></span
+                    >
                   </td>
                 </tr>
               </tbody>
@@ -236,22 +309,36 @@ const timeTaken = computed(() => {
         <!-- Audit Guide -->
         <div class="glass-card psychology-tips-panel">
           <h3>SCT Psychological Evaluation Checklist</h3>
-          <p class="desc">Examine your completed sentences. A selection officer checks for the following emotional traits:</p>
-          
+          <p class="desc">
+            Examine your completed sentences. A selection officer checks for the following emotional
+            traits:
+          </p>
+
           <div class="checklist">
             <div class="check-item border-red">
               <strong class="text-red">Avoid Dependency & Passivity:</strong>
-              <p>For sentences like "He wanted to", writing "he wanted to go home to sleep" shows lazy mindset. Opt for constructive ambition: <em>"He wanted to complete his studies with distinction."</em></p>
+              <p>
+                For sentences like "He wanted to", writing "he wanted to go home to sleep" shows
+                lazy mindset. Opt for constructive ambition:
+                <em>"He wanted to complete his studies with distinction."</em>
+              </p>
             </div>
-            
+
             <div class="check-item border-gold">
               <strong class="text-gold">Keep Social Relationships Healthy:</strong>
-              <p>For "My mother always", writing "scolds me" shows resentment or family distress. Write warm, cooperative relations: <em>"My mother always advises me to speak the truth."</em></p>
+              <p>
+                For "My mother always", writing "scolds me" shows resentment or family distress.
+                Write warm, cooperative relations:
+                <em>"My mother always advises me to speak the truth."</em>
+              </p>
             </div>
 
             <div class="check-item border-green">
               <strong class="text-green">Dynamic Decision Under Stress:</strong>
-              <p>For "During crisis", writing "he got afraid" shows weakness. Opt for proactive grit: <em>"During crisis, he stayed calm and helped others."</em></p>
+              <p>
+                For "During crisis", writing "he got afraid" shows weakness. Opt for proactive grit:
+                <em>"During crisis, he stayed calm and helped others."</em>
+              </p>
             </div>
           </div>
         </div>
@@ -265,7 +352,9 @@ const timeTaken = computed(() => {
   width: 100%;
 }
 
-.setup-container, .active-container, .results-container {
+.setup-container,
+.active-container,
+.results-container {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -469,7 +558,8 @@ const timeTaken = computed(() => {
   padding: 1.5rem;
 }
 
-.table-panel h3, .psychology-tips-panel h3 {
+.table-panel h3,
+.psychology-tips-panel h3 {
   font-size: 1.15rem;
   color: var(--accent-cyan);
   margin-block-end: 0.85rem;
@@ -489,7 +579,8 @@ const timeTaken = computed(() => {
   font-size: 0.9rem;
 }
 
-.results-table th, .results-table td {
+.results-table th,
+.results-table td {
   padding: 0.75rem 1rem;
   border-block-end: 1px solid rgba(255, 255, 255, 0.03);
 }

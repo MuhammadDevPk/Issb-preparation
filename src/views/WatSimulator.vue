@@ -8,9 +8,31 @@ const router = useRouter()
 
 // Standard word list for WAT practice
 const defaultWords = [
-  'Country', 'Defeat', 'Love', 'Atom', 'Fear', 'Duty', 'Trust', 'Aggressive', 
-  'Fail', 'Work', 'Soldier', 'Injustice', 'Brave', 'Death', 'Team', 'Success', 
-  'Cheat', 'Lead', 'Goal', 'Pride', 'Sad', 'Bribe', 'Force', 'Peace', 'Enemy'
+  'Country',
+  'Defeat',
+  'Love',
+  'Atom',
+  'Fear',
+  'Duty',
+  'Trust',
+  'Aggressive',
+  'Fail',
+  'Work',
+  'Soldier',
+  'Injustice',
+  'Brave',
+  'Death',
+  'Team',
+  'Success',
+  'Cheat',
+  'Lead',
+  'Goal',
+  'Pride',
+  'Sad',
+  'Bribe',
+  'Force',
+  'Peace',
+  'Enemy',
 ]
 
 const testState = ref('setup') // 'setup', 'active', 'results'
@@ -34,7 +56,7 @@ const startTest = () => {
 const startWordTimer = () => {
   timeLeft.value = timerDuration.value
   clearInterval(timerInterval)
-  
+
   timerInterval = setInterval(() => {
     timeLeft.value--
     if (timeLeft.value <= 0) {
@@ -45,15 +67,15 @@ const startWordTimer = () => {
 
 const submitSentence = (isTimeOut = false) => {
   const currentWord = wordList.value[currentIndex.value]
-  
+
   responses.value.push({
     word: currentWord,
     text: isTimeOut ? '' : currentInput.value.trim(),
-    timeOut: isTimeOut
+    timeOut: isTimeOut,
   })
 
   currentInput.value = ''
-  
+
   if (currentIndex.value < wordList.value.length - 1) {
     currentIndex.value++
     startWordTimer()
@@ -71,11 +93,11 @@ const handleKeyPress = (e) => {
 const endTest = () => {
   clearInterval(timerInterval)
   testState.value = 'results'
-  
+
   // Save to Pinia store
   store.saveWatSession({
     date: new Date().toLocaleString(),
-    responses: responses.value
+    responses: responses.value,
   })
 }
 
@@ -93,11 +115,11 @@ onUnmounted(() => {
 
 // Analytics calculations
 const totalBlank = computed(() => {
-  return responses.value.filter(r => r.timeOut || !r.text).length
+  return responses.value.filter((r) => r.timeOut || !r.text).length
 })
 
 const avgLength = computed(() => {
-  const typed = responses.value.filter(r => !r.timeOut && r.text)
+  const typed = responses.value.filter((r) => !r.timeOut && r.text)
   if (typed.length === 0) return 0
   const sum = typed.reduce((acc, curr) => acc + curr.text.split(' ').length, 0)
   return Math.round((sum / typed.length) * 10) / 10
@@ -111,7 +133,9 @@ const avgLength = computed(() => {
       <span class="badge badge-cyan">Psychology Simulators</span>
       <h2>Word Association Test (WAT) Simulator</h2>
       <p>
-        The Word Association Test flashes words for exactly **10 seconds** each. You must write a complete, positive, and spontaneous sentence. Leaving blank sentences or writing faked positive sentences reflects negative psychology.
+        The Word Association Test flashes words for exactly **10 seconds** each. You must write a
+        complete, positive, and spontaneous sentence. Leaving blank sentences or writing faked
+        positive sentences reflects negative psychology.
       </p>
 
       <div class="config-panel">
@@ -135,8 +159,14 @@ const avgLength = computed(() => {
       <div class="tactical-tips border-gold">
         <h5>GTO & Psychologist Tips:</h5>
         <ul>
-          <li>Avoid copying sentences from guides (e.g. for "Atom" -> "Atom is a small particle" is a textbook definition, show action instead).</li>
-          <li>Never write double negatives (e.g. for "Fail" -> "He did not fail" shows defensive avoidance).</li>
+          <li>
+            Avoid copying sentences from guides (e.g. for "Atom" -> "Atom is a small particle" is a
+            textbook definition, show action instead).
+          </li>
+          <li>
+            Never write double negatives (e.g. for "Fail" -> "He did not fail" shows defensive
+            avoidance).
+          </li>
           <li>Spontaneity indicates truth. Type the first positive thought that comes to mind.</li>
         </ul>
       </div>
@@ -144,7 +174,13 @@ const avgLength = computed(() => {
       <div class="flex-center">
         <button class="btn btn-primary btn-large" @click="startTest">
           <span>START SIMULATION</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            class="btn-icon"
+          >
             <polygon points="5 3 19 12 5 21 5 3" />
           </svg>
         </button>
@@ -155,14 +191,30 @@ const avgLength = computed(() => {
     <div class="active-container glass-card" v-if="testState === 'active'">
       <div class="simulator-header">
         <span class="progress-indicator">WORD {{ currentIndex + 1 }} OF {{ wordList.length }}</span>
-        
+
         <!-- Timer ring -->
         <div class="mini-timer">
           <svg viewBox="0 0 36 36" class="timer-svg">
-            <circle class="timer-bg" cx="18" cy="18" r="16" fill="none" stroke="#e2e8f0" stroke-width="3" />
-            <circle class="timer-progress" cx="18" cy="18" r="16" fill="none" stroke="var(--accent-cyan)" stroke-width="3"
-                    :stroke-dasharray="2 * Math.PI * 16"
-                    :stroke-dashoffset="2 * Math.PI * 16 * (1 - timeLeft / timerDuration)" />
+            <circle
+              class="timer-bg"
+              cx="18"
+              cy="18"
+              r="16"
+              fill="none"
+              stroke="#e2e8f0"
+              stroke-width="3"
+            />
+            <circle
+              class="timer-progress"
+              cx="18"
+              cy="18"
+              r="16"
+              fill="none"
+              stroke="var(--accent-cyan)"
+              stroke-width="3"
+              :stroke-dasharray="2 * Math.PI * 16"
+              :stroke-dashoffset="2 * Math.PI * 16 * (1 - timeLeft / timerDuration)"
+            />
           </svg>
           <span class="timer-text text-glow">{{ timeLeft }}s</span>
         </div>
@@ -173,12 +225,15 @@ const avgLength = computed(() => {
       </div>
 
       <div class="input-area">
-        <input type="text" class="form-input text-field" 
-               v-model="currentInput" 
-               @keypress="handleKeyPress"
-               placeholder="Write sentence here and press ENTER..."
-               ref="inputRef"
-               autofocus />
+        <input
+          type="text"
+          class="form-input text-field"
+          v-model="currentInput"
+          @keypress="handleKeyPress"
+          placeholder="Write sentence here and press ENTER..."
+          ref="inputRef"
+          autofocus
+        />
         <span class="hint-label">Press ENTER to skip / submit instantly.</span>
       </div>
     </div>
@@ -200,7 +255,9 @@ const avgLength = computed(() => {
       <div class="results-metrics grid-3">
         <div class="glass-card metric-item border-blue">
           <span class="lbl">Blank Sentences</span>
-          <span class="val" :class="totalBlank > 3 ? 'text-red' : 'text-green'">{{ totalBlank }}</span>
+          <span class="val" :class="totalBlank > 3 ? 'text-red' : 'text-green'">{{
+            totalBlank
+          }}</span>
           <span class="desc">Aim for 0 to 2 blank sheets max.</span>
         </div>
         <div class="glass-card metric-item border-green">
@@ -250,22 +307,36 @@ const avgLength = computed(() => {
 
         <div class="glass-card psychology-tips-panel">
           <h3>Psychologist's Audit Guide</h3>
-          <p class="desc">Self-audit your sentences against these core ISSB rules. A recommended candidate adapts healthy psychology:</p>
-          
+          <p class="desc">
+            Self-audit your sentences against these core ISSB rules. A recommended candidate adapts
+            healthy psychology:
+          </p>
+
           <div class="checklist">
             <div class="check-item border-red">
               <strong class="text-red">Avoid Denial / Escape:</strong>
-              <p>For words like "Sorrow" or "Fail", writing "I am never sad" or "He did not fail" displays a defensive attitude. Accept the negative word but resolve it dynamically: <em>"Accepting sorrow makes us stronger."</em></p>
+              <p>
+                For words like "Sorrow" or "Fail", writing "I am never sad" or "He did not fail"
+                displays a defensive attitude. Accept the negative word but resolve it dynamically:
+                <em>"Accepting sorrow makes us stronger."</em>
+              </p>
             </div>
-            
+
             <div class="check-item border-gold">
               <strong class="text-gold">Avoid Textbook/Universal Definitions:</strong>
-              <p>Writing "Love is a great feeling" or "Country is Pakistan" shows superficial intelligence. Write action-centered personal traits: <em>"Hard work builds a prosperous country."</em></p>
+              <p>
+                Writing "Love is a great feeling" or "Country is Pakistan" shows superficial
+                intelligence. Write action-centered personal traits:
+                <em>"Hard work builds a prosperous country."</em>
+              </p>
             </div>
 
             <div class="check-item border-green">
               <strong class="text-green">Opt for Positive Duty:</strong>
-              <p>Look for Officer Like Qualities in your statements. Write active, positive outcomes: <em>"Soldiers defend the borders with pride."</em></p>
+              <p>
+                Look for Officer Like Qualities in your statements. Write active, positive outcomes:
+                <em>"Soldiers defend the borders with pride."</em>
+              </p>
             </div>
           </div>
         </div>
@@ -279,7 +350,9 @@ const avgLength = computed(() => {
   inline-size: 100%;
 }
 
-.setup-container, .active-container, .results-container {
+.setup-container,
+.active-container,
+.results-container {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -462,7 +535,8 @@ const avgLength = computed(() => {
   padding: 1.5rem;
 }
 
-.table-panel h3, .psychology-tips-panel h3 {
+.table-panel h3,
+.psychology-tips-panel h3 {
   font-size: 1.15rem;
   color: var(--accent-cyan);
   margin-block-end: 0.85rem;
@@ -482,7 +556,8 @@ const avgLength = computed(() => {
   font-size: 0.9rem;
 }
 
-.results-table th, .results-table td {
+.results-table th,
+.results-table td {
   padding: 0.75rem 1rem;
   border-block-end: 1px solid rgba(0, 0, 0, 0.06);
 }

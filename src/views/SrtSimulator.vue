@@ -18,24 +18,24 @@ let timerInterval = null
 const situations = [
   {
     id: 1,
-    desc: 'He was returning home late at night on a lonely road when he heard cries of help coming from a dark lane... He'
+    desc: 'He was returning home late at night on a lonely road when he heard cries of help coming from a dark lane... He',
   },
   {
     id: 2,
-    desc: 'He was appointing a helper for his GTO command task, but his team members rejected his choice and selected his rival... He'
+    desc: 'He was appointing a helper for his GTO command task, but his team members rejected his choice and selected his rival... He',
   },
   {
     id: 3,
-    desc: 'He got separated from his trekking team in a thick forest with no mobile network coverage, and night was falling fast... He'
+    desc: 'He got separated from his trekking team in a thick forest with no mobile network coverage, and night was falling fast... He',
   },
   {
     id: 4,
-    desc: 'He was falsely accused by his college teacher of cheating in the final exam, which could lead to suspension... He'
+    desc: 'He was falsely accused by his college teacher of cheating in the final exam, which could lead to suspension... He',
   },
   {
     id: 5,
-    desc: 'His mother fell seriously ill on the night before his final PMA entry test, and there was no one else at home... He'
-  }
+    desc: 'His mother fell seriously ill on the night before his final PMA entry test, and there was no one else at home... He',
+  },
 ]
 
 const startTest = () => {
@@ -49,7 +49,7 @@ const startTest = () => {
 const startSituationTimer = () => {
   timeLeft.value = timerDuration.value
   clearInterval(timerInterval)
-  
+
   timerInterval = setInterval(() => {
     timeLeft.value--
     if (timeLeft.value <= 0) {
@@ -60,16 +60,16 @@ const startSituationTimer = () => {
 
 const submitReaction = (isTimeOut = false) => {
   const currentSit = situations[currentIndex.value]
-  
+
   responses.value.push({
     id: currentSit.id,
     situation: currentSit.desc,
     text: isTimeOut ? '' : currentInput.value.trim(),
-    timeOut: isTimeOut
+    timeOut: isTimeOut,
   })
 
   currentInput.value = ''
-  
+
   if (currentIndex.value < situations.length - 1) {
     currentIndex.value++
     startSituationTimer()
@@ -87,11 +87,11 @@ const handleKeyPress = (e) => {
 const endTest = () => {
   clearInterval(timerInterval)
   testState.value = 'results'
-  
+
   // Save in store
   store.saveSrtSession({
     date: new Date().toLocaleString(),
-    responses: responses.value
+    responses: responses.value,
   })
 }
 
@@ -104,7 +104,7 @@ onUnmounted(() => {
 })
 
 const totalAnswered = computed(() => {
-  return responses.value.filter(r => !r.timeOut && r.text.length > 0).length
+  return responses.value.filter((r) => !r.timeOut && r.text.length > 0).length
 })
 </script>
 
@@ -115,7 +115,9 @@ const totalAnswered = computed(() => {
       <span class="badge badge-cyan">Psychology Simulators</span>
       <h2>Situation Reaction Test (SRT) Trainer</h2>
       <p>
-        The Situation Reaction Test measures practical intelligence, courage, resourcefulness, and social cooperation. You are given **30 seconds** to write a brief, realistic, and constructive action plan for each crisis.
+        The Situation Reaction Test measures practical intelligence, courage, resourcefulness, and
+        social cooperation. You are given **30 seconds** to write a brief, realistic, and
+        constructive action plan for each crisis.
       </p>
 
       <div class="config-panel">
@@ -135,16 +137,34 @@ const totalAnswered = computed(() => {
       <div class="tactical-tips border-gold">
         <h5>SRT Evaluation Tips:</h5>
         <ul>
-          <li><strong>Avoid Superman Responses:</strong> Do not write unrealistic actions (e.g. fighting 5 armed thieves with bare hands). Use logical safety and resources.</li>
-          <li><strong>Avoid Passive Running:</strong> Never write "He ran away" or "He just called police and waited". Show immediate active participation.</li>
-          <li><strong>Keep it Brief & Structured:</strong> Write the sequence of actions: <em>"Informed police, gathered neighbors, chased and caught the culprit, handed over."</em></li>
+          <li>
+            <strong>Avoid Superman Responses:</strong> Do not write unrealistic actions (e.g.
+            fighting 5 armed thieves with bare hands). Use logical safety and resources.
+          </li>
+          <li>
+            <strong>Avoid Passive Running:</strong> Never write "He ran away" or "He just called
+            police and waited". Show immediate active participation.
+          </li>
+          <li>
+            <strong>Keep it Brief & Structured:</strong> Write the sequence of actions:
+            <em
+              >"Informed police, gathered neighbors, chased and caught the culprit, handed
+              over."</em
+            >
+          </li>
         </ul>
       </div>
 
       <div class="flex-center">
         <button class="btn btn-primary btn-large" @click="startTest">
           <span>START SRT SESSION</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            class="btn-icon"
+          >
             <polygon points="5 3 19 12 5 21 5 3" />
           </svg>
         </button>
@@ -154,8 +174,10 @@ const totalAnswered = computed(() => {
     <!-- ACTIVE SIMULATOR VIEW -->
     <div class="active-container glass-card" v-if="testState === 'active'">
       <div class="simulator-header">
-        <span class="progress-indicator">SITUATION {{ currentIndex + 1 }} OF {{ situations.length }}</span>
-        
+        <span class="progress-indicator"
+          >SITUATION {{ currentIndex + 1 }} OF {{ situations.length }}</span
+        >
+
         <!-- Timer bar -->
         <div class="timer-bar-container">
           <div class="timer-bar" :style="{ width: (timeLeft / timerDuration) * 100 + '%' }"></div>
@@ -168,13 +190,17 @@ const totalAnswered = computed(() => {
       </div>
 
       <div class="input-area">
-        <textarea class="form-textarea text-field" 
-                  v-model="currentInput" 
-                  @keypress="handleKeyPress"
-                  placeholder="Write your reaction here..."
-                  autofocus></textarea>
+        <textarea
+          class="form-textarea text-field"
+          v-model="currentInput"
+          @keypress="handleKeyPress"
+          placeholder="Write your reaction here..."
+          autofocus
+        ></textarea>
         <div class="action-footer">
-          <span class="hint-label">Tip: Press <strong>CTRL + ENTER</strong> to submit instantly.</span>
+          <span class="hint-label"
+            >Tip: Press <strong>CTRL + ENTER</strong> to submit instantly.</span
+          >
           <button class="btn btn-primary" @click="submitReaction(false)">Submit Reaction</button>
         </div>
       </div>
@@ -202,7 +228,11 @@ const totalAnswered = computed(() => {
         </div>
         <div class="glass-card metric-item border-green">
           <span class="lbl">Timeout Count</span>
-          <span class="val" :class="(situations.length - totalAnswered) > 1 ? 'text-red' : 'text-green'">{{ situations.length - totalAnswered }}</span>
+          <span
+            class="val"
+            :class="situations.length - totalAnswered > 1 ? 'text-red' : 'text-green'"
+            >{{ situations.length - totalAnswered }}</span
+          >
           <span class="desc">Aim for 0 timeouts.</span>
         </div>
         <div class="glass-card metric-item border-gold">
@@ -231,7 +261,9 @@ const totalAnswered = computed(() => {
                   <td class="situation-col">... {{ res.situation }} ...</td>
                   <td class="reaction-col">
                     <span v-if="res.timeOut" class="text-red italic">No reaction (Timed Out)</span>
-                    <span v-else class="text-highlight"><strong>{{ res.text }}</strong></span>
+                    <span v-else class="text-highlight"
+                      ><strong>{{ res.text }}</strong></span
+                    >
                   </td>
                 </tr>
               </tbody>
@@ -241,22 +273,34 @@ const totalAnswered = computed(() => {
 
         <div class="glass-card psychology-tips-panel">
           <h3>Psychologist's Audit Guide</h3>
-          <p class="desc">Analyze your reactions. Check if your answers demonstrate these core qualities:</p>
-          
+          <p class="desc">
+            Analyze your reactions. Check if your answers demonstrate these core qualities:
+          </p>
+
           <div class="checklist">
             <div class="check-item border-red">
               <strong class="text-red">Avoid Panic / Inaction:</strong>
-              <p>Reactions like "He got worried and went home" or "He did not know what to do" are instant disqualifiers. Always show emotional stability.</p>
+              <p>
+                Reactions like "He got worried and went home" or "He did not know what to do" are
+                instant disqualifiers. Always show emotional stability.
+              </p>
             </div>
-            
+
             <div class="check-item border-gold">
               <strong class="text-gold">Cooperation & Social Skill:</strong>
-              <p>For helper selection issues, writing "He argued with them" or "He quit the task" shows poor social adjustment. Opt for consensus: <em>"Accepted the group's choice and worked together to succeed."</em></p>
+              <p>
+                For helper selection issues, writing "He argued with them" or "He quit the task"
+                shows poor social adjustment. Opt for consensus:
+                <em>"Accepted the group's choice and worked together to succeed."</em>
+              </p>
             </div>
 
             <div class="check-item border-green">
               <strong class="text-green">Realistic Leadership:</strong>
-              <p>Use active, practical solutions. If someone is ill, get medical help; if there is a threat, defend using team resources. Show responsibility and grit.</p>
+              <p>
+                Use active, practical solutions. If someone is ill, get medical help; if there is a
+                threat, defend using team resources. Show responsibility and grit.
+              </p>
             </div>
           </div>
         </div>
@@ -270,7 +314,9 @@ const totalAnswered = computed(() => {
   inline-size: 100%;
 }
 
-.setup-container, .active-container, .results-container {
+.setup-container,
+.active-container,
+.results-container {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -453,7 +499,8 @@ const totalAnswered = computed(() => {
   padding: 1.5rem;
 }
 
-.table-panel h3, .psychology-tips-panel h3 {
+.table-panel h3,
+.psychology-tips-panel h3 {
   font-size: 1.15rem;
   color: var(--accent-cyan);
   margin-block-end: 0.85rem;
@@ -473,7 +520,8 @@ const totalAnswered = computed(() => {
   font-size: 0.9rem;
 }
 
-.results-table th, .results-table td {
+.results-table th,
+.results-table td {
   padding: 0.75rem 1rem;
   border-block-end: 1px solid rgba(255, 255, 255, 0.03);
 }
