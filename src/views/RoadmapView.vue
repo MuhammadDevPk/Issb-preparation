@@ -534,7 +534,10 @@ const launchSimulator = (path) => {
           <button class="btn btn-secondary close-btn" @click="showPdfModal = false">CLOSE</button>
         </div>
         <div class="modal-body-pdf">
-          <iframe :src="activePdfPath" class="pdf-iframe"></iframe>
+          <div class="iframe-container">
+            <iframe :src="activePdfPath" class="pdf-iframe"></iframe>
+            <div class="iframe-overlay"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -840,6 +843,23 @@ const launchSimulator = (path) => {
   flex: 1;
   width: 100%;
   height: 100%;
+}
+
+.iframe-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.iframe-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 160px;
+  height: 60px;
+  background: transparent;
+  z-index: 10;
+  cursor: default;
 }
 
 .pdf-iframe {
