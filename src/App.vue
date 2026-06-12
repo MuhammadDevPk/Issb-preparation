@@ -1,13 +1,18 @@
 <script setup>
-import { RouterLink, RouterView, useRoute } from 'vue-router'
+import { RouterLink, RouterView, useRoute, useRouter } from 'vue-router'
 import { ref, onMounted, computed } from 'vue'
 import { usePreparationStore } from './stores/preparation'
+import { useAuthStore } from './stores/auth'
 
 const store = usePreparationStore()
+const authStore = useAuthStore()
+const router = useRouter()
 const streak = ref(1)
 const route = useRoute()
 
-const isLandingPage = computed(() => route.path === '/')
+const isFullScreenPage = computed(() => {
+  return ['/', '/login', '/register', '/status'].includes(route.path)
+})
 
 const rankTitle = computed(() => {
   if (store.xp >= 1000) {
@@ -23,7 +28,19 @@ const rankTitle = computed(() => {
 
 const experience = computed(() => store.xp)
 
+const handleLogout = async () => {
+  try {
+    await authStore.logout()
+    router.push('/login')
+  } catch (error) {
+    console.error('Logout error:', error)
+  }
+}
+
 onMounted(() => {
+  // Initialize Auth session
+  authStore.initialize()
+
   // Load streak from localStorage
   const storedStreak = localStorage.getItem('issb_streak')
   if (storedStreak) {
@@ -35,8 +52,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <!-- Full Screen Landing Page Layout -->
-  <div v-if="isLandingPage" class="landing-layout">
+  <!-- Full Screen Guest / Status Page Layout -->
+  <div v-if="isFullScreenPage" class="landing-layout">
     <RouterView v-slot="{ Component }">
       <Transition name="fade" mode="out-in">
         <component :is="Component" />
@@ -191,10 +208,54 @@ onMounted(() => {
             </svg>
             <span>GTO Obstacles</span>
           </RouterLink>
+
+          <!-- Admin Section -->
+          <template v-if="authStore.profile?.role === 'admin'">
+            <div class="nav-section-title">ADMIN CONTROL</div>
+            <RouterLink to="/admin/users" class="nav-item" active-class="active">
+              <svg
+                class="nav-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+              <span>Candidate Pool</span>
+            </RouterLink>
+          </template>
         </nav>
 
         <div class="nav-footer">
-          <div class="cadet-badge badge badge-cyan">PORTAL ONLINE</div>
+          <!-- Profile Badge -->
+          <div v-if="authStore.profile" class="user-profile-badge">
+            <div class="user-avatar">
+              {{ authStore.profile.full_name?.charAt(0).toUpperCase() || 'C' }}
+            </div>
+            <div class="user-meta">
+              <span class="user-name">{{ authStore.profile.full_name }}</span>
+              <span class="user-branch text-capitalize">{{ authStore.profile.target_branch }}</span>
+            </div>
+          </div>
+
+          <button @click="handleLogout" class="btn-logout-sidebar">
+            <svg
+              class="nav-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+              <polyline points="16 17 21 12 16 7" />
+              <line x1="21" y1="12" x2="9" y2="12" />
+            </svg>
+            <span>Sign Out</span>
+          </button>
         </div>
       </aside>
 
@@ -390,14 +451,75 @@ onMounted(() => {
 
 .nav-footer {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+  border-top: 1px solid var(--border-color);
+  padding-top: 1.25rem;
 }
 
-.cadet-badge {
-  width: 100%;
-  justify-content: center;
-  letter-spacing: 0.15em;
+.user-profile-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--bg-panel-solid);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--accent-cyan-glow);
+  color: var(--accent-cyan);
   font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+}
+
+.user-meta {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.user-meta .user-name {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.user-meta .user-branch {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.btn-logout-sidebar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.85rem 1rem;
+  color: var(--accent-red);
+  border-radius: var(--border-radius-md);
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 500;
+  border: 1px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  transition: all var(--transition-smooth);
+}
+
+.btn-logout-sidebar:hover {
+  background: var(--accent-red-glow);
+  border-color: rgba(185, 28, 28, 0.15);
 }
 
 .content-screen {
