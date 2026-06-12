@@ -1,0 +1,559 @@
+<script setup>
+import { ref, computed, onUnmounted } from 'vue'
+import { useRouter } from 'vue-router'
+import { usePreparationStore } from '../stores/preparation'
+
+const store = usePreparationStore()
+const router = useRouter()
+
+const testState = ref('setup') // 'setup', 'active', 'results'
+const selectedLanguage = ref('english') // 'english', 'urdu'
+const timerLeft = ref(360) // 6 minutes (360s) for 26 sentences
+let testTimer = null
+
+const englishStarters = [
+  'He was afraid of', 'My father', 'At night', 'The main problem', 
+  'During crisis', 'In his opinion', 'She wanted to', 'The teacher', 
+  'It is hard to', 'A true friend', 'He failed because', 'My mother always', 
+  'If he becomes a commander', 'In dark rooms', 'Money is', 'Under stress he', 
+  'The officer', 'To tell the truth', 'He feels sad when', 'My team', 
+  'The decision was', 'Women are', 'A soldier\'s duty', 'He was upset by', 
+  'During discussion he', 'The future is'
+]
+
+const urduStarters = [
+  'Mujhe darr hai', 'Mere waalid', 'Raat ke waqt', 'Asal masla', 
+  'Mushkil waqt mein', 'Uss ki nazar mein', 'Woh chahta tha', 'Ustaad ne', 
+  'Yeh mushkil hai', 'Sacha dost', 'Woh nakaam hua kyunke', 'Meri waalida hamesha', 
+  'Agar woh commander bana', 'Andheray mein', 'Paisa', 'Dabaao mein woh', 
+  'Officer ne', 'Sach baat yeh hai', 'Woh udaas hota hai jab', 'Meri team', 
+  'Faisla', 'Khawateen', 'Soldier ka farz', 'Woh pareshan hua', 
+  'Guftagu ke dauraan', 'Mustaqbil'
+]
+
+const currentStarters = computed(() => {
+  return selectedLanguage.value === 'english' ? englishStarters : urduStarters
+})
+
+const completions = ref(Array(26).fill(''))
+
+const startTest = () => {
+  completions.value = Array(26).fill('')
+  testState.value = 'active'
+  timerLeft.value = 360
+  
+  clearInterval(testTimer)
+  testTimer = setInterval(() => {
+    timerLeft.value--
+    if (timerLeft.value <= 0) {
+      submitSheet()
+    }
+  }, 1000)
+}
+
+const submitSheet = () => {
+  clearInterval(testTimer)
+  testState.value = 'results'
+  
+  // Format responses
+  const formattedResponses = currentStarters.value.map((starter, idx) => {
+    return {
+      index: idx + 1,
+      prompt: starter,
+      text: completions.value[idx].trim()
+    }
+  })
+
+  // Save in Pinia
+  store.saveSctSession({
+    date: new Date().toLocaleString(),
+    language: selectedLanguage.value,
+    responses: formattedResponses
+  })
+}
+
+const formatTime = (seconds) => {
+  const mins = Math.floor(seconds / 60)
+  const secs = seconds % 60
+  return `${mins}:${secs < 10 ? '0' : ''}${secs}`
+}
+
+const goToRoadmap = () => {
+  router.push('/roadmap')
+}
+
+onUnmounted(() => {
+  clearInterval(testTimer)
+})
+
+// Analytics calculations
+const completedCount = computed(() => {
+  return completions.value.filter(c => c.trim().length > 0).length
+})
+
+const timeTaken = computed(() => {
+  return 360 - timerLeft.value
+})
+</script>
+
+<template>
+  <div class="sct-wrapper">
+    <!-- SETUP SCREEN -->
+    <div class="setup-container glass-card" v-if="testState === 'setup'">
+      <span class="badge badge-cyan">Psychology Simulators</span>
+      <h2>Sentence Completion Test (SCT) Simulator</h2>
+      <p>
+        The Sentence Completion Test evaluates emotional conflicts, maturity, family relationships, and social adjustment. In ISSB, you get **26 incomplete sentences** and exactly **6 minutes** to finish them. Complete them fast and naturally.
+      </p>
+
+      <div class="config-panel">
+        <div class="form-group">
+          <label class="form-label">Select Language Sheet</label>
+          <div class="lang-selector">
+            <button class="btn" :class="selectedLanguage === 'english' ? 'btn-primary' : 'btn-secondary'"
+                    @click="selectedLanguage = 'english'">
+              English Sentence Sheet
+            </button>
+            <button class="btn ml-2" :class="selectedLanguage === 'urdu' ? 'btn-primary' : 'btn-secondary'"
+                    @click="selectedLanguage = 'urdu'">
+              Roman Urdu Sheet (e.g. "Raat ke waqt...")
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tactical-tips border-gold">
+        <h5>SCT Strategic Guidance:</h5>
+        <ul>
+          <li><strong>Complete Every Sentence:</strong> Leaving blank sheets displays hesitation or emotional blockages. Work at a speed of ~14s per sentence.</li>
+          <li><strong>Show Active Agency:</strong> Write completions showing resolution, work, or duty. (e.g. for "He failed because" -> write <em>"his efforts were insufficient but he resolved to try harder"</em>).</li>
+          <li><strong>Family Harmony:</strong> For "My father", write highly positive/respectful sentences showing good upbringing.</li>
+        </ul>
+      </div>
+
+      <div class="flex-center">
+        <button class="btn btn-primary btn-large" @click="startTest">
+          <span>START 6-MINUTE TIMED RUN</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon">
+            <polygon points="5 3 19 12 5 21 5 3" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- ACTIVE WORKSPACE SCREEN -->
+    <div class="active-container glass-card" v-if="testState === 'active'">
+      <div class="simulator-header">
+        <div>
+          <h2>SCT Practice Run ({{ selectedLanguage.toUpperCase() }})</h2>
+          <span class="progress-indicator">COMPLETED: {{ completedCount }} / 26</span>
+        </div>
+        <div class="timer-display glass-card" :class="{ 'warning-timer': timerLeft < 60 }">
+          <span class="lbl">TIME LEFT</span>
+          <span class="val text-glow">{{ formatTime(timerLeft) }}</span>
+        </div>
+      </div>
+
+      <!-- Scrollable sheets -->
+      <div class="sheets-board">
+        <div v-for="(starter, index) in currentStarters" :key="index" class="sentence-row">
+          <span class="row-num">{{ index + 1 }}.</span>
+          <span class="starter-label">{{ starter }}...</span>
+          <input type="text" class="form-input sentence-input"
+                 v-model="completions[index]"
+                 placeholder="Type completion..."
+                 :tabindex="index + 1" />
+        </div>
+      </div>
+
+      <div class="footer-actions flex-center">
+        <button class="btn btn-success btn-large" @click="submitSheet">
+          <span>SUBMIT WORKSPACE SHEET</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- RESULTS ANALYTICS SCREEN -->
+    <div class="results-container glass-card" v-if="testState === 'results'">
+      <div class="results-header">
+        <div>
+          <h2>Workspace Analysis Completed!</h2>
+          <span class="badge badge-green">Added to Practice Records (+100 XP)</span>
+        </div>
+        <div class="actions">
+          <button class="btn btn-secondary mr-2" @click="testState = 'setup'">Select Another Sheet</button>
+          <button class="btn btn-primary" @click="goToRoadmap">Return to Roadmap</button>
+        </div>
+      </div>
+
+      <!-- Quick Metrics -->
+      <div class="results-metrics grid-3">
+        <div class="glass-card metric-item border-blue">
+          <span class="lbl">Unfinished Sentences</span>
+          <span class="val" :class="(26 - completedCount) > 2 ? 'text-red' : 'text-green'">{{ 26 - completedCount }}</span>
+          <span class="desc">Aim for 0 to 2 blank sheets max.</span>
+        </div>
+        <div class="glass-card metric-item border-green">
+          <span class="lbl">Time Elapsed</span>
+          <span class="val text-glow">{{ formatTime(timeTaken) }}</span>
+          <span class="desc">Completed sheet in safe time.</span>
+        </div>
+        <div class="glass-card metric-item border-gold">
+          <span class="lbl">Accuracy Rate</span>
+          <span class="val">{{ Math.round((completedCount / 26) * 100) }}%</span>
+          <span class="desc">Reflects fast decision-making logic.</span>
+        </div>
+      </div>
+
+      <!-- Self Evaluation Split -->
+      <div class="evaluation-grid grid-2">
+        <!-- List of responses -->
+        <div class="glass-card table-panel">
+          <h3>Completed Sheet Review</h3>
+          <div class="table-container">
+            <table class="results-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Incomplete Sentence</th>
+                  <th>Your Completion</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="(starter, idx) in currentStarters" :key="idx">
+                  <td>{{ idx + 1 }}</td>
+                  <td class="starter-col">{{ starter }}...</td>
+                  <td class="completion-col">
+                    <span v-if="!completions[idx].trim()" class="text-red italic">Left Empty (Timed Out)</span>
+                    <span v-else class="text-highlight"><strong>{{ completions[idx] }}</strong></span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Audit Guide -->
+        <div class="glass-card psychology-tips-panel">
+          <h3>SCT Psychological Evaluation Checklist</h3>
+          <p class="desc">Examine your completed sentences. A selection officer checks for the following emotional traits:</p>
+          
+          <div class="checklist">
+            <div class="check-item border-red">
+              <strong class="text-red">Avoid Dependency & Passivity:</strong>
+              <p>For sentences like "He wanted to", writing "he wanted to go home to sleep" shows lazy mindset. Opt for constructive ambition: <em>"He wanted to complete his studies with distinction."</em></p>
+            </div>
+            
+            <div class="check-item border-gold">
+              <strong class="text-gold">Keep Social Relationships Healthy:</strong>
+              <p>For "My mother always", writing "scolds me" shows resentment or family distress. Write warm, cooperative relations: <em>"My mother always advises me to speak the truth."</em></p>
+            </div>
+
+            <div class="check-item border-green">
+              <strong class="text-green">Dynamic Decision Under Stress:</strong>
+              <p>For "During crisis", writing "he got afraid" shows weakness. Opt for proactive grit: <em>"During crisis, he stayed calm and helped others."</em></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style scoped>
+.sct-wrapper {
+  width: 100%;
+}
+
+.setup-container, .active-container, .results-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.setup-container p {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+}
+
+.config-panel {
+  background: rgba(255, 255, 255, 0.01);
+  padding: 1.25rem;
+  border-radius: var(--border-radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.lang-selector {
+  display: flex;
+  gap: 1rem;
+  margin-block-start: 0.5rem;
+}
+
+.tactical-tips {
+  padding: 1.25rem;
+  border-radius: var(--border-radius-md);
+  background: rgba(255, 190, 59, 0.02);
+  border-inline-start: 3px solid var(--accent-gold);
+}
+
+.tactical-tips h5 {
+  font-size: 1.05rem;
+  color: var(--accent-gold);
+  margin-block-end: 0.5rem;
+}
+
+.tactical-tips ul {
+  list-style: square;
+  padding-inline-start: 1.25rem;
+  color: var(--text-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.95rem;
+}
+
+.btn-large {
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+}
+
+.ml-2 {
+  margin-inline-start: 0.75rem;
+}
+
+/* Active Workspace Sheet */
+.active-container {
+  min-block-size: 500px;
+}
+
+.simulator-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-block-end: 1px solid rgba(255, 255, 255, 0.05);
+  padding-block-end: 1rem;
+}
+
+.progress-indicator {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.timer-display {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 0.5rem 1.5rem;
+  border: 1px solid var(--border-color);
+  min-inline-size: 120px;
+}
+
+.timer-display .lbl {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+}
+
+.timer-display .val {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+}
+
+.timer-display.warning-timer {
+  border-color: var(--accent-red);
+}
+
+.timer-display.warning-timer .val {
+  color: var(--accent-red);
+}
+
+.sheets-board {
+  max-block-size: 450px;
+  overflow-y: auto;
+  padding: 0.5rem;
+  background: rgba(8, 12, 20, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: var(--border-radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.sentence-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.01);
+  border-radius: var(--border-radius-sm);
+  border: 1px solid transparent;
+}
+
+.sentence-row:focus-within {
+  border-color: rgba(0, 242, 254, 0.15);
+  background: rgba(0, 242, 254, 0.02);
+}
+
+.row-num {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--text-muted);
+  width: 25px;
+}
+
+.starter-label {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  color: var(--accent-cyan);
+  min-inline-size: 180px;
+  text-align: right;
+  padding-inline-end: 0.5rem;
+}
+
+.sentence-input {
+  flex: 1;
+}
+
+.footer-actions {
+  margin-block-start: 1rem;
+}
+
+/* Results panel */
+.results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-block-end: 1px solid rgba(255, 255, 255, 0.05);
+  padding-block-end: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.mr-2 {
+  margin-inline-end: 0.75rem;
+}
+
+.results-metrics .metric-item {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.results-metrics .metric-item .lbl {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.results-metrics .metric-item .val {
+  font-family: var(--font-heading);
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-block: 0.25rem;
+}
+
+.results-metrics .metric-item .desc {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.evaluation-grid {
+  align-items: start;
+}
+
+.table-panel {
+  padding: 1.5rem;
+}
+
+.table-panel h3, .psychology-tips-panel h3 {
+  font-size: 1.15rem;
+  color: var(--accent-cyan);
+  margin-block-end: 0.85rem;
+}
+
+.table-container {
+  max-block-size: 450px;
+  overflow-y: auto;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: var(--border-radius-md);
+}
+
+.results-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.results-table th, .results-table td {
+  padding: 0.75rem 1rem;
+  border-block-end: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.results-table th {
+  background: rgba(255, 255, 255, 0.02);
+  font-family: var(--font-heading);
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.starter-col {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.completion-col {
+  color: var(--accent-cyan);
+}
+
+.text-highlight {
+  color: var(--text-primary);
+}
+
+.italic {
+  font-style: italic;
+}
+
+.psychology-tips-panel {
+  padding: 1.5rem;
+}
+
+.psychology-tips-panel .desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-block-end: 1rem;
+}
+
+.checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.check-item {
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.01);
+  border-radius: var(--border-radius-md);
+}
+
+.check-item strong {
+  font-size: 0.95rem;
+  margin-block-end: 0.25rem;
+  display: block;
+}
+
+.check-item p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.check-item p em {
+  color: var(--accent-cyan);
+}
+</style>
