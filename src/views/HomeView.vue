@@ -61,7 +61,7 @@ const activeSimulatorSubTab = ref('wat') // wat, sct, srt
   <div class="landing-page">
     <!-- Navigation Header -->
     <header class="landing-nav">
-      <div class="nav-logo">
+      <RouterLink to="/" class="nav-logo">
         <svg class="icon-logo" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M12 2L2 22H22L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
           <path d="M12 6L5 20H19L12 6Z" fill="currentColor" opacity="0.3" />
@@ -71,7 +71,7 @@ const activeSimulatorSubTab = ref('wat') // wat, sct, srt
           <h2>ISSB COMMAND</h2>
           <span class="sub-text">PREPARATION PORTAL</span>
         </div>
-      </div>
+      </RouterLink>
       <button @click="goToPortal" class="btn btn-nav-portal">
         Go to Portal
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-icon">
@@ -690,6 +690,9 @@ const activeSimulatorSubTab = ref('wat') // wat, sct, srt
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
 }
 
 .icon-logo {

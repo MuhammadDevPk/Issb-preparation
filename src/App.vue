@@ -65,7 +65,7 @@ onMounted(() => {
   <div v-else class="app-container">
     <!-- Main Top Header -->
     <header class="app-header glass-card">
-      <div class="header-logo">
+      <RouterLink to="/" class="header-logo">
         <svg class="icon-logo" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M12 2L2 22H22L12 2Z"
@@ -80,7 +80,7 @@ onMounted(() => {
           <h1>ISSB COMMAND</h1>
           <span class="sub-text">PREPARATION PORTAL</span>
         </div>
-      </div>
+      </RouterLink>
 
       <div class="header-status">
         <!-- Streak Widget -->
@@ -307,6 +307,9 @@ onMounted(() => {
   display: flex;
   align-items: center;
   gap: 1rem;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
 }
 
 .icon-logo {
