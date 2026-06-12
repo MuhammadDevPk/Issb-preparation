@@ -24,68 +24,68 @@ const router = createRouter({
       path: '/login',
       name: 'login',
       component: LoginView,
-      meta: { guestOnly: true }
+      meta: { guestOnly: true },
     },
     {
       path: '/register',
       name: 'register',
       component: RegisterView,
-      meta: { guestOnly: true }
+      meta: { guestOnly: true },
     },
     {
       path: '/status',
       name: 'status',
       component: StatusView,
-      meta: { requiresAuth: true }
+      meta: { requiresAuth: true },
     },
     {
       path: '/dashboard',
       name: 'dashboard',
       component: DashboardView,
-      meta: { requiresAuth: true, requiresApproval: true }
+      meta: { requiresAuth: true, requiresApproval: true },
     },
     {
       path: '/roadmap',
       name: 'roadmap',
       component: RoadmapView,
-      meta: { requiresAuth: true, requiresApproval: true }
+      meta: { requiresAuth: true, requiresApproval: true },
     },
     {
       path: '/simulator/wat',
       name: 'wat-simulator',
       component: WatSimulator,
-      meta: { requiresAuth: true, requiresApproval: true }
+      meta: { requiresAuth: true, requiresApproval: true },
     },
     {
       path: '/simulator/sct',
       name: 'sct-simulator',
       component: SctSimulator,
-      meta: { requiresAuth: true, requiresApproval: true }
+      meta: { requiresAuth: true, requiresApproval: true },
     },
     {
       path: '/simulator/srt',
       name: 'srt-simulator',
       component: SrtSimulator,
-      meta: { requiresAuth: true, requiresApproval: true }
+      meta: { requiresAuth: true, requiresApproval: true },
     },
     {
       path: '/simulator/obstacles',
       name: 'obstacles-simulator',
       component: ObstaclesSimulator,
-      meta: { requiresAuth: true, requiresApproval: true }
+      meta: { requiresAuth: true, requiresApproval: true },
     },
     {
       path: '/admin/users',
       name: 'admin-users',
       component: AdminUsersView,
-      meta: { requiresAuth: true, requiresAdmin: true }
-    }
+      meta: { requiresAuth: true, requiresAdmin: true },
+    },
   ],
 })
 
 router.beforeEach(async (to, from, next) => {
   const authStore = useAuthStore()
-  
+
   // Wait for auth initialization if it hasn't run yet
   if (authStore.loading && !authStore.user) {
     await authStore.initialize()
@@ -124,4 +124,3 @@ router.beforeEach(async (to, from, next) => {
 })
 
 export default router
-

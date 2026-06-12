@@ -112,19 +112,21 @@ const handleRegister = async () => {
       .from('payment_screenshots')
       .upload(fileName, file, {
         cacheControl: '3600',
-        upsert: true
+        upsert: true,
       })
 
     if (uploadError) {
       console.error('Storage upload error:', uploadError)
-      throw new Error('Payment screenshot upload failed, but your account was created. Please log in and re-upload the receipt on the status page.')
+      throw new Error(
+        'Payment screenshot upload failed, but your account was created. Please log in and re-upload the receipt on the status page.',
+      )
     }
 
     // 3. Retrieve public URL
     uploadProgressText.value = 'Saving receipt information...'
-    const { data: { publicUrl } } = supabase.storage
-      .from('payment_screenshots')
-      .getPublicUrl(fileName)
+    const {
+      data: { publicUrl },
+    } = supabase.storage.from('payment_screenshots').getPublicUrl(fileName)
 
     // 4. Update student profile with receipt url
     const { error: updateError } = await supabase
@@ -140,7 +142,7 @@ const handleRegister = async () => {
     // Success - redirect to status page
     uploadProgressText.value = 'Account registration complete!'
     await authStore.fetchProfile(userId)
-    
+
     // Redirect based on whether they were auto-approved (e.g. if they are the first user)
     setTimeout(() => {
       const profile = authStore.profile
@@ -150,7 +152,6 @@ const handleRegister = async () => {
         router.push('/status')
       }
     }, 1000)
-
   } catch (error) {
     console.error('Registration failed:', error)
     errorMessage.value = error.message || 'An error occurred during registration.'
@@ -194,13 +195,14 @@ const goHome = () => {
             <span class="current-price">PKR 1,499</span>
           </div>
           <p class="price-desc">
-            Gain unlimited access to 1000+ solved WAT sentences, 500+ SCT keys, 100+ Situation Reaction Guides, GTO Obstacle planning blueprints, and premium simulation tools.
+            Gain unlimited access to 1000+ solved WAT sentences, 500+ SCT keys, 100+ Situation
+            Reaction Guides, GTO Obstacle planning blueprints, and premium simulation tools.
           </p>
         </div>
 
         <div class="payment-steps">
           <h4>Payment Verification Process</h4>
-          
+
           <div class="step">
             <span class="step-badge">1</span>
             <div class="step-info">
@@ -221,14 +223,19 @@ const goHome = () => {
           <div class="step">
             <span class="step-badge">2</span>
             <div class="step-info">
-              <p>Take a screenshot of the transaction receipt showing the reference number and date.</p>
+              <p>
+                Take a screenshot of the transaction receipt showing the reference number and date.
+              </p>
             </div>
           </div>
 
           <div class="step">
             <span class="step-badge">3</span>
             <div class="step-info">
-              <p>Fill out the registration form on the right, upload the screenshot, and submit. The admin will verify and approve your portal access within 1-2 hours.</p>
+              <p>
+                Fill out the registration form on the right, upload the screenshot, and submit. The
+                admin will verify and approve your portal access within 1-2 hours.
+              </p>
             </div>
           </div>
         </div>
@@ -254,7 +261,13 @@ const goHome = () => {
 
         <!-- Error Alert -->
         <div v-if="errorMessage" class="error-alert">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="alert-icon">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            class="alert-icon"
+          >
             <circle cx="12" cy="12" r="10" />
             <line x1="12" y1="8" x2="12" y2="12" />
             <line x1="12" y1="16" x2="12.01" y2="16" />
@@ -322,9 +335,13 @@ const goHome = () => {
           <div class="form-group">
             <label for="branch" class="form-label">Target Force Branch *</label>
             <select v-model="targetBranch" id="branch" class="form-select" :disabled="isSubmitting">
-              <option value="army">Pakistan Army (PMA Long Course / TCC / Direct Commission)</option>
+              <option value="army">
+                Pakistan Army (PMA Long Course / TCC / Direct Commission)
+              </option>
               <option value="navy">Pakistan Navy (PN Cadet / SSC / Direct Entry)</option>
-              <option value="airforce">Pakistan Air Force (GD Pilot / CAE / SSC / Direct Branch)</option>
+              <option value="airforce">
+                Pakistan Air Force (GD Pilot / CAE / SSC / Direct Branch)
+              </option>
             </select>
           </div>
 
@@ -339,10 +356,16 @@ const goHome = () => {
               @change="handleFileChange"
               :disabled="isSubmitting"
             />
-            
+
             <div v-if="!selectedFile" class="upload-dropzone" @click="triggerFileInput">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="upload-icon">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                class="upload-icon"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12" />
               </svg>
               <span>Click to Upload Payment Screenshot</span>
               <p class="upload-hint">Format: PNG, JPG, JPEG (Max 5MB)</p>
@@ -351,18 +374,29 @@ const goHome = () => {
             <div v-else class="upload-preview-card">
               <div class="preview-info">
                 <span class="file-name">{{ selectedFile.name }}</span>
-                <span class="file-size">({{ (selectedFile.size / 1024 / 1024).toFixed(2) }} MB)</span>
+                <span class="file-size"
+                  >({{ (selectedFile.size / 1024 / 1024).toFixed(2) }} MB)</span
+                >
               </div>
               <div class="preview-img-container">
                 <img :src="filePreview" alt="Receipt preview" class="preview-img" />
               </div>
-              <button type="button" class="btn-remove-file" @click="removeSelectedFile" :disabled="isSubmitting">
+              <button
+                type="button"
+                class="btn-remove-file"
+                @click="removeSelectedFile"
+                :disabled="isSubmitting"
+              >
                 Remove Screenshot
               </button>
             </div>
           </div>
 
-          <button type="submit" class="btn btn-primary btn-submit" :disabled="isSubmitting || !selectedFile">
+          <button
+            type="submit"
+            class="btn btn-primary btn-submit"
+            :disabled="isSubmitting || !selectedFile"
+          >
             <span v-if="isSubmitting" class="flex-center gap-xs">
               <span class="spinner"></span>
               <span>{{ uploadProgressText }}</span>
@@ -386,7 +420,11 @@ const goHome = () => {
 .register-page {
   min-height: 100vh;
   padding: 2rem;
-  background: radial-gradient(circle at 10% 20%, rgba(2, 132, 199, 0.05) 0%, rgba(241, 245, 249, 1) 90%);
+  background: radial-gradient(
+    circle at 10% 20%,
+    rgba(2, 132, 199, 0.05) 0%,
+    rgba(241, 245, 249, 1) 90%
+  );
   display: flex;
   align-items: center;
   justify-content: center;
@@ -656,7 +694,7 @@ const goHome = () => {
   align-items: center;
   justify-content: center;
   background: #ffffff;
-  border: 1px solid rgba(0,0,0,0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .preview-img {

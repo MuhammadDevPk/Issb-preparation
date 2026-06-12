@@ -18,7 +18,7 @@ const handleLogin = async () => {
 
   try {
     await authStore.login(email.value, password.value)
-    
+
     // Redirect logic handled by router navigation guards or manually:
     const profile = authStore.profile
     if (profile?.status === 'approved') {
@@ -73,7 +73,13 @@ const goHome = () => {
 
       <!-- Error Alert -->
       <div v-if="errorMessage" class="error-alert">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="alert-icon">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          class="alert-icon"
+        >
           <circle cx="12" cy="12" r="10" />
           <line x1="12" y1="8" x2="12" y2="12" />
           <line x1="12" y1="16" x2="12.01" y2="16" />
@@ -130,7 +136,11 @@ const goHome = () => {
 .auth-page {
   min-height: 100vh;
   padding: 2rem;
-  background: radial-gradient(circle at 10% 20%, rgba(2, 132, 199, 0.05) 0%, rgba(241, 245, 249, 1) 90%);
+  background: radial-gradient(
+    circle at 10% 20%,
+    rgba(2, 132, 199, 0.05) 0%,
+    rgba(241, 245, 249, 1) 90%
+  );
 }
 
 .auth-container {

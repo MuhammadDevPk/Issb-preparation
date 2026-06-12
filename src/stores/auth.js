@@ -9,11 +9,7 @@ export const useAuthStore = defineStore('auth', () => {
 
   const fetchProfile = async (userId) => {
     try {
-      const { data, error } = await supabase
-        .from('profiles')
-        .select('*')
-        .eq('id', userId)
-        .single()
+      const { data, error } = await supabase.from('profiles').select('*').eq('id', userId).single()
 
       if (error) throw error
       profile.value = data
@@ -28,7 +24,9 @@ export const useAuthStore = defineStore('auth', () => {
   const initialize = async () => {
     loading.value = true
     try {
-      const { data: { session } } = await supabase.auth.getSession()
+      const {
+        data: { session },
+      } = await supabase.auth.getSession()
       if (session) {
         user.value = session.user
         await fetchProfile(session.user.id)

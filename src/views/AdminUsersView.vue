@@ -38,7 +38,7 @@ const fetchProfiles = async () => {
 
 const handleApprove = async (profileId) => {
   if (!confirm('Are you sure you want to approve this candidate?')) return
-  
+
   try {
     const { error } = await supabase
       .from('profiles')
@@ -48,7 +48,7 @@ const handleApprove = async (profileId) => {
     if (error) throw error
 
     // Update local state
-    const index = profiles.value.findIndex(p => p.id === profileId)
+    const index = profiles.value.findIndex((p) => p.id === profileId)
     if (index !== -1) {
       profiles.value[index].status = 'approved'
       profiles.value[index].rejection_reason = null
@@ -82,19 +82,19 @@ const handleReject = async () => {
       .from('profiles')
       .update({
         status: 'rejected',
-        rejection_reason: rejectionReasonInput.value.trim()
+        rejection_reason: rejectionReasonInput.value.trim(),
       })
       .eq('id', selectedProfileId.value)
 
     if (error) throw error
 
     // Update local state
-    const index = profiles.value.findIndex(p => p.id === selectedProfileId.value)
+    const index = profiles.value.findIndex((p) => p.id === selectedProfileId.value)
     if (index !== -1) {
       profiles.value[index].status = 'rejected'
       profiles.value[index].rejection_reason = rejectionReasonInput.value.trim()
     }
-    
+
     closeRejectModal()
   } catch (e) {
     console.error('Rejection failed:', e)
@@ -120,18 +120,19 @@ const formatDate = (dateString) => {
     day: 'numeric',
     year: 'numeric',
     hour: '2-digit',
-    minute: '2-digit'
+    minute: '2-digit',
   })
 }
 
 // Filtering computed profiles
 const filteredProfiles = computed(() => {
-  return profiles.value.filter(p => {
+  return profiles.value.filter((p) => {
     // 1. Search Query Match
     const query = searchFilter.value.toLowerCase().trim()
-    const matchesQuery = !query || 
-      p.full_name?.toLowerCase().includes(query) || 
-      p.email?.toLowerCase().includes(query) || 
+    const matchesQuery =
+      !query ||
+      p.full_name?.toLowerCase().includes(query) ||
+      p.email?.toLowerCase().includes(query) ||
       p.whatsapp?.includes(query)
 
     // 2. Branch Match
@@ -155,11 +156,25 @@ onMounted(() => {
       <div class="header-title-area">
         <span class="badge badge-gold">System Administrator</span>
         <h2>Candidate Verification Pool</h2>
-        <p>Manage, review, and approve candidate payment screenshot requests to grant site-wide portal access.</p>
+        <p>
+          Manage, review, and approve candidate payment screenshot requests to grant site-wide
+          portal access.
+        </p>
       </div>
-      <button @click="fetchProfiles" class="btn btn-secondary flex-center gap-xs" :disabled="isLoading">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon" :class="{ 'spin': isLoading }">
-          <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+      <button
+        @click="fetchProfiles"
+        class="btn btn-secondary flex-center gap-xs"
+        :disabled="isLoading"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          class="btn-icon"
+          :class="{ spin: isLoading }"
+        >
+          <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67" />
         </svg>
         <span>Refresh Records</span>
       </button>
@@ -173,7 +188,13 @@ onMounted(() => {
     <!-- Filters panel -->
     <div class="filters-panel glass-card">
       <div class="search-box">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="search-icon">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          class="search-icon"
+        >
           <circle cx="11" cy="11" r="8" />
           <line x1="21" y1="21" x2="16.65" y2="16.65" />
         </svg>
@@ -209,21 +230,21 @@ onMounted(() => {
         class="tab-btn"
         :class="{ active: activeStatusTab === 'pending' }"
       >
-        Pending ({{ profiles.filter(p => p.status === 'pending').length }})
+        Pending ({{ profiles.filter((p) => p.status === 'pending').length }})
       </button>
       <button
         @click="activeStatusTab = 'approved'"
         class="tab-btn"
         :class="{ active: activeStatusTab === 'approved' }"
       >
-        Approved ({{ profiles.filter(p => p.status === 'approved').length }})
+        Approved ({{ profiles.filter((p) => p.status === 'approved').length }})
       </button>
       <button
         @click="activeStatusTab = 'rejected'"
         class="tab-btn"
         :class="{ active: activeStatusTab === 'rejected' }"
       >
-        Rejected ({{ profiles.filter(p => p.status === 'rejected').length }})
+        Rejected ({{ profiles.filter((p) => p.status === 'rejected').length }})
       </button>
     </div>
 
@@ -255,17 +276,19 @@ onMounted(() => {
             <td class="candidate-info-cell">
               <div class="name">{{ candidate.full_name || 'No Name Provided' }}</div>
               <div class="email">{{ candidate.email }}</div>
-              <div v-if="candidate.role === 'admin'" class="role-indicator text-glow-gold">System Admin</div>
+              <div v-if="candidate.role === 'admin'" class="role-indicator text-glow-gold">
+                System Admin
+              </div>
             </td>
-            
+
             <td>
               <span class="branch-label text-capitalize">{{ candidate.target_branch }}</span>
             </td>
-            
+
             <td>
               <span>{{ candidate.whatsapp || 'N/A' }}</span>
             </td>
-            
+
             <td>
               <span class="date">{{ formatDate(candidate.created_at) }}</span>
             </td>
@@ -276,7 +299,13 @@ onMounted(() => {
                 @click="openImageModal(candidate.payment_screenshot_url)"
                 class="btn-view-receipt"
               >
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="receipt-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  class="receipt-icon"
+                >
                   <path d="M2 3h20v18H2zM6 8h12M6 12h12M6 16h6" />
                 </svg>
                 <span>Preview</span>
@@ -290,7 +319,7 @@ onMounted(() => {
                 :class="{
                   'badge-cyan': candidate.status === 'pending',
                   'badge-green': candidate.status === 'approved',
-                  'badge-red': candidate.status === 'rejected'
+                  'badge-red': candidate.status === 'rejected',
                 }"
               >
                 {{ candidate.status }}
@@ -345,8 +374,11 @@ onMounted(() => {
       <div class="modal-content form-modal" @click.stop>
         <button class="modal-close" @click="closeRejectModal">&times;</button>
         <h3>Reject Verification Request</h3>
-        <p>Please provide a reason. The student will see this message and will be allowed to upload a valid screenshot.</p>
-        
+        <p>
+          Please provide a reason. The student will see this message and will be allowed to upload a
+          valid screenshot.
+        </p>
+
         <div class="form-group">
           <label for="rejectionReason" class="form-label">Reason for Rejection *</label>
           <textarea
@@ -366,7 +398,6 @@ onMounted(() => {
         </div>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -661,7 +692,7 @@ onMounted(() => {
 }
 
 .modal-image-container {
-  border: 1px solid rgba(0,0,0,0.06);
+  border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: var(--border-radius-md);
   overflow: hidden;
   max-height: 400px;
@@ -680,7 +711,7 @@ onMounted(() => {
   display: flex;
   justify-content: flex-end;
   gap: 1rem;
-  border-top: 1px solid rgba(0,0,0,0.06);
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
   padding-top: 1.25rem;
 }
 
@@ -710,7 +741,9 @@ onMounted(() => {
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @media (max-width: 768px) {

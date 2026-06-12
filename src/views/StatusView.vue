@@ -80,16 +80,16 @@ const handleReupload = async () => {
       .from('payment_screenshots')
       .upload(fileName, file, {
         cacheControl: '3600',
-        upsert: true
+        upsert: true,
       })
 
     if (uploadError) throw uploadError
 
     // Public URL
     uploadStatus.value = 'Updating request...'
-    const { data: { publicUrl } } = supabase.storage
-      .from('payment_screenshots')
-      .getPublicUrl(fileName)
+    const {
+      data: { publicUrl },
+    } = supabase.storage.from('payment_screenshots').getPublicUrl(fileName)
 
     // Update profile status back to pending & set screenshot URL
     const { error: updateError } = await supabase
@@ -97,7 +97,7 @@ const handleReupload = async () => {
       .update({
         payment_screenshot_url: publicUrl,
         status: 'pending',
-        rejection_reason: null
+        rejection_reason: null,
       })
       .eq('id', userId)
 
@@ -105,11 +105,10 @@ const handleReupload = async () => {
 
     // Refresh store
     await authStore.fetchProfile(userId)
-    
+
     // Clean up
     removeSelectedFile()
     uploadStatus.value = 'Resubmission complete!'
-
   } catch (error) {
     console.error('Re-upload failed:', error)
     errorMessage.value = error.message || 'Failed to submit updated screenshot.'
@@ -146,7 +145,7 @@ const checkApprovalStatus = async () => {
         alert(
           'Your payment verification status is still: ' +
             authStore.profile?.status?.toUpperCase() +
-            '.\n\nIf you have already uploaded a screenshot of your JazzCash receipt, please wait for admin verification (usually takes 1-2 hours) or message our support team on WhatsApp.'
+            '.\n\nIf you have already uploaded a screenshot of your JazzCash receipt, please wait for admin verification (usually takes 1-2 hours) or message our support team on WhatsApp.',
         )
       }
     } else {
@@ -164,11 +163,15 @@ const checkApprovalStatus = async () => {
 <template>
   <div class="status-page flex-center">
     <div class="status-container glass-card" :class="{ 'border-rejected': status === 'rejected' }">
-      
       <!-- Top header bar -->
       <div class="status-header" @click="goHome" title="Return to Home Page">
         <svg class="icon-logo" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 2L2 22H22L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+          <path
+            d="M12 2L2 22H22L12 2Z"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linejoin="round"
+          />
           <path d="M12 6L5 20H19L12 6Z" fill="currentColor" opacity="0.3" />
           <circle cx="12" cy="14" r="2" fill="currentColor" />
         </svg>
@@ -179,15 +182,24 @@ const checkApprovalStatus = async () => {
       <!-- Pending Status Card Content -->
       <div v-if="status === 'pending'" class="status-content">
         <div class="icon-wrapper spin-glow">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="status-icon text-cyan animate-pulse">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            class="status-icon text-cyan animate-pulse"
+          >
             <circle cx="12" cy="12" r="10" />
             <path d="M12 6v6l4 2" />
           </svg>
         </div>
-        
+
         <div class="status-info">
           <h3>Verification in Progress</h3>
-          <p>We are reviewing your payment screenshot. This process typically takes between 1-2 hours.</p>
+          <p>
+            We are reviewing your payment screenshot. This process typically takes between 1-2
+            hours.
+          </p>
         </div>
 
         <!-- Checklist -->
@@ -209,7 +221,10 @@ const checkApprovalStatus = async () => {
         <!-- Support Info -->
         <div class="support-info-card">
           <strong>Need Instant Activation?</strong>
-          <p>Message our support team on WhatsApp with your registered email for express verification.</p>
+          <p>
+            Message our support team on WhatsApp with your registered email for express
+            verification.
+          </p>
           <a
             href="https://wa.me/923458643910?text=Hi%20Umar,%20I%20have%20registered%20on%20the%20ISSB%20Preparation%20Portal.%20My%20email%20is%20"
             target="_blank"
@@ -229,7 +244,13 @@ const checkApprovalStatus = async () => {
       <!-- Rejected Status Card Content -->
       <div v-else-if="status === 'rejected'" class="status-content">
         <div class="icon-wrapper icon-rejected">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="status-icon text-red">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            class="status-icon text-red"
+          >
             <circle cx="12" cy="12" r="10" />
             <line x1="15" y1="9" x2="9" y2="15" />
             <line x1="9" y1="9" x2="15" y2="15" />
@@ -249,7 +270,13 @@ const checkApprovalStatus = async () => {
 
         <!-- Error Alert -->
         <div v-if="errorMessage" class="error-alert">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="alert-icon">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            class="alert-icon"
+          >
             <circle cx="12" cy="12" r="10" />
             <line x1="12" y1="8" x2="12" y2="12" />
             <line x1="12" y1="16" x2="12.01" y2="16" />
@@ -260,7 +287,7 @@ const checkApprovalStatus = async () => {
         <!-- Re-upload Form -->
         <div class="reupload-section">
           <h4>Submit Updated Receipt Screenshot</h4>
-          
+
           <input
             ref="fileInput"
             type="file"
@@ -271,8 +298,14 @@ const checkApprovalStatus = async () => {
           />
 
           <div v-if="!selectedFile" class="upload-dropzone" @click="triggerFileInput">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="upload-icon">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              class="upload-icon"
+            >
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12" />
             </svg>
             <span>Upload Valid Screenshot</span>
           </div>
@@ -285,11 +318,21 @@ const checkApprovalStatus = async () => {
               <img :src="filePreview" alt="New Receipt preview" class="preview-img" />
             </div>
             <div class="preview-actions">
-              <button type="button" class="btn btn-secondary btn-small" @click="handleReupload" :disabled="isSubmitting">
+              <button
+                type="button"
+                class="btn btn-secondary btn-small"
+                @click="handleReupload"
+                :disabled="isSubmitting"
+              >
                 <span v-if="isSubmitting" class="spinner"></span>
                 <span v-else>Submit Receipt</span>
               </button>
-              <button type="button" class="btn-remove-file" @click="removeSelectedFile" :disabled="isSubmitting">
+              <button
+                type="button"
+                class="btn-remove-file"
+                @click="removeSelectedFile"
+                :disabled="isSubmitting"
+              >
                 Cancel
               </button>
             </div>
@@ -299,22 +342,33 @@ const checkApprovalStatus = async () => {
         <!-- Payment Reminder details for reference -->
         <div class="payment-reminder-box">
           <strong>JazzCash Transfer Credentials:</strong>
-          <p>Amount: <strong>PKR 1,499</strong> | Account Name: <strong>umar farooq</strong> | Number: <strong>03458643910</strong></p>
+          <p>
+            Amount: <strong>PKR 1,499</strong> | Account Name: <strong>umar farooq</strong> |
+            Number: <strong>03458643910</strong>
+          </p>
         </div>
       </div>
 
       <!-- Action panel footer (Logout & Nav) -->
       <div class="status-footer">
         <div class="footer-nav-links">
-          <button @click="goHome" class="link-btn-nav">
-            ← Return to Home Landing Page
-          </button>
-          <button v-if="status === 'approved'" @click="router.push('/dashboard')" class="link-btn-nav text-green-link">
+          <button @click="goHome" class="link-btn-nav">← Return to Home Landing Page</button>
+          <button
+            v-if="status === 'approved'"
+            @click="router.push('/dashboard')"
+            class="link-btn-nav text-green-link"
+          >
             Go to Dashboard →
           </button>
         </div>
         <button @click="handleSignOut" class="btn-logout">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="logout-icon">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            class="logout-icon"
+          >
             <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
             <polyline points="16 17 21 12 16 7" />
             <line x1="21" y1="12" x2="9" y2="12" />
@@ -322,7 +376,6 @@ const checkApprovalStatus = async () => {
           <span>Log Out / Sign In as different candidate</span>
         </button>
       </div>
-
     </div>
   </div>
 </template>
@@ -331,7 +384,11 @@ const checkApprovalStatus = async () => {
 .status-page {
   min-height: 100vh;
   padding: 2rem;
-  background: radial-gradient(circle at 10% 20%, rgba(2, 132, 199, 0.05) 0%, rgba(241, 245, 249, 1) 90%);
+  background: radial-gradient(
+    circle at 10% 20%,
+    rgba(2, 132, 199, 0.05) 0%,
+    rgba(241, 245, 249, 1) 90%
+  );
 }
 
 .status-container {
@@ -484,9 +541,15 @@ const checkApprovalStatus = async () => {
 }
 
 @keyframes pulse-active {
-  0% { box-shadow: 0 0 0 0 rgba(3, 194, 252, 0.4); }
-  70% { box-shadow: 0 0 0 6px rgba(3, 194, 252, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(3, 194, 252, 0); }
+  0% {
+    box-shadow: 0 0 0 0 rgba(3, 194, 252, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(3, 194, 252, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(3, 194, 252, 0);
+  }
 }
 
 .support-info-card {
@@ -626,7 +689,7 @@ const checkApprovalStatus = async () => {
   align-items: center;
   justify-content: center;
   background: #ffffff;
-  border: 1px solid rgba(0,0,0,0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .preview-img {
@@ -701,7 +764,7 @@ const checkApprovalStatus = async () => {
   justify-content: center;
   gap: 1.5rem;
   font-size: 0.88rem;
-  border-bottom: 1px dashed rgba(0,0,0,0.06);
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.06);
   padding-bottom: 0.75rem;
 }
 
@@ -756,6 +819,8 @@ const checkApprovalStatus = async () => {
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 </style>
