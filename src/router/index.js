@@ -1,17 +1,18 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import DashboardView from '../views/DashboardView.vue'
-import RoadmapView from '../views/RoadmapView.vue'
-import WatSimulator from '../views/WatSimulator.vue'
-import SctSimulator from '../views/SctSimulator.vue'
-import SrtSimulator from '../views/SrtSimulator.vue'
-import ObstaclesSimulator from '../views/ObstaclesSimulator.vue'
-import LoginView from '../views/LoginView.vue'
-import RegisterView from '../views/RegisterView.vue'
-import StatusView from '../views/StatusView.vue'
-import AdminUsersView from '../views/AdminUsersView.vue'
-import SupportView from '../views/SupportView.vue'
 import { useAuthStore } from '../stores/auth'
+
+const DashboardView = () => import('../views/DashboardView.vue')
+const RoadmapView = () => import('../views/RoadmapView.vue')
+const WatSimulator = () => import('../views/WatSimulator.vue')
+const SctSimulator = () => import('../views/SctSimulator.vue')
+const SrtSimulator = () => import('../views/SrtSimulator.vue')
+const ObstaclesSimulator = () => import('../views/ObstaclesSimulator.vue')
+const LoginView = () => import('../views/LoginView.vue')
+const RegisterView = () => import('../views/RegisterView.vue')
+const StatusView = () => import('../views/StatusView.vue')
+const AdminUsersView = () => import('../views/AdminUsersView.vue')
+const SupportView = () => import('../views/SupportView.vue')
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

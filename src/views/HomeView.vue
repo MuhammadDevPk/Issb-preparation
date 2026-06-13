@@ -476,7 +476,7 @@ const activeSimulatorSubTab = ref('wat') // wat, sct, srt
           <div class="feature-icon border-blue">
             <span>01</span>
           </div>
-          <h4>5-Day Structured Roadmap</h4>
+          <h3>5-Day Structured Roadmap</h3>
           <p>
             A day-by-day checklist that clarifies the exact timeline of tests (Day 1 Arrival to Day
             5 Conference).
@@ -487,7 +487,7 @@ const activeSimulatorSubTab = ref('wat') // wat, sct, srt
           <div class="feature-icon border-blue">
             <span>02</span>
           </div>
-          <h4>Interactive Simulator Panel</h4>
+          <h3>Interactive Simulator Panel</h3>
           <p>
             Train with timed interactive simulators for WAT, SCT, SRT, and Individual GTO Obstacles.
           </p>
@@ -497,7 +497,7 @@ const activeSimulatorSubTab = ref('wat') // wat, sct, srt
           <div class="feature-icon border-blue">
             <span>03</span>
           </div>
-          <h4>Officer-Like Quality (OLQ) Profiler</h4>
+          <h3>Officer-Like Quality (OLQ) Profiler</h3>
           <p>
             Rate yourself across the 14 critical dimensions of personality evaluated by selectors.
           </p>
@@ -507,7 +507,7 @@ const activeSimulatorSubTab = ref('wat') // wat, sct, srt
           <div class="feature-icon border-blue">
             <span>04</span>
           </div>
-          <h4>Drive-Linked Study Hub</h4>
+          <h3>Drive-Linked Study Hub</h3>
           <p>
             Access all 19 official manuals, bio-data sheets, and recommended cadet experiences
             directly in-app.
@@ -530,7 +530,7 @@ const activeSimulatorSubTab = ref('wat') // wat, sct, srt
           <div class="review-header">
             <div class="avatar-circle">MS</div>
             <div class="candidate-info">
-              <h4>MUHAMMAD SAEED UR REHMAN</h4>
+              <h3>MUHAMMAD SAEED UR REHMAN</h3>
               <span class="badge-branch">Pakistan Army — Approved</span>
             </div>
           </div>
@@ -545,7 +545,7 @@ const activeSimulatorSubTab = ref('wat') // wat, sct, srt
           <div class="review-header">
             <div class="avatar-circle">AB</div>
             <div class="candidate-info">
-              <h4>Aftab</h4>
+              <h3>Aftab</h3>
               <span class="badge-branch">Pakistan Army — Approved</span>
             </div>
           </div>
@@ -560,7 +560,7 @@ const activeSimulatorSubTab = ref('wat') // wat, sct, srt
           <div class="review-header">
             <div class="avatar-circle">IA</div>
             <div class="candidate-info">
-              <h4>Imtiaz Ali</h4>
+              <h3>Imtiaz Ali</h3>
               <span class="badge-branch">Pakistan Army — Approved</span>
             </div>
           </div>
@@ -575,7 +575,7 @@ const activeSimulatorSubTab = ref('wat') // wat, sct, srt
           <div class="review-header">
             <div class="avatar-circle">MR</div>
             <div class="candidate-info">
-              <h4>Moiz Rashid</h4>
+              <h3>Moiz Rashid</h3>
               <span class="badge-branch">Pakistan Army — Approved</span>
             </div>
           </div>
@@ -590,7 +590,7 @@ const activeSimulatorSubTab = ref('wat') // wat, sct, srt
           <div class="review-header">
             <div class="avatar-circle">AW</div>
             <div class="candidate-info">
-              <h4>Awais</h4>
+              <h3>Awais</h3>
               <span class="badge-branch">Pakistan Army — Approved</span>
             </div>
           </div>
@@ -605,7 +605,7 @@ const activeSimulatorSubTab = ref('wat') // wat, sct, srt
           <div class="review-header">
             <div class="avatar-circle">TI</div>
             <div class="candidate-info">
-              <h4>Taimoor Iqbal</h4>
+              <h3>Taimoor Iqbal</h3>
               <span class="badge-branch">Pakistan Army — Approved</span>
             </div>
           </div>
@@ -1424,7 +1424,7 @@ const activeSimulatorSubTab = ref('wat') // wat, sct, srt
   border: 1.5px solid var(--accent-cyan);
 }
 
-.feature-item h4 {
+.feature-item h3 {
   font-size: 1.2rem;
   margin: 0;
   color: var(--text-primary);
@@ -2011,7 +2011,7 @@ const activeSimulatorSubTab = ref('wat') // wat, sct, srt
   font-size: 0.95rem;
 }
 
-.candidate-info h4 {
+.candidate-info h3 {
   margin: 0 0 0.15rem 0;
   font-size: 1.05rem;
   color: var(--text-primary);
