@@ -2011,4 +2011,235 @@ const activeSimulatorSubTab = ref('wat') // wat, sct, srt
   margin: 0;
   font-style: italic;
 }
+
+/* Responsive Overrides (Placed at the bottom to ensure correct order of precedence) */
+@media (max-width: 992px) {
+  .pricing-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2.5rem !important;
+  }
+  
+  .panel-layout {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Nav spacing */
+  .landing-nav {
+    padding: 1rem 1.25rem;
+    gap: 1rem;
+  }
+
+  .logo-text h2 {
+    font-size: 1rem;
+  }
+
+  .logo-text .sub-text {
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+  }
+
+  .btn-nav-portal {
+    padding: 0.45rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  /* Section headers */
+  .pricing-section,
+  .portal-showcase-section,
+  .reviews-section,
+  .features-section,
+  .insights-section,
+  .referral-highlight-banner,
+  .cta-bottom {
+    padding: 3.5rem 1.25rem !important;
+  }
+
+  .section-header {
+    margin-bottom: 2rem;
+  }
+
+  .section-header h2 {
+    font-size: 1.85rem !important;
+  }
+
+  .section-header p {
+    font-size: 0.95rem !important;
+  }
+
+  /* Hero Section */
+  .hero-section {
+    padding: 3rem 1.25rem !important;
+    gap: 2rem !important;
+  }
+
+  .hero-content {
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-content h1 {
+    font-size: 2.2rem !important;
+    text-align: center;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem !important;
+    text-align: center;
+  }
+
+  .hero-bullets {
+    align-self: stretch;
+    align-items: flex-start;
+    text-align: left;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.75rem;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-simulator-preview-card {
+    padding: 1.25rem;
+  }
+
+  .flashed-word {
+    font-size: 1.8rem !important;
+  }
+
+  /* Referral Banner */
+  .banner-content h2 {
+    font-size: 1.8rem !important;
+  }
+
+  .banner-desc {
+    font-size: 0.95rem !important;
+  }
+
+  /* Insight Cards */
+  .insight-card {
+    padding: 1.5rem !important;
+  }
+
+  /* Portal Showcase */
+  .showcase-panels {
+    padding: 1.25rem !important;
+    min-height: auto !important;
+  }
+
+  .panel-info h3 {
+    font-size: 1.35rem !important;
+  }
+
+  .panel-desc {
+    font-size: 0.9rem !important;
+  }
+
+  /* Reviews */
+  .reviews-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+
+  .review-card {
+    padding: 1.5rem !important;
+  }
+
+  /* Pricing Section */
+  .pricing-value-card h3 {
+    font-size: 1.35rem !important;
+  }
+
+  .pricing-checkout-card {
+    padding: 1.5rem !important;
+  }
+
+  .price-current {
+    font-size: 2.2rem !important;
+  }
+
+  .price-referral {
+    font-size: 2.2rem !important;
+  }
+
+  /* CTA Bottom */
+  .cta-content h2 {
+    font-size: 1.8rem !important;
+  }
+
+  .cta-content p {
+    font-size: 1rem !important;
+  }
+}
+
+@media (max-width: 576px) {
+  /* Logo adjustments */
+  .icon-logo {
+    width: 30px;
+    height: 30px;
+  }
+
+  .logo-text .sub-text {
+    display: none;
+  }
+
+  /* Tab Buttons showcase */
+  .tab-btn {
+    padding: 0.75rem 1rem !important;
+    font-size: 0.88rem !important;
+  }
+
+  .subtab-btn {
+    padding: 0.35rem 0.85rem !important;
+    font-size: 0.8rem !important;
+  }
+
+  /* Pricing checkout instructions step numbers */
+  .step-num {
+    width: 24px !important;
+    height: 24px !important;
+    font-size: 0.8rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .landing-nav {
+    padding: 0.75rem 0.75rem;
+  }
+
+  .btn-nav-portal {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.8rem;
+  }
+
+  .hero-content h1 {
+    font-size: 1.85rem !important;
+  }
+  
+  .flashed-word {
+    font-size: 1.5rem !important;
+  }
+
+  .value-item {
+    gap: 0.75rem !important;
+  }
+
+  .value-item strong {
+    font-size: 0.95rem !important;
+  }
+
+  .value-item p {
+    font-size: 0.85rem !important;
+  }
+}
 </style>
