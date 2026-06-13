@@ -102,6 +102,10 @@ const activeSimulatorSubTab = ref('wat') // wat, sct, srt
             <span>Real-time Timed Psychologist Test Simulators</span>
           </div>
           <div class="bullet-item">
+            <span class="bullet-check">⚡</span>
+            <span><strong>AI Psychologist Evaluator (New)</strong>: Scans answers, flags mistakes, and suggests rephrasings!</span>
+          </div>
+          <div class="bullet-item">
             <span class="bullet-check">✓</span>
             <span>Officer-Like Qualities (OLQ) Assessment</span>
           </div>
@@ -246,6 +250,96 @@ const activeSimulatorSubTab = ref('wat') // wat, sct, srt
       </div>
     </section>
 
+    <!-- AI Psychologist Evaluation Section -->
+    <section class="ai-psychologist-section">
+      <div class="section-header">
+        <span class="badge badge-ai">⚡ NEW: Real-time AI Psychologist Assessor</span>
+        <h2>Don't Let A Weak Subconscious Answer Get You Rejected</h2>
+        <p>The selection board's psychologist is trained to look for hidden personality flaws, conflict, and avoidance. Our advanced AI scans your answers just like an expert assessor with 20+ years of ISSB experience.</p>
+      </div>
+
+      <div class="ai-grid">
+        <div class="ai-explain-card glass-card">
+          <h3>What the AI Psychologist Assessor Checks:</h3>
+          <ul class="ai-check-list">
+            <li>
+              <span class="ai-bullet red">❌</span>
+              <div>
+                <strong>Negative & Depressive Indicators:</strong>
+                <p>Detects hidden signs of hopelessness, anger, depression, or fear in your sentence completions and situation reactions.</p>
+              </div>
+            </li>
+            <li>
+              <span class="ai-bullet red">❌</span>
+              <div>
+                <strong>Faked guidebook copying & definitions:</strong>
+                <p>Flags robotic phrases (like "Atom is a particle") or double-negation patterns (like "He did not fail") that psychologists immediately penalize.</p>
+              </div>
+            </li>
+            <li>
+              <span class="ai-bullet gold">⚠️</span>
+              <div>
+                <strong>Escapist and Passive Attitudes:</strong>
+                <p>Identifies resignation (e.g., "He accepted failure and slept") or dependency patterns that fail the officer-like threshold.</p>
+              </div>
+            </li>
+            <li>
+              <span class="ai-bullet green">✓</span>
+              <div>
+                <strong>14 Officer-Like Qualities (OLQ):</strong>
+                <p>Directly extracts and scores traits like Initiative, Speed of Decision, Courage, and Social Responsibility from your answers.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="ai-visual-card glass-card">
+          <div class="visual-header">
+            <span class="pulse-dot-purple"></span>
+            <span class="header-title">REAL-TIME ANSWER REPROGRAMMING</span>
+          </div>
+
+          <div class="visual-body">
+            <div class="comparison-row">
+              <div class="comparison-header">
+                <span class="comp-label label-fail">❌ Weak Answer (Rejected)</span>
+                <span class="tag-reason">Escapist / Avoidance</span>
+              </div>
+              <div class="bubble bubble-fail">
+                <span class="prompt-star">Starter:</span> "When he faced difficulties..." <br />
+                <span class="answer-star">Completion:</span> "...he decided to pack his bags and go home."
+              </div>
+              <p class="mistake-note"><strong>Psychologist's Assessment:</strong> Shows low stress-tolerance, lack of determination, and escape mentality. Result: <strong>D-grade (Not Recommended)</strong>.</p>
+            </div>
+
+            <div class="comparison-arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <polyline points="19 12 12 19 5 12" />
+              </svg>
+            </div>
+
+            <div class="comparison-row">
+              <div class="comparison-header">
+                <span class="comp-label label-success">✓ AI Rephrased (Recommended)</span>
+                <span class="tag-rephrased">+ Determination</span>
+              </div>
+              <div class="bubble bubble-success">
+                <span class="prompt-star">Starter:</span> "When he faced difficulties..." <br />
+                <span class="answer-star">Completion:</span> "...he planned a new strategy and resolved the issue."
+              </div>
+              <p class="success-note"><strong>Psychologist's Assessment:</strong> Projects high stress response, initiative, and proactive planning. Result: <strong>A-grade (Highly Recommended)</strong>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ai-action-footer">
+        <p>Our simulators analyze your <strong>entire test submission</strong>, generate your psychological profile, and show you exactly what to correct. You cannot find this in paper books or coaching academies.</p>
+        <button @click="goToPortal" class="btn btn-ai btn-large shadow-glow-purple">Evaluate Your Personality Now</button>
+      </div>
+    </section>
+
     <!-- Portal Tour & Screenshots Showcase Section -->
     <section class="portal-showcase-section">
       <div class="section-header">
@@ -379,9 +473,9 @@ const activeSimulatorSubTab = ref('wat') // wat, sct, srt
               </div>
 
               <div class="panel-info">
-                <h3>Subconscious Stress Testing Engine</h3>
+                <h3>Subconscious Stress Testing & AI Assessor</h3>
                 <p class="panel-desc">
-                  This is the crown jewel of our preparation system. Selectors check your subconscious reactions. We train you to write positive, authentic responses under strict timing:
+                  This is the crown jewel of our preparation system. Practice under selection board timers and get evaluated immediately by our AI Psychologist:
                 </p>
                 <ul class="panel-features-list">
                   <li>
@@ -392,6 +486,9 @@ const activeSimulatorSubTab = ref('wat') // wat, sct, srt
                   </li>
                   <li>
                     <strong>Situation Reaction Test (SRT):</strong> Crisis-control scenarios prompting practical leadership reactions in 30 seconds.
+                  </li>
+                  <li>
+                    <strong>⚡ AI psychologist evaluation:</strong> Click "Analyze with AI" to instantly scan sheets for mistakes, score OLQs, and get rephrasing recommendations.
                   </li>
                 </ul>
                 <button @click="goToPortal" class="btn btn-primary">Launch Projector Simulator</button>
@@ -615,7 +712,7 @@ const activeSimulatorSubTab = ref('wat') // wat, sct, srt
         <span class="badge badge-accent">Unlock Premium Recommendation Course</span>
         <h2>Master Every Test with Solved Study Materials</h2>
         <p>
-          Gain access to exclusive solved guides, full psychologist papers, and premium simulators.
+      Gain access to exclusive solved guides, full psychologist papers, and premium simulators.
         </p>
       </div>
 
@@ -624,6 +721,16 @@ const activeSimulatorSubTab = ref('wat') // wat, sct, srt
         <div class="pricing-value-card">
           <h3>What You Get in Premium Course</h3>
           <div class="value-items">
+            <div class="value-item border-purple-left">
+              <div class="value-icon bg-purple">⚡</div>
+              <div>
+                <strong>Unlimited AI Psychologist evaluations</strong>
+                <span class="badge-ai-inline">NEW</span>
+                <p>
+                  Submit simulator sheets and get evaluated by our expert AI psychologist. Detects mistakes, details your OLQ, and gives rephrasing suggestions!
+                </p>
+              </div>
+            </div>
             <div class="value-item">
               <div class="value-icon">✓</div>
               <div>
@@ -2265,6 +2372,287 @@ const activeSimulatorSubTab = ref('wat') // wat, sct, srt
 
   .value-item p {
     font-size: 0.85rem !important;
+  }
+}
+
+/* AI Psychologist Showcase Styles */
+.badge-ai {
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.15), rgba(79, 70, 229, 0.15));
+  color: #7c3aed;
+  border: 1px solid rgba(124, 58, 237, 0.3);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--border-radius-sm);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: inline-block;
+}
+
+.ai-psychologist-section {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.ai-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+.ai-explain-card {
+  padding: 2.5rem;
+  border-radius: var(--border-radius-lg);
+  border-top: 4px solid #7c3aed;
+}
+
+.ai-explain-card h3 {
+  font-size: 1.35rem;
+  margin-bottom: 2rem;
+  color: var(--text-primary);
+}
+
+.ai-check-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.ai-check-list li {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.ai-bullet {
+  font-size: 1.25rem;
+  line-height: 1;
+  margin-top: 0.2rem;
+}
+
+.ai-check-list strong {
+  font-size: 1rem;
+  color: var(--text-primary);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.ai-check-list p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.ai-visual-card {
+  padding: 2.5rem;
+  border-radius: var(--border-radius-lg);
+  border-top: 4px solid #7c3aed;
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.03), rgba(79, 70, 229, 0.01));
+}
+
+.visual-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.pulse-dot-purple {
+  width: 8px;
+  height: 8px;
+  background-color: #7c3aed;
+  border-radius: 50%;
+  animation: pulse-purple 1.5s infinite;
+}
+
+@keyframes pulse-purple {
+  0% { opacity: 0.3; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.1); }
+  100% { opacity: 0.3; transform: scale(0.9); }
+}
+
+.header-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #7c3aed;
+}
+
+.visual-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.comparison-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.comparison-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comp-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.comp-label.label-fail {
+  color: var(--accent-red);
+}
+
+.comp-label.label-success {
+  color: var(--accent-green);
+}
+
+.tag-reason {
+  background: var(--accent-red-glow);
+  color: var(--accent-red);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--border-radius-sm);
+  text-transform: uppercase;
+}
+
+.tag-rephrased {
+  background: var(--accent-green-glow);
+  color: var(--accent-green);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--border-radius-sm);
+  text-transform: uppercase;
+}
+
+.bubble {
+  padding: 1rem;
+  border-radius: var(--border-radius-md);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.bubble-fail {
+  background: rgba(185, 28, 28, 0.04);
+  border: 1px solid rgba(185, 28, 28, 0.15);
+  color: var(--text-primary);
+}
+
+.bubble-success {
+  background: rgba(21, 128, 61, 0.04);
+  border: 1px solid rgba(21, 128, 61, 0.15);
+  color: var(--text-primary);
+}
+
+.prompt-star {
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.answer-star {
+  font-weight: 700;
+}
+
+.mistake-note, .success-note {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.comparison-arrow {
+  display: flex;
+  justify-content: center;
+  color: var(--text-muted);
+  margin: 0.5rem 0;
+}
+
+.comparison-arrow svg {
+  width: 20px;
+  height: 20px;
+}
+
+.ai-action-footer {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.ai-action-footer p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.btn-ai {
+  background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%);
+  color: #ffffff !important;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.25);
+  transition: all var(--transition-smooth);
+}
+
+.btn-ai:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.4);
+}
+
+.shadow-glow-purple {
+  animation: glow-purple 2s infinite;
+}
+
+@keyframes glow-purple {
+  0%, 100% { box-shadow: 0 0 10px rgba(124, 58, 237, 0.2); }
+  50% { box-shadow: 0 0 20px rgba(124, 58, 237, 0.5); }
+}
+
+/* Pricing updates */
+.border-purple-left {
+  border-inline-start: 3px solid #7c3aed !important;
+}
+
+.bg-purple {
+  background: #7c3aed !important;
+  color: #ffffff !important;
+}
+
+.badge-ai-inline {
+  background: rgba(124, 58, 237, 0.1);
+  color: #7c3aed;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 0.15rem 0.4rem;
+  border-radius: var(--border-radius-sm);
+  margin-left: 0.5rem;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+@media (max-width: 992px) {
+  .ai-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
   }
 }
 </style>

@@ -271,6 +271,23 @@ const saveAssessment = () => {
 const goToRoadmap = () => {
   router.push('/roadmap')
 }
+
+const isApproved = computed(() => {
+  return authStore.profile?.status === 'approved'
+})
+
+const isTrialActive = computed(() => {
+  const p = authStore.profile
+  return p?.trial_ends_at && new Date(p.trial_ends_at).getTime() > Date.now()
+})
+
+const goToSimulator = (type) => {
+  router.push(`/simulator/${type}`)
+}
+
+const goToStatus = () => {
+  router.push('/status')
+}
 </script>
 
 <template>
@@ -329,6 +346,84 @@ const goToRoadmap = () => {
             <span class="lbl">Completed</span>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- AI Psychologist Promotion / Access Status Banner -->
+    <section class="dashboard-ai-promo glass-card" :class="isApproved ? 'status-approved-banner' : 'status-trial-banner'">
+      <div class="promo-header">
+        <div class="promo-title-group">
+          <span class="badge" :class="isApproved ? 'badge-green' : 'badge-purple-ai'">
+            {{ isApproved ? 'Active' : 'Free Trial' }}
+          </span>
+          <h3>
+            {{ isApproved ? '🎖️ AI Psychological Assessor Fully Active' : '🧠 Unlock Your Real-Time AI Psychologist Assessor' }}
+          </h3>
+        </div>
+        <div class="status-pulse-indicator">
+          <span class="pulse-dot" :class="isApproved ? 'bg-green' : 'bg-purple'"></span>
+          <span class="status-lbl">{{ isApproved ? 'AI Assessor Ready' : 'Diagnostics Locked' }}</span>
+        </div>
+      </div>
+
+      <div class="promo-body">
+        <p class="promo-intro-text">
+          Our advanced AI is programmed with standard ISSB psychological evaluation parameters. 
+          When you practice in our simulators, the AI evaluates every sentence against actual selection metrics.
+        </p>
+
+        <div class="promo-features-row">
+          <div class="promo-feat">
+            <span class="feat-icon">🔍</span>
+            <strong>Mistake & Avoidance Check</strong>
+            <p>Catches negative thoughts, textbook guidebook copies, double-negations, and escape attitudes.</p>
+          </div>
+          <div class="promo-feat">
+            <span class="feat-icon">💡</span>
+            <strong>Sentence Rephrasing</strong>
+            <p>Shows you exactly how to rewrite weak answers to project optimal confidence and duty.</p>
+          </div>
+          <div class="promo-feat">
+            <span class="feat-icon">📊</span>
+            <strong>OLQ Profile Diagnostics</strong>
+            <p>Extracts and maps your traits (Initiative, Courage, Cooperation) directly to a formatted report.</p>
+          </div>
+        </div>
+
+        <div v-if="!isApproved" class="upgrade-pitch-box">
+          <div class="pitch-text">
+            <strong>⚠️ Faking your personality will get you rejected.</strong> 
+            Academies teach memorized answers that selectors easily catch. Use our AI to scan your subconscious answers. 
+            Unlock lifetime premium access for just <strong>PKR {{ appSettings.course_price }}</strong> or as low as <strong>PKR 100</strong> via referrals.
+          </div>
+        </div>
+      </div>
+
+      <div class="promo-actions">
+        <template v-if="isApproved">
+          <span class="approved-text">✓ You have lifetime premium access to the AI psychologist assessor.</span>
+          <div class="action-buttons">
+            <button class="btn btn-secondary btn-sm" @click="goToSimulator('wat')">WAT Simulator</button>
+            <button class="btn btn-secondary btn-sm" @click="goToSimulator('sct')">SCT Sheet Trainer</button>
+            <button class="btn btn-secondary btn-sm" @click="goToSimulator('srt')">SRT Crisis Trainer</button>
+          </div>
+        </template>
+        <template v-else>
+          <div class="price-info">
+            <span class="price-slashed-dash">PKR {{ appSettings.course_price * 2.5 }}</span>
+            <span class="price-current-dash">PKR {{ appSettings.course_price }}</span>
+            <span class="price-or-dash">or</span>
+            <span class="price-referral-dash">PKR 100*</span>
+          </div>
+          <div class="action-buttons-trial">
+            <button class="btn btn-ai shadow-glow-purple" @click="goToStatus">
+              Unlock Unlimited AI Diagnostics
+            </button>
+            <button class="btn btn-secondary" @click="goToRoadmap">
+              Practice Simulators First
+            </button>
+          </div>
+        </template>
       </div>
     </section>
 
@@ -1256,6 +1351,255 @@ const goToRoadmap = () => {
 @media (max-width: 992px) {
   .referral-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Dashboard AI Promotion Section */
+.dashboard-ai-promo {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem;
+  border-radius: var(--border-radius-lg);
+  border-inline-start: 4px solid #7c3aed !important;
+  transition: all var(--transition-smooth);
+}
+
+.status-trial-banner {
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.08), rgba(79, 70, 229, 0.03));
+  box-shadow: 0 4px 20px rgba(124, 58, 237, 0.1);
+  border: 1px solid rgba(124, 58, 237, 0.2);
+}
+
+.status-approved-banner {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.08), rgba(3, 194, 252, 0.03));
+  box-shadow: 0 4px 20px rgba(34, 197, 94, 0.05);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+  border-inline-start: 4px solid var(--accent-green) !important;
+}
+
+.promo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  padding-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.promo-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.badge-purple-ai {
+  background: rgba(124, 58, 237, 0.12);
+  color: #7c3aed;
+  border: 1px solid rgba(124, 58, 237, 0.25);
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--border-radius-sm);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.promo-title-group h3 {
+  font-size: 1.35rem;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.status-pulse-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pulse-dot.bg-purple {
+  background-color: #7c3aed;
+  animation: pulse-purple-dot 1.5s infinite;
+}
+
+.pulse-dot.bg-green {
+  background-color: var(--accent-green);
+  animation: pulse-green-dot 1.5s infinite;
+}
+
+@keyframes pulse-purple-dot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.4); }
+  50% { box-shadow: 0 0 0 6px rgba(124, 58, 237, 0); }
+}
+
+@keyframes pulse-green-dot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+  50% { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+}
+
+.status-lbl {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.promo-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.promo-intro-text {
+  font-size: 0.98rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.promo-features-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.promo-feat {
+  background: white;
+  border: 1px solid var(--border-color);
+  padding: 1.25rem;
+  border-radius: var(--border-radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.status-trial-banner .promo-feat {
+  border-color: rgba(124, 58, 237, 0.15);
+}
+
+.feat-icon {
+  font-size: 1.35rem;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.promo-feat strong {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+.promo-feat p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+  margin: 0;
+}
+
+.upgrade-pitch-box {
+  background: rgba(124, 58, 237, 0.04);
+  border: 1px dashed rgba(124, 58, 237, 0.25);
+  padding: 1rem 1.25rem;
+  border-radius: var(--border-radius-md);
+}
+
+.pitch-text {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.promo-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  padding-top: 1.25rem;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.approved-text {
+  font-size: 0.9rem;
+  color: var(--accent-green);
+  font-weight: 600;
+}
+
+.price-info {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.price-slashed-dash {
+  text-decoration: line-through;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.price-current-dash {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.price-or-dash {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.price-referral-dash {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  color: #7c3aed;
+  font-size: 1.35rem;
+}
+
+.action-buttons, .action-buttons-trial {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.btn-sm {
+  padding: 0.4rem 0.85rem;
+  font-size: 0.85rem;
+}
+
+.btn-ai {
+  background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%);
+  color: #ffffff !important;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.25);
+  transition: all var(--transition-smooth);
+}
+
+.btn-ai:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(124, 58, 237, 0.35);
+}
+
+.shadow-glow-purple {
+  animation: glow-purple-btn 2s infinite;
+}
+
+@keyframes glow-purple-btn {
+  0%, 100% { box-shadow: 0 0 8px rgba(124, 58, 237, 0.2); }
+  50% { box-shadow: 0 0 16px rgba(124, 58, 237, 0.45); }
+}
+
+@media (max-width: 768px) {
+  .promo-header, .promo-actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .action-buttons-trial, .action-buttons {
+    width: 100%;
+  }
+  .action-buttons-trial button, .action-buttons button {
+    flex: 1;
   }
 }
 </style>
