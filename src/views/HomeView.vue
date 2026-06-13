@@ -72,7 +72,7 @@ const activeSimulatorSubTab = ref('wat') // wat, sct, srt
           <circle cx="12" cy="14" r="2" fill="currentColor" />
         </svg>
         <div class="logo-text">
-          <h2>ISSB COMMAND</h2>
+          <span class="logo-title">ISSB COMMAND</span>
           <span class="sub-text">PREPARATION PORTAL</span>
         </div>
       </RouterLink>
@@ -287,7 +287,7 @@ const activeSimulatorSubTab = ref('wat') // wat, sct, srt
           <div v-if="activeShowcaseTab === 'dashboard'" class="showcase-panel fade-in">
             <div class="panel-layout">
               <div class="panel-preview">
-                <img src="/media/images/dashboard/dashboard.jpg" alt="ISSB Command Portal Central Dashboard" class="screenshot-img" />
+                <img src="/media/images/dashboard/dashboard.jpg" alt="ISSB Command Portal Central Dashboard" class="screenshot-img" width="1200" height="750" loading="lazy" />
               </div>
               <div class="panel-info">
                 <h3>Your Central Hub for Officer Preparation</h3>
@@ -323,23 +323,23 @@ const activeSimulatorSubTab = ref('wat') // wat, sct, srt
             <div class="panel-layout">
               <!-- Day 1 Panel -->
               <div v-if="activeRoadmapSubTab === 'day1'" class="panel-preview fade-in">
-                <img src="/media/images/dashboard/5-Day Roadmap(Day 1: Arrival & Screening).jpg" alt="Roadmap Day 1" class="screenshot-img" />
+                <img src="/media/images/dashboard/5-Day Roadmap(Day 1: Arrival & Screening).jpg" alt="Roadmap Day 1" class="screenshot-img" width="1200" height="750" loading="lazy" />
               </div>
               <!-- Day 2 Panel -->
               <div v-if="activeRoadmapSubTab === 'day2'" class="panel-preview fade-in">
-                <img src="/media/images/dashboard/5-Day Roadmap(Day 2: Psychologist Day).jpg" alt="Roadmap Day 2" class="screenshot-img" />
+                <img src="/media/images/dashboard/5-Day Roadmap(Day 2: Psychologist Day).jpg" alt="Roadmap Day 2" class="screenshot-img" width="1200" height="750" loading="lazy" />
               </div>
               <!-- Day 3 Panel -->
               <div v-if="activeRoadmapSubTab === 'day3'" class="panel-preview fade-in">
-                <img src="/media/images/dashboard/5-Day Roadmap(Day 3: GTO Tasks (Indoor & Out)).jpg" alt="Roadmap Day 3" class="screenshot-img" />
+                <img src="/media/images/dashboard/5-Day Roadmap(Day 3: GTO Tasks (Indoor & Out)).jpg" alt="Roadmap Day 3" class="screenshot-img" width="1200" height="750" loading="lazy" />
               </div>
               <!-- Day 4 Panel -->
               <div v-if="activeRoadmapSubTab === 'day4'" class="panel-preview fade-in">
-                <img src="/media/images/dashboard/5-Day Roadmap(Day 4: Individual Tasks & Interview).jpg" alt="Roadmap Day 4" class="screenshot-img" />
+                <img src="/media/images/dashboard/5-Day Roadmap(Day 4: Individual Tasks & Interview).jpg" alt="Roadmap Day 4" class="screenshot-img" width="1200" height="750" loading="lazy" />
               </div>
               <!-- Day 5 Panel -->
               <div v-if="activeRoadmapSubTab === 'day5'" class="panel-preview fade-in">
-                <img src="/media/images/dashboard/5-Day Roadmap(Day 5: Conference & Results).jpg" alt="Roadmap Day 5" class="screenshot-img" />
+                <img src="/media/images/dashboard/5-Day Roadmap(Day 5: Conference & Results).jpg" alt="Roadmap Day 5" class="screenshot-img" width="1200" height="750" loading="lazy" />
               </div>
 
               <div class="panel-info">
@@ -374,15 +374,15 @@ const activeSimulatorSubTab = ref('wat') // wat, sct, srt
             <div class="panel-layout">
               <!-- WAT Simulator -->
               <div v-if="activeSimulatorSubTab === 'wat'" class="panel-preview fade-in">
-                <img src="/media/images/dashboard/wat simulator.jpg" alt="WAT Simulator" class="screenshot-img" />
+                <img src="/media/images/dashboard/wat simulator.jpg" alt="WAT Simulator" class="screenshot-img" width="1200" height="750" loading="lazy" />
               </div>
               <!-- SCT Simulator -->
               <div v-if="activeSimulatorSubTab === 'sct'" class="panel-preview fade-in">
-                <img src="/media/images/dashboard/SCT Simulator.jpg" alt="SCT Simulator" class="screenshot-img" />
+                <img src="/media/images/dashboard/SCT Simulator.jpg" alt="SCT Simulator" class="screenshot-img" width="1200" height="750" loading="lazy" />
               </div>
               <!-- SRT Simulator -->
               <div v-if="activeSimulatorSubTab === 'srt'" class="panel-preview fade-in">
-                <img src="/media/images/dashboard/SRT Trainer.jpg" alt="SRT Trainer" class="screenshot-img" />
+                <img src="/media/images/dashboard/SRT Trainer.jpg" alt="SRT Trainer" class="screenshot-img" width="1200" height="750" loading="lazy" />
               </div>
 
               <div class="panel-info">
@@ -410,7 +410,7 @@ const activeSimulatorSubTab = ref('wat') // wat, sct, srt
           <div v-if="activeShowcaseTab === 'obstacles'" class="showcase-panel fade-in">
             <div class="panel-layout">
               <div class="panel-preview">
-                <img src="/media/images/dashboard/GTO Obstacles.jpg" alt="GTO Obstacle sequence planner" class="screenshot-img" />
+                <img src="/media/images/dashboard/GTO Obstacles.jpg" alt="GTO Obstacle sequence planner" class="screenshot-img" width="1200" height="750" loading="lazy" />
               </div>
               <div class="panel-info">
                 <h3>Interactive GTO Individual Obstacles Planner</h3>
@@ -437,7 +437,7 @@ const activeSimulatorSubTab = ref('wat') // wat, sct, srt
           <div v-if="activeShowcaseTab === 'support'" class="showcase-panel fade-in">
             <div class="panel-layout">
               <div class="panel-preview">
-                <img src="/media/images/dashboard/Complaints and Ideas.jpg" alt="Ideas and Complaints board" class="screenshot-img" />
+                <img src="/media/images/dashboard/Complaints and Ideas.jpg" alt="Ideas and Complaints board" class="screenshot-img" width="1200" height="750" loading="lazy" />
               </div>
               <div class="panel-info">
                 <h3>Improvements Suggestion Board & Private Helpdesk</h3>
@@ -708,7 +708,7 @@ const activeSimulatorSubTab = ref('wat') // wat, sct, srt
           </div>
 
           <div class="payment-instructions">
-            <h4>Or Pay Full to Unlock Instantly:</h4>
+            <h3>Or Pay Full to Unlock Instantly:</h3>
 
             <div class="instruction-step">
               <span class="step-num">1</span>
@@ -810,11 +810,14 @@ const activeSimulatorSubTab = ref('wat') // wat, sct, srt
   color: var(--accent-cyan);
 }
 
-.logo-text h2 {
+.logo-text .logo-title {
+  font-family: var(--font-heading);
+  font-weight: 700;
   font-size: 1.15rem;
   letter-spacing: 0.05em;
   margin: 0;
   color: var(--text-primary);
+  display: block;
 }
 
 .logo-text .sub-text {
@@ -2059,7 +2062,7 @@ const activeSimulatorSubTab = ref('wat') // wat, sct, srt
     gap: 1rem;
   }
 
-  .logo-text h2 {
+  .logo-text .logo-title {
     font-size: 1rem;
   }
 

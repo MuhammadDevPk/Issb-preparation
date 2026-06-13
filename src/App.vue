@@ -173,7 +173,7 @@ onMounted(() => {
           <circle cx="12" cy="14" r="2" fill="currentColor" />
         </svg>
         <div class="logo-text">
-          <h1>ISSB COMMAND</h1>
+          <span class="logo-title">ISSB COMMAND</span>
           <span class="sub-text">PREPARATION PORTAL</span>
         </div>
       </RouterLink>
@@ -447,10 +447,13 @@ onMounted(() => {
   color: var(--accent-cyan);
 }
 
-.logo-text h1 {
+.logo-text .logo-title {
+  font-family: var(--font-heading);
+  font-weight: 700;
   font-size: 1.35rem;
   letter-spacing: 0.05em;
   color: var(--text-primary);
+  display: block;
 }
 
 .logo-text .sub-text {
@@ -873,7 +876,7 @@ onMounted(() => {
     gap: 0.75rem;
   }
 
-  .logo-text h1 {
+  .logo-text .logo-title {
     font-size: 1.15rem;
   }
 
@@ -928,7 +931,7 @@ onMounted(() => {
     padding: 0.65rem 0.75rem;
   }
 
-  .logo-text h1 {
+  .logo-text .logo-title {
     font-size: 1rem;
   }
 
