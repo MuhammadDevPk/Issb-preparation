@@ -343,19 +343,19 @@ onMounted(() => {
               </div>
             </td>
 
-            <td>
+            <td data-label="Branch">
               <span class="branch-label text-capitalize">{{ candidate.target_branch }}</span>
             </td>
 
-            <td>
+            <td data-label="WhatsApp">
               <span>{{ candidate.whatsapp || 'N/A' }}</span>
             </td>
 
-            <td>
+            <td data-label="Registered">
               <span class="date">{{ formatDate(candidate.created_at) }}</span>
             </td>
 
-            <td>
+            <td data-label="Screenshot">
               <button
                 v-if="candidate.payment_screenshot_url"
                 @click="openImageModal(candidate.payment_screenshot_url)"
@@ -375,7 +375,7 @@ onMounted(() => {
               <span v-else class="text-muted text-italic">No Upload</span>
             </td>
 
-            <td>
+            <td data-label="Status">
               <span
                 class="badge"
                 :class="{
@@ -891,8 +891,119 @@ onMounted(() => {
 }
 
 @media (max-width: 768px) {
+  .admin-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .admin-header .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
   .filters-panel {
     grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .tabs-container {
+    padding-bottom: 0.5rem;
+  }
+
+  /* Table responsive card overrides */
+  .candidates-table thead {
+    display: none;
+  }
+
+  .candidates-table,
+  .candidates-table tbody,
+  .candidates-table tr,
+  .candidates-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .candidates-table tr {
+    margin-bottom: 1.25rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    padding: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  }
+
+  .candidates-table tr:last-child {
+    margin-bottom: 0;
+  }
+
+  .candidates-table td {
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
+    padding: 0.75rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: right;
+  }
+
+  .candidates-table td:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .candidates-table td::before {
+    content: attr(data-label);
+    font-weight: 700;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-align: left;
+    margin-right: 1rem;
+  }
+
+  .candidates-table td.candidate-info-cell {
+    display: block;
+    text-align: left;
+    padding-top: 0;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .candidates-table td.candidate-info-cell::before {
+    display: none;
+  }
+
+  .candidates-table td.candidate-info-cell .email {
+    font-size: 0.85rem;
+  }
+
+  .candidates-table td.actions-cell {
+    width: 100%;
+    justify-content: stretch;
+    padding-top: 1rem;
+  }
+
+  .candidates-table td.actions-cell::before {
+    display: none;
+  }
+
+  .actions-group {
+    width: 100%;
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .btn-action {
+    flex: 1;
+    justify-content: center;
+    padding: 0.6rem;
+    font-size: 0.85rem;
+  }
+
+  /* Portal Settings Container Mobile Override */
+  .settings-panel-container {
+    padding: 1.5rem;
   }
 }
 

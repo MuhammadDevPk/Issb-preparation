@@ -37,6 +37,20 @@ const handleLogout = async () => {
   }
 }
 
+// Mobile navigation menu toggle state
+const isMobileMenuOpen = ref(false)
+const toggleMobileMenu = () => {
+  isMobileMenuOpen.value = !isMobileMenuOpen.value
+}
+const closeMobileMenu = () => {
+  isMobileMenuOpen.value = false
+}
+
+// Watch for route changes to close the menu
+watch(() => route.path, () => {
+  closeMobileMenu()
+})
+
 // 30-Minute Free Trial Countdown Timer
 const trialTimeRemaining = ref(0)
 let countdownInterval = null
@@ -135,6 +149,18 @@ onMounted(() => {
 
     <!-- Main Top Header -->
     <header class="app-header glass-card">
+      <!-- Hamburger Menu Button -->
+      <button 
+        class="hamburger-btn" 
+        @click="toggleMobileMenu" 
+        :class="{ 'is-active': isMobileMenuOpen }"
+        aria-label="Toggle Navigation Menu"
+      >
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+
       <RouterLink to="/" class="header-logo">
         <svg class="icon-logo" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
@@ -183,8 +209,15 @@ onMounted(() => {
     </header>
 
     <div class="main-layout">
+      <!-- Backdrop Overlay for Mobile Drawer -->
+      <div 
+        v-if="isMobileMenuOpen" 
+        class="mobile-backdrop" 
+        @click="closeMobileMenu"
+      ></div>
+
       <!-- Side Navigation Panel -->
-      <aside class="navigation-panel glass-card">
+      <aside class="navigation-panel glass-card" :class="{ 'mobile-open': isMobileMenuOpen }">
         <nav class="nav-menu">
           <RouterLink to="/dashboard" class="nav-item" active-class="active">
             <svg
@@ -625,18 +658,187 @@ onMounted(() => {
   opacity: 0;
 }
 
+/* Hamburger Menu Button */
+.hamburger-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 38px;
+  height: 38px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  z-index: 1100;
+  transition: all var(--transition-smooth);
+}
+
+.hamburger-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(0, 242, 254, 0.3);
+}
+
+.hamburger-line {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: var(--text-primary);
+  border-radius: 999px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hamburger animations when active (opens menu) */
+.hamburger-btn.is-active .hamburger-line:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.hamburger-btn.is-active .hamburger-line:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+.hamburger-btn.is-active .hamburger-line:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Mobile Backdrop Overlay */
+.mobile-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(10, 15, 30, 0.7);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 999;
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 /* Responsive Overrides */
 @media (max-width: 992px) {
+  .hamburger-btn {
+    display: flex;
+  }
+
   .main-layout {
     grid-template-columns: 1fr;
   }
 
   .navigation-panel {
-    display: none; /* In a production mobile layout, we would toggle or use a bottom bar */
+    display: flex !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 290px;
+    z-index: 1000;
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 20px 0 40px rgba(0, 0, 0, 0.6);
+    border-radius: 0 var(--border-radius-lg) var(--border-radius-lg) 0;
+    border-left: none;
+    background: rgba(10, 15, 30, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 6rem 1.25rem 1.5rem 1.25rem;
+  }
+
+  .navigation-panel.mobile-open {
+    transform: translateX(0);
   }
 
   .content-screen {
     block-size: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-container {
+    padding: 0.75rem;
+    gap: 0.75rem;
+  }
+
+  .app-header {
+    padding: 0.75rem 1.25rem;
+    gap: 0.75rem;
+  }
+
+  .logo-text h1 {
+    font-size: 1.15rem;
+  }
+
+  .logo-text .sub-text {
+    font-size: 0.65rem;
+  }
+
+  .icon-logo {
+    width: 32px;
+    height: 32px;
+  }
+
+  .header-status {
+    gap: 0.75rem;
+  }
+
+  .streak-widget {
+    border-inline-end: none;
+    padding-inline-end: 0;
+  }
+
+  .status-widget .icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .widget-details .label {
+    display: none;
+  }
+
+  .widget-details .value {
+    font-size: 0.85rem;
+  }
+
+  .rank-widget {
+    min-width: auto;
+    align-items: flex-end;
+  }
+
+  .rank-progress-container {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-container {
+    padding: 0.5rem;
+    gap: 0.5rem;
+  }
+
+  .app-header {
+    padding: 0.65rem 0.75rem;
+  }
+
+  .logo-text h1 {
+    font-size: 1rem;
+  }
+
+  .logo-text .sub-text {
+    display: none;
+  }
+
+  .header-status {
+    gap: 0.5rem;
+  }
+
+  .widget-details .value {
+    font-size: 0.8rem;
   }
 }
 
