@@ -1,6 +1,6 @@
 <script setup>
 import { RouterLink, RouterView, useRoute, useRouter } from 'vue-router'
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted, computed, watch, onBeforeUnmount } from 'vue'
 import { usePreparationStore } from './stores/preparation'
 import { useAuthStore } from './stores/auth'
 
@@ -37,6 +37,67 @@ const handleLogout = async () => {
   }
 }
 
+// 30-Minute Free Trial Countdown Timer
+const trialTimeRemaining = ref(0)
+let countdownInterval = null
+
+const isTrialCountdownActive = computed(() => {
+  if (!authStore.user || !authStore.profile) return false
+  if (authStore.profile.status === 'approved' || authStore.profile.role === 'admin') return false
+  if (!authStore.profile.trial_ends_at) return false
+  return new Date(authStore.profile.trial_ends_at).getTime() > Date.now()
+})
+
+const formattedTrialTime = computed(() => {
+  const minutes = Math.floor(trialTimeRemaining.value / 60)
+  const seconds = trialTimeRemaining.value % 60
+  return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`
+})
+
+const updateTrialTimer = () => {
+  if (!authStore.profile || !authStore.profile.trial_ends_at) {
+    trialTimeRemaining.value = 0
+    return
+  }
+  const trialEndsAt = new Date(authStore.profile.trial_ends_at).getTime()
+  const remainingMs = trialEndsAt - Date.now()
+  
+  if (remainingMs <= 0) {
+    trialTimeRemaining.value = 0
+    clearInterval(countdownInterval)
+    // If on a restricted route, redirect immediately
+    if (['/dashboard', '/roadmap', '/simulator/wat', '/simulator/sct', '/simulator/srt', '/simulator/obstacles'].includes(route.path)) {
+      router.push('/status')
+    }
+  } else {
+    trialTimeRemaining.value = Math.floor(remainingMs / 1000)
+  }
+}
+
+const startTrialCountdown = () => {
+  clearInterval(countdownInterval)
+  updateTrialTimer()
+  countdownInterval = setInterval(() => {
+    updateTrialTimer()
+  }, 1000)
+}
+
+const goToStatusUnlock = () => {
+  router.push('/status')
+}
+
+watch(() => authStore.profile, (newProfile) => {
+  if (newProfile && newProfile.status !== 'approved' && newProfile.role !== 'admin') {
+    startTrialCountdown()
+  } else {
+    clearInterval(countdownInterval)
+  }
+}, { immediate: true })
+
+onBeforeUnmount(() => {
+  clearInterval(countdownInterval)
+})
+
 onMounted(() => {
   // Initialize Auth session
   authStore.initialize()
@@ -63,6 +124,15 @@ onMounted(() => {
 
   <!-- Normal Interactive App Layout -->
   <div v-else class="app-container">
+    <!-- Free Trial Banner -->
+    <div v-if="isTrialCountdownActive" class="trial-countdown-banner">
+      <span class="pulse-icon">⏳</span>
+      <span class="banner-text">
+        <strong>Free Trial Session Active:</strong> You have <span class="time-countdown">{{ formattedTrialTime }}</span> remaining to practice simulators and check study roadmaps.
+      </span>
+      <button @click="goToStatusUnlock" class="btn-unlock-mini">Unlock Lifetime Access</button>
+    </div>
+
     <!-- Main Top Header -->
     <header class="app-header glass-card">
       <RouterLink to="/" class="header-logo">
@@ -567,6 +637,79 @@ onMounted(() => {
 
   .content-screen {
     block-size: auto;
+  }
+}
+
+/* Free Trial Countdown Banner */
+.trial-countdown-banner {
+  background: linear-gradient(90deg, #b91c1c 0%, #dc2626 100%);
+  color: #ffffff;
+  padding: 0.75rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  gap: 1.5rem;
+  box-shadow: 0 4px 10px rgba(220, 38, 38, 0.15);
+  z-index: 1000;
+  border-bottom: 2px solid #991b1b;
+}
+
+.banner-text {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.time-countdown {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  color: var(--accent-cyan);
+  background: rgba(0, 0, 0, 0.25);
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--border-radius-sm);
+  letter-spacing: 0.05em;
+  font-size: 0.95rem;
+  display: inline-block;
+  min-width: 55px;
+  text-align: center;
+}
+
+.btn-unlock-mini {
+  background: #ffffff;
+  color: #b91c1c;
+  border: none;
+  border-radius: var(--border-radius-sm);
+  padding: 0.35rem 0.85rem;
+  font-weight: 700;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all var(--transition-smooth);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-family: var(--font-heading);
+}
+
+.btn-unlock-mini:hover {
+  background: var(--bg-primary);
+  transform: translateY(-1px);
+}
+
+.pulse-icon {
+  animation: timer-pulse 1s infinite alternate;
+  display: inline-block;
+}
+
+@keyframes timer-pulse {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.15); }
+}
+
+@media (max-width: 768px) {
+  .trial-countdown-banner {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
   }
 }
 </style>

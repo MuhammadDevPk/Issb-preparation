@@ -41,7 +41,10 @@ const goToLogin = () => {
 
 const goToPortal = () => {
   if (authStore.user) {
-    if (authStore.profile?.status === 'approved') {
+    const p = authStore.profile
+    const isApproved = p?.status === 'approved'
+    const isTrialActive = p?.trial_ends_at && new Date(p.trial_ends_at).getTime() > Date.now()
+    if (isApproved || isTrialActive) {
       router.push('/dashboard')
     } else {
       router.push('/status')
@@ -91,7 +94,7 @@ const activeSimulatorSubTab = ref('wat') // wat, sct, srt
         <p class="hero-subtitle">
           Most ISSB candidates fail not because they lack potential, but because they study outdated
           guidebooks, try to fake their personalities, or freeze during timed psychologist tests.
-          Our structured portal simulates the exact 5-day cycle to prepare you for success.
+          Our structured portal simulates the exact 5-day cycle. <strong>Sign up now to instantly start a 30-minute free trial with access to all timers, simulators, and guides.</strong>
         </p>
 
         <!-- Bullet Highlights -->
@@ -108,10 +111,14 @@ const activeSimulatorSubTab = ref('wat') // wat, sct, srt
             <span class="bullet-check">✓</span>
             <span>Officer-Like Qualities (OLQ) Assessment</span>
           </div>
+          <div class="bullet-item">
+            <span class="bullet-check">⏳</span>
+            <span><strong>30-Minute Free Trial</strong> (Unlock all features instantly upon signup)</span>
+          </div>
         </div>
 
         <div class="hero-actions">
-          <button @click="goToPortal" class="btn btn-primary btn-large">Start Preparing Now</button>
+          <button @click="goToPortal" class="btn btn-primary btn-large">Start 30-Min Free Trial</button>
           <button @click="goToPortal" class="btn btn-secondary btn-large">
             Explore Portal First
           </button>

@@ -157,13 +157,31 @@ const copyStatus = ref('Copy Link')
 const copyReferralLink = async () => {
   if (!referralLink.value) return
   try {
-    await navigator.clipboard.writeText(referralLink.value)
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(referralLink.value)
+    } else {
+      // Fallback for non-secure contexts (HTTP)
+      const textArea = document.createElement('textarea')
+      textArea.value = referralLink.value
+      textArea.style.position = 'fixed'
+      textArea.style.left = '-9999px'
+      textArea.style.top = '-9999px'
+      document.body.appendChild(textArea)
+      textArea.focus()
+      textArea.select()
+      document.execCommand('copy')
+      document.body.removeChild(textArea)
+    }
     copyStatus.value = 'Copied!'
     setTimeout(() => {
       copyStatus.value = 'Copy Link'
     }, 2000)
   } catch (err) {
     console.error('Failed to copy text: ', err)
+    copyStatus.value = 'Failed'
+    setTimeout(() => {
+      copyStatus.value = 'Copy Link'
+    }, 2000)
   }
 }
 

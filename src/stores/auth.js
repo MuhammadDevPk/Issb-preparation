@@ -29,7 +29,14 @@ export const useAuthStore = defineStore('auth', () => {
       } = await supabase.auth.getSession()
       if (session) {
         user.value = session.user
-        await fetchProfile(session.user.id)
+        const p = await fetchProfile(session.user.id)
+        
+        // Session ID validation check
+        const localToken = localStorage.getItem('issb_session_token')
+        if (p && p.active_session_id && p.active_session_id !== localToken) {
+          console.warn('Session mismatch on init. Logging out.')
+          await logout()
+        }
       } else {
         user.value = null
         profile.value = null
@@ -42,10 +49,20 @@ export const useAuthStore = defineStore('auth', () => {
 
     // Subscribe to auth state changes
     supabase.auth.onAuthStateChange(async (event, session) => {
+      // Skip during registration — the register() function handles its own flow
+      if (isRegistering.value) return
+
       loading.value = true
       if (session) {
         user.value = session.user
-        await fetchProfile(session.user.id)
+        const p = await fetchProfile(session.user.id)
+        
+        // Session ID validation check
+        const localToken = localStorage.getItem('issb_session_token')
+        if (p && p.active_session_id && p.active_session_id !== localToken) {
+          console.warn('Session mismatch on state change. Logging out.')
+          await logout()
+        }
       } else {
         user.value = null
         profile.value = null
@@ -61,12 +78,24 @@ export const useAuthStore = defineStore('auth', () => {
     })
     if (error) throw error
     user.value = data.user
+    
+    // Generate active session token
+    const sessionToken = Math.random().toString(36).substring(2) + Date.now().toString(36)
+    localStorage.setItem('issb_session_token', sessionToken)
+    
+    // Update active_session_id in database
+    await supabase.from('profiles').update({ active_session_id: sessionToken }).eq('id', data.user.id)
+    
     await fetchProfile(data.user.id)
     return data
   }
 
+  // Flag to temporarily skip session validation during registration
+  const isRegistering = ref(false)
+
   const register = async (email, password, metadata) => {
-    // metadata includes full_name, whatsapp, target_branch, referred_by_code
+    isRegistering.value = true
+    // metadata includes full_name, whatsapp, target_branch, referred_by_code, ip_address
     const { data, error } = await supabase.auth.signUp({
       email,
       password,
@@ -76,18 +105,38 @@ export const useAuthStore = defineStore('auth', () => {
           whatsapp: metadata.whatsapp,
           target_branch: metadata.target_branch,
           referred_by_code: metadata.referred_by_code,
+          ip_address: metadata.ip_address,
         },
       },
     })
     if (error) throw error
     user.value = data.user
     if (data.user) {
+      // Wait a moment for the DB trigger to create the profile
+      let profileData = null
+      for (let attempt = 0; attempt < 5; attempt++) {
+        await new Promise(resolve => setTimeout(resolve, 600))
+        profileData = await fetchProfile(data.user.id)
+        if (profileData) break
+      }
+
+      // Generate active session token
+      const sessionToken = Math.random().toString(36).substring(2) + Date.now().toString(36)
+      localStorage.setItem('issb_session_token', sessionToken)
+      
+      // Update active_session_id in database
+      await supabase.from('profiles').update({ active_session_id: sessionToken }).eq('id', data.user.id)
+      
+      // Re-fetch to get the updated session token in the profile
       await fetchProfile(data.user.id)
     }
+    isRegistering.value = false
     return data
   }
 
   const logout = async () => {
+    // Clear local session token
+    localStorage.removeItem('issb_session_token')
     const { error } = await supabase.auth.signOut()
     if (error) throw error
     user.value = null

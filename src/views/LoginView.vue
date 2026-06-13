@@ -1,15 +1,34 @@
 <script setup>
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { ref, onMounted } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 import { useAuthStore } from '../stores/auth'
+import { supabase } from '../supabase'
 
 const router = useRouter()
+const route = useRoute()
 const authStore = useAuthStore()
 
 const email = ref('')
 const password = ref('')
 const errorMessage = ref('')
 const isSubmitting = ref(false)
+
+const fetchIP = async () => {
+  try {
+    const res = await fetch('https://api.ipify.org?format=json')
+    const data = await res.json()
+    return data.ip || 'unknown'
+  } catch (e) {
+    console.error('Failed to get IP address:', e)
+    return 'unknown'
+  }
+}
+
+onMounted(() => {
+  if (route.query.session_expired === 'true') {
+    errorMessage.value = 'You have been logged out because this account was logged in on another device.'
+  }
+})
 
 const handleLogin = async () => {
   if (!email.value || !password.value) return
@@ -19,9 +38,18 @@ const handleLogin = async () => {
   try {
     await authStore.login(email.value, password.value)
 
-    // Redirect logic handled by router navigation guards or manually:
     const profile = authStore.profile
+
+    // Update IP address in profile on each login for tracking
+    const ip = await fetchIP()
+    if (ip && ip !== 'unknown' && profile) {
+      await supabase.from('profiles').update({ ip_address: ip }).eq('id', profile.id)
+    }
+
+    // Redirect logic: check approval or free trial eligibility
     if (profile?.status === 'approved') {
+      router.push('/dashboard')
+    } else if (profile?.trial_ends_at && new Date(profile.trial_ends_at).getTime() > Date.now()) {
       router.push('/dashboard')
     } else {
       router.push('/status')

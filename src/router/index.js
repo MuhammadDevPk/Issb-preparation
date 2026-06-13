@@ -107,6 +107,11 @@ const router = createRouter({
   ],
 })
 
+const isTrialActive = (profile) => {
+  if (!profile || !profile.trial_ends_at) return false
+  return new Date(profile.trial_ends_at).getTime() > Date.now()
+}
+
 router.beforeEach(async (to, from, next) => {
   const authStore = useAuthStore()
 
@@ -116,8 +121,20 @@ router.beforeEach(async (to, from, next) => {
   }
 
   const isAuthenticated = !!authStore.user
+
+  // Enforce single session active check on every page change
+  if (isAuthenticated) {
+    const latestProfile = await authStore.fetchProfile(authStore.user.id)
+    const localToken = localStorage.getItem('issb_session_token')
+    if (latestProfile && latestProfile.active_session_id && latestProfile.active_session_id !== localToken) {
+      console.warn('Session mismatch on navigation. Logging out.')
+      await authStore.logout()
+      return next({ name: 'login', query: { session_expired: 'true' } })
+    }
+  }
+
   const profile = authStore.profile
-  const isApproved = profile?.status === 'approved'
+  const isApproved = profile?.status === 'approved' || isTrialActive(profile)
   const isAdmin = profile?.role === 'admin'
 
   // 1. Guard for Authenticated Only routes

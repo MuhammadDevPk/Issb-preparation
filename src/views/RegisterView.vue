@@ -97,6 +97,17 @@ const removeSelectedFile = () => {
   }
 }
 
+const fetchIP = async () => {
+  try {
+    const res = await fetch('https://api.ipify.org?format=json')
+    const data = await res.json()
+    return data.ip || 'unknown'
+  } catch (e) {
+    console.error('Failed to get IP address:', e)
+    return 'unknown'
+  }
+}
+
 const handleRegister = async () => {
   if (!fullName.value || !email.value || !password.value) {
     errorMessage.value = 'Please fill out all required fields.'
@@ -105,10 +116,25 @@ const handleRegister = async () => {
 
   isSubmitting.value = true
   errorMessage.value = ''
-  uploadProgressText.value = 'Creating candidate account...'
+  uploadProgressText.value = 'Verifying security guidelines...'
 
   try {
+    // 0. Fetch candidate IP and verify trial status
+    const ip = await fetchIP()
+    const { data: isBlocked, error: rpcError } = await supabase.rpc('check_ip_trial_status', { ip_addr: ip })
+    
+    if (rpcError) {
+      console.error('RPC Error check_ip_trial_status:', rpcError)
+    }
+
+    if (isBlocked) {
+      errorMessage.value = 'You cannot create a new account, please use your old account.'
+      isSubmitting.value = false
+      return
+    }
+
     const refCode = referredByCode.value || null
+    uploadProgressText.value = 'Creating candidate account...'
 
     // 1. Sign up candidate via Auth Store
     const regResult = await authStore.register(email.value, password.value, {
@@ -116,6 +142,7 @@ const handleRegister = async () => {
       whatsapp: whatsapp.value,
       target_branch: targetBranch.value,
       referred_by_code: refCode,
+      ip_address: ip,
     })
 
     if (!regResult.user) {
@@ -170,20 +197,20 @@ const handleRegister = async () => {
     if (refCode) {
       localStorage.removeItem('issb_referred_by_code')
     }
-
-    // Success - redirect to status page
+    // Success — redirect based on approval status or free trial
     uploadProgressText.value = 'Account registration complete!'
-    await authStore.fetchProfile(userId)
 
-    // Redirect based on whether they were auto-approved (e.g. if they are the first user)
+    // Profile is already fetched inside authStore.register() with retry logic
+    const profile = authStore.profile
     setTimeout(() => {
-      const profile = authStore.profile
       if (profile?.status === 'approved') {
+        router.push('/dashboard')
+      } else if (profile?.trial_ends_at && new Date(profile.trial_ends_at).getTime() > Date.now()) {
         router.push('/dashboard')
       } else {
         router.push('/status')
       }
-    }, 1000)
+    }, 500)
   } catch (error) {
     console.error('Registration failed:', error)
     errorMessage.value = error.message || 'An error occurred during registration.'
