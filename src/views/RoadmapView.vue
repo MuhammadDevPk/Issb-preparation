@@ -287,7 +287,7 @@ const selectTest = (testId) => {
 
 const drivePdfs = {
   'ESSAY WRITING - Essays.pdf':
-    'https://drive.google.com/file/d/1RorT0fBNxsnrOsWrhE634KVfjJmFe0zn/preview',
+    'https://drive.google.com/file/d/1ZXeE7BVi4d1bWDlknUrjPzo7VK6V9wy1/preview',
   'Final Interview .pdf':
     'https://drive.google.com/file/d/1GBOZ1M7VwSuh9GHCyidx0TyF0XGuOLx2/preview',
   'GTO - Model Planing .pdf':
@@ -344,13 +344,8 @@ const launchSimulator = (path) => {
   <div class="roadmap-wrapper">
     <!-- Day Selector Navbar -->
     <nav class="day-selector-bar glass-card">
-      <button
-        v-for="day in days"
-        :key="day.num"
-        class="day-btn"
-        :class="{ active: activeDay === day.num }"
-        @click="selectDay(day.num)"
-      >
+      <button v-for="day in days" :key="day.num" class="day-btn" :class="{ active: activeDay === day.num }"
+        @click="selectDay(day.num)">
         <span>{{ day.label }}</span>
       </button>
     </nav>
@@ -361,19 +356,11 @@ const launchSimulator = (path) => {
       <aside class="tests-list-panel glass-card">
         <h3 class="panel-title text-glow">SCHEDULED TESTS</h3>
         <div class="tests-menu">
-          <button
-            v-for="test in activeTests"
-            :key="test.id"
-            class="test-menu-item"
-            :class="{ active: selectedTestId === test.id }"
-            @click="selectTest(test.id)"
-          >
+          <button v-for="test in activeTests" :key="test.id" class="test-menu-item"
+            :class="{ active: selectedTestId === test.id }" @click="selectTest(test.id)">
             <div class="item-header">
               <span class="test-name">{{ test.name }}</span>
-              <span
-                class="status-dot"
-                :class="{ completed: store.isModuleCompleted(test.id) }"
-              ></span>
+              <span class="status-dot" :class="{ completed: store.isModuleCompleted(test.id) }"></span>
             </div>
             <span class="test-meta">By {{ test.conductedBy }}</span>
           </button>
@@ -385,31 +372,18 @@ const launchSimulator = (path) => {
         <div class="details-header">
           <div>
             <h2>{{ selectedTest.name }}</h2>
-            <span class="meta-tag"
-              >Conducted by: <strong>{{ selectedTest.conductedBy }}</strong></span
-            >
-            <span class="meta-tag ml-3"
-              >Timing: <strong>{{ selectedTest.timing }}</strong></span
-            >
+            <span class="meta-tag">Conducted by: <strong>{{ selectedTest.conductedBy }}</strong></span>
+            <span class="meta-tag ml-3">Timing: <strong>{{ selectedTest.timing }}</strong></span>
           </div>
 
-          <button
-            class="btn"
-            :class="store.isModuleCompleted(selectedTest.id) ? 'btn-success' : 'btn-secondary'"
-            @click="store.toggleModuleCompleted(selectedTest.id)"
-          >
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              class="btn-icon"
-            >
+          <button class="btn" :class="store.isModuleCompleted(selectedTest.id) ? 'btn-success' : 'btn-secondary'"
+            @click="store.toggleModuleCompleted(selectedTest.id)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon">
               <polyline points="20 6 9 17 4 12" />
             </svg>
             <span>{{
               store.isModuleCompleted(selectedTest.id) ? 'Completed' : 'Mark Complete (+50XP)'
-            }}</span>
+              }}</span>
           </button>
         </div>
 
@@ -417,13 +391,7 @@ const launchSimulator = (path) => {
           <!-- Guide Segment: Purpose -->
           <div class="segment border-blue">
             <h4>
-              <svg
-                class="seg-icon"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
+              <svg class="seg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <circle cx="12" cy="12" r="10" />
                 <line x1="12" y1="16" x2="12" y2="12" />
                 <line x1="12" y1="8" x2="12.01" y2="8" />
@@ -436,16 +404,8 @@ const launchSimulator = (path) => {
           <!-- Guide Segment: Mistakes -->
           <div class="segment border-red">
             <h4>
-              <svg
-                class="seg-icon text-red"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <path
-                  d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"
-                />
+              <svg class="seg-icon text-red" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
                 <line x1="12" y1="9" x2="12" y2="13" />
                 <line x1="12" y1="17" x2="12.01" y2="17" />
               </svg>
@@ -457,13 +417,7 @@ const launchSimulator = (path) => {
           <!-- Guide Segment: Strategy -->
           <div class="segment border-green">
             <h4>
-              <svg
-                class="seg-icon text-green"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
+              <svg class="seg-icon text-green" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <polygon points="5 3 19 12 5 21 5 3" />
               </svg>
               Preparation Mindset & Strategy
@@ -474,43 +428,22 @@ const launchSimulator = (path) => {
           <!-- Practice Options Row -->
           <div class="actions-row">
             <!-- Launch simulator if exists -->
-            <button
-              v-if="selectedTest.simulator"
-              class="btn btn-primary"
-              @click="launchSimulator(selectedTest.simulator)"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                class="btn-icon"
-              >
+            <button v-if="selectedTest.simulator" class="btn btn-primary"
+              @click="launchSimulator(selectedTest.simulator)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon">
                 <polygon points="5 3 19 12 5 21 5 3" />
               </svg>
               <span>Launch Simulator</span>
             </button>
 
             <!-- Linked PDF Documents -->
-            <div
-              class="pdf-links-container"
-              v-if="selectedTest.pdfs && selectedTest.pdfs.length > 0"
-            >
+            <div class="pdf-links-container" v-if="selectedTest.pdfs && selectedTest.pdfs.length > 0">
               <span class="pdf-label">Study Guidebooks:</span>
               <div class="pdf-buttons">
-                <button
-                  v-for="pdf in selectedTest.pdfs"
-                  :key="pdf.file"
-                  class="btn btn-secondary btn-sm"
-                  @click="openPdf(pdf.file)"
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    class="btn-icon text-glow"
-                  >
+                <button v-for="pdf in selectedTest.pdfs" :key="pdf.file" class="btn btn-secondary btn-sm"
+                  @click="openPdf(pdf.file)">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    class="btn-icon text-glow">
                     <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
                     <polyline points="14 2 14 8 20 8" />
                     <line x1="16" y1="13" x2="8" y2="13" />
@@ -802,7 +735,8 @@ const launchSimulator = (path) => {
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.85); /* Slightly darker solid overlay instead of blur */
+  background: rgba(0, 0, 0, 0.85);
+  /* Slightly darker solid overlay instead of blur */
   z-index: 1000;
   padding: 2rem;
 }
