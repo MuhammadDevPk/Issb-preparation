@@ -76,7 +76,7 @@ const goHome = () => {
 </script>
 
 <template>
-  <div class="auth-page flex-center">
+  <main class="auth-page flex-center">
     <div class="auth-container glass-card">
       <!-- Logo Header -->
       <div class="auth-header" @click="goHome">
@@ -85,12 +85,12 @@ const goHome = () => {
           <path d="M12 6L5 20H19L12 6Z" fill="currentColor" opacity="0.3" />
           <circle cx="12" cy="14" r="2" fill="currentColor" />
         </svg>
-        <h2>ISSB COMMAND</h2>
+        <span class="logo-title">ISSB COMMAND</span>
         <span class="sub-text">PREPARATION PORTAL</span>
       </div>
 
       <div class="auth-title">
-        <h3>Welcome Back, Candidate</h3>
+        <h1>Welcome Back, Candidate</h1>
         <p>Log in to access your dashboard and prep simulators.</p>
       </div>
 
@@ -132,7 +132,7 @@ const goHome = () => {
         </p>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <style scoped>
@@ -170,10 +170,13 @@ const goHome = () => {
   margin-bottom: 0.5rem;
 }
 
-.auth-header h2 {
+.auth-header .logo-title {
+  font-family: var(--font-heading);
+  font-weight: 700;
   font-size: 1.4rem;
   letter-spacing: 0.05em;
   margin: 0;
+  display: block;
 }
 
 .auth-header .sub-text {

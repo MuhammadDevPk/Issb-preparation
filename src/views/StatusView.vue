@@ -271,7 +271,7 @@ const checkApprovalStatus = async () => {
 </script>
 
 <template>
-  <div class="status-page">
+  <main class="status-page">
     <div class="status-container glass-card" :class="{ 'border-rejected': status === 'rejected' }">
       <!-- Top header bar -->
       <div class="status-header" @click="goHome" title="Return to Home Page">
@@ -280,7 +280,7 @@ const checkApprovalStatus = async () => {
           <path d="M12 6L5 20H19L12 6Z" fill="currentColor" opacity="0.3" />
           <circle cx="12" cy="14" r="2" fill="currentColor" />
         </svg>
-        <h2>ISSB COMMAND</h2>
+        <span class="logo-title">ISSB COMMAND</span>
         <span class="sub-text">PREPARATION PORTAL</span>
       </div>
 
@@ -580,7 +580,7 @@ const checkApprovalStatus = async () => {
         </div>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <style scoped>
@@ -632,10 +632,13 @@ const checkApprovalStatus = async () => {
   margin-bottom: 0.5rem;
 }
 
-.status-header h2 {
+.status-header .logo-title {
+  font-family: var(--font-heading);
+  font-weight: 700;
   font-size: 1.4rem;
   letter-spacing: 0.05em;
   margin: 0;
+  display: block;
 }
 
 .status-header .sub-text {

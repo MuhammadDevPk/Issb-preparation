@@ -85,7 +85,8 @@ const activeSimulatorSubTab = ref('wat') // wat, sct, srt
       </button>
     </header>
 
-    <!-- Hero Section -->
+    <main id="main-content">
+      <!-- Hero Section -->
     <section class="hero-section">
       <div class="hero-content">
         <span class="badge badge-accent">100% Target-Oriented Prep Portal</span>
@@ -765,6 +766,8 @@ const activeSimulatorSubTab = ref('wat') // wat, sct, srt
         <button @click="goToPortal" class="btn btn-primary btn-large">Enter Free Portal</button>
       </div>
     </section>
+
+    </main>
 
     <footer class="landing-footer">
       <p>&copy; 2026 ISSB COMMAND PREPARATION PORTAL. Built for future officers.</p>

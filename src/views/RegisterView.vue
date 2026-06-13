@@ -228,7 +228,7 @@ const goHome = () => {
 </script>
 
 <template>
-  <div class="register-page">
+  <main class="register-page">
     <div class="register-layout">
       <!-- Left side: Payment Instructions -->
       <div class="instructions-panel glass-card">
@@ -238,7 +238,7 @@ const goHome = () => {
             <path d="M12 6L5 20H19L12 6Z" fill="currentColor" opacity="0.3" />
             <circle cx="12" cy="14" r="2" fill="currentColor" />
           </svg>
-          <h2>ISSB COMMAND</h2>
+          <span class="logo-title">ISSB COMMAND</span>
           <span class="sub-text">PREPARATION PORTAL</span>
         </div>
 
@@ -255,7 +255,7 @@ const goHome = () => {
         </div>
 
         <div class="payment-steps">
-          <h4>Payment Verification Process</h4>
+          <h2>Payment Verification Process</h2>
 
           <div class="step">
             <span class="step-badge">1</span>
@@ -306,7 +306,7 @@ const goHome = () => {
       <!-- Right side: Registration Form -->
       <div class="form-panel glass-card">
         <div class="form-title">
-          <h3>Candidate Registration</h3>
+          <h1>Candidate Registration</h1>
           <p>Submit your details to register. You can upload payment screenshot now or later.</p>
         </div>
 
@@ -416,7 +416,7 @@ const goHome = () => {
         </div>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <style scoped>
@@ -461,10 +461,13 @@ const goHome = () => {
   color: var(--accent-cyan);
 }
 
-.panel-header h2 {
+.panel-header .logo-title {
+  font-family: var(--font-heading);
+  font-weight: 700;
   font-size: 1.2rem;
   letter-spacing: 0.05em;
   margin: 0;
+  display: block;
 }
 
 .panel-header .sub-text {
