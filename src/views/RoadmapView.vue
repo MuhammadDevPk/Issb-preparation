@@ -293,7 +293,7 @@ const drivePdfs = {
   'GTO - Model Planing .pdf':
     'https://drive.google.com/file/d/1N8IJeGMcrWOWmTwfUV3lEZsiMFhZanmb/preview',
   'GTO Tasks - Group Discussion & Lecturette.pdf':
-    'https://drive.google.com/file/d/1fTBFqwFKxCiOtyMwOyQLMRLskT7IV8ia/preview',
+    'https://drive.google.com/file/d/1JG-mzI6TmE2Px19PwTvjdQfsQXsTnk_u/preview',
   'ISSB FOR FILLING-CALL LETTER.pdf':
     'https://drive.google.com/file/d/1LL8epzLWwtrfKoPw8jjCLoDa91LX8vUv/preview',
   'ISSB FORM FILLING - 1st Day 4 Forms.pdf':
@@ -383,7 +383,7 @@ const launchSimulator = (path) => {
             </svg>
             <span>{{
               store.isModuleCompleted(selectedTest.id) ? 'Completed' : 'Mark Complete (+50XP)'
-              }}</span>
+            }}</span>
           </button>
         </div>
 
