@@ -169,18 +169,12 @@ const timeTaken = computed(() => {
         <div class="form-group">
           <label class="form-label">Select Language Sheet</label>
           <div class="lang-selector">
-            <button
-              class="btn"
-              :class="selectedLanguage === 'english' ? 'btn-primary' : 'btn-secondary'"
-              @click="selectedLanguage = 'english'"
-            >
+            <button class="btn" :class="selectedLanguage === 'english' ? 'btn-primary' : 'btn-secondary'"
+              @click="selectedLanguage = 'english'">
               English Sentence Sheet
             </button>
-            <button
-              class="btn ml-2"
-              :class="selectedLanguage === 'urdu' ? 'btn-primary' : 'btn-secondary'"
-              @click="selectedLanguage = 'urdu'"
-            >
+            <button class="btn ml-2" :class="selectedLanguage === 'urdu' ? 'btn-primary' : 'btn-secondary'"
+              @click="selectedLanguage = 'urdu'">
               Roman Urdu Sheet (e.g. "Raat ke waqt...")
             </button>
           </div>
@@ -209,13 +203,7 @@ const timeTaken = computed(() => {
       <div class="flex-center">
         <button class="btn btn-primary btn-large" @click="startTest">
           <span>START 6-MINUTE TIMED RUN</span>
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            class="btn-icon"
-          >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon">
             <polygon points="5 3 19 12 5 21 5 3" />
           </svg>
         </button>
@@ -240,13 +228,8 @@ const timeTaken = computed(() => {
         <div v-for="(starter, index) in currentStarters" :key="index" class="sentence-row">
           <span class="row-num">{{ index + 1 }}.</span>
           <span class="starter-label">{{ starter }}...</span>
-          <input
-            type="text"
-            class="form-input sentence-input"
-            v-model="completions[index]"
-            placeholder="Type completion..."
-            :tabindex="index + 1"
-          />
+          <input type="text" class="form-input sentence-input" v-model="completions[index]"
+            placeholder="Type completion..." :tabindex="index + 1" />
         </div>
       </div>
 
@@ -268,14 +251,11 @@ const timeTaken = computed(() => {
           <button class="btn btn-secondary mr-2" @click="testState = 'setup'; showAiReport = false; resetAnalysis()">
             Select Another Sheet
           </button>
-          <button
-            class="btn btn-ai"
-            :disabled="isAnalyzing"
-            @click="triggerAiAnalysis"
-            title="Get AI-powered ISSB psychological analysis"
-          >
+          <button class="btn btn-ai" :disabled="isAnalyzing" @click="triggerAiAnalysis"
+            title="Get AI-powered ISSB psychological analysis">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z" />
+              <path
+                d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z" />
               <circle cx="9" cy="13" r="1" fill="currentColor" />
               <circle cx="15" cy="13" r="1" fill="currentColor" />
             </svg>
@@ -291,7 +271,7 @@ const timeTaken = computed(() => {
           <span class="lbl">Unfinished Sentences</span>
           <span class="val" :class="26 - completedCount > 2 ? 'text-red' : 'text-green'">{{
             26 - completedCount
-          }}</span>
+            }}</span>
           <span class="desc">Aim for 0 to 2 blank sheets max.</span>
         </div>
         <div class="glass-card metric-item border-green">
@@ -325,12 +305,8 @@ const timeTaken = computed(() => {
                   <td>{{ idx + 1 }}</td>
                   <td class="starter-col">{{ starter }}...</td>
                   <td class="completion-col">
-                    <span v-if="!completions[idx].trim()" class="text-red italic"
-                      >Left Empty (Timed Out)</span
-                    >
-                    <span v-else class="text-highlight"
-                      ><strong>{{ completions[idx] }}</strong></span
-                    >
+                    <span v-if="!completions[idx].trim()" class="text-red italic">Left Empty (Timed Out)</span>
+                    <span v-else class="text-highlight"><strong>{{ completions[idx] }}</strong></span>
                   </td>
                 </tr>
               </tbody>
@@ -381,7 +357,8 @@ const timeTaken = computed(() => {
         <div class="ai-section-divider">
           <span class="ai-section-label">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z" />
+              <path
+                d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z" />
             </svg>
             AI Psychological Analysis — SCT
           </span>
@@ -399,24 +376,21 @@ const timeTaken = computed(() => {
         <!-- Error state -->
         <div v-else-if="analysisError" class="ai-error-panel glass-card">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="10"/>
-            <line x1="15" y1="9" x2="9" y2="15"/>
-            <line x1="9" y1="9" x2="15" y2="15"/>
+            <circle cx="12" cy="12" r="10" />
+            <line x1="15" y1="9" x2="9" y2="15" />
+            <line x1="9" y1="9" x2="15" y2="15" />
           </svg>
           <div>
             <strong>Analysis Failed</strong>
             <p>{{ analysisError }}</p>
-            <button class="btn btn-secondary" @click="triggerAiAnalysis" style="margin-top: 0.75rem; font-size: 0.85rem;">Retry</button>
+            <button class="btn btn-secondary" @click="triggerAiAnalysis"
+              style="margin-top: 0.75rem; font-size: 0.85rem;">Retry</button>
           </div>
         </div>
 
         <!-- Results -->
-        <AiAnalysisReport
-          v-else-if="analysisResult"
-          :result="analysisResult"
-          test-type="SCT"
-          :provider-name="currentProvider"
-        />
+        <AiAnalysisReport v-else-if="analysisResult" :result="analysisResult" test-type="SCT"
+          :provider-name="currentProvider" />
       </div>
     </div>
   </div>
