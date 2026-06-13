@@ -42,9 +42,10 @@ const goToLogin = () => {
 const goToPortal = () => {
   if (authStore.user) {
     const p = authStore.profile
+    const isAdmin = p?.role === 'admin'
     const isApproved = p?.status === 'approved'
     const isTrialActive = p?.trial_ends_at && new Date(p.trial_ends_at).getTime() > Date.now()
-    if (isApproved || isTrialActive) {
+    if (isAdmin || isApproved || isTrialActive) {
       router.push('/dashboard')
     } else {
       router.push('/status')
@@ -1906,11 +1907,39 @@ const activeSimulatorSubTab = ref('wat') // wat, sct, srt
   
   .showcase-tabs {
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.5rem;
+    gap: 0.75rem;
+    scrollbar-width: none;
+  }
+  
+  .showcase-tabs::-webkit-scrollbar {
+    display: none;
   }
   
   .tab-btn {
-    flex: 1 1 calc(50% - 0.5rem);
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+  
+  .roadmap-subtabs {
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding-bottom: 0.5rem !important;
+    gap: 0.5rem !important;
+    scrollbar-width: none !important;
+  }
+  
+  .roadmap-subtabs::-webkit-scrollbar {
+    display: none !important;
+  }
+  
+  .subtab-btn {
+    flex: 0 0 auto !important;
+    white-space: nowrap !important;
   }
   
   .panel-layout {
@@ -1919,9 +1948,7 @@ const activeSimulatorSubTab = ref('wat') // wat, sct, srt
 }
 
 @media (max-width: 576px) {
-  .tab-btn {
-    flex: 1 1 100%;
-  }
+  /* No longer need to make tab-btn block on small mobile since they scroll horizontally */
 }
 
 /* Reviews Section Styles */

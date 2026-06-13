@@ -10,7 +10,7 @@ export const useAuthStore = defineStore('auth', () => {
   const fetchProfile = async (userId) => {
     try {
       const { data, error } = await supabase.from('profiles').select('*').eq('id', userId).single()
-
+      console.log('user profile data', data)
       if (error) throw error
       profile.value = data
       return data
@@ -21,6 +21,10 @@ export const useAuthStore = defineStore('auth', () => {
     }
   }
 
+  // Flags to temporarily skip session validation during registration or login
+  const isRegistering = ref(false)
+  const isLoggingIn = ref(false)
+
   const initialize = async () => {
     loading.value = true
     try {
@@ -30,7 +34,7 @@ export const useAuthStore = defineStore('auth', () => {
       if (session) {
         user.value = session.user
         const p = await fetchProfile(session.user.id)
-        
+
         // Session ID validation check
         const localToken = localStorage.getItem('issb_session_token')
         if (p && p.active_session_id && p.active_session_id !== localToken) {
@@ -49,14 +53,14 @@ export const useAuthStore = defineStore('auth', () => {
 
     // Subscribe to auth state changes
     supabase.auth.onAuthStateChange(async (event, session) => {
-      // Skip during registration — the register() function handles its own flow
-      if (isRegistering.value) return
+      // Skip during registration or login — these functions handle their own flow
+      if (isRegistering.value || isLoggingIn.value) return
 
       loading.value = true
       if (session) {
         user.value = session.user
         const p = await fetchProfile(session.user.id)
-        
+
         // Session ID validation check
         const localToken = localStorage.getItem('issb_session_token')
         if (p && p.active_session_id && p.active_session_id !== localToken) {
@@ -72,26 +76,31 @@ export const useAuthStore = defineStore('auth', () => {
   }
 
   const login = async (email, password) => {
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    })
-    if (error) throw error
-    user.value = data.user
-    
-    // Generate active session token
-    const sessionToken = Math.random().toString(36).substring(2) + Date.now().toString(36)
-    localStorage.setItem('issb_session_token', sessionToken)
-    
-    // Update active_session_id in database
-    await supabase.from('profiles').update({ active_session_id: sessionToken }).eq('id', data.user.id)
-    
-    await fetchProfile(data.user.id)
-    return data
-  }
+    isLoggingIn.value = true
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      })
+      if (error) throw error
+      user.value = data.user
 
-  // Flag to temporarily skip session validation during registration
-  const isRegistering = ref(false)
+      // Generate active session token
+      const sessionToken = Math.random().toString(36).substring(2) + Date.now().toString(36)
+      localStorage.setItem('issb_session_token', sessionToken)
+
+      // Update active_session_id in database
+      await supabase
+        .from('profiles')
+        .update({ active_session_id: sessionToken })
+        .eq('id', data.user.id)
+
+      await fetchProfile(data.user.id)
+      return data
+    } finally {
+      isLoggingIn.value = false
+    }
+  }
 
   const register = async (email, password, metadata) => {
     isRegistering.value = true
@@ -115,7 +124,7 @@ export const useAuthStore = defineStore('auth', () => {
       // Wait a moment for the DB trigger to create the profile
       let profileData = null
       for (let attempt = 0; attempt < 5; attempt++) {
-        await new Promise(resolve => setTimeout(resolve, 600))
+        await new Promise((resolve) => setTimeout(resolve, 600))
         profileData = await fetchProfile(data.user.id)
         if (profileData) break
       }
@@ -123,10 +132,13 @@ export const useAuthStore = defineStore('auth', () => {
       // Generate active session token
       const sessionToken = Math.random().toString(36).substring(2) + Date.now().toString(36)
       localStorage.setItem('issb_session_token', sessionToken)
-      
+
       // Update active_session_id in database
-      await supabase.from('profiles').update({ active_session_id: sessionToken }).eq('id', data.user.id)
-      
+      await supabase
+        .from('profiles')
+        .update({ active_session_id: sessionToken })
+        .eq('id', data.user.id)
+
       // Re-fetch to get the updated session token in the profile
       await fetchProfile(data.user.id)
     }

@@ -218,6 +218,32 @@ onMounted(() => {
 
       <!-- Side Navigation Panel -->
       <aside class="navigation-panel glass-card" :class="{ 'mobile-open': isMobileMenuOpen }">
+        <!-- Mobile Status Panel (Visible only on mobile inside drawer) -->
+        <div class="mobile-status-panel">
+          <div class="status-widget streak-widget">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M8.5 14.5A2.5 2.5 0 0011 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 11-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 002.5 2.5z" />
+            </svg>
+            <div class="widget-details">
+              <span class="label">Daily Streak</span>
+              <span class="value">{{ streak }} Days</span>
+            </div>
+          </div>
+
+          <div class="status-widget rank-widget">
+            <div class="widget-details">
+              <span class="label">Current Rank</span>
+              <span class="value text-glow">{{ rankTitle }}</span>
+            </div>
+            <div class="rank-progress-container">
+              <div
+                class="rank-progress-bar"
+                :style="{ width: Math.min((experience / 1000) * 100, 100) + '%' }"
+              ></div>
+            </div>
+          </div>
+        </div>
+
         <nav class="nav-menu">
           <RouterLink to="/dashboard" class="nav-item" active-class="active">
             <svg
@@ -721,6 +747,10 @@ onMounted(() => {
   to { opacity: 1; }
 }
 
+.mobile-status-panel {
+  display: none;
+}
+
 /* Responsive Overrides */
 @media (max-width: 992px) {
   .hamburger-btn {
@@ -748,6 +778,7 @@ onMounted(() => {
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     padding: 6rem 1.25rem 1.5rem 1.25rem;
+    overflow-y: auto;
   }
 
   .navigation-panel.mobile-open {
@@ -756,6 +787,78 @@ onMounted(() => {
 
   .content-screen {
     block-size: auto;
+  }
+
+  .header-status {
+    display: none;
+  }
+
+  .mobile-status-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--border-radius-md);
+    margin-bottom: 1.5rem;
+  }
+
+  .mobile-status-panel .status-widget {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .mobile-status-panel .streak-widget {
+    color: var(--accent-gold);
+  }
+
+  .mobile-status-panel .rank-widget {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.35rem;
+  }
+
+  .mobile-status-panel .widget-details {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mobile-status-panel .widget-details .label {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .mobile-status-panel .widget-details .value {
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .mobile-status-panel .rank-progress-container {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 999px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 242, 254, 0.08);
+    margin-top: 0.25rem;
+  }
+
+  .mobile-status-panel .rank-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-cyan), var(--accent-green));
+    border-radius: 999px;
+    box-shadow: 0 0 8px var(--accent-cyan-glow);
+  }
+  
+  .mobile-status-panel .icon {
+    width: 20px;
+    height: 20px;
   }
 }
 

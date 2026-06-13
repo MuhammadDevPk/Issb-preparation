@@ -203,7 +203,7 @@ const handleRegister = async () => {
     // Profile is already fetched inside authStore.register() with retry logic
     const profile = authStore.profile
     setTimeout(() => {
-      if (profile?.status === 'approved') {
+      if (profile?.role === 'admin' || profile?.status === 'approved') {
         router.push('/dashboard')
       } else if (profile?.trial_ends_at && new Date(profile.trial_ends_at).getTime() > Date.now()) {
         router.push('/dashboard')

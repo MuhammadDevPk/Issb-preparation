@@ -46,8 +46,8 @@ const handleLogin = async () => {
       await supabase.from('profiles').update({ ip_address: ip }).eq('id', profile.id)
     }
 
-    // Redirect logic: check approval or free trial eligibility
-    if (profile?.status === 'approved') {
+    // Redirect logic: check admin, approval, or free trial eligibility
+    if (profile?.role === 'admin' || profile?.status === 'approved') {
       router.push('/dashboard')
     } else if (profile?.trial_ends_at && new Date(profile.trial_ends_at).getTime() > Date.now()) {
       router.push('/dashboard')
@@ -81,12 +81,7 @@ const goHome = () => {
       <!-- Logo Header -->
       <div class="auth-header" @click="goHome">
         <svg class="icon-logo" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M12 2L2 22H22L12 2Z"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linejoin="round"
-          />
+          <path d="M12 2L2 22H22L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
           <path d="M12 6L5 20H19L12 6Z" fill="currentColor" opacity="0.3" />
           <circle cx="12" cy="14" r="2" fill="currentColor" />
         </svg>
@@ -101,13 +96,7 @@ const goHome = () => {
 
       <!-- Error Alert -->
       <div v-if="errorMessage" class="error-alert">
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          class="alert-icon"
-        >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="alert-icon">
           <circle cx="12" cy="12" r="10" />
           <line x1="12" y1="8" x2="12" y2="12" />
           <line x1="12" y1="16" x2="12.01" y2="16" />
@@ -119,28 +108,14 @@ const goHome = () => {
       <form @submit.prevent="handleLogin" class="auth-form">
         <div class="form-group">
           <label for="email" class="form-label">Email Address</label>
-          <input
-            v-model="email"
-            type="email"
-            id="email"
-            class="form-input"
-            placeholder="e.g. candidate@example.com"
-            required
-            :disabled="isSubmitting"
-          />
+          <input v-model="email" type="email" id="email" class="form-input" placeholder="e.g. candidate@example.com"
+            required :disabled="isSubmitting" />
         </div>
 
         <div class="form-group">
           <label for="password" class="form-label">Password</label>
-          <input
-            v-model="password"
-            type="password"
-            id="password"
-            class="form-input"
-            placeholder="••••••••"
-            required
-            :disabled="isSubmitting"
-          />
+          <input v-model="password" type="password" id="password" class="form-input" placeholder="••••••••" required
+            :disabled="isSubmitting" />
         </div>
 
         <button type="submit" class="btn btn-primary btn-submit" :disabled="isSubmitting">
@@ -164,11 +139,9 @@ const goHome = () => {
 .auth-page {
   min-height: 100vh;
   padding: 2rem;
-  background: radial-gradient(
-    circle at 10% 20%,
-    rgba(2, 132, 199, 0.05) 0%,
-    rgba(241, 245, 249, 1) 90%
-  );
+  background: radial-gradient(circle at 10% 20%,
+      rgba(2, 132, 199, 0.05) 0%,
+      rgba(241, 245, 249, 1) 90%);
 }
 
 .auth-container {

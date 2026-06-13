@@ -134,7 +134,7 @@ router.beforeEach(async (to, from, next) => {
   }
 
   const profile = authStore.profile
-  const isApproved = profile?.status === 'approved' || isTrialActive(profile)
+  const isApproved = profile?.status === 'approved' || profile?.role === 'admin' || isTrialActive(profile)
   const isAdmin = profile?.role === 'admin'
 
   // 1. Guard for Authenticated Only routes
