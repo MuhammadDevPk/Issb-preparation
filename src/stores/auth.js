@@ -59,11 +59,11 @@ export const useAuthStore = defineStore('auth', () => {
       loading.value = true
       if (session) {
         user.value = session.user
-        const p = await fetchProfile(session.user.id)
+        await fetchProfile(session.user.id)
 
         // Session ID validation check
         const localToken = localStorage.getItem('issb_session_token')
-        if (p && p.active_session_id && p.active_session_id !== localToken) {
+        if (profile.value && profile.value.active_session_id && profile.value.active_session_id !== localToken) {
           console.warn('Session mismatch on state change. Logging out.')
           await logout()
         }
@@ -122,11 +122,10 @@ export const useAuthStore = defineStore('auth', () => {
     user.value = data.user
     if (data.user) {
       // Wait a moment for the DB trigger to create the profile
-      let profileData = null
       for (let attempt = 0; attempt < 5; attempt++) {
         await new Promise((resolve) => setTimeout(resolve, 600))
-        profileData = await fetchProfile(data.user.id)
-        if (profileData) break
+        const p = await fetchProfile(data.user.id)
+        if (p) break
       }
 
       // Generate active session token

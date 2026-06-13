@@ -2,9 +2,20 @@
 import { ref, computed, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { usePreparationStore } from '../stores/preparation'
+import { useAiAnalysis } from '../composables/useAiAnalysis.js'
+import AiAnalysisReport from '../components/AiAnalysisReport.vue'
 
 const store = usePreparationStore()
 const router = useRouter()
+
+// AI Analysis
+const { isAnalyzing, analysisResult, analysisError, currentProvider, analyzeSRT, resetAnalysis } = useAiAnalysis()
+const showAiReport = ref(false)
+
+const triggerAiAnalysis = async () => {
+  showAiReport.value = true
+  await analyzeSRT(responses.value)
+}
 
 const testState = ref('setup') // 'setup', 'active', 'results'
 const timerDuration = ref(30) // 30 seconds per situation
@@ -87,6 +98,8 @@ const handleKeyPress = (e) => {
 const endTest = () => {
   clearInterval(timerInterval)
   testState.value = 'results'
+  showAiReport.value = false
+  resetAnalysis()
 
   // Save in store
   store.saveSrtSession({
@@ -214,7 +227,20 @@ const totalAnswered = computed(() => {
           <span class="badge badge-green">Saved to Logs (+100 XP)</span>
         </div>
         <div class="actions">
-          <button class="btn btn-secondary mr-2" @click="testState = 'setup'">Retake Test</button>
+          <button class="btn btn-secondary mr-2" @click="testState = 'setup'; showAiReport = false; resetAnalysis()">Retake Test</button>
+          <button
+            class="btn btn-ai"
+            :disabled="isAnalyzing"
+            @click="triggerAiAnalysis"
+            title="Get AI-powered ISSB psychological analysis"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z" />
+              <circle cx="9" cy="13" r="1" fill="currentColor" />
+              <circle cx="15" cy="13" r="1" fill="currentColor" />
+            </svg>
+            {{ isAnalyzing ? 'Analyzing...' : 'Analyze with AI' }}
+          </button>
           <button class="btn btn-primary" @click="goToRoadmap">Back to Roadmap</button>
         </div>
       </div>
@@ -304,6 +330,49 @@ const totalAnswered = computed(() => {
             </div>
           </div>
         </div>
+      </div>
+
+      <!-- ── AI Analysis Section ── -->
+      <div v-if="showAiReport" class="ai-analysis-section">
+        <div class="ai-section-divider">
+          <span class="ai-section-label">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z" />
+            </svg>
+            AI Psychological Analysis — SRT
+          </span>
+        </div>
+
+        <!-- Loading state -->
+        <div v-if="isAnalyzing" class="ai-loading-panel glass-card">
+          <div class="ai-spinner"></div>
+          <div class="ai-loading-text">
+            <strong>Analyzing your SRT reactions...</strong>
+            <span>Evaluating situations for leadership, realism, and social intelligence</span>
+          </div>
+        </div>
+
+        <!-- Error state -->
+        <div v-else-if="analysisError" class="ai-error-panel glass-card">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="15" y1="9" x2="9" y2="15"/>
+            <line x1="9" y1="9" x2="15" y2="15"/>
+          </svg>
+          <div>
+            <strong>Analysis Failed</strong>
+            <p>{{ analysisError }}</p>
+            <button class="btn btn-secondary" @click="triggerAiAnalysis" style="margin-top: 0.75rem; font-size: 0.85rem;">Retry</button>
+          </div>
+        </div>
+
+        <!-- Results -->
+        <AiAnalysisReport
+          v-else-if="analysisResult"
+          :result="analysisResult"
+          test-type="SRT"
+          :provider-name="currentProvider"
+        />
       </div>
     </div>
   </div>
@@ -588,5 +657,102 @@ const totalAnswered = computed(() => {
 
 .check-item p em {
   color: var(--accent-cyan);
+}
+
+/* ── AI Analysis Styles ── */
+.btn-ai {
+  background: linear-gradient(135deg, #7c3aed, #4f46e5);
+  border-color: #7c3aed;
+  color: #ffffff;
+  box-shadow: 0 2px 10px rgba(124, 58, 237, 0.25);
+}
+
+.btn-ai:hover:not(:disabled) {
+  background: linear-gradient(135deg, #6d28d9, #4338ca);
+  box-shadow: 0 4px 18px rgba(124, 58, 237, 0.35);
+  transform: translateY(-2px);
+}
+
+.ai-analysis-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding-block-start: 0.5rem;
+}
+
+.ai-section-divider {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.ai-section-divider::before,
+.ai-section-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(124, 58, 237, 0.2);
+}
+
+.ai-section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #7c3aed;
+  white-space: nowrap;
+  background: rgba(124, 58, 237, 0.06);
+  border: 1px solid rgba(124, 58, 237, 0.2);
+  border-radius: 9999px;
+  padding: 0.2rem 0.75rem;
+}
+
+.ai-loading-panel {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.5rem 2rem;
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.04), rgba(3, 194, 252, 0.04));
+  border-color: rgba(124, 58, 237, 0.2);
+}
+
+.ai-loading-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.ai-loading-text strong {
+  color: var(--text-primary);
+  font-size: 0.95rem;
+}
+
+.ai-loading-text span {
+  color: var(--text-muted);
+  font-size: 0.82rem;
+}
+
+.ai-error-panel {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  border-color: rgba(185, 28, 28, 0.3);
+  background: rgba(185, 28, 28, 0.04);
+  color: var(--accent-red);
+}
+
+.ai-error-panel strong {
+  display: block;
+  margin-block-end: 0.25rem;
+  color: var(--accent-red);
+}
+
+.ai-error-panel p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
 }
 </style>

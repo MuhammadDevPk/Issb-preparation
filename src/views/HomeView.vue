@@ -31,14 +31,6 @@ onMounted(() => {
   fetchSettings()
 })
 
-const goToRegister = () => {
-  router.push('/register')
-}
-
-const goToLogin = () => {
-  router.push('/login')
-}
-
 const goToPortal = () => {
   if (authStore.user) {
     const p = authStore.profile
