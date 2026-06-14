@@ -11,7 +11,23 @@ export const useAuthStore = defineStore('auth', () => {
     try {
       const { data, error } = await supabase.from('profiles').select('*').eq('id', userId).single()
       console.log('user profile data', data)
-      if (error) throw error
+      if (error) {
+        // If profile is missing (PGRST116 or 406 Not Acceptable), try to self-heal by calling create_profile_if_missing RPC
+        if (error.code === 'PGRST116' || error.message?.includes('PGRST116') || error.status === 406) {
+          console.warn('Profile missing for user. Attempting to self-heal via RPC...')
+          const { data: healedData, error: healError } = await supabase.rpc('create_profile_if_missing')
+          if (healError) {
+            console.error('Failed to self-heal profile:', healError)
+            throw error // Throw original error if self-heal fails
+          }
+          if (healedData) {
+            console.log('Profile healed successfully:', healedData)
+            profile.value = healedData
+            return healedData
+          }
+        }
+        throw error
+      }
       if (data && data.deleted_at) {
         profile.value = null
         return null
@@ -96,21 +112,27 @@ export const useAuthStore = defineStore('auth', () => {
       if (error) throw error
       user.value = data.user
 
-      // Generate active session token
-      const sessionToken = Math.random().toString(36).substring(2) + Date.now().toString(36)
-      localStorage.setItem('issb_session_token', sessionToken)
-
-      // Update active_session_id in database
-      await supabase
-        .from('profiles')
-        .update({ active_session_id: sessionToken })
-        .eq('id', data.user.id)
-
+      // Fetch profile first to ensure it exists (and self-heals if missing)
       const p = await fetchProfile(data.user.id)
       if (!p) {
         await logout()
         throw new Error('This account has been deleted or disabled.')
       }
+
+      // Generate active session token
+      const sessionToken = Math.random().toString(36).substring(2) + Date.now().toString(36)
+      localStorage.setItem('issb_session_token', sessionToken)
+
+      // Update active_session_id in database now that profile is guaranteed to exist
+      await supabase
+        .from('profiles')
+        .update({ active_session_id: sessionToken })
+        .eq('id', data.user.id)
+
+      // Sync the local active session token in state to prevent session mismatch logouts on navigation
+      p.active_session_id = sessionToken
+      profile.value = p
+
       return data
     } finally {
       isLoggingIn.value = false
