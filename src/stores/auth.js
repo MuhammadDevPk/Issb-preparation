@@ -54,45 +54,71 @@ export const useAuthStore = defineStore('auth', () => {
     }
 
     loading.value = true
-    return new Promise((resolve) => {
-      let isInitialCallResolved = false
 
-      const resolveInit = () => {
-        if (!isInitialCallResolved) {
-          isInitialCallResolved = true
-          loading.value = false
-          resolve()
-        }
+    try {
+      // Step 1: Use getSession() directly for deterministic initial auth restore.
+      // This is more reliable than onAuthStateChange for the initial load because
+      // it guarantees the session headers are propagated before we proceed.
+      const { data: { session }, error: sessionError } = await supabase.auth.getSession()
+      
+      if (sessionError) {
+        console.error('Error getting session:', sessionError)
       }
 
-      // Safety fallback timeout to prevent blocking routing guards
-      const timeoutId = setTimeout(resolveInit, 2500)
+      if (session) {
+        user.value = session.user
 
-      if (authSubscription) {
-        authSubscription.unsubscribe()
+        // Retry fetchProfile with delays to handle Supabase REST client header propagation race
+        let profileData = null
+        for (let attempt = 0; attempt < 3; attempt++) {
+          profileData = await fetchProfile(session.user.id)
+          if (profileData) break
+          // Small delay before retry to allow headers to propagate
+          await new Promise(r => setTimeout(r, 300 * (attempt + 1)))
+        }
+        
+        if (!profileData) {
+          console.warn('Could not load profile after retries during initialize, but keeping session alive.')
+          // Don't log out here — the profile might load later. 
+          // The router guard will handle the final check.
+        }
+      } else {
+        user.value = null
+        profile.value = null
+      }
+    } catch (e) {
+      console.error('Error during auth initialization:', e)
+    } finally {
+      loading.value = false
+    }
+
+    // Step 2: Set up onAuthStateChange for FUTURE auth events only (login, logout, token refresh).
+    // We skip INITIAL_SESSION since we already handled it above with getSession().
+    if (authSubscription) {
+      authSubscription.unsubscribe()
+    }
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
+      // Skip the initial session event — we already handled it above
+      if (event === 'INITIAL_SESSION') return
+      
+      // Skip if a registration or login is in progress (they manage state themselves)
+      if (isRegistering.value || isLoggingIn.value) return
+
+      if (event === 'SIGNED_OUT') {
+        user.value = null
+        profile.value = null
+        return
       }
 
-      const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
-        if (isRegistering.value || isLoggingIn.value) return
-
-        if (session) {
-          user.value = session.user
-          const p = await fetchProfile(session.user.id)
-          if (!p && event !== 'SIGNED_OUT') {
-            console.warn('Profile not found or soft-deleted on auth change. Logging out.')
-            await logout()
-          }
-        } else {
-          user.value = null
-          profile.value = null
-        }
-
-        clearTimeout(timeoutId)
-        resolveInit()
-      })
-
-      authSubscription = subscription
+      if (session) {
+        user.value = session.user
+        // For TOKEN_REFRESHED or SIGNED_IN events, refresh the profile
+        await fetchProfile(session.user.id)
+      }
     })
+
+    authSubscription = subscription
   }
 
   const login = async (email, password) => {

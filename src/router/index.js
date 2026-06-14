@@ -130,6 +130,24 @@ router.beforeEach(async (to, from, next) => {
 
   const isAuthenticated = !!authStore.user
 
+  // Fetch profile if authenticated but profile isn't loaded (handles refresh/deep-link race)
+  if (isAuthenticated && !authStore.profile) {
+    let profileLoaded = false
+    for (let attempt = 0; attempt < 3; attempt++) {
+      const p = await authStore.fetchProfile(authStore.user.id)
+      if (p) {
+        profileLoaded = true
+        break
+      }
+      await new Promise(r => setTimeout(r, 400 * (attempt + 1)))
+    }
+    if (!profileLoaded) {
+      console.warn('Profile could not be loaded after retries. Redirecting to login.')
+      await authStore.logout()
+      return next({ name: 'login' })
+    }
+  }
+
   const profile = authStore.profile
   const isApproved = profile?.status === 'approved' || profile?.role === 'admin' || isTrialActive(profile)
   const isAdmin = profile?.role === 'admin'
