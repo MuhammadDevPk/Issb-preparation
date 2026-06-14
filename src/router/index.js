@@ -7,6 +7,7 @@ const RoadmapView = () => import('../views/RoadmapView.vue')
 const WatSimulator = () => import('../views/WatSimulator.vue')
 const SctSimulator = () => import('../views/SctSimulator.vue')
 const SrtSimulator = () => import('../views/SrtSimulator.vue')
+const OpiSimulator = () => import('../views/OpiSimulator.vue')
 const ObstaclesSimulator = () => import('../views/ObstaclesSimulator.vue')
 const LoginView = () => import('../views/LoginView.vue')
 const RegisterView = () => import('../views/RegisterView.vue')
@@ -83,6 +84,11 @@ const router = createRouter({
       path: '/simulator/srt',
       name: 'srt-simulator',
       component: SrtSimulator,
+    },
+    {
+      path: '/simulator/opi',
+      name: 'opi-simulator',
+      component: OpiSimulator,
     },
     {
       path: '/simulator/obstacles',

@@ -342,6 +342,7 @@ const goToStatus = () => {
             <button class="btn btn-primary btn-sm" @click="goToSimulator('wat')">WAT Simulator</button>
             <button class="btn btn-primary btn-sm" @click="goToSimulator('sct')">SCT Sheet</button>
             <button class="btn btn-primary btn-sm" @click="goToSimulator('srt')">SRT Trainer</button>
+            <button class="btn btn-primary btn-sm" @click="goToSimulator('opi')">OPI Inventory</button>
             <button class="btn btn-primary btn-sm" @click="goToSimulator('obstacles')">GTO Obstacles</button>
           </div>
         </template>
@@ -445,6 +446,7 @@ const goToStatus = () => {
             <button class="btn btn-secondary btn-sm" @click="goToSimulator('wat')">WAT Simulator</button>
             <button class="btn btn-secondary btn-sm" @click="goToSimulator('sct')">SCT Sheet Trainer</button>
             <button class="btn btn-secondary btn-sm" @click="goToSimulator('srt')">SRT Crisis Trainer</button>
+            <button class="btn btn-secondary btn-sm" @click="goToSimulator('opi')">OPI Inventory</button>
           </div>
         </template>
         <template v-else>

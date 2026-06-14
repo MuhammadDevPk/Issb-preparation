@@ -329,6 +329,19 @@ onMounted(() => {
             <span>SRT Trainer</span>
           </RouterLink>
 
+          <RouterLink to="/simulator/opi" class="nav-item" active-class="active">
+            <svg
+              class="nav-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+            </svg>
+            <span>OPI Simulator</span>
+          </RouterLink>
+
           <RouterLink to="/simulator/obstacles" class="nav-item" active-class="active">
             <svg
               class="nav-icon"

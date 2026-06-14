@@ -12,6 +12,7 @@ export const usePreparationStore = defineStore('preparation', () => {
   const watSessions = ref([])
   const sctSessions = ref([])
   const srtSessions = ref([])
+  const opiSessions = ref([])
   const obstacleRoute = ref([])
 
   // Initialize store from localStorage on mount
@@ -44,6 +45,11 @@ export const usePreparationStore = defineStore('preparation', () => {
     const storedRoute = localStorage.getItem('issb_obstacle_route')
     if (storedRoute) {
       obstacleRoute.value = JSON.parse(storedRoute)
+    }
+
+    const storedOpi = localStorage.getItem('issb_opi_sessions')
+    if (storedOpi) {
+      opiSessions.value = JSON.parse(storedOpi)
     }
   }
 
@@ -102,6 +108,12 @@ export const usePreparationStore = defineStore('preparation', () => {
     addXP(30) // 30 XP for designing a route
   }
 
+  const saveOpiSession = (sessionData) => {
+    opiSessions.value.unshift(sessionData)
+    localStorage.setItem('issb_opi_sessions', JSON.stringify(opiSessions.value))
+    addXP(100)
+  }
+
   const updateWatSessionAi = (date, aiAnalysis) => {
     const session = watSessions.value.find((s) => s.date === date)
     if (session) {
@@ -126,11 +138,20 @@ export const usePreparationStore = defineStore('preparation', () => {
     }
   }
 
+  const updateOpiSessionAi = (date, aiAnalysis) => {
+    const session = opiSessions.value.find((s) => s.date === date)
+    if (session) {
+      session.aiAnalysis = aiAnalysis
+      localStorage.setItem('issb_opi_sessions', JSON.stringify(opiSessions.value))
+    }
+  }
+
   const clearHistory = () => {
     completedModules.value = []
     watSessions.value = []
     sctSessions.value = []
     srtSessions.value = []
+    opiSessions.value = []
     obstacleRoute.value = []
     xp.value = 120
     localStorage.removeItem('issb_completed_modules')
@@ -138,6 +159,7 @@ export const usePreparationStore = defineStore('preparation', () => {
     localStorage.removeItem('issb_wat_sessions')
     localStorage.removeItem('issb_sct_sessions')
     localStorage.removeItem('issb_srt_sessions')
+    localStorage.removeItem('issb_opi_sessions')
     localStorage.removeItem('issb_obstacle_route')
     window.dispatchEvent(new CustomEvent('issb-xp-updated', { detail: 120 }))
   }
@@ -148,6 +170,7 @@ export const usePreparationStore = defineStore('preparation', () => {
     watSessions,
     sctSessions,
     srtSessions,
+    opiSessions,
     obstacleRoute,
     toggleModuleCompleted,
     isModuleCompleted,
@@ -155,10 +178,12 @@ export const usePreparationStore = defineStore('preparation', () => {
     saveWatSession,
     saveSctSession,
     saveSrtSession,
+    saveOpiSession,
     saveObstacleRoute,
     updateWatSessionAi,
     updateSctSessionAi,
     updateSrtSessionAi,
+    updateOpiSessionAi,
     clearHistory,
   }
 })

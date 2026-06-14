@@ -7,7 +7,11 @@ import router from './router'
 import './assets/main.css'
 
 // Initialize Vercel Analytics
-inject()
+try {
+  inject()
+} catch (e) {
+  console.warn('Vercel Analytics blocked or failed to inject:', e)
+}
 
 const app = createApp(App)
 

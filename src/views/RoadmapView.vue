@@ -169,7 +169,7 @@ const roadmapData = {
       pdfs: [
         { name: 'Personality Test OPI Guide', file: 'Physc Day Test - Personality Test (OPI).pdf' },
       ],
-      simulator: null,
+      simulator: '/simulator/opi',
     },
   ],
   3: [

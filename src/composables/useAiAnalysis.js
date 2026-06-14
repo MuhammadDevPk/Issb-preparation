@@ -173,6 +173,50 @@ Respond ONLY with JSON:
   "recommendations": ["<tip 1>", "<tip 2>", "<tip 3>"]
 }`
 
+const OPI_SYSTEM_PROMPT = `${ISSB_EXPERT_BASE}
+
+ISSB OPI (Occupational Personality Inventory) Evaluation Criteria:
+The OPI evaluates the candidate across the Big Five OCEAN personality traits:
+1. Openness to Experience (Intellect, Aesthetics, Adventurousness)
+2. Conscientiousness (Duty, Grit, Orderliness, Achievement Striving)
+3. Extraversion (Leadership, Initiative, Assertiveness, Gregariousness)
+4. Agreeableness (Cooperation, Trust, Altruism, Humility)
+5. Emotional Stability / Low Neuroticism (Stress Tolerance, Panic Control, Temper Control)
+
+At ISSB, psychologists look for:
+- High Conscientiousness (responsible, disciplined, structured, goal-driven)
+- High Emotional Stability / Low Neuroticism (resilient under fire, calm, stable, self-confident)
+- High Extraversion (ready to lead, assertive, communicative, active, physically driven)
+- High Agreeableness (team player, empathetic, cooperative, but NOT submissive or gullible)
+- High Openness (creative planner, intellectually curious, adaptable)
+
+RED FLAGS (Critical Concerns):
+- High Neuroticism (anxiety, anger issues, panic in emergency, depression, self-doubt)
+- Very low Conscientiousness (messy, lazy, breaks rules, procrastinates, puts off tasks)
+- Extravagant "Faking" (answers too good to be true, contradicting similar statements, claiming moral perfection on Lie Scale)
+- Neutral Trap (choosing Neutral too often to avoid committing)
+
+Your task is to analyze the candidate's OPI scores and their specific response profile. Provide a comprehensive summary, grade, and actionable personality development recommendations.
+
+Respond ONLY with JSON in this exact schema:
+{
+  "overallScore": <0-100 integer>,
+  "overallGrade": "<A+/A/B+/B/C+/C/D>",
+  "psychologicalProfile": "<2-3 sentence analysis of candidate's character traits based on their answers>",
+  "summary": "<1 sentence overall suitability assessment>",
+  "traitStrengths": {
+    "Openness": "<specific strength in openness or 'Needs Improvement'>",
+    "Conscientiousness": "<specific strength in conscientiousness or 'Needs Improvement'>",
+    "Extraversion": "<specific strength in extraversion or 'Needs Improvement'>",
+    "Agreeableness": "<specific strength in agreeableness or 'Needs Improvement'>",
+    "EmotionalStability": "<specific strength in emotional stability or 'Needs Improvement'>"
+  },
+  "warnings": ["<warning 1 like 'Neutral Trap detected' or 'Consistency discrepancy in Assertiveness' or none>"],
+  "recommendations": ["<personalized recommendation 1>", "<personalized recommendation 2>", "<recommendation 3>"]
+}
+`
+
+
 // ---------------------------------------------------------------------------
 // Composable
 // ---------------------------------------------------------------------------
@@ -285,6 +329,36 @@ Evaluate each reaction for officer-like qualities: courage, realism, leadership,
     await runAnalysis(SRT_SYSTEM_PROMPT, userContent)
   }
 
+  // ---- OPI Analyzer ----
+  async function analyzeOPI(responses, scores, consistencyScore, neutralPercentage) {
+    const scoresSummary = Object.entries(scores)
+      .map(([dim, pct]) => `${dim}: ${pct.toFixed(1)}%`)
+      .join(', ')
+
+    const flaggedItems = responses
+      .filter((r) => Math.abs(r.value - r.recommendedValue) >= 3)
+      .slice(0, 15)
+      .map(
+        (r) =>
+          `- Statement: "${r.statement}" | Answer: ${r.userChoiceText} (Recommended: ${r.recommendedChoice}) | Trait: ${r.trait} | Rationale: ${r.rationale}`
+      )
+      .join('\n')
+
+    const userContent = `Analyze this OPI (Occupational Personality Inventory) submission from an ISSB candidate.
+
+OPI SCORING SUMMARY:
+${scoresSummary}
+Consistency Score: ${consistencyScore.toFixed(1)}%
+Neutral Answers: ${neutralPercentage.toFixed(1)}% of total test items.
+
+TOP FLAGGED DEVIATIONS (Discrepancies from military recommendations):
+${flaggedItems || 'None (Excellent alignment!)'}
+
+Provide a detailed psychological review focusing on the candidate's Big Five personality profile, their suitability for a military commission, consistency checks, and specific advice to overcome their weaknesses.`
+
+    await runAnalysis(OPI_SYSTEM_PROMPT, userContent)
+  }
+
   // ---- Reset ----
   function resetAnalysis() {
     isAnalyzing.value = false
@@ -301,6 +375,7 @@ Evaluate each reaction for officer-like qualities: courage, realism, leadership,
     analyzeWAT,
     analyzeSCT,
     analyzeSRT,
+    analyzeOPI,
     resetAnalysis,
   }
 }
