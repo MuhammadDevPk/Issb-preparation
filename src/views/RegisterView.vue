@@ -131,19 +131,8 @@ const handleRegister = async () => {
   uploadProgressText.value = 'Verifying security guidelines...'
 
   try {
-    // 0. Fetch candidate IP and verify trial status
+    // 0. Fetch candidate IP
     const ip = await fetchIP()
-    const { data: isBlocked, error: rpcError } = await supabase.rpc('check_ip_trial_status', { ip_addr: ip })
-    
-    if (rpcError) {
-      console.error('RPC Error check_ip_trial_status:', rpcError)
-    }
-
-    if (isBlocked) {
-      errorMessage.value = 'You cannot create a new account, please use your old account.'
-      isSubmitting.value = false
-      return
-    }
 
     const refCode = referredByCode.value || null
     uploadProgressText.value = 'Creating candidate account...'

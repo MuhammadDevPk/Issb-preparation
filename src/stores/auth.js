@@ -81,13 +81,6 @@ export const useAuthStore = defineStore('auth', () => {
           if (!p && event !== 'SIGNED_OUT') {
             console.warn('Profile not found or soft-deleted on auth change. Logging out.')
             await logout()
-          } else if (p) {
-            // Session ID validation check
-            const localToken = localStorage.getItem('issb_session_token')
-            if (p.active_session_id && p.active_session_id !== localToken) {
-              console.warn('Session mismatch on auth change. Logging out.')
-              await logout()
-            }
           }
         } else {
           user.value = null
@@ -119,18 +112,6 @@ export const useAuthStore = defineStore('auth', () => {
         throw new Error('This account has been deleted or disabled.')
       }
 
-      // Generate active session token
-      const sessionToken = Math.random().toString(36).substring(2) + Date.now().toString(36)
-      localStorage.setItem('issb_session_token', sessionToken)
-
-      // Update active_session_id in database now that profile is guaranteed to exist
-      await supabase
-        .from('profiles')
-        .update({ active_session_id: sessionToken })
-        .eq('id', data.user.id)
-
-      // Sync the local active session token in state to prevent session mismatch logouts on navigation
-      p.active_session_id = sessionToken
       profile.value = p
 
       return data
@@ -164,27 +145,12 @@ export const useAuthStore = defineStore('auth', () => {
         const p = await fetchProfile(data.user.id)
         if (p) break
       }
-
-      // Generate active session token
-      const sessionToken = Math.random().toString(36).substring(2) + Date.now().toString(36)
-      localStorage.setItem('issb_session_token', sessionToken)
-
-      // Update active_session_id in database
-      await supabase
-        .from('profiles')
-        .update({ active_session_id: sessionToken })
-        .eq('id', data.user.id)
-
-      // Re-fetch to get the updated session token in the profile
-      await fetchProfile(data.user.id)
     }
     isRegistering.value = false
     return data
   }
 
   const logout = async () => {
-    // Clear local session token
-    localStorage.removeItem('issb_session_token')
     try {
       const { error } = await supabase.auth.signOut()
       if (error) {

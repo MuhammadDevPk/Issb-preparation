@@ -115,12 +115,8 @@ watch(() => authStore.profile, (newProfile) => {
   }
 }, { immediate: true })
 
-// Periodically check for active session mismatch in the background (non-blocking)
-let sessionCheckInterval = null
-
 onBeforeUnmount(() => {
   clearInterval(countdownInterval)
-  clearInterval(sessionCheckInterval)
 })
 
 onMounted(() => {
@@ -134,19 +130,6 @@ onMounted(() => {
   } else {
     localStorage.setItem('issb_streak', '1')
   }
-
-  // Periodic active session validator (45 seconds interval)
-  sessionCheckInterval = setInterval(async () => {
-    if (authStore.user) {
-      const latestProfile = await authStore.fetchProfile(authStore.user.id)
-      const localToken = localStorage.getItem('issb_session_token')
-      if (latestProfile && latestProfile.active_session_id && latestProfile.active_session_id !== localToken) {
-        console.warn('Session mismatch detected in background. Logging out.')
-        await authStore.logout()
-        router.push({ name: 'login', query: { session_expired: 'true' } })
-      }
-    }
-  }, 45000)
 })
 </script>
 
