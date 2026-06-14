@@ -196,23 +196,53 @@ RED FLAGS (Critical Concerns):
 - Extravagant "Faking" (answers too good to be true, contradicting similar statements, claiming moral perfection on Lie Scale)
 - Neutral Trap (choosing Neutral too often to avoid committing)
 
-Your task is to analyze the candidate's OPI scores and their specific response profile. Provide a comprehensive summary, grade, and actionable personality development recommendations.
+Your task is to analyze the candidate's OPI scores and their specific response profile. Provide a comprehensive summary, overall score out of 100, overall grade, a detailed evaluation of each OPI dimension (trait), and specific mistakes to avoid and improvement tips for each trait.
 
 Respond ONLY with JSON in this exact schema:
 {
-  "overallScore": <0-100 integer>,
+  "overallScore": <0-100 integer representing general suitability>,
   "overallGrade": "<A+/A/B+/B/C+/C/D>",
-  "psychologicalProfile": "<2-3 sentence analysis of candidate's character traits based on their answers>",
+  "psychologicalProfile": "<detailed multi-sentence analysis of candidate's character traits based on their answers>",
   "summary": "<1 sentence overall suitability assessment>",
-  "traitStrengths": {
-    "Openness": "<specific strength in openness or 'Needs Improvement'>",
-    "Conscientiousness": "<specific strength in conscientiousness or 'Needs Improvement'>",
-    "Extraversion": "<specific strength in extraversion or 'Needs Improvement'>",
-    "Agreeableness": "<specific strength in agreeableness or 'Needs Improvement'>",
-    "EmotionalStability": "<specific strength in emotional stability or 'Needs Improvement'>"
+  "dimensionEvaluations": {
+    "Openness": {
+      "score": <0-100 integer matching their performance>,
+      "status": "<Strong/Moderate/Needs Improvement>",
+      "evaluation": "<2-3 sentences assessing their intellectual flexibility, planning capability, and adaptability>",
+      "mistakes": ["<specific mistake in their answers under this trait or things to avoid, or 'None' if excellent>"],
+      "tips": ["<concrete recommendation to improve this trait or frame answers better next time>"]
+    },
+    "Conscientiousness": {
+      "score": <0-100 integer>,
+      "status": "<Strong/Moderate/Needs Improvement>",
+      "evaluation": "<2-3 sentences assessing their discipline, sense of duty, order, and achievement striving>",
+      "mistakes": ["<specific mistake in their answers under this trait or things to avoid, or 'None' if excellent>"],
+      "tips": ["<concrete recommendation to improve this trait or frame answers better next time>"]
+    },
+    "Extraversion": {
+      "score": <0-100 integer>,
+      "status": "<Strong/Moderate/Needs Improvement>",
+      "evaluation": "<2-3 sentences assessing their leadership potential, verbal agility, assertiveness, and physical drive>",
+      "mistakes": ["<specific mistake in their answers under this trait or things to avoid, or 'None' if excellent>"],
+      "tips": ["<concrete recommendation to improve this trait or frame answers better next time>"]
+    },
+    "Agreeableness": {
+      "score": <0-100 integer>,
+      "status": "<Strong/Moderate/Needs Improvement>",
+      "evaluation": "<2-3 sentences assessing their cooperation, social empathy, trust, and humility without submissiveness>",
+      "mistakes": ["<specific mistake in their answers under this trait or things to avoid, or 'None' if excellent>"],
+      "tips": ["<concrete recommendation to improve this trait or frame answers better next time>"]
+    },
+    "EmotionalStability": {
+      "score": <0-100 integer>,
+      "status": "<Strong/Moderate/Needs Improvement>",
+      "evaluation": "<2-3 sentences assessing their stress tolerance, panic threshold, self-esteem, and composure>",
+      "mistakes": ["<specific mistake in their answers under this trait or things to avoid, or 'None' if excellent>"],
+      "tips": ["<concrete recommendation to improve this trait or frame answers better next time>"]
+    }
   },
   "warnings": ["<warning 1 like 'Neutral Trap detected' or 'Consistency discrepancy in Assertiveness' or none>"],
-  "recommendations": ["<personalized recommendation 1>", "<personalized recommendation 2>", "<recommendation 3>"]
+  "recommendations": ["<personalized general recommendation 1>", "<personalized general recommendation 2>"]
 }
 `
 

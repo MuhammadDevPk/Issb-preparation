@@ -1,10 +1,8 @@
 <script setup>
 import { ref, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
 import { supabase } from '../supabase'
 import { useAuthStore } from '../stores/auth'
 
-const router = useRouter()
 const authStore = useAuthStore()
 
 const appSettings = ref({
@@ -31,14 +29,6 @@ onMounted(() => {
   fetchSettings()
 })
 
-const goToPortal = (targetRoute = '/dashboard') => {
-  const requiresAuth = ['/dashboard', '/roadmap', '/support'].includes(targetRoute)
-  if (!authStore.user && requiresAuth) {
-    router.push({ path: '/register', query: { redirect: targetRoute } })
-  } else {
-    router.push(targetRoute)
-  }
-}
 
 // Interactive Portal Showcase State
 const activeShowcaseTab = ref('dashboard') // dashboard, roadmap, simulators, obstacles, support

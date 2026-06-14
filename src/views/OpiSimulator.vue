@@ -758,10 +758,15 @@ const scoreClass = (score) => {
               </svg>
               AI psychologist audit report
             </span>
-            <span class="grade-badge" :style="{ borderColor: 'var(--accent-green)', color: 'var(--accent-green)' }">
-              Grade: {{ analysisResult.overallGrade }}
-            </span>
-            <span class="provider-badge" v-if="currentProvider">via {{ currentProvider }}</span>
+            <div class="header-badges">
+              <span class="score-badge" v-if="analysisResult.overallScore !== undefined">
+                Score: {{ analysisResult.overallScore }}/100
+              </span>
+              <span class="grade-badge" :style="{ borderColor: 'var(--accent-green)', color: 'var(--accent-green)' }">
+                Grade: {{ analysisResult.overallGrade }}
+              </span>
+              <span class="provider-badge" v-if="currentProvider">via {{ currentProvider }}</span>
+            </div>
           </div>
 
           <div class="ai-profile-section">
@@ -772,7 +777,44 @@ const scoreClass = (score) => {
             </div>
           </div>
 
-          <div class="ai-profile-section" style="margin-top: 1.5rem;">
+          <!-- OPI Dimensions Breakdown & Detailed Evaluation -->
+          <div class="ai-profile-section" style="margin-top: 1.5rem;" v-if="analysisResult.dimensionEvaluations">
+            <h4>OPI Dimensions Breakdown & Evaluation:</h4>
+            <div class="ai-dimensions-list">
+              <div v-for="(evalData, traitName) in analysisResult.dimensionEvaluations" :key="traitName" class="ai-dimension-detail-card">
+                <div class="dim-card-header">
+                  <div class="dim-title-group">
+                    <span class="dim-name">{{ traitName.replace(/([A-Z])/g, ' $1').trim() }}</span>
+                    <span class="dim-status-badge" :class="'status-' + (evalData.status || 'moderate').toLowerCase().replace(' ', '-')">
+                      {{ evalData.status }}
+                    </span>
+                  </div>
+                  <span class="dim-score-badge">{{ evalData.score }}/100</span>
+                </div>
+                
+                <div class="dim-card-body">
+                  <p class="dim-eval-text">{{ evalData.evaluation }}</p>
+                  
+                  <div class="dim-mistakes-box" v-if="evalData.mistakes && evalData.mistakes.length > 0 && evalData.mistakes[0] !== 'None' && evalData.mistakes[0] !== 'none'">
+                    <span class="box-title text-red">⚠️ Mistakes & Traps to Avoid:</span>
+                    <ul class="dim-bullets">
+                      <li v-for="mistake in evalData.mistakes" :key="mistake" class="text-red">{{ mistake }}</li>
+                    </ul>
+                  </div>
+
+                  <div class="dim-tips-box" v-if="evalData.tips && evalData.tips.length > 0 && evalData.tips[0] !== 'None' && evalData.tips[0] !== 'none'">
+                    <span class="box-title text-green">💡 Recommended Adjustments:</span>
+                    <ul class="dim-bullets">
+                      <li v-for="tip in evalData.tips" :key="tip" class="text-green">{{ tip }}</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fallback Old Strengths Grid for backwards compatibility -->
+          <div class="ai-profile-section" style="margin-top: 1.5rem;" v-else-if="analysisResult.traitStrengths">
             <h4>Dimensional Strengths & Improvement Areas:</h4>
             <div class="ai-strengths-grid">
               <div v-for="(val, key) in analysisResult.traitStrengths" :key="key" class="ai-strength-card">
@@ -856,6 +898,159 @@ const scoreClass = (score) => {
 </template>
 
 <style scoped>
+/* New OPI Dimension Detail styles */
+.header-badges {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.score-badge {
+  background: rgba(0, 242, 254, 0.08);
+  border: 1px solid rgba(0, 242, 254, 0.25);
+  color: var(--accent-cyan);
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.ai-dimensions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
+.ai-dimension-detail-card {
+  background: var(--bg-panel-solid);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.dim-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.75rem;
+}
+
+.dim-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.dim-name {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.dim-status-badge {
+  padding: 0.2rem 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 999px;
+  text-transform: uppercase;
+}
+
+.status-strong {
+  background: rgba(22, 163, 74, 0.1);
+  color: var(--accent-green);
+  border: 1px solid rgba(22, 163, 74, 0.25);
+}
+
+.status-moderate {
+  background: rgba(234, 179, 8, 0.1);
+  color: var(--accent-gold);
+  border: 1px solid rgba(234, 179, 8, 0.25);
+}
+
+.status-needs-improvement {
+  background: rgba(220, 38, 38, 0.1);
+  color: var(--accent-red);
+  border: 1px solid rgba(220, 38, 38, 0.25);
+}
+
+.dim-score-badge {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.dim-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.dim-eval-text {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.dim-mistakes-box {
+  background: rgba(220, 38, 38, 0.03);
+  border: 1px solid rgba(220, 38, 38, 0.12);
+  border-left: 3px solid var(--accent-red);
+  padding: 0.85rem;
+  border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;
+}
+
+.dim-tips-box {
+  background: rgba(22, 163, 74, 0.03);
+  border: 1px solid rgba(22, 163, 74, 0.12);
+  border-left: 3px solid var(--accent-green);
+  padding: 0.85rem;
+  border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;
+}
+
+.box-title {
+  display: block;
+  font-weight: 700;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.dim-bullets {
+  list-style: none;
+  padding-left: 0.25rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.dim-bullets li {
+  font-size: 0.85rem;
+  line-height: 1.4;
+  position: relative;
+  padding-left: 1rem;
+  text-align: left;
+}
+
+.dim-bullets li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+}
+
 .opi-wrapper {
   max-width: 1000px;
   margin: 0 auto;
