@@ -219,9 +219,12 @@ const totalAnswered = computed(() => {
     <!-- ACTIVE SIMULATOR VIEW -->
     <div class="active-container glass-card" v-if="testState === 'active'">
       <div class="simulator-header">
-        <span class="progress-indicator"
-          >SITUATION {{ currentIndex + 1 }} OF {{ situations.length }}</span
-        >
+        <span class="progress-indicator">
+          SITUATION {{ currentIndex + 1 }} OF {{ situations.length }}
+          <span class="remaining-count" style="font-size: 0.85rem; color: var(--accent-cyan); opacity: 0.8; margin-inline-start: 0.5rem;">
+            ({{ situations.length - currentIndex - 1 }} left)
+          </span>
+        </span>
 
         <!-- Timer bar -->
         <div class="timer-bar-container">

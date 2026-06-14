@@ -204,7 +204,12 @@ const timeTaken = computed(() => {
       <div class="simulator-header">
         <div>
           <h2>SCT Practice Run ({{ selectedLanguage.toUpperCase() }})</h2>
-          <span class="progress-indicator">COMPLETED: {{ completedCount }} / 26</span>
+          <span class="progress-indicator">
+            COMPLETED: {{ completedCount }} / {{ currentStarters.length }}
+            <span class="remaining-count" style="font-size: 0.85rem; color: var(--accent-cyan); opacity: 0.8; margin-inline-start: 0.5rem;">
+              ({{ currentStarters.length - completedCount }} left)
+            </span>
+          </span>
         </div>
         <div class="timer-display glass-card" :class="{ 'warning-timer': timerLeft < 60 }">
           <span class="lbl">TIME LEFT</span>

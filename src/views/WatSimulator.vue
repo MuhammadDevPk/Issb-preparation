@@ -4,7 +4,7 @@ import { useRouter } from 'vue-router'
 import { usePreparationStore } from '../stores/preparation'
 import { useAiAnalysis } from '../composables/useAiAnalysis.js'
 import AiAnalysisReport from '../components/AiAnalysisReport.vue'
-import { watSheets, getRandomWatWords } from '../data/issbTestData.js'
+import { watSheets, getRandomWatWords, watUrduMeanings } from '../data/issbTestData.js'
 
 const store = usePreparationStore()
 const router = useRouter()
@@ -22,6 +22,9 @@ const testState = ref('setup') // 'setup', 'active', 'results'
 const timerDuration = ref(10) // default 10 seconds
 const selectedSetId = ref('repeated_1')
 const customWordCount = ref(50)
+const showVocab = ref(false)
+const vocabSearchQuery = ref('')
+
 const selectedSetDescription = computed(() => {
   if (selectedSetId.value === 'random_mix') {
     return 'Generates a random selection of words from the entire database, ensuring no two runs are identical.'
@@ -36,6 +39,17 @@ const previewWordCount = computed(() => {
   }
   const sheet = watSheets.find((s) => s.id === selectedSetId.value)
   return sheet ? sheet.words.length : 0
+})
+
+const filteredVocab = computed(() => {
+  const query = vocabSearchQuery.value.trim().toLowerCase()
+  const allWords = Object.keys(watUrduMeanings)
+  if (!query) return allWords
+  return allWords.filter((w) => {
+    const wordMatches = w.toLowerCase().includes(query)
+    const meaningMatches = (watUrduMeanings[w] || '').includes(query)
+    return wordMatches || meaningMatches
+  })
 })
 
 const wordList = ref([...watSheets[0].words])
@@ -207,7 +221,10 @@ const avgLength = computed(() => {
         </ul>
       </div>
 
-      <div class="flex-center">
+      <div class="flex-center setup-actions" style="gap: 1rem; margin-top: 1.5rem;">
+        <button class="btn btn-secondary btn-large" @click="showVocab = !showVocab">
+          <span>📖 {{ showVocab ? 'HIDE VOCABULARY' : 'STUDY VOCABULARY' }}</span>
+        </button>
         <button class="btn btn-primary btn-large" @click="startTest">
           <span>START SIMULATION</span>
           <svg
@@ -221,12 +238,40 @@ const avgLength = computed(() => {
           </svg>
         </button>
       </div>
+
+      <!-- Vocabulary Study Panel -->
+      <div class="vocab-panel" v-if="showVocab">
+        <div class="vocab-header">
+          <h3>WAT Vocabulary Study Guide</h3>
+          <input
+            type="text"
+            class="form-input vocab-search"
+            v-model="vocabSearchQuery"
+            placeholder="Search words or meanings..."
+          />
+        </div>
+        <div class="vocab-list-wrapper">
+          <div class="vocab-grid">
+            <div
+              v-for="word in filteredVocab"
+              :key="word"
+              class="vocab-card"
+            >
+              <span class="vocab-en">{{ word }}</span>
+              <span class="vocab-ur">{{ watUrduMeanings[word] }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- ACTIVE SIMULATOR VIEW -->
     <div class="active-container glass-card" v-if="testState === 'active'">
       <div class="simulator-header">
-        <span class="progress-indicator">WORD {{ currentIndex + 1 }} OF {{ wordList.length }}</span>
+        <span class="progress-indicator">
+          WORD {{ currentIndex + 1 }} OF {{ wordList.length }}
+          <span class="remaining-count">({{ wordList.length - currentIndex - 1 }} left)</span>
+        </span>
 
         <!-- Timer ring -->
         <div class="mini-timer">
@@ -258,6 +303,7 @@ const avgLength = computed(() => {
 
       <div class="word-display-area">
         <h1 class="flash-word text-glow">{{ wordList[currentIndex] }}</h1>
+        <span class="urdu-meaning">{{ watUrduMeanings[wordList[currentIndex]] || '' }}</span>
       </div>
 
       <div class="input-area">
@@ -440,6 +486,102 @@ const avgLength = computed(() => {
 <style scoped>
 .wat-wrapper {
   inline-size: 100%;
+}
+
+.remaining-count {
+  font-size: 0.85rem;
+  color: var(--accent-cyan);
+  opacity: 0.8;
+  margin-inline-start: 0.5rem;
+  font-weight: 500;
+}
+
+.urdu-meaning {
+  display: block;
+  font-size: 2.2rem;
+  color: var(--text-secondary);
+  margin-block-start: 1rem;
+  font-family: 'Noto Nastaliq Urdu', 'Urdu Typesetting', serif;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.setup-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.vocab-panel {
+  margin-top: 1.5rem;
+  background: var(--bg-panel-solid);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  padding: 1.5rem;
+  text-align: left;
+}
+
+.vocab-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.vocab-header h3 {
+  font-size: 1.2rem;
+  color: var(--accent-cyan);
+  margin: 0;
+}
+
+.vocab-search {
+  max-width: 300px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9rem;
+}
+
+.vocab-list-wrapper {
+  max-height: 250px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.vocab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.75rem;
+}
+
+.vocab-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  text-align: center;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.vocab-card:hover {
+  border-color: var(--accent-cyan);
+  transform: translateY(-2px);
+}
+
+.vocab-en {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 1rem;
+}
+
+.vocab-ur {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  font-family: 'Noto Nastaliq Urdu', 'Urdu Typesetting', serif;
+  margin-top: 0.25rem;
 }
 
 .setup-container,
