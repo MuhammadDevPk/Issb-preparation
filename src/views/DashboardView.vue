@@ -213,6 +213,13 @@ const finalCoursePrice = computed(() => {
   return Math.max(appSettings.value.course_price - discount, 0)
 })
 
+const activeReferralBonus = computed(() => {
+  if (authStore.profile?.custom_referral_bonus !== null && authStore.profile?.custom_referral_bonus !== undefined) {
+    return Number(authStore.profile.custom_referral_bonus)
+  }
+  return appSettings.value.referral_bonus
+})
+
 const fetchReferralStats = async () => {
   if (!authStore.user) return
   isLoadingReferrals.value = true
@@ -564,7 +571,7 @@ const goToStatus = () => {
           <span class="badge badge-cyan">Earn & Discount Program</span>
           <h3>Candidate Referral Network</h3>
           <p class="desc">
-            Invite friends to prepare together. Get <strong>PKR {{ appSettings.referral_bonus }}</strong> off your course price for each friend who registers and activates their account!
+            Invite friends to prepare together. Get <strong>PKR {{ activeReferralBonus }}</strong> off your course price for each friend who registers and activates their account!
           </p>
         </div>
         
@@ -599,7 +606,7 @@ const goToStatus = () => {
           <div class="referral-rules">
             <h5>Program Rules & Limits:</h5>
             <ul>
-              <li>Get +PKR {{ appSettings.referral_bonus }} deduction for every friend who completes payment.</li>
+              <li>Get +PKR {{ activeReferralBonus }} deduction for every friend who completes payment.</li>
               <li>Base Course Fee: <strong>PKR {{ appSettings.course_price }}</strong></li>
               <li>Deductions stop after reaching a max discount of <strong>PKR {{ maxDiscountAllowed }}</strong> (Min price: <strong>PKR {{ Math.max(appSettings.course_price - maxDiscountAllowed, 0) }}</strong>).</li>
               <li>You can refer unlimited friends, even after hitting the maximum discount limit!</li>

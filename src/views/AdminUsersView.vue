@@ -101,6 +101,63 @@ const confirmApproval = async () => {
   }
 }
 
+// Details Modal State & Actions
+const showDetailsModal = ref(false)
+const detailsProfile = ref(null)
+const detailsCourseAmount = ref(1499)
+const detailsReferralCommission = ref(500)
+const detailsCustomReferralBonus = ref(null)
+
+const openDetailsModal = (candidate) => {
+  detailsProfile.value = candidate
+  detailsCourseAmount.value = candidate.course_amount || 0
+  detailsReferralCommission.value = candidate.referral_commission || 0
+  detailsCustomReferralBonus.value = candidate.custom_referral_bonus !== null && candidate.custom_referral_bonus !== undefined
+    ? candidate.custom_referral_bonus
+    : ''
+  showDetailsModal.value = true
+}
+
+const closeDetailsModal = () => {
+  showDetailsModal.value = false
+  detailsProfile.value = null
+}
+
+const saveDetailsChanges = async () => {
+  if (!detailsProfile.value) return
+  isLoading.value = true
+  try {
+    const customBonus = detailsCustomReferralBonus.value === '' || detailsCustomReferralBonus.value === null
+      ? null
+      : Number(detailsCustomReferralBonus.value)
+
+    const { error } = await supabase
+      .from('profiles')
+      .update({
+        course_amount: detailsCourseAmount.value,
+        referral_commission: detailsReferralCommission.value,
+        custom_referral_bonus: customBonus
+      })
+      .eq('id', detailsProfile.value.id)
+
+    if (error) throw error
+
+    // Update local state
+    const index = profiles.value.findIndex((p) => p.id === detailsProfile.value.id)
+    if (index !== -1) {
+      profiles.value[index].course_amount = detailsCourseAmount.value
+      profiles.value[index].referral_commission = detailsReferralCommission.value
+      profiles.value[index].custom_referral_bonus = customBonus
+    }
+    closeDetailsModal()
+  } catch (e) {
+    console.error('Failed to update candidate details:', e)
+    alert('Failed to save details: ' + e.message)
+  } finally {
+    isLoading.value = false
+  }
+}
+
 const handleSoftDelete = async (profileId) => {
   if (!confirm('Are you sure you want to soft delete this candidate? They will lose access to the portal but can be restored from the Trash tab.')) return
   
@@ -552,12 +609,11 @@ onMounted(() => {
                     Approve
                   </button>
                   <button
-                    v-if="candidate.status === 'approved'"
-                    @click="openApproveModal(candidate, true)"
-                    class="btn-action btn-edit"
-                    title="Edit Candidate Pricing"
+                    @click="openDetailsModal(candidate)"
+                    class="btn-action btn-details"
+                    title="View Details & Pricing"
                   >
-                    Edit Pricing
+                    Details
                   </button>
                   <button
                     v-if="candidate.status !== 'rejected' && candidate.role !== 'admin'"
@@ -769,6 +825,96 @@ onMounted(() => {
         </div>
       </div>
     </div>
+
+    <!-- Modal for Viewing Candidate Details & Custom Rate Configuration -->
+    <div v-if="showDetailsModal && detailsProfile" class="modal-overlay" @click="closeDetailsModal">
+      <div class="modal-content form-modal" @click.stop style="max-width: 600px;">
+        <button class="modal-close" @click="closeDetailsModal">&times;</button>
+        <h3>Candidate Details & Settings</h3>
+        <p style="margin-bottom: 0.75rem;">
+          View candidate details and manage pricing snapshots and custom referral commission rates.
+        </p>
+
+        <!-- General Info Grid -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; background: #f8fafc; padding: 1rem; border-radius: var(--border-radius-md); font-size: 0.85rem; border: 1px solid var(--border-color); margin-bottom: 0.5rem;">
+          <div>
+            <strong style="color: var(--text-muted);">Name:</strong> {{ detailsProfile.full_name || 'N/A' }}
+          </div>
+          <div>
+            <strong style="color: var(--text-muted);">Email:</strong> {{ detailsProfile.email }}
+          </div>
+          <div>
+            <strong style="color: var(--text-muted);">WhatsApp:</strong> {{ detailsProfile.whatsapp || 'N/A' }}
+          </div>
+          <div>
+            <strong style="color: var(--text-muted);">Branch:</strong> <span class="text-capitalize">{{ detailsProfile.target_branch }}</span>
+          </div>
+          <div>
+            <strong style="color: var(--text-muted);">Status:</strong> <span class="text-uppercase" style="font-weight: 700;">{{ detailsProfile.status }}</span>
+          </div>
+          <div>
+            <strong style="color: var(--text-muted);">Registered On:</strong> {{ formatDate(detailsProfile.created_at) }}
+          </div>
+          <div v-if="detailsProfile.referred_by" style="grid-column: span 2;">
+            <strong style="color: var(--text-muted);">Referred By:</strong> {{ getReferrerEmail(detailsProfile.referred_by) }}
+          </div>
+        </div>
+
+        <!-- Editable Pricing Snapshots -->
+        <div style="border-top: 1px solid var(--border-color); padding-top: 1rem; display: flex; flex-direction: column; gap: 1rem;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;">
+            <div class="form-group" style="margin-bottom: 0;">
+              <label for="detailsCourseAmount" class="form-label" style="font-size: 0.75rem;">Course Amount Paid (PKR) *</label>
+              <input
+                v-model.number="detailsCourseAmount"
+                type="number"
+                id="detailsCourseAmount"
+                class="form-input"
+                required
+                min="0"
+              />
+              <span style="font-size: 0.7rem; color: var(--text-muted);">Price when this candidate registered.</span>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 0;">
+              <label for="detailsReferralCommission" class="form-label" style="font-size: 0.75rem;">Referrer Commission (PKR) *</label>
+              <input
+                v-model.number="detailsReferralCommission"
+                type="number"
+                id="detailsReferralCommission"
+                class="form-input"
+                required
+                min="0"
+              />
+              <span style="font-size: 0.7rem; color: var(--text-muted);">Referral price when they registered.</span>
+            </div>
+          </div>
+
+          <!-- Option to set referral price for each student -->
+          <div class="form-group" style="margin-bottom: 0;">
+            <label for="detailsCustomReferralBonus" class="form-label" style="font-size: 0.75rem;">Custom Referral Bonus for this candidate (PKR)</label>
+            <input
+              v-model.number="detailsCustomReferralBonus"
+              type="number"
+              id="detailsCustomReferralBonus"
+              class="form-input"
+              placeholder="e.g. 600 (Leave blank to use system default)"
+              min="0"
+            />
+            <span style="font-size: 0.7rem; color: var(--text-muted);">
+              Set custom commission rate this candidate earns for each future referral they make.
+            </span>
+          </div>
+        </div>
+
+        <div class="modal-actions" style="margin-top: 0.5rem;">
+          <button @click="closeDetailsModal" class="btn btn-secondary">Close</button>
+          <button @click="saveDetailsChanges" class="btn btn-primary">
+            Save Settings
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -864,7 +1010,8 @@ onMounted(() => {
 
 .table-container {
   padding: 0;
-  overflow: hidden;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .table-loading,
@@ -881,6 +1028,7 @@ onMounted(() => {
   border-collapse: collapse;
   text-align: left;
   font-size: 0.92rem;
+  min-width: 1100px;
 }
 
 .candidates-table th {
@@ -1046,6 +1194,18 @@ onMounted(() => {
 .btn-edit:hover {
   background: var(--accent-cyan);
   color: #ffffff;
+  border-color: var(--accent-cyan);
+}
+
+.btn-details {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+}
+
+.btn-details:hover {
+  background: rgba(3, 194, 252, 0.05);
+  color: var(--accent-cyan);
   border-color: var(--accent-cyan);
 }
 
