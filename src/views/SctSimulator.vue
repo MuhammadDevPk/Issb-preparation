@@ -27,8 +27,12 @@ const currentSessionDate = ref(null)
 
 const triggerAiAnalysis = async () => {
   if (!isApproved.value) {
-    showUpgradeModal.value = true
-    return
+    const today = new Date().toLocaleDateString()
+    const lastUse = localStorage.getItem('issb_last_ai_use_date')
+    if (lastUse === today) {
+      showUpgradeModal.value = true
+      return
+    }
   }
   showAiReport.value = true
   // Build responses from currentStarters + completions at time of call
@@ -40,6 +44,10 @@ const triggerAiAnalysis = async () => {
   await analyzeSCT(responses, selectedLanguage.value)
   if (analysisResult.value) {
     store.updateSctSessionAi(currentSessionDate.value, analysisResult.value)
+    if (!isApproved.value) {
+      const today = new Date().toLocaleDateString()
+      localStorage.setItem('issb_last_ai_use_date', today)
+    }
   }
 }
 
@@ -455,30 +463,31 @@ const timeTaken = computed(() => {
       <div class="modal-card glass-card fade-in">
         <div class="modal-header-ai">
           <div class="flex items-center gap-2">
-            <span class="lock-icon">🔒</span>
-            <h3>Unlock AI Psychologist Assessor</h3>
+            <span class="lock-icon">🚫</span>
+            <h3>Daily Free AI Limit Reached</h3>
           </div>
           <button class="btn-close" @click="showUpgradeModal = false">&times;</button>
         </div>
         <div class="modal-body-ai">
           <p>
-            Your simulator test answers have been logged, but the <strong>AI Psychological Analysis Report</strong> is a Premium Feature.
+            You have used your <strong>1 free daily AI evaluation</strong>. Your free quota resets in 24 hours.
           </p>
           <div class="warning-callout">
-            <strong>⚠️ Psychologist Warning:</strong> Faking answers or copying guidebook textbook replies gets you rejected immediately by selection board psychologists. Our AI Psychologist scans your responses to locate escape, passivity, or conflict patterns and provides rephrasing suggestions.
+            <strong>⚠️ High-Risk Warning for Candidates:</strong>
+            Practicing without feedback actively trains your subconscious mind to repeat critical psychological errors. Selection board psychologists reject candidates instantly when they spot patterns of passivity, artificial guidebook answers, or escape behavior. Practicing unguided sentences is worse than not practicing at all.
           </div>
           <div class="modal-features">
-            <div class="feat-row"><span class="check">✓</span> <span>Finds hidden psychology flaws & red flags.</span></div>
-            <div class="feat-row"><span class="check">✓</span> <span>Detailed Officer-Like Qualities (OLQ) grade score.</span></div>
-            <div class="feat-row"><span class="check">✓</span> <span>Provides exact corrected sentence completions and rephrasings.</span></div>
+            <div class="feat-row"><span class="check">✓</span> <span>Finds hidden psychology flaws & red flags in your reactions.</span></div>
+            <div class="feat-row"><span class="check">✓</span> <span>Detailed Officer-Like Qualities (OLQ) grade score & assessment.</span></div>
+            <div class="feat-row"><span class="check">✓</span> <span>Provides exact corrected sentences and rephrasings.</span></div>
           </div>
         </div>
         <div class="modal-footer-ai">
           <button class="btn btn-ai shadow-glow-purple w-full" @click="router.push('/status')">
-            Get Premium Pass (or Rs. 100 via referrals)
+            Get Unlimited AI Access (Or PKR 100 via referrals)
           </button>
           <button class="btn btn-secondary w-full" @click="showUpgradeModal = false">
-            Close & Review Sheet Manually
+            Wait 24 Hours / Review Manually
           </button>
         </div>
       </div>
