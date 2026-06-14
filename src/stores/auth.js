@@ -28,62 +28,61 @@ export const useAuthStore = defineStore('auth', () => {
   // Flags to temporarily skip session validation during registration or login
   const isRegistering = ref(false)
   const isLoggingIn = ref(false)
+  let authSubscription = null
 
   const initialize = async () => {
-    loading.value = true
-    try {
-      const {
-        data: { session },
-      } = await supabase.auth.getSession()
-      if (session) {
-        user.value = session.user
-        const p = await fetchProfile(session.user.id)
-        if (!p) {
-          console.warn('Profile not found or soft-deleted. Logging out.')
-          await logout()
-        } else {
-          // Session ID validation check
-          const localToken = localStorage.getItem('issb_session_token')
-          if (p.active_session_id && p.active_session_id !== localToken) {
-            console.warn('Session mismatch on init. Logging out.')
-            await logout()
-          }
-        }
-      } else {
-        user.value = null
-        profile.value = null
-      }
-    } catch (e) {
-      console.error('Auth initialization error:', e)
-    } finally {
+    // Avoid double initialization if user/profile is already populated
+    if (user.value || profile.value) {
       loading.value = false
+      return
     }
 
-    // Subscribe to auth state changes
-    supabase.auth.onAuthStateChange(async (event, session) => {
-      // Skip during registration or login — these functions handle their own flow
-      if (isRegistering.value || isLoggingIn.value) return
+    loading.value = true
+    return new Promise((resolve) => {
+      let isInitialCallResolved = false
 
-      loading.value = true
-      if (session) {
-        user.value = session.user
-        const p = await fetchProfile(session.user.id)
-        if (!p && event !== 'SIGNED_OUT') {
-          console.warn('Profile not found or soft-deleted on state change. Logging out.')
-          await logout()
-        } else if (p) {
-          // Session ID validation check
-          const localToken = localStorage.getItem('issb_session_token')
-          if (p.active_session_id && p.active_session_id !== localToken) {
-            console.warn('Session mismatch on state change. Logging out.')
-            await logout()
-          }
+      const resolveInit = () => {
+        if (!isInitialCallResolved) {
+          isInitialCallResolved = true
+          loading.value = false
+          resolve()
         }
-      } else {
-        user.value = null
-        profile.value = null
       }
-      loading.value = false
+
+      // Safety fallback timeout to prevent blocking routing guards
+      const timeoutId = setTimeout(resolveInit, 2500)
+
+      if (authSubscription) {
+        authSubscription.unsubscribe()
+      }
+
+      const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
+        if (isRegistering.value || isLoggingIn.value) return
+
+        if (session) {
+          user.value = session.user
+          const p = await fetchProfile(session.user.id)
+          if (!p && event !== 'SIGNED_OUT') {
+            console.warn('Profile not found or soft-deleted on auth change. Logging out.')
+            await logout()
+          } else if (p) {
+            // Session ID validation check
+            const localToken = localStorage.getItem('issb_session_token')
+            if (p.active_session_id && p.active_session_id !== localToken) {
+              console.warn('Session mismatch on auth change. Logging out.')
+              await logout()
+            }
+          }
+        } else {
+          user.value = null
+          profile.value = null
+        }
+
+        clearTimeout(timeoutId)
+        resolveInit()
+      })
+
+      authSubscription = subscription
     })
   }
 
