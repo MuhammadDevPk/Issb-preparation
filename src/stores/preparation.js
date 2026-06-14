@@ -102,6 +102,30 @@ export const usePreparationStore = defineStore('preparation', () => {
     addXP(30) // 30 XP for designing a route
   }
 
+  const updateWatSessionAi = (date, aiAnalysis) => {
+    const session = watSessions.value.find((s) => s.date === date)
+    if (session) {
+      session.aiAnalysis = aiAnalysis
+      localStorage.setItem('issb_wat_sessions', JSON.stringify(watSessions.value))
+    }
+  }
+
+  const updateSctSessionAi = (date, aiAnalysis) => {
+    const session = sctSessions.value.find((s) => s.date === date)
+    if (session) {
+      session.aiAnalysis = aiAnalysis
+      localStorage.setItem('issb_sct_sessions', JSON.stringify(sctSessions.value))
+    }
+  }
+
+  const updateSrtSessionAi = (date, aiAnalysis) => {
+    const session = srtSessions.value.find((s) => s.date === date)
+    if (session) {
+      session.aiAnalysis = aiAnalysis
+      localStorage.setItem('issb_srt_sessions', JSON.stringify(srtSessions.value))
+    }
+  }
+
   const clearHistory = () => {
     completedModules.value = []
     watSessions.value = []
@@ -132,6 +156,9 @@ export const usePreparationStore = defineStore('preparation', () => {
     saveSctSession,
     saveSrtSession,
     saveObstacleRoute,
+    updateWatSessionAi,
+    updateSctSessionAi,
+    updateSrtSessionAi,
     clearHistory,
   }
 })

@@ -23,6 +23,8 @@ const isApproved = computed(() => {
   return p?.status === 'approved' || p?.role === 'admin' || isTrialActive
 })
 
+const currentSessionDate = ref(null)
+
 const triggerAiAnalysis = async () => {
   if (!isApproved.value) {
     showUpgradeModal.value = true
@@ -36,6 +38,25 @@ const triggerAiAnalysis = async () => {
     text: completions.value[idx]?.trim() ?? '',
   }))
   await analyzeSCT(responses, selectedLanguage.value)
+  if (analysisResult.value) {
+    store.updateSctSessionAi(currentSessionDate.value, analysisResult.value)
+  }
+}
+
+const viewPastSession = (session) => {
+  currentSessionDate.value = session.date
+  selectedLanguage.value = session.language
+  activeStarters.value = session.responses.map((r) => r.prompt)
+  completions.value = session.responses.map((r) => r.text)
+  testState.value = 'results'
+  
+  if (session.aiAnalysis) {
+    analysisResult.value = session.aiAnalysis
+    showAiReport.value = true
+  } else {
+    analysisResult.value = null
+    showAiReport.value = false
+  }
 }
 
 const testState = ref('setup') // 'setup', 'active', 'results'
@@ -100,6 +121,9 @@ const submitSheet = () => {
   showAiReport.value = false
   resetAnalysis()
 
+  const dateStr = new Date().toLocaleString()
+  currentSessionDate.value = dateStr
+
   // Format responses
   const formattedResponses = currentStarters.value.map((starter, idx) => {
     return {
@@ -111,9 +135,10 @@ const submitSheet = () => {
 
   // Save in Pinia
   store.saveSctSession({
-    date: new Date().toLocaleString(),
+    date: dateStr,
     language: selectedLanguage.value,
     responses: formattedResponses,
+    selectedSheetId: selectedSheetId.value,
   })
 }
 
@@ -210,6 +235,29 @@ const timeTaken = computed(() => {
             <polygon points="5 3 19 12 5 21 5 3" />
           </svg>
         </button>
+      </div>
+
+      <!-- Past Sessions Panel -->
+      <div class="history-panel" v-if="store.sctSessions.length > 0">
+        <h3 class="history-title">📜 Your Past Practice Sessions</h3>
+        <div class="history-list">
+          <div v-for="session in store.sctSessions" :key="session.date" class="history-item">
+            <div class="history-meta">
+              <span class="history-date">{{ session.date }}</span>
+              <span class="history-details">
+                {{ session.responses ? session.responses.filter(r => r.text).length : 0 }} / 26 Completed | 
+                Lang: {{ session.language.toUpperCase() }} |
+                Set: {{ session.selectedSheetId === 'random_mix' ? 'Random Mix' : (sctSheets[session.language]?.find(s => s.id === session.selectedSheetId)?.name || 'Custom') }}
+              </span>
+            </div>
+            <div class="history-actions">
+              <span class="badge-ai-small" v-if="session.aiAnalysis">🤖 AI Report Ready</span>
+              <button class="btn btn-secondary btn-sm" @click="viewPastSession(session)">
+                View Results
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -441,6 +489,79 @@ const timeTaken = computed(() => {
 <style scoped>
 .sct-wrapper {
   width: 100%;
+}
+
+.history-panel {
+  margin-top: 1.5rem;
+  background: var(--bg-panel-solid);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  padding: 1.5rem;
+  text-align: left;
+}
+
+.history-title {
+  font-size: 1.2rem;
+  color: var(--accent-cyan);
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-height: 250px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.history-item:hover {
+  border-color: rgba(3, 194, 252, 0.3);
+}
+
+.history-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.history-date {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+.history-details {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.history-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.badge-ai-small {
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.15), rgba(79, 70, 229, 0.15));
+  color: #a78bfa;
+  border: 1px solid rgba(124, 58, 237, 0.3);
+  font-size: 0.7rem;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
 }
 
 .setup-container,
