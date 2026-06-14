@@ -45,7 +45,9 @@ const fetchSettings = async () => {
 }
 
 onMounted(() => {
-  referredByCode.value = localStorage.getItem('issb_referred_by_code') || ''
+  const urlRef = route.query.ref || sessionStorage.getItem('issb_referral_code') || localStorage.getItem('issb_referred_by_code') || ''
+  referredByCode.value = urlRef.toString().toUpperCase().trim()
+  
   fetchSettings()
   // Pre-fill fields if candidate submitted the lead capture form on the home page
   if (route.query.name) fullName.value = route.query.name
@@ -201,7 +203,6 @@ const handleRegister = async () => {
     uploadProgressText.value = 'Account registration complete!'
 
     // Profile is already fetched inside authStore.register() with retry logic
-    const profile = authStore.profile
     setTimeout(() => {
       const redirectPath = route.query.redirect || '/dashboard'
       router.push(redirectPath)
@@ -352,17 +353,25 @@ const goHome = () => {
             </div>
           </div>
 
-          <div class="form-group">
-            <label for="branch" class="form-label">Target Force Branch *</label>
-            <select v-model="targetBranch" id="branch" class="form-select" :disabled="isSubmitting">
-              <option value="army">
-                Pakistan Army (PMA Long Course / TCC / Direct Commission)
-              </option>
-              <option value="navy">Pakistan Navy (PN Cadet / SSC / Direct Entry)</option>
-              <option value="airforce">
-                Pakistan Air Force (GD Pilot / CAE / SSC / Direct Branch)
-              </option>
-            </select>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="branch" class="form-label">Target Force Branch *</label>
+              <select v-model="targetBranch" id="branch" class="form-select" :disabled="isSubmitting">
+                <option value="army">
+                  Pakistan Army (PMA Long Course / TCC / Direct Commission)
+                </option>
+                <option value="navy">Pakistan Navy (PN Cadet / SSC / Direct Entry)</option>
+                <option value="airforce">
+                  Pakistan Air Force (GD Pilot / CAE / SSC / Direct Branch)
+                </option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="referredByCode" class="form-label">Referral Code (Optional)</label>
+              <input v-model="referredByCode" type="text" id="referredByCode" class="form-input" placeholder="e.g. REF123"
+                :disabled="isSubmitting" @input="referredByCode = $event.target.value.toUpperCase()" />
+            </div>
           </div>
 
           <!-- Screenshot upload area -->

@@ -110,6 +110,11 @@ const isTrialActive = (profile) => {
 }
 
 router.beforeEach(async (to, from, next) => {
+  // Capture referral code if present in the URL query parameters
+  if (to.query.ref) {
+    sessionStorage.setItem('issb_referral_code', to.query.ref)
+  }
+
   const authStore = useAuthStore()
 
   // Wait for auth initialization if it hasn't run yet

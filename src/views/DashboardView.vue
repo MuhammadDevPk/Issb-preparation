@@ -191,7 +191,9 @@ const paidReferralsCount = computed(() => {
 })
 
 const totalBonusEarned = computed(() => {
-  return paidReferralsCount.value * appSettings.value.referral_bonus
+  return referrals.value
+    .filter((r) => r.status === 'approved')
+    .reduce((sum, r) => sum + Number(r.referral_commission || 0), 0)
 })
 
 const maxDiscountAllowed = computed(() => {
@@ -228,8 +230,9 @@ const fetchReferralStats = async () => {
     // 2. Fetch referrals
     const { data: referralsData, error: referralsError } = await supabase
       .from('profiles')
-      .select('id, full_name, status, created_at')
+      .select('id, full_name, status, referral_commission, course_amount, created_at')
       .eq('referred_by', authStore.user.id)
+      .is('deleted_at', null)
     if (!referralsError && referralsData) {
       referrals.value = referralsData
     }
@@ -567,9 +570,15 @@ const goToStatus = () => {
         
         <div class="pricing-discount-display">
           <div class="discount-pill">
-            <span class="lbl">Your Course Price:</span>
-            <span class="val text-cyan">PKR {{ finalCoursePrice }}</span>
-            <span class="sub text-muted" v-if="totalBonusEarned > 0">(Discount: -PKR {{ Math.min(totalBonusEarned, maxDiscountAllowed) }})</span>
+            <template v-if="authStore.profile?.status === 'approved'">
+              <span class="lbl">Your Approved Paid Amount:</span>
+              <span class="val text-cyan text-glow">PKR {{ authStore.profile?.course_amount || 0 }}</span>
+            </template>
+            <template v-else>
+              <span class="lbl">Your Course Price:</span>
+              <span class="val text-cyan text-glow">PKR {{ finalCoursePrice }}</span>
+              <span class="sub text-muted" v-if="totalBonusEarned > 0">(Discount: -PKR {{ Math.min(totalBonusEarned, maxDiscountAllowed) }})</span>
+            </template>
           </div>
         </div>
       </div>
@@ -617,7 +626,7 @@ const goToStatus = () => {
             </div>
             <div class="metric-box">
               <span class="val text-gold">PKR {{ totalBonusEarned }}</span>
-              <span class="lbl">Earned Bonus</span>
+              <span class="lbl">Referral Earnings</span>
             </div>
           </div>
 
@@ -636,6 +645,7 @@ const goToStatus = () => {
                   <tr>
                     <th>Candidate</th>
                     <th>Status</th>
+                    <th>Commission</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -651,6 +661,15 @@ const goToStatus = () => {
                       }">
                         {{ refCandidate.status === 'approved' ? 'Paid / Active' : refCandidate.status }}
                       </span>
+                      <div v-if="refCandidate.status === 'approved' && refCandidate.course_amount" class="ref-payment-details">
+                        Paid: PKR {{ refCandidate.course_amount }}
+                      </div>
+                    </td>
+                    <td>
+                      <span class="text-glow-green" v-if="refCandidate.status === 'approved'">
+                        +PKR {{ refCandidate.referral_commission || 0 }}
+                      </span>
+                      <span class="text-muted" v-else>PKR 0</span>
                     </td>
                   </tr>
                 </tbody>
@@ -1347,6 +1366,12 @@ const goToStatus = () => {
 
 .referrals-mini-table tr:last-child td {
   border-bottom: none;
+}
+
+.ref-payment-details {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-top: 0.15rem;
 }
 
 .ref-name {

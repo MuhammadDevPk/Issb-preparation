@@ -36,27 +36,146 @@ const fetchProfiles = async () => {
   }
 }
 
-const handleApprove = async (profileId) => {
-  if (!confirm('Are you sure you want to approve this candidate?')) return
+// Custom Approval Modal State
+const showApproveModal = ref(false)
+const approveCourseAmount = ref(1499)
+const approveReferralCommission = ref(500)
+const isEditMode = ref(false)
 
+const openApproveModal = (candidate, isEdit = false) => {
+  selectedProfileId.value = candidate.id
+  isEditMode.value = isEdit
+  if (isEdit) {
+    approveCourseAmount.value = candidate.course_amount || 0
+    approveReferralCommission.value = candidate.referral_commission || 0
+  } else {
+    approveCourseAmount.value = settings.value.course_price || 1499
+    approveReferralCommission.value = settings.value.referral_bonus || 500
+  }
+  showApproveModal.value = true
+}
+
+const closeApproveModal = () => {
+  showApproveModal.value = false
+  selectedProfileId.value = null
+  isEditMode.value = false
+}
+
+const confirmApproval = async () => {
+  if (!selectedProfileId.value) return
+  isLoading.value = true
   try {
+    const updateData = {
+      course_amount: approveCourseAmount.value,
+      referral_commission: approveReferralCommission.value
+    }
+    
+    if (!isEditMode.value) {
+      updateData.status = 'approved'
+      updateData.rejection_reason = null
+    }
+
     const { error } = await supabase
       .from('profiles')
-      .update({ status: 'approved', rejection_reason: null })
-      .eq('id', profileId)
+      .update(updateData)
+      .eq('id', selectedProfileId.value)
 
     if (error) throw error
 
     // Update local state
-    const index = profiles.value.findIndex((p) => p.id === profileId)
+    const index = profiles.value.findIndex((p) => p.id === selectedProfileId.value)
     if (index !== -1) {
-      profiles.value[index].status = 'approved'
-      profiles.value[index].rejection_reason = null
+      if (!isEditMode.value) {
+        profiles.value[index].status = 'approved'
+        profiles.value[index].rejection_reason = null
+      }
+      profiles.value[index].course_amount = approveCourseAmount.value
+      profiles.value[index].referral_commission = approveReferralCommission.value
+    }
+    closeApproveModal()
+  } catch (e) {
+    console.error('Operation failed:', e)
+    alert('Failed to update candidate details: ' + e.message)
+  } finally {
+    isLoading.value = false
+  }
+}
+
+const handleSoftDelete = async (profileId) => {
+  if (!confirm('Are you sure you want to soft delete this candidate? They will lose access to the portal but can be restored from the Trash tab.')) return
+  
+  try {
+    const { error } = await supabase
+      .from('profiles')
+      .update({ deleted_at: new Date().toISOString() })
+      .eq('id', profileId)
+
+    if (error) throw error
+
+    const index = profiles.value.findIndex(p => p.id === profileId)
+    if (index !== -1) {
+      profiles.value[index].deleted_at = new Date().toISOString()
     }
   } catch (e) {
-    console.error('Approval failed:', e)
-    alert('Failed to approve candidate: ' + e.message)
+    console.error('Soft delete failed:', e)
+    alert('Failed to soft delete: ' + e.message)
   }
+}
+
+const handleRestore = async (profileId) => {
+  if (!confirm('Are you sure you want to restore this candidate? They will regain access to their portal.')) return
+
+  try {
+    const { error } = await supabase
+      .from('profiles')
+      .update({ deleted_at: null })
+      .eq('id', profileId)
+
+    if (error) throw error
+
+    const index = profiles.value.findIndex(p => p.id === profileId)
+    if (index !== -1) {
+      profiles.value[index].deleted_at = null
+    }
+  } catch (e) {
+    console.error('Restore failed:', e)
+    alert('Failed to restore candidate: ' + e.message)
+  }
+}
+
+const handlePermanentDelete = async (profileId) => {
+  if (!confirm('WARNING: Are you sure you want to PERMANENTLY delete this candidate? This will purge all their profile information and user accounts from auth database. This cannot be undone.')) return
+
+  try {
+    // Call the security definer Postgres function RPC
+    const { error } = await supabase.rpc('delete_auth_user', { target_user_id: profileId })
+
+    if (error) throw error
+
+    // Remove from local profiles state
+    profiles.value = profiles.value.filter(p => p.id !== profileId)
+    alert('Candidate permanently deleted successfully.')
+  } catch (e) {
+    console.error('Permanent delete failed:', e)
+    alert('Failed to delete permanently: ' + e.message)
+  }
+}
+
+const getReferralStats = (candidateId) => {
+  const refs = profiles.value.filter(p => p.referred_by === candidateId && p.deleted_at === null)
+  const approvedRefs = refs.filter(p => p.status === 'approved')
+  const earnings = approvedRefs.reduce((sum, r) => sum + Number(r.referral_commission || 0), 0)
+  return {
+    totalCount: refs.length,
+    approvedCount: approvedRefs.length,
+    earnings
+  }
+}
+
+const getReferrerEmail = (referredById) => {
+  if (!referredById) return ''
+  const refProfile = profiles.value.find(p => p.id === referredById)
+  return refProfile ? refProfile.email : 'Unknown Referrer'
 }
 
 const openRejectModal = (profileId) => {
@@ -138,8 +257,10 @@ const filteredProfiles = computed(() => {
     // 2. Branch Match
     const matchesBranch = branchFilter.value === 'all' || p.target_branch === branchFilter.value
 
-    // 3. Status Match
-    const matchesStatus = activeStatusTab.value === 'all' || p.status === activeStatusTab.value
+    // 3. Status/Trash Match
+    const matchesStatus = activeStatusTab.value === 'trash'
+      ? p.deleted_at !== null
+      : (p.deleted_at === null && (activeStatusTab.value === 'all' || p.status === activeStatusTab.value))
 
     return matchesQuery && matchesBranch && matchesStatus
   })
@@ -277,28 +398,35 @@ onMounted(() => {
         class="tab-btn"
         :class="{ active: activeStatusTab === 'all' }"
       >
-        All Candidates ({{ profiles.length }})
+        All Candidates ({{ profiles.filter((p) => p.deleted_at === null).length }})
       </button>
       <button
         @click="activeStatusTab = 'pending'"
         class="tab-btn"
         :class="{ active: activeStatusTab === 'pending' }"
       >
-        Pending ({{ profiles.filter((p) => p.status === 'pending').length }})
+        Pending ({{ profiles.filter((p) => p.status === 'pending' && p.deleted_at === null).length }})
       </button>
       <button
         @click="activeStatusTab = 'approved'"
         class="tab-btn"
         :class="{ active: activeStatusTab === 'approved' }"
       >
-        Approved ({{ profiles.filter((p) => p.status === 'approved').length }})
+        Approved ({{ profiles.filter((p) => p.status === 'approved' && p.deleted_at === null).length }})
       </button>
       <button
         @click="activeStatusTab = 'rejected'"
         class="tab-btn"
         :class="{ active: activeStatusTab === 'rejected' }"
       >
-        Rejected ({{ profiles.filter((p) => p.status === 'rejected').length }})
+        Rejected ({{ profiles.filter((p) => p.status === 'rejected' && p.deleted_at === null).length }})
+      </button>
+      <button
+        @click="activeStatusTab = 'trash'"
+        class="tab-btn tab-btn-trash"
+        :class="{ active: activeStatusTab === 'trash' }"
+      >
+        Trash ({{ profiles.filter((p) => p.deleted_at !== null).length }})
       </button>
       <button
         @click="activeStatusTab = 'settings'"
@@ -329,6 +457,8 @@ onMounted(() => {
             <th>WhatsApp</th>
             <th>Registration Date</th>
             <th>Screenshot</th>
+            <th>Amount Paid</th>
+            <th>Referral Stats</th>
             <th>Status</th>
             <th class="actions-col">Actions</th>
           </tr>
@@ -338,6 +468,9 @@ onMounted(() => {
             <td class="candidate-info-cell">
               <div class="name">{{ candidate.full_name || 'No Name Provided' }}</div>
               <div class="email">{{ candidate.email }}</div>
+              <div v-if="candidate.referred_by" class="referrer-email" style="font-size: 0.75rem; color: var(--accent-gold); margin-top: 0.2rem;">
+                Ref by: {{ getReferrerEmail(candidate.referred_by) }}
+              </div>
               <div v-if="candidate.role === 'admin'" class="role-indicator text-glow-gold">
                 System Admin
               </div>
@@ -375,6 +508,18 @@ onMounted(() => {
               <span v-else class="text-muted text-italic">No Upload</span>
             </td>
 
+            <td data-label="Amount Paid">
+              <span v-if="candidate.status === 'approved'">PKR {{ candidate.course_amount || 0 }}</span>
+              <span v-else class="text-muted">-</span>
+            </td>
+
+            <td data-label="Referrals">
+              <div class="ref-count">Count: {{ getReferralStats(candidate.id).totalCount }}</div>
+              <div class="ref-earnings" v-if="getReferralStats(candidate.id).earnings > 0" style="color: var(--accent-cyan); font-weight: 600; font-size: 0.82rem; margin-top: 0.15rem;">
+                Earned: PKR {{ getReferralStats(candidate.id).earnings }}
+              </div>
+            </td>
+
             <td data-label="Status">
               <span
                 class="badge"
@@ -389,26 +534,66 @@ onMounted(() => {
               <div v-if="candidate.status === 'rejected'" class="rejection-reason-sub">
                 "{{ candidate.rejection_reason }}"
               </div>
+              <div v-if="candidate.deleted_at" class="text-italic" style="color: #ef4444; font-size: 0.72rem; margin-top: 0.25rem;">
+                Soft Deleted ({{ formatDate(candidate.deleted_at) }})
+              </div>
             </td>
 
             <td class="actions-cell">
               <div class="actions-group">
-                <button
-                  v-if="candidate.status !== 'approved'"
-                  @click="handleApprove(candidate.id)"
-                  class="btn-action btn-approve"
-                  title="Approve Candidate Access"
-                >
-                  Approve
-                </button>
-                <button
-                  v-if="candidate.status !== 'rejected' && candidate.role !== 'admin'"
-                  @click="openRejectModal(candidate.id)"
-                  class="btn-action btn-reject"
-                  title="Reject Receipt"
-                >
-                  Reject
-                </button>
+                <!-- If not soft-deleted (active candidate) -->
+                <template v-if="!candidate.deleted_at">
+                  <button
+                    v-if="candidate.status !== 'approved'"
+                    @click="openApproveModal(candidate, false)"
+                    class="btn-action btn-approve"
+                    title="Approve Candidate Access"
+                  >
+                    Approve
+                  </button>
+                  <button
+                    v-if="candidate.status === 'approved'"
+                    @click="openApproveModal(candidate, true)"
+                    class="btn-action btn-edit"
+                    title="Edit Candidate Pricing"
+                  >
+                    Edit Pricing
+                  </button>
+                  <button
+                    v-if="candidate.status !== 'rejected' && candidate.role !== 'admin'"
+                    @click="openRejectModal(candidate.id)"
+                    class="btn-action btn-reject"
+                    title="Reject Receipt"
+                  >
+                    Reject
+                  </button>
+                  <button
+                    v-if="candidate.role !== 'admin'"
+                    @click="handleSoftDelete(candidate.id)"
+                    class="btn-action btn-soft-delete"
+                    title="Move to Trash"
+                  >
+                    Soft Delete
+                  </button>
+                </template>
+
+                <!-- If soft-deleted -->
+                <template v-else>
+                  <button
+                    @click="handleRestore(candidate.id)"
+                    class="btn-action btn-restore"
+                    title="Restore Candidate Access"
+                  >
+                    Restore
+                  </button>
+                  <button
+                    @click="handlePermanentDelete(candidate.id)"
+                    class="btn-action btn-delete-perm"
+                    title="Delete Account Permanently"
+                  >
+                    Delete Perm
+                  </button>
+                </template>
               </div>
             </td>
           </tr>
@@ -538,6 +723,48 @@ onMounted(() => {
           <button @click="closeRejectModal" class="btn btn-secondary">Cancel</button>
           <button @click="handleReject" class="btn btn-primary btn-submit-rejection">
             Confirm Rejection
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal for Custom Approval / Editing -->
+    <div v-if="showApproveModal" class="modal-overlay" @click="closeApproveModal">
+      <div class="modal-content form-modal" @click.stop>
+        <button class="modal-close" @click="closeApproveModal">&times;</button>
+        <h3>{{ isEditMode ? 'Edit Candidate Payment Info' : 'Approve Candidate Access' }}</h3>
+        <p>
+          Configure the course price paid and the referrer's commission details for this candidate.
+        </p>
+
+        <div class="form-group">
+          <label for="approveCourseAmount" class="form-label">Course Amount Paid (PKR) *</label>
+          <input
+            v-model.number="approveCourseAmount"
+            type="number"
+            id="approveCourseAmount"
+            class="form-input"
+            required
+            min="0"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="approveReferralCommission" class="form-label">Referrer Commission (PKR) *</label>
+          <input
+            v-model.number="approveReferralCommission"
+            type="number"
+            id="approveReferralCommission"
+            class="form-input"
+            required
+            min="0"
+          />
+        </div>
+
+        <div class="modal-actions">
+          <button @click="closeApproveModal" class="btn btn-secondary">Cancel</button>
+          <button @click="confirmApproval" class="btn btn-primary">
+            {{ isEditMode ? 'Save Changes' : 'Confirm & Approve' }}
           </button>
         </div>
       </div>
@@ -775,6 +1002,68 @@ onMounted(() => {
   background: var(--accent-red-glow);
   color: var(--accent-red);
   border-color: rgba(185, 28, 28, 0.25);
+}
+
+.btn-soft-delete {
+  background: transparent;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}
+
+.btn-soft-delete:hover {
+  background: rgba(239, 68, 68, 0.08);
+  border-color: #ef4444;
+}
+
+.btn-restore {
+  background: var(--accent-cyan);
+  color: #ffffff;
+  border: 1px solid var(--accent-cyan);
+}
+
+.btn-restore:hover {
+  background: #0284c7;
+  border-color: #0284c7;
+}
+
+.btn-delete-perm {
+  background: #dc2626;
+  color: #ffffff;
+  border: 1px solid #dc2626;
+}
+
+.btn-delete-perm:hover {
+  background: #991b1b;
+  border-color: #991b1b;
+}
+
+.btn-edit {
+  background: var(--accent-cyan-glow);
+  color: var(--accent-cyan);
+  border: 1px solid rgba(3, 194, 252, 0.2);
+}
+
+.btn-edit:hover {
+  background: var(--accent-cyan);
+  color: #ffffff;
+  border-color: var(--accent-cyan);
+}
+
+.tab-btn-trash {
+  border-color: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}
+
+.tab-btn-trash:hover {
+  background: rgba(239, 68, 68, 0.05);
+  color: #b91c1c;
+}
+
+.tab-btn-trash.active {
+  background: #ef4444 !important;
+  color: #ffffff !important;
+  border-color: #ef4444 !important;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2) !important;
 }
 
 /* Modal styling */

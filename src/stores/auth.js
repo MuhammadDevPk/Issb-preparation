@@ -12,6 +12,10 @@ export const useAuthStore = defineStore('auth', () => {
       const { data, error } = await supabase.from('profiles').select('*').eq('id', userId).single()
       console.log('user profile data', data)
       if (error) throw error
+      if (data && data.deleted_at) {
+        profile.value = null
+        return null
+      }
       profile.value = data
       return data
     } catch (e) {
@@ -34,12 +38,16 @@ export const useAuthStore = defineStore('auth', () => {
       if (session) {
         user.value = session.user
         const p = await fetchProfile(session.user.id)
-
-        // Session ID validation check
-        const localToken = localStorage.getItem('issb_session_token')
-        if (p && p.active_session_id && p.active_session_id !== localToken) {
-          console.warn('Session mismatch on init. Logging out.')
+        if (!p) {
+          console.warn('Profile not found or soft-deleted. Logging out.')
           await logout()
+        } else {
+          // Session ID validation check
+          const localToken = localStorage.getItem('issb_session_token')
+          if (p.active_session_id && p.active_session_id !== localToken) {
+            console.warn('Session mismatch on init. Logging out.')
+            await logout()
+          }
         }
       } else {
         user.value = null
@@ -59,13 +67,17 @@ export const useAuthStore = defineStore('auth', () => {
       loading.value = true
       if (session) {
         user.value = session.user
-        await fetchProfile(session.user.id)
-
-        // Session ID validation check
-        const localToken = localStorage.getItem('issb_session_token')
-        if (profile.value && profile.value.active_session_id && profile.value.active_session_id !== localToken) {
-          console.warn('Session mismatch on state change. Logging out.')
+        const p = await fetchProfile(session.user.id)
+        if (!p && event !== 'SIGNED_OUT') {
+          console.warn('Profile not found or soft-deleted on state change. Logging out.')
           await logout()
+        } else if (p) {
+          // Session ID validation check
+          const localToken = localStorage.getItem('issb_session_token')
+          if (p.active_session_id && p.active_session_id !== localToken) {
+            console.warn('Session mismatch on state change. Logging out.')
+            await logout()
+          }
         }
       } else {
         user.value = null
@@ -95,7 +107,11 @@ export const useAuthStore = defineStore('auth', () => {
         .update({ active_session_id: sessionToken })
         .eq('id', data.user.id)
 
-      await fetchProfile(data.user.id)
+      const p = await fetchProfile(data.user.id)
+      if (!p) {
+        await logout()
+        throw new Error('This account has been deleted or disabled.')
+      }
       return data
     } finally {
       isLoggingIn.value = false
@@ -104,7 +120,7 @@ export const useAuthStore = defineStore('auth', () => {
 
   const register = async (email, password, metadata) => {
     isRegistering.value = true
-    // metadata includes full_name, whatsapp, target_branch, referred_by_code, ip_address
+    // metadata includes full_name, whatsapp, target_branch, referral_code, ip_address
     const { data, error } = await supabase.auth.signUp({
       email,
       password,
@@ -113,7 +129,7 @@ export const useAuthStore = defineStore('auth', () => {
           full_name: metadata.full_name,
           whatsapp: metadata.whatsapp,
           target_branch: metadata.target_branch,
-          referred_by_code: metadata.referred_by_code,
+          referral_code: metadata.referral_code,
           ip_address: metadata.ip_address,
         },
       },
