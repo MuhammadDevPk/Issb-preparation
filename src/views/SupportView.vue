@@ -39,6 +39,22 @@ const isAdmin = computed(() => {
   return authStore.profile?.role === 'admin'
 })
 
+// Parse category and title from full title e.g. [Access Issue] My ticket -> { category: 'Access Issue', title: 'My ticket' }
+const parseTitleAndCategory = (fullTitle) => {
+  if (fullTitle && fullTitle.startsWith('[') && fullTitle.includes(']')) {
+    const parts = fullTitle.split(']')
+    const category = parts[0].substring(1).trim()
+    const title = parts.slice(1).join(']').trim()
+    return { category, title }
+  }
+  return { category: 'Other', title: fullTitle || '' }
+}
+
+// Check if current user can manage (edit, delete, change status, reply to) the item
+const canManage = (item) => {
+  return isAdmin.value || (authStore.user && authStore.user.id === item.user_id)
+}
+
 // Fetch Complaints
 const fetchComplaints = async () => {
   loading.value = true
@@ -50,7 +66,19 @@ const fetchComplaints = async () => {
         .select('*, profiles(full_name, email)')
         .order('created_at', { ascending: false })
       if (error) throw error
-      complaints.value = data || []
+      complaints.value = (data || []).map(c => {
+        const parsed = parseTitleAndCategory(c.title)
+        return {
+          ...c,
+          isEditing: false,
+          editTitle: parsed.title,
+          editCategory: parsed.category,
+          editDesc: c.description,
+          editStatus: c.status,
+          editReply: c.admin_reply || '',
+          saving: false
+        }
+      })
     } else {
       // Auth user sees their own complaints
       const { data, error } = await supabase
@@ -59,7 +87,19 @@ const fetchComplaints = async () => {
         .eq('user_id', authStore.user.id)
         .order('created_at', { ascending: false })
       if (error) throw error
-      complaints.value = data || []
+      complaints.value = (data || []).map(c => {
+        const parsed = parseTitleAndCategory(c.title)
+        return {
+          ...c,
+          isEditing: false,
+          editTitle: parsed.title,
+          editCategory: parsed.category,
+          editDesc: c.description,
+          editStatus: c.status,
+          editReply: c.admin_reply || '',
+          saving: false
+        }
+      })
     }
   } catch (err) {
     console.error('Error fetching complaints:', err)
@@ -76,7 +116,15 @@ const fetchImprovements = async () => {
       .select('*, profiles(full_name)')
       .order('created_at', { ascending: false })
     if (error) throw error
-    improvements.value = data || []
+    improvements.value = (data || []).map(imp => ({
+      ...imp,
+      isEditing: false,
+      editTitle: imp.title,
+      editDesc: imp.description,
+      editStatus: imp.status || 'pending',
+      editReply: imp.admin_reply || '',
+      saving: false
+    }))
   } catch (err) {
     console.error('Error fetching improvements:', err)
   }
@@ -103,7 +151,18 @@ const submitComplaint = async () => {
     if (error) throw error
 
     if (data && data[0]) {
-      complaints.value.unshift(data[0])
+      const parsed = parseTitleAndCategory(data[0].title)
+      const newComp = {
+        ...data[0],
+        isEditing: false,
+        editTitle: parsed.title,
+        editCategory: parsed.category,
+        editDesc: data[0].description,
+        editStatus: data[0].status,
+        editReply: data[0].admin_reply || '',
+        saving: false
+      }
+      complaints.value.unshift(newComp)
     }
 
     compTitle.value = ''
@@ -136,7 +195,16 @@ const submitImprovement = async () => {
     if (error) throw error
 
     if (data && data[0]) {
-      improvements.value.unshift(data[0])
+      const newImp = {
+        ...data[0],
+        isEditing: false,
+        editTitle: data[0].title,
+        editDesc: data[0].description,
+        editStatus: data[0].status || 'pending',
+        editReply: data[0].admin_reply || '',
+        saving: false
+      }
+      improvements.value.unshift(newImp)
     }
 
     impTitle.value = ''
@@ -149,20 +217,168 @@ const submitImprovement = async () => {
   }
 }
 
-// Toggle Complaint Status (Admin Only)
-const toggleComplaintStatus = async (complaint) => {
-  if (!isAdmin.value) return
-  const nextStatus = complaint.status === 'pending' ? 'resolved' : 'pending'
+// Edit actions for Complaints
+const startEditComplaint = (comp) => {
+  const parsed = parseTitleAndCategory(comp.title)
+  comp.editTitle = parsed.title
+  comp.editCategory = parsed.category
+  comp.editDesc = comp.description
+  comp.isEditing = true
+}
+
+const cancelEditComplaint = (comp) => {
+  comp.isEditing = false
+}
+
+const saveComplaint = async (comp) => {
+  if (!comp.editTitle || !comp.editDesc) return
+  comp.saving = true
+  try {
+    const fullTitle = `[${comp.editCategory}] ${comp.editTitle}`
+    const { error } = await supabase
+      .from('complaints')
+      .update({
+        title: fullTitle,
+        description: comp.editDesc
+      })
+      .eq('id', comp.id)
+    if (error) throw error
+
+    comp.title = fullTitle
+    comp.description = comp.editDesc
+    comp.isEditing = false
+  } catch (err) {
+    console.error('Error updating complaint:', err)
+    alert('Failed to update complaint: ' + err.message)
+  } finally {
+    comp.saving = false
+  }
+}
+
+const deleteComplaint = async (comp) => {
+  if (!confirm('Are you sure you want to delete this complaint?')) return
   try {
     const { error } = await supabase
       .from('complaints')
-      .update({ status: nextStatus })
-      .eq('id', complaint.id)
-
+      .delete()
+      .eq('id', comp.id)
     if (error) throw error
-    complaint.status = nextStatus
+
+    complaints.value = complaints.value.filter(c => c.id !== comp.id)
   } catch (err) {
-    console.error('Error updating status:', err)
+    console.error('Error deleting complaint:', err)
+    alert('Failed to delete complaint: ' + err.message)
+  }
+}
+
+const updateComplaintStatus = async (comp, newStatus) => {
+  try {
+    const { error } = await supabase
+      .from('complaints')
+      .update({ status: newStatus })
+      .eq('id', comp.id)
+    if (error) throw error
+    comp.status = newStatus
+    comp.editStatus = newStatus
+  } catch (err) {
+    console.error('Error updating complaint status:', err)
+    alert('Failed to update status: ' + err.message)
+  }
+}
+
+const saveComplaintReply = async (comp) => {
+  try {
+    const { error } = await supabase
+      .from('complaints')
+      .update({ admin_reply: comp.editReply })
+      .eq('id', comp.id)
+    if (error) throw error
+    comp.admin_reply = comp.editReply
+    alert('Reply updated successfully!')
+  } catch (err) {
+    console.error('Error saving complaint reply:', err)
+    alert('Failed to save reply: ' + err.message)
+  }
+}
+
+// Edit actions for Improvements
+const startEditImprovement = (imp) => {
+  imp.editTitle = imp.title
+  imp.editDesc = imp.description
+  imp.isEditing = true
+}
+
+const cancelEditImprovement = (imp) => {
+  imp.isEditing = false
+}
+
+const saveImprovement = async (imp) => {
+  if (!imp.editTitle || !imp.editDesc) return
+  imp.saving = true
+  try {
+    const { error } = await supabase
+      .from('improvements')
+      .update({
+        title: imp.editTitle,
+        description: imp.editDesc
+      })
+      .eq('id', imp.id)
+    if (error) throw error
+
+    imp.title = imp.editTitle
+    imp.description = imp.editDesc
+    imp.isEditing = false
+  } catch (err) {
+    console.error('Error updating suggestion:', err)
+    alert('Failed to update suggestion: ' + err.message)
+  } finally {
+    imp.saving = false
+  }
+}
+
+const deleteImprovement = async (imp) => {
+  if (!confirm('Are you sure you want to delete this suggestion?')) return
+  try {
+    const { error } = await supabase
+      .from('improvements')
+      .delete()
+      .eq('id', imp.id)
+    if (error) throw error
+
+    improvements.value = improvements.value.filter(i => i.id !== imp.id)
+  } catch (err) {
+    console.error('Error deleting suggestion:', err)
+    alert('Failed to delete suggestion: ' + err.message)
+  }
+}
+
+const updateImprovementStatus = async (imp, newStatus) => {
+  try {
+    const { error } = await supabase
+      .from('improvements')
+      .update({ status: newStatus })
+      .eq('id', imp.id)
+    if (error) throw error
+    imp.status = newStatus
+    imp.editStatus = newStatus
+  } catch (err) {
+    console.error('Error updating suggestion status:', err)
+    alert('Failed to update status: ' + err.message)
+  }
+}
+
+const saveImprovementReply = async (imp) => {
+  try {
+    const { error } = await supabase
+      .from('improvements')
+      .update({ admin_reply: imp.editReply })
+      .eq('id', imp.id)
+    if (error) throw error
+    imp.admin_reply = imp.editReply
+    alert('Reply updated successfully!')
+  } catch (err) {
+    console.error('Error saving suggestion reply:', err)
+    alert('Failed to save reply: ' + err.message)
   }
 }
 
@@ -349,33 +565,122 @@ const formatDate = (isoString) => {
             v-for="comp in complaints"
             :key="comp.id"
             class="complaint-card"
-            :class="comp.status"
+            :class="[comp.status, { 'editing-card': comp.isEditing }]"
           >
-            <div class="card-header">
-              <span class="category-badge">{{ comp.title.split(']')[0] + ']' }}</span>
-              <span
-                class="status-badge"
-                :class="comp.status"
-                @click="toggleComplaintStatus(comp)"
-                :title="isAdmin ? 'Click to toggle status' : ''"
-              >
-                {{ comp.status.toUpperCase() }}
-              </span>
+            <!-- Edit Mode -->
+            <div v-if="comp.isEditing" class="edit-form-inline">
+              <div class="form-group mb-xs">
+                <label class="label-mini">Category</label>
+                <select v-model="comp.editCategory" class="input-mini">
+                  <option value="Access Issue">Access Issue</option>
+                  <option value="Simulator Bug">Simulator Bug</option>
+                  <option value="Layout Lag">Layout Lag</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div class="form-group mb-xs">
+                <label class="label-mini">Subject</label>
+                <input v-model="comp.editTitle" type="text" class="input-mini" required />
+              </div>
+              <div class="form-group mb-xs">
+                <label class="label-mini">Description</label>
+                <textarea v-model="comp.editDesc" rows="3" class="input-mini" required></textarea>
+              </div>
+              <div class="edit-actions mt-sm">
+                <button @click="saveComplaint(comp)" class="btn btn-primary btn-xs" :disabled="comp.saving">
+                  {{ comp.saving ? 'Saving...' : 'Save' }}
+                </button>
+                <button @click="cancelEditComplaint(comp)" class="btn btn-secondary btn-xs">Cancel</button>
+              </div>
             </div>
-            <h4 class="card-title">
-              {{
-                comp.title.includes(']')
-                  ? comp.title.split(']').slice(1).join(']').trim()
-                  : comp.title
-              }}
-            </h4>
-            <p class="card-desc">{{ comp.description }}</p>
 
-            <div class="card-footer">
-              <span class="date">{{ formatDate(comp.created_at) }}</span>
-              <span class="user-info" v-if="isAdmin && comp.profiles">
-                By: {{ comp.profiles.full_name }} ({{ comp.profiles.email }})
-              </span>
+            <!-- Read Mode -->
+            <div v-else>
+              <div class="card-header">
+                <span class="category-badge">{{ comp.title.includes(']') ? comp.title.split(']')[0] + ']' : '[Other]' }}</span>
+                <span class="status-badge" :class="comp.status">
+                  {{ comp.status.toUpperCase() }}
+                </span>
+              </div>
+              <h4 class="card-title">
+                {{
+                  comp.title.includes(']')
+                    ? comp.title.split(']').slice(1).join(']').trim()
+                    : comp.title
+                }}
+              </h4>
+              <p class="card-desc">{{ comp.description }}</p>
+
+              <div class="card-footer">
+                <span class="date">{{ formatDate(comp.created_at) }}</span>
+                <span class="user-info" v-if="isAdmin && comp.profiles">
+                  By: {{ comp.profiles.full_name }} ({{ comp.profiles.email }})
+                </span>
+              </div>
+            </div>
+
+            <!-- Manage section (Status update, reply, edit/delete actions) -->
+            <div v-if="canManage(comp)" class="manage-section mt-sm">
+              <div class="manage-row">
+                <!-- Status selector -->
+                <div class="status-selector-wrapper">
+                  <label class="label-mini">Status:</label>
+                  <select 
+                    :value="comp.status" 
+                    @change="updateComplaintStatus(comp, $event.target.value)" 
+                    class="select-mini"
+                  >
+                    <option value="pending">Pending</option>
+                    <option value="resolved">Resolved / Completed</option>
+                    <option value="rejected">Rejected</option>
+                  </select>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="action-buttons-wrapper" v-if="!comp.isEditing">
+                  <button @click="startEditComplaint(comp)" class="btn-icon-text text-info">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon-sm">
+                      <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                      <path d="M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                    </svg>
+                    <span>Edit</span>
+                  </button>
+                  <button @click="deleteComplaint(comp)" class="btn-icon-text text-danger">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon-sm">
+                      <polyline points="3 6 5 6 21 6"></polyline>
+                      <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                    </svg>
+                    <span>Delete</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Reply / Response Box -->
+              <div class="reply-editor-wrapper mt-xs">
+                <label class="label-mini">Reply / Update:</label>
+                <div class="reply-input-row">
+                  <input 
+                    v-model="comp.editReply" 
+                    type="text" 
+                    placeholder="Write response or updates..." 
+                    class="input-mini reply-input"
+                  />
+                  <button @click="saveComplaintReply(comp)" class="btn btn-primary btn-xs reply-btn">
+                    Update Reply
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Reply display -->
+            <div v-if="comp.admin_reply" class="reply-response-box mt-sm">
+              <div class="reply-header">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="reply-icon">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+                <span>Official Reply</span>
+              </div>
+              <p class="reply-content">{{ comp.admin_reply }}</p>
             </div>
           </div>
         </div>
@@ -433,9 +738,35 @@ const formatDate = (isoString) => {
             <p>No suggestions have been posted yet. Be the first to suggest an improvement!</p>
           </div>
 
-          <div v-for="imp in improvements" :key="imp.id" class="improvement-card">
-            <h4 class="imp-title">{{ imp.title }}</h4>
-            <p class="imp-desc">{{ imp.description }}</p>
+          <div v-for="imp in improvements" :key="imp.id" class="improvement-card" :class="[imp.status || 'pending', { 'editing-card': imp.isEditing }]">
+            <!-- Edit Mode -->
+            <div v-if="imp.isEditing" class="edit-form-inline">
+              <div class="form-group mb-xs">
+                <label class="label-mini">Suggestion Title</label>
+                <input v-model="imp.editTitle" type="text" class="input-mini" required />
+              </div>
+              <div class="form-group mb-xs">
+                <label class="label-mini">Description</label>
+                <textarea v-model="imp.editDesc" rows="4" class="input-mini" required></textarea>
+              </div>
+              <div class="edit-actions mt-sm">
+                <button @click="saveImprovement(imp)" class="btn btn-primary btn-xs" :disabled="imp.saving">
+                  {{ imp.saving ? 'Saving...' : 'Save' }}
+                </button>
+                <button @click="cancelEditImprovement(imp)" class="btn btn-secondary btn-xs">Cancel</button>
+              </div>
+            </div>
+
+            <!-- Read Mode -->
+            <div v-else>
+              <div class="card-header mb-xs">
+                <span class="status-badge" :class="imp.status || 'pending'">
+                  {{ (imp.status || 'PENDING').toUpperCase() }}
+                </span>
+              </div>
+              <h4 class="imp-title">{{ imp.title }}</h4>
+              <p class="imp-desc">{{ imp.description }}</p>
+            </div>
 
             <!-- Upvote / Downvote Visual Percentage Bar -->
             <div class="voting-analytics">
@@ -504,6 +835,70 @@ const formatDate = (isoString) => {
                 <span class="bullet">•</span>
                 <span class="date">{{ formatDate(imp.created_at) }}</span>
               </div>
+            </div>
+
+            <!-- Manage section (Status update, reply, edit/delete actions) -->
+            <div v-if="canManage(imp)" class="manage-section mt-sm">
+              <div class="manage-row">
+                <!-- Status selector -->
+                <div class="status-selector-wrapper">
+                  <label class="label-mini">Status:</label>
+                  <select 
+                    :value="imp.status || 'pending'" 
+                    @change="updateImprovementStatus(imp, $event.target.value)" 
+                    class="select-mini"
+                  >
+                    <option value="pending">Pending</option>
+                    <option value="completed">Completed / Done</option>
+                    <option value="rejected">Rejected</option>
+                  </select>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="action-buttons-wrapper" v-if="!imp.isEditing">
+                  <button @click="startEditImprovement(imp)" class="btn-icon-text text-info">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon-sm">
+                      <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                      <path d="M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                    </svg>
+                    <span>Edit</span>
+                  </button>
+                  <button @click="deleteImprovement(imp)" class="btn-icon-text text-danger">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon-sm">
+                      <polyline points="3 6 5 6 21 6"></polyline>
+                      <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                    </svg>
+                    <span>Delete</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Reply / Response Box -->
+              <div class="reply-editor-wrapper mt-xs">
+                <label class="label-mini">Reply / Update:</label>
+                <div class="reply-input-row">
+                  <input 
+                    v-model="imp.editReply" 
+                    type="text" 
+                    placeholder="Write response or updates..." 
+                    class="input-mini reply-input"
+                  />
+                  <button @click="saveImprovementReply(imp)" class="btn btn-primary btn-xs reply-btn">
+                    Update Reply
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Reply display -->
+            <div v-if="imp.admin_reply" class="reply-response-box mt-sm">
+              <div class="reply-header">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="reply-icon">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+                <span>Official Reply</span>
+              </div>
+              <p class="reply-content">{{ imp.admin_reply }}</p>
             </div>
           </div>
         </div>
@@ -910,5 +1305,224 @@ h3 {
   .form-row {
     grid-template-columns: 1fr;
   }
+}
+
+/* Inline Edit Form styles */
+.edit-form-inline {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background: rgba(255, 255, 255, 0.02);
+  padding: 1rem;
+  border-radius: var(--border-radius-sm);
+  border: 1px dashed var(--border-color);
+}
+
+.input-mini {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  font-size: 0.85rem;
+  background: var(--bg-panel-solid);
+  color: var(--text-primary);
+  font-family: inherit;
+  transition: border-color var(--transition-smooth);
+}
+
+.input-mini:focus {
+  outline: none;
+  border-color: var(--accent-cyan);
+}
+
+.select-mini {
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  font-size: 0.82rem;
+  background: var(--bg-panel-solid);
+  color: var(--text-primary);
+  cursor: pointer;
+  outline: none;
+}
+
+.select-mini:focus {
+  border-color: var(--accent-cyan);
+}
+
+.label-mini {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 0.2rem;
+  display: block;
+}
+
+.mb-xs {
+  margin-bottom: 0.5rem;
+}
+
+.mt-xs {
+  margin-top: 0.5rem;
+}
+
+.mt-sm {
+  margin-top: 0.85rem;
+}
+
+.edit-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-xs {
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border-radius: var(--border-radius-sm);
+}
+
+/* Manage Area styles */
+.manage-section {
+  border-top: 1px dashed var(--border-color);
+  padding-top: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.manage-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.status-selector-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.status-selector-wrapper .label-mini {
+  margin-bottom: 0;
+}
+
+.action-buttons-wrapper {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.btn-icon-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--border-radius-sm);
+  transition: background var(--transition-smooth);
+}
+
+.btn-icon-text:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.btn-icon-sm {
+  width: 14px;
+  height: 14px;
+}
+
+.text-info {
+  color: var(--accent-cyan);
+}
+
+.text-danger {
+  color: var(--accent-red);
+}
+
+/* Reply Editor styles */
+.reply-editor-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.reply-input-row {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.reply-input {
+  flex: 1;
+}
+
+.reply-btn {
+  white-space: nowrap;
+}
+
+/* Official Reply Box display */
+.reply-response-box {
+  background: rgba(3, 194, 252, 0.04);
+  border: 1px solid rgba(3, 194, 252, 0.15);
+  border-radius: var(--border-radius-sm);
+  padding: 0.85rem 1rem;
+}
+
+.reply-header {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  margin-bottom: 0.35rem;
+}
+
+.reply-icon {
+  width: 14px;
+  height: 14px;
+}
+
+.reply-content {
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* Status indicator borders */
+.complaint-card.rejected,
+.improvement-card.rejected {
+  border-left: 3px solid var(--accent-red);
+}
+
+.complaint-card.resolved,
+.complaint-card.completed,
+.improvement-card.completed {
+  border-left: 3px solid var(--accent-green);
+}
+
+.complaint-card.pending,
+.improvement-card.pending {
+  border-left: 3px solid var(--accent-gold);
+}
+
+/* Status badge styling improvements */
+.status-badge.completed {
+  background: rgba(34, 197, 94, 0.1);
+  color: var(--accent-green);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+.status-badge.rejected {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--accent-red);
+  border: 1px solid rgba(239, 68, 68, 0.2);
 }
 </style>
