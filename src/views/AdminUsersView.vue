@@ -546,22 +546,27 @@ onMounted(() => {
             </td>
 
             <td data-label="Screenshot">
-              <button
-                v-if="candidate.payment_screenshot_url"
-                @click="openImageModal(candidate.payment_screenshot_url)"
-                class="btn-view-receipt"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  class="receipt-icon"
+              <div v-if="candidate.payment_screenshot_url" class="screenshot-previews-list" style="display: flex; flex-direction: column; gap: 0.35rem;">
+                <button
+                  v-for="(url, idx) in candidate.payment_screenshot_url.split(',')"
+                  :key="idx"
+                  @click="openImageModal(url)"
+                  class="btn-view-receipt"
+                  style="padding: 0.25rem 0.5rem; font-size: 0.78rem;"
                 >
-                  <path d="M2 3h20v18H2zM6 8h12M6 12h12M6 16h6" />
-                </svg>
-                <span>Preview</span>
-              </button>
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    class="receipt-icon"
+                    style="width: 12px; height: 12px;"
+                  >
+                    <path d="M2 3h20v18H2zM6 8h12M6 12h12M6 16h6" />
+                  </svg>
+                  <span>Preview {{ candidate.payment_screenshot_url.split(',').length > 1 ? idx + 1 : '' }}</span>
+                </button>
+              </div>
               <span v-else class="text-muted text-italic">No Upload</span>
             </td>
 

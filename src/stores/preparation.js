@@ -19,37 +19,67 @@ export const usePreparationStore = defineStore('preparation', () => {
   const initializeStore = () => {
     const storedModules = localStorage.getItem('issb_completed_modules')
     if (storedModules) {
-      completedModules.value = JSON.parse(storedModules)
+      try {
+        completedModules.value = JSON.parse(storedModules)
+      } catch (e) {
+        console.error('Failed to parse completed modules:', e)
+        localStorage.removeItem('issb_completed_modules')
+      }
     }
 
     const storedXp = localStorage.getItem('issb_xp')
     if (storedXp) {
-      xp.value = parseInt(storedXp)
+      xp.value = parseInt(storedXp) || 120
     }
 
     const storedWat = localStorage.getItem('issb_wat_sessions')
     if (storedWat) {
-      watSessions.value = JSON.parse(storedWat)
+      try {
+        watSessions.value = JSON.parse(storedWat)
+      } catch (e) {
+        console.error('Failed to parse WAT sessions:', e)
+        localStorage.removeItem('issb_wat_sessions')
+      }
     }
 
     const storedSct = localStorage.getItem('issb_sct_sessions')
     if (storedSct) {
-      sctSessions.value = JSON.parse(storedSct)
+      try {
+        sctSessions.value = JSON.parse(storedSct)
+      } catch (e) {
+        console.error('Failed to parse SCT sessions:', e)
+        localStorage.removeItem('issb_sct_sessions')
+      }
     }
 
     const storedSrt = localStorage.getItem('issb_srt_sessions')
     if (storedSrt) {
-      srtSessions.value = JSON.parse(storedSrt)
+      try {
+        srtSessions.value = JSON.parse(storedSrt)
+      } catch (e) {
+        console.error('Failed to parse SRT sessions:', e)
+        localStorage.removeItem('issb_srt_sessions')
+      }
     }
 
     const storedRoute = localStorage.getItem('issb_obstacle_route')
     if (storedRoute) {
-      obstacleRoute.value = JSON.parse(storedRoute)
+      try {
+        obstacleRoute.value = JSON.parse(storedRoute)
+      } catch (e) {
+        console.error('Failed to parse obstacle route:', e)
+        localStorage.removeItem('issb_obstacle_route')
+      }
     }
 
     const storedOpi = localStorage.getItem('issb_opi_sessions')
     if (storedOpi) {
-      opiSessions.value = JSON.parse(storedOpi)
+      try {
+        opiSessions.value = JSON.parse(storedOpi)
+      } catch (e) {
+        console.error('Failed to parse OPI sessions:', e)
+        localStorage.removeItem('issb_opi_sessions')
+      }
     }
   }
 

@@ -185,8 +185,14 @@ export const useAuthStore = defineStore('auth', () => {
   const logout = async () => {
     // Clear local session token
     localStorage.removeItem('issb_session_token')
-    const { error } = await supabase.auth.signOut()
-    if (error) throw error
+    try {
+      const { error } = await supabase.auth.signOut()
+      if (error) {
+        console.warn('Supabase signOut returned error:', error)
+      }
+    } catch (e) {
+      console.error('Failed to sign out from Supabase:', e)
+    }
     user.value = null
     profile.value = null
   }

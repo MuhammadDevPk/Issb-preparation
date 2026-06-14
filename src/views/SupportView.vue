@@ -29,7 +29,13 @@ const votedImprovements = ref({}) // { improvement_id: 'up' | 'down' }
 
 onMounted(async () => {
   // Load local storage states
-  votedImprovements.value = JSON.parse(localStorage.getItem('issb_voted_improvements') || '{}')
+  try {
+    votedImprovements.value = JSON.parse(localStorage.getItem('issb_voted_improvements') || '{}')
+  } catch (e) {
+    console.error('Failed to parse voted improvements:', e)
+    votedImprovements.value = {}
+    localStorage.removeItem('issb_voted_improvements')
+  }
 
   await fetchComplaints()
   await fetchImprovements()

@@ -15,8 +15,8 @@ const password = ref('')
 const whatsapp = ref('')
 const targetBranch = ref('army')
 const fileInput = ref(null)
-const selectedFile = ref(null)
-const filePreview = ref(null)
+const selectedFiles = ref([])
+const filePreviews = ref([])
 
 // UI States
 const isSubmitting = ref(false)
@@ -57,45 +57,55 @@ onMounted(() => {
 })
 
 const handleFileChange = (e) => {
-  const file = e.target.files[0]
-  if (!file) return
-
-  // Validate it's an image
-  if (!file.type.startsWith('image/')) {
-    errorMessage.value = 'Only image files (PNG, JPG, JPEG) are allowed.'
-    selectedFile.value = null
-    filePreview.value = null
-    return
-  }
-
-  // Limit size to 5MB
-  if (file.size > 5 * 1024 * 1024) {
-    errorMessage.value = 'File size must be under 5MB.'
-    selectedFile.value = null
-    filePreview.value = null
-    return
-  }
+  const files = Array.from(e.target.files)
+  if (!files.length) return
 
   errorMessage.value = ''
-  selectedFile.value = file
 
-  // Create preview URL
-  const reader = new FileReader()
-  reader.onload = (event) => {
-    filePreview.value = event.target.result
+  for (const file of files) {
+    if (!file.type.startsWith('image/')) {
+      errorMessage.value = `File "${file.name}" is not an image. Only image files (PNG, JPG, JPEG) are allowed.`
+      continue
+    }
+
+    if (file.size > 5 * 1024 * 1024) {
+      errorMessage.value = `File "${file.name}" exceeds 5MB size limit.`
+      continue
+    }
+
+    if (selectedFiles.value.some(f => f.name === file.name && f.size === file.size)) {
+      continue
+    }
+
+    selectedFiles.value.push(file)
+
+    const reader = new FileReader()
+    reader.onload = (event) => {
+      filePreviews.value.push({
+        id: Math.random().toString(36).substring(2, 9),
+        name: file.name,
+        size: file.size,
+        previewUrl: event.target.result,
+        fileRef: file
+      })
+    }
+    reader.readAsDataURL(file)
   }
-  reader.readAsDataURL(file)
+
+  if (fileInput.value) {
+    fileInput.value.value = ''
+  }
 }
 
 const triggerFileInput = () => {
   fileInput.value.click()
 }
 
-const removeSelectedFile = () => {
-  selectedFile.value = null
-  filePreview.value = null
-  if (fileInput.value) {
-    fileInput.value.value = ''
+const removeSelectedFile = (idx) => {
+  const removedPreview = filePreviews.value[idx]
+  if (removedPreview) {
+    selectedFiles.value = selectedFiles.value.filter(f => f !== removedPreview.fileRef)
+    filePreviews.value.splice(idx, 1)
   }
 }
 
@@ -153,41 +163,44 @@ const handleRegister = async () => {
     }
 
     const userId = regResult.user.id
-    let publicUrl = ''
+    let joinedPublicUrls = ''
 
-    if (selectedFile.value) {
-      uploadProgressText.value = 'Uploading payment screenshot...'
+    if (selectedFiles.value.length > 0) {
+      const urls = []
+      let count = 1
+      for (const file of selectedFiles.value) {
+        uploadProgressText.value = `Uploading payment screenshot ${count}/${selectedFiles.value.length}...`
+        const fileExt = file.name.split('.').pop()
+        const fileName = `${userId}/${Date.now()}_${count}.${fileExt}`
 
-      // 2. Upload payment screenshot to storage bucket
-      const file = selectedFile.value
-      const fileExt = file.name.split('.').pop()
-      const fileName = `${userId}/${Date.now()}.${fileExt}`
+        const { error: uploadError } = await supabase.storage
+          .from('payment_screenshots')
+          .upload(fileName, file, {
+            cacheControl: '3600',
+            upsert: true,
+          })
 
-      const { error: uploadError } = await supabase.storage
-        .from('payment_screenshots')
-        .upload(fileName, file, {
-          cacheControl: '3600',
-          upsert: true,
-        })
+        if (uploadError) {
+          console.error('Storage upload error:', uploadError)
+          throw new Error(
+            `Payment screenshot ${count} upload failed. Your account was created, but please log in and upload receipts on the status page.`,
+          )
+        }
 
-      if (uploadError) {
-        console.error('Storage upload error:', uploadError)
-        throw new Error(
-          'Payment screenshot upload failed, but your account was created. Please log in and upload the receipt on the status page.',
-        )
+        const {
+          data: { publicUrl: url },
+        } = supabase.storage.from('payment_screenshots').getPublicUrl(fileName)
+        urls.push(url)
+        count++
       }
 
-      // 3. Retrieve public URL
-      uploadProgressText.value = 'Saving receipt information...'
-      const {
-        data: { publicUrl: url },
-      } = supabase.storage.from('payment_screenshots').getPublicUrl(fileName)
-      publicUrl = url
+      joinedPublicUrls = urls.join(',')
 
       // 4. Update student profile with receipt url
+      uploadProgressText.value = 'Saving receipts information...'
       const { error: updateError } = await supabase
         .from('profiles')
-        .update({ payment_screenshot_url: publicUrl })
+        .update({ payment_screenshot_url: joinedPublicUrls })
         .eq('id', userId)
 
       if (updateError) {
@@ -385,28 +398,34 @@ const goHome = () => {
 
           <!-- Screenshot upload area -->
           <div class="form-group">
-            <label class="form-label">Payment Receipt Screenshot (Optional)</label>
-            <input ref="fileInput" type="file" accept="image/*" style="display: none" @change="handleFileChange"
+            <label class="form-label">Payment Receipt Screenshot(s) (Optional)</label>
+            <input ref="fileInput" type="file" accept="image/*" multiple style="display: none" @change="handleFileChange"
               :disabled="isSubmitting" />
 
-            <div v-if="!selectedFile" class="upload-dropzone" @click="triggerFileInput">
+            <div v-if="selectedFiles.length === 0" class="upload-dropzone" @click="triggerFileInput">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="upload-icon">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12" />
               </svg>
-              <span>Click to Upload Payment Screenshot</span>
-              <p class="upload-hint">Format: PNG, JPG, JPEG (Max 5MB) | Can be uploaded later</p>
+              <span>Click to Upload Payment Screenshot(s)</span>
+              <p class="upload-hint">Format: PNG, JPG, JPEG (Max 5MB per file) | Multiple allowed | Can be uploaded later</p>
             </div>
 
-            <div v-else class="upload-preview-card">
-              <div class="preview-info">
-                <span class="file-name">{{ selectedFile.name }}</span>
-                <span class="file-size">({{ (selectedFile.size / 1024 / 1024).toFixed(2) }} MB)</span>
+            <div v-else class="selected-files-list">
+              <div v-for="(preview, idx) in filePreviews" :key="preview.id" class="upload-preview-card mb-xs">
+                <div class="preview-info">
+                  <span class="file-name">{{ preview.name }}</span>
+                  <span class="file-size">({{ (preview.size / 1024 / 1024).toFixed(2) }} MB)</span>
+                </div>
+                <div class="preview-img-container">
+                  <img :src="preview.previewUrl" alt="Receipt preview" class="preview-img" />
+                </div>
+                <button type="button" class="btn-remove-file" @click="removeSelectedFile(idx)" :disabled="isSubmitting">
+                  Remove Screenshot {{ filePreviews.length > 1 ? idx + 1 : '' }}
+                </button>
               </div>
-              <div class="preview-img-container">
-                <img :src="filePreview" alt="Receipt preview" class="preview-img" />
-              </div>
-              <button type="button" class="btn-remove-file" @click="removeSelectedFile" :disabled="isSubmitting">
-                Remove Screenshot
+
+              <button type="button" class="btn btn-secondary btn-block mt-xs" @click="triggerFileInput" :disabled="isSubmitting" style="padding: 0.5rem; font-size: 0.85rem;">
+                + Add Another Screenshot
               </button>
             </div>
           </div>
@@ -416,7 +435,7 @@ const goHome = () => {
               <span class="spinner"></span>
               <span>{{ uploadProgressText }}</span>
             </span>
-            <span v-else-if="selectedFile">Register & Request Access</span>
+            <span v-else-if="selectedFiles.length > 0">Register & Request Access</span>
             <span v-else>Register (Pay/Upload Later)</span>
           </button>
         </form>
