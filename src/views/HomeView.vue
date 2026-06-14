@@ -2,8 +2,10 @@
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { supabase } from '../supabase'
+import { useAuthStore } from '../stores/auth'
 
 const router = useRouter()
+const authStore = useAuthStore()
 
 const appSettings = ref({
   course_price: 1499,
@@ -30,7 +32,12 @@ onMounted(() => {
 })
 
 const goToPortal = (targetRoute = '/dashboard') => {
-  router.push(targetRoute)
+  const requiresAuth = ['/dashboard', '/roadmap', '/support'].includes(targetRoute)
+  if (!authStore.user && requiresAuth) {
+    router.push({ path: '/register', query: { redirect: targetRoute } })
+  } else {
+    router.push(targetRoute)
+  }
 }
 
 // Interactive Portal Showcase State
@@ -69,15 +76,18 @@ const scrollToSection = (sectionId) => {
         <a href="#free-simulators" @click.prevent="scrollToSection('free-simulators')" class="nav-link-item">
           ⚡ Free Simulators
         </a>
+        <RouterLink v-if="!authStore.user" to="/login" class="nav-link-item">
+          Log In
+        </RouterLink>
       </div>
 
-      <button @click="goToPortal" class="btn btn-nav-portal">
-        Go to Portal
+      <RouterLink :to="authStore.user ? '/dashboard' : '/register'" class="btn btn-nav-portal">
+        {{ authStore.user ? 'Go to Dashboard' : 'Start Free Trial' }}
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-icon">
           <line x1="5" y1="12" x2="19" y2="12" />
           <polyline points="12 5 19 12 12 19" />
         </svg>
-      </button>
+      </RouterLink>
     </header>
 
     <main id="main-content">
@@ -119,10 +129,10 @@ const scrollToSection = (sectionId) => {
         </div>
 
         <div class="hero-actions">
-          <button @click="goToPortal" class="btn btn-primary btn-large">Start 30-Min Free Trial</button>
-          <button @click="goToPortal" class="btn btn-secondary btn-large">
+          <RouterLink :to="authStore.user ? '/dashboard' : '/register'" class="btn btn-primary btn-large">Start 30-Min Free Trial</RouterLink>
+          <RouterLink :to="authStore.user ? '/dashboard' : '/register'" class="btn btn-secondary btn-large">
             Explore Portal First
-          </button>
+          </RouterLink>
         </div>
       </div>
 
@@ -198,9 +208,9 @@ const scrollToSection = (sectionId) => {
             <li>✓ Study English-Urdu meanings</li>
             <li>✓ Complete multiple worksheets</li>
           </ul>
-          <button @click="goToPortal('/simulator/wat')" class="btn btn-primary w-full">Practice WAT Simulator (Free)</button>
+          <RouterLink to="/simulator/wat" class="btn btn-primary w-full">Practice WAT Simulator (Free)</RouterLink>
         </div>
-
+ 
         <!-- SCT Card -->
         <div class="simulator-card glass-card">
           <div class="card-icon-free bg-cyan">📝</div>
@@ -211,9 +221,9 @@ const scrollToSection = (sectionId) => {
             <li>✓ English & Roman Urdu</li>
             <li>✓ Running exam countdown clock</li>
           </ul>
-          <button @click="goToPortal('/simulator/sct')" class="btn btn-primary w-full">Practice SCT Sheet (Free)</button>
+          <RouterLink to="/simulator/sct" class="btn btn-primary w-full">Practice SCT Sheet (Free)</RouterLink>
         </div>
-
+ 
         <!-- SRT Card -->
         <div class="simulator-card glass-card">
           <div class="card-icon-free bg-cyan">🚨</div>
@@ -224,9 +234,9 @@ const scrollToSection = (sectionId) => {
             <li>✓ 30s/45s response timers</li>
             <li>✓ Practical leadership focus</li>
           </ul>
-          <button @click="goToPortal('/simulator/srt')" class="btn btn-primary w-full">Practice SRT Scenarios (Free)</button>
+          <RouterLink to="/simulator/srt" class="btn btn-primary w-full">Practice SRT Scenarios (Free)</RouterLink>
         </div>
-
+ 
         <!-- GTO Card -->
         <div class="simulator-card glass-card">
           <div class="card-icon-free bg-cyan">🧗</div>
@@ -237,7 +247,7 @@ const scrollToSection = (sectionId) => {
             <li>✓ Fatigue index warnings</li>
             <li>✓ Score & energy calculator</li>
           </ul>
-          <button @click="goToPortal('/simulator/obstacles')" class="btn btn-primary w-full">Plan GTO Sequence (Free)</button>
+          <RouterLink to="/simulator/obstacles" class="btn btn-primary w-full">Plan GTO Sequence (Free)</RouterLink>
         </div>
       </div>
     </section>
@@ -253,7 +263,7 @@ const scrollToSection = (sectionId) => {
           With just a few referrals, you can get full lifetime premium access to all simulators and solved playbooks for as low as <strong>PKR 100</strong>!
           Start sharing your link instantly upon free registration.
         </p>
-        <button @click="goToPortal" class="btn btn-banner-cta">Get Your Referral Link Now</button>
+        <RouterLink :to="authStore.user ? '/dashboard' : '/register'" class="btn btn-banner-cta">Get Your Referral Link Now</RouterLink>
       </div>
     </section>
 
@@ -402,7 +412,7 @@ const scrollToSection = (sectionId) => {
 
       <div class="ai-action-footer">
         <p>Our simulators analyze your <strong>entire test submission</strong>, generate your psychological profile, and show you exactly what to correct. You cannot find this in paper books or coaching academies.</p>
-        <button @click="goToPortal" class="btn btn-ai btn-large shadow-glow-purple">Evaluate Your Personality Now</button>
+        <RouterLink :to="authStore.user ? '/dashboard' : '/register'" class="btn btn-ai btn-large shadow-glow-purple">Evaluate Your Personality Now</RouterLink>
       </div>
     </section>
 
@@ -458,7 +468,7 @@ const scrollToSection = (sectionId) => {
                     <strong>OLQ Quick Profiler Summary:</strong> Get immediate visual analysis of your strengths and weaknesses across planning, dynamic, and leadership traits.
                   </li>
                 </ul>
-                <button @click="goToPortal" class="btn btn-primary">Enter Dashboard Now</button>
+                 <RouterLink :to="authStore.user ? '/dashboard' : '/register?redirect=/dashboard'" class="btn btn-primary">Enter Dashboard Now</RouterLink>
               </div>
             </div>
           </div>
@@ -511,7 +521,7 @@ const scrollToSection = (sectionId) => {
                     <strong>Targeted Simulators:</strong> Access practicing simulators matched exactly to that day's scheduled psychologist testing.
                   </li>
                 </ul>
-                <button @click="goToPortal" class="btn btn-primary">Open Roadmap Checklists</button>
+                 <RouterLink :to="authStore.user ? '/roadmap' : '/register?redirect=/roadmap'" class="btn btn-primary">Open Roadmap Checklists</RouterLink>
               </div>
             </div>
           </div>
@@ -557,7 +567,7 @@ const scrollToSection = (sectionId) => {
                     <strong>⚡ AI psychologist evaluation:</strong> Click "Analyze with AI" to instantly scan sheets for mistakes, score OLQs, and get rephrasing recommendations.
                   </li>
                 </ul>
-                <button @click="goToPortal" class="btn btn-primary">Launch Projector Simulator</button>
+                 <RouterLink to="/simulator/wat" class="btn btn-primary">Launch Projector Simulator</RouterLink>
               </div>
             </div>
           </div>
@@ -584,7 +594,7 @@ const scrollToSection = (sectionId) => {
                     <strong>Safety & Tactical Guidelines:</strong> Rules and safety instructions to pass GTO inspection cleanly.
                   </li>
                 </ul>
-                <button @click="goToPortal" class="btn btn-primary">Plan GTO Route</button>
+                 <RouterLink to="/simulator/obstacles" class="btn btn-primary">Plan GTO Route</RouterLink>
               </div>
             </div>
           </div>
@@ -611,7 +621,7 @@ const scrollToSection = (sectionId) => {
                     <strong>Active Community Voice:</strong> Direct control of updates via candidate majority consensus.
                   </li>
                 </ul>
-                <button @click="goToPortal" class="btn btn-primary">Submit Feature Request</button>
+                 <RouterLink :to="authStore.user ? '/support' : '/register?redirect=/support'" class="btn btn-primary">Submit Feature Request</RouterLink>
               </div>
             </div>
           </div>
@@ -928,7 +938,7 @@ const scrollToSection = (sectionId) => {
       <div class="cta-content">
         <h2>Take Command of Your Military Career</h2>
         <p>Prepare with precision. Practice under time constraints. Get recommended.</p>
-        <button @click="goToPortal" class="btn btn-primary btn-large">Enter Free Portal</button>
+        <RouterLink :to="authStore.user ? '/dashboard' : '/register'" class="btn btn-primary btn-large">Enter Free Portal</RouterLink>
       </div>
     </section>
 

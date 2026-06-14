@@ -306,6 +306,14 @@ const goHome = () => {
           <p>Submit your details to register. You can upload payment screenshot now or later.</p>
         </div>
 
+        <!-- Trial Promotion Banner -->
+        <div class="trial-promo-banner">
+          <span class="icon">⏳</span>
+          <span class="text">
+            <strong>Instant 30-Minute Free Trial:</strong> Registering will instantly activate your free trial. Test all simulators and roadmaps immediately—no payment required!
+          </span>
+        </div>
+
         <!-- Referral Code Active Banner -->
         <div v-if="referredByCode" class="referral-banner">
           <span class="referral-banner-icon">🎁</span>
@@ -806,6 +814,29 @@ const goHome = () => {
   to {
     transform: rotate(360deg);
   }
+}
+
+.trial-promo-banner {
+  background: rgba(245, 158, 11, 0.08);
+  color: #b45309;
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  padding: 0.75rem 1rem;
+  border-radius: var(--border-radius-md);
+  font-size: 0.88rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+
+.trial-promo-banner .icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.trial-promo-banner .text {
+  line-height: 1.4;
 }
 
 @media (max-width: 992px) {
