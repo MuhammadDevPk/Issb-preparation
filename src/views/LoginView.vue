@@ -46,14 +46,9 @@ const handleLogin = async () => {
       await supabase.from('profiles').update({ ip_address: ip }).eq('id', profile.id)
     }
 
-    // Redirect logic: check admin, approval, or free trial eligibility
-    if (profile?.role === 'admin' || profile?.status === 'approved') {
-      router.push('/dashboard')
-    } else if (profile?.trial_ends_at && new Date(profile.trial_ends_at).getTime() > Date.now()) {
-      router.push('/dashboard')
-    } else {
-      router.push('/status')
-    }
+    // Redirect to redirect query param or dashboard
+    const redirectPath = route.query.redirect || '/dashboard'
+    router.push(redirectPath)
   } catch (error) {
     console.error('Login error:', error)
     if (error.message === 'Invalid login credentials') {

@@ -276,6 +276,15 @@ const isApproved = computed(() => {
   return authStore.profile?.status === 'approved'
 })
 
+const isTrialActive = computed(() => {
+  const p = authStore.profile
+  return p?.trial_ends_at && new Date(p.trial_ends_at).getTime() > Date.now()
+})
+
+const hasPremiumOrTrial = computed(() => {
+  return isApproved.value || isTrialActive.value || authStore.profile?.role === 'admin'
+})
+
 const goToSimulator = (type) => {
   router.push(`/simulator/${type}`)
 }
@@ -287,60 +296,85 @@ const goToStatus = () => {
 
 <template>
   <div class="dashboard-wrapper">
-    <!-- Top Hero Section -->
+    <!-- Top Hero Section (Dynamic based on Premium/Trial access) -->
     <section class="dashboard-hero glass-card animate-pulse-cyan">
       <div class="hero-left">
         <span class="badge badge-cyan">Tactical Command Center</span>
-        <h2>Master the ISSB Selection Parameters</h2>
-        <p>
-          ISSB does not test your knowledge; it tests your **personality, psychological stability,
-          and leadership potential**. Stop generic memorization. Understand what officers look for
-          and align your mindset.
-        </p>
-        <button class="btn btn-primary" @click="goToRoadmap">
-          <span>Start 5-Day Roadmap Training</span>
-          <svg
-            class="btn-icon"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-          >
-            <line x1="5" y1="12" x2="19" y2="12" />
-            <polyline points="12 5 19 12 12 19" />
-          </svg>
-        </button>
+        
+        <template v-if="hasPremiumOrTrial">
+          <h2>Master the ISSB Selection Parameters</h2>
+          <p>
+            ISSB does not test your knowledge; it tests your <strong>personality, psychological stability,
+            and leadership potential</strong>. Stop generic memorization. Understand what officers look for
+            and align your mindset.
+          </p>
+          <button class="btn btn-primary" @click="goToRoadmap">
+            <span>Start 5-Day Roadmap Training</span>
+            <svg
+              class="btn-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </button>
+        </template>
+        <template v-else>
+          <h2>Practice Timed Test Simulators (Free)</h2>
+          <p>
+            Improve your response speed and structural thinking under selection board projector clocks. 
+            Practice Word Association, Sentence Completion, and Situation Reactions for free.
+          </p>
+          <div class="free-simulators-action-row">
+            <button class="btn btn-primary btn-sm" @click="goToSimulator('wat')">WAT Simulator</button>
+            <button class="btn btn-primary btn-sm" @click="goToSimulator('sct')">SCT Sheet</button>
+            <button class="btn btn-primary btn-sm" @click="goToSimulator('srt')">SRT Trainer</button>
+            <button class="btn btn-primary btn-sm" @click="goToSimulator('obstacles')">GTO Obstacles</button>
+          </div>
+        </template>
       </div>
 
       <div class="hero-right flex-center">
-        <div class="progress-circle-container">
-          <svg class="circle-svg" viewBox="0 0 100 100">
-            <circle
-              class="circle-bg"
-              cx="50"
-              cy="50"
-              r="40"
-              stroke="#cbd5e1"
-              stroke-width="8"
-              fill="none"
-            />
-            <circle
-              class="circle-progress"
-              cx="50"
-              cy="50"
-              r="40"
-              stroke="var(--accent-cyan)"
-              stroke-width="8"
-              fill="none"
-              :stroke-dasharray="2 * Math.PI * 40"
-              :stroke-dashoffset="2 * Math.PI * 40 * (1 - progressPercent / 100)"
-            />
-          </svg>
-          <div class="progress-label flex-center">
-            <span class="percent text-glow">{{ progressPercent }}%</span>
-            <span class="lbl">Completed</span>
+        <template v-if="hasPremiumOrTrial">
+          <div class="progress-circle-container">
+            <svg class="circle-svg" viewBox="0 0 100 100">
+              <circle
+                class="circle-bg"
+                cx="50"
+                cy="50"
+                r="40"
+                stroke="#cbd5e1"
+                stroke-width="8"
+                fill="none"
+              />
+              <circle
+                class="circle-progress"
+                cx="50"
+                cy="50"
+                r="40"
+                stroke="var(--accent-cyan)"
+                stroke-width="8"
+                fill="none"
+                :stroke-dasharray="2 * Math.PI * 40"
+                :stroke-dashoffset="2 * Math.PI * 40 * (1 - progressPercent / 100)"
+              />
+            </svg>
+            <div class="progress-label flex-center">
+              <span class="percent text-glow">{{ progressPercent }}%</span>
+              <span class="lbl">Completed</span>
+            </div>
           </div>
-        </div>
+        </template>
+        <template v-else>
+          <div class="free-badge-widget flex-center">
+            <span class="badge-icon">🎖️</span>
+            <span class="badge-lbl">Practice Area</span>
+            <span class="badge-sub">Free Simulators</span>
+          </div>
+        </template>
       </div>
     </section>
 
@@ -1596,5 +1630,41 @@ const goToStatus = () => {
   .action-buttons-trial button, .action-buttons button {
     flex: 1;
   }
+}
+
+.free-simulators-action-row {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.free-badge-widget {
+  flex-direction: column;
+  background: white;
+  border: 1px solid var(--border-color);
+  padding: 1.25rem 1rem;
+  border-radius: var(--border-radius-lg);
+  min-width: 130px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.free-badge-widget .badge-icon {
+  font-size: 1.8rem;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.free-badge-widget .badge-lbl {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-transform: uppercase;
+}
+
+.free-badge-widget .badge-sub {
+  font-size: 0.65rem;
+  color: var(--accent-green);
+  font-weight: 600;
 }
 </style>

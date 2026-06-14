@@ -31,26 +31,23 @@ onMounted(() => {
   fetchSettings()
 })
 
-const goToPortal = () => {
-  if (authStore.user) {
-    const p = authStore.profile
-    const isAdmin = p?.role === 'admin'
-    const isApproved = p?.status === 'approved'
-    const isTrialActive = p?.trial_ends_at && new Date(p.trial_ends_at).getTime() > Date.now()
-    if (isAdmin || isApproved || isTrialActive) {
-      router.push('/dashboard')
-    } else {
-      router.push('/status')
-    }
-  } else {
-    router.push('/register')
-  }
+const goToPortal = (targetRoute = '/dashboard') => {
+  router.push(targetRoute)
 }
 
 // Interactive Portal Showcase State
 const activeShowcaseTab = ref('dashboard') // dashboard, roadmap, simulators, obstacles, support
 const activeRoadmapSubTab = ref('day1') // day1, day2, day3, day4, day5
 const activeSimulatorSubTab = ref('wat') // wat, sct, srt
+
+const showFreeToast = ref(true)
+
+const scrollToSection = (sectionId) => {
+  const el = document.getElementById(sectionId)
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth' })
+  }
+}
 </script>
 
 <template>
@@ -68,6 +65,14 @@ const activeSimulatorSubTab = ref('wat') // wat, sct, srt
           <span class="sub-text">PREPARATION PORTAL</span>
         </div>
       </RouterLink>
+
+      <!-- Navbar links -->
+      <div class="nav-links-container">
+        <a href="#free-simulators" @click.prevent="scrollToSection('free-simulators')" class="nav-link-item">
+          ⚡ Free Simulators
+        </a>
+      </div>
+
       <button @click="goToPortal" class="btn btn-nav-portal">
         Go to Portal
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-icon">
@@ -172,6 +177,69 @@ const activeSimulatorSubTab = ref('wat') // wat, sct, srt
 
         <div class="simulator-footer">
           <p>Traditional books teach faked, robotic sentences that get you rejected. The simulator trains your natural response speed under stress.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Free Timed Simulators Showcase -->
+    <section id="free-simulators" class="free-simulators-section">
+      <div class="section-header">
+        <span class="badge badge-success-free">⚡ 100% Free Practice Area</span>
+        <h2>Practice TIMED Simulators Just Like the Selection Board</h2>
+        <p>No credit card required. Practice timed test projectors and complete worksheets with running clocks instantly.</p>
+      </div>
+
+      <div class="simulators-grid">
+        <!-- WAT Card -->
+        <div class="simulator-card glass-card">
+          <div class="card-icon-free bg-cyan">✍️</div>
+          <h3>WAT Simulator</h3>
+          <p>Practice Word Association under a strict 10-second projector clock. Includes the complete WAT English-Urdu vocabulary study guide.</p>
+          <ul class="sim-bullets">
+            <li>✓ Auto-advancing timed screen</li>
+            <li>✓ Study English-Urdu meanings</li>
+            <li>✓ Complete multiple worksheets</li>
+          </ul>
+          <button @click="goToPortal('/simulator/wat')" class="btn btn-primary w-full">Practice WAT Simulator (Free)</button>
+        </div>
+
+        <!-- SCT Card -->
+        <div class="simulator-card glass-card">
+          <div class="card-icon-free bg-cyan">📝</div>
+          <h3>SCT Sheet Trainer</h3>
+          <p>Complete English & Roman Urdu incomplete sentences under a running 6-minute clock just like the psychological testing day.</p>
+          <ul class="sim-bullets">
+            <li>✓ Full 26-sentence sheets</li>
+            <li>✓ English & Roman Urdu</li>
+            <li>✓ Running exam countdown clock</li>
+          </ul>
+          <button @click="goToPortal('/simulator/sct')" class="btn btn-primary w-full">Practice SCT Sheet (Free)</button>
+        </div>
+
+        <!-- SRT Card -->
+        <div class="simulator-card glass-card">
+          <div class="card-icon-free bg-cyan">🚨</div>
+          <h3>SRT Crisis Trainer</h3>
+          <p>Respond to situational crises under a running 30-second clock. Tests your practical intelligence, courage, and decision speed.</p>
+          <ul class="sim-bullets">
+            <li>✓ Real crisis scenarios</li>
+            <li>✓ 30s/45s response timers</li>
+            <li>✓ Practical leadership focus</li>
+          </ul>
+          <button @click="goToPortal('/simulator/srt')" class="btn btn-primary w-full">Practice SRT Scenarios (Free)</button>
+        </div>
+
+        <!-- GTO Card -->
+        <div class="simulator-card glass-card">
+          <div class="card-icon-free bg-cyan">🧗</div>
+          <h3>GTO Obstacles Planner</h3>
+          <p>Strategize your rope-crossing obstacle run using our drag-and-drop fatigue and energy sequence planner to score 30+ points.</p>
+          <ul class="sim-bullets">
+            <li>✓ Drag-and-drop sequencing</li>
+            <li>✓ Fatigue index warnings</li>
+            <li>✓ Score & energy calculator</li>
+          </ul>
+          <button @click="goToPortal('/simulator/obstacles')" class="btn btn-primary w-full">Plan GTO Sequence (Free)</button>
         </div>
       </div>
     </section>
@@ -871,6 +939,21 @@ const activeSimulatorSubTab = ref('wat') // wat, sct, srt
     <footer class="landing-footer">
       <p>&copy; 2026 ISSB COMMAND PREPARATION PORTAL. Built for future officers.</p>
     </footer>
+
+    <!-- Free Timed Simulators Floating Toast -->
+    <div v-if="showFreeToast" class="free-simulators-toast glass-card animate-slide-in">
+      <div class="toast-header">
+        <span class="toast-badge">⚡ Free Timed Simulators</span>
+        <button class="toast-close-btn" @click="showFreeToast = false" aria-label="Close Alert">&times;</button>
+      </div>
+      <div class="toast-body">
+        <h4>Practice Simulators Free!</h4>
+        <p>Try Word Association, Sentence Completion, and Situation Reactions with running exam clocks instantly.</p>
+        <a href="#free-simulators" @click.prevent="scrollToSection('free-simulators'); showFreeToast = false" class="btn btn-primary btn-sm w-full">
+          Practice Now (No Sign Up)
+        </a>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -2653,6 +2736,222 @@ const activeSimulatorSubTab = ref('wat') // wat, sct, srt
   .ai-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
+  }
+}
+
+/* Free Practice area styling */
+.badge-success-free {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(3, 194, 252, 0.15));
+  color: var(--accent-green);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--border-radius-sm);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: inline-block;
+}
+
+.free-simulators-section {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.simulators-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.simulator-card {
+  padding: 2rem;
+  border-radius: var(--border-radius-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+  border-top: 4px solid var(--accent-cyan);
+  background: var(--bg-secondary);
+}
+
+.card-icon-free {
+  width: 46px;
+  height: 46px;
+  border-radius: var(--border-radius-md);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.card-icon-free.bg-cyan {
+  background: var(--accent-cyan);
+}
+
+.simulator-card h3 {
+  font-size: 1.25rem;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.simulator-card p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0;
+  flex: 1;
+}
+
+.sim-bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  list-style: none;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  width: 100%;
+}
+
+.sim-bullets li {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* Navbar links styling */
+.nav-links-container {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-link-item {
+  color: var(--text-primary);
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.5rem 0.85rem;
+  border-radius: var(--border-radius-sm);
+  background: rgba(3, 194, 252, 0.05);
+  border: 1px solid rgba(3, 194, 252, 0.15);
+}
+
+.nav-link-item:hover {
+  color: var(--accent-cyan);
+  background: rgba(3, 194, 252, 0.1);
+  border-color: rgba(3, 194, 252, 0.3);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .nav-links-container {
+    display: none;
+  }
+}
+
+/* Floating Toaster Alert styles */
+.free-simulators-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  max-width: 340px;
+  width: calc(100% - 48px);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-top: 4px solid var(--accent-cyan);
+  border-radius: var(--border-radius-lg);
+  padding: 1.25rem;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1), 0 0 15px rgba(3, 194, 252, 0.15);
+  z-index: 1000;
+}
+
+.toast-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.toast-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+  letter-spacing: 0.05em;
+  background: rgba(3, 194, 252, 0.08);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+.toast-close-btn {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: var(--text-muted);
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s ease;
+}
+
+.toast-close-btn:hover {
+  color: var(--accent-red);
+}
+
+.toast-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.toast-body h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.toast-body p {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  margin: 0 0 0.5rem 0;
+}
+
+.toast-body .btn-sm {
+  padding: 0.6rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* Slide in animation */
+.animate-slide-in {
+  animation: slideInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
 }
 </style>

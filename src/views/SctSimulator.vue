@@ -6,14 +6,28 @@ import { useAiAnalysis } from '../composables/useAiAnalysis.js'
 import AiAnalysisReport from '../components/AiAnalysisReport.vue'
 import { sctSheets, getRandomSctStarters } from '../data/issbTestData.js'
 
+import { useAuthStore } from '../stores/auth'
+
 const store = usePreparationStore()
 const router = useRouter()
+const authStore = useAuthStore()
 
 // AI Analysis
 const { isAnalyzing, analysisResult, analysisError, currentProvider, analyzeSCT, resetAnalysis } = useAiAnalysis()
 const showAiReport = ref(false)
+const showUpgradeModal = ref(false)
+
+const isApproved = computed(() => {
+  const p = authStore.profile
+  const isTrialActive = p?.trial_ends_at && new Date(p.trial_ends_at).getTime() > Date.now()
+  return p?.status === 'approved' || p?.role === 'admin' || isTrialActive
+})
 
 const triggerAiAnalysis = async () => {
+  if (!isApproved.value) {
+    showUpgradeModal.value = true
+    return
+  }
   showAiReport.value = true
   // Build responses from currentStarters + completions at time of call
   const responses = currentStarters.value.map((starter, idx) => ({
@@ -385,6 +399,40 @@ const timeTaken = computed(() => {
         <!-- Results -->
         <AiAnalysisReport v-else-if="analysisResult" :result="analysisResult" test-type="SCT"
           :provider-name="currentProvider" />
+      </div>
+    </div>
+
+    <!-- Premium Upgrade Modal -->
+    <div class="modal-overlay" v-if="showUpgradeModal" @click.self="showUpgradeModal = false">
+      <div class="modal-card glass-card fade-in">
+        <div class="modal-header-ai">
+          <div class="flex items-center gap-2">
+            <span class="lock-icon">🔒</span>
+            <h3>Unlock AI Psychologist Assessor</h3>
+          </div>
+          <button class="btn-close" @click="showUpgradeModal = false">&times;</button>
+        </div>
+        <div class="modal-body-ai">
+          <p>
+            Your simulator test answers have been logged, but the <strong>AI Psychological Analysis Report</strong> is a Premium Feature.
+          </p>
+          <div class="warning-callout">
+            <strong>⚠️ Psychologist Warning:</strong> Faking answers or copying guidebook textbook replies gets you rejected immediately by selection board psychologists. Our AI Psychologist scans your responses to locate escape, passivity, or conflict patterns and provides rephrasing suggestions.
+          </div>
+          <div class="modal-features">
+            <div class="feat-row"><span class="check">✓</span> <span>Finds hidden psychology flaws & red flags.</span></div>
+            <div class="feat-row"><span class="check">✓</span> <span>Detailed Officer-Like Qualities (OLQ) grade score.</span></div>
+            <div class="feat-row"><span class="check">✓</span> <span>Provides exact corrected sentence completions and rephrasings.</span></div>
+          </div>
+        </div>
+        <div class="modal-footer-ai">
+          <button class="btn btn-ai shadow-glow-purple w-full" @click="router.push('/status')">
+            Get Premium Pass (or Rs. 100 via referrals)
+          </button>
+          <button class="btn btn-secondary w-full" @click="showUpgradeModal = false">
+            Close & Review Sheet Manually
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -800,8 +848,115 @@ const timeTaken = computed(() => {
   color: var(--accent-red);
 }
 
-.ai-error-panel p {
+/* Premium Gating Modals */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(10, 15, 30, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.modal-card {
+  max-width: 500px;
+  width: 100%;
+  background: #ffffff;
+  border-radius: var(--border-radius-lg);
+  border-top: 4px solid #7c3aed;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.modal-header-ai {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  padding-bottom: 0.75rem;
+}
+
+.modal-header-ai h3 {
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.lock-icon {
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+}
+
+.btn-close {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  cursor: pointer;
+  line-height: 1;
+}
+
+.modal-body-ai {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.modal-body-ai p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.warning-callout {
+  background: rgba(239, 68, 68, 0.04);
+  border: 1px solid rgba(239, 68, 68, 0.15);
+  padding: 0.75rem 1rem;
+  border-radius: var(--border-radius-md);
   font-size: 0.85rem;
   color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+.modal-features {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.feat-row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 0.88rem;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.feat-row .check {
+  color: #7c3aed;
+  font-weight: bold;
+}
+
+.modal-footer-ai {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  padding-top: 1.25rem;
+}
+
+.w-full {
+  width: 100%;
 }
 </style>

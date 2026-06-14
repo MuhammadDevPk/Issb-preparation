@@ -61,7 +61,7 @@ const router = createRouter({
       path: '/dashboard',
       name: 'dashboard',
       component: DashboardView,
-      meta: { requiresAuth: true, requiresApproval: true },
+      meta: { requiresAuth: true },
     },
     {
       path: '/roadmap',
@@ -73,25 +73,21 @@ const router = createRouter({
       path: '/simulator/wat',
       name: 'wat-simulator',
       component: WatSimulator,
-      meta: { requiresAuth: true, requiresApproval: true },
     },
     {
       path: '/simulator/sct',
       name: 'sct-simulator',
       component: SctSimulator,
-      meta: { requiresAuth: true, requiresApproval: true },
     },
     {
       path: '/simulator/srt',
       name: 'srt-simulator',
       component: SrtSimulator,
-      meta: { requiresAuth: true, requiresApproval: true },
     },
     {
       path: '/simulator/obstacles',
       name: 'obstacles-simulator',
       component: ObstaclesSimulator,
-      meta: { requiresAuth: true, requiresApproval: true },
     },
     {
       path: '/admin/users',
