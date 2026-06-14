@@ -141,7 +141,7 @@ export const useAuthStore = defineStore('auth', () => {
 
   const register = async (email, password, metadata) => {
     isRegistering.value = true
-    // metadata includes full_name, whatsapp, target_branch, referral_code, ip_address
+    // metadata includes full_name, whatsapp, target_branch, referral_code/referred_by_code, ip_address
     const { data, error } = await supabase.auth.signUp({
       email,
       password,
@@ -150,7 +150,7 @@ export const useAuthStore = defineStore('auth', () => {
           full_name: metadata.full_name,
           whatsapp: metadata.whatsapp,
           target_branch: metadata.target_branch,
-          referral_code: metadata.referral_code,
+          referral_code: metadata.referral_code || metadata.referred_by_code,
           ip_address: metadata.ip_address,
         },
       },

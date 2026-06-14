@@ -143,6 +143,7 @@ const handleRegister = async () => {
       full_name: fullName.value,
       whatsapp: whatsapp.value,
       target_branch: targetBranch.value,
+      referral_code: refCode,
       referred_by_code: refCode,
       ip_address: ip,
     })
