@@ -4,6 +4,7 @@ import { useRouter } from 'vue-router'
 import { usePreparationStore } from '../stores/preparation'
 import { useAiAnalysis } from '../composables/useAiAnalysis.js'
 import AiAnalysisReport from '../components/AiAnalysisReport.vue'
+import { srtSheets, getRandomSrtSituations } from '../data/issbTestData.js'
 
 const store = usePreparationStore()
 const router = useRouter()
@@ -19,6 +20,26 @@ const triggerAiAnalysis = async () => {
 
 const testState = ref('setup') // 'setup', 'active', 'results'
 const timerDuration = ref(30) // 30 seconds per situation
+const selectedSetId = ref('srt_crisis')
+const customSituationCount = ref(10)
+
+const selectedSetDescription = computed(() => {
+  if (selectedSetId.value === 'random_mix') {
+    return 'Generates a random selection of situations from the pool, ensuring unique runs.'
+  }
+  const sheet = srtSheets.find((s) => s.id === selectedSetId.value)
+  return sheet ? sheet.description : ''
+})
+
+const previewSituationCount = computed(() => {
+  if (selectedSetId.value === 'random_mix') {
+    return customSituationCount.value
+  }
+  const sheet = srtSheets.find((s) => s.id === selectedSetId.value)
+  return sheet ? sheet.situations.length : 0
+})
+
+const situations = ref([...srtSheets[0].situations])
 const currentIndex = ref(0)
 const currentInput = ref('')
 const responses = ref([]) // Array of { situation, text, timeOut }
@@ -26,30 +47,14 @@ const responses = ref([]) // Array of { situation, text, timeOut }
 const timeLeft = ref(30)
 let timerInterval = null
 
-const situations = [
-  {
-    id: 1,
-    desc: 'He was returning home late at night on a lonely road when he heard cries of help coming from a dark lane... He',
-  },
-  {
-    id: 2,
-    desc: 'He was appointing a helper for his GTO command task, but his team members rejected his choice and selected his rival... He',
-  },
-  {
-    id: 3,
-    desc: 'He got separated from his trekking team in a thick forest with no mobile network coverage, and night was falling fast... He',
-  },
-  {
-    id: 4,
-    desc: 'He was falsely accused by his college teacher of cheating in the final exam, which could lead to suspension... He',
-  },
-  {
-    id: 5,
-    desc: 'His mother fell seriously ill on the night before his final PMA entry test, and there was no one else at home... He',
-  },
-]
-
 const startTest = () => {
+  if (selectedSetId.value === 'random_mix') {
+    situations.value = getRandomSrtSituations(customSituationCount.value)
+  } else {
+    const sheet = srtSheets.find((s) => s.id === selectedSetId.value)
+    situations.value = sheet ? [...sheet.situations] : [...srtSheets[0].situations]
+  }
+
   currentIndex.value = 0
   responses.value = []
   currentInput.value = ''
@@ -70,7 +75,7 @@ const startSituationTimer = () => {
 }
 
 const submitReaction = (isTimeOut = false) => {
-  const currentSit = situations[currentIndex.value]
+  const currentSit = situations.value[currentIndex.value]
 
   responses.value.push({
     id: currentSit.id,
@@ -81,7 +86,7 @@ const submitReaction = (isTimeOut = false) => {
 
   currentInput.value = ''
 
-  if (currentIndex.value < situations.length - 1) {
+  if (currentIndex.value < situations.value.length - 1) {
     currentIndex.value++
     startSituationTimer()
   } else {
@@ -141,10 +146,37 @@ const totalAnswered = computed(() => {
             <option :value="45">45 Seconds (Beginner Mode)</option>
           </select>
         </div>
+
+        <div class="form-group">
+          <label class="form-label">Select Situation Set</label>
+          <select class="form-select" v-model="selectedSetId">
+            <option v-for="sheet in srtSheets" :key="sheet.id" :value="sheet.id">
+              {{ sheet.name }}
+            </option>
+            <option value="random_mix">Randomized Custom Mix</option>
+          </select>
+        </div>
+
+        <div class="form-group" v-if="selectedSetId === 'random_mix'">
+          <label class="form-label">Situation Count</label>
+          <select class="form-select" v-model.number="customSituationCount">
+            <option :value="5">5 Situations</option>
+            <option :value="10">10 Situations (Standard)</option>
+            <option :value="15">15 Situations (Long Run)</option>
+          </select>
+        </div>
+
         <div class="form-group">
           <label class="form-label">Total Situations</label>
-          <span class="badge badge-cyan">{{ situations.length }} Scenarios loaded</span>
+          <div class="badge-row">
+            <span class="badge badge-cyan">{{ previewSituationCount }} Scenarios loaded</span>
+          </div>
         </div>
+      </div>
+
+      <div class="set-desc-panel" v-if="selectedSetDescription">
+        <span class="desc-title">Focus:</span>
+        <span class="desc-content">{{ selectedSetDescription }}</span>
       </div>
 
       <div class="tactical-tips border-gold">
@@ -395,6 +427,22 @@ const totalAnswered = computed(() => {
 .setup-container p {
   color: var(--text-secondary);
   font-size: 1.05rem;
+}
+
+.set-desc-panel {
+  padding: 0.75rem 1rem;
+  background: var(--bg-panel-solid);
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--border-color);
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  display: flex;
+  gap: 0.5rem;
+}
+
+.desc-title {
+  font-weight: 700;
+  color: var(--accent-cyan);
 }
 
 .config-panel {

@@ -276,11 +276,6 @@ const isApproved = computed(() => {
   return authStore.profile?.status === 'approved'
 })
 
-const isTrialActive = computed(() => {
-  const p = authStore.profile
-  return p?.trial_ends_at && new Date(p.trial_ends_at).getTime() > Date.now()
-})
-
 const goToSimulator = (type) => {
   router.push(`/simulator/${type}`)
 }

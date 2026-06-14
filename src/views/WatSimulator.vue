@@ -4,6 +4,7 @@ import { useRouter } from 'vue-router'
 import { usePreparationStore } from '../stores/preparation'
 import { useAiAnalysis } from '../composables/useAiAnalysis.js'
 import AiAnalysisReport from '../components/AiAnalysisReport.vue'
+import { watSheets, getRandomWatWords } from '../data/issbTestData.js'
 
 const store = usePreparationStore()
 const router = useRouter()
@@ -17,38 +18,27 @@ const triggerAiAnalysis = async () => {
   await analyzeWAT(responses.value)
 }
 
-// Standard word list for WAT practice
-const defaultWords = [
-  'Country',
-  'Defeat',
-  'Love',
-  'Atom',
-  'Fear',
-  'Duty',
-  'Trust',
-  'Aggressive',
-  'Fail',
-  'Work',
-  'Soldier',
-  'Injustice',
-  'Brave',
-  'Death',
-  'Team',
-  'Success',
-  'Cheat',
-  'Lead',
-  'Goal',
-  'Pride',
-  'Sad',
-  'Bribe',
-  'Force',
-  'Peace',
-  'Enemy',
-]
-
 const testState = ref('setup') // 'setup', 'active', 'results'
 const timerDuration = ref(10) // default 10 seconds
-const wordList = ref([...defaultWords])
+const selectedSetId = ref('repeated_1')
+const customWordCount = ref(50)
+const selectedSetDescription = computed(() => {
+  if (selectedSetId.value === 'random_mix') {
+    return 'Generates a random selection of words from the entire database, ensuring no two runs are identical.'
+  }
+  const sheet = watSheets.find((s) => s.id === selectedSetId.value)
+  return sheet ? sheet.description : ''
+})
+
+const previewWordCount = computed(() => {
+  if (selectedSetId.value === 'random_mix') {
+    return customWordCount.value
+  }
+  const sheet = watSheets.find((s) => s.id === selectedSetId.value)
+  return sheet ? sheet.words.length : 0
+})
+
+const wordList = ref([...watSheets[0].words])
 const currentIndex = ref(0)
 const currentInput = ref('')
 const responses = ref([]) // Array of { word, text, timeOut }
@@ -57,6 +47,13 @@ const timeLeft = ref(10)
 let timerInterval = null
 
 const startTest = () => {
+  if (selectedSetId.value === 'random_mix') {
+    wordList.value = getRandomWatWords(customWordCount.value)
+  } else {
+    const sheet = watSheets.find((s) => s.id === selectedSetId.value)
+    wordList.value = sheet ? [...sheet.words] : [...watSheets[0].words]
+  }
+
   currentIndex.value = 0
   responses.value = []
   currentInput.value = ''
@@ -164,11 +161,35 @@ const avgLength = computed(() => {
         </div>
 
         <div class="form-group">
+          <label class="form-label">Select Practice Set</label>
+          <select class="form-select" v-model="selectedSetId">
+            <option v-for="sheet in watSheets" :key="sheet.id" :value="sheet.id">
+              {{ sheet.name }}
+            </option>
+            <option value="random_mix">Randomized Custom Mix</option>
+          </select>
+        </div>
+
+        <div class="form-group" v-if="selectedSetId === 'random_mix'">
+          <label class="form-label">Word Count</label>
+          <select class="form-select" v-model.number="customWordCount">
+            <option :value="25">25 Words (Short Practice)</option>
+            <option :value="50">50 Words (Standard Run)</option>
+            <option :value="100">100 Words (Full Mock Exam)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
           <label class="form-label">Total Words</label>
           <div class="badge-row">
-            <span class="badge badge-cyan">{{ wordList.length }} Words loaded</span>
+            <span class="badge badge-cyan">{{ previewWordCount }} Words loaded</span>
           </div>
         </div>
+      </div>
+
+      <div class="set-desc-panel" v-if="selectedSetDescription">
+        <span class="desc-title">Focus:</span>
+        <span class="desc-content">{{ selectedSetDescription }}</span>
       </div>
 
       <div class="tactical-tips border-gold">
@@ -433,6 +454,22 @@ const avgLength = computed(() => {
 .setup-container p {
   color: var(--text-secondary);
   font-size: 1.05rem;
+}
+
+.set-desc-panel {
+  padding: 0.75rem 1rem;
+  background: var(--bg-panel-solid);
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--border-color);
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  display: flex;
+  gap: 0.5rem;
+}
+
+.desc-title {
+  font-weight: 700;
+  color: var(--accent-cyan);
 }
 
 .config-panel {

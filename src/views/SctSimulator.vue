@@ -1,9 +1,10 @@
 <script setup>
-import { ref, computed, onUnmounted } from 'vue'
+import { ref, computed, onUnmounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { usePreparationStore } from '../stores/preparation'
 import { useAiAnalysis } from '../composables/useAiAnalysis.js'
 import AiAnalysisReport from '../components/AiAnalysisReport.vue'
+import { sctSheets, getRandomSctStarters } from '../data/issbTestData.js'
 
 const store = usePreparationStore()
 const router = useRouter()
@@ -25,75 +26,48 @@ const triggerAiAnalysis = async () => {
 
 const testState = ref('setup') // 'setup', 'active', 'results'
 const selectedLanguage = ref('english') // 'english', 'urdu'
+const selectedSheetId = ref('eng_sheet_a')
 const timerLeft = ref(360) // 6 minutes (360s) for 26 sentences
 let testTimer = null
 
-const englishStarters = [
-  'He was afraid of',
-  'My father',
-  'At night',
-  'The main problem',
-  'During crisis',
-  'In his opinion',
-  'She wanted to',
-  'The teacher',
-  'It is hard to',
-  'A true friend',
-  'He failed because',
-  'My mother always',
-  'If he becomes a commander',
-  'In dark rooms',
-  'Money is',
-  'Under stress he',
-  'The officer',
-  'To tell the truth',
-  'He feels sad when',
-  'My team',
-  'The decision was',
-  'Women are',
-  "A soldier's duty",
-  'He was upset by',
-  'During discussion he',
-  'The future is',
-]
+// Watch language change to set default sheet
+watch(selectedLanguage, (newLang) => {
+  if (newLang === 'english') {
+    selectedSheetId.value = 'eng_sheet_a'
+  } else {
+    selectedSheetId.value = 'urdu_sheet_a'
+  }
+})
 
-const urduStarters = [
-  'Mujhe darr hai',
-  'Mere waalid',
-  'Raat ke waqt',
-  'Asal masla',
-  'Mushkil waqt mein',
-  'Uss ki nazar mein',
-  'Woh chahta tha',
-  'Ustaad ne',
-  'Yeh mushkil hai',
-  'Sacha dost',
-  'Woh nakaam hua kyunke',
-  'Meri waalida hamesha',
-  'Agar woh commander bana',
-  'Andheray mein',
-  'Paisa',
-  'Dabaao mein woh',
-  'Officer ne',
-  'Sach baat yeh hai',
-  'Woh udaas hota hai jab',
-  'Meri team',
-  'Faisla',
-  'Khawateen',
-  'Soldier ka farz',
-  'Woh pareshan hua',
-  'Guftagu ke dauraan',
-  'Mustaqbil',
-]
+const availableSheets = computed(() => {
+  return sctSheets[selectedLanguage.value] || []
+})
+
+const selectedSheetDescription = computed(() => {
+  if (selectedSheetId.value === 'random_mix') {
+    return 'Generates a random selection of 26 sentence starters from the pool, ensuring unique runs.'
+  }
+  const sheet = availableSheets.value.find((s) => s.id === selectedSheetId.value)
+  return sheet ? sheet.description : ''
+})
+
+const activeStarters = ref([])
 
 const currentStarters = computed(() => {
-  return selectedLanguage.value === 'english' ? englishStarters : urduStarters
+  return activeStarters.value
 })
 
 const completions = ref(Array(26).fill(''))
 
 const startTest = () => {
-  completions.value = Array(26).fill('')
+  if (selectedSheetId.value === 'random_mix') {
+    activeStarters.value = getRandomSctStarters(selectedLanguage.value, 26)
+  } else {
+    const sheet = availableSheets.value.find((s) => s.id === selectedSheetId.value)
+    activeStarters.value = sheet ? [...sheet.starters] : []
+  }
+
+  completions.value = Array(activeStarters.value.length).fill('')
   testState.value = 'active'
   timerLeft.value = 360
 
@@ -167,18 +141,33 @@ const timeTaken = computed(() => {
 
       <div class="config-panel">
         <div class="form-group">
-          <label class="form-label">Select Language Sheet</label>
+          <label class="form-label">Select Language</label>
           <div class="lang-selector">
             <button class="btn" :class="selectedLanguage === 'english' ? 'btn-primary' : 'btn-secondary'"
               @click="selectedLanguage = 'english'">
-              English Sentence Sheet
+              English Sheet
             </button>
             <button class="btn ml-2" :class="selectedLanguage === 'urdu' ? 'btn-primary' : 'btn-secondary'"
               @click="selectedLanguage = 'urdu'">
-              Roman Urdu Sheet (e.g. "Raat ke waqt...")
+              Roman Urdu
             </button>
           </div>
         </div>
+
+        <div class="form-group">
+          <label class="form-label">Select Completion Sheet</label>
+          <select class="form-select" v-model="selectedSheetId">
+            <option v-for="sheet in availableSheets" :key="sheet.id" :value="sheet.id">
+              {{ sheet.name }}
+            </option>
+            <option value="random_mix">Randomized Custom Mix</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="set-desc-panel" v-if="selectedSheetDescription">
+        <span class="desc-title">Focus:</span>
+        <span class="desc-content">{{ selectedSheetDescription }}</span>
       </div>
 
       <div class="tactical-tips border-gold">
@@ -413,6 +402,22 @@ const timeTaken = computed(() => {
 .setup-container p {
   color: var(--text-secondary);
   font-size: 1.05rem;
+}
+
+.set-desc-panel {
+  padding: 0.75rem 1rem;
+  background: var(--bg-panel-solid);
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--border-color);
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  display: flex;
+  gap: 0.5rem;
+}
+
+.desc-title {
+  font-weight: 700;
+  color: var(--accent-cyan);
 }
 
 .config-panel {
