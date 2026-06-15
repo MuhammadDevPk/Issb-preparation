@@ -139,8 +139,87 @@ options: {
 
 ---
 
+## 6. RLS Error: "new row violates row-level security policy for table profiles" on Resubmit
+
+### Problem
+When a user whose payment was **rejected** tries to re-upload a new screenshot from the Status page, Supabase returns:
+```
+new row violates row-level security policy for table "profiles"
+```
+The upload to storage succeeds, but the profile update to reset `status → 'pending'` fails.
+
+### Root Cause
+The `UPDATE` RLS policy on `public.profiles` had a `WITH CHECK` clause that strictly enforced:
+```sql
+status = (select status from public.profiles where id = auth.uid())
+```
+This means students could **never change their own status column** — even to reset it back to `'pending'` for resubmission. Since a rejected user's current status is `'rejected'`, the check `status = 'rejected'` failed when the code tried to set it to `'pending'`.
+
+### Solution
+Update the `WITH CHECK` policy to allow students to set their own status to `'pending'` (for resubmission) while still blocking them from escalating to `'approved'` or changing their `role`:
+```sql
+-- In migration: 20260616000000_fix_resubmit_rls.sql
+drop policy if exists "Users can update their own profile fields" on public.profiles;
+
+create policy "Users can update their own profile fields"
+on public.profiles
+for update
+using (auth.uid() = id and deleted_at is null)
+with check (
+  auth.uid() = id
+  and (
+    public.is_admin(auth.uid())
+    or (
+      role = 'student'
+      and status in ('pending', (select status from public.profiles where id = auth.uid()))
+    )
+  )
+);
+```
+
+### Rule for Future
+**Every RLS `WITH CHECK` policy must be tested for all state transitions**, not just the happy path. Ask: "Can a user go from state X to state Y?" and ensure the policy allows legitimate transitions.
+
+---
+
+## 7. New Users Not Getting 30-Minute Free Trial (trigger overwrite)
+
+### Problem
+Newly registered users have `trial_ends_at = NULL` and never get the 30-minute free trial session. The dashboard shows "Practice Simulators (Free)" instead of the premium dashboard.
+
+### Root Cause
+The Supabase `handle_new_user()` trigger function was rewritten **multiple times** across different migrations using `CREATE OR REPLACE FUNCTION`. Each rewrite only included the columns relevant to *that feature*, accidentally dropping columns added by *earlier* migrations:
+
+| Migration | Added | Missing |
+|-----------|-------|---------|
+| `20260612232000_add_trial_ends_at.sql` | `trial_ends_at` | — |
+| `20260614125200_add_referrals_and_soft_delete.sql` | `referred_by` | **`trial_ends_at` dropped!** |
+| `20260612231000_fix_handle_new_user_merged.sql` | `ip_address` | **`trial_ends_at` still missing** |
+
+The final live version of the trigger function simply did not include `trial_ends_at` in the `INSERT` statement.
+
+### Solution
+Created migration `20260616010000_fix_trial_ends_at_in_trigger.sql` which restores the **complete** trigger with all columns:
+```sql
+insert into public.profiles (
+  ...
+  trial_ends_at
+)
+values (
+  ...
+  case when is_first_user then null else now() + interval '30 minutes' end
+);
+```
+
+### Rule for Future
+**CRITICAL: When writing `CREATE OR REPLACE FUNCTION handle_new_user()` in any migration, always copy the FULL column list from the previous migration.** Never write just the "new" columns — you will silently drop existing ones. Before pushing, verify the final function in Supabase Dashboard → Database → Functions matches the expected schema.
+
+---
+
 ## Guidelines for Future Development
 
 - **Safety First**: Never call `JSON.parse()` on storage variables directly. Write wrapper utility helpers or use try-catch logs.
 - **Race Condition Prevention**: Assume network operations to fetch profiles or verify states are asynchronous. Use loading flags, and implement retry states for crucial database lookups.
 - **RLS Robustness**: When adding new tables, double-check that read/write policies include appropriate auth role checks (`auth.uid() = user_id`) and handle anonymous queries safely.
+- **Trigger Functions Are Stateful**: `CREATE OR REPLACE FUNCTION` replaces the entire function body. When updating a trigger, always carry forward ALL column insertions from the previous version. Missing one column silently breaks that feature for all new registrations.
+- **Test All RLS State Transitions**: After adding/modifying RLS policies, test not just the normal happy path but also edge-case transitions (e.g., status changes from rejected → pending, student updates vs. admin updates).
