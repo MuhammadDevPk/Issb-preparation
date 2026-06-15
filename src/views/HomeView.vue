@@ -69,6 +69,16 @@ const scrollToSection = (sectionId) => {
         <RouterLink v-if="!authStore.user" to="/login" class="nav-link-item">
           Log In
         </RouterLink>
+        <!-- Status badge for logged-in users -->
+        <RouterLink v-if="authStore.user && authStore.profile" to="/status" class="nav-status-badge"
+          :class="{
+            'status-badge-approved': authStore.profile.status === 'approved',
+            'status-badge-rejected': authStore.profile.status === 'rejected',
+            'status-badge-pending': authStore.profile.status === 'pending'
+          }">
+          <span class="status-dot"></span>
+          {{ authStore.profile.status === 'approved' ? '✓ Approved' : authStore.profile.status === 'rejected' ? '✗ Rejected' : '⏳ Pending' }}
+        </RouterLink>
       </div>
 
       <RouterLink :to="authStore.user ? '/dashboard' : '/register'" class="btn btn-nav-portal">
@@ -79,6 +89,7 @@ const scrollToSection = (sectionId) => {
         </svg>
       </RouterLink>
     </header>
+
 
     <main id="main-content">
       <!-- Hero Section -->
@@ -2852,6 +2863,67 @@ const scrollToSection = (sectionId) => {
   background: rgba(3, 194, 252, 0.1);
   border-color: rgba(3, 194, 252, 0.3);
   transform: translateY(-1px);
+}
+
+/* Status Badge in Navbar */
+.nav-status-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  border: 1px solid;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.nav-status-badge:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.15);
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  animation: pulse-dot 2s infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.status-badge-approved {
+  color: #22c55e;
+  background: rgba(34, 197, 94, 0.1);
+  border-color: rgba(34, 197, 94, 0.35);
+}
+.status-badge-approved .status-dot {
+  background: #22c55e;
+}
+
+.status-badge-rejected {
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.35);
+}
+.status-badge-rejected .status-dot {
+  background: #ef4444;
+}
+
+.status-badge-pending {
+  color: #f59e0b;
+  background: rgba(245, 158, 11, 0.1);
+  border-color: rgba(245, 158, 11, 0.35);
+}
+.status-badge-pending .status-dot {
+  background: #f59e0b;
 }
 
 @media (max-width: 768px) {

@@ -389,6 +389,37 @@ const goToStatus = () => {
       </div>
     </section>
 
+    <!-- Account Status Banner (visible to non-approved students) -->
+    <section
+      v-if="authStore.profile && authStore.profile.role !== 'admin' && authStore.profile.status !== 'approved'"
+      class="account-status-banner glass-card"
+      :class="{
+        'status-banner-rejected': authStore.profile.status === 'rejected',
+        'status-banner-pending': authStore.profile.status === 'pending'
+      }"
+    >
+      <div class="status-banner-left">
+        <div class="status-banner-icon">
+          <span v-if="authStore.profile.status === 'rejected'">✗</span>
+          <span v-else>⏳</span>
+        </div>
+        <div class="status-banner-info">
+          <strong v-if="authStore.profile.status === 'rejected'">Payment Verification Rejected</strong>
+          <strong v-else>Awaiting Payment Verification</strong>
+          <p v-if="authStore.profile.status === 'rejected'">
+            Your payment screenshot was rejected. Please resubmit a valid receipt to unlock premium access.
+          </p>
+          <p v-else>
+            Your payment receipt is being reviewed by the admin. This usually takes 1–2 hours.
+          </p>
+        </div>
+      </div>
+      <button class="btn-status-action" @click="goToStatus">
+        <span v-if="authStore.profile.status === 'rejected'">Resubmit Receipt →</span>
+        <span v-else>Check Status →</span>
+      </button>
+    </section>
+
     <!-- AI Psychologist Promotion / Access Status Banner -->
     <section class="dashboard-ai-promo glass-card" :class="isApproved ? 'status-approved-banner' : 'status-trial-banner'">
       <div class="promo-header">
@@ -865,6 +896,115 @@ const goToStatus = () => {
   gap: 1.5rem;
   padding-block-end: 2rem;
 }
+
+/* Account Status Banner for pending/rejected students */
+.account-status-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: 1.1rem 1.5rem;
+  border-radius: var(--border-radius-lg);
+  border-left: 4px solid;
+  flex-wrap: wrap;
+}
+
+.status-banner-rejected {
+  border-left-color: var(--accent-red);
+  background: rgba(239, 68, 68, 0.06);
+}
+
+.status-banner-pending {
+  border-left-color: #f59e0b;
+  background: rgba(245, 158, 11, 0.06);
+}
+
+.status-banner-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+}
+
+.status-banner-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.status-banner-rejected .status-banner-icon {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.status-banner-pending .status-banner-icon {
+  background: rgba(245, 158, 11, 0.15);
+  color: #f59e0b;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.status-banner-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.status-banner-info strong {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.status-banner-info p {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.btn-status-action {
+  padding: 0.6rem 1.25rem;
+  border-radius: var(--border-radius-md);
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.status-banner-rejected .btn-status-action {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.85), rgba(220, 38, 38, 0.7));
+  color: #fff;
+  box-shadow: 0 3px 12px rgba(239, 68, 68, 0.25);
+}
+
+.status-banner-rejected .btn-status-action:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 18px rgba(239, 68, 68, 0.4);
+}
+
+.status-banner-pending .btn-status-action {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.9), rgba(217, 119, 6, 0.75));
+  color: #0a0f1e;
+  box-shadow: 0 3px 12px rgba(245, 158, 11, 0.25);
+}
+
+.status-banner-pending .btn-status-action:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 18px rgba(245, 158, 11, 0.4);
+}
+
 
 .dashboard-hero {
   display: flex;

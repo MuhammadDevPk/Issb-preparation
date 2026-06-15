@@ -392,17 +392,23 @@ const checkApprovalStatus = async () => {
               </div>
 
               <div class="preview-actions mt-xs">
-                <button type="button" class="btn btn-secondary btn-small" @click="handleReupload"
+                <p v-if="uploadStatus" class="upload-progress-text">{{ uploadStatus }}</p>
+                <button type="button" class="btn-submit-receipt" @click="handleReupload"
                   :disabled="isSubmitting">
-                  <span v-if="isSubmitting" class="spinner"></span>
-                  <span v-else>Submit Receipt(s)</span>
+                  <span v-if="isSubmitting" class="btn-spinner"></span>
+                  <svg v-else viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="btn-icon-upload">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12" />
+                  </svg>
+                  <span>{{ isSubmitting ? 'Submitting...' : 'Submit Receipt(s)' }}</span>
                 </button>
-                <button type="button" class="btn btn-secondary btn-small" @click="triggerFileInput" :disabled="isSubmitting">
-                  + Add More
-                </button>
-                <button type="button" class="btn-remove-file" @click="clearAllSelectedFiles(); showPendingUploadArea = false" :disabled="isSubmitting">
-                  Cancel
-                </button>
+                <div class="preview-secondary-actions">
+                  <button type="button" class="btn btn-secondary btn-small" @click="triggerFileInput" :disabled="isSubmitting">
+                    + Add More
+                  </button>
+                  <button type="button" class="btn-remove-file" @click="clearAllSelectedFiles(); showPendingUploadArea = false" :disabled="isSubmitting">
+                    Cancel
+                  </button>
+                </div>
               </div>
             </div>
 
@@ -530,17 +536,23 @@ const checkApprovalStatus = async () => {
             </div>
             
             <div class="preview-actions mt-xs">
-              <button type="button" class="btn btn-secondary btn-small" @click="handleReupload"
+              <p v-if="uploadStatus" class="upload-progress-text">{{ uploadStatus }}</p>
+              <button type="button" class="btn-submit-receipt" @click="handleReupload"
                 :disabled="isSubmitting">
-                <span v-if="isSubmitting" class="spinner"></span>
-                <span v-else>Submit Receipt(s)</span>
+                <span v-if="isSubmitting" class="btn-spinner"></span>
+                <svg v-else viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="btn-icon-upload">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12" />
+                </svg>
+                <span>{{ isSubmitting ? 'Submitting...' : 'Submit Receipt(s)' }}</span>
               </button>
-              <button type="button" class="btn btn-secondary btn-small" @click="triggerFileInput" :disabled="isSubmitting">
-                + Add More
-              </button>
-              <button type="button" class="btn-remove-file" @click="clearAllSelectedFiles" :disabled="isSubmitting">
-                Clear All
-              </button>
+              <div class="preview-secondary-actions">
+                <button type="button" class="btn btn-secondary btn-small" @click="triggerFileInput" :disabled="isSubmitting">
+                  + Add More
+                </button>
+                <button type="button" class="btn-remove-file" @click="clearAllSelectedFiles" :disabled="isSubmitting">
+                  Clear All
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -1092,6 +1104,77 @@ const checkApprovalStatus = async () => {
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Premium Submit Receipt Button */
+.btn-submit-receipt {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1.5rem;
+  background: linear-gradient(135deg, rgba(0, 242, 254, 0.85), rgba(79, 209, 197, 0.75));
+  color: #0a0f1e;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  border: none;
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 18px rgba(0, 242, 254, 0.25);
+  text-transform: uppercase;
+}
+
+.btn-submit-receipt:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(0, 242, 254, 0.4);
+  background: linear-gradient(135deg, rgba(0, 242, 254, 1), rgba(79, 209, 197, 0.9));
+}
+
+.btn-submit-receipt:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-icon-upload {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.btn-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(10, 15, 30, 0.3);
+  border-radius: 50%;
+  border-top-color: #0a0f1e;
+  animation: spin 0.8s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+.upload-progress-text {
+  font-size: 0.8rem;
+  color: var(--accent-cyan);
+  text-align: center;
+  margin: 0 0 0.6rem 0;
+  font-weight: 600;
+  animation: pulse-text 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-text {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.preview-secondary-actions {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 0.6rem;
 }
 
 .w-100 {
