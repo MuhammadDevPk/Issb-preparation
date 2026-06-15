@@ -47,7 +47,7 @@ const fetchSettings = async () => {
 onMounted(() => {
   const urlRef = route.query.ref || sessionStorage.getItem('issb_referral_code') || localStorage.getItem('issb_referred_by_code') || ''
   referredByCode.value = urlRef.toString().toUpperCase().trim()
-  
+
   fetchSettings()
   // Pre-fill fields if candidate submitted the lead capture form on the home page
   if (route.query.name) fullName.value = route.query.name
@@ -313,7 +313,8 @@ const goHome = () => {
         <div class="trial-promo-banner">
           <span class="icon">⏳</span>
           <span class="text">
-            <strong>Instant 30-Minute Free Trial:</strong> Registering will instantly activate your free trial. Test all simulators and roadmaps immediately—no payment required!
+            <strong>Instant 30-Minute Free Trial:</strong> Registering will instantly activate your free trial. Test all
+            simulators and roadmaps immediately—no payment required!
           </span>
         </div>
 
@@ -358,9 +359,9 @@ const goHome = () => {
             </div>
 
             <div class="form-group">
-              <label for="whatsapp" class="form-label">WhatsApp Number (Optional)</label>
+              <label for="whatsapp" class="form-label">WhatsApp Number *</label>
               <input v-model="whatsapp" type="tel" id="whatsapp" class="form-input" placeholder="e.g. +92 300 1234567"
-                :disabled="isSubmitting" />
+                :disabled="isSubmitting" required />
             </div>
           </div>
 
@@ -380,23 +381,25 @@ const goHome = () => {
 
             <div class="form-group">
               <label for="referredByCode" class="form-label">Referral Code (Optional)</label>
-              <input v-model="referredByCode" type="text" id="referredByCode" class="form-input" placeholder="e.g. REF123"
-                :disabled="isSubmitting" @input="referredByCode = $event.target.value.toUpperCase()" />
+              <input v-model="referredByCode" type="text" id="referredByCode" class="form-input"
+                placeholder="e.g. REF123" :disabled="isSubmitting"
+                @input="referredByCode = $event.target.value.toUpperCase()" />
             </div>
           </div>
 
           <!-- Screenshot upload area -->
           <div class="form-group">
             <label class="form-label">Payment Receipt Screenshot(s) (Optional)</label>
-            <input ref="fileInput" type="file" accept="image/*" multiple style="display: none" @change="handleFileChange"
-              :disabled="isSubmitting" />
+            <input ref="fileInput" type="file" accept="image/*" multiple style="display: none"
+              @change="handleFileChange" :disabled="isSubmitting" />
 
             <div v-if="selectedFiles.length === 0" class="upload-dropzone" @click="triggerFileInput">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="upload-icon">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12" />
               </svg>
               <span>Click to Upload Payment Screenshot(s)</span>
-              <p class="upload-hint">Format: PNG, JPG, JPEG (Max 5MB per file) | Multiple allowed | Can be uploaded later</p>
+              <p class="upload-hint">Format: PNG, JPG, JPEG (Max 5MB per file) | Multiple allowed | Can be uploaded
+                later</p>
             </div>
 
             <div v-else class="selected-files-list">
@@ -413,7 +416,8 @@ const goHome = () => {
                 </button>
               </div>
 
-              <button type="button" class="btn btn-secondary btn-block mt-xs" @click="triggerFileInput" :disabled="isSubmitting" style="padding: 0.5rem; font-size: 0.85rem;">
+              <button type="button" class="btn btn-secondary btn-block mt-xs" @click="triggerFileInput"
+                :disabled="isSubmitting" style="padding: 0.5rem; font-size: 0.85rem;">
                 + Add Another Screenshot
               </button>
             </div>

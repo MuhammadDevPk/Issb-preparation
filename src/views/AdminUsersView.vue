@@ -69,7 +69,7 @@ const confirmApproval = async () => {
       course_amount: approveCourseAmount.value,
       referral_commission: approveReferralCommission.value
     }
-    
+
     if (!isEditMode.value) {
       updateData.status = 'approved'
       updateData.rejection_reason = null
@@ -160,7 +160,7 @@ const saveDetailsChanges = async () => {
 
 const handleSoftDelete = async (profileId) => {
   if (!confirm('Are you sure you want to soft delete this candidate? They will lose access to the portal but can be restored from the Trash tab.')) return
-  
+
   try {
     const { error } = await supabase
       .from('profiles')
@@ -393,19 +393,9 @@ onMounted(() => {
           portal access.
         </p>
       </div>
-      <button
-        @click="fetchProfiles"
-        class="btn btn-secondary flex-center gap-xs"
-        :disabled="isLoading"
-      >
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          class="btn-icon"
-          :class="{ spin: isLoading }"
-        >
+      <button @click="fetchProfiles" class="btn btn-secondary flex-center gap-xs" :disabled="isLoading">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon"
+          :class="{ spin: isLoading }">
           <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67" />
         </svg>
         <span>Refresh Records</span>
@@ -420,22 +410,12 @@ onMounted(() => {
     <!-- Filters panel -->
     <div v-if="activeStatusTab !== 'settings'" class="filters-panel glass-card">
       <div class="search-box">
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          class="search-icon"
-        >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="search-icon">
           <circle cx="11" cy="11" r="8" />
           <line x1="21" y1="21" x2="16.65" y2="16.65" />
         </svg>
-        <input
-          v-model="searchFilter"
-          type="text"
-          placeholder="Search by candidate name, email, or whatsapp..."
-          class="form-input search-input"
-        />
+        <input v-model="searchFilter" type="text" placeholder="Search by candidate name, email, or whatsapp..."
+          class="form-input search-input" />
       </div>
 
       <div class="branch-filter">
@@ -450,47 +430,24 @@ onMounted(() => {
 
     <!-- Status Tabs -->
     <div class="tabs-container">
-      <button
-        @click="activeStatusTab = 'all'"
-        class="tab-btn"
-        :class="{ active: activeStatusTab === 'all' }"
-      >
-        All Candidates ({{ profiles.filter((p) => p.deleted_at === null).length }})
+      <button @click="activeStatusTab = 'all'" class="tab-btn" :class="{ active: activeStatusTab === 'all' }">
+        All Candidates ({{profiles.filter((p) => p.deleted_at === null).length}})
       </button>
-      <button
-        @click="activeStatusTab = 'pending'"
-        class="tab-btn"
-        :class="{ active: activeStatusTab === 'pending' }"
-      >
-        Pending ({{ profiles.filter((p) => p.status === 'pending' && p.deleted_at === null).length }})
+      <button @click="activeStatusTab = 'pending'" class="tab-btn" :class="{ active: activeStatusTab === 'pending' }">
+        Pending ({{profiles.filter((p) => p.status === 'pending' && p.deleted_at === null).length}})
       </button>
-      <button
-        @click="activeStatusTab = 'approved'"
-        class="tab-btn"
-        :class="{ active: activeStatusTab === 'approved' }"
-      >
-        Approved ({{ profiles.filter((p) => p.status === 'approved' && p.deleted_at === null).length }})
+      <button @click="activeStatusTab = 'approved'" class="tab-btn" :class="{ active: activeStatusTab === 'approved' }">
+        Approved ({{profiles.filter((p) => p.status === 'approved' && p.deleted_at === null).length}})
       </button>
-      <button
-        @click="activeStatusTab = 'rejected'"
-        class="tab-btn"
-        :class="{ active: activeStatusTab === 'rejected' }"
-      >
-        Rejected ({{ profiles.filter((p) => p.status === 'rejected' && p.deleted_at === null).length }})
+      <button @click="activeStatusTab = 'rejected'" class="tab-btn" :class="{ active: activeStatusTab === 'rejected' }">
+        Rejected ({{profiles.filter((p) => p.status === 'rejected' && p.deleted_at === null).length}})
       </button>
-      <button
-        @click="activeStatusTab = 'trash'"
-        class="tab-btn tab-btn-trash"
-        :class="{ active: activeStatusTab === 'trash' }"
-      >
-        Trash ({{ profiles.filter((p) => p.deleted_at !== null).length }})
+      <button @click="activeStatusTab = 'trash'" class="tab-btn tab-btn-trash"
+        :class="{ active: activeStatusTab === 'trash' }">
+        Trash ({{profiles.filter((p) => p.deleted_at !== null).length}})
       </button>
-      <button
-        @click="activeStatusTab = 'settings'"
-        class="tab-btn"
-        :class="{ active: activeStatusTab === 'settings' }"
-        style="border-color: var(--accent-gold); color: var(--accent-gold);"
-      >
+      <button @click="activeStatusTab = 'settings'" class="tab-btn" :class="{ active: activeStatusTab === 'settings' }"
+        style="border-color: var(--accent-gold); color: var(--accent-gold);">
         Portal Settings ⚙️
       </button>
     </div>
@@ -525,7 +482,8 @@ onMounted(() => {
             <td class="candidate-info-cell">
               <div class="name">{{ candidate.full_name || 'No Name Provided' }}</div>
               <div class="email">{{ candidate.email }}</div>
-              <div v-if="candidate.referred_by" class="referrer-email" style="font-size: 0.75rem; color: var(--accent-gold); margin-top: 0.2rem;">
+              <div v-if="candidate.referred_by" class="referrer-email"
+                style="font-size: 0.75rem; color: var(--accent-gold); margin-top: 0.2rem;">
                 Ref by: {{ getReferrerEmail(candidate.referred_by) }}
               </div>
               <div v-if="candidate.role === 'admin'" class="role-indicator text-glow-gold">
@@ -546,22 +504,13 @@ onMounted(() => {
             </td>
 
             <td data-label="Screenshot">
-              <div v-if="candidate.payment_screenshot_url" class="screenshot-previews-list" style="display: flex; flex-direction: column; gap: 0.35rem;">
-                <button
-                  v-for="(url, idx) in candidate.payment_screenshot_url.split(',')"
-                  :key="idx"
-                  @click="openImageModal(url)"
-                  class="btn-view-receipt"
-                  style="padding: 0.25rem 0.5rem; font-size: 0.78rem;"
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    class="receipt-icon"
-                    style="width: 12px; height: 12px;"
-                  >
+              <div v-if="candidate.payment_screenshot_url" class="screenshot-previews-list"
+                style="display: flex; flex-direction: column; gap: 0.35rem;">
+                <button v-for="(url, idx) in candidate.payment_screenshot_url.split(',')" :key="idx"
+                  @click="openImageModal(url)" class="btn-view-receipt"
+                  style="padding: 0.25rem 0.5rem; font-size: 0.78rem;">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="receipt-icon"
+                    style="width: 12px; height: 12px;">
                     <path d="M2 3h20v18H2zM6 8h12M6 12h12M6 16h6" />
                   </svg>
                   <span>Preview {{ candidate.payment_screenshot_url.split(',').length > 1 ? idx + 1 : '' }}</span>
@@ -577,26 +526,25 @@ onMounted(() => {
 
             <td data-label="Referrals">
               <div class="ref-count">Count: {{ getReferralStats(candidate.id).totalCount }}</div>
-              <div class="ref-earnings" v-if="getReferralStats(candidate.id).earnings > 0" style="color: var(--accent-cyan); font-weight: 600; font-size: 0.82rem; margin-top: 0.15rem;">
+              <div class="ref-earnings" v-if="getReferralStats(candidate.id).earnings > 0"
+                style="color: var(--accent-cyan); font-weight: 600; font-size: 0.82rem; margin-top: 0.15rem;">
                 Earned: PKR {{ getReferralStats(candidate.id).earnings }}
               </div>
             </td>
 
             <td data-label="Status">
-              <span
-                class="badge"
-                :class="{
-                  'badge-cyan': candidate.status === 'pending',
-                  'badge-green': candidate.status === 'approved',
-                  'badge-red': candidate.status === 'rejected',
-                }"
-              >
+              <span class="badge" :class="{
+                'badge-cyan': candidate.status === 'pending',
+                'badge-green': candidate.status === 'approved',
+                'badge-red': candidate.status === 'rejected',
+              }">
                 {{ candidate.status }}
               </span>
               <div v-if="candidate.status === 'rejected'" class="rejection-reason-sub">
                 "{{ candidate.rejection_reason }}"
               </div>
-              <div v-if="candidate.deleted_at" class="text-italic" style="color: #ef4444; font-size: 0.72rem; margin-top: 0.25rem;">
+              <div v-if="candidate.deleted_at" class="text-italic"
+                style="color: #ef4444; font-size: 0.72rem; margin-top: 0.25rem;">
                 Soft Deleted ({{ formatDate(candidate.deleted_at) }})
               </div>
             </td>
@@ -605,53 +553,32 @@ onMounted(() => {
               <div class="actions-group">
                 <!-- If not soft-deleted (active candidate) -->
                 <template v-if="!candidate.deleted_at">
-                  <button
-                    v-if="candidate.status !== 'approved'"
-                    @click="openApproveModal(candidate, false)"
-                    class="btn-action btn-approve"
-                    title="Approve Candidate Access"
-                  >
+                  <button v-if="candidate.status !== 'approved'" @click="openApproveModal(candidate, false)"
+                    class="btn-action btn-approve" title="Approve Candidate Access">
                     Approve
                   </button>
-                  <button
-                    @click="openDetailsModal(candidate)"
-                    class="btn-action btn-details"
-                    title="View Details & Pricing"
-                  >
+                  <button @click="openDetailsModal(candidate)" class="btn-action btn-details"
+                    title="View Details & Pricing">
                     Details
                   </button>
-                  <button
-                    v-if="candidate.status !== 'rejected' && candidate.role !== 'admin'"
-                    @click="openRejectModal(candidate.id)"
-                    class="btn-action btn-reject"
-                    title="Reject Receipt"
-                  >
+                  <button v-if="candidate.status !== 'rejected' && candidate.role !== 'admin'"
+                    @click="openRejectModal(candidate.id)" class="btn-action btn-reject" title="Reject Receipt">
                     Reject
                   </button>
-                  <button
-                    v-if="candidate.role !== 'admin'"
-                    @click="handleSoftDelete(candidate.id)"
-                    class="btn-action btn-soft-delete"
-                    title="Move to Trash"
-                  >
+                  <button v-if="candidate.role !== 'admin'" @click="handleSoftDelete(candidate.id)"
+                    class="btn-action btn-soft-delete" title="Move to Trash">
                     Soft Delete
                   </button>
                 </template>
 
                 <!-- If soft-deleted -->
                 <template v-else>
-                  <button
-                    @click="handleRestore(candidate.id)"
-                    class="btn-action btn-restore"
-                    title="Restore Candidate Access"
-                  >
+                  <button @click="handleRestore(candidate.id)" class="btn-action btn-restore"
+                    title="Restore Candidate Access">
                     Restore
                   </button>
-                  <button
-                    @click="handlePermanentDelete(candidate.id)"
-                    class="btn-action btn-delete-perm"
-                    title="Delete Account Permanently"
-                  >
+                  <button @click="handlePermanentDelete(candidate.id)" class="btn-action btn-delete-perm"
+                    title="Delete Account Permanently">
                     Delete Perm
                   </button>
                 </template>
@@ -677,29 +604,15 @@ onMounted(() => {
         <div class="form-row-settings">
           <div class="form-group-settings">
             <label for="coursePrice" class="form-label-settings">Base Course Price (PKR) *</label>
-            <input
-              v-model.number="settings.course_price"
-              type="number"
-              id="coursePrice"
-              class="form-input"
-              required
-              min="0"
-              :disabled="isSavingSettings"
-            />
+            <input v-model.number="settings.course_price" type="number" id="coursePrice" class="form-input" required
+              min="0" :disabled="isSavingSettings" />
             <span class="input-hint">The base price a student sees on registration.</span>
           </div>
 
           <div class="form-group-settings">
             <label for="referralBonus" class="form-label-settings">Referral Bonus per Paid User (PKR) *</label>
-            <input
-              v-model.number="settings.referral_bonus"
-              type="number"
-              id="referralBonus"
-              class="form-input"
-              required
-              min="0"
-              :disabled="isSavingSettings"
-            />
+            <input v-model.number="settings.referral_bonus" type="number" id="referralBonus" class="form-input" required
+              min="0" :disabled="isSavingSettings" />
             <span class="input-hint">Deducted from referrer's price for each referred paid user.</span>
           </div>
         </div>
@@ -707,30 +620,15 @@ onMounted(() => {
         <div class="form-row-settings">
           <div class="form-group-settings">
             <label for="maxDiscountPct" class="form-label-settings">Max Discount Percentage Cap (%) *</label>
-            <input
-              v-model.number="settings.max_discount_pct"
-              type="number"
-              id="maxDiscountPct"
-              class="form-input"
-              required
-              min="0"
-              max="100"
-              :disabled="isSavingSettings"
-            />
+            <input v-model.number="settings.max_discount_pct" type="number" id="maxDiscountPct" class="form-input"
+              required min="0" max="100" :disabled="isSavingSettings" />
             <span class="input-hint">Maximum percent discount allowed (e.g. 90%).</span>
           </div>
 
           <div class="form-group-settings">
             <label for="maxDiscountAmount" class="form-label-settings">Max Discount Flat Cap (PKR) *</label>
-            <input
-              v-model.number="settings.max_discount_amount"
-              type="number"
-              id="maxDiscountAmount"
-              class="form-input"
-              required
-              min="0"
-              :disabled="isSavingSettings"
-            />
+            <input v-model.number="settings.max_discount_amount" type="number" id="maxDiscountAmount" class="form-input"
+              required min="0" :disabled="isSavingSettings" />
             <span class="input-hint">Maximum flat deduction allowed (e.g. 1400 PKR).</span>
           </div>
         </div>
@@ -771,13 +669,9 @@ onMounted(() => {
 
         <div class="form-group">
           <label for="rejectionReason" class="form-label">Reason for Rejection *</label>
-          <textarea
-            v-model="rejectionReasonInput"
-            id="rejectionReason"
-            class="form-textarea"
+          <textarea v-model="rejectionReasonInput" id="rejectionReason" class="form-textarea"
             placeholder="e.g. Transaction Reference Number missing, or payment amount is incorrect."
-            required
-          ></textarea>
+            required></textarea>
         </div>
 
         <div class="modal-actions">
@@ -800,26 +694,14 @@ onMounted(() => {
 
         <div class="form-group">
           <label for="approveCourseAmount" class="form-label">Course Amount Paid (PKR) *</label>
-          <input
-            v-model.number="approveCourseAmount"
-            type="number"
-            id="approveCourseAmount"
-            class="form-input"
-            required
-            min="0"
-          />
+          <input v-model.number="approveCourseAmount" type="number" id="approveCourseAmount" class="form-input" required
+            min="0" />
         </div>
 
         <div class="form-group">
           <label for="approveReferralCommission" class="form-label">Referrer Commission (PKR) *</label>
-          <input
-            v-model.number="approveReferralCommission"
-            type="number"
-            id="approveReferralCommission"
-            class="form-input"
-            required
-            min="0"
-          />
+          <input v-model.number="approveReferralCommission" type="number" id="approveReferralCommission"
+            class="form-input" required min="0" />
         </div>
 
         <div class="modal-actions">
@@ -841,7 +723,8 @@ onMounted(() => {
         </p>
 
         <!-- General Info Grid -->
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; background: #f8fafc; padding: 1rem; border-radius: var(--border-radius-md); font-size: 0.85rem; border: 1px solid var(--border-color); margin-bottom: 0.5rem;">
+        <div
+          style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; background: #f8fafc; padding: 1rem; border-radius: var(--border-radius-md); font-size: 0.85rem; border: 1px solid var(--border-color); margin-bottom: 0.5rem;">
           <div>
             <strong style="color: var(--text-muted);">Name:</strong> {{ detailsProfile.full_name || 'N/A' }}
           </div>
@@ -852,60 +735,52 @@ onMounted(() => {
             <strong style="color: var(--text-muted);">WhatsApp:</strong> {{ detailsProfile.whatsapp || 'N/A' }}
           </div>
           <div>
-            <strong style="color: var(--text-muted);">Branch:</strong> <span class="text-capitalize">{{ detailsProfile.target_branch }}</span>
+            <strong style="color: var(--text-muted);">Branch:</strong> <span class="text-capitalize">{{
+              detailsProfile.target_branch }}</span>
           </div>
           <div>
-            <strong style="color: var(--text-muted);">Status:</strong> <span class="text-uppercase" style="font-weight: 700;">{{ detailsProfile.status }}</span>
+            <strong style="color: var(--text-muted);">Status:</strong> <span class="text-uppercase"
+              style="font-weight: 700;">{{ detailsProfile.status }}</span>
           </div>
           <div>
-            <strong style="color: var(--text-muted);">Registered On:</strong> {{ formatDate(detailsProfile.created_at) }}
+            <strong style="color: var(--text-muted);">Registered On:</strong> {{ formatDate(detailsProfile.created_at)
+            }}
           </div>
           <div v-if="detailsProfile.referred_by" style="grid-column: span 2;">
-            <strong style="color: var(--text-muted);">Referred By:</strong> {{ getReferrerEmail(detailsProfile.referred_by) }}
+            <strong style="color: var(--text-muted);">Referred By:</strong> {{
+              getReferrerEmail(detailsProfile.referred_by)
+            }}
           </div>
         </div>
 
         <!-- Editable Pricing Snapshots -->
-        <div style="border-top: 1px solid var(--border-color); padding-top: 1rem; display: flex; flex-direction: column; gap: 1rem;">
+        <div
+          style="border-top: 1px solid var(--border-color); padding-top: 1rem; display: flex; flex-direction: column; gap: 1rem;">
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;">
             <div class="form-group" style="margin-bottom: 0;">
-              <label for="detailsCourseAmount" class="form-label" style="font-size: 0.75rem;">Course Amount Paid (PKR) *</label>
-              <input
-                v-model.number="detailsCourseAmount"
-                type="number"
-                id="detailsCourseAmount"
-                class="form-input"
-                required
-                min="0"
-              />
+              <label for="detailsCourseAmount" class="form-label" style="font-size: 0.75rem;">Course Amount Paid (PKR)
+                *</label>
+              <input v-model.number="detailsCourseAmount" type="number" id="detailsCourseAmount" class="form-input"
+                required min="0" />
               <span style="font-size: 0.7rem; color: var(--text-muted);">Price when this candidate registered.</span>
             </div>
 
             <div class="form-group" style="margin-bottom: 0;">
-              <label for="detailsReferralCommission" class="form-label" style="font-size: 0.75rem;">Referrer Commission (PKR) *</label>
-              <input
-                v-model.number="detailsReferralCommission"
-                type="number"
-                id="detailsReferralCommission"
-                class="form-input"
-                required
-                min="0"
-              />
+              <label for="detailsReferralCommission" class="form-label" style="font-size: 0.75rem;">Referrer Commission
+                (PKR) *</label>
+              <input v-model.number="detailsReferralCommission" type="number" id="detailsReferralCommission"
+                class="form-input" required min="0" />
               <span style="font-size: 0.7rem; color: var(--text-muted);">Referral price when they registered.</span>
             </div>
           </div>
 
           <!-- Option to set referral price for each student -->
           <div class="form-group" style="margin-bottom: 0;">
-            <label for="detailsCustomReferralBonus" class="form-label" style="font-size: 0.75rem;">Custom Referral Bonus for this candidate (PKR)</label>
-            <input
-              v-model.number="detailsCustomReferralBonus"
-              type="number"
-              id="detailsCustomReferralBonus"
-              class="form-input"
-              placeholder="e.g. 600 (Leave blank to use system default)"
-              min="0"
-            />
+            <label for="detailsCustomReferralBonus" class="form-label" style="font-size: 0.75rem;">Custom Referral Bonus
+              for
+              this candidate (PKR)</label>
+            <input v-model.number="detailsCustomReferralBonus" type="number" id="detailsCustomReferralBonus"
+              class="form-input" placeholder="e.g. 600 (Leave blank to use system default)" min="0" />
             <span style="font-size: 0.7rem; color: var(--text-muted);">
               Set custom commission rate this candidate earns for each future referral they make.
             </span>
@@ -1115,6 +990,8 @@ onMounted(() => {
   margin-top: 0.25rem;
   font-style: italic;
   max-width: 160px;
+  overflow: scroll !important;
+  height: 100px
 }
 
 .actions-cell {
