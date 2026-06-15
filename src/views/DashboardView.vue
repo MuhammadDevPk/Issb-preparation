@@ -310,23 +310,17 @@ const goToStatus = () => {
     <section class="dashboard-hero glass-card animate-pulse-cyan">
       <div class="hero-left">
         <span class="badge badge-cyan">Tactical Command Center</span>
-        
+
         <template v-if="hasPremiumOrTrial">
           <h2>Master the ISSB Selection Parameters</h2>
           <p>
             ISSB does not test your knowledge; it tests your <strong>personality, psychological stability,
-            and leadership potential</strong>. Stop generic memorization. Understand what officers look for
+              and leadership potential</strong>. Stop generic memorization. Understand what officers look for
             and align your mindset.
           </p>
           <button class="btn btn-primary" @click="goToRoadmap">
             <span>Start 5-Day Roadmap Training</span>
-            <svg
-              class="btn-icon"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <line x1="5" y1="12" x2="19" y2="12" />
               <polyline points="12 5 19 12 12 19" />
             </svg>
@@ -335,7 +329,7 @@ const goToStatus = () => {
         <template v-else>
           <h2>Practice Timed Test Simulators (Free)</h2>
           <p>
-            Improve your response speed and structural thinking under selection board projector clocks. 
+            Improve your response speed and structural thinking under selection board projector clocks.
             Practice Word Association, Sentence Completion, and Situation Reactions for free.
           </p>
           <div class="free-simulators-action-row">
@@ -352,26 +346,10 @@ const goToStatus = () => {
         <template v-if="hasPremiumOrTrial">
           <div class="progress-circle-container">
             <svg class="circle-svg" viewBox="0 0 100 100">
-              <circle
-                class="circle-bg"
-                cx="50"
-                cy="50"
-                r="40"
-                stroke="#cbd5e1"
-                stroke-width="8"
-                fill="none"
-              />
-              <circle
-                class="circle-progress"
-                cx="50"
-                cy="50"
-                r="40"
-                stroke="var(--accent-cyan)"
-                stroke-width="8"
-                fill="none"
-                :stroke-dasharray="2 * Math.PI * 40"
-                :stroke-dashoffset="2 * Math.PI * 40 * (1 - progressPercent / 100)"
-              />
+              <circle class="circle-bg" cx="50" cy="50" r="40" stroke="#cbd5e1" stroke-width="8" fill="none" />
+              <circle class="circle-progress" cx="50" cy="50" r="40" stroke="var(--accent-cyan)" stroke-width="8"
+                fill="none" :stroke-dasharray="2 * Math.PI * 40"
+                :stroke-dashoffset="2 * Math.PI * 40 * (1 - progressPercent / 100)" />
             </svg>
             <div class="progress-label flex-center">
               <span class="percent text-glow">{{ progressPercent }}%</span>
@@ -391,13 +369,12 @@ const goToStatus = () => {
 
     <!-- Account Status Banner (visible to non-approved students) -->
     <section
-      v-if="authStore.profile && authStore.profile.role !== 'admin' && authStore.profile.status !== 'approved'"
-      class="account-status-banner glass-card"
-      :class="{
+      v-if="authStore.profile && authStore.profile.role !== 'admin' && authStore.profile.status !== 'approved' && !isTrialActive"
+      class="account-status-banner glass-card" :class="{
         'status-banner-rejected': authStore.profile.status === 'rejected',
         'status-banner-pending': authStore.profile.status === 'pending'
-      }"
-    >
+      }">
+
       <div class="status-banner-left">
         <div class="status-banner-icon">
           <span v-if="authStore.profile.status === 'rejected'">✗</span>
@@ -421,14 +398,16 @@ const goToStatus = () => {
     </section>
 
     <!-- AI Psychologist Promotion / Access Status Banner -->
-    <section class="dashboard-ai-promo glass-card" :class="isApproved ? 'status-approved-banner' : 'status-trial-banner'">
+    <section class="dashboard-ai-promo glass-card"
+      :class="isApproved ? 'status-approved-banner' : 'status-trial-banner'">
       <div class="promo-header">
         <div class="promo-title-group">
           <span class="badge" :class="isApproved ? 'badge-green' : 'badge-purple-ai'">
             {{ isApproved ? 'Active' : 'Free Trial' }}
           </span>
           <h3>
-            {{ isApproved ? '🎖️ AI Psychological Assessor Fully Active' : '🧠 Unlock Your Real-Time AI Psychologist Assessor' }}
+            {{ isApproved ? '🎖️ AI Psychological Assessor Fully Active'
+              : '🧠 Unlock Your Real-Time AI Psychologist Assessor' }}
           </h3>
         </div>
         <div class="status-pulse-indicator">
@@ -439,7 +418,7 @@ const goToStatus = () => {
 
       <div class="promo-body">
         <p class="promo-intro-text">
-          Our advanced AI is programmed with standard ISSB psychological evaluation parameters. 
+          Our advanced AI is programmed with standard ISSB psychological evaluation parameters.
           When you practice in our simulators, the AI evaluates every sentence against actual selection metrics.
         </p>
 
@@ -463,9 +442,10 @@ const goToStatus = () => {
 
         <div v-if="!isApproved" class="upgrade-pitch-box">
           <div class="pitch-text">
-            <strong>⚠️ Faking your personality will get you rejected.</strong> 
-            Academies teach memorized answers that selectors easily catch. Use our AI to scan your subconscious answers. 
-            Unlock lifetime premium access for just <strong>PKR {{ appSettings.course_price }}</strong> or as low as <strong>PKR 100</strong> via referrals.
+            <strong>⚠️ Faking your personality will get you rejected.</strong>
+            Academies teach memorized answers that selectors easily catch. Use our AI to scan your subconscious answers.
+            Unlock lifetime premium access for just <strong>PKR {{ appSettings.course_price }}</strong> or as low as
+            <strong>PKR 100</strong> via referrals.
           </div>
         </div>
       </div>
@@ -504,13 +484,7 @@ const goToStatus = () => {
       <!-- Why Candidates Fail -->
       <div class="glass-card fail-card">
         <div class="card-header border-red">
-          <svg
-            class="card-icon text-red"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-          >
+          <svg class="card-icon text-red" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="12" cy="12" r="10" />
             <line x1="15" y1="9" x2="9" y2="15" />
             <line x1="9" y1="9" x2="15" y2="15" />
@@ -552,13 +526,7 @@ const goToStatus = () => {
       <!-- Why Candidates Succeed -->
       <div class="glass-card success-card">
         <div class="card-header border-green">
-          <svg
-            class="card-icon text-green"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-          >
+          <svg class="card-icon text-green" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M22 11.08V12a10 10 0 11-5.93-9.14" stroke-linecap="round" />
             <polyline points="22 4 12 14.01 9 11.01" stroke-linecap="round" />
           </svg>
@@ -604,10 +572,12 @@ const goToStatus = () => {
           <span class="badge badge-cyan">Earn & Discount Program</span>
           <h3>Candidate Referral Network</h3>
           <p class="desc">
-            Invite friends to prepare together. Get <strong>PKR {{ activeReferralBonus }}</strong> off your course price for each friend who registers and activates their account!
+            Invite friends to prepare together. Get <strong>PKR {{ activeReferralBonus }}</strong> off your course price
+            for
+            each friend who registers and activates their account!
           </p>
         </div>
-        
+
         <div class="pricing-discount-display">
           <div class="discount-pill">
             <template v-if="authStore.profile?.status === 'approved'">
@@ -617,7 +587,8 @@ const goToStatus = () => {
             <template v-else>
               <span class="lbl">Your Course Price:</span>
               <span class="val text-cyan text-glow">PKR {{ finalCoursePrice }}</span>
-              <span class="sub text-muted" v-if="totalBonusEarned > 0">(Discount: -PKR {{ Math.min(totalBonusEarned, maxDiscountAllowed) }})</span>
+              <span class="sub text-muted" v-if="totalBonusEarned > 0">(Discount: -PKR {{ Math.min(totalBonusEarned,
+                maxDiscountAllowed) }})</span>
             </template>
           </div>
         </div>
@@ -628,7 +599,7 @@ const goToStatus = () => {
         <div class="referral-card-panel bg-light">
           <h4>Your Unique Invite Link</h4>
           <p>Copy and share this referral URL with other candidates:</p>
-          
+
           <div class="share-input-wrapper">
             <input type="text" readonly :value="referralLink" class="form-input share-url-input" />
             <button class="btn btn-primary btn-copy" @click="copyReferralLink">
@@ -641,7 +612,10 @@ const goToStatus = () => {
             <ul>
               <li>Get +PKR {{ activeReferralBonus }} deduction for every friend who completes payment.</li>
               <li>Base Course Fee: <strong>PKR {{ appSettings.course_price }}</strong></li>
-              <li>Deductions stop after reaching a max discount of <strong>PKR {{ maxDiscountAllowed }}</strong> (Min price: <strong>PKR {{ Math.max(appSettings.course_price - maxDiscountAllowed, 0) }}</strong>).</li>
+              <li>Deductions stop after reaching a max discount of <strong>PKR {{ maxDiscountAllowed }}</strong> (Min
+                price:
+                <strong>PKR {{ Math.max(appSettings.course_price - maxDiscountAllowed, 0) }}</strong>).
+              </li>
               <li>You can refer unlimited friends, even after hitting the maximum discount limit!</li>
             </ul>
           </div>
@@ -650,7 +624,7 @@ const goToStatus = () => {
         <!-- Metrics Dashboard -->
         <div class="referral-card-panel bg-light">
           <h4>Your Referrals Analytics</h4>
-          
+
           <div class="metrics-summary-grid">
             <div class="metric-box">
               <span class="val text-cyan">{{ referralClicks }}</span>
@@ -701,7 +675,8 @@ const goToStatus = () => {
                       }">
                         {{ refCandidate.status === 'approved' ? 'Paid / Active' : refCandidate.status }}
                       </span>
-                      <div v-if="refCandidate.status === 'approved' && refCandidate.course_amount" class="ref-payment-details">
+                      <div v-if="refCandidate.status === 'approved' && refCandidate.course_amount"
+                        class="ref-payment-details">
                         Paid: PKR {{ refCandidate.course_amount }}
                       </div>
                     </td>
@@ -742,28 +717,16 @@ const goToStatus = () => {
         <div class="dimension-section">
           <h4 class="dim-title">Planning & Intelligence</h4>
           <div class="traits-list">
-            <div
-              v-for="olq in olqs.filter((o) => o.dimension === 'Planning')"
-              :key="olq.id"
-              class="trait-row"
-            >
+            <div v-for="olq in olqs.filter((o) => o.dimension === 'Planning')" :key="olq.id" class="trait-row">
               <div class="trait-info">
                 <strong>{{ olq.name }}</strong>
                 <span class="trait-desc">{{ olq.description }}</span>
               </div>
               <div class="trait-slider">
-                <input
-                  type="range"
-                  min="1"
-                  max="10"
-                  v-model.number="olq.score"
-                  class="form-range"
-                />
-                <span
-                  class="score-num text-glow"
-                  :class="olq.score >= 7 ? 'text-green' : olq.score >= 4 ? 'text-gold' : 'text-red'"
-                  >{{ olq.score }}</span
-                >
+                <input type="range" min="1" max="10" v-model.number="olq.score" class="form-range" />
+                <span class="score-num text-glow"
+                  :class="olq.score >= 7 ? 'text-green' : olq.score >= 4 ? 'text-gold' : 'text-red'">{{ olq.score
+                  }}</span>
               </div>
             </div>
           </div>
@@ -773,28 +736,16 @@ const goToStatus = () => {
         <div class="dimension-section">
           <h4 class="dim-title">Social & Adaptability</h4>
           <div class="traits-list">
-            <div
-              v-for="olq in olqs.filter((o) => o.dimension === 'Social')"
-              :key="olq.id"
-              class="trait-row"
-            >
+            <div v-for="olq in olqs.filter((o) => o.dimension === 'Social')" :key="olq.id" class="trait-row">
               <div class="trait-info">
                 <strong>{{ olq.name }}</strong>
                 <span class="trait-desc">{{ olq.description }}</span>
               </div>
               <div class="trait-slider">
-                <input
-                  type="range"
-                  min="1"
-                  max="10"
-                  v-model.number="olq.score"
-                  class="form-range"
-                />
-                <span
-                  class="score-num text-glow"
-                  :class="olq.score >= 7 ? 'text-green' : olq.score >= 4 ? 'text-gold' : 'text-red'"
-                  >{{ olq.score }}</span
-                >
+                <input type="range" min="1" max="10" v-model.number="olq.score" class="form-range" />
+                <span class="score-num text-glow"
+                  :class="olq.score >= 7 ? 'text-green' : olq.score >= 4 ? 'text-gold' : 'text-red'">{{ olq.score
+                  }}</span>
               </div>
             </div>
           </div>
@@ -804,28 +755,16 @@ const goToStatus = () => {
         <div class="dimension-section">
           <h4 class="dim-title">Leadership & Influence</h4>
           <div class="traits-list">
-            <div
-              v-for="olq in olqs.filter((o) => o.dimension === 'Leadership')"
-              :key="olq.id"
-              class="trait-row"
-            >
+            <div v-for="olq in olqs.filter((o) => o.dimension === 'Leadership')" :key="olq.id" class="trait-row">
               <div class="trait-info">
                 <strong>{{ olq.name }}</strong>
                 <span class="trait-desc">{{ olq.description }}</span>
               </div>
               <div class="trait-slider">
-                <input
-                  type="range"
-                  min="1"
-                  max="10"
-                  v-model.number="olq.score"
-                  class="form-range"
-                />
-                <span
-                  class="score-num text-glow"
-                  :class="olq.score >= 7 ? 'text-green' : olq.score >= 4 ? 'text-gold' : 'text-red'"
-                  >{{ olq.score }}</span
-                >
+                <input type="range" min="1" max="10" v-model.number="olq.score" class="form-range" />
+                <span class="score-num text-glow"
+                  :class="olq.score >= 7 ? 'text-green' : olq.score >= 4 ? 'text-gold' : 'text-red'">{{ olq.score
+                  }}</span>
               </div>
             </div>
           </div>
@@ -835,28 +774,16 @@ const goToStatus = () => {
         <div class="dimension-section">
           <h4 class="dim-title">Dynamic & Physical</h4>
           <div class="traits-list">
-            <div
-              v-for="olq in olqs.filter((o) => o.dimension === 'Dynamic')"
-              :key="olq.id"
-              class="trait-row"
-            >
+            <div v-for="olq in olqs.filter((o) => o.dimension === 'Dynamic')" :key="olq.id" class="trait-row">
               <div class="trait-info">
                 <strong>{{ olq.name }}</strong>
                 <span class="trait-desc">{{ olq.description }}</span>
               </div>
               <div class="trait-slider">
-                <input
-                  type="range"
-                  min="1"
-                  max="10"
-                  v-model.number="olq.score"
-                  class="form-range"
-                />
-                <span
-                  class="score-num text-glow"
-                  :class="olq.score >= 7 ? 'text-green' : olq.score >= 4 ? 'text-gold' : 'text-red'"
-                  >{{ olq.score }}</span
-                >
+                <input type="range" min="1" max="10" v-model.number="olq.score" class="form-range" />
+                <span class="score-num text-glow"
+                  :class="olq.score >= 7 ? 'text-green' : olq.score >= 4 ? 'text-gold' : 'text-red'">{{ olq.score
+                  }}</span>
               </div>
             </div>
           </div>
@@ -866,18 +793,10 @@ const goToStatus = () => {
       <div class="profiler-footer flex-center">
         <div class="profile-recommendation" v-if="lowestTraits.length > 0">
           <strong>Key Improvement Goals:</strong>
-          <span class="trait-tag" v-for="t in lowestTraits" :key="t.id"
-            >{{ t.name }} ({{ t.score }}/10)</span
-          >
+          <span class="trait-tag" v-for="t in lowestTraits" :key="t.id">{{ t.name }} ({{ t.score }}/10)</span>
         </div>
         <button class="btn btn-primary" @click="saveAssessment">
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            class="btn-icon"
-          >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon">
             <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z" />
             <polyline points="17 21 17 13 7 13 7 21" />
             <polyline points="7 3 7 8 15 8" />
@@ -1632,13 +1551,27 @@ const goToStatus = () => {
 }
 
 @keyframes pulse-purple-dot {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.4); }
-  50% { box-shadow: 0 0 0 6px rgba(124, 58, 237, 0); }
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 0 0 6px rgba(124, 58, 237, 0);
+  }
 }
 
 @keyframes pulse-green-dot {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
-  50% { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 0 0 6px rgba(34, 197, 94, 0);
+  }
 }
 
 .status-lbl {
@@ -1758,7 +1691,8 @@ const goToStatus = () => {
   font-size: 1.35rem;
 }
 
-.action-buttons, .action-buttons-trial {
+.action-buttons,
+.action-buttons-trial {
   display: flex;
   gap: 0.75rem;
   flex-wrap: wrap;
@@ -1789,19 +1723,32 @@ const goToStatus = () => {
 }
 
 @keyframes glow-purple-btn {
-  0%, 100% { box-shadow: 0 0 8px rgba(124, 58, 237, 0.2); }
-  50% { box-shadow: 0 0 16px rgba(124, 58, 237, 0.45); }
+
+  0%,
+  100% {
+    box-shadow: 0 0 8px rgba(124, 58, 237, 0.2);
+  }
+
+  50% {
+    box-shadow: 0 0 16px rgba(124, 58, 237, 0.45);
+  }
 }
 
 @media (max-width: 768px) {
-  .promo-header, .promo-actions {
+
+  .promo-header,
+  .promo-actions {
     flex-direction: column;
     align-items: flex-start;
   }
-  .action-buttons-trial, .action-buttons {
+
+  .action-buttons-trial,
+  .action-buttons {
     width: 100%;
   }
-  .action-buttons-trial button, .action-buttons button {
+
+  .action-buttons-trial button,
+  .action-buttons button {
     flex: 1;
   }
 }
