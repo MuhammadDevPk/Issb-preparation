@@ -1015,6 +1015,106 @@ const activeCenterInfo = computed(() => {
   }
 }
 
+@media (max-width: 768px) {
+  .call-letter-page {
+    padding: 0.25rem 0;
+  }
+
+  .tab-switcher {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 1.5rem;
+  }
+
+  .tab-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 0.85rem;
+    font-size: 0.9rem;
+    border: 1px solid var(--border-color);
+  }
+
+  .tab-btn.active {
+    border-color: rgba(3, 194, 252, 0.4);
+    background: rgba(3, 194, 252, 0.08);
+  }
+
+  .tracker-card, .faq-card {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .form-panel {
+    padding: 1.25rem;
+  }
+
+  .stamp-and-sign {
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 1.5rem;
+    text-align: center;
+  }
+
+  .signature-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-title-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .share-buttons-row {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .military-call-letter {
+    padding: 1.5rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .military-call-letter::before {
+    top: 6px;
+    left: 6px;
+    right: 6px;
+    bottom: 6px;
+  }
+
+  .crest-placeholder {
+    width: 55px;
+    height: 55px;
+  }
+
+  .letter-title {
+    font-size: 1rem;
+  }
+
+  .letter-meta-row {
+    flex-direction: column;
+    gap: 0.35rem;
+    align-items: flex-start;
+  }
+
+  .mock-stamp {
+    width: 95px;
+    height: 95px;
+  }
+  
+  .stamp-inner {
+    font-size: 0.65rem;
+  }
+
+  .stamp-sub {
+    font-size: 0.5rem;
+  }
+}
+
 /* ────────────────────────────────────────────────────────
    PRINT SPECIFIC CSS OVERRIDES
    ──────────────────────────────────────────────────────── */
