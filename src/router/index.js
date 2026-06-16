@@ -14,6 +14,7 @@ const RegisterView = () => import('../views/RegisterView.vue')
 const StatusView = () => import('../views/StatusView.vue')
 const AdminUsersView = () => import('../views/AdminUsersView.vue')
 const SupportView = () => import('../views/SupportView.vue')
+const CallLetterView = () => import('../views/CallLetterView.vue')
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -105,6 +106,12 @@ const router = createRouter({
       path: '/support',
       name: 'support',
       component: SupportView,
+      meta: { requiresAuth: true },
+    },
+    {
+      path: '/call-letter',
+      name: 'call-letter',
+      component: CallLetterView,
       meta: { requiresAuth: true },
     },
   ],
