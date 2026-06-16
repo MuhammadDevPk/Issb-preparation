@@ -90,6 +90,23 @@ const scrollToSection = (sectionId) => {
       </RouterLink>
     </header>
 
+    <!-- Running Bulletin / News Ticker -->
+    <div class="news-ticker-banner no-print">
+      <div class="ticker-label">
+        <span class="ticker-badge">UPDATED</span>
+        <span>ISSB UPDATES:</span>
+      </div>
+      <div class="ticker-content-wrapper">
+        <div class="ticker-content">
+          <span>📢 Candidates awaiting ISSB dates can now check official status online.</span>
+          <span>⚡ Generate your custom practice military Call Up Notice to plan documents & luggage checklists.</span>
+          <span>📢 Select ISSB center (Kohat, Gujranwala, Malir, Quetta) to view direct contact lists.</span>
+        </div>
+      </div>
+      <RouterLink to="/call-letter" class="btn-ticker-action">
+        <span>Check Call Status & Letter Utilities →</span>
+      </RouterLink>
+    </div>
 
     <main id="main-content">
       <!-- Hero Section -->
@@ -186,6 +203,51 @@ const scrollToSection = (sectionId) => {
 
         <div class="simulator-footer">
           <p>Traditional books teach faked, robotic sentences that get you rejected. The simulator trains your natural response speed under stress.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ISSB Call Status & Letter Utilities Section -->
+    <section class="call-letter-utility-section glass-card">
+      <div class="utility-content">
+        <span class="badge badge-cyan">Official Utilities</span>
+        <h2>Awaiting Your ISSB Call Up Date?</h2>
+        <p>
+          Candidates who cleared their initial selection board recommended lists can check their scheduling details on the official servers, or generate a realistic military-formatted practice call letter to check document checklists and clothing instructions.
+        </p>
+        <div class="utility-actions">
+          <RouterLink to="/call-letter" class="btn btn-primary">
+            <span>Check Call Status & Generate Letter</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 18px; height: 18px;">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </RouterLink>
+          <a href="http://203.124.41.150/issb/" target="_blank" class="btn btn-secondary">
+            <span>Official ISSB Portal ↗</span>
+          </a>
+        </div>
+      </div>
+      <div class="utility-visual">
+        <div class="document-badge-preview">
+          <div class="crest-svg-preview">
+            <svg viewBox="0 0 100 100" class="mini-crest">
+              <circle cx="50" cy="50" r="42" fill="none" stroke="currentColor" stroke-width="3"></circle>
+              <circle cx="50" cy="50" r="36" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="3,3"></circle>
+              <path d="M25 60 C 20 40, 30 25, 45 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+              <path d="M75 60 C 80 40, 70 25, 55 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+              <path d="M 45 42 A 8 8 0 1 0 57 52 A 9 9 0 1 1 45 42" fill="currentColor"></path>
+              <polygon points="56,38 60,42 55,43 59,47 54,49" fill="currentColor" transform="scale(0.85) translate(10, 2)"></polygon>
+            </svg>
+          </div>
+          <div class="doc-lines">
+            <div class="line title"></div>
+            <div class="line sub"></div>
+            <div class="line body"></div>
+            <div class="line body"></div>
+            <div class="line body"></div>
+          </div>
+          <span class="badge badge-gold stamp-mock-preview">PRACTICE NOTICE</span>
         </div>
       </div>
     </section>
@@ -3022,6 +3084,259 @@ const scrollToSection = (sectionId) => {
   to {
     transform: translateY(0);
     opacity: 1;
+  }
+}
+
+/* News Ticker / Running Bulletin */
+.news-ticker-banner {
+  background: linear-gradient(90deg, #091a27 0%, #0c2333 100%);
+  border-bottom: 1.5px solid var(--border-color);
+  color: #ffffff;
+  padding: 0.5rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  font-size: 0.82rem;
+  overflow: hidden;
+  position: relative;
+  z-index: 10;
+}
+
+.ticker-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  white-space: nowrap;
+  color: var(--accent-cyan);
+  flex-shrink: 0;
+}
+
+.ticker-badge {
+  background: var(--accent-red);
+  color: #ffffff;
+  font-size: 0.62rem;
+  padding: 0.15rem 0.35rem;
+  border-radius: 3px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+}
+
+.ticker-content-wrapper {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.ticker-content {
+  display: flex;
+  gap: 5rem;
+  white-space: nowrap;
+  animation: marquee 30s linear infinite;
+  padding-left: 100%;
+}
+
+.ticker-content span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+.btn-ticker-action {
+  background: var(--accent-cyan);
+  color: #ffffff;
+  padding: 0.4rem 0.85rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.78rem;
+  border-radius: var(--border-radius-sm);
+  white-space: nowrap;
+  transition: all var(--transition-smooth);
+  flex-shrink: 0;
+}
+
+.btn-ticker-action:hover {
+  background: #0270a5;
+  transform: translateY(-1px);
+  box-shadow: 0 0 10px var(--accent-cyan-glow);
+}
+
+/* Call Letter & Status Utility Homepage Section */
+.call-letter-utility-section {
+  margin: 3rem auto;
+  max-width: 1200px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 2.5rem;
+  align-items: center;
+  padding: 3rem;
+  background: radial-gradient(circle at 0% 0%, rgba(3, 194, 252, 0.05) 0%, var(--bg-panel) 100%);
+  border: 1px solid var(--border-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.utility-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.utility-content h2 {
+  font-size: 2rem;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.utility-content p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.utility-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.utility-actions .btn {
+  padding: 0.85rem 1.5rem;
+}
+
+.utility-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 800px;
+}
+
+.document-badge-preview {
+  background: #fdfdfb;
+  border: 1px solid #1c2b1c;
+  padding: 1.5rem;
+  width: 240px;
+  height: 310px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  transform: rotateY(-10deg) rotateX(5deg);
+  transition: transform 0.5s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+  pointer-events: none;
+}
+
+.call-letter-utility-section:hover .document-badge-preview {
+  transform: rotateY(-3deg) rotateX(2deg) translateY(-5px);
+  box-shadow: 0 15px 40px rgba(3, 194, 252, 0.15);
+}
+
+.crest-svg-preview {
+  width: 48px;
+  height: 48px;
+  color: #223e22;
+}
+
+.mini-crest {
+  width: 100%;
+  height: 100%;
+}
+
+.doc-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  width: 100%;
+}
+
+.doc-lines .line {
+  height: 6px;
+  background: rgba(28, 43, 28, 0.12);
+  border-radius: 2px;
+}
+
+.doc-lines .line.title {
+  height: 10px;
+  background: rgba(28, 43, 28, 0.25);
+  width: 70%;
+  margin: 0 auto;
+}
+
+.doc-lines .line.sub {
+  width: 40%;
+  margin: 0 auto;
+}
+
+.doc-lines .line.body {
+  width: 100%;
+}
+
+.stamp-mock-preview {
+  position: absolute;
+  bottom: 30px;
+  right: -10px;
+  transform: rotate(-15deg);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  font-size: 0.6rem;
+  padding: 0.2rem 0.5rem;
+  font-weight: 800;
+}
+
+@media (max-width: 992px) {
+  .news-ticker-banner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+    padding: 0.65rem 0.75rem;
+  }
+  .ticker-content-wrapper {
+    width: 100%;
+  }
+  .ticker-content {
+    animation-duration: 20s;
+  }
+  .btn-ticker-action {
+    width: 100%;
+    text-align: center;
+  }
+
+  .call-letter-utility-section {
+    grid-template-columns: 1fr;
+    padding: 2rem;
+    margin: 2rem 1rem;
+    gap: 2rem;
+  }
+
+  .utility-visual {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .utility-actions {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .utility-actions .btn {
+    width: 100%;
+    justify-content: center;
   }
 }
 </style>
