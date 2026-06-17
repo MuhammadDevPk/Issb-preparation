@@ -141,7 +141,7 @@ const referralClicks = computed(() => authStore.profile?.referral_clicks || 0)
 const referrals = ref([])
 const appSettings = ref({
   course_price: 1499,
-  referral_bonus: 200,
+  referral_bonus: 500,
   max_discount_pct: 90,
   max_discount_amount: 1400,
 })

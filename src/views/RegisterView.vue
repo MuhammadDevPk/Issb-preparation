@@ -26,7 +26,7 @@ const referredByCode = ref('')
 
 const appSettings = ref({
   course_price: 1499,
-  referral_bonus: 200,
+  referral_bonus: 500,
 })
 
 const fetchSettings = async () => {
