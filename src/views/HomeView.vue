@@ -7,7 +7,7 @@ const authStore = useAuthStore()
 
 const appSettings = ref({
   course_price: 1499,
-  referral_bonus: 200,
+  referral_bonus: 500,
 })
 
 const fetchSettings = async () => {
@@ -47,6 +47,13 @@ const scrollToSection = (sectionId) => {
 
 <template>
   <div class="landing-page">
+    <!-- Top Alert Bar -->
+    <div class="top-promo-bar no-print">
+      <span class="promo-fire">🔥</span>
+      <span class="promo-text"><strong>SOLVED NOTES:</strong> Don't practice mistakes! Learn the exact psychological & interview answers used by recommended candidates. Get it for <strong>FREE (or Rs. 100)</strong> by inviting friends — Earn <strong>PKR 500 cashback</strong> per referral!</span>
+      <a href="#solved-notes" @click.prevent="scrollToSection('solved-notes')" class="btn-promo-action">View Premium Notes →</a>
+    </div>
+
     <!-- Navigation Header -->
     <header class="landing-nav">
       <RouterLink to="/" class="nav-logo">
@@ -65,6 +72,9 @@ const scrollToSection = (sectionId) => {
       <div class="nav-links-container">
         <a href="#free-simulators" @click.prevent="scrollToSection('free-simulators')" class="nav-link-item">
           ⚡ Free Simulators
+        </a>
+        <a href="#solved-notes" @click.prevent="scrollToSection('solved-notes')" class="nav-link-item">
+          📚 Solved Notes (Paid)
         </a>
         <RouterLink v-if="!authStore.user" to="/login" class="nav-link-item">
           Log In
@@ -252,6 +262,106 @@ const scrollToSection = (sectionId) => {
       </div>
     </section>
 
+    <!-- Solved Notes Promo Section -->
+    <section id="solved-notes" class="solved-notes-section">
+      <div class="section-header">
+        <span class="badge badge-accent">📚 PRO STUDY MODULES</span>
+        <h2>Simulating Tests is Only 50% of the Work. <br><span class="highlight">The Key is WHAT You Write.</span></h2>
+        <p class="section-subtitle">
+          Most candidates fail because they practice worksheets under a timer without knowing if their answers are psychologically correct. 
+          If you write negative, escapist, or copy-pasted guide book sentences under stress, you are just perfecting your mistakes. 
+          You need candidate-verified, premium solved guides.
+        </p>
+      </div>
+
+      <div class="solved-notes-grid">
+        <!-- The Problem Card -->
+        <div class="solved-card problem-card">
+          <div class="card-status-badge badge-red">⚠️ THE DANGER</div>
+          <h3>Why Guide Books & Academies Fail You</h3>
+          <p class="card-desc">Traditional coaching centers teach generic, mechanical answers that psychologist selectors easily catch during evaluations.</p>
+          <ul class="comparison-bullets">
+            <li>
+              <span class="bullet-cross">✗</span>
+              <div>
+                <strong>Robotic Copy-Pasting:</strong>
+                <p>Writing sentences like "Atom is a particle" (for ATOM) or "Love my mother" (for LOVE) shows zero initiative and lacks authentic personality traits.</p>
+              </div>
+            </li>
+            <li>
+              <span class="bullet-cross">✗</span>
+              <div>
+                <strong>Super-Soldier Profile Faking:</strong>
+                <p>Faking perfect answers while contradicting your bio-data triggers severe consistency flags, leading to an immediate "Not Recommended".</p>
+              </div>
+            </li>
+            <li>
+              <span class="bullet-cross">✗</span>
+              <div>
+                <strong>Massive Coaching Fees:</strong>
+                <p>Spending PKR 25,000 to PKR 40,000 on generic academies that teach the same formulaic answers to thousands of candidates.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- The Solution Card (Premium) -->
+        <div class="solved-card success-card glass-card-glow">
+          <div class="card-status-badge badge-gold">💎 THE RECOMMENDATION BLUEPRINT</div>
+          <h3>Premium Solved Playbooks & Pro Guidance</h3>
+          <p class="card-desc">The exact response structures used by recommended candidates who successfully secured military commission in the Pakistan Armed Forces.</p>
+          <ul class="comparison-bullets">
+            <li>
+              <span class="bullet-tick">✓</span>
+              <div>
+                <strong>1,000+ Solved Word Associations (WAT):</strong>
+                <p>Optimized responses showcasing high decision speed, social adjustment, determination, and leadership potential.</p>
+              </div>
+            </li>
+            <li>
+              <span class="bullet-tick">✓</span>
+              <div>
+                <strong>500+ Solved Sentence Completions (SCT):</strong>
+                <p>English & Roman Urdu sentence guides displaying high stress tolerance, domestic harmony, and emotional resilience.</p>
+              </div>
+            </li>
+            <li>
+              <span class="bullet-tick">✓</span>
+              <div>
+                <strong>150+ Solved Crisis Situations (SRT):</strong>
+                <p>Clear, action-oriented crisis control responses highlighting quick planning, resourcefulness, and courage.</p>
+              </div>
+            </li>
+            <li>
+              <span class="bullet-tick">✓</span>
+              <div>
+                <strong>Deputy President Solved Interview Playbook:</strong>
+                <p>A compilation of high-probability questions (academics, private life, hobbies) with ideal rephrasing methods.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Referral Psychological Loop Box -->
+      <div class="solved-referral-cta glass-card">
+        <div class="cta-badge">💰 100% FREE REFERRAL PASS</div>
+        <div class="cta-inner">
+          <div class="cta-text">
+            <h3>Can't Afford PKR {{ appSettings.course_price }}? Share and Get it for PKR 100!</h3>
+            <p>
+              Invite other candidates to prepare together. For every friend who registers and activates, you get <strong>PKR {{ appSettings.referral_bonus }} cashback/discount</strong> directly! 
+              Invite just 3 friends, and you unlock the entire lifetime premium solved notes and simulators package for just <strong>PKR 100</strong>!
+            </p>
+          </div>
+          <div class="cta-actions">
+            <RouterLink :to="authStore.user ? '/dashboard' : '/register'" class="btn btn-primary shadow-glow-blue">Get Your Referral Link Now</RouterLink>
+            <a href="#pricing" @click.prevent="scrollToSection('pricing')" class="btn btn-secondary">See Full Pricing Details</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Free Timed Simulators Showcase -->
     <section id="free-simulators" class="free-simulators-section">
       <div class="section-header">
@@ -318,15 +428,15 @@ const scrollToSection = (sectionId) => {
     <!-- Referral Highlight Banner -->
     <section class="referral-highlight-banner">
       <div class="banner-content">
-        <div class="banner-badge">EARN YOUR PASSPORT FOR Rs. 100</div>
-        <h2>Can't Afford the Course? Get it for Rs. 100 dynamically!</h2>
+        <div class="banner-badge">💎 CANDIDATE REFERRAL SCHEME</div>
+        <h2>Earn PKR {{ appSettings.referral_bonus }} for Every Friend You Invite!</h2>
         <p class="banner-desc">
-          No upfront payment required! Simply sign up, copy your unique referral link, and invite other candidates. 
-          For every friend who signs up and registers, your course fee is slashed. 
-          With just a few referrals, you can get full lifetime premium access to all simulators and solved playbooks for as low as <strong>PKR 100</strong>!
-          Start sharing your link instantly upon free registration.
+          Prepare together and split the cost! Share your unique referral code from your dashboard with other PMA/ISSB candidates. 
+          When they register and activate their account, you get <strong>PKR {{ appSettings.referral_bonus }}</strong> discount. 
+          With just 3 friends registering, you get full lifetime premium access to solved playbooks and simulators for just <strong>PKR 100</strong>! 
+          Become the preparation hub of your study group today.
         </p>
-        <RouterLink :to="authStore.user ? '/dashboard' : '/register'" class="btn btn-banner-cta">Get Your Referral Link Now</RouterLink>
+        <RouterLink :to="authStore.user ? '/dashboard' : '/register'" class="btn btn-banner-cta">Get Your Invitation Link & Start Earning</RouterLink>
       </div>
     </section>
 
@@ -3337,6 +3447,263 @@ const scrollToSection = (sectionId) => {
   .utility-actions .btn {
     width: 100%;
     justify-content: center;
+  }
+}
+
+/* Appended Solved Notes & Referral Promo Styles */
+.top-promo-bar {
+  background: linear-gradient(90deg, #101524 0%, #1e1435 100%);
+  color: #ffffff;
+  padding: 0.65rem 1.5rem;
+  text-align: center;
+  font-size: 0.85rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  border-bottom: 1px solid rgba(168, 85, 247, 0.2);
+  z-index: 1000;
+  width: 100%;
+  position: relative;
+}
+.promo-fire {
+  font-size: 1rem;
+}
+.promo-text {
+  font-family: var(--font-body);
+  opacity: 0.95;
+  line-height: 1.4;
+}
+.btn-promo-action {
+  background: var(--accent-cyan);
+  color: #0c0f1d;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--border-radius-sm);
+  font-size: 0.78rem;
+  transition: all var(--transition-smooth);
+}
+.btn-promo-action:hover {
+  background: #ffffff;
+  transform: translateY(-1px);
+}
+
+.solved-notes-section {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.solved-notes-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+}
+
+.solved-card {
+  padding: 2.25rem;
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--border-color);
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.solved-card:hover {
+  transform: translateY(-4px);
+}
+
+.problem-card {
+  border-color: rgba(239, 68, 68, 0.15);
+  background: rgba(239, 68, 68, 0.005);
+}
+
+.problem-card:hover {
+  box-shadow: 0 15px 35px rgba(239, 68, 68, 0.04);
+}
+
+.success-card {
+  border-color: rgba(168, 85, 247, 0.25);
+  background: linear-gradient(180deg, #ffffff 0%, rgba(168, 85, 247, 0.015) 100%);
+  position: relative;
+}
+
+.glass-card-glow {
+  box-shadow: 0 8px 32px rgba(168, 85, 247, 0.04);
+}
+
+.success-card:hover {
+  box-shadow: 0 20px 45px rgba(168, 85, 247, 0.1);
+  border-color: rgba(168, 85, 247, 0.4);
+}
+
+.card-status-badge {
+  align-self: flex-start;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--border-radius-sm);
+  letter-spacing: 0.05em;
+}
+
+.badge-red {
+  background: rgba(239, 68, 68, 0.08);
+  color: #ef4444;
+}
+
+.badge-gold {
+  background: rgba(217, 119, 6, 0.08);
+  color: #d97706;
+  border: 1px solid rgba(217, 119, 6, 0.15);
+}
+
+.solved-card h3 {
+  font-size: 1.5rem;
+  margin: 0;
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+}
+
+.card-desc {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.comparison-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.comparison-bullets li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+}
+
+.bullet-cross {
+  color: #ef4444;
+  font-weight: bold;
+  font-size: 1.15rem;
+  line-height: 1;
+  margin-top: 0.1rem;
+}
+
+.bullet-tick {
+  color: var(--accent-green);
+  font-weight: bold;
+  font-size: 1.15rem;
+  line-height: 1;
+  margin-top: 0.1rem;
+}
+
+.comparison-bullets li strong {
+  font-size: 0.92rem;
+  color: var(--text-primary);
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.comparison-bullets li p {
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.solved-referral-cta {
+  background: linear-gradient(135deg, rgba(3, 194, 252, 0.02) 0%, rgba(168, 85, 247, 0.02) 100%);
+  border: 1px solid rgba(3, 194, 252, 0.12);
+  border-radius: var(--border-radius-lg);
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+
+.cta-badge {
+  align-self: flex-start;
+  background: rgba(3, 194, 252, 0.08);
+  color: var(--accent-cyan);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.3rem 0.7rem;
+  border-radius: var(--border-radius-sm);
+  letter-spacing: 0.05em;
+}
+
+.cta-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.cta-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  flex: 1;
+}
+
+.cta-text h3 {
+  font-size: 1.6rem;
+  margin: 0;
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+}
+
+.cta-text p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.cta-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  min-width: 260px;
+}
+
+.cta-actions .btn {
+  text-align: center;
+  justify-content: center;
+}
+
+.shadow-glow-blue {
+  box-shadow: 0 0 15px rgba(3, 194, 252, 0.2);
+}
+
+@media (max-width: 992px) {
+  .solved-notes-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .cta-inner {
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+  
+  .cta-actions {
+    width: 100%;
+    min-width: unset;
   }
 }
 </style>
