@@ -734,8 +734,8 @@ onMounted(() => {
   width: 38px;
   height: 38px;
   padding: 10px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--bg-panel-solid);
+  border: 1px solid var(--border-color);
   border-radius: var(--border-radius-sm);
   cursor: pointer;
   z-index: 1100;
@@ -743,8 +743,8 @@ onMounted(() => {
 }
 
 .hamburger-btn:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(0, 242, 254, 0.3);
+  background: var(--accent-cyan-glow);
+  border-color: var(--accent-cyan);
 }
 
 .hamburger-line {
@@ -813,10 +813,10 @@ onMounted(() => {
     z-index: 1000;
     transform: translateX(-100%);
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 20px 0 40px rgba(0, 0, 0, 0.6);
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.08);
     border-radius: 0 var(--border-radius-lg) var(--border-radius-lg) 0;
-    border-left: none;
-    background: rgba(10, 15, 30, 0.95);
+    border-right: 1px solid var(--border-color);
+    background: var(--bg-secondary);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     padding: 6rem 1.25rem 1.5rem 1.25rem;
@@ -840,8 +840,8 @@ onMounted(() => {
     flex-direction: column;
     gap: 1rem;
     padding: 1.25rem;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: var(--bg-panel-solid);
+    border: 1px solid var(--border-color);
     border-radius: var(--border-radius-md);
     margin-bottom: 1.5rem;
   }
@@ -884,10 +884,10 @@ onMounted(() => {
   .mobile-status-panel .rank-progress-container {
     width: 100%;
     height: 6px;
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--bg-primary);
     border-radius: 999px;
     overflow: hidden;
-    border: 1px solid rgba(0, 242, 254, 0.08);
+    border: 1px solid var(--border-color);
     margin-top: 0.25rem;
   }
 
