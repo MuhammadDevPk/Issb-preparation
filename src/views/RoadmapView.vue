@@ -461,6 +461,14 @@ const launchSimulator = (path) => {
 
     <!-- PDF Viewer Modal -->
     <div class="modal-overlay flex-center" v-if="showPdfModal" @click.self="showPdfModal = false">
+      <!-- Floating Close Button for Mobile -->
+      <button class="mobile-close-floating-btn no-print" @click.stop="showPdfModal = false" aria-label="Close PDF">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="close-icon-svg">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
       <div class="pdf-modal-container glass-card">
         <div class="modal-header">
           <h3>Study Guidebook Material</h3>
@@ -803,9 +811,71 @@ const launchSimulator = (path) => {
   background: #20242b;
 }
 
+.mobile-close-floating-btn {
+  display: none;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.75);
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  align-items: center;
+  justify-content: center;
+  z-index: 1010;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(8px);
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.mobile-close-floating-btn:active {
+  background: rgba(15, 23, 42, 0.95);
+  transform: scale(0.95);
+}
+
+.close-icon-svg {
+  width: 20px;
+  height: 20px;
+}
+
 @media (max-width: 992px) {
   .roadmap-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .modal-overlay {
+    padding: 0;
+  }
+
+  .pdf-modal-container {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    border-radius: 0;
+  }
+
+  .modal-header {
+    display: none !important;
+  }
+
+  .mobile-close-floating-btn {
+    display: flex;
+  }
+
+  .iframe-container {
+    overflow: hidden;
+  }
+
+  .pdf-iframe {
+    width: 110% !important;
+    margin-left: -5% !important;
+    height: 100% !important;
   }
 }
 </style>
