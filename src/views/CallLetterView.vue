@@ -147,11 +147,29 @@ const activeCenterInfo = computed(() => {
   <div class="call-letter-page">
     <!-- Screen Header (Hidden during printing) -->
     <header class="page-title-section no-print">
-      <span class="badge badge-cyan">Official Utilities</span>
-      <h2>ISSB Call Status & Call Letter Portal</h2>
-      <p class="description">
-        Track your official selection dates or generate a high-fidelity Practice Call Notice to plan your clothing checklist and boost your motivation.
-      </p>
+      <div class="header-content-wrapper">
+        <div class="header-text-block">
+          <span class="badge badge-cyan">Official Utilities</span>
+          <h2>ISSB Call Status & Call Letter Portal</h2>
+          <p class="description">
+            Track your official selection dates or generate a high-fidelity Practice Call Notice to plan your clothing checklist and boost your motivation.
+          </p>
+        </div>
+        <div class="header-action-block">
+          <a 
+            href="/media/documents/Declaration%20Form.docx" 
+            download="Declaration Form.docx"
+            class="btn btn-success btn-download-top"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="btn-icon-svg">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span>Download Declaration Form</span>
+          </a>
+        </div>
+      </div>
     </header>
 
     <!-- Tab Switcher (Hidden during printing) -->
@@ -554,6 +572,30 @@ const activeCenterInfo = computed(() => {
 
 .page-title-section {
   margin-bottom: 2rem;
+}
+
+.header-content-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 2rem;
+}
+
+.header-text-block {
+  flex: 1;
+}
+
+.header-action-block {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.btn-download-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
 }
 
 .page-title-section h2 {
@@ -1073,6 +1115,21 @@ const activeCenterInfo = computed(() => {
 }
 
 @media (max-width: 768px) {
+  .header-content-wrapper {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.25rem;
+  }
+
+  .header-action-block {
+    width: 100%;
+  }
+
+  .btn-download-top {
+    width: 100%;
+    justify-content: center;
+  }
+
   .call-letter-page {
     padding: 0.25rem 0;
   }
