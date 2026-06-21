@@ -112,7 +112,6 @@ const router = createRouter({
       path: '/call-letter',
       name: 'call-letter',
       component: CallLetterView,
-      meta: { requiresAuth: true },
     },
   ],
 })

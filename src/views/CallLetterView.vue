@@ -29,6 +29,17 @@ onMounted(() => {
     const twoWeeks = new Date()
     twoWeeks.setDate(twoWeeks.getDate() + 14)
     reportingDate.value = twoWeeks.toISOString().split('T')[0]
+  } else {
+    // Guest default values so they see a nice populated letter initially
+    candidateName.value = 'GUEST CANDIDATE'
+    fatherName.value = 'GUARDIAN NAME'
+    cnic.value = '37405-1234567-1'
+    rollNumber.value = '2405' + Math.floor(1000 + Math.random() * 9000)
+    batchNumber.value = 'B-' + Math.floor(1000 + Math.random() * 9000)
+    
+    const twoWeeks = new Date()
+    twoWeeks.setDate(twoWeeks.getDate() + 14)
+    reportingDate.value = twoWeeks.toISOString().split('T')[0]
   }
 })
 
@@ -207,6 +218,48 @@ const activeCenterInfo = computed(() => {
               <li>Locate the <strong>"Call Status"</strong> query form on their homepage.</li>
               <li>Input your 13-digit CNIC number <strong>without dashes or spaces</strong> (e.g., <code>3740512345671</code>).</li>
               <li>Click "Search" to view your reporting date and assigned center.</li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Declaration Form Card -->
+        <div class="glass-card tracker-card border-green">
+          <div class="card-header-icon bg-green-glow text-green">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="header-icon">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+          </div>
+          <h3>Required Declaration Form</h3>
+          <p>
+            All candidates reporting to the ISSB center must submit a signed copy of the official ISSB Declaration Form. Download the document below to print, fill, and carry it with you.
+          </p>
+
+          <div class="official-link-section">
+            <a 
+              href="/media/documents/Declaration%20Form.docx" 
+              download="Declaration Form.docx"
+              class="btn btn-success btn-redirect"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="btn-icon-svg">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              <span>Download Declaration Form</span>
+            </a>
+          </div>
+
+          <div class="checklist-guide">
+            <h5>Form Instructions:</h5>
+            <ol>
+              <li>Download the official Word (.docx) document to your device.</li>
+              <li>Print the form on a clean, standard A4 white paper.</li>
+              <li>Fill in all the required details (Name, CNIC, Father's Name) in block letters.</li>
+              <li>Sign the form. Get it countersigned by a parent or guardian.</li>
             </ol>
           </div>
         </div>
@@ -594,6 +647,10 @@ const activeCenterInfo = computed(() => {
 
 .bg-gold-glow {
   background: var(--accent-gold-glow);
+}
+
+.bg-green-glow {
+  background: var(--accent-green-glow);
 }
 
 .header-icon {

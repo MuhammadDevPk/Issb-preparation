@@ -185,7 +185,7 @@ onMounted(() => {
         </div>
       </RouterLink>
 
-      <div class="header-status">
+      <div v-if="authStore.user" class="header-status">
         <!-- Streak Widget -->
         <div class="status-widget streak-widget">
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -226,7 +226,7 @@ onMounted(() => {
       <!-- Side Navigation Panel -->
       <aside class="navigation-panel glass-card" :class="{ 'mobile-open': isMobileMenuOpen }">
         <!-- Mobile Status Panel (Visible only on mobile inside drawer) -->
-        <div class="mobile-status-panel">
+        <div v-if="authStore.user" class="mobile-status-panel">
           <div class="status-widget streak-widget">
             <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M8.5 14.5A2.5 2.5 0 0011 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 11-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 002.5 2.5z" />
@@ -422,8 +422,18 @@ onMounted(() => {
               <span class="user-branch text-capitalize">{{ authStore.profile.target_branch }}</span>
             </div>
           </div>
+          <!-- Guest Badge -->
+          <div v-else class="user-profile-badge guest-badge">
+            <div class="user-avatar guest-avatar">
+              G
+            </div>
+            <div class="user-meta">
+              <span class="user-name">Guest Candidate</span>
+              <span class="user-branch text-capitalize">Anonymous</span>
+            </div>
+          </div>
 
-          <button @click="handleLogout" class="btn-logout-sidebar">
+          <button v-if="authStore.user" @click="handleLogout" class="btn-logout-sidebar">
             <svg
               class="nav-icon"
               viewBox="0 0 24 24"
@@ -437,6 +447,20 @@ onMounted(() => {
             </svg>
             <span>Sign Out</span>
           </button>
+          <RouterLink v-else to="/login" class="btn-logout-sidebar btn-login-sidebar">
+            <svg
+              class="nav-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+              <polyline points="10 17 15 12 10 7" />
+              <line x1="15" y1="12" x2="3" y2="12" />
+            </svg>
+            <span>Sign In</span>
+          </RouterLink>
         </div>
       </aside>
 
@@ -1058,5 +1082,19 @@ onMounted(() => {
     gap: 0.75rem;
     padding: 0.75rem 1rem;
   }
+}
+
+.guest-avatar {
+  background: #cbd5e1 !important;
+  color: var(--text-muted) !important;
+}
+
+.btn-login-sidebar {
+  color: var(--accent-cyan);
+}
+
+.btn-login-sidebar:hover {
+  background: var(--accent-cyan-glow);
+  border-color: rgba(3, 194, 252, 0.15);
 }
 </style>
