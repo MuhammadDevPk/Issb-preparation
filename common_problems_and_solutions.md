@@ -214,6 +214,49 @@ values (
 ### Rule for Future
 **CRITICAL: When writing `CREATE OR REPLACE FUNCTION handle_new_user()` in any migration, always copy the FULL column list from the previous migration.** Never write just the "new" columns — you will silently drop existing ones. Before pushing, verify the final function in Supabase Dashboard → Database → Functions matches the expected schema.
 
+## 8. AI Rate Limit Exhaustion (HTTP 429) during Large Test Analysis
+
+### Problem
+When students complete a large test (e.g., Word Association Test with 50 or 200 items), requesting AI psychological analysis triggers an immediate failure. The app reports provider errors like `Provider returned 429` (Rate Limit Exceeded) or `Failed to fetch`.
+
+### Root Cause
+1. **Payload Size & Rate Limits**: Sending 50–200 responses to the AI in a single large prompt causes token limit or request limit exhaustion on API providers (Groq, Gemini, OpenRouter).
+2. **Synchronous/Concurrent Requests**: Trying to send all words at once or splitting them into parallel request chunks without delays triggers the provider's rate limiting algorithms (Requests Per Minute / RPM or Tokens Per Minute / TPM limits).
+
+### Solution
+1. **Chunked Evaluation**: Split the test responses into smaller batches of 25 items each.
+2. **Linear Delay Interleaving**: Add a rate-limiting delay (e.g., 2-second sleep: `await delay(2000)`) between sequential chunk requests, rather than running them concurrently.
+3. **Robust Retry Loop**: Wrap each chunk analysis in a retry loop (up to 2 attempts) with a backoff delay (3s) to automatically recover from momentary 429 throttles.
+4. **Fallback & Gap-Filling**: If a chunk completely fails after retries, insert placeholder evaluations for that batch instead of aborting the entire analysis. After analysis is complete, verify that every item from the input has an entry in the output array (gap-filling skipped items).
+
+*Example implementation in useAiAnalysis.js:*
+```javascript
+// Rate-limiting delay helper
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
+
+// Sequential execution with delays & retry
+for (let cIdx = 0; cIdx < totalChunks; cIdx++) {
+  const chunk = chunks[cIdx]
+  
+  let chunkSuccess = false
+  for (let attempt = 0; attempt < 2; attempt++) {
+    try {
+      const { text } = await analyzeWithAI(batchPrompt, `Chunk ${cIdx + 1}:\n${chunkText}`)
+      // ... parse and append results
+      chunkSuccess = true
+      break
+    } catch (err) {
+      if (attempt === 0) await delay(3000) // backoff retry
+    }
+  }
+  
+  // Wait 2s before the next chunk request to respect RPM limits
+  if (cIdx < totalChunks - 1) {
+    await delay(2000)
+  }
+}
+```
+
 ---
 
 ## Guidelines for Future Development
