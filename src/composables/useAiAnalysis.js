@@ -5,7 +5,7 @@
  */
 
 import { ref } from 'vue'
-import { analyzeWithAI } from '../services/aiProvider.js'
+import { analyzeWithAI, delay } from '../services/aiProvider.js'
 
 // ---------------------------------------------------------------------------
 // ISSB System Prompts (trained on ISSB psychology standards)
@@ -42,7 +42,7 @@ IDEAL RESPONSES look like:
 - "Fail" → "Failure teaches us to try harder." (growth mindset)
 - "Death" → "He died protecting his team bravely." (sacrifice)
 
-Respond ONLY with JSON in this exact schema:
+Respond ONLY with JSON in this exact schema. You MUST evaluate and include EVERY SINGLE item from the candidate's responses in the 'items' array. The length of the 'items' array must exactly match the number of responses. Do not skip any item indices.
 {
   "overallScore": <0-100 integer>,
   "overallGrade": "<A+/A/B+/B/C+/C/D>",
@@ -90,7 +90,7 @@ RED FLAGS:
 EXCELLENT completions show: agency, warmth, optimism, duty, leadership
 POOR completions reveal: resentment, passivity, conflict, avoidance
 
-Respond ONLY with JSON:
+Respond ONLY with JSON. You MUST evaluate and include EVERY SINGLE item from the candidate's completions in the 'items' array. The length of the 'items' array must exactly match the number of completions. Do not skip any item indices.
 {
   "overallScore": <0-100>,
   "overallGrade": "<A+/A/B+/B/C+/C/D>",
@@ -144,7 +144,7 @@ OFFICER-LIKE QUALITIES to reward:
 - Protecting others not just himself
 - Creative use of available resources
 
-Respond ONLY with JSON:
+Respond ONLY with JSON. You MUST evaluate and include EVERY SINGLE item from the candidate's reactions in the 'items' array. The length of the 'items' array must exactly match the number of situations. Do not skip any item indices.
 {
   "overallScore": <0-100>,
   "overallGrade": "<A+/A/B+/B/C+/C/D>",
@@ -248,6 +248,162 @@ Respond ONLY with JSON in this exact schema:
 
 
 // ---------------------------------------------------------------------------
+// Batch Prompts for Chunked Analysis
+// ---------------------------------------------------------------------------
+
+const WAT_BATCH_SYSTEM_PROMPT = `${ISSB_EXPERT_BASE}
+
+Evaluate this batch of WAT (Word Association Test) responses.
+For each response, score it (0-100), rate it (Excellent/Good/Average/Poor/Blank), list 1-2 strengths or issues, and suggest a specific improvement.
+
+CRITICAL: You MUST evaluate and include EVERY SINGLE item provided in the batch. The 'items' array must contain exactly the same items as the input batch, in the same order. Do not skip any.
+
+Respond ONLY with JSON in this exact schema:
+{
+  "items": [
+    {
+      "index": <number>,
+      "prompt": "<word>",
+      "answer": "<candidate sentence>",
+      "score": <0-100>,
+      "rating": "<Excellent|Good|Average|Poor|Blank>",
+      "strengths": ["<strength>"],
+      "issues": ["<issue>"],
+      "improvements": "<suggested sentence or 'Perfect'>",
+      "issueTags": ["<tag like: Denial|Definition|Passive|Blank|Generic|Negative>"]
+    }
+  ]
+}
+`
+
+const SCT_BATCH_SYSTEM_PROMPT = `${ISSB_EXPERT_BASE}
+
+Evaluate this batch of SCT (Sentence Completion Test) responses.
+For each completion, score it (0-100), rate it (Excellent/Good/Average/Poor/Blank), identify the psychological domain, list strengths/issues, and suggest an improvement.
+
+CRITICAL: You MUST evaluate and include EVERY SINGLE item provided in the batch. Do not skip any.
+
+Respond ONLY with JSON in this exact schema:
+{
+  "items": [
+    {
+      "index": <number>,
+      "prompt": "<sentence starter>",
+      "answer": "<candidate completion>",
+      "score": <0-100>,
+      "rating": "<Excellent|Good|Average|Poor|Blank>",
+      "domain": "<Family|Authority|StressResponse|SelfConcept|Social|FutureOrientation|GenderAttitude|General>",
+      "strengths": ["<strength>"],
+      "issues": ["<issue>"],
+      "improvements": "<ideal completion>",
+      "issueTags": ["<tag like: FamilyConflict|Passivity|Rebellion|Pessimism|Blank|Dependency>"]
+    }
+  ]
+}
+`
+
+const SRT_BATCH_SYSTEM_PROMPT = `${ISSB_EXPERT_BASE}
+
+Evaluate this batch of SRT (Situation Reaction Test) responses.
+For each reaction, score it (0-100), rate it (Excellent/Good/Average/Poor/Blank), score the individual dimensions, list strengths/issues, and suggest an improvement.
+
+CRITICAL: You MUST evaluate and include EVERY SINGLE item provided in the batch. Do not skip any.
+
+Respond ONLY with JSON in this exact schema:
+{
+  "items": [
+    {
+      "index": <number>,
+      "prompt": "<situation>",
+      "answer": "<candidate reaction>",
+      "score": <0-100>,
+      "rating": "<Excellent|Good|Average|Poor|Blank>",
+      "dimensionScores": {
+        "actionTaking": <0-25>,
+        "realism": <0-25>,
+        "socialIntelligence": <0-25>,
+        "outcomeFocus": <0-25>
+      },
+      "strengths": ["<strength>"],
+      "issues": ["<issue>"],
+      "improvements": "<ideal reaction>",
+      "issueTags": ["<tag like: Passive|Unrealistic|Panic|Avoidance|Blank|LackOfLeadership>"]
+    }
+  ]
+}
+`
+
+// ---------------------------------------------------------------------------
+// Summary Synthesis Prompts
+// ---------------------------------------------------------------------------
+
+const WAT_SUMMARY_SYSTEM_PROMPT = `You are an expert ISSB psychologist. Based on the candidate's WAT (Word Association Test) detailed evaluation results, generate an overall psychological profile, overall score out of 100, overall grade, recurring mistakes, and actionable recommendations.
+
+CANDIDATE PERFORMANCE SUMMARY:
+Total words: {total}
+Average score: {avgScore}
+Excellent answers: {excellentCount}
+Good answers: {goodCount}
+Average answers: {averageCount}
+Poor answers: {poorCount}
+Blank/Timed out: {blankCount}
+
+Respond ONLY with JSON in this exact schema:
+{
+  "overallScore": <0-100 integer representing general suitability>,
+  "overallGrade": "<A+/A/B+/B/C+/C/D>",
+  "psychologicalProfile": "<2-3 sentence profile>",
+  "summary": "<1 sentence overall assessment>",
+  "topMistakes": ["<pattern 1>", "<pattern 2>"],
+  "recommendations": ["<tip 1>", "<tip 2>", "<tip 3>"]
+}
+`
+
+const SCT_SUMMARY_SYSTEM_PROMPT = `You are an expert ISSB psychologist. Based on the candidate's SCT (Sentence Completion Test) detailed evaluation results, generate an overall psychological profile, overall score out of 100, overall grade, recurring mistakes, and actionable recommendations.
+
+CANDIDATE PERFORMANCE SUMMARY:
+Total sentences: {total}
+Average score: {avgScore}
+Excellent answers: {excellentCount}
+Good answers: {goodCount}
+Average answers: {averageCount}
+Poor answers: {poorCount}
+Blank/Left blank: {blankCount}
+
+Respond ONLY with JSON in this exact schema:
+{
+  "overallScore": <0-100 integer representing general suitability>,
+  "overallGrade": "<A+/A/B+/B/C+/C/D>",
+  "psychologicalProfile": "<2-3 sentence profile>",
+  "summary": "<1 sentence overall assessment>",
+  "topMistakes": ["<pattern 1>", "<pattern 2>"],
+  "recommendations": ["<tip 1>", "<tip 2>", "<tip 3>"]
+}
+`
+
+const SRT_SUMMARY_SYSTEM_PROMPT = `You are an expert ISSB psychologist. Based on the candidate's SRT (Situation Reaction Test) detailed evaluation results, generate an overall psychological profile, overall score out of 100, overall grade, recurring mistakes, and actionable recommendations.
+
+CANDIDATE PERFORMANCE SUMMARY:
+Total situations: {total}
+Average score: {avgScore}
+Excellent answers: {excellentCount}
+Good answers: {goodCount}
+Average answers: {averageCount}
+Poor answers: {poorCount}
+Blank/Timed out: {blankCount}
+
+Respond ONLY with JSON in this exact schema:
+{
+  "overallScore": <0-100 integer representing general suitability>,
+  "overallGrade": "<A+/A/B+/B/C+/C/D>",
+  "psychologicalProfile": "<2-3 sentence profile>",
+  "summary": "<1 sentence overall assessment>",
+  "topMistakes": ["<pattern 1>", "<pattern 2>"],
+  "recommendations": ["<tip 1>", "<tip 2>", "<tip 3>"]
+}
+`
+
+// ---------------------------------------------------------------------------
 // Composable
 // ---------------------------------------------------------------------------
 
@@ -256,6 +412,216 @@ export function useAiAnalysis() {
   const analysisResult = ref(null)
   const analysisError = ref(null)
   const currentProvider = ref(null)
+
+  // Progress tracking
+  const analysisProgress = ref(0)       // 0–100
+  const analysisPhase = ref(null)        // 'batch' | 'summary' | null
+  const analysisProgressText = ref('')   // e.g. "Evaluating batch 2 of 4..."
+
+  // ---- Chunked internal runner ----
+  async function runChunkedAnalysis(items, type) {
+    isAnalyzing.value = true
+    analysisResult.value = null
+    analysisError.value = null
+    currentProvider.value = null
+    analysisProgress.value = 0
+    analysisPhase.value = 'batch'
+    analysisProgressText.value = 'Preparing analysis...'
+
+    try {
+      const chunks = []
+      const chunkSize = 25
+      for (let i = 0; i < items.length; i += chunkSize) {
+        chunks.push(items.slice(i, i + chunkSize))
+      }
+
+      const allEvaluatedItems = []
+      let batchPrompt = ''
+      if (type === 'wat') batchPrompt = WAT_BATCH_SYSTEM_PROMPT
+      else if (type === 'sct') batchPrompt = SCT_BATCH_SYSTEM_PROMPT
+      else if (type === 'srt') batchPrompt = SRT_BATCH_SYSTEM_PROMPT
+
+      // Reserve 85% of progress for batch evaluation, 15% for summary
+      const batchProgressWeight = 85
+      const totalChunks = chunks.length
+
+      // 1. Run batch evaluation for each chunk with delays
+      for (let cIdx = 0; cIdx < totalChunks; cIdx++) {
+        const chunk = chunks[cIdx]
+
+        // Update progress text
+        analysisProgressText.value = `Evaluating batch ${cIdx + 1} of ${totalChunks}... (${chunk.length} items)`
+        analysisProgress.value = Math.round((cIdx / totalChunks) * batchProgressWeight)
+
+        const chunkText = chunk
+          .map((item) => {
+            if (type === 'wat') {
+              return `${item.index}. Word: "${item.word}" | Answer: "${item.timeOut || !item.text ? '[BLANK - NO RESPONSE]' : item.text}"`
+            } else if (type === 'sct') {
+              return `${item.index}. Starter: "${item.prompt}..." | Completion: "${item.text && item.text.trim() ? item.text : '[BLANK - NO RESPONSE]'}"`
+            } else {
+              return `${item.index}. Situation: "${item.situation}" | Reaction: "${item.timeOut || !item.text ? '[BLANK - NO RESPONSE]' : item.text}"`
+            }
+          })
+          .join('\n')
+
+        // Per-chunk retry (up to 2 attempts with backoff)
+        let chunkSuccess = false
+        for (let attempt = 0; attempt < 2; attempt++) {
+          try {
+            const { text, providerName } = await analyzeWithAI(
+              batchPrompt,
+              `Evaluate this batch ${cIdx + 1} of ${totalChunks}:\n\n${chunkText}`,
+              3000
+            )
+            currentProvider.value = providerName
+
+            const cleaned = text.replace(/^```(?:json)?\s*/i, '').replace(/```\s*$/i, '').trim()
+            const parsed = JSON.parse(cleaned)
+
+            if (parsed.items && Array.isArray(parsed.items)) {
+              allEvaluatedItems.push(...parsed.items)
+              chunkSuccess = true
+              break
+            } else {
+              throw new Error('AI returned invalid batch response format')
+            }
+          } catch (chunkErr) {
+            console.warn(`[useAiAnalysis] Chunk ${cIdx + 1} attempt ${attempt + 1} failed:`, chunkErr.message)
+            if (attempt === 0) {
+              analysisProgressText.value = `Batch ${cIdx + 1} failed, retrying in 3s...`
+              await delay(3000)
+            }
+          }
+        }
+
+        // If chunk still failed after retries, fill with fallback entries
+        if (!chunkSuccess) {
+          console.warn(`[useAiAnalysis] Chunk ${cIdx + 1} completely failed, using fallback entries`)
+          for (const item of chunk) {
+            allEvaluatedItems.push({
+              index: item.index,
+              prompt: item.word || item.prompt || item.situation || '',
+              answer: item.text || '[BLANK - NO RESPONSE]',
+              score: 0,
+              rating: 'Blank',
+              strengths: [],
+              issues: ['AI evaluation failed for this item — please retry'],
+              improvements: 'N/A',
+              issueTags: ['EvaluationFailed'],
+            })
+          }
+        }
+
+        // Update progress after chunk completes
+        analysisProgress.value = Math.round(((cIdx + 1) / totalChunks) * batchProgressWeight)
+
+        // Rate-limiting delay between chunks (skip after last chunk)
+        if (cIdx < totalChunks - 1) {
+          analysisProgressText.value = `Batch ${cIdx + 1} complete. Waiting before next batch...`
+          await delay(2000)
+        }
+      }
+
+      // ---- Gap-filling: ensure every input item has a result ----
+      const evaluatedIndexSet = new Set(allEvaluatedItems.map((i) => i.index))
+      for (const item of items) {
+        if (!evaluatedIndexSet.has(item.index)) {
+          allEvaluatedItems.push({
+            index: item.index,
+            prompt: item.word || item.prompt || item.situation || '',
+            answer: item.text || '[BLANK - NO RESPONSE]',
+            score: 0,
+            rating: 'Blank',
+            strengths: [],
+            issues: ['This item was skipped by AI — please retry analysis'],
+            improvements: 'N/A',
+            issueTags: ['Skipped'],
+          })
+        }
+      }
+
+      // 2. Compute overall counts
+      const total = allEvaluatedItems.length
+      const avgScore = Math.round(
+        allEvaluatedItems.reduce((acc, curr) => acc + (curr.score || 0), 0) / (total || 1)
+      )
+      const excellentCount = allEvaluatedItems.filter((i) => i.rating === 'Excellent').length
+      const goodCount = allEvaluatedItems.filter((i) => i.rating === 'Good').length
+      const averageCount = allEvaluatedItems.filter((i) => i.rating === 'Average').length
+      const poorCount = allEvaluatedItems.filter((i) => i.rating === 'Poor').length
+      const blankCount = allEvaluatedItems.filter((i) => i.rating === 'Blank' || i.rating === 'Blank/Avoidance').length
+
+      // 3. Summary synthesis phase
+      analysisPhase.value = 'summary'
+      analysisProgress.value = 88
+      analysisProgressText.value = 'Generating overall psychological profile...'
+
+      const responsesSummary = allEvaluatedItems
+        .sort((a, b) => a.index - b.index)
+        .map(
+          (item) =>
+            `- #${item.index}. Prompt: "${item.prompt || ''}" | Answer: "${item.answer || ''}" | Score: ${item.score}/100 | Rating: ${item.rating} | Issues: ${item.issues?.join(', ') || 'None'}`
+        )
+        .join('\n')
+
+      let summaryPrompt = ''
+      if (type === 'wat') summaryPrompt = WAT_SUMMARY_SYSTEM_PROMPT
+      else if (type === 'sct') summaryPrompt = SCT_SUMMARY_SYSTEM_PROMPT
+      else if (type === 'srt') summaryPrompt = SRT_SUMMARY_SYSTEM_PROMPT
+
+      const userContent = `CANDIDATE DETAILS AND RATINGS:
+${responsesSummary}
+
+Total: ${total}
+Average Item Score: ${avgScore}`
+
+      // Fill placeholders in prompt
+      const finalPrompt = summaryPrompt
+        .replace('{total}', total)
+        .replace('{avgScore}', avgScore)
+        .replace('{excellentCount}', excellentCount)
+        .replace('{goodCount}', goodCount)
+        .replace('{averageCount}', averageCount)
+        .replace('{poorCount}', poorCount)
+        .replace('{blankCount}', blankCount)
+
+      analysisProgress.value = 92
+
+      const { text: summaryText, providerName: finalProvider } = await analyzeWithAI(
+        finalPrompt,
+        userContent,
+        2500
+      )
+      currentProvider.value = finalProvider
+
+      analysisProgress.value = 97
+      analysisProgressText.value = 'Finalizing report...'
+
+      const summaryCleaned = summaryText.replace(/^```(?:json)?\s*/i, '').replace(/```\s*$/i, '').trim()
+      const summaryParsed = JSON.parse(summaryCleaned)
+
+      // Merge items and summaries
+      analysisResult.value = {
+        overallScore: summaryParsed.overallScore ?? avgScore,
+        overallGrade: summaryParsed.overallGrade ?? 'C',
+        psychologicalProfile: summaryParsed.psychologicalProfile,
+        summary: summaryParsed.summary,
+        items: allEvaluatedItems.sort((a, b) => a.index - b.index),
+        topMistakes: summaryParsed.topMistakes,
+        recommendations: summaryParsed.recommendations,
+      }
+
+      analysisProgress.value = 100
+      analysisProgressText.value = 'Analysis complete!'
+    } catch (err) {
+      console.error('[useAiAnalysis] Chunked Error:', err)
+      analysisError.value = err.message ?? 'Unknown error occurred during analysis.'
+    } finally {
+      isAnalyzing.value = false
+      analysisPhase.value = null
+    }
+  }
 
   // ---- Shared internal runner ----
   async function runAnalysis(systemPrompt, userContent) {
@@ -282,6 +648,18 @@ export function useAiAnalysis() {
 
   // ---- WAT Analyzer ----
   async function analyzeWAT(responses) {
+    if (responses.length > 30) {
+      const items = responses.map((r, i) => ({
+        index: i + 1,
+        word: r.word,
+        prompt: r.word,
+        text: r.text,
+        timeOut: r.timeOut
+      }))
+      await runChunkedAnalysis(items, 'wat')
+      return
+    }
+
     const answered = responses.filter((r) => !r.timeOut && r.text)
     const total = responses.length
 
@@ -308,6 +686,16 @@ Provide detailed ISSB psychological analysis. Be honest and precise — this fee
 
   // ---- SCT Analyzer ----
   async function analyzeSCT(responses, language = 'english') {
+    if (responses.length > 30) {
+      const items = responses.map((r, i) => ({
+        index: i + 1,
+        prompt: r.prompt,
+        text: r.text
+      }))
+      await runChunkedAnalysis(items, 'sct')
+      return
+    }
+
     const answered = responses.filter((r) => r.text && r.text.trim())
     const total = responses.length
 
@@ -335,6 +723,18 @@ Evaluate each completion against ISSB psychological standards. Identify emotiona
 
   // ---- SRT Analyzer ----
   async function analyzeSRT(responses) {
+    if (responses.length > 30) {
+      const items = responses.map((r, i) => ({
+        index: i + 1,
+        situation: r.situation,
+        prompt: r.situation,
+        text: r.text,
+        timeOut: r.timeOut
+      }))
+      await runChunkedAnalysis(items, 'srt')
+      return
+    }
+
     const answered = responses.filter((r) => !r.timeOut && r.text && r.text.trim())
     const total = responses.length
 
@@ -395,6 +795,9 @@ Provide a detailed psychological review focusing on the candidate's Big Five per
     analysisResult.value = null
     analysisError.value = null
     currentProvider.value = null
+    analysisProgress.value = 0
+    analysisPhase.value = null
+    analysisProgressText.value = ''
   }
 
   return {
@@ -402,6 +805,9 @@ Provide a detailed psychological review focusing on the candidate's Big Five per
     analysisResult,
     analysisError,
     currentProvider,
+    analysisProgress,
+    analysisPhase,
+    analysisProgressText,
     analyzeWAT,
     analyzeSCT,
     analyzeSRT,

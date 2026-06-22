@@ -13,7 +13,7 @@ const router = useRouter()
 const authStore = useAuthStore()
 
 // AI Analysis
-const { isAnalyzing, analysisResult, analysisError, currentProvider, analyzeSCT, resetAnalysis } = useAiAnalysis()
+const { isAnalyzing, analysisResult, analysisError, currentProvider, analysisProgress, analysisPhase, analysisProgressText, analyzeSCT, resetAnalysis } = useAiAnalysis()
 const showAiReport = ref(false)
 const showUpgradeModal = ref(false)
 
@@ -428,12 +428,25 @@ const timeTaken = computed(() => {
           </span>
         </div>
 
-        <!-- Loading state -->
+        <!-- Loading state with progress -->
         <div v-if="isAnalyzing" class="ai-loading-panel glass-card">
-          <div class="ai-spinner"></div>
-          <div class="ai-loading-text">
-            <strong>Analyzing your SCT responses...</strong>
-            <span>Evaluating 26 sentence completions for emotional patterns &amp; social adjustment</span>
+          <div class="ai-progress-container">
+            <div class="ai-progress-header">
+              <div class="ai-spinner-mini"></div>
+              <strong>Analyzing your SCT responses...</strong>
+            </div>
+            <div class="ai-progress-bar-track">
+              <div class="ai-progress-bar-fill" :style="{ width: analysisProgress + '%' }"></div>
+            </div>
+            <div class="ai-progress-meta">
+              <span class="ai-progress-text">{{ analysisProgressText || 'Evaluating sentence completions for emotional patterns & social adjustment' }}</span>
+              <span class="ai-progress-pct">{{ analysisProgress }}%</span>
+            </div>
+            <div v-if="analysisPhase" class="ai-progress-phase">
+              <span :class="['phase-badge', analysisPhase === 'summary' ? 'phase-summary' : 'phase-batch']">
+                {{ analysisPhase === 'summary' ? '📊 Generating Profile' : '🔍 Batch Evaluation' }}
+              </span>
+            </div>
           </div>
         </div>
 
@@ -946,20 +959,111 @@ const timeTaken = computed(() => {
   border-color: rgba(124, 58, 237, 0.2);
 }
 
-.ai-loading-text {
+.ai-progress-container {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.75rem;
 }
 
-.ai-loading-text strong {
+.ai-progress-header {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.ai-progress-header strong {
   color: var(--text-primary);
   font-size: 0.95rem;
 }
 
-.ai-loading-text span {
+.ai-spinner-mini {
+  width: 18px;
+  height: 18px;
+  border: 2.5px solid rgba(124, 58, 237, 0.15);
+  border-top-color: #7c3aed;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  flex-shrink: 0;
+}
+
+.ai-progress-bar-track {
+  width: 100%;
+  height: 8px;
+  background: rgba(124, 58, 237, 0.1);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.ai-progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #7c3aed, #06b6d4);
+  border-radius: 999px;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.ai-progress-bar-fill::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.ai-progress-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.ai-progress-text {
   color: var(--text-muted);
-  font-size: 0.82rem;
+  font-size: 0.8rem;
+  line-height: 1.3;
+}
+
+.ai-progress-pct {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #7c3aed;
+  white-space: nowrap;
+}
+
+.ai-progress-phase {
+  display: flex;
+  align-items: center;
+}
+
+.phase-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.2rem 0.65rem;
+  border-radius: 9999px;
+}
+
+.phase-batch {
+  background: rgba(124, 58, 237, 0.08);
+  color: #7c3aed;
+  border: 1px solid rgba(124, 58, 237, 0.2);
+}
+
+.phase-summary {
+  background: rgba(6, 182, 212, 0.08);
+  color: #06b6d4;
+  border: 1px solid rgba(6, 182, 212, 0.2);
 }
 
 .ai-error-panel {

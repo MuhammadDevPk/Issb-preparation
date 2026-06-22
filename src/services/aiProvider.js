@@ -164,6 +164,14 @@ function isProviderAtLimit(provider) {
 }
 
 // ---------------------------------------------------------------------------
+// Helpers
+// ---------------------------------------------------------------------------
+
+function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms))
+}
+
+// ---------------------------------------------------------------------------
 // Core request function (single provider attempt)
 // ---------------------------------------------------------------------------
 
@@ -175,11 +183,7 @@ async function callProvider(provider, systemPrompt, userContent, maxTokens = 200
       ? `${provider.endpoint}?key=${provider.apiKey}`
       : provider.endpoint
 
-  const headers =
-    provider.id === 'gemini'
-      ? provider.buildHeaders(provider.apiKey)
-      : provider.buildHeaders(provider.apiKey)
-
+  const headers = provider.buildHeaders(provider.apiKey)
   const body = provider.buildBody(provider.model, systemPrompt, userContent, maxTokens)
 
   const res = await fetch(url, {
@@ -188,8 +192,12 @@ async function callProvider(provider, systemPrompt, userContent, maxTokens = 200
     body,
   })
 
-  if (res.status === 429 || res.status >= 500) {
-    throw new Error(`Provider ${provider.id} returned ${res.status}`)
+  if (res.status === 429) {
+    throw Object.assign(new Error(`Provider ${provider.id} rate limited (429)`), { is429: true })
+  }
+
+  if (res.status >= 500) {
+    throw new Error(`Provider ${provider.id} server error (${res.status})`)
   }
 
   if (!res.ok) {
@@ -212,6 +220,7 @@ async function callProvider(provider, systemPrompt, userContent, maxTokens = 200
 
 /**
  * Send a prompt to AI providers in rotation.
+ * Retries 429 errors once (with backoff) before falling to next provider.
  * Returns { text: string, providerName: string }
  *
  * @param {string} systemPrompt - The ISSB expert persona / rules
@@ -227,12 +236,21 @@ export async function analyzeWithAI(systemPrompt, userContent, maxTokens = 2500)
       continue
     }
 
-    try {
-      const result = await callProvider(provider, systemPrompt, userContent, maxTokens)
-      return result
-    } catch (err) {
-      console.warn(`[AI] ${provider.name} failed:`, err.message)
-      errors.push(`${provider.name}: ${err.message}`)
+    // Attempt with 1 retry on 429
+    for (let attempt = 0; attempt < 2; attempt++) {
+      try {
+        const result = await callProvider(provider, systemPrompt, userContent, maxTokens)
+        return result
+      } catch (err) {
+        if (err.is429 && attempt === 0) {
+          console.warn(`[AI] ${provider.name} rate limited, retrying in 3s...`)
+          await delay(3000)
+          continue
+        }
+        console.warn(`[AI] ${provider.name} failed:`, err.message)
+        errors.push(`${provider.name}: ${err.message}`)
+        break
+      }
     }
   }
 
@@ -240,6 +258,9 @@ export async function analyzeWithAI(systemPrompt, userContent, maxTokens = 2500)
     `All AI providers failed or exhausted.\n\nDetails:\n${errors.join('\n')}`
   )
 }
+
+/** Exposed delay utility for chunked analysis pacing */
+export { delay }
 
 /**
  * Returns current provider usage stats for display.
