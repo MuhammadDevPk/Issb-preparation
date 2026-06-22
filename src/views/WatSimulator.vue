@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { usePreparationStore } from '../stores/preparation'
 import { useAiAnalysis } from '../composables/useAiAnalysis.js'
@@ -184,6 +184,7 @@ const goToRoadmap = () => {
 
 onUnmounted(() => {
   clearInterval(timerInterval)
+  window.removeEventListener('keydown', handleLightboxKeys)
 })
 
 // Analytics calculations
@@ -196,6 +197,109 @@ const avgLength = computed(() => {
   if (typed.length === 0) return 0
   const sum = typed.reduce((acc, curr) => acc + curr.text.split(' ').length, 0)
   return Math.round((sum / typed.length) * 10) / 10
+})
+
+// Visual Guides & Infographics
+const showVisualGuides = ref(false)
+const activeGuideTab = ref(0)
+
+// Lightbox state
+const lightboxOpen = ref(false)
+const lightboxTab = ref(0)
+const lightboxIndex = ref(0)
+
+const watGuides = [
+  {
+    category: 'Intro & Test Procedure',
+    description: 'Learn what WAT is, why it is conducted, and the exact test procedure.',
+    items: [
+      { title: 'What is WAT?', filename: 'What is WAT.jpeg' },
+      { title: 'Purpose of WAT', filename: 'Purpose of WAT.png' },
+      { title: 'Why WAT is Conducted', filename: 'Why WAT Conducted.png' },
+      { title: 'History of WAT', filename: 'history of WAT.jpg' },
+      { title: 'WAT Test Procedure & Time Limit', filename: 'WAT time limit and test procedure.png' },
+      { title: 'How WAT is Conducted', filename: 'how WAT is conducted.png' }
+    ]
+  },
+  {
+    category: 'Practice & Time',
+    description: 'Master time management, speed-writing, and strategic practice frameworks.',
+    items: [
+      { title: 'How to Practice for WAT (Part 1)', filename: 'How to practice for WAT.jpeg' },
+      { title: 'How to Practice for WAT (Part 2)', filename: 'How to practice for WAT 2.jpeg' },
+      { title: 'How to Practice for WAT (Part 3)', filename: 'How to practice for WAT 3.jpeg' },
+      { title: 'How to Practice for WAT (Part 4)', filename: 'How to practice for WAT 4.jpeg' },
+      { title: 'How to Practice for WAT (Part 5)', filename: 'How to practice for WAT 6.jpeg' },
+      { title: 'How to Practice for WAT (Part 6)', filename: 'How to practice for WAT 7.jpeg' },
+      { title: 'How to Practice for WAT (Part 7)', filename: 'How to practice for WAT 8.jpeg' },
+      { title: 'How to Practice for WAT (Part 8)', filename: 'How to practice for WAT 9.jpeg' },
+      { title: 'Time Management in WAT', filename: 'Wat Time Management.png' },
+      { title: 'Pro Tips for WAT', filename: 'Tips for wat.jpeg' }
+    ]
+  },
+  {
+    category: 'Psychological Analysis',
+    description: 'Understand how psychologists analyze your sentences and detect fake positive behaviors.',
+    items: [
+      { title: 'Officer-Like Thinking', filename: 'OFFICER-LIKE THINKING in WAT.jpeg' },
+      { title: 'What Psychologists Observe (Part 1)', filename: 'what physologist observe durring wat 1.png' },
+      { title: 'What Psychologists Observe (Part 2)', filename: 'what physologist observe durring wat 2.jpeg' },
+      { title: 'How Psychologists Detect Fake Responses (Part 1)', filename: 'HOW PSYCHULUGISTS DETECT FAKE RESPONSES.jpeg' },
+      { title: 'How Psychologists Detect Fake Responses (Part 2)', filename: 'HOW PSYCHULOGISTS DETECT FAKE RESPONSES 2.jpeg' }
+    ]
+  },
+  {
+    category: 'Good vs Poor Responses',
+    description: 'Compare recommended and non-recommended sentences to understand the difference.',
+    items: [
+      { title: 'Good WAT Responses Example', filename: 'Good WAT responsee.jpeg' },
+      { title: 'Poor Responses Example (Part 1)', filename: 'Poor.jpeg' },
+      { title: 'Poor Responses Example (Part 2)', filename: 'Poor 2.jpeg' },
+      { title: 'Real vs Fake Response Analysis', filename: 'WAT real vs fake response.png' }
+    ]
+  },
+  {
+    category: 'Mistakes & Word Lists',
+    description: 'Identify common myths, structural mistakes, and how to handle negative or neutral words.',
+    items: [
+      { title: 'Myths About WAT (Part 1)', filename: 'MYTHS About WAT 1.png' },
+      { title: 'Myths About WAT (Part 2)', filename: 'MYTHS About WAT 2.png' },
+      { title: 'Handling Negative WAT Words', filename: 'Negative WAT words.png' },
+      { title: 'Handling Neutral WAT Words', filename: 'Neutral WAT words.png' },
+      { title: 'Common Mistakes in WAT', filename: 'mistakes in WAT.png' }
+    ]
+  }
+]
+
+const openLightbox = (tabIdx, itemIdx) => {
+  lightboxTab.value = tabIdx
+  lightboxIndex.value = itemIdx
+  lightboxOpen.value = true
+}
+
+const closeLightbox = () => {
+  lightboxOpen.value = false
+}
+
+const prevGuideImage = () => {
+  const itemsCount = watGuides[lightboxTab.value].items.length
+  lightboxIndex.value = (lightboxIndex.value - 1 + itemsCount) % itemsCount
+}
+
+const nextGuideImage = () => {
+  const itemsCount = watGuides[lightboxTab.value].items.length
+  lightboxIndex.value = (lightboxIndex.value + 1) % itemsCount
+}
+
+const handleLightboxKeys = (e) => {
+  if (!lightboxOpen.value) return
+  if (e.key === 'Escape') closeLightbox()
+  if (e.key === 'ArrowLeft') prevGuideImage()
+  if (e.key === 'ArrowRight') nextGuideImage()
+}
+
+onMounted(() => {
+  window.addEventListener('keydown', handleLightboxKeys)
 })
 </script>
 
@@ -268,9 +372,12 @@ const avgLength = computed(() => {
         </ul>
       </div>
 
-      <div class="flex-center setup-actions" style="gap: 1rem; margin-top: 1.5rem;">
-        <button class="btn btn-secondary btn-large" @click="showVocab = !showVocab">
+      <div class="flex-center setup-actions" style="gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap;">
+        <button class="btn btn-secondary btn-large" @click="showVocab = !showVocab; if(showVocab) showVisualGuides = false">
           <span>📖 {{ showVocab ? 'HIDE VOCABULARY' : 'STUDY VOCABULARY' }}</span>
+        </button>
+        <button class="btn btn-secondary btn-large" @click="showVisualGuides = !showVisualGuides; if(showVisualGuides) showVocab = false">
+          <span>🖼️ {{ showVisualGuides ? 'HIDE VISUAL GUIDES' : 'VISUAL STUDY GUIDES' }}</span>
         </button>
         <button class="btn btn-primary btn-large" @click="startTest">
           <span>START SIMULATION</span>
@@ -306,6 +413,60 @@ const avgLength = computed(() => {
             >
               <span class="vocab-en">{{ word }}</span>
               <span class="vocab-ur">{{ watUrduMeanings[word] }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Visual Guides Panel -->
+      <div class="guides-panel" v-if="showVisualGuides">
+        <div class="guides-header">
+          <h3>🖼️ WAT Preparation Guides & Infographics</h3>
+          <p class="guides-subtitle">
+            Study these structured visual boards compiled from senior GTOs and military psychologists to master Word Association.
+          </p>
+        </div>
+
+        <!-- Guides Navigation Tabs -->
+        <div class="guides-tabs">
+          <button 
+            v-for="(cat, idx) in watGuides" 
+            :key="idx"
+            class="guide-tab-btn"
+            :class="{ active: activeGuideTab === idx }"
+            @click="activeGuideTab = idx"
+          >
+            {{ cat.category }}
+          </button>
+        </div>
+
+        <!-- Tab Content -->
+        <div class="guide-tab-content">
+          <p class="tab-description">
+            {{ watGuides[activeGuideTab].description }}
+          </p>
+
+          <div class="guides-grid">
+            <div 
+              v-for="(item, itemIdx) in watGuides[activeGuideTab].items" 
+              :key="itemIdx"
+              class="guide-card glass-card interactive"
+              @click="openLightbox(activeGuideTab, itemIdx)"
+            >
+              <div class="guide-image-container">
+                <img 
+                  :src="'/media/images/tests-guides/wat/' + item.filename" 
+                  :alt="item.title"
+                  class="guide-thumbnail"
+                  loading="lazy"
+                />
+                <div class="guide-card-overlay">
+                  <span class="zoom-text">🔍 Click to View Full Size</span>
+                </div>
+              </div>
+              <div class="guide-card-footer">
+                <span class="guide-card-title">{{ item.title }}</span>
+              </div>
             </div>
           </div>
         </div>
@@ -582,6 +743,41 @@ const avgLength = computed(() => {
             Wait 24 Hours / Review Manually
           </button>
         </div>
+      </div>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox-modal" v-if="lightboxOpen" @click.self="closeLightbox">
+      <div class="lightbox-content-wrapper">
+        <button class="lightbox-close-btn" @click="closeLightbox">×</button>
+        
+        <button 
+          class="lightbox-nav-btn prev-btn" 
+          @click="prevGuideImage"
+          v-if="watGuides[lightboxTab].items.length > 1"
+        >
+          ‹
+        </button>
+        
+        <div class="lightbox-image-box">
+          <img 
+            :src="'/media/images/tests-guides/wat/' + watGuides[lightboxTab].items[lightboxIndex].filename" 
+            :alt="watGuides[lightboxTab].items[lightboxIndex].title"
+            class="lightbox-image"
+          />
+          <div class="lightbox-caption">
+            <span class="caption-category">{{ watGuides[lightboxTab].category }}</span>
+            <h4 class="caption-title">{{ watGuides[lightboxTab].items[lightboxIndex].title }}</h4>
+          </div>
+        </div>
+
+        <button 
+          class="lightbox-nav-btn next-btn" 
+          @click="nextGuideImage"
+          v-if="watGuides[lightboxTab].items.length > 1"
+        >
+          ›
+        </button>
       </div>
     </div>
   </div>
@@ -1251,5 +1447,267 @@ const avgLength = computed(() => {
 
 .w-full {
   width: 100%;
+}
+
+/* Visual Guides Panel Styling */
+.guides-panel {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.guides-header {
+  margin-bottom: 1.5rem;
+}
+
+.guides-subtitle {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+.guides-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1rem;
+}
+
+.guide-tab-btn {
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: var(--font-heading);
+  border-radius: var(--border-radius-sm);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  background: transparent;
+  transition: all var(--transition-smooth);
+}
+
+.guide-tab-btn:hover {
+  background: rgba(3, 194, 252, 0.05);
+  color: var(--text-primary);
+}
+
+.guide-tab-btn.active {
+  background: rgba(3, 194, 252, 0.1);
+  color: var(--accent-cyan);
+  border-color: rgba(3, 194, 252, 0.4);
+}
+
+.tab-description {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+.guides-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.guide-card {
+  padding: 0;
+  overflow: hidden;
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+}
+
+.guide-image-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: #f1f5f9;
+  overflow: hidden;
+}
+
+.guide-thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-smooth);
+}
+
+.guide-card:hover .guide-thumbnail {
+  transform: scale(1.05);
+}
+
+.guide-card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.6);
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity var(--transition-smooth);
+}
+
+.guide-card:hover .guide-card-overlay {
+  opacity: 1;
+}
+
+.zoom-text {
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  letter-spacing: 0.05em;
+  background: rgba(3, 194, 252, 0.8);
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--border-radius-sm);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.guide-card-footer {
+  padding: 1rem;
+  background: var(--bg-panel);
+  border-top: 1px solid var(--border-color);
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+}
+
+.guide-card-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+/* Lightbox Modal */
+.lightbox-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.92);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.lightbox-content-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  max-height: calc(100vh - 100px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-image-box {
+  background: #000;
+  border-radius: var(--border-radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+  max-height: 80vh;
+  width: auto;
+  max-width: 100%;
+}
+
+.lightbox-image {
+  max-width: 100%;
+  max-height: calc(80vh - 70px);
+  object-fit: contain;
+}
+
+.lightbox-close-btn {
+  position: absolute;
+  top: -2.5rem;
+  right: 0;
+  font-size: 2rem;
+  color: #fff;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity var(--transition-smooth);
+}
+
+.lightbox-close-btn:hover {
+  opacity: 1;
+}
+
+.lightbox-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 3rem;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-smooth);
+  opacity: 0.6;
+}
+
+.lightbox-nav-btn:hover {
+  opacity: 1;
+  background: rgba(3, 194, 252, 0.8);
+}
+
+.prev-btn {
+  left: -4rem;
+}
+
+.next-btn {
+  right: -4rem;
+}
+
+.lightbox-caption {
+  padding: 0.75rem 1.25rem;
+  background: rgba(30, 41, 59, 0.95);
+  color: #fff;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.caption-category {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+  letter-spacing: 0.05em;
+}
+
+.caption-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0.15rem 0 0 0;
+}
+
+@media (max-width: 992px) {
+  .prev-btn {
+    left: 0.5rem;
+    z-index: 10;
+  }
+  .next-btn {
+    right: 0.5rem;
+    z-index: 10;
+  }
 }
 </style>
