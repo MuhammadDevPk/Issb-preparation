@@ -1710,4 +1710,117 @@ onMounted(() => {
     z-index: 10;
   }
 }
+
+@media (max-width: 768px) {
+  /* Scrollable tabs instead of wrapping to multiple lines */
+  .guides-tabs {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 0.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .guide-tab-btn {
+    flex: 0 0 auto;
+  }
+
+  /* Full Screen Lightbox Modal for Mobile */
+  .lightbox-modal {
+    padding: 0;
+    background: #000000;
+  }
+
+  .lightbox-content-wrapper {
+    width: 100%;
+    height: 100dvh;
+    max-height: 100dvh;
+    margin: 0;
+  }
+
+  .lightbox-image-box {
+    width: 100%;
+    height: 100%;
+    max-height: 100dvh;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    background: #000000;
+    justify-content: center;
+  }
+
+  .lightbox-image {
+    width: 100%;
+    height: 100%;
+    max-height: 100dvh;
+    object-fit: contain;
+  }
+
+  /* Overlay caption transparently at the bottom so it doesn't shrink the image space */
+  .lightbox-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(8px);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    z-index: 12;
+    padding: 1rem 1.25rem;
+  }
+
+  /* Circular high-contrast floating close button overlay */
+  .lightbox-close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    left: auto;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #ffffff;
+    z-index: 20;
+    opacity: 0.9;
+    padding-bottom: 4px;
+  }
+
+  /* Overlay navigation arrows on edges */
+  .lightbox-nav-btn {
+    width: 44px;
+    height: 44px;
+    font-size: 2.5rem;
+    background: rgba(15, 23, 42, 0.6);
+    border-color: rgba(255, 255, 255, 0.15);
+    z-index: 15;
+  }
+
+  .prev-btn {
+    left: 0.75rem;
+  }
+
+  .next-btn {
+    right: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .guides-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 0.75rem;
+  }
+  .guide-card-footer {
+    padding: 0.65rem;
+  }
+  .guide-card-title {
+    font-size: 0.75rem;
+  }
+}
 </style>
