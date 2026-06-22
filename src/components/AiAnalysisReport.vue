@@ -423,6 +423,27 @@ const issueTagClass = (tag) => {
   display: flex;
   flex-direction: column;
   gap: 0.85rem;
+  max-height: 520px;
+  overflow-y: auto;
+  padding-inline-end: 0.5rem;
+}
+
+.breakdown-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.breakdown-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 3px;
+}
+
+.breakdown-list::-webkit-scrollbar-thumb {
+  background: var(--border-color, rgba(255, 255, 255, 0.15));
+  border-radius: 3px;
+}
+
+.breakdown-list::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-cyan);
 }
 
 .breakdown-card {
