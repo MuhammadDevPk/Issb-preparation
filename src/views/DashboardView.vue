@@ -302,6 +302,55 @@ const goToSimulator = (type) => {
 const goToStatus = () => {
   router.push('/status')
 }
+
+// Weakness Tracker State
+const selectedFilter = ref('ALL')
+const expandedId = ref(null)
+const practiceInput = ref('')
+
+const setFilter = (val) => {
+  selectedFilter.value = val
+  expandedId.value = null
+  practiceInput.value = ''
+}
+
+const filteredBadResponses = computed(() => {
+  if (selectedFilter.value === 'ALL') {
+    return store.badResponses
+  }
+  return store.badResponses.filter(r => r.testType === selectedFilter.value)
+})
+
+const activeBadResponsesCount = computed(() => {
+  return store.badResponses.filter(r => !r.isImproved).length
+})
+
+const toggleExpand = (id, currentText) => {
+  if (expandedId.value === id) {
+    expandedId.value = null
+    practiceInput.value = ''
+  } else {
+    expandedId.value = id
+    practiceInput.value = currentText || ''
+  }
+}
+
+const saveImprovement = (id) => {
+  if (!practiceInput.value.trim()) return
+  store.updateBadResponse(id, {
+    isImproved: true,
+    improvedAnswer: practiceInput.value.trim()
+  })
+  store.addXP(15) // award XP for practicing
+  expandedId.value = null
+  practiceInput.value = ''
+}
+
+const deleteResponse = (id) => {
+  store.removeBadResponse(id)
+  expandedId.value = null
+  practiceInput.value = ''
+}
 </script>
 
 <template>
@@ -692,6 +741,117 @@ const goToStatus = () => {
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- AI SUBCONSCIOUS WEAKNESS TRACKER -->
+    <section class="weakness-tracker-section glass-card" v-if="store.badResponses.length > 0">
+      <div class="tracker-header">
+        <div>
+          <span class="badge badge-purple-ai">🧠 Subconscious Alignment</span>
+          <h3>AI Subconscious Weakness & Practice Tracker</h3>
+          <p class="desc">
+            These responses were flagged by AI as **Poor**, **Blank**, or containing **Avoidance patterns** during your simulation tests. Rewrite and improve them to align your psychology.
+          </p>
+        </div>
+        <div class="tracker-stats">
+          <span class="val text-purple text-glow">{{ activeBadResponsesCount }}</span>
+          <span class="lbl">Weak Responses Remaining</span>
+        </div>
+      </div>
+
+      <!-- Filter tabs -->
+      <div class="tracker-filters">
+        <button 
+          v-for="filter in ['ALL', 'WAT', 'SCT', 'SRT']" 
+          :key="filter"
+          class="filter-tab-btn"
+          :class="{ active: selectedFilter === filter }"
+          @click="setFilter(filter)"
+        >
+          {{ filter === 'ALL' ? 'Show All' : filter }}
+        </button>
+      </div>
+
+      <!-- Weaknesses List -->
+      <div class="weakness-list" v-if="filteredBadResponses.length > 0">
+        <div 
+          v-for="item in filteredBadResponses" 
+          :key="item.id" 
+          class="weakness-card glass-card"
+          :class="{ 'card-expanded': expandedId === item.id, 'card-improved': item.isImproved }"
+        >
+          <div class="card-summary" @click="toggleExpand(item.id, item.isImproved ? item.improvedAnswer : item.answer)">
+            <div class="card-summary-left">
+              <span class="test-badge" :class="'badge-' + item.testType.toLowerCase()">{{ item.testType }}</span>
+              <strong class="prompt-text">"{{ item.prompt }}"</strong>
+              <span class="original-answer-preview" v-if="expandedId !== item.id">
+                Your response: <em>{{ item.isImproved ? item.improvedAnswer : (item.answer || '[Blank Response]') }}</em>
+              </span>
+            </div>
+            
+            <div class="card-summary-right">
+              <div class="score-badge" :class="item.isImproved ? 'score-improved' : 'score-weak'">
+                {{ item.isImproved ? 'Improved' : item.score + '/100' }}
+              </div>
+              <button class="btn-expand">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-icon">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Expanded Detail Drawer -->
+          <div class="card-details" v-if="expandedId === item.id">
+            <div class="details-grid">
+              <div class="details-left">
+                <!-- Original Answer if improved -->
+                <div class="detail-group" v-if="item.isImproved">
+                  <span class="detail-label text-red">Original Weak Answer:</span>
+                  <p class="detail-text"><em>{{ item.answer || '[Blank Response]' }}</em></p>
+                </div>
+                
+                <div class="detail-group">
+                  <span class="detail-label">AI Psychological Critique:</span>
+                  <ul class="issues-list">
+                    <li v-for="(issue, idx) in item.issues" :key="idx">{{ issue }}</li>
+                    <li v-if="!item.issues || !item.issues.length">Subconscious escape or weak response structuring.</li>
+                  </ul>
+                </div>
+                
+                <div class="detail-group">
+                  <span class="detail-label text-cyan">AI Suggested Recommendation / Standard:</span>
+                  <p class="detail-text"><em>{{ item.improvements }}</em></p>
+                </div>
+              </div>
+
+              <div class="details-right">
+                <div class="practice-box">
+                  <span class="practice-title">Re-write & Improve Your Response</span>
+                  <textarea 
+                    v-model="practiceInput" 
+                    class="form-input practice-textarea" 
+                    placeholder="Enter your improved, genuine, and positive response..."
+                    rows="3"
+                  ></textarea>
+                  <div class="practice-actions">
+                    <button class="btn btn-secondary btn-sm text-red" @click="deleteResponse(item.id)">
+                      Remove Item
+                    </button>
+                    <button class="btn btn-primary btn-sm" @click="saveImprovement(item.id)">
+                      Save Improved Response
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tracker-empty" v-else>
+        <span class="empty-icon">🎉</span>
+        <p>No weak responses found for the selected category!</p>
       </div>
     </section>
 
@@ -1787,5 +1947,296 @@ const goToStatus = () => {
   font-size: 0.65rem;
   color: var(--accent-green);
   font-weight: 600;
+}
+
+/* AI Weakness Tracker Styles */
+.weakness-tracker-section {
+  border-block-start: 4px solid var(--accent-purple-ai, #a855f7);
+  margin-block-end: 2rem;
+}
+
+.tracker-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-block-end: 1.5rem;
+  padding-block-end: 1rem;
+  border-block-end: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.tracker-header .desc {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.tracker-stats {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  flex-shrink: 0;
+}
+
+.tracker-stats .val {
+  font-family: var(--font-heading);
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--accent-purple-ai, #a855f7);
+}
+
+.tracker-stats .lbl {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.tracker-filters {
+  display: flex;
+  gap: 0.5rem;
+  margin-block-end: 1.5rem;
+  border-block-end: 1px solid var(--border-color);
+  padding-block-end: 0.75rem;
+}
+
+.filter-tab-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-secondary);
+  padding: 0.4rem 1rem;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-tab-btn:hover {
+  color: var(--text-primary);
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.filter-tab-btn.active {
+  color: white;
+  background: var(--accent-purple-ai, #a855f7);
+  border-color: var(--accent-purple-ai, #a855f7);
+}
+
+.weakness-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  max-height: 500px;
+  overflow-y: auto;
+  padding-inline-end: 0.5rem;
+}
+
+.weakness-list::-webkit-scrollbar {
+  width: 6px;
+}
+.weakness-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 3px;
+}
+.weakness-list::-webkit-scrollbar-thumb {
+  background: var(--border-color, rgba(0, 0, 0, 0.08));
+  border-radius: 3px;
+}
+.weakness-list::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-purple-ai, #a855f7);
+}
+
+.weakness-card {
+  border-inline-start: 4px solid var(--accent-red);
+  padding: 0px;
+  transition: all 0.2s ease-in-out;
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+}
+
+.weakness-card.card-improved {
+  border-inline-start-color: var(--accent-green);
+}
+
+.card-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  user-select: none;
+  gap: 1rem;
+}
+
+.card-summary:hover {
+  background: rgba(0, 0, 0, 0.01);
+}
+
+.card-summary-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.test-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.15rem 0.4rem;
+  border-radius: var(--border-radius-sm);
+  text-transform: uppercase;
+}
+
+.badge-wat { background: rgba(6, 182, 212, 0.15); color: var(--accent-cyan); }
+.badge-sct { background: rgba(245, 158, 11, 0.15); color: var(--accent-gold); }
+.badge-srt { background: rgba(239, 68, 68, 0.15); color: var(--accent-red); }
+
+.prompt-text {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+.original-answer-preview {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  max-width: 320px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.card-summary-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.score-badge {
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--border-radius-sm);
+}
+
+.score-weak { background: rgba(239, 68, 68, 0.1); color: var(--accent-red); }
+.score-improved { background: rgba(34, 197, 94, 0.1); color: var(--accent-green); }
+
+.btn-expand {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+}
+
+.card-expanded .arrow-icon {
+  transform: rotate(180deg);
+}
+
+.card-details {
+  border-block-start: 1px solid var(--border-color);
+  padding: 1.25rem;
+  background: rgba(0, 0, 0, 0.01);
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .details-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.detail-group {
+  margin-block-end: 1rem;
+}
+
+.detail-group:last-child {
+  margin-block-end: 0;
+}
+
+.detail-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-block-end: 0.25rem;
+  letter-spacing: 0.05em;
+}
+
+.detail-text {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+.issues-list {
+  padding-inline-start: 1.1rem;
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+.issues-list li {
+  margin-block-end: 0.35rem;
+  line-height: 1.4;
+}
+
+.practice-box {
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--border-color);
+  padding: 1rem;
+  border-radius: var(--border-radius-md);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.practice-title {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--accent-purple-ai, #a855f7);
+  margin-block-end: 0.5rem;
+}
+
+.practice-textarea {
+  width: 100%;
+  padding: 0.6rem;
+  font-size: 0.9rem;
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  resize: vertical;
+  margin-block-end: 0.75rem;
+  flex-grow: 1;
+}
+
+.practice-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.tracker-empty {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--text-muted);
+}
+
+.empty-icon {
+  font-size: 2rem;
+  display: block;
+  margin-block-end: 0.5rem;
 }
 </style>

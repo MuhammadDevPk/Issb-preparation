@@ -456,11 +456,11 @@ export function useAiAnalysis() {
         const chunkText = chunk
           .map((item) => {
             if (type === 'wat') {
-              return `${item.index}. Word: "${item.word}" | Answer: "${item.timeOut || !item.text ? '[BLANK - NO RESPONSE]' : item.text}"`
+              return `${item.index}. Word: "${item.word}" | Answer: "${(!item.text || !item.text.trim()) ? '[BLANK - NO RESPONSE]' : item.text}"`
             } else if (type === 'sct') {
               return `${item.index}. Starter: "${item.prompt}..." | Completion: "${item.text && item.text.trim() ? item.text : '[BLANK - NO RESPONSE]'}"`
             } else {
-              return `${item.index}. Situation: "${item.situation}" | Reaction: "${item.timeOut || !item.text ? '[BLANK - NO RESPONSE]' : item.text}"`
+              return `${item.index}. Situation: "${item.situation}" | Reaction: "${(!item.text || !item.text.trim()) ? '[BLANK - NO RESPONSE]' : item.text}"`
             }
           })
           .join('\n')
@@ -660,13 +660,13 @@ Average Item Score: ${avgScore}`
       return
     }
 
-    const answered = responses.filter((r) => !r.timeOut && r.text)
+    const answered = responses.filter((r) => r.text && r.text.trim())
     const total = responses.length
 
     const itemsText = responses
       .map(
         (r, i) =>
-          `${i + 1}. Word: "${r.word}" | Answer: "${r.timeOut || !r.text ? '[BLANK - NO RESPONSE]' : r.text}"`
+          `${i + 1}. Word: "${r.word}" | Answer: "${(!r.text || !r.text.trim()) ? '[BLANK - NO RESPONSE]' : r.text}"`
       )
       .join('\n')
 
@@ -735,13 +735,13 @@ Evaluate each completion against ISSB psychological standards. Identify emotiona
       return
     }
 
-    const answered = responses.filter((r) => !r.timeOut && r.text && r.text.trim())
+    const answered = responses.filter((r) => r.text && r.text.trim())
     const total = responses.length
 
     const itemsText = responses
       .map(
         (r, i) =>
-          `${i + 1}. Situation: "${r.situation}" | Reaction: "${r.timeOut || !r.text ? '[BLANK - NO RESPONSE]' : r.text}"`
+          `${i + 1}. Situation: "${r.situation}" | Reaction: "${(!r.text || !r.text.trim()) ? '[BLANK - NO RESPONSE]' : r.text}"`
       )
       .join('\n')
 

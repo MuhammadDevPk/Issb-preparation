@@ -14,6 +14,7 @@ export const usePreparationStore = defineStore('preparation', () => {
   const srtSessions = ref([])
   const opiSessions = ref([])
   const obstacleRoute = ref([])
+  const badResponses = ref([])
 
   // Initialize store from localStorage on mount
   const initializeStore = () => {
@@ -79,6 +80,16 @@ export const usePreparationStore = defineStore('preparation', () => {
       } catch (e) {
         console.error('Failed to parse OPI sessions:', e)
         localStorage.removeItem('issb_opi_sessions')
+      }
+    }
+
+    const storedBad = localStorage.getItem('issb_bad_responses')
+    if (storedBad) {
+      try {
+        badResponses.value = JSON.parse(storedBad)
+      } catch (e) {
+        console.error('Failed to parse bad responses:', e)
+        localStorage.removeItem('issb_bad_responses')
       }
     }
   }
@@ -149,6 +160,7 @@ export const usePreparationStore = defineStore('preparation', () => {
     if (session) {
       session.aiAnalysis = aiAnalysis
       localStorage.setItem('issb_wat_sessions', JSON.stringify(watSessions.value))
+      extractAndSaveBadResponses('WAT', date, aiAnalysis)
     }
   }
 
@@ -157,6 +169,7 @@ export const usePreparationStore = defineStore('preparation', () => {
     if (session) {
       session.aiAnalysis = aiAnalysis
       localStorage.setItem('issb_sct_sessions', JSON.stringify(sctSessions.value))
+      extractAndSaveBadResponses('SCT', date, aiAnalysis)
     }
   }
 
@@ -165,6 +178,7 @@ export const usePreparationStore = defineStore('preparation', () => {
     if (session) {
       session.aiAnalysis = aiAnalysis
       localStorage.setItem('issb_srt_sessions', JSON.stringify(srtSessions.value))
+      extractAndSaveBadResponses('SRT', date, aiAnalysis)
     }
   }
 
@@ -176,6 +190,53 @@ export const usePreparationStore = defineStore('preparation', () => {
     }
   }
 
+  const extractAndSaveBadResponses = (testType, date, aiAnalysis) => {
+    if (!aiAnalysis || !aiAnalysis.items || !Array.isArray(aiAnalysis.items)) return
+
+    const badItems = aiAnalysis.items.filter((item) => {
+      const score = item.score ?? 100
+      const rating = (item.rating ?? '').toLowerCase()
+      return score < 50 || rating === 'poor' || rating === 'blank' || rating.includes('avoidance')
+    })
+
+    const newBad = badItems.map((item) => ({
+      id: `${testType}-${date}-${item.index}-${Math.random().toString(36).substr(2, 9)}`,
+      testType,
+      date,
+      prompt: item.prompt || '',
+      answer: item.answer || '',
+      score: item.score ?? 0,
+      rating: item.rating || 'Poor',
+      issues: item.issues || [],
+      improvements: item.improvements || '',
+      issueTags: item.issueTags || [],
+      isImproved: false,
+      improvedAnswer: '',
+    }))
+
+    // Avoid duplicate additions of same prompts in the same session
+    const existingKeys = new Set(badResponses.value.map((r) => `${r.testType}-${r.prompt}`))
+    const filteredNew = newBad.filter((r) => !existingKeys.has(`${r.testType}-${r.prompt}`))
+
+    if (filteredNew.length > 0) {
+      badResponses.value.push(...filteredNew)
+      localStorage.setItem('issb_bad_responses', JSON.stringify(badResponses.value))
+    }
+  }
+
+  const removeBadResponse = (id) => {
+    badResponses.value = badResponses.value.filter((r) => r.id !== id)
+    localStorage.setItem('issb_bad_responses', JSON.stringify(badResponses.value))
+  }
+
+  const updateBadResponse = (id, updatedFields) => {
+    const idx = badResponses.value.findIndex((r) => r.id === id)
+    if (idx > -1) {
+      badResponses.value[idx] = { ...badResponses.value[idx], ...updatedFields }
+      localStorage.setItem('issb_bad_responses', JSON.stringify(badResponses.value))
+    }
+  }
+
   const clearHistory = () => {
     completedModules.value = []
     watSessions.value = []
@@ -183,6 +244,7 @@ export const usePreparationStore = defineStore('preparation', () => {
     srtSessions.value = []
     opiSessions.value = []
     obstacleRoute.value = []
+    badResponses.value = []
     xp.value = 120
     localStorage.removeItem('issb_completed_modules')
     localStorage.removeItem('issb_xp')
@@ -191,6 +253,7 @@ export const usePreparationStore = defineStore('preparation', () => {
     localStorage.removeItem('issb_srt_sessions')
     localStorage.removeItem('issb_opi_sessions')
     localStorage.removeItem('issb_obstacle_route')
+    localStorage.removeItem('issb_bad_responses')
     window.dispatchEvent(new CustomEvent('issb-xp-updated', { detail: 120 }))
   }
 
@@ -202,6 +265,7 @@ export const usePreparationStore = defineStore('preparation', () => {
     srtSessions,
     opiSessions,
     obstacleRoute,
+    badResponses,
     toggleModuleCompleted,
     isModuleCompleted,
     addXP,
@@ -214,6 +278,8 @@ export const usePreparationStore = defineStore('preparation', () => {
     updateSctSessionAi,
     updateSrtSessionAi,
     updateOpiSessionAi,
+    removeBadResponse,
+    updateBadResponse,
     clearHistory,
   }
 })
