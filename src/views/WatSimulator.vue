@@ -130,11 +130,13 @@ const startWordTimer = () => {
 }
 
 const submitSentence = (isTimeOut = false) => {
+  if (responses.value.length > currentIndex.value) return
+
   const currentWord = wordList.value[currentIndex.value]
 
   responses.value.push({
     word: currentWord,
-    text: isTimeOut ? '' : currentInput.value.trim(),
+    text: currentInput.value.trim(),
     timeOut: isTimeOut,
   })
 
@@ -189,13 +191,13 @@ onUnmounted(() => {
 
 // Analytics calculations
 const totalBlank = computed(() => {
-  return responses.value.filter((r) => r.timeOut || !r.text).length
+  return responses.value.filter((r) => !r.text || !r.text.trim()).length
 })
 
 const avgLength = computed(() => {
-  const typed = responses.value.filter((r) => !r.timeOut && r.text)
+  const typed = responses.value.filter((r) => r.text && r.text.trim())
   if (typed.length === 0) return 0
-  const sum = typed.reduce((acc, curr) => acc + curr.text.split(' ').length, 0)
+  const sum = typed.reduce((acc, curr) => acc + curr.text.trim().split(/\s+/).length, 0)
   return Math.round((sum / typed.length) * 10) / 10
 })
 
@@ -305,6 +307,28 @@ onMounted(() => {
 
 <template>
   <div class="wat-wrapper">
+    <!-- Simulators Quick Navigation Hub -->
+    <div class="simulators-hub-nav no-print" v-if="testState !== 'active'">
+      <div class="hub-nav-label">Practice Other Simulators:</div>
+      <div class="hub-nav-items">
+        <RouterLink to="/simulator/wat" class="hub-nav-btn" active-class="active">
+          <span>Word Association (WAT)</span>
+        </RouterLink>
+        <RouterLink to="/simulator/sct" class="hub-nav-btn" active-class="active">
+          <span>Sentence Completion (SCT)</span>
+        </RouterLink>
+        <RouterLink to="/simulator/srt" class="hub-nav-btn" active-class="active">
+          <span>Situation Reaction (SRT)</span>
+        </RouterLink>
+        <RouterLink to="/simulator/opi" class="hub-nav-btn" active-class="active">
+          <span>Personality Test (OPI)</span>
+        </RouterLink>
+        <RouterLink to="/simulator/obstacles" class="hub-nav-btn" active-class="active">
+          <span>GTO Obstacles</span>
+        </RouterLink>
+      </div>
+    </div>
+
     <!-- SETUP VIEW -->
     <div class="setup-container glass-card" v-if="testState === 'setup'">
       <span class="badge badge-cyan">Psychology Simulators</span>

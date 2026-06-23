@@ -117,12 +117,14 @@ const startSituationTimer = () => {
 }
 
 const submitReaction = (isTimeOut = false) => {
+  if (responses.value.length > currentIndex.value) return
+
   const currentSit = situations.value[currentIndex.value]
 
   responses.value.push({
     id: currentSit.id,
     situation: currentSit.desc,
-    text: isTimeOut ? '' : currentInput.value.trim(),
+    text: currentInput.value.trim(),
     timeOut: isTimeOut,
   })
 
@@ -168,12 +170,34 @@ onUnmounted(() => {
 })
 
 const totalAnswered = computed(() => {
-  return responses.value.filter((r) => !r.timeOut && r.text.length > 0).length
+  return responses.value.filter((r) => r.text && r.text.trim().length > 0).length
 })
 </script>
 
 <template>
   <div class="srt-wrapper">
+    <!-- Simulators Quick Navigation Hub -->
+    <div class="simulators-hub-nav no-print" v-if="testState !== 'active'">
+      <div class="hub-nav-label">Practice Other Simulators:</div>
+      <div class="hub-nav-items">
+        <RouterLink to="/simulator/wat" class="hub-nav-btn" active-class="active">
+          <span>Word Association (WAT)</span>
+        </RouterLink>
+        <RouterLink to="/simulator/sct" class="hub-nav-btn" active-class="active">
+          <span>Sentence Completion (SCT)</span>
+        </RouterLink>
+        <RouterLink to="/simulator/srt" class="hub-nav-btn" active-class="active">
+          <span>Situation Reaction (SRT)</span>
+        </RouterLink>
+        <RouterLink to="/simulator/opi" class="hub-nav-btn" active-class="active">
+          <span>Personality Test (OPI)</span>
+        </RouterLink>
+        <RouterLink to="/simulator/obstacles" class="hub-nav-btn" active-class="active">
+          <span>GTO Obstacles</span>
+        </RouterLink>
+      </div>
+    </div>
+
     <!-- SETUP VIEW -->
     <div class="setup-container glass-card" v-if="testState === 'setup'">
       <span class="badge badge-cyan">Psychology Simulators</span>

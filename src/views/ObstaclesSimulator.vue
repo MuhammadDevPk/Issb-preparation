@@ -167,6 +167,28 @@ const goToRoadmap = () => {
 
 <template>
   <div class="obstacles-wrapper">
+    <!-- Simulators Quick Navigation Hub -->
+    <div class="simulators-hub-nav no-print">
+      <div class="hub-nav-label">Practice Other Simulators:</div>
+      <div class="hub-nav-items">
+        <RouterLink to="/simulator/wat" class="hub-nav-btn" active-class="active">
+          <span>Word Association (WAT)</span>
+        </RouterLink>
+        <RouterLink to="/simulator/sct" class="hub-nav-btn" active-class="active">
+          <span>Sentence Completion (SCT)</span>
+        </RouterLink>
+        <RouterLink to="/simulator/srt" class="hub-nav-btn" active-class="active">
+          <span>Situation Reaction (SRT)</span>
+        </RouterLink>
+        <RouterLink to="/simulator/opi" class="hub-nav-btn" active-class="active">
+          <span>Personality Test (OPI)</span>
+        </RouterLink>
+        <RouterLink to="/simulator/obstacles" class="hub-nav-btn" active-class="active">
+          <span>GTO Obstacles</span>
+        </RouterLink>
+      </div>
+    </div>
+
     <div class="header-banner glass-card">
       <div class="header-flex">
         <div class="header-text-container">

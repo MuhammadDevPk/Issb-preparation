@@ -176,6 +176,28 @@ const timeTaken = computed(() => {
 
 <template>
   <div class="sct-wrapper">
+    <!-- Simulators Quick Navigation Hub -->
+    <div class="simulators-hub-nav no-print" v-if="testState !== 'active'">
+      <div class="hub-nav-label">Practice Other Simulators:</div>
+      <div class="hub-nav-items">
+        <RouterLink to="/simulator/wat" class="hub-nav-btn" active-class="active">
+          <span>Word Association (WAT)</span>
+        </RouterLink>
+        <RouterLink to="/simulator/sct" class="hub-nav-btn" active-class="active">
+          <span>Sentence Completion (SCT)</span>
+        </RouterLink>
+        <RouterLink to="/simulator/srt" class="hub-nav-btn" active-class="active">
+          <span>Situation Reaction (SRT)</span>
+        </RouterLink>
+        <RouterLink to="/simulator/opi" class="hub-nav-btn" active-class="active">
+          <span>Personality Test (OPI)</span>
+        </RouterLink>
+        <RouterLink to="/simulator/obstacles" class="hub-nav-btn" active-class="active">
+          <span>GTO Obstacles</span>
+        </RouterLink>
+      </div>
+    </div>
+
     <!-- SETUP SCREEN -->
     <div class="setup-container glass-card" v-if="testState === 'setup'">
       <span class="badge badge-cyan">Psychology Simulators</span>
