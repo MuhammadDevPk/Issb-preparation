@@ -408,44 +408,76 @@ Respond ONLY with JSON in this exact schema:
 // Vision OCR Prompts (Paper Test Mode)
 // ---------------------------------------------------------------------------
 
-const WAT_OCR_SYSTEM = `You are an expert OCR system specializing in reading handwritten ISSB WAT (Word Association Test) answer sheets. Students write numbered sentences next to each word on paper.
+const WAT_OCR_SYSTEM = `You are an expert OCR system specializing in reading handwritten ISSB WAT (Word Association Test) answer sheets. Students write numbered sentences next to each printed word on paper.
 
 Your job is to extract EVERY handwritten sentence from the photo as accurately as possible.
 
-RULES:
-1. Each WAT response is a sentence the student wrote next to or below a numbered word
-2. If a response is blank, crossed out, or completely illegible, set sentence to "[BLANK]"
-3. Preserve the student's exact wording, including any spelling mistakes — do NOT correct them
-4. Number items sequentially starting from 1
-5. Extract ALL visible items — do not skip any
+CRITICAL RULES:
+1. Each WAT item on the paper has a NUMBER printed next to or before the word. Read that printed number carefully — it is the item's true position (e.g., 15, 22, 37).
+2. Use EXACTLY that printed number as the "index" — do NOT renumber or count sequentially from 1. The numbers on this page may start at any value (e.g., 21, 22, 23...).
+3. If a response is blank, crossed out, or completely illegible, set sentence to "[BLANK]"
+4. Preserve the student's exact wording, including any spelling mistakes — do NOT correct them
+5. Extract ALL visible items on this page — do not skip any
 
-Respond ONLY with JSON: { "responses": [{ "index": 1, "sentence": "the student's handwritten sentence" }] }`
+Respond ONLY with JSON: { "responses": [{ "index": <the printed number on paper>, "sentence": "the student's handwritten sentence" }] }`
 
 const SCT_OCR_SYSTEM = `You are an expert OCR system specializing in reading handwritten ISSB SCT (Sentence Completion Test) answer sheets. Students complete sentence starters by writing the rest of the sentence on paper.
 
 Your job is to extract EVERY handwritten completion from the photo as accurately as possible.
 
-RULES:
-1. Each SCT response is the text the student wrote to complete a sentence starter
-2. If a response is blank or illegible, set completion to "[BLANK]"
-3. Preserve the student's exact wording, including spelling mistakes — do NOT correct them
-4. Number items sequentially starting from 1
-5. Extract ALL visible items — do not skip any
+CRITICAL RULES:
+1. Each SCT item on the paper has a NUMBER printed next to or before the sentence starter. Read that printed number carefully — it is the item's true position.
+2. Use EXACTLY that printed number as the "index" — do NOT renumber or count sequentially from 1. The numbers on this page may start at any value (e.g., 14, 15, 16...).
+3. If a response is blank or illegible, set completion to "[BLANK]"
+4. Preserve the student's exact wording, including spelling mistakes — do NOT correct them
+5. Extract ALL visible items on this page — do not skip any
 
-Respond ONLY with JSON: { "responses": [{ "index": 1, "completion": "the student's handwritten completion" }] }`
+Respond ONLY with JSON: { "responses": [{ "index": <the printed number on paper>, "completion": "the student's handwritten completion" }] }`
 
 const SRT_OCR_SYSTEM = `You are an expert OCR system specializing in reading handwritten ISSB SRT (Situation Reaction Test) answer sheets. Students write their reaction/response to each situation on paper.
 
 Your job is to extract EVERY handwritten reaction from the photo as accurately as possible.
 
-RULES:
-1. Each SRT response is the student's written reaction to a given situation
-2. If a response is blank or illegible, set reaction to "[BLANK]"
-3. Preserve the student's exact wording, including spelling mistakes — do NOT correct them
-4. Number items sequentially starting from 1
-5. Extract ALL visible items — do not skip any
+CRITICAL RULES:
+1. Each SRT item on the paper has a NUMBER printed next to or before the situation. Read that printed number carefully — it is the item's true position.
+2. Use EXACTLY that printed number as the "index" — do NOT renumber or count sequentially from 1. The numbers on this page may start at any value (e.g., 6, 7, 8...).
+3. If a response is blank or illegible, set reaction to "[BLANK]"
+4. Preserve the student's exact wording, including spelling mistakes — do NOT correct them
+5. Extract ALL visible items on this page — do not skip any
 
-Respond ONLY with JSON: { "responses": [{ "index": 1, "reaction": "the student's handwritten reaction" }] }`
+Respond ONLY with JSON: { "responses": [{ "index": <the printed number on paper>, "reaction": "the student's handwritten reaction" }] }`
+
+// ---------------------------------------------------------------------------
+// Semantic Matching Prompts (match OCR-extracted responses to correct words)
+// ---------------------------------------------------------------------------
+
+const WAT_MATCH_SYSTEM = `You are an expert ISSB WAT (Word Association Test) response matcher.
+
+Given a numbered list of WAT trigger words and a set of handwritten student responses extracted from scanned answer sheets, your job is to match each response to the CORRECT trigger word it was written for.
+
+MATCHING STRATEGY (apply in order):
+1. DIRECT WORD MATCH: If the response CONTAINS the trigger word itself, that is the strongest signal (e.g., "Army protects the nation" → word "Army", "Alcohol injures health" → word "Alcohol")
+2. SEMANTIC MEANING: If no direct word match, pick the trigger word that is most semantically related (e.g., "Serve the motherland with pride" → word "Country")
+3. ONLY MATCH IF CONFIDENT: If a response could plausibly match multiple words and you cannot decide, leave it unmatched — do NOT guess
+4. ONE-TO-ONE MAPPING: Each response matches to exactly ONE trigger word. Each trigger word has at most ONE response.
+5. UNMATCHED WORDS: If a trigger word has no matching response (student skipped it), do NOT include it in the output.
+6. EXACT TEXT: Use the EXACT extracted response text — do NOT modify, correct, or paraphrase.
+
+Respond ONLY with JSON:
+{
+  "matches": {
+    "<trigger word position number>": "exact response text"
+  }
+}
+
+Example:
+{
+  "matches": {
+    "1": "Army protects the nation",
+    "3": "Work hard for success",
+    "7": "Alcohol injures health"
+  }
+}`
 
 // ---------------------------------------------------------------------------
 // Composable
@@ -879,11 +911,11 @@ Provide a detailed psychological review focusing on the candidate's Big Five per
 
         let textPrompt = ''
         if (testType === 'wat') {
-          textPrompt = `Extract all handwritten WAT sentences from this answer sheet photo. This is page ${i + 1} of ${totalImages}.`
+          textPrompt = `Extract all handwritten WAT sentences from this answer sheet photo. This is page ${i + 1} of ${totalImages}. IMPORTANT: Use the printed number from the paper as the index for each item (numbers may not start at 1 on this page).`
         } else if (testType === 'sct') {
-          textPrompt = `Extract all handwritten sentence completions from this SCT answer sheet photo. This is page ${i + 1} of ${totalImages}.`
+          textPrompt = `Extract all handwritten sentence completions from this SCT answer sheet photo. This is page ${i + 1} of ${totalImages}. IMPORTANT: Use the printed number from the paper as the index for each item (numbers may not start at 1 on this page).`
         } else {
-          textPrompt = `Extract all handwritten reactions from this SRT answer sheet photo. This is page ${i + 1} of ${totalImages}.`
+          textPrompt = `Extract all handwritten reactions from this SRT answer sheet photo. This is page ${i + 1} of ${totalImages}. IMPORTANT: Use the printed number from the paper as the index for each item (numbers may not start at 1 on this page).`
         }
 
         // Retry logic per image
@@ -938,55 +970,121 @@ Provide a detailed psychological review focusing on the candidate's Big Five per
       analysisProgress.value = 85
       analysisProgressText.value = 'Structuring extracted responses...'
 
-      // Re-index sequentially and map to the prompt list if available
-      const structuredResponses = allExtracted.map((item, idx) => {
-        const seqIndex = idx + 1
-        const promptItem = promptList[idx] || ''
+      // Collect all non-blank response texts from the OCR
+      const rawResponses = allExtracted
+        .map(item => item.sentence || item.completion || item.reaction || item.text || '')
+        .filter(t => t && t.trim() && t !== '[BLANK]')
+
+      // ---------- AI SEMANTIC MATCHING (WAT only) ----------
+      // Instead of relying on OCR-read printed numbers (which are unreliable),
+      // send ALL extracted responses + the word list to the AI and let it
+      // match each response to the correct trigger word by meaning.
+      let matchedByIndex = null // { wordPosition: responseText }
+
+      if (testType === 'wat' && promptList.length > 0 && rawResponses.length > 0) {
+        analysisProgressText.value = 'Matching responses to trigger words with AI...'
+        analysisProgress.value = 87
+
+        try {
+          const wordListText = promptList.map((w, i) => `${i + 1}. ${w}`).join('\n')
+          const responsesText = rawResponses.map((r, i) => `${i + 1}. "${r}"`).join('\n')
+
+          const matchUserContent = `TRIGGER WORDS (in test order):\n${wordListText}\n\nEXTRACTED STUDENT RESPONSES (from scanned answer sheets, in random order):\n${responsesText}\n\nMatch each extracted response to the correct trigger word it was written for. Use the trigger word's position number as the key.`
+
+          const { text: matchText, providerName } = await analyzeWithAI(
+            WAT_MATCH_SYSTEM,
+            matchUserContent,
+            2500
+          )
+          currentProvider.value = providerName
+
+          const matchCleaned = matchText.replace(/^```(?:json)?\s*/i, '').replace(/```\s*$/i, '').trim()
+          const matchResult = JSON.parse(matchCleaned)
+
+          if (matchResult.matches && typeof matchResult.matches === 'object') {
+            matchedByIndex = {}
+            for (const [wordIdx, responseText] of Object.entries(matchResult.matches)) {
+              const num = Number(wordIdx)
+              if (!isNaN(num) && num > 0 && num <= promptList.length && typeof responseText === 'string') {
+                matchedByIndex[num] = responseText
+              }
+            }
+            console.log(`[OCR] AI matched ${Object.keys(matchedByIndex).length} responses to trigger words`)
+          }
+        } catch (matchErr) {
+          console.warn('[OCR] AI semantic matching failed, falling back to index-based mapping:', matchErr.message)
+          matchedByIndex = null // will fall back below
+        }
+      }
+
+      // ---------- FALLBACK: Number-based mapping ----------
+      // Used for SCT/SRT, or if AI matching failed for WAT
+      let extractedByIndex = null
+      if (!matchedByIndex) {
+        extractedByIndex = {}
+        for (const item of allExtracted) {
+          const num = Number(item.index)
+          if (!isNaN(num) && num > 0) {
+            const text = item.sentence || item.completion || item.reaction || item.text || '[BLANK]'
+            if (!extractedByIndex[num] || extractedByIndex[num] === '[BLANK]') {
+              extractedByIndex[num] = text
+            }
+          }
+        }
+      }
+
+      // Use whichever mapping succeeded
+      const finalMapping = matchedByIndex || extractedByIndex
+
+      // Build final structured list using promptList as the source of truth
+      const structuredResponses = promptList.map((promptItem, idx) => {
+        const position = idx + 1
+        const rawText = finalMapping[position] ?? '[BLANK]'
 
         if (testType === 'wat') {
           return {
-            index: seqIndex,
+            index: position,
             word: promptItem,
-            text: item.sentence || item.text || item.completion || item.reaction || '[BLANK]',
+            text: rawText === '[BLANK]' ? '' : rawText,
             timeOut: false,
           }
         } else if (testType === 'sct') {
           return {
-            index: seqIndex,
+            index: position,
             prompt: promptItem,
-            text: item.completion || item.sentence || item.text || item.reaction || '[BLANK]',
+            text: rawText === '[BLANK]' ? '' : rawText,
           }
         } else {
           return {
-            index: seqIndex,
+            index: position,
             situation: promptItem,
-            text: item.reaction || item.sentence || item.text || item.completion || '[BLANK]',
+            text: rawText === '[BLANK]' ? '' : rawText,
             timeOut: false,
           }
         }
       })
 
-      // If we have more prompts than extracted, fill remaining as blank
-      if (promptList.length > structuredResponses.length) {
-        for (let i = structuredResponses.length; i < promptList.length; i++) {
-          const seqIndex = i + 1
-          if (testType === 'wat') {
-            structuredResponses.push({ index: seqIndex, word: promptList[i], text: '[BLANK]', timeOut: false })
-          } else if (testType === 'sct') {
-            structuredResponses.push({ index: seqIndex, prompt: promptList[i], text: '[BLANK]' })
-          } else {
-            structuredResponses.push({ index: seqIndex, situation: promptList[i], text: '[BLANK]', timeOut: false })
-          }
-        }
-      }
+      // If no promptList was provided, fall back to sorted extracted items
+      const finalResponses = promptList.length > 0
+        ? structuredResponses
+        : allExtracted
+            .map((item) => ({
+              index: Number(item.index),
+              word: item.word || '',
+              prompt: item.prompt || '',
+              situation: item.situation || '',
+              text: item.sentence || item.completion || item.reaction || item.text || '',
+              timeOut: false,
+            }))
+            .sort((a, b) => a.index - b.index)
 
       analysisProgress.value = 90
       analysisProgressText.value = 'Extraction complete! Review your answers below.'
 
       ocrResult.value = {
-        responses: structuredResponses,
+        responses: finalResponses,
         providerName: currentProvider.value,
-        totalExtracted: allExtracted.length,
+        totalExtracted: Object.keys(finalMapping).length,
         totalExpected: promptList.length || allExtracted.length,
       }
     } catch (err) {
