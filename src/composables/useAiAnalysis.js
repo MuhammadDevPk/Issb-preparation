@@ -408,44 +408,56 @@ Respond ONLY with JSON in this exact schema:
 // Vision OCR Prompts (Paper Test Mode)
 // ---------------------------------------------------------------------------
 
-const WAT_OCR_SYSTEM = `You are an expert OCR system specializing in reading handwritten ISSB WAT (Word Association Test) answer sheets. Students write numbered sentences next to each printed word on paper.
+const WAT_OCR_SYSTEM = `You are an expert OCR system specializing in reading handwritten ISSB WAT (Word Association Test) answer sheets.
+Students write handwritten sentences next to the printed trigger words and numbers on the paper.
 
-Your job is to extract EVERY handwritten sentence from the photo as accurately as possible.
-
-CRITICAL RULES:
-1. Each WAT item on the paper has a NUMBER printed next to or before the word. Read that printed number carefully — it is the item's true position (e.g., 15, 22, 37).
-2. Use EXACTLY that printed number as the "index" — do NOT renumber or count sequentially from 1. The numbers on this page may start at any value (e.g., 21, 22, 23...).
-3. If a response is blank, crossed out, or completely illegible, set sentence to "[BLANK]"
-4. Preserve the student's exact wording, including any spelling mistakes — do NOT correct them
-5. Extract ALL visible items on this page — do not skip any
-
-Respond ONLY with JSON: { "responses": [{ "index": <the printed number on paper>, "sentence": "the student's handwritten sentence" }] }`
-
-const SCT_OCR_SYSTEM = `You are an expert OCR system specializing in reading handwritten ISSB SCT (Sentence Completion Test) answer sheets. Students complete sentence starters by writing the rest of the sentence on paper.
-
-Your job is to extract EVERY handwritten completion from the photo as accurately as possible.
+Your job is to extract EVERY handwritten sentence from the photo with 100% completeness and accuracy. Do not truncate, omit, or summarize any words from the candidate's response. Extract the full sentence, word-for-word.
 
 CRITICAL RULES:
-1. Each SCT item on the paper has a NUMBER printed next to or before the sentence starter. Read that printed number carefully — it is the item's true position.
-2. Use EXACTLY that printed number as the "index" — do NOT renumber or count sequentially from 1. The numbers on this page may start at any value (e.g., 14, 15, 16...).
-3. If a response is blank or illegible, set completion to "[BLANK]"
-4. Preserve the student's exact wording, including spelling mistakes — do NOT correct them
-5. Extract ALL visible items on this page — do not skip any
+1. You will be provided a reference list of expected trigger words and their index numbers for the entire test.
+2. For each handwritten response on the sheet, identify the printed trigger word and printed number next to it.
+3. Match it to the correct word/index in the reference list.
+4. Extract the FULL handwritten text next to it. Do NOT truncate or skip any words. If a sentence is long, write every single word of it.
+5. If a response is blank, crossed out, or completely illegible, set the sentence to "[BLANK]".
+6. Preserve the student's exact handwriting, spelling, and grammar. Do not correct typos.
+7. Output the correct reference index (printed number) as the "index" in the JSON.
+8. Do NOT omit or clean up any initial or final words. Transcribe the entire sentence from the very first letter to the very last punctuation mark, exactly as it is handwritten.
 
-Respond ONLY with JSON: { "responses": [{ "index": <the printed number on paper>, "completion": "the student's handwritten completion" }] }`
+Respond ONLY with JSON: { "responses": [{ "index": <reference index number>, "sentence": "full handwritten sentence" }] }`
 
-const SRT_OCR_SYSTEM = `You are an expert OCR system specializing in reading handwritten ISSB SRT (Situation Reaction Test) answer sheets. Students write their reaction/response to each situation on paper.
+const SCT_OCR_SYSTEM = `You are an expert OCR system specializing in reading handwritten ISSB SCT (Sentence Completion Test) answer sheets.
+Students complete sentence starters by writing the rest of the sentence on paper.
 
-Your job is to extract EVERY handwritten reaction from the photo as accurately as possible.
+Your job is to extract EVERY handwritten completion from the photo with 100% completeness and accuracy. Do not truncate, omit, or summarize any words. Extract the full completion, word-for-word.
 
 CRITICAL RULES:
-1. Each SRT item on the paper has a NUMBER printed next to or before the situation. Read that printed number carefully — it is the item's true position.
-2. Use EXACTLY that printed number as the "index" — do NOT renumber or count sequentially from 1. The numbers on this page may start at any value (e.g., 6, 7, 8...).
-3. If a response is blank or illegible, set reaction to "[BLANK]"
-4. Preserve the student's exact wording, including spelling mistakes — do NOT correct them
-5. Extract ALL visible items on this page — do not skip any
+1. You will be provided a reference list of expected sentence starters and their index numbers for the entire test.
+2. For each handwritten completion on the sheet, identify the printed starter and printed number next to it.
+3. Match it to the correct starter/index in the reference list.
+4. Extract the FULL handwritten completion text next to it. Do NOT truncate or skip any words. If a sentence is long, write every single word of it.
+5. If a response is blank, crossed out, or completely illegible, set the completion to "[BLANK]".
+6. Preserve the student's exact handwriting, spelling, and grammar. Do not correct typos.
+7. Output the correct reference index (printed number) as the "index" in the JSON.
+8. Do NOT omit or clean up any initial or final words. Transcribe the entire completion from the very first letter to the very last punctuation mark, exactly as it is handwritten.
 
-Respond ONLY with JSON: { "responses": [{ "index": <the printed number on paper>, "reaction": "the student's handwritten reaction" }] }`
+Respond ONLY with JSON: { "responses": [{ "index": <reference index number>, "completion": "full handwritten completion" }] }`
+
+const SRT_OCR_SYSTEM = `You are an expert OCR system specializing in reading handwritten ISSB SRT (Situation Reaction Test) answer sheets.
+Students write their reaction/response to each situation on paper.
+
+Your job is to extract EVERY handwritten reaction from the photo with 100% completeness and accuracy. Do not truncate, omit, or summarize any words. Extract the full reaction, word-for-word.
+
+CRITICAL RULES:
+1. You will be provided a reference list of expected situations and their index numbers for the entire test.
+2. For each handwritten reaction on the sheet, identify the printed situation and printed number next to it.
+3. Match it to the correct situation/index in the reference list.
+4. Extract the FULL handwritten reaction text next to it. Do NOT truncate or skip any words. If a sentence is long, write every single word of it.
+5. If a response is blank, crossed out, or completely illegible, set the reaction to "[BLANK]".
+6. Preserve the student's exact handwriting, spelling, and grammar. Do not correct typos.
+7. Output the correct reference index (printed number) as the "index" in the JSON.
+8. Do NOT omit or clean up any initial or final words. Transcribe the entire reaction from the very first letter to the very last punctuation mark, exactly as it is handwritten.
+
+Respond ONLY with JSON: { "responses": [{ "index": <reference index number>, "reaction": "full handwritten reaction" }] }`
 
 // ---------------------------------------------------------------------------
 // Semantic Matching Prompts (match OCR-extracted responses to correct words)
@@ -453,15 +465,16 @@ Respond ONLY with JSON: { "responses": [{ "index": <the printed number on paper>
 
 const WAT_MATCH_SYSTEM = `You are an expert ISSB WAT (Word Association Test) response matcher.
 
-Given a numbered list of WAT trigger words and a set of handwritten student responses extracted from scanned answer sheets, your job is to match each response to the CORRECT trigger word it was written for.
+Given a numbered list of WAT trigger words and a set of handwritten student responses (with their original OCR-detected index hints), your job is to match each response to the CORRECT trigger word it was written for.
 
 MATCHING STRATEGY (apply in order):
-1. DIRECT WORD MATCH: If the response CONTAINS the trigger word itself, that is the strongest signal (e.g., "Army protects the nation" → word "Army", "Alcohol injures health" → word "Alcohol")
-2. SEMANTIC MEANING: If no direct word match, pick the trigger word that is most semantically related (e.g., "Serve the motherland with pride" → word "Country")
-3. ONLY MATCH IF CONFIDENT: If a response could plausibly match multiple words and you cannot decide, leave it unmatched — do NOT guess
-4. ONE-TO-ONE MAPPING: Each response matches to exactly ONE trigger word. Each trigger word has at most ONE response.
-5. UNMATCHED WORDS: If a trigger word has no matching response (student skipped it), do NOT include it in the output.
-6. EXACT TEXT: Use the EXACT extracted response text — do NOT modify, correct, or paraphrase.
+1. DIRECT WORD MATCH: If the response CONTAINS the trigger word itself (or a direct variation like plural/tense/spelling variation), that is the strongest signal (e.g., "Army protects the nation" → word "Army", "Alcohol injures health" → word "Alcohol", "cry on small thing" → word "Cry").
+2. SEMANTIC MEANING: If no direct word match, pick the trigger word that is most semantically related (e.g., "Serve the motherland with pride" → word "Country").
+3. USE OCR INDEX HINTS: The OCR index hint is the line/number printed next to the response on paper. The OCR engine might occasionally misread numbers (e.g. reading 33 as 25, or 36 as 29, or 44 as 42). Use the hint as a guide, but if a direct word match or strong semantic match points to a different trigger word, override the OCR index hint.
+4. STRICT ONE-TO-ONE MAPPING: Each response matches to exactly ONE trigger word. Do NOT assign the same response text to multiple trigger words. Each trigger word can have at most ONE response.
+5. ONLY MATCH IF CONFIDENT: If a response does not clearly fit any trigger word (neither directly nor semantically), leave it unmatched. Do NOT guess or force a match.
+6. UNMATCHED WORDS: If a trigger word has no matching response, do NOT include it in the output matches.
+7. EXACT TEXT: In the output JSON, the value MUST be the exact response text from the input, word-for-word. Do not change it.
 
 Respond ONLY with JSON:
 {
@@ -476,6 +489,42 @@ Example:
     "1": "Army protects the nation",
     "3": "Work hard for success",
     "7": "Alcohol injures health"
+  }
+}`
+
+const SCT_MATCH_SYSTEM = `You are an expert ISSB SCT (Sentence Completion Test) response matcher.
+
+Given a numbered list of SCT sentence starters and a set of handwritten student completions (with their original OCR-detected index hints), your job is to match each completion to the CORRECT sentence starter it completes.
+
+MATCHING STRATEGY (apply in order):
+1. GRAMMATICAL AND SEMANTIC COHERENCE: Match the completion to the starter so that they form a natural, grammatically correct, and logically coherent sentence.
+2. USE OCR INDEX HINTS: Use the OCR index hint as a guide, but if grammar or context suggests it was misread (e.g., misreading 24 as 29), map it to the correct starter.
+3. STRICT ONE-TO-ONE MAPPING: Each completion matches to exactly ONE starter. Do NOT reuse the same completion text. Each starter has at most ONE completion.
+4. ONLY MATCH IF CONFIDENT: If you are not sure, leave it unmatched. Do NOT guess.
+5. EXACT TEXT: The value in JSON must be the exact completion text from the input.
+
+Respond ONLY with JSON:
+{
+  "matches": {
+    "<starter position number>": "exact completion text"
+  }
+}`
+
+const SRT_MATCH_SYSTEM = `You are an expert ISSB SRT (Situation Reaction Test) response matcher.
+
+Given a numbered list of SRT situations and a set of handwritten reactions (with their original OCR-detected index hints), your job is to match each reaction to the CORRECT situation it responds to.
+
+MATCHING STRATEGY (apply in order):
+1. SITUATIONAL FIT: Match the reaction to the situation where it makes logical sense as a response or action taken (e.g. "His father died" -> "took over family duties", "He failed the exam" -> "worked harder next time").
+2. USE OCR INDEX HINTS: Use the OCR index hint as a guide, but override it if the reaction clearly belongs to a different situation.
+3. STRICT ONE-TO-ONE MAPPING: Each reaction matches to exactly ONE situation. Do NOT reuse the same reaction text. Each situation has at most ONE reaction.
+4. ONLY MATCH IF CONFIDENT: If you are not sure, leave it unmatched. Do NOT guess.
+5. EXACT TEXT: The value in JSON must be the exact reaction text from the input.
+
+Respond ONLY with JSON:
+{
+  "matches": {
+    "<situation position number>": "exact reaction text"
   }
 }`
 
@@ -911,11 +960,29 @@ Provide a detailed psychological review focusing on the candidate's Big Five per
 
         let textPrompt = ''
         if (testType === 'wat') {
-          textPrompt = `Extract all handwritten WAT sentences from this answer sheet photo. This is page ${i + 1} of ${totalImages}. IMPORTANT: Use the printed number from the paper as the index for each item (numbers may not start at 1 on this page).`
+          textPrompt = `Extract all handwritten WAT sentences from this answer sheet photo. This is page ${i + 1} of ${totalImages}.
+IMPORTANT:
+- Use the printed number from the paper as the index for each item.
+- Do NOT truncate or summarize. Transcribe the FULL handwritten sentence next to each printed word/number with 100% accuracy.`
+          if (promptList.length > 0) {
+            textPrompt += `\n- Here is the complete list of expected trigger words and their index numbers for the entire test for reference. Look for these printed words on the sheet:\n${promptList.map((p, idx) => `${idx + 1}. ${p}`).join('\n')}`
+          }
         } else if (testType === 'sct') {
-          textPrompt = `Extract all handwritten sentence completions from this SCT answer sheet photo. This is page ${i + 1} of ${totalImages}. IMPORTANT: Use the printed number from the paper as the index for each item (numbers may not start at 1 on this page).`
+          textPrompt = `Extract all handwritten sentence completions from this SCT answer sheet photo. This is page ${i + 1} of ${totalImages}.
+IMPORTANT:
+- Use the printed number from the paper as the index for each item.
+- Do NOT truncate or summarize. Transcribe the FULL handwritten completion next to each printed starter/number with 100% accuracy.`
+          if (promptList.length > 0) {
+            textPrompt += `\n- Here is the complete list of expected sentence starters and their index numbers for the entire test for reference. Look for these printed sentence starters on the sheet:\n${promptList.map((p, idx) => `${idx + 1}. ${p}...`).join('\n')}`
+          }
         } else {
-          textPrompt = `Extract all handwritten reactions from this SRT answer sheet photo. This is page ${i + 1} of ${totalImages}. IMPORTANT: Use the printed number from the paper as the index for each item (numbers may not start at 1 on this page).`
+          textPrompt = `Extract all handwritten reactions from this SRT answer sheet photo. This is page ${i + 1} of ${totalImages}.
+IMPORTANT:
+- Use the printed number from the paper as the index for each item.
+- Do NOT truncate or summarize. Transcribe the FULL handwritten reaction next to each printed situation/number with 100% accuracy.`
+          if (promptList.length > 0) {
+            textPrompt += `\n- Here is the complete list of expected situations and their index numbers for the entire test for reference. Look for these printed situations on the sheet:\n${promptList.map((p, idx) => `${idx + 1}. ${p}`).join('\n')}`
+          }
         }
 
         // Retry logic per image
@@ -970,29 +1037,56 @@ Provide a detailed psychological review focusing on the candidate's Big Five per
       analysisProgress.value = 85
       analysisProgressText.value = 'Structuring extracted responses...'
 
-      // Collect all non-blank response texts from the OCR
+      // Collect all non-blank response texts from the OCR along with their original OCR indices
       const rawResponses = allExtracted
-        .map(item => item.sentence || item.completion || item.reaction || item.text || '')
-        .filter(t => t && t.trim() && t !== '[BLANK]')
+        .filter(item => {
+          const text = item.sentence || item.completion || item.reaction || item.text || ''
+          return text && text.trim() && text !== '[BLANK]'
+        })
+        .map(item => ({
+          text: item.sentence || item.completion || item.reaction || item.text || '',
+          ocrIndex: Number(item.index)
+        }))
 
-      // ---------- AI SEMANTIC MATCHING (WAT only) ----------
-      // Instead of relying on OCR-read printed numbers (which are unreliable),
-      // send ALL extracted responses + the word list to the AI and let it
-      // match each response to the correct trigger word by meaning.
-      let matchedByIndex = null // { wordPosition: responseText }
+      // ---------- AI SEMANTIC MATCHING (WAT/SCT/SRT) ----------
+      // Send ALL extracted responses (with OCR index hints) + expected test items to the AI
+      // and let it match each response to the correct test item by meaning, grammar, or context.
+      let matchedByIndex = null // { positionNumber: responseText }
 
-      if (testType === 'wat' && promptList.length > 0 && rawResponses.length > 0) {
-        analysisProgressText.value = 'Matching responses to trigger words with AI...'
+      if (promptList.length > 0 && rawResponses.length > 0) {
+        analysisProgressText.value = 'Matching responses to test items with AI...'
         analysisProgress.value = 87
 
         try {
-          const wordListText = promptList.map((w, i) => `${i + 1}. ${w}`).join('\n')
-          const responsesText = rawResponses.map((r, i) => `${i + 1}. "${r}"`).join('\n')
+          let matchSystemPrompt = WAT_MATCH_SYSTEM
+          let promptListText = ''
 
-          const matchUserContent = `TRIGGER WORDS (in test order):\n${wordListText}\n\nEXTRACTED STUDENT RESPONSES (from scanned answer sheets, in random order):\n${responsesText}\n\nMatch each extracted response to the correct trigger word it was written for. Use the trigger word's position number as the key.`
+          if (testType === 'wat') {
+            matchSystemPrompt = WAT_MATCH_SYSTEM
+            promptListText = promptList.map((w, i) => `${i + 1}. ${w}`).join('\n')
+          } else if (testType === 'sct') {
+            matchSystemPrompt = SCT_MATCH_SYSTEM
+            promptListText = promptList.map((s, i) => `${i + 1}. Starter: "${s}..."`).join('\n')
+          } else {
+            matchSystemPrompt = SRT_MATCH_SYSTEM
+            promptListText = promptList.map((s, i) => `${i + 1}. Situation: "${s}"`).join('\n')
+          }
+
+          const responsesText = rawResponses
+            .map((r, i) => `${i + 1}. "${r.text}" (OCR index hint: ${r.ocrIndex})`)
+            .join('\n')
+
+          let matchUserContent = ''
+          if (testType === 'wat') {
+            matchUserContent = `TRIGGER WORDS (in test order):\n${promptListText}\n\nEXTRACTED STUDENT RESPONSES:\n${responsesText}\n\nMatch each extracted response to the correct trigger word it was written for. Use the trigger word's position number as the key.`
+          } else if (testType === 'sct') {
+            matchUserContent = `SENTENCE STARTERS (in test order):\n${promptListText}\n\nEXTRACTED STUDENT COMPLETIONS:\n${responsesText}\n\nMatch each extracted completion to the correct sentence starter it completes. Use the starter's position number as the key.`
+          } else {
+            matchUserContent = `SITUATIONS (in test order):\n${promptListText}\n\nEXTRACTED STUDENT REACTIONS:\n${responsesText}\n\nMatch each extracted reaction to the correct situation it responds to. Use the situation's position number as the key.`
+          }
 
           const { text: matchText, providerName } = await analyzeWithAI(
-            WAT_MATCH_SYSTEM,
+            matchSystemPrompt,
             matchUserContent,
             2500
           )
@@ -1009,11 +1103,11 @@ Provide a detailed psychological review focusing on the candidate's Big Five per
                 matchedByIndex[num] = responseText
               }
             }
-            console.log(`[OCR] AI matched ${Object.keys(matchedByIndex).length} responses to trigger words`)
+            console.log(`[OCR] AI matched ${Object.keys(matchedByIndex).length} responses to test items`)
           }
         } catch (matchErr) {
           console.warn('[OCR] AI semantic matching failed, falling back to index-based mapping:', matchErr.message)
-          matchedByIndex = null // will fall back below
+          matchedByIndex = null // will fall back
         }
       }
 
