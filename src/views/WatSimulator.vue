@@ -298,6 +298,13 @@ const avgLength = computed(() => {
   return Math.round((sum / typed.length) * 10) / 10
 })
 
+// Localhost Dev Gating
+const isLocalhost = computed(() => {
+  return import.meta.env.DEV || 
+         window.location.hostname === 'localhost' || 
+         window.location.hostname === '127.0.0.1'
+})
+
 // Visual Guides & Infographics
 const showVisualGuides = ref(false)
 const activeGuideTab = ref(0)
@@ -497,7 +504,7 @@ onMounted(() => {
         <button class="btn btn-secondary btn-large" @click="showVocab = !showVocab; if(showVocab) showVisualGuides = false">
           <span>📖 {{ showVocab ? 'HIDE VOCABULARY' : 'STUDY VOCABULARY' }}</span>
         </button>
-        <button class="btn btn-secondary btn-large" @click="showVisualGuides = !showVisualGuides; if(showVisualGuides) showVocab = false">
+        <button v-if="isLocalhost" class="btn btn-secondary btn-large" @click="showVisualGuides = !showVisualGuides; if(showVisualGuides) showVocab = false">
           <span>🖼️ {{ showVisualGuides ? 'HIDE VISUAL GUIDES' : 'VISUAL STUDY GUIDES' }}</span>
         </button>
         <button class="btn btn-primary btn-large" @click="startTest">
@@ -550,7 +557,7 @@ onMounted(() => {
       </div>
 
       <!-- Visual Guides Panel -->
-      <div class="guides-panel" v-if="showVisualGuides">
+      <div class="guides-panel" v-if="isLocalhost && showVisualGuides">
         <div class="guides-header">
           <h3>🖼️ WAT Preparation Guides & Infographics</h3>
           <p class="guides-subtitle">
