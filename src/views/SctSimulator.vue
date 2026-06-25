@@ -4,6 +4,7 @@ import { useRouter } from 'vue-router'
 import { usePreparationStore } from '../stores/preparation'
 import { useAiAnalysis } from '../composables/useAiAnalysis.js'
 import AiAnalysisReport from '../components/AiAnalysisReport.vue'
+import ImageUploadPanel from '../components/ImageUploadPanel.vue'
 import { sctSheets, getRandomSctStarters } from '../data/issbTestData.js'
 
 import { useAuthStore } from '../stores/auth'
@@ -13,7 +14,7 @@ const router = useRouter()
 const authStore = useAuthStore()
 
 // AI Analysis
-const { isAnalyzing, analysisResult, analysisError, currentProvider, analysisProgress, analysisPhase, analysisProgressText, analyzeSCT, resetAnalysis } = useAiAnalysis()
+const { isAnalyzing, analysisResult, analysisError, currentProvider, analysisProgress, analysisPhase, analysisProgressText, analyzeSCT, ocrResult, ocrError, extractFromImages, resetAnalysis } = useAiAnalysis()
 const showAiReport = ref(false)
 const showUpgradeModal = ref(false)
 
@@ -67,7 +68,7 @@ const viewPastSession = (session) => {
   }
 }
 
-const testState = ref('setup') // 'setup', 'active', 'results'
+const testState = ref('setup') // 'setup', 'active', 'results', 'paper-display', 'paper-upload', 'paper-review'
 const selectedLanguage = ref('english') // 'english', 'urdu'
 const selectedSheetId = ref('eng_sheet_a')
 const timerLeft = ref(360) // 6 minutes (360s) for 26 sentences
@@ -160,8 +161,95 @@ const goToRoadmap = () => {
   router.push('/roadmap')
 }
 
+// ---------------------------------------------------------------------------
+// Paper Test Mode (ISSB-style: display starters one-by-one → write on paper → upload → OCR)
+// ---------------------------------------------------------------------------
+const paperStarterIndex = ref(0)
+const paperTimerPerStarter = ref(30) // 30 seconds per sentence in paper mode
+const paperTimeLeft = ref(30)
+let paperTimer = null
+
+const startPaperTest = () => {
+  if (selectedSheetId.value === 'random_mix') {
+    activeStarters.value = getRandomSctStarters(selectedLanguage.value, 26)
+  } else {
+    const sheet = availableSheets.value.find((s) => s.id === selectedSheetId.value)
+    activeStarters.value = sheet ? [...sheet.starters] : []
+  }
+
+  paperStarterIndex.value = 0
+  completions.value = Array(activeStarters.value.length).fill('')
+  testState.value = 'paper-display'
+  startPaperStarterTimer()
+}
+
+const startPaperStarterTimer = () => {
+  paperTimeLeft.value = paperTimerPerStarter.value
+  clearInterval(paperTimer)
+
+  paperTimer = setInterval(() => {
+    paperTimeLeft.value--
+    if (paperTimeLeft.value <= 0) {
+      paperNextStarter()
+    }
+  }, 1000)
+}
+
+const paperNextStarter = () => {
+  if (paperStarterIndex.value < activeStarters.value.length - 1) {
+    paperStarterIndex.value++
+    startPaperStarterTimer()
+  } else {
+    clearInterval(paperTimer)
+    testState.value = 'paper-upload'
+  }
+}
+
+const skipPaperDisplay = () => {
+  clearInterval(paperTimer)
+  testState.value = 'paper-upload'
+}
+
+const handlePaperImagesReady = async ({ images }) => {
+  await extractFromImages(images, 'sct', activeStarters.value)
+  if (ocrResult.value) {
+    testState.value = 'paper-review'
+  }
+}
+
+const submitReviewedResponses = async () => {
+  if (!ocrResult.value) return
+
+  const formattedResponses = ocrResult.value.responses.map((r) => ({
+    index: r.index,
+    prompt: r.prompt,
+    text: r.text === '[BLANK]' ? '' : r.text,
+  }))
+
+  // Build completions for the results view
+  completions.value = formattedResponses.map((r) => r.text)
+
+  const dateStr = new Date().toLocaleString()
+  currentSessionDate.value = dateStr
+  store.saveSctSession({
+    date: dateStr,
+    language: selectedLanguage.value,
+    responses: formattedResponses,
+    selectedSheetId: selectedSheetId.value,
+    mode: 'paper',
+  })
+
+  testState.value = 'results'
+  showAiReport.value = true
+  await analyzeSCT(formattedResponses, selectedLanguage.value)
+  if (analysisResult.value) {
+    store.updateSctSessionAi(currentSessionDate.value, analysisResult.value)
+  }
+}
+
 onUnmounted(() => {
   clearInterval(testTimer)
+  clearInterval(paperTimer)
 })
 
 // Analytics calculations
@@ -258,14 +346,24 @@ const timeTaken = computed(() => {
         </ul>
       </div>
 
-      <div class="flex-center">
+      <div class="flex-center" style="gap: 1rem; flex-wrap: wrap;">
         <button class="btn btn-primary btn-large" @click="startTest">
-          <span>START 6-MINUTE TIMED RUN</span>
+          <span>⌨️ START 6-MINUTE TIMED RUN</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon">
             <polygon points="5 3 19 12 5 21 5 3" />
           </svg>
         </button>
+        <button class="btn btn-paper-test btn-large" @click="startPaperTest">
+          <span>📝 PAPER TEST (ISSB MODE)</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon">
+            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+            <circle cx="12" cy="13" r="4"/>
+          </svg>
+        </button>
       </div>
+      <p style="text-align: center; margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-muted);">
+        📝 <strong>Paper Test</strong>: Sentences flash on screen (30s each) → You write on paper → Upload photos → AI reads &amp; evaluates
+      </p>
 
       <!-- Past Sessions Panel -->
       <div class="history-panel" v-if="store.sctSessions.length > 0">
@@ -322,6 +420,123 @@ const timeTaken = computed(() => {
       <div class="footer-actions flex-center">
         <button class="btn btn-success btn-large" @click="submitSheet">
           <span>SUBMIT WORKSPACE SHEET</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- PAPER TEST: DISPLAY-ONLY VIEW -->
+    <div class="active-container glass-card paper-display-view" v-if="testState === 'paper-display'">
+      <div class="paper-mode-banner">
+        <span class="badge badge-gold">📝 Paper Test Mode</span>
+        <span class="paper-mode-hint">Write your completions on paper as each sentence appears</span>
+      </div>
+
+      <div class="simulator-header">
+        <span class="progress-indicator">
+          SENTENCE {{ paperStarterIndex + 1 }} OF {{ activeStarters.length }}
+          <span class="remaining-count">({{ activeStarters.length - paperStarterIndex - 1 }} left)</span>
+        </span>
+        <div class="timer-display glass-card" :class="{ 'warning-timer': paperTimeLeft < 10 }">
+          <span class="lbl">TIME LEFT</span>
+          <span class="val text-glow">{{ paperTimeLeft }}s</span>
+        </div>
+      </div>
+
+      <div class="paper-starter-display">
+        <span class="paper-starter-num">{{ paperStarterIndex + 1 }}.</span>
+        <h2 class="paper-starter-text">{{ activeStarters[paperStarterIndex] }}...</h2>
+      </div>
+
+      <div class="paper-instruction-box">
+        <p>✍️ Complete this sentence on your paper. The next sentence will appear automatically in {{ paperTimeLeft }}s.</p>
+        <button class="btn btn-secondary btn-sm" @click="skipPaperDisplay" style="margin-top: 0.75rem;">
+          ⏭️ Skip to Upload
+        </button>
+      </div>
+    </div>
+
+    <!-- PAPER TEST: UPLOAD VIEW -->
+    <div class="upload-container glass-card" v-if="testState === 'paper-upload'">
+      <div class="paper-mode-banner">
+        <span class="badge badge-gold">📝 Paper Test Mode</span>
+        <span class="badge badge-green">✅ All {{ activeStarters.length }} sentences displayed</span>
+      </div>
+
+      <h2>Upload Your Answer Sheets</h2>
+      <p class="upload-instruction">
+        Take clear photos of your handwritten SCT completions and upload them below.
+        AI will extract your sentence completions and evaluate them.
+      </p>
+
+      <div v-if="isAnalyzing" class="ai-loading-panel glass-card" style="margin-bottom: 1.5rem;">
+        <div class="ai-progress-container">
+          <div class="ai-progress-header">
+            <div class="ai-spinner-mini"></div>
+            <strong>Extracting handwriting from your photos...</strong>
+          </div>
+          <div class="ai-progress-bar-track">
+            <div class="ai-progress-bar-fill" :style="{ width: analysisProgress + '%' }"></div>
+          </div>
+          <div class="ai-progress-meta">
+            <span class="ai-progress-text">{{ analysisProgressText }}</span>
+            <span class="ai-progress-pct">{{ analysisProgress }}%</span>
+          </div>
+        </div>
+      </div>
+
+      <div v-if="ocrError" class="ai-error-panel glass-card" style="margin-bottom: 1rem;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/>
+        </svg>
+        <div><strong>Extraction Failed</strong><p>{{ ocrError }}</p></div>
+      </div>
+
+      <ImageUploadPanel :max-images="10" test-type="SCT" :disabled="isAnalyzing" @images-ready="handlePaperImagesReady" />
+
+      <div style="margin-top: 1rem;">
+        <button class="btn btn-secondary" @click="testState = 'setup'; resetAnalysis()">← Back to Setup</button>
+      </div>
+    </div>
+
+    <!-- PAPER TEST: REVIEW / EDIT OCR RESULTS -->
+    <div class="review-container glass-card" v-if="testState === 'paper-review'">
+      <div class="paper-mode-banner">
+        <span class="badge badge-gold">📝 Paper Test Mode</span>
+        <span class="badge badge-cyan">🔍 OCR Extraction Complete</span>
+      </div>
+
+      <h2>Review Extracted Completions</h2>
+      <p class="review-desc">
+        AI extracted <strong>{{ ocrResult?.totalExtracted || 0 }}</strong> completions.
+        Fix any OCR spelling mistakes below before evaluation.
+      </p>
+
+      <div class="review-table-wrapper">
+        <table class="results-table review-table">
+          <thead>
+            <tr><th>#</th><th>Sentence Starter</th><th>Extracted Completion (editable)</th></tr>
+          </thead>
+          <tbody>
+            <tr v-for="(resp, idx) in ocrResult?.responses" :key="idx" :class="{ 'blank-row': resp.text === '[BLANK]' }">
+              <td>{{ idx + 1 }}</td>
+              <td class="starter-col">{{ resp.prompt }}...</td>
+              <td class="text-col">
+                <input type="text" class="form-input review-input" v-model="resp.text"
+                  :placeholder="resp.text === '[BLANK]' ? 'Left blank — type to fill' : ''" />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="review-actions">
+        <button class="btn btn-secondary" @click="testState = 'paper-upload'">← Re-upload Images</button>
+        <button class="btn btn-ai btn-large" @click="submitReviewedResponses" :disabled="isAnalyzing">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z" />
+            <circle cx="9" cy="13" r="1" fill="currentColor" /><circle cx="15" cy="13" r="1" fill="currentColor" />
+          </svg>
+          ✅ Confirm & Evaluate with AI
         </button>
       </div>
     </div>
@@ -1215,4 +1430,58 @@ const timeTaken = computed(() => {
 .w-full {
   width: 100%;
 }
+
+/* ── Paper Test Mode Styles ── */
+.btn-paper-test {
+  background: linear-gradient(135deg, #f59e0b, #d97706) !important;
+  color: white !important;
+  border: none !important;
+  font-weight: 700;
+}
+.btn-paper-test:hover {
+  background: linear-gradient(135deg, #d97706, #b45309) !important;
+  transform: translateY(-1px);
+}
+.paper-mode-banner {
+  display: flex; align-items: center; gap: 0.75rem; margin-block-end: 1rem; flex-wrap: wrap;
+}
+.paper-mode-hint {
+  font-size: 0.85rem; color: var(--text-secondary); font-style: italic;
+}
+.paper-display-view, .upload-container, .review-container {
+  border-block-start: 4px solid var(--accent-gold, #f59e0b);
+}
+.paper-starter-display {
+  display: flex; align-items: baseline; gap: 0.75rem;
+  padding: 2rem; text-align: center; justify-content: center;
+}
+.paper-starter-num {
+  font-family: var(--font-heading); font-size: 1.5rem; color: var(--text-muted); font-weight: 700;
+}
+.paper-starter-text {
+  font-size: 1.8rem; color: var(--text-primary); margin: 0;
+}
+.paper-instruction-box {
+  margin-block-start: 1.5rem; padding: 1rem 1.25rem;
+  background: rgba(245, 158, 11, 0.06); border: 1px solid rgba(245, 158, 11, 0.2);
+  border-radius: var(--border-radius-sm); text-align: center; font-size: 0.95rem; color: var(--text-secondary);
+}
+.upload-instruction { color: var(--text-secondary); margin-block-end: 1.5rem; }
+.review-desc { color: var(--text-secondary); margin-block-end: 1rem; }
+.review-table-wrapper {
+  max-height: 500px; overflow-y: auto; border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm); margin-block-end: 1rem;
+}
+.review-input {
+  width: 100%; font-size: 0.9rem; padding: 0.35rem 0.5rem;
+  background: var(--bg-panel-solid, #fff); border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+}
+.review-input:focus { outline: 2px solid var(--accent-cyan); border-color: transparent; }
+.blank-row { background: rgba(239, 68, 68, 0.04); }
+.blank-row .review-input { border-color: rgba(239, 68, 68, 0.3); }
+.review-actions {
+  display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap;
+}
+.starter-col { font-weight: 600; min-width: 200px; }
 </style>

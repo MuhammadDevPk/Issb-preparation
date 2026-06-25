@@ -259,6 +259,37 @@ for (let cIdx = 0; cIdx < totalChunks; cIdx++) {
 
 ---
 
+## 5. Vision OCR / AI Analysis Failing — Model Decommissioned (429 with limit: 0, 400, 404)
+
+### Problem
+Paper Test mode image upload fails with "Could not extract any text from the uploaded images." Console shows 429 errors with `limit: 0` from Gemini, 400 errors from Groq, and 404 "model unavailable for free" from OpenRouter.
+
+### Root Cause
+AI providers regularly **decommission** older models from their free tiers. When this happens:
+- **Gemini**: Returns 429 with `"limit": 0` and `"model_decommissioned"` — the free quota is literally set to zero
+- **Groq**: Returns 400 because the model ID no longer exists on their platform
+- **OpenRouter**: Returns 404 with "This model is unavailable for free"
+
+Models that were decommissioned:
+- `gemini-2.0-flash` → replaced by `gemini-2.5-flash`
+- `llama-3.2-90b-vision-preview` → replaced by `meta-llama/llama-4-scout-17b-16e-instruct`
+- `google/gemma-3-27b-it:free` → replaced by `google/gemma-4-31b-it:free`
+
+### Solution
+1. **Update model IDs** in both `src/services/visionProvider.js` (vision) and `src/services/aiProvider.js` (text) to current free-tier models
+2. **Improve error handling**: Treat ALL non-OK responses (400, 404, 5xx) as fallback triggers, not just 429 — so if one provider's model is removed, the system automatically tries the next
+3. **Add 503 retry with backoff**: Gemini returns 503 "high demand" during temporary spikes. Treat 503 like 429 — retry with escalating backoff (3s → 6s → 10s for text; 4s → 8s → 12s for vision) before falling to next provider
+4. **Check model availability periodically**:
+   - Gemini: https://ai.google.dev/gemini-api/docs/models — verify model ID with `curl -s -o /dev/null -w "%{http_code}" "https://generativelanguage.googleapis.com/v1beta/models/MODEL_NAME:generateContent?key=YOUR_KEY" -H "Content-Type: application/json" -d '{"contents":[{"parts":[{"text":"hi"}]}]}'`
+   - Groq: https://console.groq.com/docs/models
+   - OpenRouter: https://openrouter.ai/models (filter by "free")
+
+### Files Modified
+- `src/services/visionProvider.js` — Updated vision model IDs + 503 retry with escalating backoff
+- `src/services/aiProvider.js` — Updated Gemini text model ID + 503 retry with escalating backoff
+
+---
+
 ## Guidelines for Future Development
 
 - **Safety First**: Never call `JSON.parse()` on storage variables directly. Write wrapper utility helpers or use try-catch logs.
@@ -266,3 +297,4 @@ for (let cIdx = 0; cIdx < totalChunks; cIdx++) {
 - **RLS Robustness**: When adding new tables, double-check that read/write policies include appropriate auth role checks (`auth.uid() = user_id`) and handle anonymous queries safely.
 - **Trigger Functions Are Stateful**: `CREATE OR REPLACE FUNCTION` replaces the entire function body. When updating a trigger, always carry forward ALL column insertions from the previous version. Missing one column silently breaks that feature for all new registrations.
 - **Test All RLS State Transitions**: After adding/modifying RLS policies, test not just the normal happy path but also edge-case transitions (e.g., status changes from rejected → pending, student updates vs. admin updates).
+- **AI Model Rotation**: Free-tier AI models get decommissioned regularly. When OCR or analysis fails with 429/400/404, check provider dashboards for current model IDs. Always have 3+ fallback providers configured.

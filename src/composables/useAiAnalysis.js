@@ -6,6 +6,7 @@
 
 import { ref } from 'vue'
 import { analyzeWithAI, delay } from '../services/aiProvider.js'
+import { analyzeImage, delay as visionDelay } from '../services/visionProvider.js'
 
 // ---------------------------------------------------------------------------
 // ISSB System Prompts (trained on ISSB psychology standards)
@@ -404,6 +405,49 @@ Respond ONLY with JSON in this exact schema:
 `
 
 // ---------------------------------------------------------------------------
+// Vision OCR Prompts (Paper Test Mode)
+// ---------------------------------------------------------------------------
+
+const WAT_OCR_SYSTEM = `You are an expert OCR system specializing in reading handwritten ISSB WAT (Word Association Test) answer sheets. Students write numbered sentences next to each word on paper.
+
+Your job is to extract EVERY handwritten sentence from the photo as accurately as possible.
+
+RULES:
+1. Each WAT response is a sentence the student wrote next to or below a numbered word
+2. If a response is blank, crossed out, or completely illegible, set sentence to "[BLANK]"
+3. Preserve the student's exact wording, including any spelling mistakes — do NOT correct them
+4. Number items sequentially starting from 1
+5. Extract ALL visible items — do not skip any
+
+Respond ONLY with JSON: { "responses": [{ "index": 1, "sentence": "the student's handwritten sentence" }] }`
+
+const SCT_OCR_SYSTEM = `You are an expert OCR system specializing in reading handwritten ISSB SCT (Sentence Completion Test) answer sheets. Students complete sentence starters by writing the rest of the sentence on paper.
+
+Your job is to extract EVERY handwritten completion from the photo as accurately as possible.
+
+RULES:
+1. Each SCT response is the text the student wrote to complete a sentence starter
+2. If a response is blank or illegible, set completion to "[BLANK]"
+3. Preserve the student's exact wording, including spelling mistakes — do NOT correct them
+4. Number items sequentially starting from 1
+5. Extract ALL visible items — do not skip any
+
+Respond ONLY with JSON: { "responses": [{ "index": 1, "completion": "the student's handwritten completion" }] }`
+
+const SRT_OCR_SYSTEM = `You are an expert OCR system specializing in reading handwritten ISSB SRT (Situation Reaction Test) answer sheets. Students write their reaction/response to each situation on paper.
+
+Your job is to extract EVERY handwritten reaction from the photo as accurately as possible.
+
+RULES:
+1. Each SRT response is the student's written reaction to a given situation
+2. If a response is blank or illegible, set reaction to "[BLANK]"
+3. Preserve the student's exact wording, including spelling mistakes — do NOT correct them
+4. Number items sequentially starting from 1
+5. Extract ALL visible items — do not skip any
+
+Respond ONLY with JSON: { "responses": [{ "index": 1, "reaction": "the student's handwritten reaction" }] }`
+
+// ---------------------------------------------------------------------------
 // Composable
 // ---------------------------------------------------------------------------
 
@@ -415,7 +459,11 @@ export function useAiAnalysis() {
 
   // Progress tracking
   const analysisProgress = ref(0)       // 0–100
-  const analysisPhase = ref(null)        // 'batch' | 'summary' | null
+  const analysisPhase = ref(null)        // 'ocr' | 'batch' | 'summary' | null
+
+  // OCR extraction result (for review/edit before evaluation)
+  const ocrResult = ref(null)           // { responses: [...], providerName }
+  const ocrError = ref(null)
   const analysisProgressText = ref('')   // e.g. "Evaluating batch 2 of 4..."
 
   // ---- Chunked internal runner ----
@@ -430,7 +478,7 @@ export function useAiAnalysis() {
 
     try {
       const chunks = []
-      const chunkSize = 25
+      const chunkSize = 10
       for (let i = 0; i < items.length; i += chunkSize) {
         chunks.push(items.slice(i, i + chunkSize))
       }
@@ -489,8 +537,8 @@ export function useAiAnalysis() {
           } catch (chunkErr) {
             console.warn(`[useAiAnalysis] Chunk ${cIdx + 1} attempt ${attempt + 1} failed:`, chunkErr.message)
             if (attempt === 0) {
-              analysisProgressText.value = `Batch ${cIdx + 1} failed, retrying in 3s...`
-              await delay(3000)
+              analysisProgressText.value = `Batch ${cIdx + 1} failed, retrying in 8s...`
+              await delay(8000)
             }
           }
         }
@@ -517,9 +565,10 @@ export function useAiAnalysis() {
         analysisProgress.value = Math.round(((cIdx + 1) / totalChunks) * batchProgressWeight)
 
         // Rate-limiting delay between chunks (skip after last chunk)
+        // 12 seconds ensures token usage stays within free-tier 60s TPM windows
         if (cIdx < totalChunks - 1) {
-          analysisProgressText.value = `Batch ${cIdx + 1} complete. Waiting before next batch...`
-          await delay(2000)
+          analysisProgressText.value = `Batch ${cIdx + 1} complete. Cooling down before next batch... (12s)`
+          await delay(12000)
         }
       }
 
@@ -629,15 +678,21 @@ Average Item Score: ${avgScore}`
     analysisResult.value = null
     analysisError.value = null
     currentProvider.value = null
+    analysisProgress.value = 30
+    analysisProgressText.value = 'Analyzing test answers with AI...'
 
     try {
       const { text, providerName } = await analyzeWithAI(systemPrompt, userContent, 3000)
       currentProvider.value = providerName
+      analysisProgress.value = 80
+      analysisProgressText.value = 'Parsing psychological evaluation...'
 
       // Parse JSON — handle markdown code fences if present
       const cleaned = text.replace(/^```(?:json)?\s*/i, '').replace(/```\s*$/i, '').trim()
       const parsed = JSON.parse(cleaned)
       analysisResult.value = parsed
+      analysisProgress.value = 100
+      analysisProgressText.value = 'Analysis complete!'
     } catch (err) {
       console.error('[useAiAnalysis] Error:', err)
       analysisError.value = err.message ?? 'Unknown error occurred during analysis.'
@@ -789,6 +844,160 @@ Provide a detailed psychological review focusing on the candidate's Big Five per
     await runAnalysis(OPI_SYSTEM_PROMPT, userContent)
   }
 
+  // ---- Vision OCR Extraction (Paper Test Mode) ----
+  /**
+   * Extract handwritten responses from uploaded images using Vision OCR.
+   * Returns structured data for user review/editing before evaluation.
+   *
+   * @param {Array<{base64: string, mimeType: string}>} images - Compressed images
+   * @param {'wat'|'sct'|'srt'} testType
+   * @param {string[]} [promptList] - The words/starters/situations shown during paper test
+   */
+  async function extractFromImages(images, testType, promptList = []) {
+    isAnalyzing.value = true
+    ocrResult.value = null
+    ocrError.value = null
+    analysisResult.value = null
+    analysisError.value = null
+    currentProvider.value = null
+    analysisProgress.value = 0
+    analysisPhase.value = 'ocr'
+    analysisProgressText.value = 'Preparing to extract handwriting...'
+
+    try {
+      let systemPrompt = WAT_OCR_SYSTEM
+      if (testType === 'sct') systemPrompt = SCT_OCR_SYSTEM
+      else if (testType === 'srt') systemPrompt = SRT_OCR_SYSTEM
+
+      const allExtracted = []
+      const totalImages = images.length
+
+      for (let i = 0; i < totalImages; i++) {
+        const img = images[i]
+        analysisProgressText.value = `Extracting handwriting from page ${i + 1} of ${totalImages}...`
+        analysisProgress.value = Math.round(((i) / totalImages) * 80)
+
+        let textPrompt = ''
+        if (testType === 'wat') {
+          textPrompt = `Extract all handwritten WAT sentences from this answer sheet photo. This is page ${i + 1} of ${totalImages}.`
+        } else if (testType === 'sct') {
+          textPrompt = `Extract all handwritten sentence completions from this SCT answer sheet photo. This is page ${i + 1} of ${totalImages}.`
+        } else {
+          textPrompt = `Extract all handwritten reactions from this SRT answer sheet photo. This is page ${i + 1} of ${totalImages}.`
+        }
+
+        // Retry logic per image
+        let extracted = null
+        for (let attempt = 0; attempt < 2; attempt++) {
+          try {
+            const { text, providerName } = await analyzeImage(
+              systemPrompt,
+              textPrompt,
+              img.base64,
+              img.mimeType
+            )
+            currentProvider.value = providerName
+
+            const cleaned = text.replace(/^```(?:json)?\s*/i, '').replace(/```\s*$/i, '').trim()
+            const parsed = JSON.parse(cleaned)
+
+            if (parsed.responses && Array.isArray(parsed.responses)) {
+              extracted = parsed.responses
+              break
+            } else {
+              throw new Error('OCR returned invalid format')
+            }
+          } catch (err) {
+            console.warn(`[OCR] Image ${i + 1} attempt ${attempt + 1} failed:`, err.message)
+            if (attempt === 0) {
+              analysisProgressText.value = `Page ${i + 1} failed, retrying...`
+              await delay(3000)
+            }
+          }
+        }
+
+        if (extracted) {
+          allExtracted.push(...extracted)
+        } else {
+          console.warn(`[OCR] Image ${i + 1} completely failed`)
+        }
+
+        analysisProgress.value = Math.round(((i + 1) / totalImages) * 80)
+
+        // Rate-limiting delay between images (throttling vision requests sequentially)
+        if (i < totalImages - 1) {
+          analysisProgressText.value = `Page ${i + 1} done. Waiting before next...`
+          await delay(4000)
+        }
+      }
+
+      if (allExtracted.length === 0) {
+        throw new Error('Could not extract any text from the uploaded images. Please ensure the images are clear and contain handwritten answers.')
+      }
+
+      analysisProgress.value = 85
+      analysisProgressText.value = 'Structuring extracted responses...'
+
+      // Re-index sequentially and map to the prompt list if available
+      const structuredResponses = allExtracted.map((item, idx) => {
+        const seqIndex = idx + 1
+        const promptItem = promptList[idx] || ''
+
+        if (testType === 'wat') {
+          return {
+            index: seqIndex,
+            word: promptItem,
+            text: item.sentence || item.text || item.completion || item.reaction || '[BLANK]',
+            timeOut: false,
+          }
+        } else if (testType === 'sct') {
+          return {
+            index: seqIndex,
+            prompt: promptItem,
+            text: item.completion || item.sentence || item.text || item.reaction || '[BLANK]',
+          }
+        } else {
+          return {
+            index: seqIndex,
+            situation: promptItem,
+            text: item.reaction || item.sentence || item.text || item.completion || '[BLANK]',
+            timeOut: false,
+          }
+        }
+      })
+
+      // If we have more prompts than extracted, fill remaining as blank
+      if (promptList.length > structuredResponses.length) {
+        for (let i = structuredResponses.length; i < promptList.length; i++) {
+          const seqIndex = i + 1
+          if (testType === 'wat') {
+            structuredResponses.push({ index: seqIndex, word: promptList[i], text: '[BLANK]', timeOut: false })
+          } else if (testType === 'sct') {
+            structuredResponses.push({ index: seqIndex, prompt: promptList[i], text: '[BLANK]' })
+          } else {
+            structuredResponses.push({ index: seqIndex, situation: promptList[i], text: '[BLANK]', timeOut: false })
+          }
+        }
+      }
+
+      analysisProgress.value = 90
+      analysisProgressText.value = 'Extraction complete! Review your answers below.'
+
+      ocrResult.value = {
+        responses: structuredResponses,
+        providerName: currentProvider.value,
+        totalExtracted: allExtracted.length,
+        totalExpected: promptList.length || allExtracted.length,
+      }
+    } catch (err) {
+      console.error('[OCR] Extraction error:', err)
+      ocrError.value = err.message ?? 'Failed to extract text from images.'
+    } finally {
+      isAnalyzing.value = false
+      analysisPhase.value = null
+    }
+  }
+
   // ---- Reset ----
   function resetAnalysis() {
     isAnalyzing.value = false
@@ -798,6 +1007,8 @@ Provide a detailed psychological review focusing on the candidate's Big Five per
     analysisProgress.value = 0
     analysisPhase.value = null
     analysisProgressText.value = ''
+    ocrResult.value = null
+    ocrError.value = null
   }
 
   return {
@@ -808,10 +1019,13 @@ Provide a detailed psychological review focusing on the candidate's Big Five per
     analysisProgress,
     analysisPhase,
     analysisProgressText,
+    ocrResult,
+    ocrError,
     analyzeWAT,
     analyzeSCT,
     analyzeSRT,
     analyzeOPI,
+    extractFromImages,
     resetAnalysis,
   }
 }

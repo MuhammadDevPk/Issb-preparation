@@ -9,14 +9,29 @@
 // Provider definitions
 // ---------------------------------------------------------------------------
 
-const PROVIDERS = [
-  {
-    id: 'groq',
-    name: 'Groq (Llama 3.3)',
+// Helper to parse comma-separated keys from .env
+const getKeys = (envVar) => {
+  if (!envVar) return []
+  return envVar.split(',').map(k => k.trim()).filter(Boolean)
+}
+
+const groqKeys = getKeys(import.meta.env.VITE_GROQ_KEYS || import.meta.env.VITE_GROQ_API_KEY)
+const geminiKeys = getKeys(import.meta.env.VITE_GEMINI_KEYS || import.meta.env.VITE_GEMINI_API_KEY)
+const openRouterKeys = getKeys(import.meta.env.VITE_OPENROUTER_KEYS || import.meta.env.VITE_OPENROUTER_API_KEY)
+const siliconKeys = getKeys(import.meta.env.VITE_SILICON_KEYS || import.meta.env.VITE_SILICON_API_KEY)
+
+const PROVIDERS = []
+
+// 1. Generate Groq Pool
+groqKeys.forEach((key, index) => {
+  PROVIDERS.push({
+    id: `groq-${index + 1}`,
+    name: `Groq (Key ${index + 1})`,
     endpoint: 'https://api.groq.com/openai/v1/chat/completions',
     model: 'llama-3.3-70b-versatile',
-    apiKey: import.meta.env.VITE_GROQ_API_KEY,
+    apiKey: key,
     dailyLimit: 500,
+    isDead: false,
     buildHeaders(key) {
       return {
         'Content-Type': 'application/json',
@@ -38,14 +53,19 @@ const PROVIDERS = [
     extractText(data) {
       return data?.choices?.[0]?.message?.content ?? null
     },
-  },
-  {
-    id: 'gemini',
-    name: 'Gemini 2.0 Flash',
-    endpoint: `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent`,
-    model: 'gemini-2.0-flash',
-    apiKey: import.meta.env.VITE_GEMINI_API_KEY,
+  })
+})
+
+// 2. Generate Gemini Pool
+geminiKeys.forEach((key, index) => {
+  PROVIDERS.push({
+    id: `gemini-${index + 1}`,
+    name: `Gemini (Key ${index + 1})`,
+    endpoint: `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent`,
+    model: 'gemini-2.5-flash',
+    apiKey: key,
     dailyLimit: 1000,
+    isDead: false,
     buildHeaders(key) {
       return {
         'Content-Type': 'application/json',
@@ -66,14 +86,19 @@ const PROVIDERS = [
     extractText(data) {
       return data?.candidates?.[0]?.content?.parts?.[0]?.text ?? null
     },
-  },
-  {
-    id: 'openrouter',
-    name: 'OpenRouter (Llama 3)',
+  })
+})
+
+// 3. Generate OpenRouter Pool
+openRouterKeys.forEach((key, index) => {
+  PROVIDERS.push({
+    id: `openrouter-${index + 1}`,
+    name: `OpenRouter (Key ${index + 1})`,
     endpoint: 'https://openrouter.ai/api/v1/chat/completions',
     model: 'meta-llama/llama-3.3-70b-instruct:free',
-    apiKey: import.meta.env.VITE_OPENROUTER_API_KEY,
+    apiKey: key,
     dailyLimit: 9999,
+    isDead: false,
     buildHeaders(key) {
       return {
         'Content-Type': 'application/json',
@@ -96,14 +121,19 @@ const PROVIDERS = [
     extractText(data) {
       return data?.choices?.[0]?.message?.content ?? null
     },
-  },
-  {
-    id: 'siliconflow',
-    name: 'SiliconFlow (Qwen)',
+  })
+})
+
+// 4. Generate SiliconFlow Pool
+siliconKeys.forEach((key, index) => {
+  PROVIDERS.push({
+    id: `siliconflow-${index + 1}`,
+    name: `SiliconFlow (Key ${index + 1})`,
     endpoint: 'https://api.siliconflow.cn/v1/chat/completions',
     model: 'Qwen/Qwen2.5-72B-Instruct',
-    apiKey: import.meta.env.VITE_SILICON_API_KEY,
+    apiKey: key,
     dailyLimit: 9999,
+    isDead: false,
     buildHeaders(key) {
       return {
         'Content-Type': 'application/json',
@@ -125,8 +155,8 @@ const PROVIDERS = [
     extractText(data) {
       return data?.choices?.[0]?.message?.content ?? null
     },
-  },
-]
+  })
+})
 
 // ---------------------------------------------------------------------------
 // Usage tracking helpers
@@ -164,6 +194,27 @@ function isProviderAtLimit(provider) {
 }
 
 // ---------------------------------------------------------------------------
+// Cooldown Mechanism (avoid hammering rate-limited or failed providers)
+// ---------------------------------------------------------------------------
+
+const COOLDOWN_DURATION = 3 * 60 * 1000 // 3 minutes cooldown
+const tempCooldowns = {}
+
+function isProviderOnCooldown(providerId) {
+  const expiry = tempCooldowns[providerId]
+  if (!expiry) return false
+  if (Date.now() > expiry) {
+    delete tempCooldowns[providerId]
+    return false
+  }
+  return true
+}
+
+function putProviderOnCooldown(providerId) {
+  tempCooldowns[providerId] = Date.now() + COOLDOWN_DURATION
+}
+
+// ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
 
@@ -178,10 +229,9 @@ function delay(ms) {
 async function callProvider(provider, systemPrompt, userContent, maxTokens = 2000) {
   if (!provider.apiKey) throw new Error(`No API key for ${provider.id}`)
 
-  const url =
-    provider.id === 'gemini'
-      ? `${provider.endpoint}?key=${provider.apiKey}`
-      : provider.endpoint
+  const url = provider.id.startsWith('gemini')
+    ? `${provider.endpoint}?key=${provider.apiKey}`
+    : provider.endpoint
 
   const headers = provider.buildHeaders(provider.apiKey)
   const body = provider.buildBody(provider.model, systemPrompt, userContent, maxTokens)
@@ -192,12 +242,22 @@ async function callProvider(provider, systemPrompt, userContent, maxTokens = 200
     body,
   })
 
-  if (res.status === 429) {
-    throw Object.assign(new Error(`Provider ${provider.id} rate limited (429)`), { is429: true })
+  // 401 Kill Switch: If key is unauthorized or forbidden, mark it as dead
+  if (res.status === 401 || res.status === 403) {
+    provider.isDead = true
+    throw new Error(`Provider ${provider.id} error ${res.status}: Invalid API Key. Marked as dead.`)
   }
 
-  if (res.status >= 500) {
-    throw new Error(`Provider ${provider.id} server error (${res.status})`)
+  if (res.status === 429) {
+    throw Object.assign(new Error(`Provider ${provider.id} rate limited (429)`), {
+      isRetryable: true,
+    })
+  }
+
+  if (res.status === 503) {
+    throw Object.assign(new Error(`Provider ${provider.id} temporarily unavailable (503)`), {
+      isRetryable: true,
+    })
   }
 
   if (!res.ok) {
@@ -230,33 +290,44 @@ async function callProvider(provider, systemPrompt, userContent, maxTokens = 200
 export async function analyzeWithAI(systemPrompt, userContent, maxTokens = 2500) {
   const errors = []
 
-  for (const provider of PROVIDERS) {
-    if (isProviderAtLimit(provider)) {
-      errors.push(`${provider.name}: daily limit reached`)
-      continue
-    }
+  // Filter out providers that are at daily limit, on cooldown, or marked as dead
+  let availableProviders = PROVIDERS.filter(
+    (p) => !isProviderAtLimit(p) && !isProviderOnCooldown(p.id) && !p.isDead,
+  )
 
-    // Attempt with 1 retry on 429
+  // If everyone is on cooldown/dead/limit, throw immediately.
+  if (availableProviders.length === 0) {
+    throw new Error("⏳ AI is currently overloaded or all keys are invalid. Please check keys or wait 3 minutes.")
+  }
+
+  for (const provider of availableProviders) {
+    // Attempt with up to 2 retries on 429/503 (short escalating backoff)
+    // Kept short so a failing provider is put on cooldown quickly,
+    // allowing the next healthy provider to take over without long waits.
+    const RETRY_DELAYS = [2000, 4000]
     for (let attempt = 0; attempt < 2; attempt++) {
       try {
         const result = await callProvider(provider, systemPrompt, userContent, maxTokens)
         return result
       } catch (err) {
-        if (err.is429 && attempt === 0) {
-          console.warn(`[AI] ${provider.name} rate limited, retrying in 3s...`)
-          await delay(3000)
+        if (err.isRetryable && attempt < 1) {
+          const backoff = RETRY_DELAYS[attempt]
+          console.warn(
+            `[AI] ${provider.name} ${err.message}, retry ${attempt + 1}/1 in ${backoff / 1000}s...`,
+          )
+          await delay(backoff)
           continue
         }
         console.warn(`[AI] ${provider.name} failed:`, err.message)
+        // Put on cooldown on failure (so subsequent chunks skip it)
+        putProviderOnCooldown(provider.id)
         errors.push(`${provider.name}: ${err.message}`)
         break
       }
     }
   }
 
-  throw new Error(
-    `All AI providers failed or exhausted.\n\nDetails:\n${errors.join('\n')}`
-  )
+  throw new Error(`All AI providers failed or exhausted.\n\nDetails:\n${errors.join('\n')}`)
 }
 
 /** Exposed delay utility for chunked analysis pacing */
