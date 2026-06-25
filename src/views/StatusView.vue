@@ -11,6 +11,7 @@ const fileInput = ref(null)
 const selectedFiles = ref([])
 const filePreviews = ref([])
 const showPendingUploadArea = ref(false)
+const activeUploadSection = ref(null) // null, 'course', 'ai'
 
 const isSubmitting = ref(false)
 const errorMessage = ref('')
@@ -19,6 +20,13 @@ const uploadStatus = ref('')
 const profile = computed(() => authStore.profile)
 const status = computed(() => profile.value?.status || 'pending')
 const rejectionReason = computed(() => profile.value?.rejection_reason || 'No reason provided.')
+
+const aiStatus = computed(() => profile.value?.ai_status || 'unpaid')
+const aiRejectionReason = computed(() => profile.value?.ai_rejection_reason || 'No reason provided.')
+const aiApprovedUntil = computed(() => profile.value?.ai_approved_until)
+const isAiApprovedActive = computed(() => {
+  return aiStatus.value === 'approved' && aiApprovedUntil.value && new Date(aiApprovedUntil.value).getTime() > Date.now()
+})
 
 // Referral properties for StatusView
 const referralCode = computed(() => authStore.profile?.referral_code || '')
@@ -205,11 +213,12 @@ const handleReupload = async () => {
     const userId = authStore.user.id
     const urls = []
     let count = 1
+    const prefix = activeUploadSection.value === 'ai' ? 'ai' : 'course'
 
     for (const file of selectedFiles.value) {
       uploadStatus.value = `Uploading payment screenshot ${count}/${selectedFiles.value.length}...`
       const fileExt = file.name.split('.').pop()
-      const fileName = `${userId}/${Date.now()}_${count}.${fileExt}`
+      const fileName = `${userId}/${prefix}_${Date.now()}_${count}.${fileExt}`
 
       const { error: uploadError } = await supabase.storage
         .from('payment_screenshots')
@@ -232,28 +241,41 @@ const handleReupload = async () => {
 
     uploadStatus.value = 'Updating request...'
 
-    // Update profile status back to pending & set screenshot URL
-    const { error: updateError } = await supabase
-      .from('profiles')
-      .update({
-        payment_screenshot_url: joinedPublicUrls,
-        status: 'pending',
-        rejection_reason: null,
-      })
-      .eq('id', userId)
+    if (activeUploadSection.value === 'ai') {
+      const { error: updateError } = await supabase
+        .from('profiles')
+        .update({
+          ai_payment_screenshot_url: joinedPublicUrls,
+          ai_status: 'pending',
+          ai_rejection_reason: null,
+        })
+        .eq('id', userId)
 
-    if (updateError) throw updateError
+      if (updateError) throw updateError
+    } else {
+      const { error: updateError } = await supabase
+        .from('profiles')
+        .update({
+          payment_screenshot_url: joinedPublicUrls,
+          status: 'pending',
+          rejection_reason: null,
+        })
+        .eq('id', userId)
+
+      if (updateError) throw updateError
+    }
 
     // Refresh store
     await authStore.fetchProfile(userId)
 
     // Clean up
     clearAllSelectedFiles()
-    uploadStatus.value = 'Resubmission complete!'
+    uploadStatus.value = 'Submission complete!'
     showPendingUploadArea.value = false
+    activeUploadSection.value = null
   } catch (error) {
     console.error('Re-upload failed:', error)
-    errorMessage.value = error.message || 'Failed to submit updated screenshots.'
+    errorMessage.value = error.message || 'Failed to submit screenshots.'
   } finally {
     isSubmitting.value = false
   }
@@ -583,6 +605,204 @@ const checkApprovalStatus = async () => {
           </svg>
           <span>Log Out / Sign In as different candidate</span>
         </button>
+      </div>
+    </div>
+
+    <!-- Unlimited AI Access Status Card -->
+    <div class="status-container glass-card" :class="{ 'border-rejected': aiStatus === 'rejected' }" style="border-top-color: #8b5cf6;">
+      <!-- Card header -->
+      <div class="status-header">
+        <svg class="icon-logo" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: #8b5cf6;">
+          <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
+          <path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+        <span class="logo-title" style="color: #8b5cf6;">UNLIMITED AI ACCESS</span>
+        <span class="sub-text">1-MONTH EVALUATION PLAN</span>
+      </div>
+
+      <!-- AI Approved Status -->
+      <div v-if="isAiApprovedActive" class="status-content">
+        <div class="icon-wrapper spin-glow" style="background: rgba(139, 92, 246, 0.1); box-shadow: 0 0 20px rgba(139, 92, 246, 0.15); margin: 0 auto 1rem auto;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="status-icon" style="color: #8b5cf6;">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+            <polyline points="22 4 12 14.01 9 11.01" />
+          </svg>
+        </div>
+        <div class="status-info">
+          <h3 style="color: #10b981;">Access Approved & Active</h3>
+          <p>
+            You have unlimited AI Image Evaluations active until:
+            <strong class="text-cyan">{{ new Date(aiApprovedUntil).toLocaleDateString() }}</strong>
+          </p>
+        </div>
+        <div class="support-info-card w-100" style="margin-top: 1rem;">
+          <button @click="router.push('/dashboard')" class="btn btn-primary w-full" style="background: #8b5cf6; border: none; color: white;">
+            Go to Practice Dashboard
+          </button>
+        </div>
+      </div>
+
+      <!-- AI Pending Status -->
+      <div v-else-if="aiStatus === 'pending'" class="status-content">
+        <div class="icon-wrapper spin-glow" style="background: rgba(139, 92, 246, 0.1); box-shadow: 0 0 20px rgba(139, 92, 246, 0.15); margin: 0 auto 1rem auto;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="status-icon animate-pulse" style="color: #8b5cf6;">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 6v6l4 2" />
+          </svg>
+        </div>
+        <div class="status-info">
+          <h3>Verification in Progress</h3>
+          <p>We are reviewing your AI payment screenshot. This typically takes 1-2 hours.</p>
+        </div>
+        
+        <div class="verification-checklist w-100" style="margin-top: 1rem;">
+          <div class="check-item done" style="color: #10b981;">
+            <span class="check-circle">✓</span>
+            <span>Receipt Screenshot Submitted</span>
+          </div>
+          <div class="check-item active" style="color: #8b5cf6;">
+            <span class="check-circle">●</span>
+            <span>Admin Approval (Pending)</span>
+          </div>
+        </div>
+
+        <div class="support-info-card w-100" style="margin-top: 1.5rem;">
+          <strong>Need Express AI Activation?</strong>
+          <p>Message our support team on WhatsApp for fast-track verification.</p>
+          <a href="https://wa.me/923456047058?text=Hi%20Umar,%20I%20have%20uploaded%20my%20screenshot%20for%20Unlimited%20AI%20Access.%20My%20email%20is%20" target="_blank" class="btn btn-secondary btn-whatsapp">
+            WhatsApp Verification Support
+          </a>
+        </div>
+        <button @click="activeUploadSection = 'ai'; clearAllSelectedFiles()" class="btn btn-secondary w-full" style="margin-top: 1rem;">
+          Resubmit Screenshot
+        </button>
+      </div>
+
+      <!-- AI Unpaid / None Status Upload Flow -->
+      <div v-else class="status-content">
+        <!-- If editing/uploading for AI -->
+        <div v-if="activeUploadSection === 'ai'" class="pending-upload-flow w-100">
+          <div class="status-info">
+            <h3>Upload Payment Receipt</h3>
+            <p>Please transfer the AI subscription fee of Rs. 999 to unlock unlimited handwriting evaluations.</p>
+          </div>
+
+          <!-- AI Payment Box -->
+          <div class="payment-credentials-card">
+            <h4>EasyPaisa Payment Details</h4>
+            <div class="credential-row">
+              <span class="lbl">Account Number:</span>
+              <span class="val text-cyan">03458643910</span>
+            </div>
+            <div class="credential-row">
+              <span class="lbl">Account Name:</span>
+              <span class="val">umar farooq</span>
+            </div>
+            <div class="credential-row">
+              <span class="lbl">AI Access Amount:</span>
+              <span class="val text-cyan" style="font-weight: 800; font-size: 1rem;">PKR 999</span>
+            </div>
+            <div class="credential-row">
+              <span class="lbl">Validity:</span>
+              <span class="val">30 Days (1 Month)</span>
+            </div>
+          </div>
+
+          <!-- Error Alert -->
+          <div v-if="errorMessage" class="error-alert" style="margin-top: 1.25rem;">
+            <span>{{ errorMessage }}</span>
+          </div>
+
+          <!-- Dropzone -->
+          <div class="reupload-section" style="margin-top: 1.5rem;">
+            <input ref="fileInput" type="file" accept="image/*" multiple style="display: none" @change="handleFileChange" :disabled="isSubmitting" />
+
+            <div v-if="selectedFiles.length === 0" class="upload-dropzone" @click="triggerFileInput">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="upload-icon">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12" />
+              </svg>
+              <span>Upload EasyPaisa AI Receipt</span>
+              <p class="upload-hint">Format: PNG, JPG, JPEG (Max 5MB)</p>
+            </div>
+
+            <div v-else class="selected-files-list">
+              <div v-for="(preview, idx) in filePreviews" :key="preview.id" class="upload-preview-card mb-xs">
+                <div class="preview-info">
+                  <span class="file-name">{{ preview.name }}</span>
+                </div>
+                <div class="preview-img-container">
+                  <img :src="preview.previewUrl" alt="Receipt preview" class="preview-img" />
+                </div>
+                <button type="button" class="btn-remove-file" @click="removeSelectedFile(idx)" :disabled="isSubmitting">
+                  Remove Screenshot
+                </button>
+              </div>
+
+              <div class="preview-actions mt-xs">
+                <p v-if="uploadStatus" class="upload-progress-text">{{ uploadStatus }}</p>
+                <button type="button" class="btn-submit-receipt" @click="handleReupload" :disabled="isSubmitting" style="background: #8b5cf6;">
+                  <span v-if="isSubmitting" class="btn-spinner"></span>
+                  <span>{{ isSubmitting ? 'Submitting...' : 'Submit Receipt(s)' }}</span>
+                </button>
+                <div class="preview-secondary-actions">
+                  <button type="button" class="btn btn-secondary btn-small" @click="triggerFileInput" :disabled="isSubmitting">
+                    + Add More
+                  </button>
+                  <button type="button" class="btn-remove-file" @click="clearAllSelectedFiles(); activeUploadSection = null" :disabled="isSubmitting">
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Normal Gated AI Screen -->
+        <div v-else class="w-100">
+          <div class="icon-wrapper icon-rejected" style="background: rgba(139, 92, 246, 0.1); box-shadow: 0 0 20px rgba(139, 92, 246, 0.15); margin: 0 auto 1rem auto;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="status-icon" style="color: #8b5cf6;">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+          </div>
+
+          <div class="status-info">
+            <h3 v-if="aiStatus === 'rejected'" class="text-red">AI Access Request Rejected</h3>
+            <h3 v-else>Unlock Unlimited AI Evaluations</h3>
+            
+            <p v-if="aiStatus === 'rejected'" class="text-red">
+              Reason: <strong>{{ aiRejectionReason }}</strong>
+            </p>
+            <p v-else>
+              Get unlimited evaluations for handwritten tests (WAT, SCT, SRT) for 30 days!
+            </p>
+          </div>
+
+          <!-- Features list -->
+          <div class="verification-checklist" style="margin-top: 1rem;">
+            <div class="check-item active" style="color: #8b5cf6;">
+              <span class="check-circle">✓</span>
+              <span>Unlimited OCR Handwriting Extraction</span>
+            </div>
+            <div class="check-item active" style="color: #8b5cf6;">
+              <span class="check-circle">✓</span>
+              <span>Full OLQ Breakdown & Psychological Scoring</span>
+            </div>
+            <div class="check-item active" style="color: #8b5cf6;">
+              <span class="check-circle">✓</span>
+              <span>Rephrasings & Corrected Answers</span>
+            </div>
+          </div>
+
+          <div style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem; width: 100%;">
+            <button @click="activeUploadSection = 'ai'; clearAllSelectedFiles()" class="btn btn-primary w-full" style="background: #8b5cf6; border: none; padding: 0.75rem 1rem; font-weight: 600; color: white;">
+              Upload Payment Screenshot (Rs. 999)
+            </button>
+            <a href="https://wa.me/923456047058?text=Hi%20Umar,%20I%20want%20to%20purchase%20Unlimited%20AI%20Image%20Evaluation%20access%20for%20Rs.%20999.%20My%20email%20is%20" target="_blank" class="btn btn-secondary btn-whatsapp">
+              WhatsApp Verification / Questions
+            </a>
+          </div>
+        </div>
       </div>
     </div>
 

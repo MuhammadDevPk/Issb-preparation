@@ -26,23 +26,44 @@ const isApproved = computed(() => {
 
 const currentSessionDate = ref(null)
 
-const triggerAiAnalysis = async () => {
-  if (!isApproved.value) {
+const checkAiLimit = (isImageEvaluation = false) => {
+  const p = authStore.profile
+  const isAiApproved = p?.ai_status === 'approved' && p?.ai_approved_until && new Date(p.ai_approved_until).getTime() > Date.now()
+  const isBypassed = isImageEvaluation
+    ? (p?.role === 'admin' || isAiApproved)
+    : isApproved.value
+
+  if (!isBypassed) {
     const today = new Date().toLocaleDateString()
     const lastUse = localStorage.getItem('issb_last_ai_use_date')
     if (lastUse === today) {
       showUpgradeModal.value = true
-      return
+      return false
     }
   }
+  return true
+}
+
+const recordAiUsage = (isImageEvaluation = false) => {
+  const p = authStore.profile
+  const isAiApproved = p?.ai_status === 'approved' && p?.ai_approved_until && new Date(p.ai_approved_until).getTime() > Date.now()
+  const isBypassed = isImageEvaluation
+    ? (p?.role === 'admin' || isAiApproved)
+    : isApproved.value
+
+  if (!isBypassed) {
+    const today = new Date().toLocaleDateString()
+    localStorage.setItem('issb_last_ai_use_date', today)
+  }
+}
+
+const triggerAiAnalysis = async () => {
+  if (!checkAiLimit(false)) return
   showAiReport.value = true
   await analyzeWAT(responses.value)
   if (analysisResult.value) {
     store.updateWatSessionAi(currentSessionDate.value, analysisResult.value)
-    if (!isApproved.value) {
-      const today = new Date().toLocaleDateString()
-      localStorage.setItem('issb_last_ai_use_date', today)
-    }
+    recordAiUsage(false)
   }
 }
 
@@ -252,6 +273,7 @@ const handlePaperImagesReady = async ({ images }) => {
 // User confirms reviewed/edited OCR responses → trigger AI evaluation
 const submitReviewedResponses = async () => {
   if (!ocrResult.value) return
+  if (!checkAiLimit(true)) return
 
   // Build responses from the reviewed OCR data
   responses.value = ocrResult.value.responses.map((r) => ({
@@ -277,6 +299,7 @@ const submitReviewedResponses = async () => {
   await analyzeWAT(responses.value)
   if (analysisResult.value) {
     store.updateWatSessionAi(currentSessionDate.value, analysisResult.value)
+    recordAiUsage(true)
   }
 }
 
@@ -1017,28 +1040,28 @@ onMounted(() => {
         <div class="modal-header-ai">
           <div class="flex items-center gap-2">
             <span class="lock-icon">🚫</span>
-            <h3>Daily Free AI Limit Reached</h3>
+            <h3>Daily AI Limit Reached</h3>
           </div>
           <button class="btn-close" @click="showUpgradeModal = false">&times;</button>
         </div>
         <div class="modal-body-ai">
           <p>
-            You have used your <strong>1 free daily AI evaluation</strong>. Your free quota resets in 24 hours.
+            You have used your <strong>1 daily AI evaluation</strong>.
           </p>
           <div class="warning-callout">
-            <strong>⚠️ High-Risk Warning for Candidates:</strong>
-            Practicing without feedback actively trains your subconscious mind to repeat critical psychological errors. Selection board psychologists reject candidates instantly when they spot patterns of passivity, artificial guidebook answers, or escape behavior. Practicing unguided sentences is worse than not practicing at all.
+            <strong>💡 Purchase Unlimited AI Access for Rs. 999:</strong>
+            For using it unlimited times a day, please purchase access for <strong>Rs. 999 for 1 month</strong>. Because this AI evaluation feature is very expensive and we have to pay Google, Groq, Open Router, and other AI providers (which costs us thousands of rupees per month), we cannot provide this for free. But for Rs. 999, you will get 1 month of unlimited access.
           </div>
           <div class="modal-features">
-            <div class="feat-row"><span class="check">✓</span> <span>Finds hidden psychology flaws & red flags in your reactions.</span></div>
+            <div class="feat-row"><span class="check">✓</span> <span>Finds hidden psychology flaws & red flags in your responses.</span></div>
             <div class="feat-row"><span class="check">✓</span> <span>Detailed Officer-Like Qualities (OLQ) grade score & assessment.</span></div>
             <div class="feat-row"><span class="check">✓</span> <span>Provides exact corrected sentences and rephrasings.</span></div>
           </div>
         </div>
-        <div class="modal-footer-ai">
-          <button class="btn btn-ai shadow-glow-purple w-full" @click="router.push('/status')">
-            Get Unlimited AI Access (Or PKR 100 via referrals)
-          </button>
+        <div class="modal-footer-ai" style="display: flex; flex-direction: column; gap: 0.5rem;">
+          <a href="https://wa.me/923456047058?text=Hi%20Umar,%20I%20want%20to%20purchase%20unlimited%20AI%20evaluations%20for%20Rs.%20999%20for%201%20month.%20My%20email%20is%20" target="_blank" class="btn btn-ai shadow-glow-purple w-full text-center block" style="display: block; text-decoration: none; padding: 0.75rem 1rem; border-radius: var(--border-radius-md); text-align: center; color: white;">
+            💬 Purchase Unlimited via WhatsApp (Rs. 999/month)
+          </a>
           <button class="btn btn-secondary w-full" @click="showUpgradeModal = false">
             Wait 24 Hours / Review Manually
           </button>

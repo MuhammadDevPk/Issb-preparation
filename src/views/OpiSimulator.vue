@@ -294,15 +294,27 @@ const finishTest = () => {
   window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 
-const triggerAiAnalysis = async () => {
+const checkAiLimit = () => {
   if (!isApproved.value) {
     const today = new Date().toLocaleDateString()
     const lastUse = localStorage.getItem('issb_last_ai_use_date')
     if (lastUse === today) {
       showUpgradeModal.value = true
-      return
+      return false
     }
   }
+  return true
+}
+
+const recordAiUsage = () => {
+  if (!isApproved.value) {
+    const today = new Date().toLocaleDateString()
+    localStorage.setItem('issb_last_ai_use_date', today)
+  }
+}
+
+const triggerAiAnalysis = async () => {
+  if (!checkAiLimit()) return
 
   const responses = activeQuestions.value.map((q) => ({
     statement: q.statement,
@@ -325,10 +337,7 @@ const triggerAiAnalysis = async () => {
 
   if (analysisResult.value) {
     store.updateOpiSessionAi(currentSessionDate.value, analysisResult.value)
-    if (!isApproved.value) {
-      const today = new Date().toLocaleDateString()
-      localStorage.setItem('issb_last_ai_use_date', today)
-    }
+    recordAiUsage()
   }
 }
 
@@ -879,18 +888,19 @@ const scoreClass = (score) => {
       <!-- Upgrade Gating Modal -->
       <div class="upgrade-modal-backdrop" v-if="showUpgradeModal" @click.self="showUpgradeModal = false">
         <div class="upgrade-modal glass-card">
-          <h3>🔐 Premium Gated Feature</h3>
+          <h3>🔐 Daily AI Limit Reached</h3>
           <p>
-            Free accounts are limited to **1 AI-powered Psychological Evaluation per day**. 
-            To get unlimited instant personality reports, contradiction evaluations, and GTO advice:
+            You have used your <strong>1 daily AI evaluation</strong>.
           </p>
-          <div class="referral-box">
-            <strong>Register an Admin Approved Premium Profile</strong>
-            <p>Contact your course admin or refer new students to unlock premium features automatically!</p>
+          <div class="warning-callout" style="background: rgba(168, 85, 247, 0.1); border-left: 4px solid #a855f7; padding: 0.75rem; border-radius: 4px; margin: 1rem 0; font-size: 0.88rem; line-height: 1.4; color: var(--text-primary); text-align: left;">
+            <strong>💡 Purchase Unlimited AI Access for Rs. 999:</strong>
+            For using it unlimited times a day, please purchase access for <strong>Rs. 999 for 1 month</strong>. Because this AI evaluation feature is very expensive and we have to pay Google, Groq, Open Router, and other AI providers (which costs us thousands of rupees per month), we cannot provide this for free. But for Rs. 999, you will get 1 month of unlimited access.
           </div>
-          <div class="modal-actions">
+          <div class="modal-actions" style="display: flex; flex-direction: column; gap: 0.5rem; width: 100%;">
+            <a href="https://wa.me/923456047058?text=Hi%20Umar,%20I%20want%20to%20purchase%20unlimited%20AI%20evaluations%20for%20Rs.%20999%20for%201%20month.%20My%20email%20is%20" target="_blank" class="btn btn-primary text-center block" style="display: block; text-decoration: none; padding: 0.75rem 1rem; border-radius: var(--border-radius-md); background: #a855f7; border: none; color: white;">
+              💬 Purchase Unlimited via WhatsApp (Rs. 999/month)
+            </a>
             <button class="btn btn-secondary" @click="showUpgradeModal = false">Close</button>
-            <button class="btn btn-primary" @click="router.push({ name: 'support' })">Contact Support</button>
           </div>
         </div>
       </div>

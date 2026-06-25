@@ -16,6 +16,11 @@ const modalImageUrl = ref('')
 const showRejectModal = ref(false)
 const selectedProfileId = ref(null)
 const rejectionReasonInput = ref('')
+const rejectType = ref('course') // 'course' or 'ai'
+
+const detailsAiStatus = ref('unpaid')
+const detailsAiApprovedUntil = ref('')
+const detailsAiRejectionReason = ref('')
 
 const fetchProfiles = async () => {
   isLoading.value = true
@@ -115,12 +120,24 @@ const openDetailsModal = (candidate) => {
   detailsCustomReferralBonus.value = candidate.custom_referral_bonus !== null && candidate.custom_referral_bonus !== undefined
     ? candidate.custom_referral_bonus
     : ''
+  detailsAiStatus.value = candidate.ai_status || 'unpaid'
+  detailsAiApprovedUntil.value = candidate.ai_approved_until
+    ? (() => {
+        const d = new Date(candidate.ai_approved_until)
+        const tzoffset = d.getTimezoneOffset() * 60000
+        return new Date(d.getTime() - tzoffset).toISOString().substring(0, 16)
+      })()
+    : ''
+  detailsAiRejectionReason.value = candidate.ai_rejection_reason || ''
   showDetailsModal.value = true
 }
 
 const closeDetailsModal = () => {
   showDetailsModal.value = false
   detailsProfile.value = null
+  detailsAiStatus.value = 'unpaid'
+  detailsAiApprovedUntil.value = ''
+  detailsAiRejectionReason.value = ''
 }
 
 const saveDetailsChanges = async () => {
@@ -131,13 +148,27 @@ const saveDetailsChanges = async () => {
       ? null
       : Number(detailsCustomReferralBonus.value)
 
+    let aiApprovedUntilVal = null
+    if (detailsAiApprovedUntil.value) {
+      try {
+        aiApprovedUntilVal = new Date(detailsAiApprovedUntil.value).toISOString()
+      } catch (e) {
+        console.error('Invalid date format:', e)
+      }
+    }
+
+    const updateFields = {
+      course_amount: detailsCourseAmount.value,
+      referral_commission: detailsReferralCommission.value,
+      custom_referral_bonus: customBonus,
+      ai_status: detailsAiStatus.value,
+      ai_approved_until: aiApprovedUntilVal,
+      ai_rejection_reason: detailsAiStatus.value === 'rejected' ? detailsAiRejectionReason.value.trim() : null
+    }
+
     const { error } = await supabase
       .from('profiles')
-      .update({
-        course_amount: detailsCourseAmount.value,
-        referral_commission: detailsReferralCommission.value,
-        custom_referral_bonus: customBonus
-      })
+      .update(updateFields)
       .eq('id', detailsProfile.value.id)
 
     if (error) throw error
@@ -148,6 +179,9 @@ const saveDetailsChanges = async () => {
       profiles.value[index].course_amount = detailsCourseAmount.value
       profiles.value[index].referral_commission = detailsReferralCommission.value
       profiles.value[index].custom_referral_bonus = customBonus
+      profiles.value[index].ai_status = detailsAiStatus.value
+      profiles.value[index].ai_approved_until = aiApprovedUntilVal
+      profiles.value[index].ai_rejection_reason = updateFields.ai_rejection_reason
     }
     closeDetailsModal()
   } catch (e) {
@@ -235,8 +269,9 @@ const getReferrerEmail = (referredById) => {
   return refProfile ? refProfile.email : 'Unknown Referrer'
 }
 
-const openRejectModal = (profileId) => {
+const openRejectModal = (profileId, type = 'course') => {
   selectedProfileId.value = profileId
+  rejectType.value = type
   rejectionReasonInput.value = ''
   showRejectModal.value = true
 }
@@ -254,12 +289,13 @@ const handleReject = async () => {
   }
 
   try {
+    const updateFields = rejectType.value === 'ai'
+      ? { ai_status: 'rejected', ai_rejection_reason: rejectionReasonInput.value.trim() }
+      : { status: 'rejected', rejection_reason: rejectionReasonInput.value.trim() }
+
     const { error } = await supabase
       .from('profiles')
-      .update({
-        status: 'rejected',
-        rejection_reason: rejectionReasonInput.value.trim(),
-      })
+      .update(updateFields)
       .eq('id', selectedProfileId.value)
 
     if (error) throw error
@@ -267,14 +303,54 @@ const handleReject = async () => {
     // Update local state
     const index = profiles.value.findIndex((p) => p.id === selectedProfileId.value)
     if (index !== -1) {
-      profiles.value[index].status = 'rejected'
-      profiles.value[index].rejection_reason = rejectionReasonInput.value.trim()
+      if (rejectType.value === 'ai') {
+        profiles.value[index].ai_status = 'rejected'
+        profiles.value[index].ai_rejection_reason = rejectionReasonInput.value.trim()
+      } else {
+        profiles.value[index].status = 'rejected'
+        profiles.value[index].rejection_reason = rejectionReasonInput.value.trim()
+      }
     }
 
     closeRejectModal()
   } catch (e) {
     console.error('Rejection failed:', e)
-    alert('Failed to reject candidate: ' + e.message)
+    alert('Failed to reject: ' + e.message)
+  }
+}
+
+const handleAiApprove = async (candidate) => {
+  if (!confirm(`Are you sure you want to approve AI Image Evaluation access for ${candidate.full_name || candidate.email} for 1 month?`)) return
+  isLoading.value = true
+  try {
+    const oneMonthFromNow = new Date()
+    oneMonthFromNow.setMonth(oneMonthFromNow.getMonth() + 1)
+    
+    const { error } = await supabase
+      .from('profiles')
+      .update({
+        ai_status: 'approved',
+        ai_approved_until: oneMonthFromNow.toISOString(),
+        ai_rejection_reason: null
+      })
+      .eq('id', candidate.id)
+
+    if (error) throw error
+
+    // Update local state
+    const index = profiles.value.findIndex((p) => p.id === candidate.id)
+    if (index !== -1) {
+      profiles.value[index].ai_status = 'approved'
+      profiles.value[index].ai_approved_until = oneMonthFromNow.toISOString()
+      profiles.value[index].ai_rejection_reason = null
+    }
+    
+    alert('AI Access approved successfully for 1 month.')
+  } catch (e) {
+    console.error('AI Approval failed:', e)
+    alert('Failed to approve AI Access: ' + e.message)
+  } finally {
+    isLoading.value = false
   }
 }
 
@@ -315,9 +391,22 @@ const filteredProfiles = computed(() => {
     const matchesBranch = branchFilter.value === 'all' || p.target_branch === branchFilter.value
 
     // 3. Status/Trash Match
-    const matchesStatus = activeStatusTab.value === 'trash'
-      ? p.deleted_at !== null
-      : (p.deleted_at === null && (activeStatusTab.value === 'all' || p.status === activeStatusTab.value))
+    let matchesStatus = false
+    if (activeStatusTab.value === 'trash') {
+      matchesStatus = p.deleted_at !== null
+    } else if (p.deleted_at === null) {
+      if (activeStatusTab.value === 'all') {
+        matchesStatus = true
+      } else if (activeStatusTab.value === 'ai_pending') {
+        matchesStatus = p.ai_status === 'pending'
+      } else if (activeStatusTab.value === 'ai_approved') {
+        matchesStatus = p.ai_status === 'approved'
+      } else if (activeStatusTab.value === 'ai_rejected') {
+        matchesStatus = p.ai_status === 'rejected'
+      } else {
+        matchesStatus = p.status === activeStatusTab.value
+      }
+    }
 
     return matchesQuery && matchesBranch && matchesStatus
   })
@@ -429,18 +518,27 @@ onMounted(() => {
     </div>
 
     <!-- Status Tabs -->
-    <div class="tabs-container">
+    <div class="tabs-container" style="flex-wrap: wrap; gap: 0.5rem;">
       <button @click="activeStatusTab = 'all'" class="tab-btn" :class="{ active: activeStatusTab === 'all' }">
         All Candidates ({{profiles.filter((p) => p.deleted_at === null).length}})
       </button>
       <button @click="activeStatusTab = 'pending'" class="tab-btn" :class="{ active: activeStatusTab === 'pending' }">
-        Pending ({{profiles.filter((p) => p.status === 'pending' && p.deleted_at === null).length}})
+        Pending Course ({{profiles.filter((p) => p.status === 'pending' && p.deleted_at === null).length}})
       </button>
       <button @click="activeStatusTab = 'approved'" class="tab-btn" :class="{ active: activeStatusTab === 'approved' }">
-        Approved ({{profiles.filter((p) => p.status === 'approved' && p.deleted_at === null).length}})
+        Approved Course ({{profiles.filter((p) => p.status === 'approved' && p.deleted_at === null).length}})
       </button>
       <button @click="activeStatusTab = 'rejected'" class="tab-btn" :class="{ active: activeStatusTab === 'rejected' }">
-        Rejected ({{profiles.filter((p) => p.status === 'rejected' && p.deleted_at === null).length}})
+        Rejected Course ({{profiles.filter((p) => p.status === 'rejected' && p.deleted_at === null).length}})
+      </button>
+      <button @click="activeStatusTab = 'ai_pending'" class="tab-btn" :class="{ active: activeStatusTab === 'ai_pending' }" style="border-color: var(--accent-cyan);">
+        AI Pending ({{profiles.filter((p) => p.ai_status === 'pending' && p.deleted_at === null).length}})
+      </button>
+      <button @click="activeStatusTab = 'ai_approved'" class="tab-btn" :class="{ active: activeStatusTab === 'ai_approved' }">
+        AI Approved ({{profiles.filter((p) => p.ai_status === 'approved' && p.deleted_at === null).length}})
+      </button>
+      <button @click="activeStatusTab = 'ai_rejected'" class="tab-btn" :class="{ active: activeStatusTab === 'ai_rejected' }">
+        AI Rejected ({{profiles.filter((p) => p.ai_status === 'rejected' && p.deleted_at === null).length}})
       </button>
       <button @click="activeStatusTab = 'trash'" class="tab-btn tab-btn-trash"
         :class="{ active: activeStatusTab === 'trash' }">
@@ -470,10 +568,11 @@ onMounted(() => {
             <th>Target Branch</th>
             <th>WhatsApp</th>
             <th>Registration Date</th>
-            <th>Screenshot</th>
-            <th>Amount Paid</th>
-            <th>Referral Stats</th>
-            <th>Status</th>
+            <th>Course Payment</th>
+            <th>Course Status</th>
+            <th>AI Payment</th>
+            <th>AI Status</th>
+            <th>Referrals</th>
             <th class="actions-col">Actions</th>
           </tr>
         </thead>
@@ -503,7 +602,7 @@ onMounted(() => {
               <span class="date">{{ formatDate(candidate.created_at) }}</span>
             </td>
 
-            <td data-label="Screenshot">
+            <td data-label="Course Payment">
               <div v-if="candidate.payment_screenshot_url" class="screenshot-previews-list"
                 style="display: flex; flex-direction: column; gap: 0.35rem;">
                 <button v-for="(url, idx) in candidate.payment_screenshot_url.split(',')" :key="idx"
@@ -519,9 +618,58 @@ onMounted(() => {
               <span v-else class="text-muted text-italic">No Upload</span>
             </td>
 
-            <td data-label="Amount Paid">
-              <span v-if="candidate.status === 'approved'">PKR {{ candidate.course_amount || 0 }}</span>
-              <span v-else class="text-muted">-</span>
+            <td data-label="Course Status">
+              <span class="badge" :class="{
+                'badge-cyan': candidate.status === 'pending',
+                'badge-green': candidate.status === 'approved',
+                'badge-red': candidate.status === 'rejected',
+              }">
+                {{ candidate.status }}
+              </span>
+              <div v-if="candidate.status === 'approved'" style="font-size: 0.8rem; margin-top: 0.25rem; font-weight: 600; color: var(--text-secondary);">
+                PKR {{ candidate.course_amount || 0 }}
+              </div>
+              <div v-if="candidate.status === 'rejected'" class="rejection-reason-sub">
+                "{{ candidate.rejection_reason }}"
+              </div>
+              <div v-if="candidate.deleted_at" class="text-italic"
+                style="color: #ef4444; font-size: 0.72rem; margin-top: 0.25rem;">
+                Soft Deleted ({{ formatDate(candidate.deleted_at) }})
+              </div>
+            </td>
+
+            <td data-label="AI Payment">
+              <div v-if="candidate.ai_payment_screenshot_url" class="screenshot-previews-list"
+                style="display: flex; flex-direction: column; gap: 0.35rem;">
+                <button v-for="(url, idx) in candidate.ai_payment_screenshot_url.split(',')" :key="idx"
+                  @click="openImageModal(url)" class="btn-view-receipt"
+                  style="padding: 0.25rem 0.5rem; font-size: 0.78rem;">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="receipt-icon"
+                    style="width: 12px; height: 12px;">
+                    <path d="M2 3h20v18H2zM6 8h12M6 12h12M6 16h6" />
+                  </svg>
+                  <span>Preview {{ candidate.ai_payment_screenshot_url.split(',').length > 1 ? idx + 1 : '' }}</span>
+                </button>
+              </div>
+              <span v-else class="text-muted text-italic">No Upload</span>
+            </td>
+
+            <td data-label="AI Status">
+              <span class="badge" :class="{
+                'badge-cyan': candidate.ai_status === 'pending',
+                'badge-green': candidate.ai_status === 'approved',
+                'badge-red': candidate.ai_status === 'rejected',
+                'badge-gray': !candidate.ai_status || candidate.ai_status === 'unpaid',
+              }">
+                {{ candidate.ai_status || 'unpaid' }}
+              </span>
+              <div v-if="candidate.ai_status === 'approved' && candidate.ai_approved_until" class="ai-expiry"
+                style="font-size: 0.75rem; color: var(--accent-cyan); margin-top: 0.25rem; font-weight: 600;">
+                Until: {{ formatDate(candidate.ai_approved_until) }}
+              </div>
+              <div v-if="candidate.ai_status === 'rejected'" class="rejection-reason-sub">
+                "{{ candidate.ai_rejection_reason }}"
+              </div>
             </td>
 
             <td data-label="Referrals">
@@ -532,38 +680,36 @@ onMounted(() => {
               </div>
             </td>
 
-            <td data-label="Status">
-              <span class="badge" :class="{
-                'badge-cyan': candidate.status === 'pending',
-                'badge-green': candidate.status === 'approved',
-                'badge-red': candidate.status === 'rejected',
-              }">
-                {{ candidate.status }}
-              </span>
-              <div v-if="candidate.status === 'rejected'" class="rejection-reason-sub">
-                "{{ candidate.rejection_reason }}"
-              </div>
-              <div v-if="candidate.deleted_at" class="text-italic"
-                style="color: #ef4444; font-size: 0.72rem; margin-top: 0.25rem;">
-                Soft Deleted ({{ formatDate(candidate.deleted_at) }})
-              </div>
-            </td>
-
             <td class="actions-cell">
-              <div class="actions-group">
+              <div class="actions-group" style="flex-wrap: wrap; gap: 0.35rem;">
                 <!-- If not soft-deleted (active candidate) -->
                 <template v-if="!candidate.deleted_at">
-                  <button v-if="candidate.status !== 'approved'" @click="openApproveModal(candidate, false)"
-                    class="btn-action btn-approve" title="Approve Candidate Access">
-                    Approve
+                  <!-- Course Access Approval/Rejection buttons -->
+                  <button v-if="candidate.status === 'pending'" @click="openApproveModal(candidate, false)"
+                    class="btn-action btn-approve" title="Approve Course Access"
+                    style="background: var(--accent-green); border-color: var(--accent-green);">
+                    Approve Course
                   </button>
+                  <button v-if="candidate.status === 'pending' && candidate.role !== 'admin'"
+                    @click="openRejectModal(candidate.id, 'course')" class="btn-action btn-reject" title="Reject Course Receipt">
+                    Reject Course
+                  </button>
+
+                  <!-- AI Evaluation Access Approval/Rejection buttons -->
+                  <button v-if="candidate.ai_status === 'pending'" @click="handleAiApprove(candidate)"
+                    class="btn-action btn-approve" title="Approve AI Access"
+                    style="background: var(--accent-cyan); border-color: var(--accent-cyan);">
+                    Approve AI
+                  </button>
+                  <button v-if="candidate.ai_status === 'pending' && candidate.role !== 'admin'"
+                    @click="openRejectModal(candidate.id, 'ai')" class="btn-action btn-reject" title="Reject AI Receipt">
+                    Reject AI
+                  </button>
+
+                  <!-- General Action buttons -->
                   <button @click="openDetailsModal(candidate)" class="btn-action btn-details"
-                    title="View Details & Pricing">
+                    title="View Details & Settings">
                     Details
-                  </button>
-                  <button v-if="candidate.status !== 'rejected' && candidate.role !== 'admin'"
-                    @click="openRejectModal(candidate.id)" class="btn-action btn-reject" title="Reject Receipt">
-                    Reject
                   </button>
                   <button v-if="candidate.role !== 'admin'" @click="handleSoftDelete(candidate.id)"
                     class="btn-action btn-soft-delete" title="Move to Trash">
@@ -661,7 +807,7 @@ onMounted(() => {
     <div v-if="showRejectModal" class="modal-overlay" @click="closeRejectModal">
       <div class="modal-content form-modal" @click.stop>
         <button class="modal-close" @click="closeRejectModal">&times;</button>
-        <h3>Reject Verification Request</h3>
+        <h3>Reject {{ rejectType === 'ai' ? 'AI Evaluation' : 'Course' }} Verification Request</h3>
         <p>
           Please provide a reason. The student will see this message and will be allowed to upload a
           valid screenshot.
@@ -670,7 +816,7 @@ onMounted(() => {
         <div class="form-group">
           <label for="rejectionReason" class="form-label">Reason for Rejection *</label>
           <textarea v-model="rejectionReasonInput" id="rejectionReason" class="form-textarea"
-            placeholder="e.g. Transaction Reference Number missing, or payment amount is incorrect."
+            :placeholder="rejectType === 'ai' ? 'e.g. Invalid AI payment receipt screenshot or incorrect amount.' : 'e.g. Transaction Reference Number missing, or payment amount is incorrect.'"
             required></textarea>
         </div>
 
@@ -746,6 +892,13 @@ onMounted(() => {
             <strong style="color: var(--text-muted);">Registered On:</strong> {{ formatDate(detailsProfile.created_at)
             }}
           </div>
+          <div>
+            <strong style="color: var(--text-muted);">AI Status:</strong> <span class="text-uppercase"
+              style="font-weight: 700;">{{ detailsProfile.ai_status || 'unpaid' }}</span>
+          </div>
+          <div>
+            <strong style="color: var(--text-muted);">AI Expiry:</strong> <span>{{ detailsProfile.ai_approved_until ? formatDate(detailsProfile.ai_approved_until) : 'None' }}</span>
+          </div>
           <div v-if="detailsProfile.referred_by" style="grid-column: span 2;">
             <strong style="color: var(--text-muted);">Referred By:</strong> {{
               getReferrerEmail(detailsProfile.referred_by)
@@ -755,7 +908,7 @@ onMounted(() => {
 
         <!-- Editable Pricing Snapshots -->
         <div
-          style="border-top: 1px solid var(--border-color); padding-top: 1rem; display: flex; flex-direction: column; gap: 1rem;">
+          style="border-top: 1px solid var(--border-color); padding-top: 1rem; display: flex; flex-direction: column; gap: 1rem; max-height: 50vh; overflow-y: auto; padding-right: 0.25rem;">
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;">
             <div class="form-group" style="margin-bottom: 0;">
               <label for="detailsCourseAmount" class="form-label" style="font-size: 0.75rem;">Course Amount Paid (PKR)
@@ -785,9 +938,36 @@ onMounted(() => {
               Set custom commission rate this candidate earns for each future referral they make.
             </span>
           </div>
+
+          <!-- AI Subscription Settings -->
+          <div style="border-top: 1px dashed var(--border-color); padding-top: 1rem; display: flex; flex-direction: column; gap: 1rem;">
+            <h4 style="font-size: 0.9rem; margin: 0; color: var(--text-secondary);">AI Evaluation Access Settings</h4>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;">
+              <div class="form-group" style="margin-bottom: 0;">
+                <label for="detailsAiStatusSelect" class="form-label" style="font-size: 0.75rem;">AI Access Status</label>
+                <select v-model="detailsAiStatus" id="detailsAiStatusSelect" class="form-select">
+                  <option value="unpaid">Unpaid</option>
+                  <option value="pending">Pending</option>
+                  <option value="approved">Approved</option>
+                  <option value="rejected">Rejected</option>
+                </select>
+              </div>
+
+              <div class="form-group" style="margin-bottom: 0;">
+                <label for="detailsAiApprovedUntilInput" class="form-label" style="font-size: 0.75rem;">AI Approved Until</label>
+                <input v-model="detailsAiApprovedUntil" type="datetime-local" id="detailsAiApprovedUntilInput" class="form-input" />
+              </div>
+            </div>
+
+            <div v-if="detailsAiStatus === 'rejected'" class="form-group" style="margin-bottom: 0;">
+              <label for="detailsAiRejectionReasonInput" class="form-label" style="font-size: 0.75rem;">AI Rejection Reason</label>
+              <textarea v-model="detailsAiRejectionReason" id="detailsAiRejectionReasonInput" class="form-textarea" placeholder="Reason for rejecting AI access screenshot"></textarea>
+            </div>
+          </div>
         </div>
 
-        <div class="modal-actions" style="margin-top: 0.5rem;">
+        <div class="modal-actions" style="margin-top: 0.5rem; border-top: 1px solid var(--border-color); padding-top: 1rem;">
           <button @click="closeDetailsModal" class="btn btn-secondary">Close</button>
           <button @click="saveDetailsChanges" class="btn btn-primary">
             Save Settings
@@ -804,6 +984,12 @@ onMounted(() => {
   flex-direction: column;
   gap: 1.5rem;
   padding-bottom: 2rem;
+}
+
+.badge-gray {
+  background: rgba(100, 116, 139, 0.12);
+  color: var(--text-muted);
+  border-color: rgba(100, 116, 139, 0.25);
 }
 
 .admin-header {
