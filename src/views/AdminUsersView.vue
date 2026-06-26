@@ -696,12 +696,12 @@ onMounted(() => {
                   </button>
 
                   <!-- AI Evaluation Access Approval/Rejection buttons -->
-                  <button v-if="candidate.ai_status === 'pending'" @click="handleAiApprove(candidate)"
+                  <button v-if="candidate.ai_status !== 'approved'" @click="handleAiApprove(candidate)"
                     class="btn-action btn-approve" title="Approve AI Access"
                     style="background: var(--accent-cyan); border-color: var(--accent-cyan);">
                     Approve AI
                   </button>
-                  <button v-if="candidate.ai_status === 'pending' && candidate.role !== 'admin'"
+                  <button v-if="candidate.ai_status !== 'approved' && candidate.role !== 'admin'"
                     @click="openRejectModal(candidate.id, 'ai')" class="btn-action btn-reject" title="Reject AI Receipt">
                     Reject AI
                   </button>
