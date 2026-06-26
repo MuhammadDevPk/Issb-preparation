@@ -7,9 +7,14 @@ import { supabase } from '../supabase'
 const router = useRouter()
 const authStore = useAuthStore()
 
-const fileInput = ref(null)
-const selectedFiles = ref([])
-const filePreviews = ref([])
+const courseFileInput = ref(null)
+const courseSelectedFiles = ref([])
+const courseFilePreviews = ref([])
+
+const aiFileInput = ref(null)
+const aiSelectedFiles = ref([])
+const aiFilePreviews = ref([])
+
 const showPendingUploadArea = ref(false)
 const activeUploadSection = ref(null) // null, 'course', 'ai'
 
@@ -138,7 +143,7 @@ onMounted(() => {
   fetchReferralStats()
 })
 
-const handleFileChange = (e) => {
+const handleCourseFileChange = (e) => {
   const files = Array.from(e.target.files)
   if (!files.length) return
 
@@ -155,15 +160,15 @@ const handleFileChange = (e) => {
       continue
     }
 
-    if (selectedFiles.value.some(f => f.name === file.name && f.size === file.size)) {
+    if (courseSelectedFiles.value.some(f => f.name === file.name && f.size === file.size)) {
       continue
     }
 
-    selectedFiles.value.push(file)
+    courseSelectedFiles.value.push(file)
 
     const reader = new FileReader()
     reader.onload = (event) => {
-      filePreviews.value.push({
+      courseFilePreviews.value.push({
         id: Math.random().toString(36).substring(2, 9),
         name: file.name,
         size: file.size,
@@ -174,33 +179,104 @@ const handleFileChange = (e) => {
     reader.readAsDataURL(file)
   }
 
-  if (fileInput.value) {
-    fileInput.value.value = ''
+  if (courseFileInput.value) {
+    courseFileInput.value.value = ''
   }
 }
 
-const triggerFileInput = () => {
-  fileInput.value.click()
+const triggerCourseFileInput = () => {
+  if (courseFileInput.value) {
+    courseFileInput.value.click()
+  }
 }
 
-const removeSelectedFile = (idx) => {
-  const removedPreview = filePreviews.value[idx]
+const removeCourseSelectedFile = (idx) => {
+  const removedPreview = courseFilePreviews.value[idx]
   if (removedPreview) {
-    selectedFiles.value = selectedFiles.value.filter(f => f !== removedPreview.fileRef)
-    filePreviews.value.splice(idx, 1)
+    courseSelectedFiles.value = courseSelectedFiles.value.filter(f => f !== removedPreview.fileRef)
+    courseFilePreviews.value.splice(idx, 1)
+  }
+}
+
+const clearCourseSelectedFiles = () => {
+  courseSelectedFiles.value = []
+  courseFilePreviews.value = []
+  if (courseFileInput.value) {
+    courseFileInput.value.value = ''
+  }
+}
+
+const handleAiFileChange = (e) => {
+  const files = Array.from(e.target.files)
+  if (!files.length) return
+
+  errorMessage.value = ''
+
+  for (const file of files) {
+    if (!file.type.startsWith('image/')) {
+      errorMessage.value = `File "${file.name}" is not an image. Only image files are allowed.`
+      continue
+    }
+
+    if (file.size > 5 * 1024 * 1024) {
+      errorMessage.value = `File "${file.name}" exceeds 5MB size limit.`
+      continue
+    }
+
+    if (aiSelectedFiles.value.some(f => f.name === file.name && f.size === file.size)) {
+      continue
+    }
+
+    aiSelectedFiles.value.push(file)
+
+    const reader = new FileReader()
+    reader.onload = (event) => {
+      aiFilePreviews.value.push({
+        id: Math.random().toString(36).substring(2, 9),
+        name: file.name,
+        size: file.size,
+        previewUrl: event.target.result,
+        fileRef: file
+      })
+    }
+    reader.readAsDataURL(file)
+  }
+
+  if (aiFileInput.value) {
+    aiFileInput.value.value = ''
+  }
+}
+
+const triggerAiFileInput = () => {
+  if (aiFileInput.value) {
+    aiFileInput.value.click()
+  }
+}
+
+const removeAiSelectedFile = (idx) => {
+  const removedPreview = aiFilePreviews.value[idx]
+  if (removedPreview) {
+    aiSelectedFiles.value = aiSelectedFiles.value.filter(f => f !== removedPreview.fileRef)
+    aiFilePreviews.value.splice(idx, 1)
+  }
+}
+
+const clearAiSelectedFiles = () => {
+  aiSelectedFiles.value = []
+  aiFilePreviews.value = []
+  if (aiFileInput.value) {
+    aiFileInput.value.value = ''
   }
 }
 
 const clearAllSelectedFiles = () => {
-  selectedFiles.value = []
-  filePreviews.value = []
-  if (fileInput.value) {
-    fileInput.value.value = ''
-  }
+  clearCourseSelectedFiles()
+  clearAiSelectedFiles()
+  errorMessage.value = ''
 }
 
-const handleReupload = async () => {
-  if (selectedFiles.value.length === 0) {
+const handleCourseUpload = async () => {
+  if (courseSelectedFiles.value.length === 0) {
     errorMessage.value = 'Please select at least one file to upload.'
     return
   }
@@ -213,12 +289,11 @@ const handleReupload = async () => {
     const userId = authStore.user.id
     const urls = []
     let count = 1
-    const prefix = activeUploadSection.value === 'ai' ? 'ai' : 'course'
 
-    for (const file of selectedFiles.value) {
-      uploadStatus.value = `Uploading payment screenshot ${count}/${selectedFiles.value.length}...`
+    for (const file of courseSelectedFiles.value) {
+      uploadStatus.value = `Uploading payment screenshot ${count}/${courseSelectedFiles.value.length}...`
       const fileExt = file.name.split('.').pop()
-      const fileName = `${userId}/${prefix}_${Date.now()}_${count}.${fileExt}`
+      const fileName = `${userId}/course_${Date.now()}_${count}.${fileExt}`
 
       const { error: uploadError } = await supabase.storage
         .from('payment_screenshots')
@@ -241,40 +316,93 @@ const handleReupload = async () => {
 
     uploadStatus.value = 'Updating request...'
 
-    if (activeUploadSection.value === 'ai') {
-      const { error: updateError } = await supabase
-        .from('profiles')
-        .update({
-          ai_payment_screenshot_url: joinedPublicUrls,
-          ai_status: 'pending',
-          ai_rejection_reason: null,
-        })
-        .eq('id', userId)
+    const { error: updateError } = await supabase
+      .from('profiles')
+      .update({
+        payment_screenshot_url: joinedPublicUrls,
+        status: 'pending',
+        rejection_reason: null,
+      })
+      .eq('id', userId)
 
-      if (updateError) throw updateError
-    } else {
-      const { error: updateError } = await supabase
-        .from('profiles')
-        .update({
-          payment_screenshot_url: joinedPublicUrls,
-          status: 'pending',
-          rejection_reason: null,
-        })
-        .eq('id', userId)
-
-      if (updateError) throw updateError
-    }
+    if (updateError) throw updateError
 
     // Refresh store
     await authStore.fetchProfile(userId)
 
     // Clean up
-    clearAllSelectedFiles()
+    clearCourseSelectedFiles()
     uploadStatus.value = 'Submission complete!'
     showPendingUploadArea.value = false
+  } catch (error) {
+    console.error('Course upload failed:', error)
+    errorMessage.value = error.message || 'Failed to submit screenshots.'
+  } finally {
+    isSubmitting.value = false
+  }
+}
+
+const handleAiUpload = async () => {
+  if (aiSelectedFiles.value.length === 0) {
+    errorMessage.value = 'Please select at least one file to upload.'
+    return
+  }
+
+  isSubmitting.value = true
+  errorMessage.value = ''
+  uploadStatus.value = 'Uploading receipt screenshot(s)...'
+
+  try {
+    const userId = authStore.user.id
+    const urls = []
+    let count = 1
+
+    for (const file of aiSelectedFiles.value) {
+      uploadStatus.value = `Uploading AI payment screenshot ${count}/${aiSelectedFiles.value.length}...`
+      const fileExt = file.name.split('.').pop()
+      const fileName = `${userId}/ai_${Date.now()}_${count}.${fileExt}`
+
+      const { error: uploadError } = await supabase.storage
+        .from('payment_screenshots')
+        .upload(fileName, file, {
+          cacheControl: '3600',
+          upsert: true,
+        })
+
+      if (uploadError) throw uploadError
+
+      const {
+        data: { publicUrl },
+      } = supabase.storage.from('payment_screenshots').getPublicUrl(fileName)
+
+      urls.push(publicUrl)
+      count++
+    }
+
+    const joinedPublicUrls = urls.join(',')
+
+    uploadStatus.value = 'Updating request...'
+
+    const { error: updateError } = await supabase
+      .from('profiles')
+      .update({
+        ai_payment_screenshot_url: joinedPublicUrls,
+        ai_status: 'pending',
+        ai_rejection_reason: null,
+      })
+      .eq('id', userId)
+
+    if (updateError) throw updateError
+
+    // Refresh store
+    await authStore.fetchProfile(userId)
+
+    // Clean up
+    clearAiSelectedFiles()
+    uploadStatus.value = 'Submission complete!'
     activeUploadSection.value = null
   } catch (error) {
-    console.error('Re-upload failed:', error)
+    console.error('AI upload failed:', error)
     errorMessage.value = error.message || 'Failed to submit screenshots.'
   } finally {
     isSubmitting.value = false
@@ -389,10 +517,10 @@ const checkApprovalStatus = async () => {
 
           <!-- Upload Dropzone -->
           <div class="reupload-section" style="margin-top: 1.5rem;">
-            <input ref="fileInput" type="file" accept="image/*" multiple style="display: none" @change="handleFileChange"
+            <input ref="courseFileInput" type="file" accept="image/*" multiple style="display: none" @change="handleCourseFileChange"
               :disabled="isSubmitting" />
 
-            <div v-if="selectedFiles.length === 0" class="upload-dropzone" @click="triggerFileInput">
+            <div v-if="courseSelectedFiles.length === 0" class="upload-dropzone" @click="triggerCourseFileInput">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="upload-icon">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12" />
               </svg>
@@ -401,21 +529,21 @@ const checkApprovalStatus = async () => {
             </div>
 
             <div v-else class="selected-files-list">
-              <div v-for="(preview, idx) in filePreviews" :key="preview.id" class="upload-preview-card mb-xs">
+              <div v-for="(preview, idx) in courseFilePreviews" :key="preview.id" class="upload-preview-card mb-xs">
                 <div class="preview-info">
                   <span class="file-name">{{ preview.name }}</span>
                 </div>
                 <div class="preview-img-container">
                   <img :src="preview.previewUrl" alt="Receipt preview" class="preview-img" />
                 </div>
-                <button type="button" class="btn-remove-file" @click="removeSelectedFile(idx)" :disabled="isSubmitting">
-                  Remove Screenshot {{ filePreviews.length > 1 ? idx + 1 : '' }}
+                <button type="button" class="btn-remove-file" @click="removeCourseSelectedFile(idx)" :disabled="isSubmitting">
+                  Remove Screenshot {{ courseFilePreviews.length > 1 ? idx + 1 : '' }}
                 </button>
               </div>
 
               <div class="preview-actions mt-xs">
                 <p v-if="uploadStatus" class="upload-progress-text">{{ uploadStatus }}</p>
-                <button type="button" class="btn-submit-receipt" @click="handleReupload"
+                <button type="button" class="btn-submit-receipt" @click="handleCourseUpload"
                   :disabled="isSubmitting">
                   <span v-if="isSubmitting" class="btn-spinner"></span>
                   <svg v-else viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="btn-icon-upload">
@@ -424,10 +552,10 @@ const checkApprovalStatus = async () => {
                   <span>{{ isSubmitting ? 'Submitting...' : 'Submit Receipt(s)' }}</span>
                 </button>
                 <div class="preview-secondary-actions">
-                  <button type="button" class="btn btn-secondary btn-small" @click="triggerFileInput" :disabled="isSubmitting">
+                  <button type="button" class="btn btn-secondary btn-small" @click="triggerCourseFileInput" :disabled="isSubmitting">
                     + Add More
                   </button>
-                  <button type="button" class="btn-remove-file" @click="clearAllSelectedFiles(); showPendingUploadArea = false" :disabled="isSubmitting">
+                  <button type="button" class="btn-remove-file" @click="clearCourseSelectedFiles(); showPendingUploadArea = false" :disabled="isSubmitting">
                     Cancel
                   </button>
                 </div>
@@ -435,7 +563,7 @@ const checkApprovalStatus = async () => {
             </div>
 
             <!-- Cancel editing / go back button if no file is selected -->
-            <button v-if="selectedFiles.length === 0 && profile?.payment_screenshot_url" type="button" class="btn btn-secondary btn-block mt-xs" @click="showPendingUploadArea = false" :disabled="isSubmitting">
+            <button v-if="courseSelectedFiles.length === 0 && profile?.payment_screenshot_url" type="button" class="btn btn-secondary btn-block mt-xs" @click="showPendingUploadArea = false" :disabled="isSubmitting">
               Go Back to Status Verification
             </button>
           </div>
@@ -533,10 +661,10 @@ const checkApprovalStatus = async () => {
         <div class="reupload-section">
           <h4>Submit Updated Receipt Screenshot(s)</h4>
 
-          <input ref="fileInput" type="file" accept="image/*" multiple style="display: none" @change="handleFileChange"
+          <input ref="courseFileInput" type="file" accept="image/*" multiple style="display: none" @change="handleCourseFileChange"
             :disabled="isSubmitting" />
 
-          <div v-if="selectedFiles.length === 0" class="upload-dropzone" @click="triggerFileInput">
+          <div v-if="courseSelectedFiles.length === 0" class="upload-dropzone" @click="triggerCourseFileInput">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="upload-icon">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12" />
             </svg>
@@ -545,21 +673,21 @@ const checkApprovalStatus = async () => {
           </div>
 
           <div class="selected-files-list" v-else>
-            <div v-for="(preview, idx) in filePreviews" :key="preview.id" class="upload-preview-card mb-xs">
+            <div v-for="(preview, idx) in courseFilePreviews" :key="preview.id" class="upload-preview-card mb-xs">
               <div class="preview-info">
                 <span class="file-name">{{ preview.name }}</span>
               </div>
               <div class="preview-img-container">
                 <img :src="preview.previewUrl" alt="New Receipt preview" class="preview-img" />
               </div>
-              <button type="button" class="btn-remove-file" @click="removeSelectedFile(idx)" :disabled="isSubmitting">
-                Remove Screenshot {{ filePreviews.length > 1 ? idx + 1 : '' }}
+              <button type="button" class="btn-remove-file" @click="removeCourseSelectedFile(idx)" :disabled="isSubmitting">
+                Remove Screenshot {{ courseFilePreviews.length > 1 ? idx + 1 : '' }}
               </button>
             </div>
             
             <div class="preview-actions mt-xs">
               <p v-if="uploadStatus" class="upload-progress-text">{{ uploadStatus }}</p>
-              <button type="button" class="btn-submit-receipt" @click="handleReupload"
+              <button type="button" class="btn-submit-receipt" @click="handleCourseUpload"
                 :disabled="isSubmitting">
                 <span v-if="isSubmitting" class="btn-spinner"></span>
                 <svg v-else viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="btn-icon-upload">
@@ -568,10 +696,10 @@ const checkApprovalStatus = async () => {
                 <span>{{ isSubmitting ? 'Submitting...' : 'Submit Receipt(s)' }}</span>
               </button>
               <div class="preview-secondary-actions">
-                <button type="button" class="btn btn-secondary btn-small" @click="triggerFileInput" :disabled="isSubmitting">
+                <button type="button" class="btn btn-secondary btn-small" @click="triggerCourseFileInput" :disabled="isSubmitting">
                   + Add More
                 </button>
-                <button type="button" class="btn-remove-file" @click="clearAllSelectedFiles" :disabled="isSubmitting">
+                <button type="button" class="btn-remove-file" @click="clearCourseSelectedFiles" :disabled="isSubmitting">
                   Clear All
                 </button>
               </div>
@@ -715,9 +843,9 @@ const checkApprovalStatus = async () => {
 
           <!-- Dropzone -->
           <div class="reupload-section" style="margin-top: 1.5rem;">
-            <input ref="fileInput" type="file" accept="image/*" multiple style="display: none" @change="handleFileChange" :disabled="isSubmitting" />
+            <input ref="aiFileInput" type="file" accept="image/*" multiple style="display: none" @change="handleAiFileChange" :disabled="isSubmitting" />
 
-            <div v-if="selectedFiles.length === 0" class="upload-dropzone" @click="triggerFileInput">
+            <div v-if="aiSelectedFiles.length === 0" class="upload-dropzone" @click="triggerAiFileInput">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="upload-icon">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12" />
               </svg>
@@ -726,29 +854,29 @@ const checkApprovalStatus = async () => {
             </div>
 
             <div v-else class="selected-files-list">
-              <div v-for="(preview, idx) in filePreviews" :key="preview.id" class="upload-preview-card mb-xs">
+              <div v-for="(preview, idx) in aiFilePreviews" :key="preview.id" class="upload-preview-card mb-xs">
                 <div class="preview-info">
                   <span class="file-name">{{ preview.name }}</span>
                 </div>
                 <div class="preview-img-container">
                   <img :src="preview.previewUrl" alt="Receipt preview" class="preview-img" />
                 </div>
-                <button type="button" class="btn-remove-file" @click="removeSelectedFile(idx)" :disabled="isSubmitting">
+                <button type="button" class="btn-remove-file" @click="removeAiSelectedFile(idx)" :disabled="isSubmitting">
                   Remove Screenshot
                 </button>
               </div>
 
               <div class="preview-actions mt-xs">
                 <p v-if="uploadStatus" class="upload-progress-text">{{ uploadStatus }}</p>
-                <button type="button" class="btn-submit-receipt" @click="handleReupload" :disabled="isSubmitting" style="background: #8b5cf6;">
+                <button type="button" class="btn-submit-receipt" @click="handleAiUpload" :disabled="isSubmitting" style="background: #8b5cf6;">
                   <span v-if="isSubmitting" class="btn-spinner"></span>
                   <span>{{ isSubmitting ? 'Submitting...' : 'Submit Receipt(s)' }}</span>
                 </button>
                 <div class="preview-secondary-actions">
-                  <button type="button" class="btn btn-secondary btn-small" @click="triggerFileInput" :disabled="isSubmitting">
+                  <button type="button" class="btn btn-secondary btn-small" @click="triggerAiFileInput" :disabled="isSubmitting">
                     + Add More
                   </button>
-                  <button type="button" class="btn-remove-file" @click="clearAllSelectedFiles(); activeUploadSection = null" :disabled="isSubmitting">
+                  <button type="button" class="btn-remove-file" @click="clearAiSelectedFiles(); activeUploadSection = null" :disabled="isSubmitting">
                     Cancel
                   </button>
                 </div>
@@ -776,6 +904,37 @@ const checkApprovalStatus = async () => {
             <p v-else>
               Get unlimited evaluations for handwritten tests (WAT, SCT, SRT) for 30 days!
             </p>
+          </div>
+
+          <!-- AI Payment Box -->
+          <div class="payment-credentials-card" style="margin-top: 1.25rem; border-color: rgba(139, 92, 246, 0.3);">
+            <h4 style="color: #8b5cf6;">EasyPaisa Transfer Details (Rs. 999)</h4>
+            <div class="credential-row">
+              <span class="lbl">Account Number:</span>
+              <span class="val text-cyan" style="font-weight: 700;">03458643910</span>
+            </div>
+            <div class="credential-row">
+              <span class="lbl">Account Name:</span>
+              <span class="val" style="font-weight: 700;">umar farooq</span>
+            </div>
+            <div class="credential-row">
+              <span class="lbl">AI Access Price:</span>
+              <span class="val text-cyan" style="font-weight: 800;">PKR 999</span>
+            </div>
+            <div class="credential-row">
+              <span class="lbl">Validity:</span>
+              <span class="val" style="font-weight: 600;">30 Days (1 Month)</span>
+            </div>
+          </div>
+
+          <div class="support-info-card" style="margin-top: 1rem; border-color: rgba(139, 92, 246, 0.15); background: rgba(139, 92, 246, 0.02);">
+            <strong style="color: #8b5cf6;">How to Get Unlimited AI Access:</strong>
+            <ol style="margin-top: 0.35rem; padding-left: 1.2rem; font-size: 0.85rem; color: var(--text-secondary); text-align: left; display: flex; flex-direction: column; gap: 0.35rem;">
+              <li>Transfer <strong>Rs. 999</strong> to the EasyPaisa account details above.</li>
+              <li>Take a <strong>screenshot</strong> of the successful transaction receipt.</li>
+              <li>Click <strong>"Upload Payment Screenshot"</strong> below, select your screenshot, and submit.</li>
+              <li>Once verified (usually 1-2 hours), you will get 1 month of unlimited image-based handwriting evaluations.</li>
+            </ol>
           </div>
 
           <!-- Features list -->
