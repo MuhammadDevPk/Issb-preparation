@@ -756,28 +756,83 @@ const totalAnswered = computed(() => {
           </div>
           <button class="btn-close" @click="showUpgradeModal = false">&times;</button>
         </div>
-        <div class="modal-body-ai">
-          <p>
-            You have used your <strong>1 daily AI evaluation</strong>.
-          </p>
-          <div class="warning-callout">
-            <strong>💡 Purchase Unlimited AI Access for Rs. 999:</strong>
-            For using it unlimited times a day, please purchase access for <strong>Rs. 999 for 1 month</strong>. Because this AI evaluation feature is very expensive and we have to pay Google, Groq, Open Router, and other AI providers (which costs us thousands of rupees per month), we cannot provide this for free. But for Rs. 999, you will get 1 month of unlimited access.
+        <template v-if="authStore.user">
+          <div class="modal-body-ai">
+            <p>
+              You have used your <strong>1 daily AI evaluation</strong>.
+            </p>
+            
+            <div class="warning-callout" style="border-left: 4px solid #7c3aed; background: rgba(124, 58, 237, 0.05); color: var(--text-primary);">
+              <strong style="color: #7c3aed; display: block; margin-bottom: 0.5rem; font-size: 0.95rem;">💡 How to Unlock 30 Days Unlimited AI Access:</strong>
+              <ol style="margin: 0; padding-left: 1.25rem; font-size: 0.88rem; line-height: 1.5; display: flex; flex-direction: column; gap: 0.4rem; text-align: left;">
+                <li>Transfer <strong>Rs. 999</strong> to EasyPaisa:
+                  <div style="margin: 0.25rem 0; padding: 0.5rem; background: var(--bg-surface); border-radius: 4px; border: 1px dashed rgba(124, 58, 237, 0.25);">
+                    <div><strong>Account Number:</strong> <span class="text-cyan" style="font-family: monospace; font-size: 0.95rem; font-weight: bold;">03458643910</span></div>
+                    <div><strong>Account Name:</strong> <span class="text-cyan" style="font-weight: bold;">umar farooq</span></div>
+                  </div>
+                </li>
+                <li>Take a <strong>screenshot</strong> of the payment transaction receipt.</li>
+                <li>Click <strong>"Upload Screenshot on Status Page"</strong> below and upload your receipt.</li>
+                <li>Our admin will verify it within 1-2 hours to activate your unlimited access!</li>
+              </ol>
+            </div>
+
+            <div class="modal-features">
+              <div class="feat-row"><span class="check">✓</span> <span>Finds hidden psychology flaws & red flags in your responses.</span></div>
+              <div class="feat-row"><span class="check">✓</span> <span>Detailed Officer-Like Qualities (OLQ) grade score & assessment.</span></div>
+              <div class="feat-row"><span class="check">✓</span> <span>Provides exact corrected sentences and rephrasings.</span></div>
+            </div>
           </div>
-          <div class="modal-features">
-            <div class="feat-row"><span class="check">✓</span> <span>Finds hidden psychology flaws & red flags in your responses.</span></div>
-            <div class="feat-row"><span class="check">✓</span> <span>Detailed Officer-Like Qualities (OLQ) grade score & assessment.</span></div>
-            <div class="feat-row"><span class="check">✓</span> <span>Provides exact corrected sentences and rephrasings.</span></div>
+          <div class="modal-footer-ai" style="display: flex; flex-direction: column; gap: 0.5rem;">
+            <button @click="router.push('/status')" class="btn btn-ai shadow-glow-purple w-full text-center" style="background: #7c3aed; color: white; border: none; font-weight: 600; padding: 0.75rem 1rem; border-radius: var(--border-radius-md); cursor: pointer;">
+              📤 Upload Screenshot on Status Page
+            </button>
+            <a href="https://wa.me/923456047058?text=Hi%20Umar,%20I%20want%20to%20purchase%20unlimited%20AI%20evaluations%20for%20Rs.%20999%20for%201%20month.%20My%20email%20is%20" target="_blank" class="btn btn-secondary w-full text-center block" style="display: block; text-decoration: none; padding: 0.75rem 1rem; border-radius: var(--border-radius-md); text-align: center; font-weight: 500;">
+              💬 Purchase / Questions via WhatsApp
+            </a>
+            <button class="btn btn-secondary w-full" @click="showUpgradeModal = false">
+              Wait 24 Hours / Review Manually
+            </button>
           </div>
-        </div>
-        <div class="modal-footer-ai" style="display: flex; flex-direction: column; gap: 0.5rem;">
-          <a href="https://wa.me/923456047058?text=Hi%20Umar,%20I%20want%20to%20purchase%20unlimited%20AI%20evaluations%20for%20Rs.%20999%20for%201%20month.%20My%20email%20is%20" target="_blank" class="btn btn-ai shadow-glow-purple w-full text-center block" style="display: block; text-decoration: none; padding: 0.75rem 1rem; border-radius: var(--border-radius-md); text-align: center; color: white;">
-            💬 Purchase Unlimited via WhatsApp (Rs. 999/month)
-          </a>
-          <button class="btn btn-secondary w-full" @click="showUpgradeModal = false">
-            Wait 24 Hours / Review Manually
-          </button>
-        </div>
+        </template>
+
+        <template v-else>
+          <div class="modal-body-ai">
+            <p>
+              You have used your <strong>1 daily AI evaluation</strong>.
+            </p>
+
+            <div class="warning-callout" style="border-left: 4px solid var(--accent-cyan); background: rgba(6, 182, 212, 0.05); color: var(--text-primary);">
+              <strong style="color: var(--accent-cyan); display: block; margin-bottom: 0.5rem; font-size: 0.95rem;">⚠️ Account Registration Required:</strong>
+              <p style="margin: 0 0 0.5rem 0; font-size: 0.88rem; line-height: 1.4; text-align: left;">
+                To unlock unlimited AI evaluations for 30 days (Rs. 999), you must first create a candidate account. Guests cannot purchase or activate subscription packages.
+              </p>
+              <p style="margin: 0; font-size: 0.88rem; line-height: 1.4; font-weight: 500; text-align: left;">
+                After registering and logging in, you will transfer payment and upload your screenshot on the Status page to unlock unlimited access.
+              </p>
+            </div>
+
+            <div class="modal-features">
+              <div class="feat-row"><span class="check">✓</span> <span>Finds hidden psychology flaws & red flags in your responses.</span></div>
+              <div class="feat-row"><span class="check">✓</span> <span>Detailed Officer-Like Qualities (OLQ) grade score & assessment.</span></div>
+              <div class="feat-row"><span class="check">✓</span> <span>Provides exact corrected sentences and rephrasings.</span></div>
+            </div>
+          </div>
+          <div class="modal-footer-ai" style="display: flex; flex-direction: column; gap: 0.5rem;">
+            <button @click="router.push('/register')" class="btn btn-ai shadow-glow-purple w-full text-center" style="background: var(--accent-cyan); color: white; border: none; font-weight: 600; padding: 0.75rem 1rem; border-radius: var(--border-radius-md); cursor: pointer;">
+              👤 Create Candidate Account (Register)
+            </button>
+            <button @click="router.push('/login')" class="btn btn-secondary w-full" style="font-weight: 500; cursor: pointer;">
+              🔑 Log In to Existing Account
+            </button>
+            <a href="https://wa.me/923456047058?text=Hi%20Umar,%20I%20want%20to%20register%20and%20purchase%20unlimited%20AI%20evaluations%20for%20Rs.%20999.%20My%20email%20is%20" target="_blank" class="btn btn-secondary w-full text-center block" style="display: block; text-decoration: none; padding: 0.75rem 1rem; border-radius: var(--border-radius-md); text-align: center; font-weight: 500;">
+              💬 Registration / Purchase Help on WhatsApp
+            </a>
+            <button class="btn btn-secondary w-full" @click="showUpgradeModal = false">
+              Wait 24 Hours / Review Manually
+            </button>
+          </div>
+        </template>
       </div>
     </div>
   </div>

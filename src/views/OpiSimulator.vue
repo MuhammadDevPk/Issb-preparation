@@ -892,16 +892,55 @@ const scoreClass = (score) => {
           <p>
             You have used your <strong>1 daily AI evaluation</strong>.
           </p>
-          <div class="warning-callout" style="background: rgba(168, 85, 247, 0.1); border-left: 4px solid #a855f7; padding: 0.75rem; border-radius: 4px; margin: 1rem 0; font-size: 0.88rem; line-height: 1.4; color: var(--text-primary); text-align: left;">
-            <strong>💡 Purchase Unlimited AI Access for Rs. 999:</strong>
-            For using it unlimited times a day, please purchase access for <strong>Rs. 999 for 1 month</strong>. Because this AI evaluation feature is very expensive and we have to pay Google, Groq, Open Router, and other AI providers (which costs us thousands of rupees per month), we cannot provide this for free. But for Rs. 999, you will get 1 month of unlimited access.
-          </div>
-          <div class="modal-actions" style="display: flex; flex-direction: column; gap: 0.5rem; width: 100%;">
-            <a href="https://wa.me/923456047058?text=Hi%20Umar,%20I%20want%20to%20purchase%20unlimited%20AI%20evaluations%20for%20Rs.%20999%20for%201%20month.%20My%20email%20is%20" target="_blank" class="btn btn-primary text-center block" style="display: block; text-decoration: none; padding: 0.75rem 1rem; border-radius: var(--border-radius-md); background: #a855f7; border: none; color: white;">
-              💬 Purchase Unlimited via WhatsApp (Rs. 999/month)
-            </a>
-            <button class="btn btn-secondary" @click="showUpgradeModal = false">Close</button>
-          </div>
+          <template v-if="authStore.user">
+            <div class="warning-callout" style="border-left: 4px solid #a855f7; background: rgba(168, 85, 247, 0.05); padding: 0.75rem; border-radius: 4px; margin: 1rem 0; font-size: 0.88rem; line-height: 1.4; color: var(--text-primary); text-align: left;">
+              <strong style="color: #a855f7; display: block; margin-bottom: 0.5rem; font-size: 0.95rem;">💡 How to Unlock 30 Days Unlimited AI Access:</strong>
+              <ol style="margin: 0; padding-left: 1.25rem; font-size: 0.88rem; line-height: 1.5; display: flex; flex-direction: column; gap: 0.4rem; text-align: left;">
+                <li>Transfer <strong>Rs. 999</strong> to EasyPaisa:
+                  <div style="margin: 0.25rem 0; padding: 0.5rem; background: var(--bg-surface); border-radius: 4px; border: 1px dashed rgba(168, 85, 247, 0.25);">
+                    <div><strong>Account Number:</strong> <span class="text-cyan" style="font-family: monospace; font-size: 0.95rem; font-weight: bold;">03458643910</span></div>
+                    <div><strong>Account Name:</strong> <span class="text-cyan" style="font-weight: bold;">umar farooq</span></div>
+                  </div>
+                </li>
+                <li>Take a <strong>screenshot</strong> of the payment transaction receipt.</li>
+                <li>Click <strong>"Upload Screenshot on Status Page"</strong> below and upload your receipt.</li>
+                <li>Our admin will verify it within 1-2 hours to activate your unlimited access!</li>
+              </ol>
+            </div>
+            <div class="modal-actions" style="display: flex; flex-direction: column; gap: 0.5rem; width: 100%;">
+              <button @click="router.push('/status')" class="btn btn-primary text-center" style="background: #a855f7; border: none; color: white; padding: 0.75rem 1rem; border-radius: var(--border-radius-md); font-weight: 600; cursor: pointer;">
+                📤 Upload Screenshot on Status Page
+              </button>
+              <a href="https://wa.me/923456047058?text=Hi%20Umar,%20I%20want%20to%20purchase%20unlimited%20AI%20evaluations%20for%20Rs.%20999%20for%201%20month.%20My%20email%20is%20" target="_blank" class="btn btn-secondary text-center block" style="display: block; text-decoration: none; padding: 0.75rem 1rem; border-radius: var(--border-radius-md); text-align: center; font-weight: 500;">
+                💬 Purchase / Questions via WhatsApp
+              </a>
+              <button class="btn btn-secondary" @click="showUpgradeModal = false" style="cursor: pointer;">Close</button>
+            </div>
+          </template>
+
+          <template v-else>
+            <div class="warning-callout" style="border-left: 4px solid var(--accent-cyan); background: rgba(6, 182, 212, 0.05); padding: 0.75rem; border-radius: 4px; margin: 1rem 0; font-size: 0.88rem; line-height: 1.4; color: var(--text-primary); text-align: left;">
+              <strong style="color: var(--accent-cyan); display: block; margin-bottom: 0.5rem; font-size: 0.95rem;">⚠️ Account Registration Required:</strong>
+              <p style="margin: 0 0 0.5rem 0; font-size: 0.88rem; line-height: 1.4; text-align: left;">
+                To unlock unlimited AI evaluations for 30 days (Rs. 999), you must first create a candidate account. Guests cannot purchase or activate subscription packages.
+              </p>
+              <p style="margin: 0; font-size: 0.88rem; line-height: 1.4; font-weight: 500; text-align: left;">
+                After registering and logging in, you will transfer payment and upload your screenshot on the Status page to unlock unlimited access.
+              </p>
+            </div>
+            <div class="modal-actions" style="display: flex; flex-direction: column; gap: 0.5rem; width: 100%;">
+              <button @click="router.push('/register')" class="btn btn-primary text-center" style="background: var(--accent-cyan); border: none; color: white; padding: 0.75rem 1rem; border-radius: var(--border-radius-md); font-weight: 600; cursor: pointer;">
+                👤 Create Candidate Account (Register)
+              </button>
+              <button @click="router.push('/login')" class="btn btn-secondary w-full" style="font-weight: 500; cursor: pointer; border-radius: var(--border-radius-md); padding: 0.75rem 1rem;">
+                🔑 Log In to Existing Account
+              </button>
+              <a href="https://wa.me/923456047058?text=Hi%20Umar,%20I%20want%20to%20register%20and%20purchase%20unlimited%20AI%20evaluations%20for%20Rs.%20999.%20My%20email%20is%20" target="_blank" class="btn btn-secondary text-center block" style="display: block; text-decoration: none; padding: 0.75rem 1rem; border-radius: var(--border-radius-md); text-align: center; font-weight: 500;">
+                💬 Registration / Purchase Help on WhatsApp
+              </a>
+              <button class="btn btn-secondary" @click="showUpgradeModal = false" style="cursor: pointer;">Close</button>
+            </div>
+          </template>
         </div>
       </div>
 
