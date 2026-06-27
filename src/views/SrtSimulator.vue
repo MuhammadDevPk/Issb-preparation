@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { usePreparationStore } from '../stores/preparation'
 import { useAiAnalysis } from '../composables/useAiAnalysis.js'
@@ -272,9 +272,50 @@ const submitReviewedResponses = async () => {
   }
 }
 
+const showVisualGuides = ref(false)
+const srtLightboxOpen = ref(false)
+const srtLightboxIndex = ref(0)
+const srtGuides = ref([
+  { title: 'What is SRT? & Format', filename: 'What SRT, FORMAT of SRT.jpeg' },
+  { title: 'What Psychologists Look For in SRT', filename: 'WHAT PSYCHOLOGISTS LOOK FOR in SRT?.jpeg' },
+  { title: 'E.g. SRT Sentences', filename: 'E.g SRT sentences.jpeg' },
+  { title: 'E.g. SRT Statements & Answers', filename: 'e.g SRT statements and answer.jpeg' }
+])
+
+const openSrtLightbox = (idx) => {
+  srtLightboxIndex.value = idx
+  srtLightboxOpen.value = true
+}
+
+const closeSrtLightbox = () => {
+  srtLightboxOpen.value = false
+}
+
+const prevSrtLightbox = () => {
+  const count = srtGuides.value.length
+  srtLightboxIndex.value = (srtLightboxIndex.value - 1 + count) % count
+}
+
+const nextSrtLightbox = () => {
+  const count = srtGuides.value.length
+  srtLightboxIndex.value = (srtLightboxIndex.value + 1) % count
+}
+
+const handleSrtLightboxKeys = (e) => {
+  if (!srtLightboxOpen.value) return
+  if (e.key === 'Escape') closeSrtLightbox()
+  if (e.key === 'ArrowLeft') prevSrtLightbox()
+  if (e.key === 'ArrowRight') nextSrtLightbox()
+}
+
+onMounted(() => {
+  window.addEventListener('keydown', handleSrtLightboxKeys)
+})
+
 onUnmounted(() => {
   clearInterval(timerInterval)
   clearInterval(paperTimer)
+  window.removeEventListener('keydown', handleSrtLightboxKeys)
 })
 
 const totalAnswered = computed(() => {
@@ -414,6 +455,49 @@ const totalAnswered = computed(() => {
               <button class="btn btn-secondary btn-sm" @click="viewPastSession(session)">
                 View Results
               </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SRT Visual Guides Button (Admin only) -->
+      <div v-if="authStore.profile?.role === 'admin'" class="admin-guides-trigger" style="margin-top: 1.5rem; display: flex; justify-content: center;">
+        <button 
+          class="btn btn-secondary btn-large" 
+          @click="showVisualGuides = !showVisualGuides"
+        >
+          <span>🖼️ {{ showVisualGuides ? 'Hide' : 'Show' }} SRT Visual Guides (Admin)</span>
+        </button>
+      </div>
+
+      <!-- SRT Visual Guides Panel (Admin only) -->
+      <div class="guides-panel glass-card" v-if="authStore.profile?.role === 'admin' && showVisualGuides" style="margin-top: 1.5rem;">
+        <div class="guides-header">
+          <h3>🖼️ SRT Preparation Guides & Infographics</h3>
+          <p class="guides-subtitle" style="margin-bottom: 1.5rem; font-size: 0.9rem; color: var(--text-muted);">
+            Admin access only. Study these visual boards to understand what psychologists look for.
+          </p>
+        </div>
+        <div class="guides-grid">
+          <div 
+            v-for="(item, itemIdx) in srtGuides" 
+            :key="itemIdx"
+            class="guide-card glass-card interactive"
+            @click="openSrtLightbox(itemIdx)"
+          >
+            <div class="guide-image-container">
+              <img 
+                :src="'/media/images/tests-guides/SRT/' + item.filename" 
+                :alt="item.title"
+                class="guide-thumbnail"
+                loading="lazy"
+              />
+              <div class="guide-card-overlay">
+                <span class="zoom-text">🔍 Click to View Full Size</span>
+              </div>
+            </div>
+            <div class="guide-card-footer">
+              <span class="guide-card-title">{{ item.title }}</span>
             </div>
           </div>
         </div>
@@ -833,6 +917,38 @@ const totalAnswered = computed(() => {
             </button>
           </div>
         </template>
+      </div>
+    </div>
+
+    <!-- SRT Lightbox Modal (Admin only) -->
+    <div class="lightbox-modal" v-if="srtLightboxOpen && authStore.profile?.role === 'admin'" @click.self="closeSrtLightbox">
+      <div class="lightbox-content-wrapper">
+        <button class="lightbox-close-btn" @click="closeSrtLightbox">×</button>
+        <button 
+          class="lightbox-nav-btn prev-btn" 
+          @click="prevSrtLightbox" 
+          v-if="srtGuides.length > 1"
+        >
+          ‹
+        </button>
+        <div class="lightbox-image-box">
+          <img 
+            :src="'/media/images/tests-guides/SRT/' + srtGuides[srtLightboxIndex].filename" 
+            :alt="srtGuides[srtLightboxIndex].title"
+            class="lightbox-image"
+          />
+          <div class="lightbox-caption">
+            <span class="caption-category">SRT Guide</span>
+            <h4 class="caption-title">{{ srtGuides[srtLightboxIndex].title }}</h4>
+          </div>
+        </div>
+        <button 
+          class="lightbox-nav-btn next-btn" 
+          @click="nextSrtLightbox" 
+          v-if="srtGuides.length > 1"
+        >
+          ›
+        </button>
       </div>
     </div>
   </div>
@@ -1546,4 +1662,268 @@ const totalAnswered = computed(() => {
   display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap;
 }
 .situation-col { font-size: 0.85rem; max-width: 300px; }
+
+/* Visual Guides Styles */
+.guides-panel {
+  margin-top: 2rem;
+}
+.guides-header {
+  margin-bottom: 1.5rem;
+}
+.guides-subtitle {
+  color: var(--text-secondary);
+}
+.guides-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+.guide-card {
+  overflow: hidden;
+  padding: 0;
+  border-radius: var(--border-radius-md);
+  transition: transform var(--transition-smooth), border-color var(--transition-smooth);
+}
+.guide-image-container {
+  position: relative;
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+  background: rgba(0,0,0,0.1);
+}
+.guide-thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-smooth);
+}
+.guide-card:hover .guide-thumbnail {
+  transform: scale(1.05);
+}
+.guide-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--transition-smooth);
+}
+.guide-card:hover .guide-card-overlay {
+  opacity: 1;
+}
+.zoom-text {
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  background: rgba(0,0,0,0.6);
+  padding: 0.35rem 0.75rem;
+  border-radius: 50px;
+}
+.guide-card-footer {
+  padding: 0.75rem;
+  text-align: center;
+  background: var(--bg-panel-solid, #f8fafc);
+  border-top: 1px solid var(--border-color);
+}
+.guide-card-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+/* Lightbox Modal */
+.lightbox-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.92);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+.lightbox-content-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  max-height: calc(100vh - 100px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lightbox-image-box {
+  background: #000;
+  border-radius: var(--border-radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+  max-height: 80vh;
+  width: auto;
+  max-width: 100%;
+}
+.lightbox-image {
+  max-width: 100%;
+  max-height: calc(80vh - 70px);
+  object-fit: contain;
+}
+.lightbox-close-btn {
+  position: absolute;
+  top: -2.5rem;
+  right: 0;
+  font-size: 2rem;
+  color: #fff;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity var(--transition-smooth);
+}
+.lightbox-close-btn:hover {
+  opacity: 1;
+}
+.lightbox-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 3rem;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-smooth);
+  opacity: 0.6;
+}
+.lightbox-nav-btn:hover {
+  opacity: 1;
+  background: rgba(3, 194, 252, 0.8);
+}
+.prev-btn {
+  left: -4rem;
+}
+.next-btn {
+  right: -4rem;
+}
+.lightbox-caption {
+  padding: 0.75rem 1.25rem;
+  background: rgba(30, 41, 59, 0.95);
+  color: #fff;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.caption-category {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+  letter-spacing: 0.05em;
+}
+.caption-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0.15rem 0 0 0;
+}
+
+@media (max-width: 992px) {
+  .prev-btn {
+    left: 0.5rem;
+    z-index: 10;
+  }
+  .next-btn {
+    right: 0.5rem;
+    z-index: 10;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Full Screen Lightbox Modal for Mobile */
+  .lightbox-modal {
+    padding: 0;
+    background: #000000;
+  }
+  .lightbox-content-wrapper {
+    width: 100%;
+    height: 100dvh;
+    max-height: 100dvh;
+    margin: 0;
+  }
+  .lightbox-image-box {
+    width: 100%;
+    height: 100%;
+    max-height: 100dvh;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    background: #000000;
+    justify-content: center;
+  }
+  .lightbox-image {
+    width: 100%;
+    height: 100%;
+    max-height: 100dvh;
+    object-fit: contain;
+  }
+  .lightbox-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(8px);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    z-index: 12;
+    padding: 1rem 1.25rem;
+  }
+  .lightbox-close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    left: auto;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #ffffff;
+    z-index: 20;
+    opacity: 0.9;
+    padding-bottom: 4px;
+  }
+  .lightbox-nav-btn {
+    width: 44px;
+    height: 44px;
+    font-size: 2.5rem;
+    background: rgba(15, 23, 42, 0.6);
+    border-color: rgba(255, 255, 255, 0.15);
+    z-index: 15;
+  }
+  .prev-btn {
+    left: 0.75rem;
+  }
+  .next-btn {
+    right: 0.75rem;
+  }
+}
+@media (max-width: 480px) {
+  .guides-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 0.75rem;
+  }
+}
 </style>

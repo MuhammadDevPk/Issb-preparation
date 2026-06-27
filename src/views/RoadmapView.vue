@@ -1,10 +1,61 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { usePreparationStore } from '../stores/preparation'
+import { useAuthStore } from '../stores/auth'
 
 const store = usePreparationStore()
 const router = useRouter()
+const authStore = useAuthStore()
+
+const essayLightboxOpen = ref(false)
+const essayLightboxIndex = ref(0)
+const essayGuides = ref([
+  { title: 'Why Does ISSB Conduct Essay Writing?', filename: 'WHY DOES ISSB CONDUCT ESSAY WRITING?.jpeg' },
+  { title: 'How to Think Before Essay Writing', filename: 'How to Think before Essay writing.jpeg' },
+  { title: 'Ideal Essay Heading, Formula & Structure', filename: 'Ideal Essay heading:formula:structure.jpeg' },
+  { title: 'Ideal Essay Structure (Part 1)', filename: 'IDEAL ESSAY STRUCTURE part 1.jpeg' },
+  { title: 'Ideal Essay Structure (Part 2)', filename: 'IDEAL ESSAY STRUCTURE part 2.jpeg' },
+  { title: 'Ideal Essay Structure (Part 3)', filename: 'IDEAL ESSAY STRUCTURE part 3.jpeg' },
+  { title: 'Ideal Essay Structure (Part 4)', filename: 'IDEAL ESSAY STRUCTURE part 4.jpeg' },
+  { title: 'Common Essay Myths', filename: 'COMMON Essay MYTHS.jpeg' },
+  { title: 'Common Mistakes in Essay Writing', filename: 'Common Mistakes in Essay Writing.jpeg' },
+  { title: 'Tips to Score Better in Essay Writing', filename: 'TIPS TO SCORE BETTER in Essay Writting.jpeg' }
+])
+
+const openEssayLightbox = (idx) => {
+  essayLightboxIndex.value = idx
+  essayLightboxOpen.value = true
+}
+
+const closeEssayLightbox = () => {
+  essayLightboxOpen.value = false
+}
+
+const prevEssayLightbox = () => {
+  const count = essayGuides.value.length
+  essayLightboxIndex.value = (essayLightboxIndex.value - 1 + count) % count
+}
+
+const nextEssayLightbox = () => {
+  const count = essayGuides.value.length
+  essayLightboxIndex.value = (essayLightboxIndex.value + 1) % count
+}
+
+const handleEssayLightboxKeys = (e) => {
+  if (!essayLightboxOpen.value) return
+  if (e.key === 'Escape') closeEssayLightbox()
+  if (e.key === 'ArrowLeft') prevEssayLightbox()
+  if (e.key === 'ArrowRight') nextEssayLightbox()
+}
+
+onMounted(() => {
+  window.addEventListener('keydown', handleEssayLightboxKeys)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('keydown', handleEssayLightboxKeys)
+})
 
 const activeDay = ref(1)
 const selectedTestId = ref('bio_data')
@@ -455,6 +506,39 @@ const launchSimulator = (path) => {
               </div>
             </div>
           </div>
+
+          <!-- Essay Visual Guides (Admin only) -->
+          <div v-if="selectedTest.id === 'day1_essays' && authStore.profile?.role === 'admin'" class="essay-guides-section" style="margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem;">
+            <div class="guides-header" style="margin-bottom: 1.5rem;">
+              <h3 class="text-glow">🖼️ Admin Panel: Essay Prep Guides & Infographics</h3>
+              <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.25rem;">
+                Admin-only access to visual boards. Study these guidelines to structure essay answers.
+              </p>
+            </div>
+            <div class="guides-grid">
+              <div 
+                v-for="(item, itemIdx) in essayGuides" 
+                :key="itemIdx"
+                class="guide-card glass-card interactive"
+                @click="openEssayLightbox(itemIdx)"
+              >
+                <div class="guide-image-container">
+                  <img 
+                    :src="'/media/images/tests-guides/Essay/' + item.filename" 
+                    :alt="item.title"
+                    class="guide-thumbnail"
+                    loading="lazy"
+                  />
+                  <div class="guide-card-overlay">
+                    <span class="zoom-text">🔍 Click to View Full Size</span>
+                  </div>
+                </div>
+                <div class="guide-card-footer">
+                  <span class="guide-card-title">{{ item.title }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </main>
     </div>
@@ -480,6 +564,38 @@ const launchSimulator = (path) => {
             <div class="iframe-overlay"></div>
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- Essay Lightbox Modal (Admin only) -->
+    <div class="lightbox-modal" v-if="essayLightboxOpen && authStore.profile?.role === 'admin'" @click.self="closeEssayLightbox">
+      <div class="lightbox-content-wrapper">
+        <button class="lightbox-close-btn" @click="closeEssayLightbox">×</button>
+        <button 
+          class="lightbox-nav-btn prev-btn" 
+          @click="prevEssayLightbox" 
+          v-if="essayGuides.length > 1"
+        >
+          ‹
+        </button>
+        <div class="lightbox-image-box">
+          <img 
+            :src="'/media/images/tests-guides/Essay/' + essayGuides[essayLightboxIndex].filename" 
+            :alt="essayGuides[essayLightboxIndex].title"
+            class="lightbox-image"
+          />
+          <div class="lightbox-caption">
+            <span class="caption-category">Essay Writing Guide</span>
+            <h4 class="caption-title">{{ essayGuides[essayLightboxIndex].title }}</h4>
+          </div>
+        </div>
+        <button 
+          class="lightbox-nav-btn next-btn" 
+          @click="nextEssayLightbox" 
+          v-if="essayGuides.length > 1"
+        >
+          ›
+        </button>
       </div>
     </div>
   </div>
@@ -876,6 +992,264 @@ const launchSimulator = (path) => {
     width: 110% !important;
     margin-left: -5% !important;
     height: 100% !important;
+  }
+}
+
+/* Essay Guides Styles */
+.essay-guides-section {
+  width: 100%;
+}
+.guides-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+.guide-card {
+  overflow: hidden;
+  padding: 0;
+  border-radius: var(--border-radius-md);
+  transition: transform var(--transition-smooth), border-color var(--transition-smooth);
+}
+.guide-image-container {
+  position: relative;
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+  background: rgba(0,0,0,0.1);
+}
+.guide-thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-smooth);
+}
+.guide-card:hover .guide-thumbnail {
+  transform: scale(1.05);
+}
+.guide-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--transition-smooth);
+}
+.guide-card:hover .guide-card-overlay {
+  opacity: 1;
+}
+.zoom-text {
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  background: rgba(0,0,0,0.6);
+  padding: 0.35rem 0.75rem;
+  border-radius: 50px;
+}
+.guide-card-footer {
+  padding: 0.75rem;
+  text-align: center;
+  background: var(--bg-panel-solid, #f8fafc);
+  border-top: 1px solid var(--border-color);
+}
+.guide-card-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+/* Lightbox Modal */
+.lightbox-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.92);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+.lightbox-content-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  max-height: calc(100vh - 100px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lightbox-image-box {
+  background: #000;
+  border-radius: var(--border-radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+  max-height: 80vh;
+  width: auto;
+  max-width: 100%;
+}
+.lightbox-image {
+  max-width: 100%;
+  max-height: calc(80vh - 70px);
+  object-fit: contain;
+}
+.lightbox-close-btn {
+  position: absolute;
+  top: -2.5rem;
+  right: 0;
+  font-size: 2rem;
+  color: #fff;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity var(--transition-smooth);
+}
+.lightbox-close-btn:hover {
+  opacity: 1;
+}
+.lightbox-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 3rem;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-smooth);
+  opacity: 0.6;
+}
+.lightbox-nav-btn:hover {
+  opacity: 1;
+  background: rgba(3, 194, 252, 0.8);
+}
+.prev-btn {
+  left: -4rem;
+}
+.next-btn {
+  right: -4rem;
+}
+.lightbox-caption {
+  padding: 0.75rem 1.25rem;
+  background: rgba(30, 41, 59, 0.95);
+  color: #fff;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.caption-category {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+  letter-spacing: 0.05em;
+}
+.caption-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0.15rem 0 0 0;
+}
+
+@media (max-width: 992px) {
+  .prev-btn {
+    left: 0.5rem;
+    z-index: 10;
+  }
+  .next-btn {
+    right: 0.5rem;
+    z-index: 10;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Full Screen Lightbox Modal for Mobile */
+  .lightbox-modal {
+    padding: 0;
+    background: #000000;
+  }
+  .lightbox-content-wrapper {
+    width: 100%;
+    height: 100dvh;
+    max-height: 100dvh;
+    margin: 0;
+  }
+  .lightbox-image-box {
+    width: 100%;
+    height: 100%;
+    max-height: 100dvh;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    background: #000000;
+    justify-content: center;
+  }
+  .lightbox-image {
+    width: 100%;
+    height: 100%;
+    max-height: 100dvh;
+    object-fit: contain;
+  }
+  .lightbox-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(8px);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    z-index: 12;
+    padding: 1rem 1.25rem;
+  }
+  .lightbox-close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    left: auto;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #ffffff;
+    z-index: 20;
+    opacity: 0.9;
+    padding-bottom: 4px;
+  }
+  .lightbox-nav-btn {
+    width: 44px;
+    height: 44px;
+    font-size: 2.5rem;
+    background: rgba(15, 23, 42, 0.6);
+    border-color: rgba(255, 255, 255, 0.15);
+    z-index: 15;
+  }
+  .prev-btn {
+    left: 0.75rem;
+  }
+  .next-btn {
+    right: 0.75rem;
+  }
+}
+@media (max-width: 480px) {
+  .guides-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 0.75rem;
   }
 }
 </style>
