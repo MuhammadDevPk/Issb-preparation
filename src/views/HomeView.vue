@@ -233,7 +233,7 @@ const scrollToSection = (sectionId) => {
               <polyline points="12 5 19 12 12 19" />
             </svg>
           </RouterLink>
-          <a href="http://203.124.41.150/issb/" target="_blank" class="btn btn-secondary">
+          <a href="https://issb.gov.pk/candidate-call-status" target="_blank" class="btn btn-secondary">
             <span>Official ISSB Portal ↗</span>
           </a>
         </div>

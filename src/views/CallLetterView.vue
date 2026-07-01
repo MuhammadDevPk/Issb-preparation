@@ -24,7 +24,7 @@ onMounted(() => {
     // Default values if empty
     rollNumber.value = '2405' + Math.floor(1000 + Math.random() * 9000)
     batchNumber.value = 'B-' + Math.floor(1000 + Math.random() * 9000)
-    
+
     // Set reporting date to 2 weeks from now as default
     const twoWeeks = new Date()
     twoWeeks.setDate(twoWeeks.getDate() + 14)
@@ -36,7 +36,7 @@ onMounted(() => {
     cnic.value = '37405-1234567-1'
     rollNumber.value = '2405' + Math.floor(1000 + Math.random() * 9000)
     batchNumber.value = 'B-' + Math.floor(1000 + Math.random() * 9000)
-    
+
     const twoWeeks = new Date()
     twoWeeks.setDate(twoWeeks.getDate() + 14)
     reportingDate.value = twoWeeks.toISOString().split('T')[0]
@@ -152,15 +152,13 @@ const activeCenterInfo = computed(() => {
           <span class="badge badge-cyan">Official Utilities</span>
           <h2>ISSB Call Status & Call Letter Portal</h2>
           <p class="description">
-            Track your official selection dates or generate a high-fidelity Practice Call Notice to plan your clothing checklist and boost your motivation.
+            Track your official selection dates or generate a high-fidelity Practice Call Notice to plan your clothing
+            checklist and boost your motivation.
           </p>
         </div>
         <div class="header-action-block">
-          <a 
-            href="/media/documents/Declaration%20Form.docx" 
-            download="Declaration Form.docx"
-            class="btn btn-success btn-download-top"
-          >
+          <a href="/media/documents/Declaration%20Form.docx" download="Declaration Form.docx"
+            class="btn btn-success btn-download-top">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="btn-icon-svg">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
               <polyline points="7 10 12 15 17 10"></polyline>
@@ -174,22 +172,14 @@ const activeCenterInfo = computed(() => {
 
     <!-- Tab Switcher (Hidden during printing) -->
     <div class="tab-switcher no-print">
-      <button 
-        class="tab-btn" 
-        :class="{ active: activeTab === 'tracker' }"
-        @click="activeTab = 'tracker'"
-      >
+      <button class="tab-btn" :class="{ active: activeTab === 'tracker' }" @click="activeTab = 'tracker'">
         <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="12" cy="12" r="10"></circle>
           <path d="M12 6v6l4 2"></path>
         </svg>
         <span>Official Status Tracker</span>
       </button>
-      <button 
-        class="tab-btn" 
-        :class="{ active: activeTab === 'generator' }"
-        @click="activeTab = 'generator'"
-      >
+      <button class="tab-btn" :class="{ active: activeTab === 'generator' }" @click="activeTab = 'generator'">
         <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
           <polyline points="14 2 14 8 20 8"></polyline>
@@ -215,18 +205,15 @@ const activeCenterInfo = computed(() => {
           </div>
           <h3>Check Official ISSB Website</h3>
           <p>
-            Official Call Letters and candidate batch scheduling are managed directly by the Armed Forces Selection Boards on their secure servers. Redirection is required to check live status.
+            Official Call Letters and candidate batch scheduling are managed directly by the Armed Forces Selection
+            Boards on their secure servers. Redirection is required to check live status.
           </p>
 
           <div class="official-link-section">
-            <a 
-              href="http://203.124.41.150/issb/" 
-              target="_blank" 
-              class="btn btn-primary btn-redirect"
-            >
+            <a href="https://issb.gov.pk/candidate-call-status" target="_blank" class="btn btn-primary btn-redirect">
               <span>Check Official Call Status ↗</span>
             </a>
-            <span class="url-text">Official Server IP: http://203.124.41.150/issb/</span>
+            <span class="url-text">Official Server IP: https://issb.gov.pk/candidate-call-status</span>
           </div>
 
           <div class="checklist-guide">
@@ -234,7 +221,9 @@ const activeCenterInfo = computed(() => {
             <ol>
               <li>Click the button above to open the official portal in a new browser tab.</li>
               <li>Locate the <strong>"Call Status"</strong> query form on their homepage.</li>
-              <li>Input your 13-digit CNIC number <strong>without dashes or spaces</strong> (e.g., <code>3740512345671</code>).</li>
+              <li>Input your 13-digit CNIC number <strong>without dashes or spaces</strong> (e.g.,
+                <code>3740512345671</code>).
+              </li>
               <li>Click "Search" to view your reporting date and assigned center.</li>
             </ol>
           </div>
@@ -253,15 +242,13 @@ const activeCenterInfo = computed(() => {
           </div>
           <h3>Required Declaration Form</h3>
           <p>
-            All candidates reporting to the ISSB center must submit a signed copy of the official ISSB Declaration Form. Download the document below to print, fill, and carry it with you.
+            All candidates reporting to the ISSB center must submit a signed copy of the official ISSB Declaration Form.
+            Download the document below to print, fill, and carry it with you.
           </p>
 
           <div class="official-link-section">
-            <a 
-              href="/media/documents/Declaration%20Form.docx" 
-              download="Declaration Form.docx"
-              class="btn btn-success btn-redirect"
-            >
+            <a href="/media/documents/Declaration%20Form.docx" download="Declaration Form.docx"
+              class="btn btn-success btn-redirect">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="btn-icon-svg">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                 <polyline points="7 10 12 15 17 10"></polyline>
@@ -292,26 +279,29 @@ const activeCenterInfo = computed(() => {
             </svg>
           </div>
           <h3>Candidate Call Up FAQs</h3>
-          
+
           <div class="faq-list">
             <div class="faq-item">
               <h6>When are ISSB dates issued?</h6>
               <p>
-                Usually 15 to 45 days after clearing your initial army/navy/airforce center interview, depending on course lists and selection cycles.
+                Usually 15 to 45 days after clearing your initial army/navy/airforce center interview, depending on
+                course lists and selection cycles.
               </p>
             </div>
-            
+
             <div class="faq-item">
               <h6>What does "Under Process" status mean?</h6>
               <p>
-                It means your initial recommendation has been processed and you are placed in the scheduling pool. Your exact batch dates are currently being arranged. Keep checking weekly.
+                It means your initial recommendation has been processed and you are placed in the scheduling pool. Your
+                exact batch dates are currently being arranged. Keep checking weekly.
               </p>
             </div>
 
             <div class="faq-item">
               <h6>Can I change my assigned ISSB date?</h6>
               <p>
-                ISSB dates are strictly non-negotiable except for serious medical reasons or overlapping academic university exams. In such cases, contact the call-up section of your assigned center immediately.
+                ISSB dates are strictly non-negotiable except for serious medical reasons or overlapping academic
+                university exams. In such cases, contact the call-up section of your assigned center immediately.
               </p>
             </div>
           </div>
@@ -325,49 +315,29 @@ const activeCenterInfo = computed(() => {
         <!-- Form Inputs Panel (Hidden during printing) -->
         <div class="form-panel glass-card no-print">
           <h4>Configure Call Notice</h4>
-          <p class="panel-subtitle">Fill in details to instantly generate and preview your personalized practice document.</p>
+          <p class="panel-subtitle">Fill in details to instantly generate and preview your personalized practice
+            document.</p>
 
           <div class="form-grid">
             <div class="form-group">
               <label class="form-label">Candidate Name</label>
-              <input 
-                type="text" 
-                v-model="candidateName" 
-                placeholder="Enter full name" 
-                class="form-input"
-              />
+              <input type="text" v-model="candidateName" placeholder="Enter full name" class="form-input" />
             </div>
 
             <div class="form-group">
               <label class="form-label">Father's Name</label>
-              <input 
-                type="text" 
-                v-model="fatherName" 
-                placeholder="Enter father's name" 
-                class="form-input"
-              />
+              <input type="text" v-model="fatherName" placeholder="Enter father's name" class="form-input" />
             </div>
 
             <div class="form-group">
               <label class="form-label">CNIC / Smart Card</label>
-              <input 
-                type="text" 
-                :value="cnic" 
-                @input="onCnicInput"
-                placeholder="xxxxx-xxxxxxx-x" 
-                class="form-input"
-                maxlength="15"
-              />
+              <input type="text" :value="cnic" @input="onCnicInput" placeholder="xxxxx-xxxxxxx-x" class="form-input"
+                maxlength="15" />
             </div>
 
             <div class="form-group">
               <label class="form-label">Roll Number</label>
-              <input 
-                type="text" 
-                v-model="rollNumber" 
-                placeholder="e.g. 562410" 
-                class="form-input"
-              />
+              <input type="text" v-model="rollNumber" placeholder="e.g. 562410" class="form-input" />
             </div>
 
             <div class="form-group">
@@ -393,21 +363,12 @@ const activeCenterInfo = computed(() => {
 
             <div class="form-group">
               <label class="form-label">Reporting Date</label>
-              <input 
-                type="date" 
-                v-model="reportingDate" 
-                class="form-input"
-              />
+              <input type="date" v-model="reportingDate" class="form-input" />
             </div>
 
             <div class="form-group">
               <label class="form-label">Batch Group ID</label>
-              <input 
-                type="text" 
-                v-model="batchNumber" 
-                placeholder="e.g. K-1452" 
-                class="form-input"
-              />
+              <input type="text" v-model="batchNumber" placeholder="e.g. K-1452" class="form-input" />
             </div>
           </div>
 
@@ -425,19 +386,13 @@ const activeCenterInfo = computed(() => {
             <div class="share-motivation-card">
               <h6>Share on Social Media & WhatsApp</h6>
               <p>Motivate friends and invite them to study together. Share a preparation link:</p>
-              
+
               <div class="share-buttons-row">
-                <a 
-                  :href="'https://wa.me/?text=' + encodeURIComponent(shareText)" 
-                  target="_blank" 
-                  class="btn-social btn-whatsapp-share"
-                >
+                <a :href="'https://wa.me/?text=' + encodeURIComponent(shareText)" target="_blank"
+                  class="btn-social btn-whatsapp-share">
                   Share WhatsApp
                 </a>
-                <button 
-                  @click="copyShareLink" 
-                  class="btn-social btn-copy-link"
-                >
+                <button @click="copyShareLink" class="btn-social btn-copy-link">
                   {{ copyStatus }}
                 </button>
               </div>
@@ -454,15 +409,20 @@ const activeCenterInfo = computed(() => {
                 <!-- SVG Military Seal Representation -->
                 <svg viewBox="0 0 100 100" class="military-seal">
                   <circle cx="50" cy="50" r="42" fill="none" stroke="#223e22" stroke-width="3"></circle>
-                  <circle cx="50" cy="50" r="36" fill="none" stroke="#223e22" stroke-width="1" stroke-dasharray="3,3"></circle>
+                  <circle cx="50" cy="50" r="36" fill="none" stroke="#223e22" stroke-width="1" stroke-dasharray="3,3">
+                  </circle>
                   <!-- Laurel wreath -->
-                  <path d="M25 60 C 20 40, 30 25, 45 22" fill="none" stroke="#223e22" stroke-width="2" stroke-linecap="round"></path>
-                  <path d="M75 60 C 80 40, 70 25, 55 22" fill="none" stroke="#223e22" stroke-width="2" stroke-linecap="round"></path>
+                  <path d="M25 60 C 20 40, 30 25, 45 22" fill="none" stroke="#223e22" stroke-width="2"
+                    stroke-linecap="round"></path>
+                  <path d="M75 60 C 80 40, 70 25, 55 22" fill="none" stroke="#223e22" stroke-width="2"
+                    stroke-linecap="round"></path>
                   <!-- Star and Crescent -->
                   <path d="M 45 42 A 8 8 0 1 0 57 52 A 9 9 0 1 1 45 42" fill="#223e22"></path>
-                  <polygon points="56,38 60,42 55,43 59,47 54,49 52,44 48,46" fill="#223e22" transform="scale(0.85) translate(10, 2)"></polygon>
+                  <polygon points="56,38 60,42 55,43 59,47 54,49 52,44 48,46" fill="#223e22"
+                    transform="scale(0.85) translate(10, 2)"></polygon>
                   <!-- Text inside circle -->
-                  <text x="50" y="80" text-anchor="middle" font-size="8" font-weight="bold" fill="#223e22" font-family="monospace">ISSB</text>
+                  <text x="50" y="80" text-anchor="middle" font-size="8" font-weight="bold" fill="#223e22"
+                    font-family="monospace">ISSB</text>
                 </svg>
               </div>
               <h3 class="letter-title">{{ activeCenterInfo.name.toUpperCase() }}</h3>
@@ -472,7 +432,8 @@ const activeCenterInfo = computed(() => {
 
             <!-- Letter Metadata Row -->
             <div class="letter-meta-row">
-              <div>Ref: <strong>{{ activeCenterInfo.refPrefix }}/{{ batchNumber || 'M-9821' }}/{{ rollNumber || 'C-485' }}</strong></div>
+              <div>Ref: <strong>{{ activeCenterInfo.refPrefix }}/{{ batchNumber || 'M-9821' }}/{{ rollNumber || 'C-485'
+                  }}</strong></div>
               <div>Date: <strong>{{ getTodayDateString() }}</strong></div>
             </div>
 
@@ -493,13 +454,19 @@ const activeCenterInfo = computed(() => {
             <!-- Body Paragraphs -->
             <div class="letter-body">
               <p>
-                1. You have been selected to appear before the Selection Board for academic, psychological, and physical testing. You are hereby directed to report at the <strong>{{ activeCenterInfo.railwayStation }}</strong> reception desk on <strong>{{ formatDateString(reportingDate) }}</strong> no later than <strong>0800 hours</strong>. Official military transport will be provided to carry you to the ISSB center.
+                1. You have been selected to appear before the Selection Board for academic, psychological, and physical
+                testing. You are hereby directed to report at the <strong>{{ activeCenterInfo.railwayStation }}</strong>
+                reception desk on <strong>{{ formatDateString(reportingDate) }}</strong> no later than <strong>0800
+                  hours</strong>. Official military transport will be provided to carry you to the ISSB center.
               </p>
               <p>
-                2. Candidates arriving late (after 1200 hours) will not be allowed to take tests under any circumstances. You will reside at the ISSB premises for 4 days. Messing, lodging, and medical facilities are provided. 
+                2. Candidates arriving late (after 1200 hours) will not be allowed to take tests under any
+                circumstances. You will reside at the ISSB premises for 4 days. Messing, lodging, and medical facilities
+                are provided.
               </p>
               <p>
-                3. **CRITICAL:** Ensure you bring all <strong>MANDATORY ORIGINAL DOCUMENTS</strong> listed below. Candidates without matric/intermediate sanads or equivalence certificates will be sent back immediately.
+                3. **CRITICAL:** Ensure you bring all <strong>MANDATORY ORIGINAL DOCUMENTS</strong> listed below.
+                Candidates without matric/intermediate sanads or equivalence certificates will be sent back immediately.
               </p>
             </div>
 
@@ -510,11 +477,14 @@ const activeCenterInfo = computed(() => {
                 <h5 class="section-heading-paper">MANDATORY DOCUMENT CHECKLIST</h5>
                 <ul class="paper-bullet-list">
                   <li><strong>Original Call Notice:</strong> This printed document.</li>
-                  <li><strong>Matric Sanad & Result Card:</strong> Original certificates. Secondary school board copies only.</li>
+                  <li><strong>Matric Sanad & Result Card:</strong> Original certificates. Secondary school board copies
+                    only.</li>
                   <li><strong>Intermediate FSc/FA Sanad & Result Card:</strong> Original certificates.</li>
-                  <li><strong>Hope Certificate:</strong> If FSc Part-II exams are pending, bring original college principal hope certificate along with Part-I marksheet.</li>
+                  <li><strong>Hope Certificate:</strong> If FSc Part-II exams are pending, bring original college
+                    principal hope certificate along with Part-I marksheet.</li>
                   <li><strong>CNIC / B-Form:</strong> Original CNIC (or B-form if under 18 years).</li>
-                  <li><strong>Attested Photos:</strong> 1 passport photo attested from front, 3 photos attested from back.</li>
+                  <li><strong>Attested Photos:</strong> 1 passport photo attested from front, 3 photos attested from
+                    back.</li>
                   <li><strong>Postal Order:</strong> Rs. 100 postal order in name of President ISSB.</li>
                 </ul>
               </div>
@@ -523,11 +493,15 @@ const activeCenterInfo = computed(() => {
               <div class="list-section-cloth">
                 <h5 class="section-heading-paper">ITEMS / CLOTHING TO PACK</h5>
                 <ul class="paper-bullet-list">
-                  <li><strong>Sports Dress:</strong> 2-3 sets of white shorts and white T-shirts (half sleeves) with white collar.</li>
-                  <li><strong>Joggers / Canvas Shoes:</strong> 1 pair of clean white sports shoes along with 3 pairs of white socks.</li>
-                  <li><strong>Formal Suits:</strong> 1 lounge suit or dress shirt/pants with necktie for dining room and interview sessions.</li>
+                  <li><strong>Sports Dress:</strong> 2-3 sets of white shorts and white T-shirts (half sleeves) with
+                    white collar.</li>
+                  <li><strong>Joggers / Canvas Shoes:</strong> 1 pair of clean white sports shoes along with 3 pairs of
+                    white socks.</li>
+                  <li><strong>Formal Suits:</strong> 1 lounge suit or dress shirt/pants with necktie for dining room and
+                    interview sessions.</li>
                   <li><strong>National Dress:</strong> 2-3 sets of clean Shalwar Kameez with matching waistcoat.</li>
-                  <li><strong>Security:</strong> One small padlock with keys to lock your personal luggage cupboard.</li>
+                  <li><strong>Security:</strong> One small padlock with keys to lock your personal luggage cupboard.
+                  </li>
                   <li><strong>Stationery:</strong> 2-3 blue/black ballpoint pens and 1 clipboard.</li>
                   <li><strong>Grooming:</strong> Shaving kit, toothbrush, toothpaste, hair brush, and soap.</li>
                 </ul>
@@ -536,7 +510,9 @@ const activeCenterInfo = computed(() => {
 
             <!-- Prohibited warnings -->
             <div class="prohibited-box-paper">
-              <strong>WARNING - PROHIBITED ITEMS:</strong> Mobile phones, smartwatches, cameras, recording equipment, laptops, tablets, memory cards, electronic items, drugs, and weapons are strictly prohibited inside the center. Any candidate found possessing these items is liable to immediate expulsion and disqualification.
+              <strong>WARNING - PROHIBITED ITEMS:</strong> Mobile phones, smartwatches, cameras, recording equipment,
+              laptops, tablets, memory cards, electronic items, drugs, and weapons are strictly prohibited inside the
+              center. Any candidate found possessing these items is liable to immediate expulsion and disqualification.
             </div>
 
             <!-- Sign Block -->
@@ -667,7 +643,8 @@ const activeCenterInfo = computed(() => {
   gap: 2rem;
 }
 
-.tracker-card, .faq-card {
+.tracker-card,
+.faq-card {
   padding: 2.5rem 2rem;
   display: flex;
   flex-direction: column;
@@ -700,12 +677,14 @@ const activeCenterInfo = computed(() => {
   height: 24px;
 }
 
-.tracker-card h3, .faq-card h3 {
+.tracker-card h3,
+.faq-card h3 {
   font-size: 1.35rem;
   margin: 0;
 }
 
-.tracker-card p, .faq-card p {
+.tracker-card p,
+.faq-card p {
   color: var(--text-secondary);
   font-size: 0.95rem;
   line-height: 1.6;
@@ -1096,7 +1075,7 @@ const activeCenterInfo = computed(() => {
   .generator-layout {
     grid-template-columns: 1fr;
   }
-  
+
   .tracker-grid {
     grid-template-columns: 1fr;
   }
@@ -1108,7 +1087,7 @@ const activeCenterInfo = computed(() => {
   .military-call-letter {
     padding: 2rem 1.25rem;
   }
-  
+
   .letter-lists-container {
     grid-template-columns: 1fr;
   }
@@ -1156,7 +1135,8 @@ const activeCenterInfo = computed(() => {
     background: rgba(3, 194, 252, 0.08);
   }
 
-  .tracker-card, .faq-card {
+  .tracker-card,
+  .faq-card {
     padding: 1.75rem 1.25rem;
   }
 
@@ -1219,7 +1199,7 @@ const activeCenterInfo = computed(() => {
     width: 95px;
     height: 95px;
   }
-  
+
   .stamp-inner {
     font-size: 0.65rem;
   }
@@ -1233,8 +1213,10 @@ const activeCenterInfo = computed(() => {
    PRINT SPECIFIC CSS OVERRIDES
    ──────────────────────────────────────────────────────── */
 @media print {
+
   /* Hide all dashboard/app headers, inputs, and navigation sidebars */
-  body, html {
+  body,
+  html {
     background: #ffffff !important;
     color: #000000 !important;
     font-size: 12pt !important;
@@ -1296,7 +1278,8 @@ const activeCenterInfo = computed(() => {
   .military-call-letter {
     border: none !important;
     box-shadow: none !important;
-    padding: 15mm 15mm !important; /* Standard print margin */
+    padding: 15mm 15mm !important;
+    /* Standard print margin */
     width: 100% !important;
     max-width: 100% !important;
     background: #ffffff !important;
@@ -1317,7 +1300,9 @@ const activeCenterInfo = computed(() => {
     color: #000000 !important;
   }
 
-  .letter-meta-row, .letter-subject, .recipient-details {
+  .letter-meta-row,
+  .letter-subject,
+  .recipient-details {
     color: #000000 !important;
   }
 
