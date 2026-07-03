@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onUnmounted } from 'vue'
+import { ref, computed, onUnmounted, watch } from 'vue'
 import { essays, lecturettes } from '../data/essayLecturetteData'
 
 // Tabs: 'essays' or 'speech'
@@ -9,6 +9,7 @@ const searchQuery = ref('')
 // Selected details state
 const selectedEssay = ref(null)
 const selectedSpeech = ref(null)
+const showDetailMobile = ref(false)
 
 // Timer state
 const timerSeconds = ref(120) // 2 minutes
@@ -136,12 +137,23 @@ const filteredSpeech = computed(() => {
 // Selection Actions
 const selectEssayItem = (item) => {
   selectedEssay.value = item
+  showDetailMobile.value = true
 }
 
 const selectSpeechItem = (item) => {
   selectedSpeech.value = item
   resetTimer()
+  showDetailMobile.value = true
 }
+
+const goBackToList = () => {
+  showDetailMobile.value = false
+}
+
+// Reset mobile state on tab switch
+watch(activeTab, () => {
+  showDetailMobile.value = false
+})
 </script>
 
 <template>
@@ -165,14 +177,14 @@ const selectSpeechItem = (item) => {
           :class="{ 'active': activeTab === 'essays' }"
           @click="activeTab = 'essays'"
         >
-          ✍️ ISSB Written Essays
+          ✍️ Written Essays
         </button>
         <button 
           class="tab-btn" 
           :class="{ 'active': activeTab === 'speech' }"
           @click="activeTab = 'speech'"
         >
-          🎤 2-Minute Speech / Lecturette
+          🎤 2-Min Lecturette
         </button>
       </div>
 
@@ -188,7 +200,7 @@ const selectSpeechItem = (item) => {
     </div>
 
     <!-- MAIN GRID LAYOUT -->
-    <div class="content-grid-split">
+    <div class="content-grid-split" :class="{ 'mobile-show-detail': showDetailMobile }">
       
       <!-- LEFT COLUMN: Topic Lists -->
       <div class="list-column">
@@ -244,6 +256,7 @@ const selectSpeechItem = (item) => {
         <div v-if="activeTab === 'essays'" class="panel-card glass-card">
           <div v-if="selectedEssay" class="essay-viewer">
             <div class="viewer-header">
+              <button class="back-list-btn" @click="goBackToList">⬅ Back to Topics List</button>
               <span class="badge badge-cyan">Structured Outline (1.5 Page Calibration)</span>
               <h2>{{ selectedEssay.title }}</h2>
             </div>
@@ -304,6 +317,7 @@ const selectSpeechItem = (item) => {
           <div v-if="selectedSpeech" class="speech-viewer">
             <div class="viewer-header flex-header">
               <div class="header-left">
+                <button class="back-list-btn" @click="goBackToList">⬅ Back to Topics List</button>
                 <span class="badge badge-cyan">2-Minute Lecturette Outline</span>
                 <h2>{{ selectedSpeech.title }}</h2>
               </div>
@@ -750,26 +764,72 @@ const selectSpeechItem = (item) => {
   line-height: 1.5;
 }
 
+/* Back Button */
+.back-list-btn {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  color: var(--accent-cyan);
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  transition: all var(--transition-smooth);
+}
+
+.back-list-btn:hover {
+  background: rgba(3, 194, 252, 0.1);
+}
+
 /* Responsiveness */
 @media (max-width: 992px) {
   .content-grid-split {
     grid-template-columns: 1fr;
   }
-  .topics-list-container {
-    max-height: 250px;
+  
+  .list-column {
+    display: block;
   }
+  
+  .details-column {
+    display: block;
+  }
+  
+  /* Toggle visibility on mobile based on selected state */
+  .mobile-show-detail .list-column {
+    display: none;
+  }
+  
+  .content-grid-split:not(.mobile-show-detail) .details-column {
+    display: none;
+  }
+
+  .back-list-btn {
+    display: inline-flex;
+  }
+
+  .topics-list-container {
+    max-height: none;
+  }
+  
   .panel-card {
     min-height: auto;
+    padding: 1.25rem;
   }
 }
 
 @media (max-width: 768px) {
   .flex-header {
-    flex-direction: column;
+    flex-direction: column-reverse;
     align-items: stretch;
   }
   .timer-widget {
     width: 100%;
+    margin-bottom: 1rem;
   }
   .controls-row {
     flex-direction: column;
@@ -777,6 +837,20 @@ const selectSpeechItem = (item) => {
   }
   .search-container {
     max-width: 100%;
+  }
+  
+  /* Segmented control layout for mobile tab-btns */
+  .tabs-container {
+    width: 100%;
+    display: flex;
+    gap: 0.25rem;
+  }
+  
+  .tab-btn {
+    flex: 1;
+    text-align: center;
+    padding: 0.6rem 0.25rem;
+    font-size: 0.8rem;
   }
 }
 </style>
