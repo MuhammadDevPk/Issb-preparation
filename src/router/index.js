@@ -16,6 +16,7 @@ const AdminUsersView = () => import('../views/AdminUsersView.vue')
 const SupportView = () => import('../views/SupportView.vue')
 const CallLetterView = () => import('../views/CallLetterView.vue')
 const DeputyInterviewView = () => import('../views/DeputyInterviewView.vue')
+const EssaysSpeechView = () => import('../views/EssaysSpeechView.vue')
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -118,6 +119,12 @@ const router = createRouter({
       path: '/deputy-interview',
       name: 'deputy-interview',
       component: DeputyInterviewView,
+    },
+    {
+      path: '/essays-speech',
+      name: 'essays-speech',
+      component: EssaysSpeechView,
+      meta: { requiresAuth: true, requiresApproval: true },
     },
   ],
 })
