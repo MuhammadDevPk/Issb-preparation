@@ -1,6 +1,10 @@
 <script setup>
 import { ref, computed, onUnmounted, watch } from 'vue'
 import { essays, lecturettes } from '../data/essayLecturetteData'
+import { useAuthStore } from '../stores/auth'
+
+const authStore = useAuthStore()
+const isAdmin = computed(() => authStore.profile?.role === 'admin')
 
 // Tabs: 'essays' or 'speech'
 const activeTab = ref('essays')
@@ -115,9 +119,13 @@ const timerStatusText = computed(() => {
 
 // Search Filtering
 const filteredEssays = computed(() => {
+  let list = essays
+  if (!isAdmin.value) {
+    list = list.filter(item => !item.adminOnly)
+  }
   const query = searchQuery.value.toLowerCase().trim()
-  if (!query) return essays
-  return essays.filter(item => 
+  if (!query) return list
+  return list.filter(item => 
     item.title.toLowerCase().includes(query) ||
     item.intro.toLowerCase().includes(query) ||
     item.conclusion.toLowerCase().includes(query)
@@ -125,9 +133,13 @@ const filteredEssays = computed(() => {
 })
 
 const filteredSpeech = computed(() => {
+  let list = lecturettes
+  if (!isAdmin.value) {
+    list = list.filter(item => !item.adminOnly)
+  }
   const query = searchQuery.value.toLowerCase().trim()
-  if (!query) return lecturettes
-  return lecturettes.filter(item => 
+  if (!query) return list
+  return list.filter(item => 
     item.title.toLowerCase().includes(query) ||
     item.intro.toLowerCase().includes(query) ||
     item.points.toLowerCase().includes(query)
@@ -215,7 +227,12 @@ watch(activeTab, () => {
               @click="selectEssayItem(item)"
             >
               <div class="topic-meta">
-                <span class="topic-number">Topic #{{ item.id }}</span>
+                <div class="meta-top-row">
+                  <span class="topic-number">Topic #{{ item.id }}</span>
+                  <span v-if="item.zeeshanRecommended && isAdmin" class="badge-recommended">
+                    🏆 Zeeshan Recommended
+                  </span>
+                </div>
                 <h3>{{ item.title }}</h3>
               </div>
               <div class="topic-preview">{{ item.intro.substring(0, 80) }}...</div>
@@ -237,7 +254,12 @@ watch(activeTab, () => {
               @click="selectSpeechItem(item)"
             >
               <div class="topic-meta">
-                <span class="topic-number">Topic #{{ item.id }}</span>
+                <div class="meta-top-row">
+                  <span class="topic-number">Topic #{{ item.id }}</span>
+                  <span v-if="item.zeeshanRecommended && isAdmin" class="badge-recommended">
+                    🏆 Zeeshan Recommended
+                  </span>
+                </div>
                 <h3>{{ item.title }}</h3>
               </div>
               <div class="topic-preview">{{ item.intro.substring(0, 80) }}...</div>
@@ -257,6 +279,9 @@ watch(activeTab, () => {
           <div v-if="selectedEssay" class="essay-viewer">
             <div class="viewer-header">
               <button class="back-list-btn" @click="goBackToList">⬅ Back to Topics List</button>
+              <div v-if="selectedEssay.zeeshanRecommended && isAdmin" class="badge-recommended-large">
+                🏆 Zeeshan Recommended (Group Discussion + Public Speaking)
+              </div>
               <span class="badge badge-cyan">Structured Outline (1.5 Page Calibration)</span>
               <h2>{{ selectedEssay.title }}</h2>
             </div>
@@ -318,6 +343,9 @@ watch(activeTab, () => {
             <div class="viewer-header flex-header">
               <div class="header-left">
                 <button class="back-list-btn" @click="goBackToList">⬅ Back to Topics List</button>
+                <div v-if="selectedSpeech.zeeshanRecommended && isAdmin" class="badge-recommended-large">
+                  🏆 Zeeshan Recommended (Group Discussion + Public Speaking)
+                </div>
                 <span class="badge badge-cyan">2-Minute Lecturette Outline</span>
                 <h2>{{ selectedSpeech.title }}</h2>
               </div>
@@ -783,6 +811,39 @@ watch(activeTab, () => {
 
 .back-list-btn:hover {
   background: rgba(3, 194, 252, 0.1);
+}
+
+.meta-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.badge-recommended {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  background: rgba(245, 158, 11, 0.1);
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+  border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.badge-recommended-large {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  background: rgba(245, 158, 11, 0.08);
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  text-transform: uppercase;
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  margin-bottom: 0.75rem;
 }
 
 /* Responsiveness */
