@@ -2,306 +2,336 @@ export const essays = [
   {
     id: 1,
     title: "My Role in National Development",
-    intro: "National development is the collective growth of a country's economic, social, and moral aspects. A nation is not built by its government alone, but by the character and efforts of its individual citizens, especially the youth.",
-    reasons: "Youth make up over 60% of Pakistan's population. If we remain idle, uneducated, or undisciplined, the country falls into stagnation, brain drain, and economic dependency.",
-    effects: "By actively participating in development, we reduce unemployment, uplift local communities, and create a progressive society that is respected globally.",
-    solutions: "We must focus on acquiring modern education, staying disciplined, paying taxes, obeying laws, and rejecting corruption. Even simple actions like planting trees or helping a neighbor contribute.",
-    conclusion: "In conclusion, national development starts with self-improvement. By becoming responsible, honest, and skilled individuals, we naturally drive Pakistan towards a brighter and stronger future."
+    intro: "National development is the simple progress of a country in education, wealth, and morals. A nation is not built by the government alone. It is built by the hard work and strong character of every citizen, especially the youth. Every small step counts towards success.",
+    reasons: "Youth make up more than sixty percent of Pakistan. If we remain uneducated, lazy, or undisciplined, the country cannot progress. Brain drain and unemployment rise when youth do not participate in national growth. We must take charge of our duties.",
+    effects: "When we work hard, we create jobs, reduce poverty, and build a peaceful society. A productive youth brings foreign investment and respect to the nation. It helps Pakistan stand proud and independent in the world.",
+    solutions: "We must get modern skills, pay taxes, obey traffic rules, and avoid corruption. Simple acts like planting trees, saving water, and helping others also build the nation. We must choose merit and honesty in everything.",
+    conclusion: "In conclusion, national development starts with personal development. By improving our own education, discipline, and character, we naturally guide Pakistan towards a bright and strong future.",
+    alternativeTopics: ["Duties of a Good Citizen", "How Youth Can Help Pakistan", "Youth and Nation Building", "Patriotism in Action"]
   },
   {
     id: 2,
     title: "Social Media: A Boon or Bane",
-    intro: "Social media refers to online platforms like Facebook, YouTube, and Twitter that connect people globally. While it has revolutionized communication, it is a double-edged sword that can build or destroy lives.",
-    reasons: "It is a boon because it provides instant information, online learning, and business opportunities. It becomes a bane due to lack of self-control, leading to screen addiction, fake news, and waste of precious time.",
-    effects: "Positive use educates the youth and connects families. Negative use leads to cyberbullying, mental stress, decline in physical health, and moral decay.",
-    solutions: "We must set strict daily time limits, verify information before sharing, and use these platforms for constructive learning rather than aimless scrolling.",
-    conclusion: "To sum up, social media is a powerful tool. Its value depends entirely on how we use it. With discipline, we can harness it as a boon to progress in life.",
-    zeeshanRecommended: true
+    intro: "Social media includes online apps like Facebook, YouTube, and WhatsApp that connect people instantly. It is a very useful tool, but it is also a double-edged sword. It can build or destroy lives depending on how we use it daily.",
+    reasons: "It is a boon because it provides free online education, instant news, and online business opportunities. However, it becomes a bane due to a lack of self-control. Students waste hours watching useless videos and spreading unverified news.",
+    effects: "Positive use increases knowledge and connects family members. Negative use leads to eye strain, poor physical health, sleep issues, and mental stress. It also leads to fake news, cyberbullying, and loss of moral values among the youth.",
+    solutions: "We must set strict daily time limits for screen use. We should verify any news before sharing it. Parents must monitor their children's activities, and students should use the internet for learning new skills rather than passing time.",
+    conclusion: "To sum up, social media is a powerful servant but a bad master. Its value depends on our choice. With self-discipline and positive goals, we can use it as a great boon to succeed in our careers.",
+    zeeshanRecommended: true,
+    alternativeTopics: ["Impact of Internet on Youth", "Mobile Addiction in Students", "The Digital Era", "Pros and Cons of Social Networks"]
   },
   {
     id: 3,
     title: "Energy Crisis in Pakistan",
-    intro: "Energy crisis refers to the severe shortage of electricity and gas required to power homes, industries, and transport. It is one of the biggest hurdles in Pakistan's economic growth.",
-    reasons: "The main causes are reliance on expensive imported oil, circular debt, transmission losses, line losses, and failure to build new dams or transition to renewable energy sources.",
-    effects: "This crisis leads to frequent load-shedding, closure of industries, loss of jobs, low exports, and inflation, which directly hurts the common man.",
-    solutions: "The solution lies in constructing new water dams, investing heavily in solar and wind energy, upgrading the power transmission grid, and checking electricity theft strictly.",
-    conclusion: "In short, energy security is vital for survival. By shifting to cheap, domestic, and green energy resources, Pakistan can revive its economy and prosper rapidly."
+    intro: "The energy crisis is the severe shortage of electricity and gas needed for homes, factories, and transport. It is one of the biggest problems for Pakistan's economy today. Without power, a nation cannot run its daily life.",
+    reasons: "The main causes are depending on expensive imported oil, circular debt, old transmission lines, and electricity theft. We also failed to build new water dams and solar plants on time to meet the rising demand.",
+    effects: "This crisis leads to long load-shedding, which shuts down local factories. Workers lose their jobs, exports drop, and inflation rises. It makes the daily life of a common citizen very difficult and stressful.",
+    solutions: "We must build new water dams and shift quickly to cheap solar and wind energy. The government must upgrade the power grid lines and strictly punish electricity thieves. Conserving energy at home is also necessary.",
+    conclusion: "In short, energy security is vital for survival. By using our own coal, water, and solar resources, Pakistan can end load-shedding, run its factories, and boost its economic growth rapidly.",
+    alternativeTopics: ["Power Shortage and Load-shedding", "Electricity Crisis", "Renewable Energy Options for Pakistan", "Why Pakistan Faces Circular Debt"]
   },
   {
     id: 4,
     title: "Inflation: Causes, Effects, and Solutions",
-    intro: "Inflation is the general rise in the prices of goods and services over time, which reduces the purchasing power of money. It is currently a major concern for every household in Pakistan.",
-    reasons: "It is caused by high printing of currency, rising costs of fuel and imports, devaluation of the rupee, hoarding by greedy traders, and a lack of local manufacturing.",
-    effects: "Inflation makes basic necessities like food, medicine, and education unaffordable, increasing poverty, crime rates, and mental anxiety among the public.",
-    solutions: "We must boost local agriculture to reduce imports, control currency printing, launch strict crackdowns on illegal hoarding, and support local businesses to stabilize the rupee.",
-    conclusion: "In conclusion, inflation cannot be resolved overnight, but through solid economic planning, agricultural self-reliance, and honest governance, we can bring relief to the public."
+    intro: "Inflation means the general rise in the prices of daily goods and services. It reduces the purchasing power of money. Currently, high prices are the biggest worry for every family in Pakistan, making survival tough.",
+    reasons: "It is caused by the rising prices of imported fuel, the devaluation of the rupee, printing too much paper currency, and hoarding of food items by greedy traders. A low level of local production also causes high prices.",
+    effects: "Inflation makes food, medicine, and school fees unaffordable for the poor. It leads to high poverty, crime, and mental anxiety. Families are forced to cut down on health and education to survive.",
+    solutions: "We must increase local agriculture to stop importing food. The government must stop printing excess currency and launch crackdowns on illegal hoarding. Supporting local industries will help stabilize the rupee value.",
+    conclusion: "In conclusion, inflation cannot be solved in one day. However, through honest governance, local food production, and strict price controls, we can bring relief to the common man.",
+    alternativeTopics: ["Devaluation of Rupee", "Rising Prices and Common Man", "Economic Challenges of Pakistan", "Poverty and Price Hikes"]
   },
   {
     id: 5,
     title: "Women Empowerment & National Progress",
-    intro: "Women empowerment means giving women the freedom, education, and equal rights to make life choices and participate in all fields of life. No nation can fly with only one wing.",
-    reasons: "Women comprise nearly half of our population. Denying them education or career opportunities keeps half of the nation's talent, intelligence, and labor force completely unused.",
-    effects: "Empowered women lead to educated families, lower population growth, higher household income, and a significant boost to the national GDP.",
-    solutions: "We must guarantee secure working environments, enforce inheritance laws, provide quality education in rural areas, and encourage female participation in business and public service.",
-    conclusion: "Overall, women's progress is national progress. Pakistan can only achieve its full potential when women stand side-by-side with men in building the country."
+    intro: "Women empowerment means giving women equal rights, quality education, and the freedom to make life choices. No country can progress if half of its population is kept uneducated and away from work.",
+    reasons: "Women make up almost half of Pakistan. Denying them education or careers means wasting half of the nation's talent and work force. Societal pressure and safety concerns often stop women from growing.",
+    effects: "Educated women raise healthy and educated families. They increase household income and contribute to the national economy. It leads to lower population growth and a civilized, polite society.",
+    solutions: "We must provide safe transport and secure workplaces for women. We must enforce laws for women's inheritance rights. Building quality girls' schools in villages is the most important step.",
+    conclusion: "Overall, women's progress is national progress. Pakistan can only achieve its real potential when women stand side-by-side with men in education, business, and national defense.",
+    alternativeTopics: ["Gender Equality in Islam", "Role of Women in Society", "Female Education in Pakistan", "Empowering the Girl Child"]
   },
   {
     id: 6,
     title: "Our Education System: Flaws and Reforms",
-    intro: "Education is the foundation of any country's progress. Unfortunately, Pakistan's education system is outdated and fails to prepare students for the modern, competitive world.",
-    reasons: "The primary flaws are rote learning (ratta system), lack of practical or technical training, three parallel systems (English medium, Urdu medium, and Madrassas), and low budget allocation.",
-    effects: "This creates high unemployment among graduates, limits innovation, increases social inequality, and leaves our youth behind in the global digital economy.",
-    solutions: "We must implement a uniform curriculum, train teachers in modern methods, shift focus from grading to conceptual understanding, and introduce mandatory technical skills in schools.",
-    conclusion: "To conclude, reform in education is a national emergency. By investing in quality, skills-based learning, we can turn our massive population into a highly productive asset.",
-    zeeshanRecommended: true
+    intro: "Education is the key to national success. Sadly, the education system in Pakistan is outdated and does not prepare students for the modern world. It focuses on passing exams instead of building skills.",
+    reasons: "The main flaws are rote learning (ratta system), poorly trained teachers, and low budget. We also have three parallel systems: English medium, Urdu medium, and Madrassas, which divide the youth.",
+    effects: "This system produces graduates who cannot find jobs because they lack practical skills. It leads to high unemployment, stops research, and increases inequality between the rich and the poor.",
+    solutions: "We must implement a uniform curriculum for all schools. Teachers should be trained in modern methods. We must shift from memory tests to conceptual exams and make computer skills mandatory.",
+    conclusion: "To conclude, education reform is a national emergency. By investing in quality, skills-based learning, we can turn our youth into a useful asset for the country's development.",
+    zeeshanRecommended: true,
+    alternativeTopics: ["Literacy Rate Challenges", "Urdu vs English Medium Education", "Single National Curriculum", "Practical vs Rote Learning"]
   },
   {
     id: 7,
     title: "Terrorism: Challenges and Way Forward",
-    intro: "Terrorism is the use of violence and fear to achieve political or ideological goals. Pakistan has paid a heavy price in lives and wealth fighting this global menace.",
-    reasons: "It thrives due to unstable borders, external interference, poverty, lack of education, and religious radicalization of jobless youth.",
-    effects: "It has resulted in the loss of over eighty thousand innocent lives, destroyed infrastructure, discouraged foreign investment, and damaged Pakistan's global image.",
-    solutions: "We must enforce border control, completely eliminate terror funding networks, reform madrasas, and provide employment and justice in marginalized regions.",
-    conclusion: "Ultimately, peace is the prerequisite for development. Thanks to our brave Armed Forces and public resilience, we are defeating terror, and must continue until it is fully wiped out."
+    intro: "Terrorism is the use of violence and fear to achieve political or religious goals. Pakistan has faced this threat for decades, losing thousands of lives and billions of dollars in this war.",
+    reasons: "It grows due to poor border control, foreign interference, poverty, and lack of education. Jobless youth are easily brainwashed by extremist groups who misuse religious terms.",
+    effects: "It has caused the loss of over eighty thousand lives. It destroys schools and roads, discourages foreign companies from investing, and creates a sense of fear in the minds of citizens.",
+    solutions: "We must strictly control our borders and stop terror funding. Educational reforms and job creation in backward areas are vital. We must support our security forces in their operations.",
+    conclusion: "Ultimately, peace is necessary for progress. Thanks to our brave Armed Forces and public unity, we have defeated major networks, and we must continue to stand united against hate.",
+    alternativeTopics: ["Internal Security of Pakistan", "Role of Armed Forces in Peace", "How to End Extremism", "National Action Plan"]
   },
   {
     id: 8,
     title: "Why I Want to Join the Armed Forces",
-    intro: "Joining the Armed Forces is not just choosing a career; it is adopting a lifestyle defined by honor, discipline, and selfless devotion to the motherland.",
-    reasons: "I am motivated by the chance to defend my country's borders, live a highly organized life, and follow the footsteps of our national heroes who sacrificed their lives.",
-    effects: "A military career builds strong leadership, physical fitness, teamwork, and mental resilience, enabling an individual to serve the public during crises like floods or earthquakes.",
-    solutions: "To achieve this goal, I focus daily on physical fitness, general knowledge, character development, and academic excellence, ready to prove my suitability at ISSB.",
-    conclusion: "In short, serving in uniform is the ultimate honor. I want to join to protect my nation, lead with integrity, and live a life that matters to Pakistan."
+    intro: "Joining the Armed Forces is not just choosing a job. It is a path of honor, discipline, and serving the nation. It is a chance to live a life of purpose and defend the motherland.",
+    reasons: "I am inspired by the patriotism and sacrifices of our soldiers. The military offers a clean environment, strict training, leadership development, and physical fitness that no desk job can offer.",
+    effects: "Serving in uniform builds mental toughness, teamwork, and loyalty. It allows me to protect our borders and serve our citizens during floods, earthquakes, and national emergencies.",
+    solutions: "To prepare, I wake up early, exercise daily, study general knowledge, and focus on character building. I strive to show responsibility and honesty in my daily actions.",
+    conclusion: "In short, wearing the uniform is the ultimate honor. I want to join to protect my nation, lead with integrity, and live a life that makes my family and country proud.",
+    alternativeTopics: ["My Ambition in Life", "Life in Uniform", "Defending the Motherland", "Why I Choose Army Over Corporate"]
   },
   {
     id: 9,
     title: "Climate Change & Its Impact on Pakistan",
-    intro: "Climate change refers to long-term shifts in temperatures and weather patterns, largely driven by global greenhouse gas emissions. Pakistan is one of the most vulnerable countries to this crisis.",
-    reasons: "Despite contributing less than one percent to global emissions, Pakistan suffers due to its geographic position, rapid melting of northern glaciers, and deforestation.",
-    effects: "It causes devastating floods, extreme heatwaves, changing monsoon cycles, water scarcity, and massive loss to agriculture, threatening our food security.",
-    solutions: "We must launch massive tree plantation campaigns (like the Billion Tree project), build water reservoirs, adopt smart farming techniques, and ban single-use plastics.",
-    conclusion: "To conclude, climate change is an existential threat. We must act urgently at national and community levels to protect our environment for future generations."
+    intro: "Climate change is the long-term shift in global weather patterns, mainly caused by pollution and greenhouse gases. Pakistan is one of the worst affected countries by this global crisis.",
+    reasons: "Although Pakistan produces less than one percent of global pollution, its location makes it vulnerable. Global warming is melting our northern glaciers rapidly, and rapid deforestation makes it worse.",
+    effects: "It causes severe floods, extreme summer heatwaves, unpredictable rains, and water shortages. This destroys our crops, threatens food security, and displaces thousands of families from their homes.",
+    solutions: "We must plant millions of trees, protect our existing forests, and build new dams to store water. We must stop using plastic bags and promote solar energy to keep our environment clean.",
+    conclusion: "To conclude, climate change is a real threat to our survival. We must plant trees, save water, and adopt clean energy to protect our country for the future.",
+    alternativeTopics: ["Deforestation and Global Warming", "Floods in Pakistan", "Save Our Environment", "Pollution and Clean Pakistan"]
   },
   {
     id: 10,
     title: "The Role of Youth in Pakistan's Future",
-    intro: "Youth represent the energy, hope, and future of a nation. With more than sixty percent of its population under the age of thirty, Pakistan holds a powerful demographic advantage.",
-    reasons: "The older generation lays the foundation, but it is the youth who bring innovation, technology, and drive social changes required for modern development.",
-    effects: "When youth are guided correctly, they lead startup revolutions, excel in international sports, bring IT exports, and reduce corruption and social evils.",
-    solutions: "The state must provide quality technical education, merit-based job opportunities, and sports facilities, while the youth must avoid negative politics and screen addiction.",
-    conclusion: "In conclusion, youth are the engines of progress. By channeling our energy into education, discipline, and patriotism, we can lead Pakistan to global success."
+    intro: "Youth represent the energy, dreams, and future of a nation. With over sixty percent of its people under the age of thirty, Pakistan has a golden opportunity to grow rapidly.",
+    reasons: "Young minds adapt to modern technology quickly. They bring new ideas in business, IT, and education. If they are guided and skilled, they can solve most national issues.",
+    effects: "A skilled youth increases exports, builds software startups, and reduces crime. They bring international medals in sports and raise Pakistan's image in the digital world.",
+    solutions: "The government must provide quality IT education and technical training. On the other hand, youth must focus on self-discipline, avoid useless politics, and use the internet for learning.",
+    conclusion: "In conclusion, youth are the real strength of Pakistan. By working with discipline, focus, and patriotism, we can change the fate of our country and make it prosperous.",
+    alternativeTopics: ["Youth Bulge: Asset or Liability", "Responsibilities of Pakistani Youngsters", "IT Skills and Youth", "Leadership and the New Generation"]
   },
   {
     id: 11,
     title: "Poverty: Causes and Alleviation",
-    intro: "Poverty is the state of lacking basic human needs, such as clean water, nutrition, healthcare, education, and shelter. It affects millions of people in Pakistan daily.",
-    reasons: "The core causes are high population growth, lack of jobs, poor quality education, high inflation, and unfair distribution of wealth in society.",
-    effects: "Poverty leads to child labor, lack of education, high crime rates, poor health, and forces families to live in unhygienic conditions.",
-    solutions: "We can alleviate poverty by promoting small businesses with interest-free loans, providing free technical education, creating job opportunities, and organizing zakat systems.",
-    conclusion: "Overall, poverty is a human crisis. Working together through government programs and personal charity, we can lift poor families up and build an equal society."
+    intro: "Poverty means the lack of basic needs like clean food, water, housing, education, and medicine. It is a major social problem that stops millions of people from progress.",
+    reasons: "The main causes are high population growth, lack of job opportunities, poor education quality, and high inflation. Unfair distribution of wealth also keeps the poor in a continuous cycle of debt.",
+    effects: "Poverty leads to child labor, high crime rates, and poor health. It forces children to leave school and work in shops or factories, destroying the future of the new generation.",
+    solutions: "We must provide free technical education to the poor. Giving small, interest-free business loans can help them earn independently. Enhancing the Zakat and charity systems is also helpful.",
+    conclusion: "Overall, poverty is a human crisis that needs urgent attention. By sharing our resources, paying Zakat, and creating jobs, we can build a helpful and prosperous society.",
+    alternativeTopics: ["How to Reduce Poverty", "Zakat and Welfare State", "Unemployment Problems", "Economic Inequality in Pakistan"]
   },
   {
     id: 12,
     title: "CPEC: Strategic Importance & Challenges",
-    intro: "The China-Pakistan Economic Corridor (CPEC) is a massive project of infrastructure, roads, and energy pipelines connecting Gwadar Port to China's Xinjiang region.",
-    reasons: "It is strategically important because it provides China a short trade route to the Arabian Sea and transforms Pakistan into a major trade hub in South Asia.",
-    effects: "It generates thousands of local jobs, resolves energy shortages with new power plants, modernizes roads, and attracts foreign investment.",
-    solutions: "We must ensure political stability, protect Gwadar and CPEC routes with tight security, train our local youth in technical fields, and manage our foreign debts carefully.",
-    conclusion: "In short, CPEC is a game-changer for Pakistan. Overcoming security and financial challenges will allow us to achieve economic prosperity and growth."
+    intro: "CPEC is a massive project of roads, railways, and energy pipelines connecting China to Pakistan's Gwadar Port. It is a vital project for the development of our country.",
+    reasons: "It gives China a short trade route to the Arabian Sea and makes Pakistan a main trade center in Asia. It is built to resolve our electricity shortages and improve transport links.",
+    effects: "CPEC creates thousands of local jobs, improves national highways, and brings foreign investment. It helps develop Gwadar city and increases business activities across all provinces.",
+    solutions: "We must ensure political stability and tight security for Chinese workers. We must train our local youth in technical skills to work on these projects and manage debts carefully.",
+    conclusion: "In short, CPEC is a game-changer for Pakistan's economy. By handling security and financial plans wisely, we can turn this project into a source of national wealth.",
+    alternativeTopics: ["Pak-China Friendship", "Gwadar Port and Trade Routes", "Road Infrastructure of Pakistan", "Economic Game Changer CPEC"]
   },
   {
     id: 13,
     title: "Corruption: A Cancer in Our Society",
-    intro: "Corruption is the abuse of power or position for personal gain, such as bribery, nepotism, and fraud. It acts as a cancer that destroys the foundations of our country.",
-    reasons: "It is caused by weak law enforcement, low salaries, greed, lack of moral values, and a system where the rich and powerful escape punishment easily.",
-    effects: "Corruption destroys public trust, ruins government departments, deprives deserving people of their rights, and keeps the country economically dependent.",
-    solutions: "We must implement strict, unbiased accountability, digitize government systems to reduce bribery, raise salaries, and teach moral values in schools.",
-    conclusion: "In conclusion, progress is impossible without honesty. Every citizen must reject bribery and corruption, holding themselves and others accountable to build a fair Pakistan.",
-    zeeshanRecommended: true
+    intro: "Corruption is the misuse of power or money for personal gain. It includes bribery, favoritism, and cheating. It acts like a cancer, slowly destroying our economy and national institutions.",
+    reasons: "It is caused by weak laws, low salaries, greed, and lack of fear of punishment. When the powerful escape accountability, it encourages others to practice corruption without fear.",
+    effects: "It destroys public trust in departments, deprives honest people of jobs, and keeps the country in debt. It blocks development because funds meant for roads and schools are stolen.",
+    solutions: "We must enforce strict laws and ensure equal punishment for all. Digitizing government work reduces bribery. We must teach moral values at school and choose honesty in our lives.",
+    conclusion: "In conclusion, no nation can progress with corruption. We must stand together, reject bribery, and demand transparency to build a clean, fair, and successful Pakistan.",
+    zeeshanRecommended: true,
+    alternativeTopics: ["Accountability and Rule of Law", "Why Bribery Destroys Nations", "Honesty in Public Service", "Anti-Corruption Measures"]
   },
   {
     id: 14,
     title: "Importance of Discipline in National Life",
-    intro: "Discipline is the practice of training people to obey rules and behave properly. It is the secret behind the success of individuals, armies, and great nations.",
-    reasons: "Without discipline, a society falls into lawlessness, traffic chaos, work delays, and moral decline, leading to national failure.",
-    effects: "A disciplined nation respects time, keeps public spaces clean, obeys state laws, and works unitedly, leading to rapid development and international respect.",
-    solutions: "We must teach self-discipline at home, enforce rules strictly in schools and public places, and lead by example in our daily lives.",
-    conclusion: "As Quaid-e-Azam said: 'Unity, Faith, and Discipline.' By adopting discipline in our personal and public lives, we can overcome any obstacle and rise as a great nation."
+    intro: "Discipline means following rules and behaving in an orderly way. It is the secret behind the success of individuals, sports teams, military forces, and great nations.",
+    reasons: "Without discipline, a society falls into traffic chaos, dirty streets, office delays, and high crime. A nation without rules becomes weak and loses its focus and unity.",
+    effects: "A disciplined nation respects time, obeys state laws, and keeps surroundings clean. It leads to fast economic growth, saves national resources, and earns respect around the globe.",
+    solutions: "We must teach self-discipline to children at home. Schools must enforce rules strictly, and traffic laws should be applied to everyone without any favor or discrimination.",
+    conclusion: "As Quaid-e-Azam said: 'Unity, Faith, and Discipline.' By making discipline a part of our personal and national lives, we can overcome any crisis and succeed.",
+    alternativeTopics: ["Discipline in Student Life", "Quaid's Motto: Unity, Faith, Discipline", "Discipline in Armed Forces", "Why Rules Matter in Society"]
   },
   {
     id: 15,
     title: "Water Crisis in Pakistan & Its Solutions",
-    intro: "A water crisis refers to the severe lack of clean drinking and agricultural water. Pakistan is rapidly moving from a water-stressed to a water-scarce country.",
-    reasons: "It is caused by a lack of new dams, water wastage in old farming methods, glacier melting due to climate change, and high population growth.",
-    effects: "The crisis threatens our crop production, increases conflicts between provinces, causes diseases due to dirty water, and harms our economy.",
-    solutions: "We must build new dams, adopt modern drip irrigation systems, recycle industrial water, and run awareness campaigns to stop domestic water waste.",
-    conclusion: "To sum up, water is life. Conserving water and building reservoirs is a national duty to secure the future of our upcoming generations."
+    intro: "The water crisis is the extreme shortage of clean water for drinking and farming. Pakistan is quickly drying up, moving from a water-stressed to a water-scarce country.",
+    reasons: "The main reasons are the lack of water reservoirs, water wastage in outdated farming, melting glaciers due to global warming, and rapid population growth.",
+    effects: "It threatens our food crops, leads to fights between provinces over water, causes disease due to dirty drinking water, and hurts our agricultural economy.",
+    solutions: "We must build new dams, adopt drip irrigation in fields, and recycle industrial water. Running awareness campaigns to save water in daily home activities is also essential.",
+    conclusion: "To sum up, water is life, and saving it is our national duty. By constructing dams and stopping water waste, we can secure the lives of our future generations.",
+    alternativeTopics: ["Constructing New Dams", "Save Water Save Life", "Agricultural Water Wastage", "Glacier Melting Threat"]
   },
   // --- ADMIN ONLY - ZEESHAN RECOMMENDED SECTION ---
   {
     id: 16,
     title: "Why drug usage is rising among Youth",
-    intro: "Drug usage among youth is a growing global concern, particularly affecting the social fabric of developing nations like Pakistan.",
-    reasons: "It rises due to peer pressure, academic stress, lack of parental guidance, easy availability of illicit substances, and depression.",
-    effects: "It destroys physical and mental health, ruins academic careers, increases crime rates, and places a heavy burden on families.",
-    solutions: "We must raise awareness in schools, establish rehab centers, strictly control the sale of drugs, and encourage healthy activities like sports.",
-    conclusion: "In conclusion, saving the youth from drugs requires collective efforts. By supporting them mentally and legally, we can protect our future.",
+    intro: "Drug usage among youth is a growing global concern, particularly affecting the social fabric of developing nations like Pakistan. It is a threat to our future.",
+    reasons: "It rises due to bad peer pressure, academic stress, lack of parental attention, and the easy availability of drugs near colleges. Depression also leads youth to addiction.",
+    effects: "It ruins the physical and mental health of students, destroys their academic careers, and increases crime rates. It brings immense sadness and financial loss to families.",
+    solutions: "Schools must organize awareness lectures. We need strict police checks around colleges and cheap rehab clinics. Promoting sports will keep the youth busy and healthy.",
+    conclusion: "In conclusion, saving our youth from drugs is a collective duty. By giving them love, mental support, and healthy activities, we can protect our national future.",
     adminOnly: true,
-    zeeshanRecommended: true
+    zeeshanRecommended: true,
+    alternativeTopics: ["Drug Addiction Causes", "Youth Mental Health and Drugs", "Role of Parents in Preventing Addiction", "Rehab and Healthy Activities"]
   },
   {
     id: 17,
     title: "Self-belief is half success",
-    intro: "Self-belief is the trust in one's own abilities, skills, and judgment. It is the first step toward achieving any goal in life.",
-    reasons: "Without self-belief, a person lacks the confidence to take risks, face challenges, or stand up after a failure.",
-    effects: "High self-belief increases motivation, builds leadership qualities, and helps individuals perform under pressure, especially in ISSB.",
-    solutions: "We must practice positive self-talk, learn from mistakes instead of quitting, and surround ourselves with supportive people.",
-    conclusion: "In short, belief in oneself is the foundation of success. When you believe you can, you are already halfway there.",
+    intro: "Self-belief means trusting your own skills, hard work, and decisions. It is the first and most important step toward achieving any high goal in life.",
+    reasons: "Without self-belief, a person cannot take risks, face challenges, or stand up after a failure. Fear of defeat stops them from trying new things.",
+    effects: "High self-belief increases motivation, builds leadership qualities, and helps you handle stress. In ISSB, a candidate with self-belief speaks and acts with absolute confidence.",
+    solutions: "We must stop comparing ourselves with others and practice positive thinking. Learning from failure instead of quitting builds strong confidence and self-belief.",
+    conclusion: "In short, trusting yourself is the foundation of success. When you start believing in your dreams and preparation, you are already halfway to your goal.",
     adminOnly: true,
-    zeeshanRecommended: true
+    zeeshanRecommended: true,
+    alternativeTopics: ["Confidence is Key", "Positive Self-Talk", "Overcoming Failure", "Believing in Your Goals"]
   },
   {
     id: 18,
     title: "Should we trade with India?",
-    intro: "Trade is the exchange of goods and services between countries. Trading with neighbors is generally the most cost-effective way to boost economy.",
-    reasons: "Trade with India can reduce transport costs, provide cheap raw materials, and open a massive market. However, political disputes and border security issues remain major obstacles.",
-    effects: "Economic trade can lower inflation and help local industries. But it can also make the local market dependent on imports if not managed carefully.",
-    solutions: "We should prioritize resolving core political disputes first, but can explore limited trade in essential items while protecting local manufacturing.",
-    conclusion: "In conclusion, while trade is beneficial for the economy, national sovereignty and self-respect must never be compromised for financial gain.",
+    intro: "Trade is the exchange of goods between countries. Trading with neighbors is the cheapest way to boost business, but it requires national security first.",
+    reasons: "Trading with India can lower transport costs, provide cheap raw materials, and open a huge market. However, active border disputes and Kashmir issue remain major blocks.",
+    effects: "Open trade can lower inflation and help local business. But it can also make our economy dependent on imports and hurt national pride if disputes are ignored.",
+    solutions: "We should try to resolve core issues through talks first. Limited trade in life-saving medicines can be allowed while protecting our security borders tightly.",
+    conclusion: "In conclusion, trade is good for the economy, but national honor and sovereignty are far more important. We must never compromise security for trade.",
     adminOnly: true,
-    zeeshanRecommended: true
+    zeeshanRecommended: true,
+    alternativeTopics: ["Pak-India Relations", "Regional Trade in South Asia", "Sovereignty vs Economic Gain", "CPEC vs Indian Trade Routes"]
   },
   {
     id: 19,
     title: "Girls can be a best friend or not?",
-    intro: "Friendship is a mutual relationship of trust, respect, and support between individuals, regardless of their gender.",
-    reasons: "A female friend can offer a different perspective on life, emotional support, and advice. However, social boundaries and cultural values must be respected.",
-    effects: "Healthy cross-gender friendships build mutual respect, confidence, and help in professional environments.",
-    solutions: "We must maintain moral limits, respect cultural values, and focus on clean, supportive, and professional relationships.",
-    conclusion: "In short, friendship is about values, not gender. A girl can be a great and supportive friend within respectful boundaries.",
+    intro: "True friendship is a relationship of trust, respect, and mutual support between two people, regardless of their gender. Gender does not define friendship.",
+    reasons: "A female friend can offer a different perspective, kind emotional support, and mature advice. However, cultural values and social rules must be respected in our society.",
+    effects: "Healthy, clean friendships between boys and girls build mutual respect and confidence. It helps them work professionally in offices and colleges.",
+    solutions: "We must maintain moral limits and clear boundaries. Respecting family values, avoiding rumors, and focusing on clean, supportive friendships is the key.",
+    conclusion: "In short, friendship is about values, character, and trust. A girl can be a great and supportive friend if both maintain a respectful and clean relationship.",
     adminOnly: true,
-    zeeshanRecommended: true
+    zeeshanRecommended: true,
+    alternativeTopics: ["Co-gender Friendships", "Moral Limits in Friendships", "Gender respect in Islam", "Healthy Social Boundaries"]
   },
   {
     id: 20,
     title: "Should we provide airspace to the US?",
-    intro: "Airspace is the portion of the atmosphere controlled by a country above its territory. Allowing foreign military access is a critical decision in foreign policy.",
-    reasons: "Providing airspace can improve diplomatic ties and bring financial/military aid. However, it can compromise national security and anger regional neighbors.",
-    effects: "It might help in joint security operations, but can make Pakistan a target of hostile elements and affect national sovereignty.",
-    solutions: "We must prioritize national security, remain neutral in foreign conflicts, and only allow airspace for peaceful, commercial, or humanitarian reasons.",
-    conclusion: "To conclude, Pakistan's sovereignty is sacred. Any foreign policy decision must protect our land, people, and independent status first.",
+    intro: "Airspace is the air above a country's land. Giving foreign military forces the right to use our airspace is a sensitive foreign policy decision.",
+    reasons: "Giving airspace can please powerful countries and bring financial aid. But it can lead to security risks, anger neighbors, and cause internal protests.",
+    effects: "It can drag our country into foreign wars, damage our independence, and make us a target for hostile forces. It hurts national sovereignty.",
+    solutions: "We must put Pakistan's security first. We should follow a neutral policy, stay out of foreign conflicts, and only allow commercial planes in our sky.",
+    conclusion: "To conclude, Pakistan's airspace is sacred. We must maintain an independent foreign policy that keeps our land, air, and citizens completely safe.",
     adminOnly: true,
-    zeeshanRecommended: true
+    zeeshanRecommended: true,
+    alternativeTopics: ["Foreign Policy of Pakistan", "US-Pak Relations", "National Sovereignty and Borders", "Neutrality in Foreign Wars"]
   },
   {
     id: 21,
     title: "Is money the solution to our problems?",
-    intro: "Money is a medium of exchange used to buy goods and services. While it is necessary for survival, it is not a cure-all for all human problems.",
-    reasons: "Money can solve material problems like poverty, healthcare, and shelter. It cannot buy health, true happiness, peace of mind, or moral character.",
-    effects: "Focusing only on money leads to greed, corruption, and broken relationships, ruining the peace of society.",
-    solutions: "We must balance economic pursuit with moral values, family time, health, and content mindset.",
-    conclusion: "In conclusion, money is a useful tool but a bad master. True success lies in a balanced life with moral values and peace.",
+    intro: "Money is the medium of exchange used to buy goods and services. While it is necessary for a comfortable life, it cannot buy everything.",
+    reasons: "Money solves material problems like hunger, housing, and school bills. However, it cannot buy true happiness, peace of mind, good character, or health.",
+    effects: "Chasing only money leads to greed, corruption, and broken family ties. It destroys the peace of mind and leads to stress, despite having wealth.",
+    solutions: "We must work hard to earn honestly, but balance it with family time, help for the poor, moral values, and a content heart.",
+    conclusion: "In conclusion, money is a good servant but a bad master. True success in life is a balance of simple living, honest earnings, and peace of mind.",
     adminOnly: true,
-    zeeshanRecommended: true
+    zeeshanRecommended: true,
+    alternativeTopics: ["Materialism vs True Happiness", "Importance of Character Over Wealth", "Poverty vs Peace of Mind", "What Money Cannot Buy"]
   },
   {
     id: 22,
     title: "Should students be allowed to use AI tools?",
-    intro: "Artificial Intelligence (AI) tools like ChatGPT have changed how students research and study. Their usage in education is a debated topic.",
-    reasons: "AI helps students learn complex topics, draft reports, and save research time. However, it can make them lazy, encourage cheating, and reduce critical thinking.",
-    effects: "Balanced use enhances learning and digital skills. Over-reliance destroys creativity and personal writing skills.",
-    solutions: "Schools should teach students how to use AI as a research assistant, while keeping exams and critical tasks manual to ensure independent learning.",
-    conclusion: "To sum up, AI is a powerful assistant. Students should use it to learn, not to escape hard work.",
+    intro: "AI tools like ChatGPT help users search and write instantly. Their use in schools and colleges is a topic of debate worldwide today.",
+    reasons: "AI is helpful because it explains tough topics easily and saves research time. But it becomes bad when students copy answers directly without using their minds.",
+    effects: "Students who copy-paste stop thinking, which ruins their writing and analytical skills. Proper use, however, increases technical knowledge and research skills.",
+    solutions: "Schools should allow AI only as a helper for research. Main writing work and basic math should be done manually to keep student brains active.",
+    conclusion: "To sum up, AI is a powerful calculator for writing. Students should use it to learn new things, not to escape hard work and study.",
     adminOnly: true,
-    zeeshanRecommended: true
+    zeeshanRecommended: true,
+    alternativeTopics: ["AI in Education", "ChatGPT: Help or Hurt", "Digital Learning in Schools", "Rote Learning vs AI Assistance"]
   },
   {
     id: 23,
     title: "Should veil be implemented in universities?",
-    intro: "Veil (Hijab/Niqab) is a personal choice and a religious practice. The dress code in higher education institutions often sparks debate.",
-    reasons: "Universities are places of higher learning where focus should be on education and character. Forcing or banning the veil can violate individual freedom and cause division.",
-    effects: "Respecting dress choices builds a tolerant environment. Force leads to resentment and takes focus away from education.",
-    solutions: "Universities should maintain a simple, decent, and professional dress code without forcing or banning the veil.",
-    conclusion: "In conclusion, education and character are the real goals of a university. Dress codes should focus on decency and mutual respect.",
+    intro: "Veil (Hijab/Niqab) is an Islamic dress code and a personal religious choice. The dress code in higher education institutions often sparks discussions.",
+    reasons: "Universities focus on education and character building. Banning the veil hurts religious freedom, while forcing it can lead to anger and lack of comfort.",
+    effects: "Allowing choices creates a peaceful and welcoming study environment. Forcing rules on dress code takes focus away from research and high grades.",
+    solutions: "Universities should set a decent, simple, and professional dress code. They should respect personal choices without forcing or banning the veil.",
+    conclusion: "In conclusion, education and manners are the real goals of a university. The dress code should focus on decency, cleanliness, and mutual respect.",
     adminOnly: true,
-    zeeshanRecommended: true
+    zeeshanRecommended: true,
+    alternativeTopics: ["Dress Code in Higher Education", "Hijab Choice and Freedom", "Decency in Educational Institutions", "Islamic Dress Standards"]
   },
   {
     id: 24,
     title: "Greed is not always a curse",
-    intro: "Greed is a strong desire for more of something, like wealth or power. Usually seen as a vice, it can sometimes drive progress.",
-    reasons: "Greed for knowledge, success, or self-improvement drives innovation, research, and hard work. However, greed for material wealth at the cost of others is always a curse.",
-    effects: "Constructive greed (ambition) leads to discovery and growth. Destructive greed leads to corruption, crime, and inequality.",
-    solutions: "We must channel our desires into positive areas like education, skills, and public service, while keeping greed for wealth under moral control.",
-    conclusion: "To sum up, greed is a strong engine. Directed toward growth and knowledge, it becomes a force for good.",
+    intro: "Greed means a strong desire for more wealth, power, or success. While it is usually seen as a bad habit, it can sometimes drive progress.",
+    reasons: "Greed or hunger for knowledge, success, and self-improvement drives scientists to invent and students to work hard. Greed for money at others' cost is bad.",
+    effects: "Positive hunger leads to new discoveries, better medicine, and progress. Material greed leads to bribery, corruption, theft, and sadness in society.",
+    solutions: "We must direct our desires toward positive areas like education and sports. We must control our desire for fast wealth through moral values.",
+    conclusion: "In short, greed is a strong force. If we direct it towards learning, sports, and helping others, it becomes a boon for progress.",
     adminOnly: true,
-    zeeshanRecommended: true
+    zeeshanRecommended: true,
+    alternativeTopics: ["Ambition vs Greed", "Greed for Knowledge", "What Drives Progress", "Limits of Desire"]
   },
   {
     id: 25,
     title: "Is capital punishment a violation of human rights or is it justice?",
-    intro: "Capital punishment (death penalty) is the legal execution of a person for committing a major crime like murder or terrorism.",
-    reasons: "Proponents argue it provides justice to victims and deters criminals. Opponents argue it violates the right to life and cannot be reversed if a mistake is made.",
-    effects: "It can lower serious crime rates and satisfy victims' families. But a weak judicial system can lead to wrongful executions.",
-    solutions: "We must ensure a highly transparent, fair, and error-free judicial process before executing anyone, reserving it for extreme cases.",
-    conclusion: "Overall, capital punishment is a serious tool for justice. It must be used with absolute care and fairness to protect society.",
+    intro: "Capital punishment means the death penalty for severe crimes like murder or terrorism. It is a highly debated topic in law and human rights.",
+    reasons: "Proponents argue it gives justice to victims' families and deters future criminals. Opponents argue it violates the right to life and cannot be reversed.",
+    effects: "It can lower extreme crimes by creating fear of death. However, if the court system is weak, there is a risk of executing an innocent person.",
+    solutions: "We must reform our police and courts to ensure a fair trial. The death penalty should be reserved only for extreme cases with absolute proof.",
+    conclusion: "Overall, capital punishment is a serious tool for peace. It must be used with absolute care, justice, and fairness to protect society.",
     adminOnly: true,
-    zeeshanRecommended: true
+    zeeshanRecommended: true,
+    alternativeTopics: ["Death Penalty Debate", "Human Rights and Criminals", "Deterrence to Crime", "Justice for Victims"]
   },
   {
     id: 26,
     title: "Sectarianism's role in terrorism",
-    intro: "Sectarianism is the division and conflict between different sects of a religion. It is a major tool used to spread extremism and terror.",
-    reasons: "Extremist groups exploit sectarian differences to spread hatred, recruit jobless youth, and justify violence against other sects.",
-    effects: "It destroys national unity, causes loss of innocent lives, and creates constant fear and division in society.",
-    solutions: "We must promote interfaith harmony, ban hate speech, educate youth in tolerance, and strictly punish those who spread sectarian violence.",
-    conclusion: "In conclusion, sectarianism is a threat to Pakistan. Unity and tolerance are our best weapons to defeat this cause of terror.",
+    intro: "Sectarianism is the conflict between different sects of a religion. It is a major tool used by extremist groups to spread hatred and terror.",
+    reasons: "Uneducated people are easily misguided by sectarian slogans. Bad elements use these differences to recruit jobless youth and justify violence.",
+    effects: "It destroys peace and national unity. It leads to attacks on worship places, loss of innocent lives, and keeps the society in constant fear.",
+    solutions: "We must ban hate speech and hate materials. Scholars should promote peace and inter-sect harmony. Quality education must be provided to youth.",
+    conclusion: "In conclusion, sectarianism is a threat to our country. We must stand united as Muslims and Pakistanis to defeat this root cause of terror.",
     adminOnly: true,
-    zeeshanRecommended: true
+    zeeshanRecommended: true,
+    alternativeTopics: ["Inter-sect Harmony", "Religious Extremism", "Unity of Muslim Ummah", "Causes of Sectarian Hatred"]
   },
   {
     id: 27,
     title: "Why do youngsters disrespect their elders?",
-    intro: "Respect for elders is a core value in Eastern culture. Recently, there is a rising concern over the lack of respect shown by the youth.",
-    reasons: "Causes include negative influence of media, busy parents, lack of moral training at schools, and gap in communication between generations.",
-    effects: "It weakens family bonds, increases parent-child conflicts, and leads to a morally weak society.",
-    solutions: "Parents must spend quality time with children, schools should prioritize character building, and youth should practice patience and active listening.",
-    conclusion: "To sum up, respect is a two-way street. Elders should guide with love, and youth must listen with respect to keep our family values alive.",
+    intro: "Respecting parents and elders is a core value of our culture. Lately, there is a rising concern that the youth are losing this important moral value.",
+    reasons: "The main causes are the influence of social media, busy schedules of parents, lack of moral teaching at school, and generation gap in communication.",
+    effects: "It weakens the family system and increases home fights. It leads to a rude, undisciplined generation that lacks wisdom and manners.",
+    solutions: "Parents must spend quality time with children. Schools should give marks for good behavior, and youth must practice active, polite listening.",
+    conclusion: "To sum up, respect is a two-way street. Elders should guide with love, and youth must act with manners to keep our family bonds strong.",
     adminOnly: true,
-    zeeshanRecommended: true
+    zeeshanRecommended: true,
+    alternativeTopics: ["Generation Gap", "Moral Training of Youth", "Western Culture Influence", "Respecting Parents"]
   },
   {
     id: 28,
     title: "Why are physical games played less today than in the past?",
-    intro: "Physical games like football and hockey are essential for health. Today, youth spend much less time in playgrounds than previous generations.",
-    reasons: "The main reasons are mobile screen addiction, lack of parks in cities, school pressure, and the rising popularity of video games.",
-    effects: "This leads to rising physical weakness, obesity, mental stress, and lack of teamwork skills in youth.",
-    solutions: "Schools must make sports periods mandatory, parents must limit screen time, and governments should build green parks in residential areas.",
-    conclusion: "In conclusion, physical fitness is vital. Returning to the playgrounds is necessary to raise a healthy and active generation.",
+    intro: "Outdoor games like football and cricket are essential for health. Today, youth spend much less time in playgrounds than in the past.",
+    reasons: "The main reasons are mobile screen addiction, lack of green parks in cities, homework pressure, and the popularity of video games.",
+    effects: "This leads to health issues like obesity, weak eyesight, and mental stress. Youth fail to learn teamwork and physical fitness skills.",
+    solutions: "Schools must make sports periods compulsory. Parents must set screen time locks, and the government should build public parks in towns.",
+    conclusion: "In conclusion, playgrounds are necessary for a healthy generation. We must balance technology with outdoor games to stay fit and active.",
     adminOnly: true,
-    zeeshanRecommended: true
+    zeeshanRecommended: true,
+    alternativeTopics: ["Mobile Addiction in Children", "Empty Playgrounds", "Importance of Outdoor Sports", "Physical Fitness Decline"]
   },
   {
     id: 29,
     title: "Role of AI and its future",
-    intro: "Artificial Intelligence is the capability of machines to copy human intelligence. It is changing every industry from education to military.",
-    reasons: "AI is growing due to advanced computers and massive data, helping solve complex medical, industrial, and climate problems.",
-    effects: "It makes tasks extremely fast and efficient, but raises concerns about job losses, cyber security, and loss of human touch.",
-    solutions: "We must learn AI skills to stay competitive, create laws to prevent misuse, and focus on human-AI collaboration.",
-    conclusion: "In conclusion, AI is the future. By directing it responsibly, we can use it to solve global problems and progress.",
+    intro: "Artificial Intelligence (AI) means computers acting smart like humans. It is changing every field from simple search engines to complex military systems.",
+    reasons: "AI is growing due to fast computers and massive data. It is used to automate boring tasks, diagnose diseases, and improve farming.",
+    effects: "It makes work extremely fast and error-free. However, it raises worries about job losses in offices and cybersecurity threats.",
+    solutions: "We must learn digital and AI skills to stay competitive. The government must make laws to prevent the misuse of AI and fake videos.",
+    conclusion: "In conclusion, AI is the future. By learning to use it as a helpful tool, we can boost our work speed and build a modern country.",
     adminOnly: true,
-    zeeshanRecommended: true
+    zeeshanRecommended: true,
+    alternativeTopics: ["AI and Job Losses", "The Future of Technology", "Human-AI Collaboration", "Smarter Machines"]
   },
   {
     id: 30,
     title: "Democracy vs. Dictatorship",
-    intro: "Democracy and Dictatorship are two opposing systems of government. The debate over which is better for a developing country is classic.",
-    reasons: "Democracy offers freedom of choice and public participation, but can be slow. Dictatorship offers fast decisions and stability, but ignores human rights and lacks accountability.",
-    effects: "Long-term democracy builds stable institutions. Dictatorship causes political unrest and locks out public feedback, leading to rebellion.",
-    solutions: "We must support democratic stability, educate the public, and focus on rule of law to ensure both fast development and freedom.",
-    conclusion: "Ultimately, freedom and accountability are essential. A mature, clean democracy is the only sustainable way forward for Pakistan.",
+    intro: "Democracy means public rule, while Dictatorship means absolute power in one hand. Deciding which is better is a classic debate for developing nations.",
+    reasons: "Democracy offers freedom of speech and choices, but decisions take time. Dictatorship is fast and disciplined, but ignores human rights and choices.",
+    effects: "Democracy builds strong departments and peace in the long run. Dictatorship brings temporary stability but ends in political protests.",
+    solutions: "We must support consistent elections, educate the public, and ensure the rule of law. A fair democracy is the only permanent path.",
+    conclusion: "Ultimately, freedom and public support are necessary for success. A clean, stable democracy is the best system for Pakistan's progress.",
     adminOnly: true,
-    zeeshanRecommended: true
+    zeeshanRecommended: true,
+    alternativeTopics: ["Is Democracy Best?", "Military Rule vs Political Rule", "Public Accountability", "Stability in Pakistan"]
   }
 ];
 
@@ -309,242 +339,273 @@ export const lecturettes = [
   {
     id: 1,
     title: "Importance of Technical Education",
-    intro: "Technical education focuses on practical skills and hands-on training in fields like IT, engineering, electronics, and plumbing. In today's fast-moving world, skills are more valuable than simple degrees.",
-    points: "While general education teaches concepts, technical education provides immediate employment. It addresses youth unemployment, reduces poverty, and supports local industries. Countries like Germany and Japan progressed rapidly by focusing on technical skills.",
-    conclusion: "Instead of chasing empty degrees, our youth must focus on learning practical, digital, and mechanical skills. Technical education is the key to personal and national progress."
+    intro: "Technical education means learning practical skills like computer coding, mobile repair, plumbing, and mechanics. In today's competitive world, skills are far more valuable than simple degrees.",
+    points: "While general degrees only teach theory, technical training gives immediate jobs. It solves youth unemployment, helps poor families earn quickly, and boosts local manufacturing. Developed countries like Germany and Japan progressed rapidly by focusing on technical skills rather than simple graduation.",
+    conclusion: "Instead of running after empty degrees, our youth must focus on learning modern skills. Technical education is the key to personal wealth and national progress.",
+    alternativeTopics: ["Duties of a Good Citizen", "How Youth Can Help Pakistan", "Youth and Nation Building", "Patriotism in Action"]
   },
   {
     id: 2,
     title: "Brain Drain: Causes and Remedies",
-    intro: "Brain drain is the migration of highly educated and skilled professionals, such as doctors, engineers, and IT experts, from developing countries to wealthier nations.",
-    points: "The main causes are low salaries, high inflation, political instability, and lack of merit in Pakistan. This deprives the country of its best talent, stunts local research, and slows down development.",
-    conclusion: "To stop this, we must improve working conditions, ensure merit-based hiring, and offer research facilities. We need to create an environment where our talent can serve Pakistan."
+    intro: "Brain drain means the migration of highly educated professionals like doctors, engineers, and IT experts from developing countries to rich nations.",
+    points: "The main causes are low salaries, high inflation, and lack of merit in hiring. This migration deprives Pakistan of its best talent, stops research, and forces us to hire foreign experts at high rates. It slows down our progress.",
+    conclusion: "To stop this, we must offer competitive salaries, value merit, and provide research funds. We must build a system where talent feels safe and respected.",
+    alternativeTopics: ["Impact of Internet on Youth", "Mobile Addiction in Students", "The Digital Era", "Pros and Cons of Social Networks"]
   },
   {
     id: 3,
     title: "Is Democracy Suitable for Pakistan?",
-    intro: "Democracy is a system of government where the public elects their leaders. While Pakistan has faced challenges in running it, democracy remains the best path forward.",
-    points: "Democracy ensures freedom of speech, equal rights, and accountability of rulers. Past failures were not due to the system, but due to low literacy, corruption, and lack of consistent elections.",
-    conclusion: "For a strong democracy, we need education, patience, and fair elections. Consistent democratic processes will mature over time, leading to stable progress for Pakistan."
+    intro: "Democracy is a system where citizens elect their leaders. Although Pakistan has faced challenges in running it, it remains the most suitable path.",
+    points: "Democracy protects freedom of speech and guarantees equal rights. Past failures were not due to the system, but due to low education, corruption, and frequent breaks in the political process. Only regular elections can bring maturity.",
+    conclusion: "For a strong democracy, we must educate our citizens and hold fair elections. Consistent democratic processes will solve our crises over time.",
+    alternativeTopics: ["Power Shortage and Load-shedding", "Electricity Crisis", "Renewable Energy Options for Pakistan", "Why Pakistan Faces Circular Debt"]
   },
   {
     id: 4,
     title: "The Power of Positive Thinking",
-    intro: "Positive thinking is a mental attitude where you focus on solutions, hope, and learning rather than complaints, problems, and failure.",
-    points: "It builds mental strength, reduces stress, and improves physical health. In difficult times, a positive mind finds opportunities. It helps candidates stay calm and perform well under pressure.",
-    conclusion: "Success starts in the mind. By ignoring negative thoughts and focusing on self-improvement, we can achieve our goals and lead a happy life."
+    intro: "Positive thinking is a mental choice where you focus on solutions, hope, and learning rather than complaints, fears, and past failures.",
+    points: "It builds mental strength, reduces stress, and keeps you fit. A positive mind sees opportunities in difficult times. During tough tasks at ISSB, staying positive helps you lead and perform under high pressure.",
+    conclusion: "All success starts in the mind. By keeping a hopeful attitude and working hard, we can achieve our goals and live a happy life.",
+    alternativeTopics: ["Devaluation of Rupee", "Rising Prices and Common Man", "Economic Challenges of Pakistan", "Poverty and Price Hikes"]
   },
   {
     id: 5,
     title: "Human Rights & Modern Society",
-    intro: "Human rights are the basic freedoms and rights that belong to every person from birth, regardless of nationality, gender, religion, or social status.",
-    points: "They include the right to life, freedom of speech, education, and equality before the law. A peaceful society is impossible without protecting these rights, which prevent injustice and violence.",
-    conclusion: "Protecting human rights is a collective duty. By respecting others and standing against cruelty, we can build a peaceful, modern, and civilized world."
+    intro: "Human rights are the basic freedoms and rights that belong to every human being from birth, regardless of their status, religion, or gender.",
+    points: "They include the right to live, study, speak, and seek justice. A peaceful society is impossible if we ignore these rights. Protecting them prevents crimes, stops cruelty, and builds trust between citizens.",
+    conclusion: "Respecting human rights is our moral duty. By treating everyone with respect and kindness, we can build a modern and civilized nation.",
+    alternativeTopics: ["Gender Equality in Islam", "Role of Women in Society", "Female Education in Pakistan", "Empowering the Girl Child"]
   },
   {
     id: 6,
     title: "Tourism Potential in Pakistan",
-    intro: "Pakistan is blessed with diverse geography, ranging from the world's highest mountains in the north to beautiful beaches in the south, and rich historical sites.",
-    points: "Tourism can generate billions in foreign exchange, create local jobs, and improve Pakistan's soft image globally. Challenges include poor infrastructure, security concerns, and lack of international marketing.",
-    conclusion: "By improving roads, hotels, security, and using digital media, we can unlock our tourism potential and make Pakistan a top travel destination."
+    intro: "Pakistan is blessed with beautiful northern mountains, historic Sufi shrines, ancient cities, and warm beaches. Our tourism potential is huge.",
+    points: "Tourism can bring foreign money, create local jobs in valleys, and improve Pakistan's image worldwide. Challenges include poor road networks and low marketing. We must focus on building clean hotels and secure routes.",
+    conclusion: "By improving roads, hotels, and using social media for marketing, we can welcome global travelers and boost our economy through tourism.",
+    alternativeTopics: ["Literacy Rate Challenges", "Urdu vs English Medium Education", "Single National Curriculum", "Practical vs Rote Learning"]
   },
   {
     id: 7,
     title: "Character is Power",
-    intro: "Character refers to the moral qualities of a person, such as honesty, courage, integrity, and discipline. Wealth and status are temporary, but character is permanent.",
-    points: "A person of high character earns respect, stays truthful under pressure, and helps others without selfish motives. In the Armed Forces, character is the foundation of leadership and trust.",
-    conclusion: "As the saying goes: 'If wealth is lost, nothing is lost; if health is lost, something is lost; but if character is lost, everything is lost.' We must focus on building strong moral character."
+    intro: "Character means having strong moral values like honesty, courage, truthfulness, and discipline. Wealth is temporary, but character stays forever.",
+    points: "A person with good character is trusted by everyone. They stand for truth under pressure and help others. In the Armed Forces, strong character is the most important quality for officers and leaders.",
+    conclusion: "If money is lost, nothing is lost. If character is lost, everything is lost. We must focus on building high moral values daily.",
+    alternativeTopics: ["Internal Security of Pakistan", "Role of Armed Forces in Peace", "How to End Extremism", "National Action Plan"]
   },
   {
     id: 8,
     title: "United We Stand, Divided We Fall",
-    intro: "This proverb means that unity brings strength, while division leads to weakness and failure. It is a universal rule for families, teams, and nations.",
-    points: "When a nation is united, it can defeat external enemies, handle natural disasters, and progress economically. Division based on caste, province, or politics destroys a country from within.",
-    conclusion: "We must rise above personal differences and work as one team. Our strength lies in our unity. Together, we can take Pakistan to the heights of success."
+    intro: "This famous proverb means that unity brings strength, while fights and division make us weak. It applies to families, teams, and countries.",
+    points: "When a nation stands united, it can defeat any enemy, handle floods, and grow economically. Division based on language or province makes us weak and allows enemies to target our peace.",
+    conclusion: "We must rise above personal differences and work as one team for Pakistan. Our real power is unity. Together, we can succeed.",
+    alternativeTopics: ["My Ambition in Life", "Life in Uniform", "Defending the Motherland", "Why I Choose Army Over Corporate"]
   },
   {
     id: 9,
     title: "The Role of Sports in Personality Development",
-    intro: "Sports are physical activities that promote fitness, recreation, and learning. They play a vital role in shaping the character and personality of young candidates.",
-    points: "Sports teach discipline, time management, teamwork, and leadership. Crucially, they teach how to handle defeat gracefully and win humbly, building high emotional resilience.",
-    conclusion: "Sports are not just games; they are classrooms for life. Youth should actively play sports to stay healthy, physically fit, and develop a personality."
+    intro: "Sports are physical activities that build your body and train your mind. They are essential for growing a healthy and strong personality.",
+    points: "Sports teach you discipline, teamwork, and quick decision-making under pressure. Most importantly, they teach you how to accept defeat with a smile and win with respect, building high emotional strength.",
+    conclusion: "Sports are not just games; they are lessons for character. Every student should play outdoor games to stay fit, sharp, and confident.",
+    alternativeTopics: ["Deforestation and Global Warming", "Floods in Pakistan", "Save Our Environment", "Pollution and Clean Pakistan"]
   },
   {
     id: 10,
     title: "Modern Technology: Pros and Cons",
-    intro: "Modern technology refers to devices and systems like smartphones, the internet, and artificial intelligence that make our daily lives easier and faster.",
-    points: "The pros are instant communication, global access to education, and advanced healthcare. The cons include loss of privacy, reduced physical activities, and screen addiction among children.",
-    conclusion: "Technology is a useful servant but a bad master. We must use it wisely for learning and productivity while avoiding its negative distractions."
+    intro: "Modern technology like smartphones and the internet has changed our life. While it makes life easy, it has both advantages and disadvantages.",
+    points: "The advantages are fast communication, online studies, and advanced hospitals. The disadvantages are lack of physical play, loss of privacy, and screen addiction among children. We must maintain a healthy balance.",
+    conclusion: "Technology is a useful servant but a bad master. Use it to learn and work, but do not let it control your time.",
+    alternativeTopics: ["Youth Bulge: Asset or Liability", "Responsibilities of Pakistani Youngsters", "IT Skills and Youth", "Leadership and the New Generation"]
   },
   {
     id: 11,
     title: "Self-Reliance vs. Foreign Aid",
-    intro: "Self-reliance means producing your own resources, while foreign aid refers to loans and financial assistance received from other countries or organizations like the IMF.",
-    points: "Foreign aid provides temporary relief but leads to high debts, loss of freedom, and economic dependency. Self-reliance builds local industries, pride, and long-term financial stability.",
-    conclusion: "A country cannot progress on borrowed money. We must increase our exports, control expenses, and focus on self-reliance to stand proud and independent."
+    intro: "Self-reliance means standing on your own feet, while foreign aid means borrowing loans from other countries and international banks.",
+    points: "Foreign aid offers quick relief but leads to high debts, loss of freedom in decisions, and economic weakness. Self-reliance builds local industries, creates jobs, and makes a nation proud, strong, and independent.",
+    conclusion: "We cannot run a proud nation on borrowed money. We must increase exports and work hard to achieve complete self-reliance.",
+    alternativeTopics: ["How to Reduce Poverty", "Zakat and Welfare State", "Unemployment Problems", "Economic Inequality in Pakistan"]
   },
   {
     id: 12,
     title: "Importance of Moral Values in Youth",
-    intro: "Moral values are the principles of right and wrong, such as honesty, respect, kindness, and justice, that guide human behavior in a society.",
-    points: "Today, youth are highly educated in subjects but often lack moral training. This leads to rising corruption, disrespect, and social decay. Character development is as vital as academic grading.",
-    conclusion: "Education without moral values is incomplete. We must teach and practice honesty, empathy, and respect to create a civilized and peaceful nation."
+    intro: "Moral values mean basic goodness like honesty, helping others, truth, and respect. They are the base of a peaceful and clean society.",
+    points: "Today, youth are getting high degrees but lack moral training. This leads to rising corruption, crimes, and fights in public. Respecting elders and helping the weak is as important as getting high marks.",
+    conclusion: "Education without values is useless. We must practice honesty and respect in our daily life to make Pakistan a better place.",
+    alternativeTopics: ["Pak-China Friendship", "Gwadar Port and Trade Routes", "Road Infrastructure of Pakistan", "Economic Game Changer CPEC"]
   },
   {
     id: 13,
     title: "Overpopulation: A Global Threat",
-    intro: "Overpopulation refers to a condition where the human population exceeds the carrying capacity of the environment, putting extreme pressure on resources.",
-    points: "It leads to food and water shortages, high unemployment, pollution, and lack of schools and hospitals. In Pakistan, high population growth is the main reason behind economic stress."
+    intro: "Overpopulation means a state where the population grows faster than the resources of the land, creating a high load on services.",
+    points: "It leads to food shortages, lack of clean water, high traffic, and scarcity of schools and hospitals. In Pakistan, the main reason for poverty and low education is our fast-growing population.",
+    conclusion: "We must control population growth through awareness and planning. Managing our population is vital to provide good life to everyone.",
+    alternativeTopics: ["Accountability and Rule of Law", "Why Bribery Destroys Nations", "Honesty in Public Service", "Anti-Corruption Measures"]
   },
   {
     id: 14,
     title: "Co-Education: Merits and Demerits",
-    intro: "Co-education is a system where male and female students study together in the same schools, colleges, and universities under a shared environment.",
-    points: "The merits are that it builds confidence, encourages healthy competition, saves resources, and prepares youth for real-world workplaces. The demerits include social distractions if students lack self-discipline.",
-    conclusion: "Co-education is highly practical for modern times. With proper discipline, moral boundaries, and mutual respect, it helps groom mature and confident candidates.",
-    zeeshanRecommended: true
+    intro: "Co-education is a system where boys and girls study together in the same classes. It is very common in modern universities today.",
+    points: "The merits are that it builds confidence, promotes healthy study competition, and teaches boys and girls to respect each other. The demerits include social distractions if students lack self-control and moral limits.",
+    conclusion: "Co-education is practical and prepares students for future jobs. With self-discipline and mutual respect, it is a very successful system.",
+    zeeshanRecommended: true,
+    alternativeTopics: ["Discipline in Student Life", "Quaid's Motto: Unity, Faith, Discipline", "Discipline in Armed Forces", "Why Rules Matter in Society"]
   },
   {
     id: 15,
     title: "Media Freedom & Social Responsibility",
-    intro: "Media freedom is the right of newspapers, TV channels, and digital platforms to report news honestly without government censorship or fear of punishment.",
-    points: "While media acts as the watchdog of society, absolute freedom without responsibility leads to spreading fake news, sensations, and political bias. Media must verify facts before airing.",
-    conclusion: "Freedom of the press must go hand-in-hand with social duty. Responsible reporting protects national security, educates the public, and builds a stable society."
+    intro: "Media freedom means the right of news channels and internet writers to report facts honestly without any pressure or fear.",
+    points: "Free media exposes crimes and informs the public. But absolute freedom without rules leads to spreading fake news, rumors, and panic. Media must check facts before showing them on television or social media.",
+    conclusion: "Freedom must go with responsibility. Clean and true news reporting protects national security and guides the public to progress.",
+    alternativeTopics: ["Constructing New Dams", "Save Water Save Life", "Agricultural Water Wastage", "Glacier Melting Threat"]
   },
   // --- ADMIN ONLY - ZEESHAN RECOMMENDED SECTION ---
   {
     id: 16,
     title: "Why drug usage is rising among Youth",
     intro: "Drug usage among youth is a growing global concern, particularly affecting the social fabric of developing nations like Pakistan.",
-    points: "Peer pressure, academic stress, and lack of guidance lead to drug addiction. This destroys the physical and mental health of our youth.",
-    conclusion: "We must strictly ban drugs and support youth with mental health counseling and sports activities.",
+    points: "Peer pressure, academic stress, and lack of guidance lead to drug addiction. This destroys the physical and mental health of our youth. Useless habits and easy access to drugs near campuses make it worse.",
+    conclusion: "We must strictly ban drugs and support youth with mental health counseling and sports activities to keep them safe.",
     adminOnly: true,
-    zeeshanRecommended: true
+    zeeshanRecommended: true,
+    alternativeTopics: ["Drug Addiction Causes", "Youth Mental Health and Drugs", "Role of Parents in Preventing Addiction", "Rehab and Healthy Activities"]
   },
   {
     id: 17,
     title: "Self-belief is half success",
     intro: "Self-belief is the trust in one's own abilities, skills, and judgment. It is the first step toward achieving any goal in life.",
-    points: "It gives the courage to face tough times and try new things. History shows that all great leaders succeeded because they believed in themselves.",
-    conclusion: "Trust your preparation and abilities. With self-belief, success is always within reach.",
+    points: "It gives the courage to face tough times and try new things. History shows that all great leaders succeeded because they believed in themselves. Without self-belief, a candidate loses heart and confidence easily.",
+    conclusion: "Trust your preparation and abilities. With self-belief, success is always within reach. Believe you can do it.",
     adminOnly: true,
-    zeeshanRecommended: true
+    zeeshanRecommended: true,
+    alternativeTopics: ["Confidence is Key", "Positive Self-Talk", "Overcoming Failure", "Believing in Your Goals"]
   },
   {
     id: 18,
     title: "Should we trade with India?",
     intro: "Trade is the exchange of goods and services between countries. Trading with neighbors is generally the most cost-effective way to boost economy.",
-    points: "Trading with India offers cheap resources and lower transport costs. However, core disputes must be addressed to ensure a stable relationship.",
+    points: "Trading with India offers cheap resources and lower transport costs. However, core disputes must be addressed to ensure a stable relationship. We must not put trade above our national security interests.",
     conclusion: "We must maintain a balanced approach that protects both our economic interests and national honor.",
     adminOnly: true,
-    zeeshanRecommended: true
+    zeeshanRecommended: true,
+    alternativeTopics: ["Pak-India Relations", "Regional Trade in South Asia", "Sovereignty vs Economic Gain", "CPEC vs Indian Trade Routes"]
   },
   {
     id: 19,
     title: "Girls can be a best friend or not?",
     intro: "Friendship is a mutual relationship of trust, respect, and support between individuals, regardless of their gender.",
-    points: "Cross-gender friendships help candidates develop a balanced personality and respect. Keeping moral boundaries ensures a healthy relationship.",
+    points: "Cross-gender friendships help candidates develop a balanced personality and respect. Keeping moral boundaries ensures a healthy relationship. It is all about clean intentions and respect.",
     conclusion: "A friend is someone who guides you to the right path. Respectful friendships contribute positively to personal growth.",
     adminOnly: true,
-    zeeshanRecommended: true
+    zeeshanRecommended: true,
+    alternativeTopics: ["Co-gender Friendships", "Moral Limits in Friendships", "Gender respect in Islam", "Healthy Social Boundaries"]
   },
   {
     id: 20,
     title: "Should we provide airspace to the US?",
     intro: "Airspace is the portion of the atmosphere controlled by a country above its territory. Allowing foreign military access is a critical decision in foreign policy.",
-    points: "While diplomatic cooperation is important, military airspace access can lead to security risks and regional conflicts.",
-    conclusion: "We must follow an independent foreign policy that keeps Pakistan safe and neutral.",
+    points: "While diplomatic cooperation is important, military airspace access can lead to security risks and regional conflicts. It compromises our independent status and invites security threats.",
+    conclusion: "We must follow an independent foreign policy that keeps Pakistan safe, neutral, and out of foreign wars.",
     adminOnly: true,
-    zeeshanRecommended: true
+    zeeshanRecommended: true,
+    alternativeTopics: ["Foreign Policy of Pakistan", "US-Pak Relations", "National Sovereignty and Borders", "Neutrality in Foreign Wars"]
   },
   {
     id: 21,
     title: "Is money the solution to our problems?",
     intro: "Money is a medium of exchange used to buy goods and services. While it is necessary for survival, it is not a cure-all for all human problems.",
-    points: "Money can buy comfort and resources. However, it cannot buy character, love, or true happiness.",
-    conclusion: "Use money to fulfill needs, but build character and relationships for a peaceful life.",
+    points: "Money can buy comfort and resources. However, it cannot buy character, love, peace of mind, or true happiness. Greed for money breaks families and causes mental stress.",
+    conclusion: "Use money to fulfill needs, but build character and clean relationships for a peaceful and happy life.",
     adminOnly: true,
-    zeeshanRecommended: true
+    zeeshanRecommended: true,
+    alternativeTopics: ["Materialism vs True Happiness", "Importance of Character Over Wealth", "Poverty vs Peace of Mind", "What Money Cannot Buy"]
   },
   {
     id: 22,
     title: "Should students be allowed to use AI tools?",
     intro: "Artificial Intelligence (AI) tools like ChatGPT have changed how students research and study. Their usage in education is a debated topic.",
-    points: "It provides instant explanations and saves time. But using it to copy-paste answers ruins critical thinking.",
-    conclusion: "Use AI tools to expand your knowledge, but keep your brain active and creative.",
+    points: "It provides instant explanations and saves time. But using it to copy-paste answers directly ruins critical thinking and writing skills. Students must use it only as a helper.",
+    conclusion: "Use AI tools to expand your knowledge, but keep your brain active and creative. Rely on your own hard work.",
     adminOnly: true,
-    zeeshanRecommended: true
+    zeeshanRecommended: true,
+    alternativeTopics: ["AI in Education", "ChatGPT: Help or Hurt", "Digital Learning in Schools", "Rote Learning vs AI Assistance"]
   },
   {
     id: 23,
     title: "Should veil be implemented in universities?",
     intro: "Veil (Hijab/Niqab) is a personal choice and a religious practice. The dress code in higher education institutions often sparks debate.",
-    points: "Banning or forcing personal dress styles causes unnecessary debates. Decent and clean attire is what matters.",
-    conclusion: "Let students focus on research and character, respecting their choices within professional limits.",
+    points: "Banning or forcing personal dress styles causes unnecessary debates and takes focus away from study. Decent, clean, and simple attire is what matters in professional colleges.",
+    conclusion: "Let students focus on research and character, respecting their choices within professional limits of decency.",
     adminOnly: true,
-    zeeshanRecommended: true
+    zeeshanRecommended: true,
+    alternativeTopics: ["Dress Code in Higher Education", "Hijab Choice and Freedom", "Decency in Educational Institutions", "Islamic Dress Standards"]
   },
   {
     id: 24,
     title: "Greed is not always a curse",
     intro: "Greed is a strong desire for more of something, like wealth or power. Usually seen as a vice, it can sometimes drive progress.",
-    points: "Desiring more knowledge and self-improvement leads to success. But material greed that hurts others is a curse.",
-    conclusion: "Channel your desire toward learning and excellence to achieve great things in life.",
+    points: "Desiring more knowledge and self-improvement leads to success and new inventions. But material greed that hurts others is a curse and leads to bribery and crimes.",
+    conclusion: "Channel your desire toward learning and excellence to achieve great things in life. Avoid material greed.",
     adminOnly: true,
-    zeeshanRecommended: true
+    zeeshanRecommended: true,
+    alternativeTopics: ["Ambition vs Greed", "Greed for Knowledge", "What Drives Progress", "Limits of Desire"]
   },
   {
     id: 25,
     title: "Is capital punishment a violation of human rights or is it justice?",
     intro: "Capital punishment (death penalty) is the legal execution of a person for committing a major crime like murder or terrorism.",
-    points: "It acts as a warning to serious criminals. However, it requires a perfect judicial system to prevent errors.",
-    conclusion: "Reserving it for extreme crimes with solid proof ensures justice and peace.",
+    points: "It acts as a warning to serious criminals and keeps society peaceful. However, it requires a perfect, error-free judicial system to prevent executing innocent people.",
+    conclusion: "Reserving it for extreme crimes with solid proof ensures justice and peace. It must be used carefully.",
     adminOnly: true,
-    zeeshanRecommended: true
+    zeeshanRecommended: true,
+    alternativeTopics: ["Death Penalty Debate", "Human Rights and Criminals", "Deterrence to Crime", "Justice for Victims"]
   },
   {
     id: 26,
     title: "Sectarianism's role in terrorism",
     intro: "Sectarianism is the division and conflict between different sects of a religion. It is a major tool used to spread extremism and terror.",
-    points: "Terror groups use hatred to divide us. This destroys peace and blocks progress.",
-    conclusion: "We must stand united as one nation and reject sectarian hatred to achieve peace.",
+    points: "Terror groups use sectarian hatred to divide us and recruit uneducated youth. This destroys peace and blocks progress. We must respect all sects to stay strong.",
+    conclusion: "We must stand united as one nation and reject sectarian hatred to achieve lasting peace.",
     adminOnly: true,
-    zeeshanRecommended: true
+    zeeshanRecommended: true,
+    alternativeTopics: ["Inter-sect Harmony", "Religious Extremism", "Unity of Muslim Ummah", "Causes of Sectarian Hatred"]
   },
   {
     id: 27,
     title: "Why do youngsters disrespect their elders?",
     intro: "Respect for elders is a core value in Eastern culture. Recently, there is a rising concern over the lack of respect shown by the youth.",
-    points: "Media influence and communication gaps cause disrespect. Building strong family ties and moral education can resolve this.",
-    conclusion: "Listen to the experience of elders and combine it with your modern energy for success.",
+    points: "Media influence and communication gaps cause disrespect. Lack of moral training at home and school makes youth rude. Building strong family ties can resolve this.",
+    conclusion: "Listen to the experience of elders and combine it with your modern energy for success. Respect is a duty.",
     adminOnly: true,
-    zeeshanRecommended: true
+    zeeshanRecommended: true,
+    alternativeTopics: ["Generation Gap", "Moral Training of Youth", "Western Culture Influence", "Respecting Parents"]
   },
   {
     id: 28,
     title: "Why are physical games played less today than in the past?",
     intro: "Physical games like football and hockey are essential for health. Today, youth spend much less time in playgrounds than previous generations.",
-    points: "Mobile screens and lack of parks keep youth indoors. This causes health issues and limits teamwork skills.",
-    conclusion: "Balance technology with outdoor games to stay fit and active.",
+    points: "Mobile screens, video games, and lack of parks keep youth indoors. This causes health issues and limits teamwork skills. Playgrounds are getting empty.",
+    conclusion: "Balance technology with outdoor games to stay fit, active, and learn leadership. Go back to playgrounds.",
     adminOnly: true,
-    zeeshanRecommended: true
+    zeeshanRecommended: true,
+    alternativeTopics: ["Mobile Addiction in Children", "Empty Playgrounds", "Importance of Outdoor Sports", "Physical Fitness Decline"]
   },
   {
     id: 29,
     title: "Role of AI and its future",
     intro: "Artificial Intelligence is the capability of machines to copy human intelligence. It is changing every industry from education to military.",
-    points: "It automates work and speeds up learning. However, we must ensure it is used ethically and safely.",
-    conclusion: "Learn to use AI as a tool to boost your productivity and prepare for the future.",
+    points: "It automates work and speeds up learning. However, we must ensure it is used ethically and safely. IT skills are vital to survive in the future.",
+    conclusion: "Learn to use AI as a tool to boost your productivity and prepare for the high-tech future.",
     adminOnly: true,
-    zeeshanRecommended: true
+    zeeshanRecommended: true,
+    alternativeTopics: ["AI and Job Losses", "The Future of Technology", "Human-AI Collaboration", "Smarter Machines"]
   },
   {
     id: 30,
     title: "Democracy vs. Dictatorship",
     intro: "Democracy and Dictatorship are two opposing systems of government. The debate over which is better for a developing country is classic.",
-    points: "Democracy gives people a voice, though it takes time. Dictatorship is fast but lacks feedback and respect for rights.",
+    points: "Democracy gives people a voice, though it takes time. Dictatorship is fast but lacks feedback and respect for rights. Long-term progress needs public support.",
     conclusion: "Sustainable national progress requires public support and accountability, which only democracy can provide.",
     adminOnly: true,
-    zeeshanRecommended: true
+    zeeshanRecommended: true,
+    alternativeTopics: ["Is Democracy Best?", "Military Rule vs Political Rule", "Public Accountability", "Stability in Pakistan"]
   }
 ];

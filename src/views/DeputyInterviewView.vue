@@ -16,8 +16,10 @@ const tabs = computed(() => {
     { id: 'tough', label: '🔥 Tough Questions' },
     { id: 'blame', label: '🤝 Responsibility vs Blame' }
   ]
-  // Gated: only admin can see the outfit guides tab
+  // Gated: only admin can see the outfit guides and core answers
   if (authStore.profile?.role === 'admin') {
+    list.push({ id: 'admin-core-q', label: '⭐ Core Answers (Admin)' })
+    list.push({ id: 'admin-bg-q', label: '🛠 Follow-ups (Admin)' })
     list.push({ id: 'outfit', label: '👔 Outfit & Dressing (Admin)' })
   }
   return list
@@ -306,6 +308,118 @@ const blameComparisons = [
     situation: 'Developing a bad habit or poor routine',
     blame: 'My home environment is stressful and my friends forced me into these habits.',
     responsible: 'It is my responsibility to control my actions, choose my social circle wisely, and improve my routine.'
+  }
+]
+
+// Admin Core Response Builder questions
+const adminCoreQuestions = [
+  {
+    question: "Why do you want to join the Pakistan Army?",
+    answer: "Sir, while my tech career has taught me problem-solving and independence, I realized I do not want a life confined to a desk and a screen. I want a life of a higher purpose. The Pakistan Army offers a unique combination of strict discipline, physical fitness, patriotism, and leadership that no corporate job can provide. Given the internal and external security challenges our country faces, I want to offer my services, my grit, and my technical background to defend my nation on the frontlines.",
+    olqs: ["Service over Self", "High Motivation", "Patriotism", "Mental Grit"]
+  },
+  {
+    question: "Why leave a high-paying job for a tough, lower-paying Army job?",
+    answer: "Sir, money is a great tool, and I am grateful that my software career allowed me to financially stabilize my family and fulfill my responsibilities at a young age. However, comfort and financial rewards alone do not bring me fulfillment. I am driven by challenges and a desire to serve a cause greater than myself. The tough routine, the discipline, and the honor of wearing the uniform mean far more to me than a comfortable corporate salary. I would rather use my energy to serve my country than to just build code for a corporation.",
+    olqs: ["Maturity", "Responsibility", "Valuing Honor Over Wealth", "Resilience"]
+  },
+  {
+    question: "Why should we select you?",
+    answer: "Sir, you should select me because my past achievements are a practical proof of the qualities the Army looks for. At a very young age, under extreme financial pressure, I demonstrated discipline, determination, and absolute responsibility by supporting my family while continuing my education. Furthermore, I bring a strong modern technical foundation in software engineering, which is crucial for the high-tech, modern warfare requirements of the Pakistan Army today. I have the mental stamina to handle pressure, and I am ready to give my 100% to the Pakistan Military Academy.",
+    olqs: ["Sense of Responsibility", "Determination", "Tech Competence", "Mental Stamina"]
+  }
+]
+
+// Admin Background & Technical Counter Questions
+const adminBgQuestions = [
+  {
+    category: "1. Deep-Dives & Verification Questions",
+    items: [
+      {
+        question: "You mentioned you learned software engineering in 6 months at age 14. What specific resources did you use, and what languages did you learn first?",
+        answer: "Sir, I started with free online resources like Harvard's CS50 on edX, freeCodeCamp, and MDN Web Docs. I focused on HTML, CSS, and JavaScript first to learn frontend development, and then moved to Node.js and SQL database basics. I practiced building projects daily to reinforce my learning."
+      },
+      {
+        question: "How exactly did you manage your school timings, your business, and a UK remote job? Give me your exact daily timetable.",
+        answer: "Sir, it required absolute time management. My day was divided strictly: school from 8:00 AM to 2:00 PM; self-study, lunch, and rest from 2:00 PM to 4:00 PM; remote development work for my UK clients from 4:00 PM to 10:00 PM; and family time and sleep from 10:00 PM onward. I followed this calendar with discipline."
+      },
+      {
+        question: "How much did your sister's wedding cost, how much was the loan, and how did you manage to pay it off in just one year?",
+        answer: "Sir, the wedding cost was approximately 15 Lakhs PKR, for which we took an interest-free loan of 8 Lakhs from relatives. As I was earning about 1,000 USD monthly from software development, I allocated 70% of my earnings specifically to pay back the loan in monthly installments, clearing the entire debt in exactly 12 months."
+      },
+      {
+        question: "Tell me about the AI-based ISSB prep software you built. What logic or APIs did you use to build it?",
+        answer: "Sir, I built the AI-based prep platform using Vue.js for the interface and Supabase for backend storage. I integrated the OpenAI API using structured prompt engineering to analyze user responses for written tests (like SRT and WAT) against standard Officer Like Qualities (OLQs) and output constructive feedback."
+      }
+    ]
+  },
+  {
+    category: "2. Technical & Academic Questions",
+    items: [
+      {
+        question: "What is the difference between Object-Oriented Programming (OOP) and Functional Programming?",
+        answer: "Sir, OOP is based on objects that hold both data and methods, focusing on concepts like encapsulation, inheritance, and polymorphism. Functional programming is based on pure mathematical functions that avoid changing state or mutating data, keeping the code clean and predictable."
+      },
+      {
+        question: "What is an API and how does a database work?",
+        answer: "Sir, an API is a software intermediary that allows two different applications to communicate with each other. A database is a structured storage system (like PostgreSQL or MySQL) that organizes data into tables and relations, allowing apps to fetch, update, and search records efficiently."
+      },
+      {
+        question: "If you are a programmer, your math must be sharp. What is 15% of 450?",
+        answer: "Sir, 15% of 450 is 67.5. (Calculation: 10% is 45, and 5% is 22.5. Adding both gives 67.5)."
+      }
+    ]
+  },
+  {
+    category: "3. Situation Reaction & Psychological Questions",
+    items: [
+      {
+        question: "In the Army, you will have to obey orders from seniors who might know less about technology than you do. How will you adjust?",
+        answer: "Sir, military leadership is built on rank, experience, and tactical command, not code writing. I respect the chain of command and will obey orders with absolute dedication. If my technical expertise is needed, I will offer it respectfully through proper channels, but command decisions always lie with my seniors."
+      },
+      {
+        question: "If your family faces another financial crisis while you are undergoing tough training at PMA Kakul, and you cannot help them, how will you focus?",
+        answer: "Sir, my family is now stable and fully supports my ambition. They know that my prime duty at PMA Kakul is to become an officer. I have trained them to manage independently, and I will focus completely on my training, knowing that my success as a military officer is the best long-term support for my family."
+      },
+      {
+        question: "What is your biggest weakness?",
+        answer: "Sir, my weakness was that I used to take on too many programming tasks at once, trying to solve everything myself, which caused fatigue. I have overcome this by learning to prioritize tasks, set clear daily boundaries, and trust teamwork and delegation."
+      }
+    ]
+  },
+  {
+    category: "4. Current Affairs & Military Knowledge",
+    items: [
+      {
+        question: "How do you think Cyber Warfare and Artificial Intelligence are changing modern military operations?",
+        answer: "Sir, modern warfare is fifth-generation. AI is used for drone autonomy, intelligence analysis, and real-time threat detection. Cyber warfare allows countries to disable enemy communications, banking, and grids without physical force, making technology vital for defense."
+      },
+      {
+        question: "What are the major internal security threats to Pakistan right now, and how can they be solved?",
+        answer: "Sir, the threats include militancy, sectarian extremism, and hybrid digital propaganda. They can be solved through intelligence-based operations, national integration, economic development of border areas, and cyber monitoring against hostile propaganda."
+      },
+      {
+        question: "Who is the current Chief of Army Staff (COAS) and DG ISI?",
+        answer: "Sir, the Chief of Army Staff is General Asim Munir, and the Director-General of ISI is Lt Gen Asim Malik (or the currently serving officer)."
+      },
+      {
+        question: "Name three main weapon systems or aircraft used by the Pakistan Armed Forces.",
+        answer: "Sir, they are the Al-Khalid main battle tank, the JF-17 Thunder multirole combat aircraft, and the Babur land-attack cruise missile system."
+      }
+    ]
+  },
+  {
+    category: "5. Rapid-Fire / Stress Questions",
+    items: [
+      {
+        question: "If you are so smart and successful in IT, why didn't you just stay in the corporate world, make millions, and help Pakistan through remittances?",
+        answer: "Sir, foreign remittances are vital for the economy, but economic progress is useless without national security and sovereignty. Remittances only matter if our borders are protected. I want to contribute directly by offering my technical skills and life to the physical defense of my country."
+      },
+      {
+        question: "If we don't select you today, what is your backup plan?",
+        answer: "Sir, I will look at my shortcomings, improve myself, and apply again. If I am permanently unrecommended, I will continue my software engineering career and serve Pakistan through technology."
+      }
+    ]
   }
 ]
 
@@ -688,6 +802,80 @@ onUnmounted(() => {
           <div class="f-step"><strong>3. Improve:</strong> Share the steps you have taken or are taking to correct it.</div>
           <div class="arrow">➔</div>
           <div class="f-step"><strong>4. Move Forward:</strong> Present a solution-oriented, positive path.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab 6: Core Response Builder (Admin Only) -->
+    <div class="tab-panel glass-card" v-if="activeTab === 'admin-core-q' && authStore.profile?.role === 'admin'">
+      <div class="guides-header" style="margin-bottom: 1.5rem;">
+        <h3 class="text-glow">⭐ Core Response Builder (Admin Only)</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.25rem;">
+          Polished answers for standard always-asked questions. Tailored for software engineering candidates to project critical Officer Like Qualities (OLQs).
+        </p>
+      </div>
+
+      <div class="star-examples-grid">
+        <div 
+          v-for="(item, idx) in adminCoreQuestions" 
+          :key="idx" 
+          class="star-example-card glass-card"
+        >
+          <h4 class="ex-question">Q: {{ item.question }}</h4>
+          
+          <div class="ex-parts" style="margin-top: 1rem;">
+            <div class="ex-part" style="margin-bottom: 0.75rem;">
+              <strong style="color: var(--accent-cyan); font-size: 0.85rem; display: block; margin-bottom: 0.25rem;">✅ Recommended Polished Answer:</strong>
+              <p class="part-text" style="font-size: 0.95rem; line-height: 1.6; color: var(--text-primary); margin: 0;">
+                "{{ item.answer }}"
+              </p>
+            </div>
+            
+            <div class="olq-tag-container" style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem;">
+              <span v-for="olq in item.olqs" :key="olq" style="font-size: 0.7rem; color: var(--accent-gold); background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.25); padding: 0.15rem 0.4rem; border-radius: 4px; text-transform: uppercase; font-weight: bold;">
+                🎯 {{ olq }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab 7: Technical & Background Follow-ups (Admin Only) -->
+    <div class="tab-panel glass-card" v-if="activeTab === 'admin-bg-q' && authStore.profile?.role === 'admin'">
+      <div class="guides-header" style="margin-bottom: 1.5rem;">
+        <h3 class="text-glow">🛠 Background & Technical Counter Questions (Admin Only)</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.25rem;">
+          Counter-questions tailored specifically for a software engineer candidate who started working early. Be prepared to verify details and explain OOP, logic, APIs, and timeline constraints.
+        </p>
+      </div>
+
+      <div class="admin-sections-list">
+        <div 
+          v-for="(cat, cIdx) in adminBgQuestions" 
+          :key="cIdx" 
+          class="admin-section-wrapper glass-card"
+          style="margin-bottom: 1.25rem; border: 1px solid var(--border-color);"
+        >
+          <div class="admin-section-header" style="background: rgba(255, 255, 255, 0.02); padding: 1rem; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center;">
+            <h4 style="margin: 0; color: var(--accent-cyan); font-weight: 600;">{{ cat.category }}</h4>
+          </div>
+          
+          <div class="admin-section-content" style="padding: 1.25rem;">
+            <div 
+              v-for="(item, qIdx) in cat.items" 
+              :key="qIdx" 
+              class="q-card glass-card" 
+              style="margin-bottom: 1rem; border: 1px solid rgba(255, 255, 255, 0.05); padding: 1.25rem; background: rgba(0, 0, 0, 0.15); border-radius: 6px;"
+            >
+              <h5 style="color: var(--text-primary); font-size: 0.95rem; margin: 0 0 0.75rem 0; line-height: 1.4; font-weight: 600;">
+                ❓ {{ item.question }}
+              </h5>
+              <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; padding-left: 1.25rem; border-left: 3px solid var(--accent-gold); margin: 0;">
+                {{ item.answer }}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

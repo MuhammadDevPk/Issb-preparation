@@ -284,6 +284,16 @@ watch(activeTab, () => {
               </div>
               <span class="badge badge-cyan">Structured Outline (1.5 Page Calibration)</span>
               <h2>{{ selectedEssay.title }}</h2>
+              
+              <!-- Alternative Topics Box -->
+              <div v-if="selectedEssay.alternativeTopics" class="alternative-topics-box">
+                <strong>💡 Also covers related topics:</strong>
+                <div class="alt-topics-list">
+                  <span v-for="topic in selectedEssay.alternativeTopics" :key="topic" class="alt-topic-tag">
+                    {{ topic }}
+                  </span>
+                </div>
+              </div>
             </div>
             
             <div class="essay-sections">
@@ -348,6 +358,16 @@ watch(activeTab, () => {
                 </div>
                 <span class="badge badge-cyan">2-Minute Lecturette Outline</span>
                 <h2>{{ selectedSpeech.title }}</h2>
+                
+                <!-- Alternative Topics Box -->
+                <div v-if="selectedSpeech.alternativeTopics" class="alternative-topics-box">
+                  <strong>💡 Also covers related topics:</strong>
+                  <div class="alt-topics-list">
+                    <span v-for="topic in selectedSpeech.alternativeTopics" :key="topic" class="alt-topic-tag">
+                      {{ topic }}
+                    </span>
+                  </div>
+                </div>
               </div>
               
               <!-- Speech Practice Timer widget -->
@@ -913,5 +933,36 @@ watch(activeTab, () => {
     padding: 0.6rem 0.25rem;
     font-size: 0.8rem;
   }
+}
+
+/* Alternative Topics Styling */
+.alternative-topics-box {
+  margin-top: 0.75rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-color);
+  padding: 0.6rem 0.8rem;
+  border-radius: var(--border-radius-sm);
+}
+
+.alternative-topics-box strong {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.alt-topics-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.alt-topic-tag {
+  font-size: 0.7rem;
+  color: var(--accent-cyan);
+  background: rgba(3, 194, 252, 0.05);
+  border: 1px solid rgba(3, 194, 252, 0.15);
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
 }
 </style>
