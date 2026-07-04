@@ -423,6 +423,18 @@ const adminBgQuestions = [
   }
 ]
 
+const expandedFollowupSections = ref({
+  0: true,
+  1: false,
+  2: false,
+  3: false,
+  4: false
+})
+
+const toggleFollowupSection = (index) => {
+  expandedFollowupSections.value[index] = !expandedFollowupSections.value[index]
+}
+
 // Admin Outfit Guides (Section-grouped)
 const adminGuides = ref({
   general: [
@@ -855,18 +867,25 @@ onUnmounted(() => {
           v-for="(cat, cIdx) in adminBgQuestions" 
           :key="cIdx" 
           class="admin-section-wrapper glass-card"
-          style="margin-bottom: 1.25rem; border: 1px solid var(--border-color);"
+          style="margin-bottom: 1.25rem; padding: 0; overflow: hidden; border: 1px solid var(--border-color);"
         >
-          <div class="admin-section-header" style="background: rgba(255, 255, 255, 0.02); padding: 1rem; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center;">
+          <!-- Collapsible Section Header (Dropdown Trigger) -->
+          <div 
+            class="admin-section-header" 
+            @click="toggleFollowupSection(cIdx)"
+            style="background: rgba(255, 255, 255, 0.02); padding: 1.25rem; display: flex; justify-content: space-between; align-items: center; cursor: pointer;"
+          >
             <h4 style="margin: 0; color: var(--accent-cyan); font-weight: 600;">{{ cat.category }}</h4>
+            <span class="section-arrow" :class="{ 'rotated': expandedFollowupSections[cIdx] }">▼</span>
           </div>
           
-          <div class="admin-section-content" style="padding: 1.25rem;">
+          <!-- Collapsible Section Content (Dropdown Body) -->
+          <div class="admin-section-content" v-show="expandedFollowupSections[cIdx]" style="padding: 1.25rem; border-top: 1px solid var(--border-color); background: transparent;">
             <div 
               v-for="(item, qIdx) in cat.items" 
               :key="qIdx" 
               class="q-card glass-card" 
-              style="margin-bottom: 1rem; border: 1px solid rgba(255, 255, 255, 0.05); padding: 1.25rem; background: rgba(0, 0, 0, 0.15); border-radius: 6px;"
+              style="margin-bottom: 1rem; border-radius: var(--border-radius-md);"
             >
               <h5 style="color: var(--text-primary); font-size: 0.95rem; margin: 0 0 0.75rem 0; line-height: 1.4; font-weight: 600;">
                 ❓ {{ item.question }}
