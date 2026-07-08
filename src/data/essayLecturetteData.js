@@ -7,28 +7,31 @@ export const essays = [
     effects: "By actively working for development, we can create local jobs, reduce poverty, and build a peaceful society. Good education and technology skills allow us to export products and bring foreign wealth. A progressive, highly skilled youth earns global respect and makes our country strong. It helps Pakistan become independent, reducing our need for foreign loans and aid.",
     solutions: "We must focus on getting modern skills like IT, engineering, and science. We must obey daily laws, respect traffic rules, save water, and plant trees. We should reject corruption and always support merit. Helping our neighbors and doing voluntary work in our town builds community strength. Every citizen must work honestly in their job to increase national output.",
     conclusion: "In conclusion, national development is not a dream; it is a task. It starts with self-improvement. When we become disciplined, educated, and honest individuals, we naturally guide our society towards progress. By doing our daily duties with patriotism, we can build a strong, peaceful, and highly developed Pakistan for the next generation.",
-    alternativeTopics: ["Duties of a Good Citizen", "How Youth Can Help Pakistan", "Youth and Nation Building", "Patriotism in Action"]
+    alternativeTopics: ["Duties of a Good Citizen", "How Youth Can Help Pakistan", "Youth and Nation Building", "Patriotism in Action"],
+    tags: ["youth"]
   },
   {
     id: 2,
-    title: "Social Media: A Boon or Bane",
-    intro: "Social media includes online websites and apps like Facebook, YouTube, Instagram, and WhatsApp that connect people instantly. Today, it has changed how we talk, study, and do business. While it is a very useful tool, it is also a double-edged sword. It can be a great blessing (boon) or a terrible curse (bane) depending on how we choose to use it every day.",
+    title: "Media for Youth: Disadvantages of Social Media",
+    intro: "Social media includes online apps like Facebook, YouTube, Instagram, and WhatsApp that connect people instantly. Today, it has changed how we talk, study, and do business. While it is a very useful tool, it is also a double-edged sword. It can be a great blessing (boon) or a terrible curse (bane) depending on how we choose to use it every day.",
     reasons: "It is a boon because it provides free online lectures, instant news, and digital marketing opportunities for young businesses. However, it becomes a bane due to a lack of self-control. Most students get addicted to short videos, aimless scrolling, and gaming. They waste their precious study time, neglect their real-world duties, and easily believe and share fake news without verification.",
     effects: "Using it positively spreads education, connects families across the globe, and creates IT income. Using it negatively destroys eyes, reduces sleep, and causes mental stress. It leads to depression because youngsters compare their real life with others' fake online profiles. It also spreads hate, decreases face-to-face communication, and weakens moral values in our society.",
     solutions: "We must set a strict daily timer for social media use. Students should mute useless notifications and use the internet for learning technical skills. We must verify every piece of news before sharing it online to stop rumors. Parents should guide their children, and schools must teach safe internet habits to make technology a tool for growth.",
     conclusion: "To sum up, social media is a powerful servant but a bad master. Its value depends entirely on our discipline and choices. If we use it with limits and clear goals, it acts as a great boon that helps us learn, connect, and succeed in our modern careers.",
     zeeshanRecommended: true,
-    alternativeTopics: ["Impact of Internet on Youth", "Mobile Addiction in Students", "The Digital Era", "Pros and Cons of Social Networks"]
+    alternativeTopics: ["Impact of Internet on Youth", "Mobile Addiction in Students", "The Digital Era", "Pros and Cons of Social Networks"],
+    tags: ["youth"]
   },
   {
     id: 3,
     title: "Energy Crisis in Pakistan",
-    intro: "The energy crisis is the severe shortage of electricity, gas, and oil needed to run our homes, schools, transport, and factories. It is currently one of the biggest challenges for Pakistan's economic growth. Without a stable power supply, no country can run its daily life, and no factory can produce goods. Resolving this crisis is necessary for our national survival.",
+    intro: "The energy crisis is the severe shortage of electricity, gas, and oil needed to run our homes, schools, transport, and factories. It is one of the biggest problems for Pakistan's economic growth. Without a stable power supply, no country can run its daily life, and no factory can produce goods. Resolving this crisis is necessary for our national survival.",
     reasons: "The main causes are our heavy reliance on expensive imported oil, transmission line losses, and electricity theft. We also suffer from circular debt, where power companies run out of money to buy fuel. Furthermore, we failed to build new water dams, solar panels, and wind turbines on time to meet the energy needs of our growing population.",
     effects: "This crisis leads to long load-shedding hours, which shuts down local factories and shops. As a result, thousands of workers lose their jobs, and local production drops. We are forced to import goods, which devalues our currency and causes high inflation. It makes the daily life of a common citizen extremely difficult, stressful, and expensive.",
     solutions: "We must shift our focus to cheap and green energy sources like water, solar, and wind. The government must build new water dams and solar parks. We must upgrade our old power grids and strictly punish those who steal electricity. Every citizen should conserve energy at home by turning off extra lights and using energy-saving appliances.",
     conclusion: "In short, energy is the fuel of progress. We must reduce our reliance on imported oil and utilize our own natural resources like coal and sunlight. By building dams and solar grids, and enforcing strict energy laws, Pakistan can end load-shedding, revive its industries, and achieve rapid economic growth.",
-    alternativeTopics: ["Power Shortage and Load-shedding", "Electricity Crisis", "Renewable Energy Options for Pakistan", "Why Pakistan Faces Circular Debt"]
+    alternativeTopics: ["Power Shortage and Load-shedding", "Electricity Crisis", "Renewable Energy Options for Pakistan", "Why Pakistan Faces Circular Debt"],
+    tags: []
   },
   {
     id: 4,
@@ -38,7 +41,8 @@ export const essays = [
     effects: "Inflation makes food, medicine, house rent, and school fees unaffordable for the poor and middle class. It increases poverty, leads to child labor, and raises crime rates as people struggle to survive. It causes high mental stress and health issues, as families are forced to cut down on nutrition and quality education to meet basic expenses.",
     solutions: "We must increase local agricultural production to stop importing food. The government must stop printing excess currency and take strict legal action against hoarders and smugglers. We must support local manufacturing to reduce imports and stabilize the rupee. Creating support programs for poor families and offering target subsidies on food and medicine is also necessary.",
     conclusion: "In conclusion, inflation cannot be resolved overnight, but it can be managed. Through honest governance, agricultural self-reliance, strict price controls, and support for local industries, we can reduce prices. This will bring financial relief to the public and place Pakistan on a path of stable economic growth.",
-    alternativeTopics: ["Devaluation of Rupee", "Rising Prices and Common Man", "Economic Challenges of Pakistan", "Poverty and Price Hikes"]
+    alternativeTopics: ["Devaluation of Rupee", "Rising Prices and Common Man", "Economic Challenges of Pakistan", "Poverty and Price Hikes"],
+    tags: []
   },
   {
     id: 5,
@@ -48,18 +52,20 @@ export const essays = [
     effects: "When women are educated, they raise healthy, educated, and disciplined families. They contribute to household income and increase the national GDP. Empowered women lead to lower population growth, better healthcare for children, and a polite, civilized society. It builds a balanced nation where every citizen contributes to social and economic growth.",
     solutions: "We must build safe girls' schools in rural areas and provide free education. The government must guarantee secure transport and safe working environments. We must enforce laws that protect women's inheritance and basic human rights. Families should encourage their daughters to learn modern skills, join professional careers, and participate in national progress.",
     conclusion: "Overall, women's progress is national progress. Pakistan can only achieve its true potential when women stand side-by-side with men in education, business, science, and national defense. By empowering our women, we ensure a prosperous, peaceful, and civilized future for our motherland.",
-    alternativeTopics: ["Gender Equality in Islam", "Role of Women in Society", "Female Education in Pakistan", "Empowering the Girl Child"]
+    alternativeTopics: ["Gender Equality in Islam", "Role of Women in Society", "Female Education in Pakistan", "Empowering the Girl Child"],
+    tags: []
   },
   {
     id: 6,
     title: "Our Education System: Flaws and Reforms",
-    intro: "Education is the foundation of progress and character building. Sadly, Pakistan's current education system is outdated and does not prepare students for the modern, competitive world. It focus on passing exams and getting marks rather than building skills, creativity, and moral character. Reforming this system is a vital necessity for our national growth.",
+    intro: "Education is the key to national success. Sadly, the education system in Pakistan is outdated and does not prepare students for the modern world. It focuses on passing exams and getting marks rather than building skills, creativity, and moral character. Reforming this system is a vital necessity for our national growth.",
     reasons: "The main flaws are rote learning (ratta system), poorly trained teachers, and low government budgets. We also have three parallel systems: English medium, Urdu medium, and Madrassas, which divide the minds of our youth. Most schools lack science labs, computers, and focus only on theory rather than practical work and creative thinking.",
     effects: "This system produces graduates who have degrees but lack practical skills, leading to high youth unemployment. It discourages innovation, critical thinking, and research. It also increases the gap between the rich and the poor, as high-quality education is only accessible to those who can pay expensive private fees, leaving poor students behind.",
     solutions: "We must implement a uniform, skills-based curriculum across the country. Teachers must receive modern training in conceptual teaching. We must upgrade school infrastructure with computer labs and shift from memory tests to practical exams. Introducing mandatory technical and vocational training in high schools will help students earn early.",
     conclusion: "To conclude, education reform is a national emergency. We cannot build a high-tech nation with an outdated memory-testing system. By investing in conceptual learning, teacher training, and modern technical skills, we can turn our massive youth population into a highly productive asset for Pakistan's progress.",
     zeeshanRecommended: true,
-    alternativeTopics: ["Literacy Rate Challenges", "Urdu vs English Medium Education", "Single National Curriculum", "Practical vs Rote Learning"]
+    alternativeTopics: ["Literacy Rate Challenges", "Urdu vs English Medium Education", "Single National Curriculum", "Practical vs Rote Learning"],
+    tags: ["youth"]
   },
   {
     id: 7,
@@ -69,7 +75,8 @@ export const essays = [
     effects: "It has caused the loss of over eighty thousand innocent lives, including civilians and security personnel. It destroys schools, mosques, and roads, discourages foreign companies from investing, and hurts tourism. It creates a constant sense of fear, restricts freedom, and damages Pakistan's soft image in the international community.",
     solutions: "We must strictly control our borders and block all financial support to terror networks. The government must implement the National Action Plan completely. Promoting inter-sect harmony and providing quality education and jobs in border areas is vital. We must support our Armed Forces and intelligence agencies in their operations.",
     conclusion: "In conclusion, peace is the prerequisite for any development. Thanks to the sacrifices of our brave Armed Forces and public resilience, we have cleared major terror hubs. We must continue to promote education, tolerance, and unity to eliminate the extremist mindset and ensure a peaceful, prosperous Pakistan.",
-    alternativeTopics: ["Internal Security of Pakistan", "Role of Armed Forces in Peace", "How to End Extremism", "National Action Plan"]
+    alternativeTopics: ["Internal Security of Pakistan", "Role of Armed Forces in Peace", "How to End Extremism", "National Action Plan"],
+    tags: []
   },
   {
     id: 8,
@@ -79,7 +86,8 @@ export const essays = [
     effects: "A military career builds mental toughness, self-discipline, and loyalty. It allows me to defend my nation on the borders and serve my fellow citizens during internal crises like floods, earthquakes, and security challenges. It shapes an individual into a reliable leader who is ready to make sacrifices for a greater cause.",
     solutions: "To prepare for this life, I wake up early, exercise daily to stay physically fit, and study current affairs to keep my mind sharp. I practice honesty, discipline, and responsibility in my daily tasks at home and college. I strive to build the qualities expected of an officer.",
     conclusion: "In short, wearing the uniform is the highest honor. I want to join the Armed Forces to protect my motherland, lead with integrity, and live a life of duty. I am ready to give my 100% to defend and serve Pakistan until my last breath.",
-    alternativeTopics: ["My Ambition in Life", "Life in Uniform", "Defending the Motherland", "Why I Choose Army Over Corporate"]
+    alternativeTopics: ["My Ambition in Life", "Life in Uniform", "Defending the Motherland", "Why I Choose Army Over Corporate"],
+    tags: ["youth"]
   },
   {
     id: 9,
@@ -89,27 +97,30 @@ export const essays = [
     effects: "It leads to devastating floods, extreme summer heatwaves, changing monsoon rains, and agricultural loss. Crops are destroyed, causing food inflation and water shortages. It displaces thousands of families, damages infrastructure like roads and homes, and places a heavy financial burden on the national budget.",
     solutions: "We must start massive tree plantation campaigns across all provinces. The government must protect existing forests and strictly ban cutting trees. We must build new dams and water reservoirs. Moving toward solar and wind energy and banning single-use plastics will help keep our air and water clean.",
     conclusion: "To conclude, climate change is an existential threat to Pakistan. We cannot ignore it. By planting trees, saving water, adopting clean energy, and raising public awareness, we can protect our soil, agriculture, and future generations from the bad impacts of global warming.",
-    alternativeTopics: ["Deforestation and Global Warming", "Floods in Pakistan", "Save Our Environment", "Pollution and Clean Pakistan"]
+    alternativeTopics: ["Deforestation and Global Warming", "Floods in Pakistan", "Save Our Environment", "Pollution and Clean Pakistan"],
+    tags: []
   },
   {
     id: 10,
-    title: "The Role of Youth in Pakistan's Future",
+    title: "Role of Youth in Development of Pakistan",
     intro: "Youth represent the energy, hope, and future of a nation. With more than sixty percent of its population under the age of thirty, Pakistan holds a powerful demographic advantage. If this massive youth population is guided, educated, and skilled correctly, they can turn Pakistan into a leading economic and technological power.",
     reasons: "Young minds are creative, adapt to technology quickly, and are motivated to bring positive change. The older generation builds the base, but it is the youth who run the engines of modern industries like IT, digital business, and science. They can break old, corrupt systems with honesty and hard work.",
     effects: "A skilled and disciplined youth increases national exports, builds software startups, and reduces crimes and social evils. They earn international respect in sports, academics, and technology, bringing foreign investment. They build a modern, literate, and peaceful society that can solve its own issues without external help.",
     solutions: "The state must provide modern, practical education, IT labs, and merit-based job opportunities. On the other hand, the youth must focus on self-discipline, acquire technical skills, avoid cheap online distractions, and stay loyal to national interests, rejecting any negative propaganda.",
     conclusion: "In conclusion, youth are the real wealth of Pakistan. Our future depends on how we train them today. By combining our energy with education, discipline, and patriotism, the youth of Pakistan can overcome any national challenge and lead our country to ultimate success.",
-    alternativeTopics: ["Youth Bulge: Asset or Liability", "Responsibilities of Pakistani Youngsters", "IT Skills and Youth", "Leadership and the New Generation"]
+    alternativeTopics: ["Youth Bulge: Asset or Liability", "Responsibilities of Pakistani Youngsters", "IT Skills and Youth", "Leadership and the New Generation"],
+    tags: ["youth"]
   },
   {
     id: 11,
     title: "Poverty: Causes and Alleviation",
-    intro: "Poverty is the state of lacking basic human needs such as clean food, water, housing, education, and healthcare. It is a major social crisis that stops millions of people from progress. In Pakistan, poverty is a big hurdle in national development, keeping families in a continuous cycle of lack and debt.",
+    intro: "Poverty means the lack of basic needs like clean food, water, housing, education, and healthcare. It is a major social crisis that stops millions of people from progress. In Pakistan, poverty is a big hurdle in national development, keeping families in a continuous cycle of lack and debt.",
     reasons: "The main causes are high population growth, lack of jobs, poor quality education, and high inflation. Unfair distribution of wealth also plays a role. Most poor families do not have access to quality schools or loans to start small businesses, forcing them to remain in low-paying manual labor.",
     effects: "Poverty leads to child labor, high crime rates, lack of education, and poor public health. It forces parents to send their children to work in auto shops or tea stalls instead of schools. It destroys the talents of our youth and creates despair and frustration in society.",
     solutions: "We must provide free technical and vocational education to poor students. Giving interest-free micro-loans helps people start small businesses and earn independently. We must improve government schools and hospitals, enhance Zakat collections, and ensure that financial help programs reach the most deserving families.",
     conclusion: "Overall, poverty is a threat to peace and progress. It is our collective duty to solve it. By paying Zakat, supporting local charity, improving public education, and creating jobs, we can lift poor families out of poverty and build a balanced, successful Pakistan.",
-    alternativeTopics: ["How to Reduce Poverty", "Zakat and Welfare State", "Unemployment Problems", "Economic Inequality in Pakistan"]
+    alternativeTopics: ["How to Reduce Poverty", "Zakat and Welfare State", "Unemployment Problems", "Economic Inequality in Pakistan"],
+    tags: []
   },
   {
     id: 12,
@@ -119,7 +130,8 @@ export const essays = [
     effects: "CPEC creates thousands of local jobs, improves transport links, and attracts foreign companies. It connects all provinces, helping under-developed areas in Balochistan and KP grow. It opens up trade routes to Central Asia, boosting our local businesses and economic status.",
     solutions: "We must ensure political stability, consensus, and tight security for CPEC routes and workers. The government must train local youth in technical skills so they can get jobs in CPEC projects. We must manage our foreign debts carefully and ensure transparent execution of all projects.",
     conclusion: "In short, CPEC is a golden opportunity for Pakistan. By overcoming security challenges, training our youth, and executing the projects with honesty and efficiency, we can turn this corridor into a source of national wealth and place Pakistan at the center of regional trade.",
-    alternativeTopics: ["Pak-China Friendship", "Gwadar Port and Trade Routes", "Road Infrastructure of Pakistan", "Economic Game Changer CPEC"]
+    alternativeTopics: ["Pak-China Friendship", "Gwadar Port and Trade Routes", "Road Infrastructure of Pakistan", "Economic Game Changer CPEC"],
+    tags: []
   },
   {
     id: 13,
@@ -128,9 +140,10 @@ export const essays = [
     reasons: "It is caused by weak law enforcement, low salaries for public workers, greed, and a lack of moral values. When the rich and powerful escape punishment easily, it encourages others. A complex system with too much paperwork also forces citizens to pay bribes to get their work done.",
     effects: "Corruption destroys public trust in courts and police. It deprives honest and qualified youth of jobs, leading to frustration. It keeps our country in foreign debt, as public funds meant for roads, hospitals, and schools are stolen. It increases poverty and stops foreign companies from investing in Pakistan.",
     solutions: "We must enforce strict, unbiased accountability laws for everyone. Digitizing government files and online payments reduces the chance of bribery. We must teach moral values, honesty, and Islamic ethics in schools. We must pay respectable salaries to public servants and reward honest workers.",
-    conclusion: "In conclusion, progress is impossible in a corrupt system. Every citizen must reject bribery and stand for honesty. By building a transparent system, enforcing equal laws, and choosing moral character, we can cure this cancer and build a clean, fair, and successful Pakistan.",
+    conclusion: "In conclusion, no nation can progress with corruption. We must stand together, reject bribery, and demand transparency to build a clean, fair, and successful Pakistan.",
     zeeshanRecommended: true,
-    alternativeTopics: ["Accountability and Rule of Law", "Why Bribery Destroys Nations", "Honesty in Public Service", "Anti-Corruption Measures"]
+    alternativeTopics: ["Accountability and Rule of Law", "Why Bribery Destroys Nations", "Honesty in Public Service", "Anti-Corruption Measures"],
+    tags: []
   },
   {
     id: 14,
@@ -140,7 +153,8 @@ export const essays = [
     effects: "A disciplined nation respects time, keeps public spaces clean, and obeys state laws. It leads to fast economic growth, saves national resources, and reduces accidents and crimes. It builds national unity and earns respect in the global community, helping the country progress steadily.",
     solutions: "We must teach self-discipline and time management to children at home. Schools must enforce rules strictly, and traffic laws should be applied to everyone without any favor. Leaders must lead by example, showing discipline in their public lives and decisions.",
     conclusion: "As Quaid-e-Azam gave us the golden motto: 'Unity, Faith, and Discipline.' By making discipline a part of our personal lives, studies, and public actions, we can overcome any national crisis, build a strong society, and make Pakistan a highly respected nation.",
-    alternativeTopics: ["Discipline in Student Life", "Quaid's Motto: Unity, Faith, Discipline", "Discipline in Armed Forces", "Why Rules Matter in Society"]
+    alternativeTopics: ["Discipline in Student Life", "Quaid's Motto: Unity, Faith, Discipline", "Discipline in Armed Forces", "Why Rules Matter in Society"],
+    tags: []
   },
   {
     id: 15,
@@ -150,12 +164,13 @@ export const essays = [
     effects: "The crisis threatens our crop production, leading to food shortages and inflation. It increases fights between provinces over water sharing, devalues land, and causes serious diseases due to dirty drinking water. It limits our hydropower generation, adding to the electricity crisis and hurting the national economy.",
     solutions: "We must build new dams, water reservoirs, and lakes. Farmers should adopt modern drip irrigation systems that save water. We must recycle industrial water and strictly stop domestic water waste. Running awareness campaigns to teach citizens how to conserve water in daily tasks is essential.",
     conclusion: "To sum up, water is the most precious resource. Saving it is a national duty for every Pakistani. By constructing dams, adopting smart farming, and ending domestic waste, we can secure water for our crops, protect our health, and save Pakistan for our future generations.",
-    alternativeTopics: ["Constructing New Dams", "Save Water Save Life", "Agricultural Water Wastage", "Glacier Melting Threat"]
+    alternativeTopics: ["Constructing New Dams", "Save Water Save Life", "Agricultural Water Wastage", "Glacier Melting Threat"],
+    tags: []
   },
   // --- ADMIN ONLY - ZEESHAN RECOMMENDED SECTION ---
   {
     id: 16,
-    title: "Why drug usage is rising among Youth",
+    title: "Drug Addiction / Abuse in Youth",
     intro: "Drug usage among youth is a growing global concern, particularly affecting the social fabric of developing nations like Pakistan. It is a threat to our future. The youth are the engines of progress. When they fall into addiction, the whole nation suffers a loss of talent and energy. Resolving this is our top duty.",
     reasons: "It rises due to bad peer pressure, academic stress, depression, lack of parental attention, and the easy availability of drugs near educational campuses. Useless habits, lack of moral teaching, and digital isolation also lead youth to search for escape in drugs. The glamorous depiction of bad habits in media is another factor.",
     effects: "It ruins the physical and mental health of students, destroys their academic careers, and leads to high crime rates as addicts steal to buy drugs. It brings immense sadness, domestic violence, and financial loss to families, destroying the peace of homes and placing a heavy burden on healthcare systems.",
@@ -163,7 +178,8 @@ export const essays = [
     conclusion: "In conclusion, saving our youth from drugs is a collective duty of parents, schools, and the government. By giving them love, mental support, moral values, and healthy sports activities, we can protect their future. We must keep our youth active and healthy to ensure a successful Pakistan.",
     adminOnly: true,
     zeeshanRecommended: true,
-    alternativeTopics: ["Drug Addiction Causes", "Youth Mental Health and Drugs", "Role of Parents in Preventing Addiction", "Rehab and Healthy Activities"]
+    alternativeTopics: ["Drug Addiction Causes", "Youth Mental Health and Drugs", "Role of Parents in Preventing Addiction", "Rehab and Healthy Activities"],
+    tags: ["youth"]
   },
   {
     id: 17,
@@ -175,7 +191,8 @@ export const essays = [
     conclusion: "In short, trusting yourself is the key to success. All great leaders in history succeeded because they believed in their goals when no one else did. By trusting your preparation and abilities, and staying determined, you are already halfway to your goal. Self-belief makes the impossible possible.",
     adminOnly: true,
     zeeshanRecommended: true,
-    alternativeTopics: ["Confidence is Key", "Positive Self-Talk", "Overcoming Failure", "Believing in Your Goals"]
+    alternativeTopics: ["Confidence is Key", "Positive Self-Talk", "Overcoming Failure", "Believing in Your Goals"],
+    tags: ["youth"]
   },
   {
     id: 18,
@@ -187,7 +204,8 @@ export const essays = [
     conclusion: "In conclusion, trade is good for economy, but national honor, sovereignty, and principles are far more important. We must maintain a balanced approach that protects both our economic interests and national security. Trade should never be prioritized at the cost of our national honor and borders.",
     adminOnly: true,
     zeeshanRecommended: true,
-    alternativeTopics: ["Pak-India Relations", "Regional Trade in South Asia", "Sovereignty vs Economic Gain", "CPEC vs Indian Trade Routes"]
+    alternativeTopics: ["Pak-India Relations", "Regional Trade in South Asia", "Sovereignty vs Economic Gain", "CPEC vs Indian Trade Routes"],
+    tags: []
   },
   {
     id: 19,
@@ -199,7 +217,8 @@ export const essays = [
     conclusion: "In short, friendship is about values, character, and trust. A girl can be a great and supportive friend if both maintain a respectful, clean, and bounded relationship. By respecting cultural limits and focusing on mutual growth, we can build supportive friendships that help us succeed in life.",
     adminOnly: true,
     zeeshanRecommended: true,
-    alternativeTopics: ["Co-gender Friendships", "Moral Limits in Friendships", "Gender respect in Islam", "Healthy Social Boundaries"]
+    alternativeTopics: ["Co-gender Friendships", "Moral Limits in Friendships", "Gender respect in Islam", "Healthy Social Boundaries"],
+    tags: ["youth"]
   },
   {
     id: 20,
@@ -211,7 +230,8 @@ export const essays = [
     conclusion: "To conclude, Pakistan's airspace is sacred. We must maintain an independent foreign policy that keeps our land, air, and citizens completely safe. By choosing neutrality and protecting our sovereignty, we can avoid foreign conflicts and focus on the internal development and peace of our own country.",
     adminOnly: true,
     zeeshanRecommended: true,
-    alternativeTopics: ["Foreign Policy of Pakistan", "US-Pak Relations", "National Sovereignty and Borders", "Neutrality in Foreign Wars"]
+    alternativeTopics: ["Foreign Policy of Pakistan", "US-Pak Relations", "National Sovereignty and Borders", "Neutrality in Foreign Wars"],
+    tags: []
   },
   {
     id: 21,
@@ -223,7 +243,8 @@ export const essays = [
     conclusion: "In conclusion, money is a good servant but a bad master. True success in life is a balance of simple living, honest earnings, strong moral character, and peace of mind. By using money to fulfill our needs while focusing on values, we can lead a peaceful and happy life.",
     adminOnly: true,
     zeeshanRecommended: true,
-    alternativeTopics: ["Materialism vs True Happiness", "Importance of Character Over Wealth", "Poverty vs Peace of Mind", "What Money Cannot Buy"]
+    alternativeTopics: ["Materialism vs True Happiness", "Importance of Character Over Wealth", "Poverty vs Peace of Mind", "What Money Cannot Buy"],
+    tags: ["youth"]
   },
   {
     id: 22,
@@ -235,7 +256,8 @@ export const essays = [
     conclusion: "To sum up, AI is a powerful calculator for writing. Students should use it to learn new things and expand their knowledge, not to escape hard work and study. With proper guidelines, we can use technology to enhance education while keeping critical thinking alive.",
     adminOnly: true,
     zeeshanRecommended: true,
-    alternativeTopics: ["AI in Education", "ChatGPT: Help or Hurt", "Digital Learning in Schools", "Rote Learning vs AI Assistance"]
+    alternativeTopics: ["AI in Education", "ChatGPT: Help or Hurt", "Digital Learning in Schools", "Rote Learning vs AI Assistance"],
+    tags: ["youth"]
   },
   {
     id: 23,
@@ -247,7 +269,8 @@ export const essays = [
     conclusion: "In conclusion, education, manners, and character are the real goals of a university. The dress code should focus on decency, cleanliness, and mutual respect. By avoiding extreme rules and respecting choices within moral limits, we can keep the focus on research and progress.",
     adminOnly: true,
     zeeshanRecommended: true,
-    alternativeTopics: ["Dress Code in Higher Education", "Hijab Choice and Freedom", "Decency in Educational Institutions", "Islamic Dress Standards"]
+    alternativeTopics: ["Dress Code in Higher Education", "Hijab Choice and Freedom", "Decency in Educational Institutions", "Islamic Dress Standards"],
+    tags: ["youth"]
   },
   {
     id: 24,
@@ -259,7 +282,8 @@ export const essays = [
     conclusion: "In short, greed is a strong force. If we direct it towards learning, sports, and helping others, it becomes a boon for progress. Ambition drives growth, but greed must stay under the control of moral values to prevent it from becoming a curse for society.",
     adminOnly: true,
     zeeshanRecommended: true,
-    alternativeTopics: ["Ambition vs Greed", "Greed for Knowledge", "What Drives Progress", "Limits of Desire"]
+    alternativeTopics: ["Ambition vs Greed", "Greed for Knowledge", "What Drives Progress", "Limits of Desire"],
+    tags: ["youth"]
   },
   {
     id: 25,
@@ -271,7 +295,8 @@ export const essays = [
     conclusion: "Overall, capital punishment is a serious tool for peace. It must be used with absolute care, justice, and fairness. While human rights are important, the safety of society and justice for victims must also be protected through strong laws. Executions must be based on pure proof.",
     adminOnly: true,
     zeeshanRecommended: true,
-    alternativeTopics: ["Death Penalty Debate", "Human Rights and Criminals", "Deterrence to Crime", "Justice for Victims"]
+    alternativeTopics: ["Death Penalty Debate", "Human Rights and Criminals", "Deterrence to Crime", "Justice for Victims"],
+    tags: []
   },
   {
     id: 26,
@@ -283,11 +308,12 @@ export const essays = [
     conclusion: "In conclusion, sectarianism is a threat to our country. We must stand united as Muslims and Pakistanis to defeat this root cause of terror. By promoting tolerance, education, and equal rights for all sects, we can build a peaceful, united, and successful Pakistan.",
     adminOnly: true,
     zeeshanRecommended: true,
-    alternativeTopics: ["Inter-sect Harmony", "Religious Extremism", "Unity of Muslim Ummah", "Causes of Sectarian Hatred"]
+    alternativeTopics: ["Inter-sect Harmony", "Religious Extremism", "Unity of Muslim Ummah", "Causes of Sectarian Hatred"],
+    tags: []
   },
   {
     id: 27,
-    title: "Why do youngsters disrespect their elders?",
+    title: "Why Younger Generation Hide Things from Parents",
     intro: "Respecting parents and elders is a core value of Eastern culture and Islamic teaching. Lately, there is a rising concern that the youth are losing this important moral value. This generation gap and lack of respect weakens our family bonds and destroys the peace of our homes.",
     reasons: "The main causes are the influence of social media, busy schedules of parents, lack of moral teaching at school, and generation gap in communication. Youth copy western lifestyles from movies, which focus on extreme independence. They feel elders do not understand modern technology, leading to arguments.",
     effects: "It weakens the family system and increases home fights. It leads to a rude, undisciplined generation that lacks wisdom and manners. When youngsters ignore the experience of elders, they make serious mistakes in their careers and personal lives, leading to future regrets and failures.",
@@ -295,11 +321,12 @@ export const essays = [
     conclusion: "To sum up, respect is a two-way street. Elders should guide with love, and youth must act with manners. By keeping our cultural values alive, practicing patience, and respecting the wisdom of our elders, we can maintain peace in our families and build a civilized nation.",
     adminOnly: true,
     zeeshanRecommended: true,
-    alternativeTopics: ["Generation Gap", "Moral Training of Youth", "Western Culture Influence", "Respecting Parents"]
+    alternativeTopics: ["Generation Gap", "Moral Training of Youth", "Western Culture Influence", "Respecting Parents"],
+    tags: ["youth"]
   },
   {
     id: 28,
-    title: "Why are physical games played less today than in the past?",
+    title: "Impact of Video Games on Youth",
     intro: "Outdoor games like football, hockey, and cricket are essential for health, physical fitness, and mental growth. Today, youngsters spend much less time in playgrounds than in the past. This decline in physical activities is creating a weak, passive, and screen-addicted generation that lacks energy.",
     reasons: "The main reasons are mobile screen addiction, lack of green parks in cities, homework pressure, and the popularity of video games. Most towns are covered in concrete, leaving no space for playgrounds. Parents also prefer their children to study indoors rather than play outside.",
     effects: "This leads to health issues like obesity, weak eyesight, diabetes at a young age, and mental stress. Youth fail to learn teamwork, leadership, and how to handle defeat. They remain isolated in their rooms, which reduces their social skills and makes them physically inactive.",
@@ -307,7 +334,8 @@ export const essays = [
     conclusion: "In conclusion, playgrounds are necessary for a healthy generation. We cannot build a strong nation with inactive youth. By balancing technology with outdoor games, limiting screen use, and building parks, we can ensure our youth remain physically fit, mentally sharp, and highly active.",
     adminOnly: true,
     zeeshanRecommended: true,
-    alternativeTopics: ["Mobile Addiction in Children", "Empty Playgrounds", "Importance of Outdoor Sports", "Physical Fitness Decline"]
+    alternativeTopics: ["Mobile Addiction in Children", "Empty Playgrounds", "Importance of Outdoor Sports", "Physical Fitness Decline"],
+    tags: ["youth"]
   },
   {
     id: 29,
@@ -319,19 +347,174 @@ export const essays = [
     conclusion: "In conclusion, AI is the future, and we cannot stop it. By learning to use it as a helpful tool, upgrading our skills, and making laws to prevent its misuse, we can use artificial intelligence to solve global problems and build a modern, high-tech Pakistan.",
     adminOnly: true,
     zeeshanRecommended: true,
-    alternativeTopics: ["AI and Job Losses", "The Future of Technology", "Human-AI Collaboration", "Smarter Machines"]
+    alternativeTopics: ["AI and Job Losses", "The Future of Technology", "Human-AI Collaboration", "Smarter Machines"],
+    tags: ["youth"]
   },
   {
     id: 30,
     title: "Democracy vs. Dictatorship",
-    intro: "Democracy means public rule through elected leaders, while Dictatorship means absolute power in one hand without public choice. Deciding which system is better for progress is a classic debate for developing nations. Both systems have different impacts on rules, rights, stability, and national economic growth.",
+    intro: "Democracy and Dictatorship are two opposing systems of government. The debate over which is better for a developing country is classic. Both systems have different impacts on rules, rights, stability, and national economic growth.",
     reasons: "Democracy offers freedom of speech, human rights, and public participation, but decisions take time and can be slow. Dictatorship is fast and disciplined, showing quick results, but ignores human choices, locks out feedback, and lacks public accountability, leading to corruption in the long run.",
     effects: "Democracy builds strong departments, ensures equal rights, and keeps peace through talks. Dictatorship brings temporary stability and roads but ends in public protests and unrest because people demand their rights. A lack of feedback in dictatorship often leads to major policy failures.",
     solutions: "We must support consistent elections and avoid military breaks. The government must educate the public to choose honest leaders, and ensure the rule of law. We must focus on building stable institutions that guarantee both fast development and personal freedom for all citizens.",
     conclusion: "Ultimately, freedom, accountability, and public support are necessary for permanent success. A clean, stable democracy is the only sustainable system for Pakistan's progress. By strengthening democratic systems and focusing on merit and education, we can achieve both discipline and development in our country.",
-    adminOnly: true,
-    zeeshanRecommended: true,
-    alternativeTopics: ["Is Democracy Best?", "Military Rule vs Political Rule", "Public Accountability", "Stability in Pakistan"]
+    alternativeTopics: ["Is Democracy Best?", "Military Rule vs Political Rule", "Public Accountability", "Stability in Pakistan"],
+    tags: []
+  },
+  // --- ADDITIONAL NEW YOUTH TOPICS ---
+  {
+    id: 31,
+    title: "Reason of Stress in Young Generation",
+    intro: "Stress in the young generation is a major psychological issue in modern times. Stress is the body's reaction to feeling under pressure, threatened, or unable to cope. Today, more than ever, teenagers and young adults complain of constant mental pressure, anxiety, and depression. Understanding the causes of this stress is essential to protect their mental health and future.",
+    reasons: "The primary causes are extreme academic competition, peer pressure, and high career expectations from parents. Youngsters also face digital comparison on social media, where they see others' highlights and feel insecure about their own lives. Additionally, a lack of regular physical play, poor sleep cycles, and the rising costs of higher education add to their daily mental load.",
+    effects: "High stress leads to poor academic grades, lack of focus, and low self-esteem. Physically, it causes insomnia, weight issues, and chronic headaches. Psychologically, it results in isolation, mood swings, and can drive youth toward drug abuse or screen addiction as an escape. It destroys the joy and confidence of student life.",
+    solutions: "Parents and teachers must reduce pressure and focus on conceptual learning rather than absolute high grades. Youngsters should follow a healthy sleep routine and limit social media use. Universities must provide free psychological counseling services. Practicing daily exercise, sports, and talking openly with parents helps relieve stress effectively.",
+    conclusion: "In conclusion, youth stress is a silent challenge that needs collective care. We must change our mindset and value mental peace over social competition. By providing a supportive environment, encouraging healthy sports, and teaching stress management, we can help our young generation lead happy, productive, and successful lives.",
+    alternativeTopics: ["Youth Anxiety Causes", "Academic Pressure on Students", "How Social Media Causes Depression", "Mental Health in Universities"],
+    tags: ["youth"]
+  },
+  {
+    id: 32,
+    title: "Reason of Intolerance in Youth",
+    intro: "Intolerance means the unwillingness to accept opinions, beliefs, or behaviors that are different from one's own. Lately, there has been a rising concern about the increasing levels of intolerance and anger among the youth in Pakistan. This lack of patience leads to fights in colleges, street anger, and division in society.",
+    reasons: "The main causes are the negative influence of social media algorithms that highlight extreme views, a lack of quality moral training at home and school, and political radicalization. Jobless youth are easily frustrated by economic crises, inflation, and lack of opportunities. This frustration turns into public anger and intolerance toward different views.",
+    effects: "Intolerance leads to college violence, street clashes, and breakdown of peace. It stops critical discussions, as youngsters refuse to listen to opposing views, destroying academic growth. It increases division in society based on religion, sect, or politics, making national unity difficult to achieve.",
+    solutions: "We must teach ethics, tolerance, and active listening skills in schools and colleges. Social media platforms should block hate materials, and public figures must lead by example. Parents should teach their children to respect differences. The government must create jobs and sports facilities to keep youth busy in constructive work.",
+    conclusion: "In short, tolerance is the foundation of a peaceful society. We must help our youth realize that having different views is a sign of a healthy mind, not an enmity. By promoting dialogue, moral values, and tolerance, we can build a peaceful, united, and cooperative nation.",
+    alternativeTopics: ["Anger Management in Students", "Sectarian Intolerance", "Impact of Extreme Online Content", "How to Promote Peace"],
+    tags: ["youth"]
+  },
+  {
+    id: 33,
+    title: "Future of Youth of Pakistan",
+    intro: "The future of Pakistan is directly tied to the future of its youth, who make up over sixty percent of the population. This demographic asset holds the power to transform Pakistan into a developed, modern nation, or it can become a social burden if left unguided, uneducated, and unemployed. The path we choose today defines our future.",
+    reasons: "The future depends on the opportunities we provide. If the youth receive quality technical education, IT skills, and starting business loans, they will succeed. However, if they face low quality schools, inflation, and unemployment, they will suffer from hopelessness, brain drain, or get involved in anti-social activities.",
+    effects: "A well-guided youth will build a digital Pakistan, increase IT exports, run clean businesses, and lead national institutions with honesty. They will bring global medals and honors. But if they are ignored, the country will face high unemployment, brain drain, social instability, and economic dependency.",
+    solutions: "We must align our school courses with modern global skills like programming, robotics, and smart farming. The government must ensure merit in jobs and support young startups with zero-interest loans. The youth must focus on self-discipline, reject negative digital propaganda, and work with high patriotism.",
+    conclusion: "In conclusion, the future of our youth is bright if we invest in their skills and character today. They are the leaders of tomorrow. By providing them quality education, merit, and guidance, we can ensure a highly successful, self-reliant, and respected Pakistan on the world stage.",
+    alternativeTopics: ["Demographic Dividend in Pakistan", "Youth Opportunities and Challenges", "IT Future of Pakistan", "Brain Drain vs National Growth"],
+    tags: ["youth"]
+  },
+  {
+    id: 34,
+    title: "Why Celebrities Have Become Role Models for Youth",
+    intro: "A role model is a person whose behavior, success, or lifestyle is copied by others, especially by young minds. In the digital age, traditional role models like teachers and parents are being replaced by media celebrities, sports stars, and social media influencers. This shift has massive impacts on the psychology and dreams of the youth.",
+    reasons: "Celebrities have become role models due to the high reach of social media, television, and cinema. Youngsters see their wealthy lifestyles, fame, and attractive profiles daily. They copy them to look modern, fit in with friends, or escape their simple, daily routines. Often, local institutions fail to highlight real-life heroes like scientists or social workers.",
+    effects: "Positive role models like sportsmen can inspire youth to stay fit, work hard, and show discipline. However, negative role models who promote materialism, show off, or follow bad morals can misguide youngsters. It leads to high spending habits, depression due to body-shaming, and a lack of interest in simple, honest careers.",
+    solutions: "Media must highlight real heroes like scientists, doctors, philanthropists (like Abdul Sattar Edhi), and brave soldiers. Parents and teachers must discuss celebrity culture with children, helping them differentiate between fake screen lifestyle and real-world values. Youngsters should choose role models based on character, not fame.",
+    conclusion: "In short, whom the youth copy defines what society becomes. While celebrity entertainment is fine, copy-pasting their lives is dangerous. We must guide our youth to value character, hard work, and moral integrity, choosing role models who contribute positively to the development of the human race and our nation.",
+    alternativeTopics: ["Celebrity Obsession in Teenagers", "Impact of Influencer Marketing", "Highlighting Real National Heroes", "Materialism in Youth"],
+    tags: ["youth"]
+  },
+  {
+    id: 35,
+    title: "How the Use of Offensive Language Affects Youth",
+    intro: "Language is the medium of communication that reflects a person's manners, education, and character. Recently, the use of offensive, abusive, and slang language has increased significantly among the youth, both in schools and on social media platforms. This habit destroys our social values and affects the personality growth of youngsters.",
+    reasons: "The main causes are the negative influence of modern movies, rap music, and social media content where abusive language is used to gain likes and views. Youngsters copy this to look cool, bold, or to show anger in front of friends. A lack of check by parents and a decrease in moral training in schools also contribute to this habit.",
+    effects: "The regular use of offensive language reduces mutual respect between friends and family members. It leads to aggressive behavior and quick fights over minor arguments. In professional settings like ISSB or interviews, candidates who use slang show a lack of discipline, low emotional control, and poor breeding, which destroys their career chances.",
+    solutions: "Parents must control the type of media their children watch and guide them strictly. Schools and colleges should enforce zero-tolerance rules for abusive language. Youth must realize that clean, polite speech is a sign of a strong, civilized mind, not a weakness. Encouraging the habit of reading good literature also helps.",
+    conclusion: "In conclusion, clean language is a sign of a noble character. The use of offensive language only highlights a weak mind and bad manners. By focusing on moral training, monitoring media, and choosing polite words, we can help our youth develop a respected and attractive personality that contributes to a civilized society.",
+    alternativeTopics: ["Slang Language Impact", "Moral Decay in Students", "Role of Media in Bad Habits", "Improving Communication Skills"],
+    tags: ["youth"]
+  },
+  {
+    id: 36,
+    title: "Impatience in Youth Regarding Jobs",
+    intro: "Impatience means the irritation or frustration caused by delay or waiting. Today, a major issue among young graduates in Pakistan is their high impatience regarding jobs, salaries, and career growth. They want quick success, high salaries, and rapid promotions immediately after university, without spending time to learn the work.",
+    reasons: "This impatience is caused by looking at overnight success stories on social media and comparing themselves with top influencers. Private universities also promise high placements, building false hopes. Furthermore, rising inflation, family pressure to earn, and a lack of career counseling lead youth to search for shortcuts instead of building skills.",
+    effects: "Impatience leads to frequent job-hopping, which stops candidates from gaining deep experience in any field. It causes high career stress, anxiety, and depression when goals are not met quickly. Many fall into online scams, betting apps, or illegal shortcuts, ruining their careers and losing their hard-earned money.",
+    solutions: "Universities must guide students that career growth is a step-by-step ladder. Youngsters should focus on building core skills, work experience, and patience during their initial job years. Parents should support their children without putting excessive financial demands on them. Practicing consistency and realistic goal setting is essential.",
+    conclusion: "In conclusion, there are no shortcuts to real success. Rome was not built in one day, and a stable career needs years of patience, learning, and grit. By focusing on skill development, keeping realistic expectations, and working consistently, our youth can build highly rewarding and stable careers.",
+    alternativeTopics: ["Job Hopping in Young Graduates", "Career Stress in Students", "Unrealistic Expectations in Careers", "Importance of Patience in Life"],
+    tags: ["youth"]
+  },
+  {
+    id: 37,
+    title: "Is Pakistan Idol a Good Platform for Our Youth",
+    intro: "Pakistan Idol was a famous music reality show designed to find local singing talent across the country. Reality shows attract millions of young viewers and applicants. Whether such media platforms are a good and productive outlet for our massive youth population is a subject of major discussion in our society.",
+    reasons: "It is considered a good platform because it provides a launching pad for talented youth from middle-class backgrounds, giving them national fame and a career. However, critics argue it highlights only entertainment (music and glamour) while ignoring critical fields like science, technology, coding, and entrepreneurship, which the country needs.",
+    effects: "For a few winners, it changes their lives positively. But for millions of viewers, it can distract them from science and hard work, making them believe that quick media fame is the ultimate goal of life. It can also cause mental stress and depression for participants who face public rejection on TV screen.",
+    solutions: "Media channels must launch similar reality shows for science, coding, business startups, and public speaking to encourage youth in productive fields. Selection in reality shows should be based purely on merit, avoiding dramatized insult of candidates. Parents must ensure their children do not ignore their core studies.",
+    conclusion: "In conclusion, platforms like Pakistan Idol are fine for entertainment and musical talent. However, a developing country like Pakistan needs platforms that promote science, IT skills, and entrepreneurship. We must balance media entertainment with productive challenges to guide our youth toward building a strong, modern nation.",
+    alternativeTopics: ["Impact of Reality Shows on Youth", "Science Competitions vs Music Shows", "Media Distractions for Students", "Role of Media in Skill Development"],
+    tags: ["youth"]
+  },
+  {
+    id: 38,
+    title: "Impact of Movies and Cinema on Youth",
+    intro: "Cinema and movies are powerful tools of media that combine stories, visuals, and music. Young minds are highly sensitive and learn quickly from what they see on the big screen. The impact of cinema on youth is massive, shaping their thoughts, fashion, behavior, and social values directly.",
+    reasons: "Cinema has a high impact because of its realistic and emotional storytelling. Youngsters watch movies for entertainment, but they also copy the actors' clothing, hairstyles, speech, and habits. Often, movies glorify bad habits like smoking, violence, and materialism, which young viewers adopt without realizing the bad results.",
+    effects: "Good movies can teach history, inspire patriotism, build moral values, and spread social awareness. However, movies showing extreme violence, vulgarity, and luxury cause moral decay, increase aggression, and make youngsters look for shortcuts to wealth. It can lead to a rise in crimes, drug use, and family conflicts.",
+    solutions: "The censor board must strictly filter movies showing vulgarity or extreme violence. Local filmmakers should produce clean, educational, and inspiring movies highlighting science, history, and social heroes. Parents must monitor what their teenagers watch, and youth should watch movies only as clean entertainment.",
+    conclusion: "To sum up, cinema is a mirror of society and an educator of minds. Its impact can be highly positive or dangerously negative. By promoting clean, historic, and values-based movies, we can use cinema to educate our youth, build their character, and guide them toward a positive life.",
+    alternativeTopics: ["Media Influence on Teenagers", "Vulgarity in Cinema", "Patriotic Movies and Youth", "Character Building Through Media"],
+    tags: ["youth"]
+  },
+  {
+    id: 39,
+    title: "Should We Ban Cellphones for Youth?",
+    intro: "Smartphones have become a basic necessity of modern life, used for studies, communication, and entertainment. However, the rising mobile addiction among teenagers has sparked a serious debate. While cellphones are useful, their excessive use raises the question of whether we should ban them for youth.",
+    reasons: "A ban is suggested because cellphones cause severe screen addiction, distract students from their studies, and reduce physical activities. Youngsters are exposed to inappropriate online content, cyberbullying, and fake profiles. However, a complete ban is difficult today because cellphones are widely used for online classes, research, and safety.",
+    effects: "Allowing unchecked cellphones causes eye issues, poor sleep, anxiety, and isolates youth from real-world relationships. Banning them completely, however, can make youth digitally illiterate, cutting them off from modern learning resources, coding classes, and online communication with parents during emergencies.",
+    solutions: "Instead of a complete ban, we must implement controlled usage. Parents must use screen control apps, set strict daily time locks, and ban phones during study and bedtime. Schools should not allow mobile phone use during class hours. Youth must be encouraged to spend time in playgrounds and reading books.",
+    conclusion: "In conclusion, cellphones are a useful tool but a bad master. A complete ban is not the solution in the digital age, as it stops learning. The solution is disciplined use, strict parental monitoring, and balancing screen time with physical games, ensuring technology is used only for growth and learning.",
+    alternativeTopics: ["Mobile Screen Time Limits", "Digital Detox for Students", "Impact of Phones on Mental Health", "Parental Control on Technology"],
+    tags: ["youth"]
+  },
+  {
+    id: 40,
+    title: "Youth Challenges and Social Issues in Pakistan",
+    intro: "Pakistan is a developing country with a massive youth population. While this youth bulge is a source of pride, our youngsters face serious social, economic, and educational challenges. Addressing these challenges is necessary to save our youth from desperation and ensure national stability and progress.",
+    reasons: "The main challenges are low-quality education, high youth unemployment, inflation, and a lack of career guidance. Youngsters are frustrated by political instability and corruption. Additionally, social issues like drug addiction, sectarian division, online propaganda, and pressure from families to earn quickly create high stress.",
+    effects: "These challenges lead to brain drain, as talented youth leave Pakistan in search of jobs. Those who stay behind can fall into depression, drug abuse, or get misguided by extremist networks, increasing crime rates. It slows down national progress and creates a sense of hopelessness in the new generation.",
+    solutions: "The government must reform schools to provide technical and IT skills. We must create merit-based job markets and support startups with easy business loans. Setting up career counseling centers in colleges and promoting sports is vital. The youth must stay positive, work hard, and reject anti-state propaganda.",
+    conclusion: "To sum up, the challenges of our youth are the challenges of Pakistan. We cannot grow if our main workforce is stressed and jobless. By providing skills, merit, and a stable environment, we can help our youth overcome these social issues and lead Pakistan to a bright and successful future.",
+    alternativeTopics: ["Youth Unemployment in Pakistan", "Frustration in Young Graduates", "IT Startups and Job Creation", "Moral Crisis in Youth"],
+    tags: ["youth"]
+  },
+  {
+    id: 41,
+    title: "Role of Youth in Politics",
+    intro: "Politics defines the laws, governance, and future of a country. Since the youth make up the largest section of Pakistan's population, their role in politics is highly critical. Whether youth should actively participate in politics or focus only on studies is a major discussion with valid points on both sides.",
+    reasons: "Youth participation is vital because they bring fresh ideas, modern thoughts, and honesty, which can clean the corrupt political system. However, active involvement in political parties during student life often leads to campus violence, neglect of studies, and makes students tools in the hands of selfish politicians.",
+    effects: "Positive youth participation leads to educated leadership, better laws for students, and social awareness. Negative participation leads to student union clashes, damaged college property, and ruined careers. It can turn creative student energy into hate and division based on party lines.",
+    solutions: "Students should focus primarily on their education and character building. They must learn about political issues, constitution, and voting rights, but avoid joining active political groups. Universities should hold student union debates on academic topics to train them in leadership, strictly banning weapons and party flags.",
+    conclusion: "In conclusion, youth should be politically aware but academically focused. They must use their votes wisely based on merit, not on emotional slogans. By building their education and character first, they can become mature, honest, and capable leaders who can run Pakistan successfully in the future.",
+    alternativeTopics: ["Student Unions in Pakistan", "Political Awareness in Youth", "How to Choose Leaders", "Campus Violence and Student Politics"],
+    tags: ["youth"]
+  },
+  {
+    id: 42,
+    title: "Are Today's Children More Disobedient?",
+    intro: "Respecting parents, teachers, and rules is the basic moral duty of children. Recently, many elders complain that today's children are more disobedient, rude, and hard to control compared to past generations. This shift in child behavior raises concerns about family values, parenting styles, and modern social changes.",
+    reasons: "The main reasons are the negative influence of internet and social media, which promote absolute independence and rude comedy. Parents are also busy with jobs, spending less time in moral training. Modern parenting has become soft, avoiding any discipline. Additionally, children spend more time on screens than talking to parents.",
+    effects: "Disobedience weakens family bonds and causes constant stress in homes. It leads to poor school performance and behavioral issues in children. When children refuse to follow rules at home, they struggle to adjust in disciplined environments like college, workplaces, or the military, affecting their career growth.",
+    solutions: "Parents must spend quality time with children daily and set clear rules and boundaries at home. They should limit mobile screen times and lead by example. Schools must prioritize moral values and character grading. Children must learn that respect for authority is a strength and a sign of good breeding.",
+    conclusion: "To sum up, today's children are not naturally bad, but they are exposed to massive digital distractions. Resolving disobedience requires loving guidance, firm discipline, and strong parent-child communication. By teaching respect and moral values, we can raise a polite, disciplined, and successful new generation.",
+    alternativeTopics: ["Modern Parenting Challenges", "Impact of Screens on Behavior", "Moral Education in Schools", "Building Respect in Families"],
+    tags: ["youth"]
+  },
+  {
+    id: 43,
+    title: "Should Children Be Allowed to Use Mobile Phones?",
+    intro: "Mobile phones are powerful computers that offer learning, games, and connectivity. Today, even small children spend hours on smartphones. Whether children under the age of twelve should be allowed to use mobile phones is a serious concern for parents, doctors, and teachers due to its deep impacts.",
+    reasons: "Phones are given for online studies, educational videos, and to keep in touch with parents. However, children lack the maturity to control phone use. They easily fall into mobile game addiction, watch inappropriate videos, and avoid study. It takes them away from healthy physical play and real family discussions.",
+    effects: "Excessive mobile use causes weak eyesight, sleep loss, obesity, and reduces attention span. It makes children impatient and short-tempered. However, completely banning phones can make them digitally backward. It can limit their access to online coding, creative logic games, and learning videos that build modern minds.",
+    solutions: "Children under twelve should not be given personal smartphones. They can use family devices for limited times under strict parental watch. Parents must block adult content and use kids' mode. Children should use phones only for learning, and must be pushed to play outdoor sports and read books daily.",
+    conclusion: "In conclusion, children should not have unchecked access to mobile phones. While technology is useful, physical and mental growth needs play, family time, and books. By setting strict time limits, filtering content, and encouraging sports, we can protect our children from mobile harms while allowing digital learning.",
+    alternativeTopics: ["Mobile Addiction in Kids", "Screen Time for Toddlers", "Outdoor Activities vs Video Games", "Healthy Technology Habits"],
+    tags: ["youth"]
+  },
+  {
+    id: 44,
+    title: "Best Things Youth is Doing These Days",
+    intro: "Usually, media highlight negative aspects of youth like mobile addiction and lack of focus. However, the modern youth of Pakistan are also doing some of the most positive, creative, and inspiring things in history. From digital business to social work, our youngsters are proving their high capability daily.",
+    reasons: "The rise of the internet, IT education, and startup culture has given youth new platforms. Youngsters are motivated to become financially independent, help their families at a young age, and solve local problems. They want to prove themselves on the global stage, using technology as their main weapon for growth.",
+    effects: "Young IT professionals are earning foreign money (remittance) through freelancing, supporting the national economy. They are creating startup companies, generating local jobs, and building free online education portals. Many run charity groups to feed the poor, plant trees, and help during floods, showing high empathy.",
+    solutions: "We must appreciate and publicize these success stories on national TV and social media to inspire others. The government should support young entrepreneurs with tax relief and fast internet. Universities should organize business startup competitions, and youth must continue to work with focus, honesty, and patriotism.",
+    conclusion: "To conclude, the positive work of our youth is the real hope of Pakistan. They are not just waiting for jobs; they are creating them. By supporting their startups, IT skills, and voluntary works, we can encourage a highly productive generation that will lead Pakistan to economic self-reliance and progress.",
+    alternativeTopics: ["Youth Achievements in IT", "Freelancing Trends in Pakistan", "Social Work by Students", "Young Entrepreneurs Startup Success"],
+    tags: ["youth"]
   }
 ];
 
@@ -340,17 +523,19 @@ export const lecturettes = [
     id: 1,
     title: "Importance of Technical Education",
     intro: "Technical education means learning practical, hands-on skills like computer programming, mobile repair, electric work, plumbing, and mechanics. In today's fast world, having a practical skill is far more useful and reliable than holding a simple, theoretical degree that does not guarantee work. Skills are the real currency of the modern digital economy.",
-    points: "While general degrees only teach concepts, technical training gives immediate employment. It solves youth unemployment, helps poor families earn quickly, and boosts local manufacturing. Developed countries like Germany, South Korea, and Japan progressed rapidly by focusing on technical skills and vocational training rather than simple graduation. It turns our population into a useful asset, increases exports, and reduces poverty directly.",
+    points: "While general degrees only teach theory, technical training gives immediate employment. It solves youth unemployment, helps poor families earn quickly, and boosts local manufacturing. Developed countries like Germany, South Korea, and Japan progressed rapidly by focusing on technical skills and vocational training rather than simple graduation. It turns our population into a useful asset, increases exports, and reduces poverty directly.",
     conclusion: "Instead of running after empty degrees and white-collar jobs, our youth must focus on learning modern technical skills. Technical education is the key to personal wealth, financial stability, and rapid national progress.",
-    alternativeTopics: ["Duties of a Good Citizen", "How Youth Can Help Pakistan", "Youth and Nation Building", "Patriotism in Action"]
+    alternativeTopics: ["Duties of a Good Citizen", "How Youth Can Help Pakistan", "Youth and Nation Building", "Patriotism in Action"],
+    tags: []
   },
   {
     id: 2,
-    title: "Brain Drain: Causes and Remedies",
+    title: "Media for Youth: Disadvantages of Social Media",
     intro: "Brain drain means the migration of highly educated and skilled professionals like doctors, engineers, IT experts, and scientists from developing countries to rich western nations. It is a major loss of talent for Pakistan, as the people we educate leave to serve other countries, leaving us short of experts.",
     points: "The main causes are low salaries, high inflation, political instability, lack of research funds, and lack of merit in hiring. This migration deprives Pakistan of its best talent, stops local innovation, and forces us to hire foreign consultants at high rates. It weakens our health, education, and technology departments, slowing down national progress and development.",
     conclusion: "To stop brain drain, we must offer competitive salaries, value merit, and provide research facilities. We must build a system where talent feels safe, respected, and is given the opportunity to serve Pakistan.",
-    alternativeTopics: ["Impact of Internet on Youth", "Mobile Addiction in Students", "The Digital Era", "Pros and Cons of Social Networks"]
+    alternativeTopics: ["Impact of Internet on Youth", "Mobile Addiction in Students", "The Digital Era", "Pros and Cons of Social Networks"],
+    tags: ["youth"]
   },
   {
     id: 3,
@@ -358,7 +543,8 @@ export const lecturettes = [
     intro: "Democracy is a system where citizens elect their leaders. Although Pakistan has faced challenges in running it, including political instability and institutional clashes, democracy remains the most suitable and sustainable path for our country's growth, as it guarantees freedom, representation, and public feedback.",
     points: "Democracy protects freedom of speech and guarantees equal rights for all citizens. Past failures were not due to the democratic system, but due to low education, corruption, and frequent breaks in the political process. Dictatorship offers quick results but ends in instability. Only regular, fair elections can bring political maturity and stable growth.",
     conclusion: "For a strong democracy, we must educate our citizens, promote tolerance, and hold fair elections. Consistent democratic processes will resolve our crises over time and build a strong, stable Pakistan.",
-    alternativeTopics: ["Power Shortage and Load-shedding", "Electricity Crisis", "Renewable Energy Options for Pakistan", "Why Pakistan Faces Circular Debt"]
+    alternativeTopics: ["Power Shortage and Load-shedding", "Electricity Crisis", "Renewable Energy Options for Pakistan", "Why Pakistan Faces Circular Debt"],
+    tags: []
   },
   {
     id: 4,
@@ -366,7 +552,8 @@ export const lecturettes = [
     intro: "Positive thinking is a mental choice where you focus on solutions, hope, and learning rather than complaints, fears, and past failures. It is not about ignoring life's problems; it is about approaching them with a constructive and optimistic attitude. A positive mind turns obstacles into stepping stones.",
     points: "It builds mental strength, reduces stress, and keeps you fit. A positive mind sees opportunities in difficult times. During tough tasks at ISSB, staying positive helps you lead, motivate your team, and perform under high pressure. It improves your problem-solving skills, builds self-confidence, and helps you handle stress and failure without losing motivation.",
     conclusion: "All success starts in the mind. By keeping a hopeful attitude, working hard, and learning from failure, we can achieve our goals and live a happy, successful life. Optimism is the fuel of achievement.",
-    alternativeTopics: ["Devaluation of Rupee", "Rising Prices and Common Man", "Economic Challenges of Pakistan", "Poverty and Price Hikes"]
+    alternativeTopics: ["Devaluation of Rupee", "Rising Prices and Common Man", "Economic Challenges of Pakistan", "Poverty and Price Hikes"],
+    tags: []
   },
   {
     id: 5,
@@ -374,7 +561,8 @@ export const lecturettes = [
     intro: "Human rights are the basic freedoms and rights that belong to every human being from birth, regardless of their nationality, religion, status, or gender. They are the foundation of peace, justice, and decency in a modern world. A civilized society is impossible without respecting these basic rights.",
     points: "They include the right to live, study, speak, and seek justice. Protecting them prevents crimes, stops cruelty, and builds trust between citizens and the state. In a progressive society, every individual must feel safe and respected. Ignoring human rights leads to unrest, lawlessness, and division, keeping the country backward and unstable.",
     conclusion: "Respecting human rights is our moral and religious duty. By treating everyone with respect, kindness, and ensuring equal justice, we can build a modern, peaceful, and civilized Pakistan.",
-    alternativeTopics: ["Gender Equality in Islam", "Role of Women in Society", "Female Education in Pakistan", "Empowering the Girl Child"]
+    alternativeTopics: ["Gender Equality in Islam", "Role of Women in Society", "Female Education in Pakistan", "Empowering the Girl Child"],
+    tags: []
   },
   {
     id: 6,
@@ -382,7 +570,8 @@ export const lecturettes = [
     intro: "Pakistan is blessed with beautiful northern mountains, historic Sufi shrines, ancient civilizations, and warm beaches. Our tourism potential is huge, but it remains largely untapped due to a lack of marketing and infrastructure. Developing this sector can transform our economic landscape rapidly.",
     points: "Tourism can bring foreign exchange, create local jobs in valleys, and improve Pakistan's image worldwide. Challenges include poor road networks and low marketing. We must focus on building clean hotels, ensuring security, and providing facilities to travelers. Green and religious tourism can attract millions of visitors every year.",
     conclusion: "By improving roads, hotels, security, and using digital media for marketing, we can welcome global travelers, create jobs, and boost our national economy through tourism.",
-    alternativeTopics: ["Literacy Rate Challenges", "Urdu vs English Medium Education", "Single National Curriculum", "Practical vs Rote Learning"]
+    alternativeTopics: ["Literacy Rate Challenges", "Urdu vs English Medium Education", "Single National Curriculum", "Practical vs Rote Learning"],
+    tags: []
   },
   {
     id: 7,
@@ -390,7 +579,8 @@ export const lecturettes = [
     intro: "Character means having strong moral values like honesty, courage, truthfulness, integrity, and discipline. Wealth and status are temporary, but character stays forever. It is the real measure of a person's value. A man of character is a source of strength for his family and nation.",
     points: "A person with good character is trusted by everyone. They stand for truth under pressure and help others. In the Armed Forces, strong character is the most important quality for officers and leaders. It guides you to choose the harder right over the easier wrong, ensuring loyalty and dedication to duty.",
     conclusion: "If money is lost, nothing is lost. If character is lost, everything is lost. We must focus on building high moral values, honesty, and discipline in our daily lives.",
-    alternativeTopics: ["Internal Security of Pakistan", "Role of Armed Forces in Peace", "How to End Extremism", "National Action Plan"]
+    alternativeTopics: ["Internal Security of Pakistan", "Role of Armed Forces in Peace", "How to End Extremism", "National Action Plan"],
+    tags: []
   },
   {
     id: 8,
@@ -398,7 +588,8 @@ export const lecturettes = [
     intro: "This famous proverb means that unity brings strength, while fights and division make us weak. It applies to families, teams, and countries. A nation that stands united can face any crisis, while a divided nation collapses from within. Unity is the secret of survival.",
     points: "When a nation stands united, it can defeat any enemy, handle floods, and grow economically. Division based on language, sect, or province makes us weak and allows enemies to target our peace. History shows that nations fall when they lose internal unity. We must work as one team for Pakistan.",
     conclusion: "We must rise above personal differences and work as one team for Pakistan. Our real power is unity. Together, we can succeed and overcome any national challenge.",
-    alternativeTopics: ["My Ambition in Life", "Life in Uniform", "Defending the Motherland", "Why I Choose Army Over Corporate"]
+    alternativeTopics: ["My Ambition in Life", "Life in Uniform", "Defending the Motherland", "Why I Choose Army Over Corporate"],
+    tags: []
   },
   {
     id: 9,
@@ -406,7 +597,8 @@ export const lecturettes = [
     intro: "Sports are physical activities that build your body and train your mind. They are essential for growing a healthy, active, and balanced personality. Sports are not just games; they are classrooms for learning vital life skills that books cannot teach.",
     points: "Sports teach you discipline, teamwork, and quick decision-making under pressure. Most importantly, they teach you how to accept defeat with a smile and win with respect, building high emotional strength. It builds confidence, physical stamina, and a positive mindset, preparing candidates to face real-life challenges.",
     conclusion: "Sports are lessons for character. Every student should play outdoor games to stay fit, sharp, and confident, avoiding mobile addiction and building a healthy lifestyle.",
-    alternativeTopics: ["Deforestation and Global Warming", "Floods in Pakistan", "Save Our Environment", "Pollution and Clean Pakistan"]
+    alternativeTopics: ["Deforestation and Global Warming", "Floods in Pakistan", "Save Our Environment", "Pollution and Clean Pakistan"],
+    tags: []
   },
   {
     id: 10,
@@ -414,7 +606,8 @@ export const lecturettes = [
     intro: "Modern technology like smartphones, the internet, and artificial intelligence has changed our lives. While it makes life easy, it has both advantages and disadvantages. We must understand how to balance it to avoid its bad impacts.",
     points: "The advantages are fast communication, online studies, and advanced hospitals. The disadvantages are lack of physical play, loss of privacy, and screen addiction among children. It can make youth lazy and unfocused if used only for entertainment. We must maintain a healthy balance and use it for learning.",
     conclusion: "Technology is a useful servant but a bad master. Use it to learn and work, but do not let it control your time. Self-discipline is key to using technology.",
-    alternativeTopics: ["Youth Bulge: Asset or Liability", "Responsibilities of Pakistani Youngsters", "IT Skills and Youth", "Leadership and the New Generation"]
+    alternativeTopics: ["Youth Bulge: Asset or Liability", "Responsibilities of Pakistani Youngsters", "IT Skills and Youth", "Leadership and the New Generation"],
+    tags: []
   },
   {
     id: 11,
@@ -422,7 +615,8 @@ export const lecturettes = [
     intro: "Self-reliance means producing your own resources and standing on your own feet, while foreign aid means borrowing loans from other countries and international banks. A country cannot maintain its self-respect and freedom if it depends on others' money.",
     points: "Foreign aid offers quick relief but leads to high debts, loss of freedom in decisions, and economic weakness. Self-reliance builds local industries, creates jobs, and makes a nation proud, strong, and independent. It encourages hard work and local production, reducing our reliance on imports.",
     conclusion: "We cannot run a proud nation on borrowed money. We must increase exports, control expenses, and focus on self-reliance to achieve complete financial and political freedom.",
-    alternativeTopics: ["How to Reduce Poverty", "Zakat and Welfare State", "Unemployment Problems", "Economic Inequality in Pakistan"]
+    alternativeTopics: ["How to Reduce Poverty", "Zakat and Welfare State", "Unemployment Problems", "Economic Inequality in Pakistan"],
+    tags: []
   },
   {
     id: 12,
@@ -430,7 +624,8 @@ export const lecturettes = [
     intro: "Moral values mean basic goodness like honesty, helping others, truth, and respect. They are the base of a peaceful, clean, and civilized society. Education without values is incomplete, as it only trains the mind but ignores the heart.",
     points: "Today, youth are getting high degrees but lack moral training. This leads to rising corruption, crimes, and fights in public. Respecting elders and helping the weak is as important as getting high marks. We must focus on character building along with academic grading to solve social issues.",
     conclusion: "Education without values is useless. We must practice honesty and respect in our daily lives to make Pakistan a better place. Manners define a civilized nation.",
-    alternativeTopics: ["Pak-China Friendship", "Gwadar Port and Trade Routes", "Road Infrastructure of Pakistan", "Economic Game Changer CPEC"]
+    alternativeTopics: ["Pak-China Friendship", "Gwadar Port and Trade Routes", "Road Infrastructure of Pakistan", "Economic Game Changer CPEC"],
+    tags: []
   },
   {
     id: 13,
@@ -438,16 +633,17 @@ export const lecturettes = [
     intro: "Overpopulation means a state where the population grows faster than the resources of the land, creating a high load on services. It is a major threat to our future, leading to poverty, lack of jobs, and environmental damage.",
     points: "It leads to food shortages, lack of clean water, high traffic, and scarcity of schools and hospitals. In Pakistan, the main reason for poverty and low education is our fast-growing population. It prevents the state from providing basic facilities to everyone, keeping the country backward.",
     conclusion: "We must control population growth through awareness and planning. Managing our population is vital to provide a good life and equal facilities to everyone.",
-    alternativeTopics: ["Accountability and Rule of Law", "Why Bribery Destroys Nations", "Honesty in Public Service", "Anti-Corruption Measures"]
+    alternativeTopics: ["Accountability and Rule of Law", "Why Bribery Destroys Nations", "Honesty in Public Service", "Anti-Corruption Measures"],
+    tags: []
   },
   {
     id: 14,
-    title: "Co-Education: Merits and Demerits",
+    title: "Impact of Co-Education on Youth",
     intro: "Co-education is a system where boys and girls study together in the same classes. It is very common in modern universities today. While it has many practical benefits, it also requires self-discipline and respect.",
     points: "The merits are that it builds confidence, promotes healthy study competition, and teaches boys and girls to respect each other in professional fields. The demerits include social distractions if students lack self-control and moral limits. It saves resources by sharing buildings and labs.",
     conclusion: "Co-education is practical and prepares students for future jobs. With self-discipline, moral boundaries, and mutual respect, it is a very successful system.",
-    zeeshanRecommended: true,
-    alternativeTopics: ["Discipline in Student Life", "Quaid's Motto: Unity, Faith, Discipline", "Discipline in Armed Forces", "Why Rules Matter in Society"]
+    alternativeTopics: ["Discipline in Student Life", "Quaid's Motto: Unity, Faith, Discipline", "Discipline in Armed Forces", "Why Rules Matter in Society"],
+    tags: ["youth"]
   },
   {
     id: 15,
@@ -455,18 +651,20 @@ export const lecturettes = [
     intro: "Media freedom means the right of news channels and internet writers to report facts honestly without any pressure or fear. However, this freedom must be balanced with responsibility to protect national peace.",
     points: "Free media exposes crimes and informs the public. But absolute freedom without rules leads to spreading fake news, rumors, and panic. Media must check facts before showing them on television or social media to avoid creating chaos and confusion in the country.",
     conclusion: "Freedom must go with responsibility. Clean and true news reporting protects national security, guides the public to progress, and builds a stable society.",
-    alternativeTopics: ["Constructing New Dams", "Save Water Save Life", "Agricultural Water Wastage", "Glacier Melting Threat"]
+    alternativeTopics: ["Constructing New Dams", "Save Water Save Life", "Agricultural Water Wastage", "Glacier Melting Threat"],
+    tags: []
   },
   // --- ADMIN ONLY - ZEESHAN RECOMMENDED SECTION ---
   {
     id: 16,
-    title: "Why drug usage is rising among Youth",
+    title: "Drug Addiction / Abuse in Youth",
     intro: "Drug usage among youth is a growing global concern, particularly affecting the social fabric of developing nations like Pakistan. It is a threat to our future. The youth are the engines of progress. When they fall into addiction, the whole nation suffers a loss of talent and energy. Resolving this is our top duty.",
     points: "Peer pressure, academic stress, and lack of guidance lead to drug addiction. This destroys the physical and mental health of our youth. Useless habits and easy access to drugs near campuses make it worse. The glamorous depiction of bad habits in media is another factor. We must protect our youth.",
     conclusion: "We must strictly ban drugs and support youth with mental health counseling and sports activities. Giving them love, support, and healthy tasks is the key to protect them.",
     adminOnly: true,
     zeeshanRecommended: true,
-    alternativeTopics: ["Drug Addiction Causes", "Youth Mental Health and Drugs", "Role of Parents in Preventing Addiction", "Rehab and Healthy Activities"]
+    alternativeTopics: ["Drug Addiction Causes", "Youth Mental Health and Drugs", "Role of Parents in Preventing Addiction", "Rehab and Healthy Activities"],
+    tags: ["youth"]
   },
   {
     id: 17,
@@ -476,7 +674,8 @@ export const lecturettes = [
     conclusion: "Trust your preparation and abilities. With self-belief, success is always within reach. Believe you can do it. Confidence is the key to achievement.",
     adminOnly: true,
     zeeshanRecommended: true,
-    alternativeTopics: ["Confidence is Key", "Positive Self-Talk", "Overcoming Failure", "Believing in Your Goals"]
+    alternativeTopics: ["Confidence is Key", "Positive Self-Talk", "Overcoming Failure", "Believing in Your Goals"],
+    tags: ["youth"]
   },
   {
     id: 18,
@@ -486,7 +685,8 @@ export const lecturettes = [
     conclusion: "We must maintain a balanced approach that protects both our economic interests and national honor. Security must never be compromised.",
     adminOnly: true,
     zeeshanRecommended: true,
-    alternativeTopics: ["Pak-India Relations", "Regional Trade in South Asia", "Sovereignty vs Economic Gain", "CPEC vs Indian Trade Routes"]
+    alternativeTopics: ["Pak-India Relations", "Regional Trade in South Asia", "Sovereignty vs Economic Gain", "CPEC vs Indian Trade Routes"],
+    tags: []
   },
   {
     id: 19,
@@ -496,7 +696,8 @@ export const lecturettes = [
     conclusion: "A friend is someone who guides you to the right path. Respectful friendships contribute positively to personal growth. Maintain boundaries.",
     adminOnly: true,
     zeeshanRecommended: true,
-    alternativeTopics: ["Co-gender Friendships", "Moral Limits in Friendships", "Gender respect in Islam", "Healthy Social Boundaries"]
+    alternativeTopics: ["Co-gender Friendships", "Moral Limits in Friendships", "Gender respect in Islam", "Healthy Social Boundaries"],
+    tags: ["youth"]
   },
   {
     id: 20,
@@ -506,7 +707,8 @@ export const lecturettes = [
     conclusion: "We must follow an independent foreign policy that keeps Pakistan safe, neutral, and out of foreign wars. Sovereignty is sacred.",
     adminOnly: true,
     zeeshanRecommended: true,
-    alternativeTopics: ["Foreign Policy of Pakistan", "US-Pak Relations", "National Sovereignty and Borders", "Neutrality in Foreign Wars"]
+    alternativeTopics: ["Foreign Policy of Pakistan", "US-Pak Relations", "National Sovereignty and Borders", "Neutrality in Foreign Wars"],
+    tags: []
   },
   {
     id: 21,
@@ -516,7 +718,8 @@ export const lecturettes = [
     conclusion: "Use money to fulfill needs, but build character and clean relationships for a peaceful and happy life. Contentment is real wealth.",
     adminOnly: true,
     zeeshanRecommended: true,
-    alternativeTopics: ["Materialism vs True Happiness", "Importance of Character Over Wealth", "Poverty vs Peace of Mind", "What Money Cannot Buy"]
+    alternativeTopics: ["Materialism vs True Happiness", "Importance of Character Over Wealth", "Poverty vs Peace of Mind", "What Money Cannot Buy"],
+    tags: ["youth"]
   },
   {
     id: 22,
@@ -526,7 +729,8 @@ export const lecturettes = [
     conclusion: "Use AI tools to expand your knowledge, but keep your brain active and creative. Rely on your own hard work and critical thinking.",
     adminOnly: true,
     zeeshanRecommended: true,
-    alternativeTopics: ["AI in Education", "ChatGPT: Help or Hurt", "Digital Learning in Schools", "Rote Learning vs AI Assistance"]
+    alternativeTopics: ["AI in Education", "ChatGPT: Help or Hurt", "Digital Learning in Schools", "Rote Learning vs AI Assistance"],
+    tags: ["youth"]
   },
   {
     id: 23,
@@ -536,7 +740,8 @@ export const lecturettes = [
     conclusion: "Let students focus on research and character, respecting their choices within professional limits of decency. Focus on progress.",
     adminOnly: true,
     zeeshanRecommended: true,
-    alternativeTopics: ["Dress Code in Higher Education", "Hijab Choice and Freedom", "Decency in Educational Institutions", "Islamic Dress Standards"]
+    alternativeTopics: ["Dress Code in Higher Education", "Hijab Choice and Freedom", "Decency in Educational Institutions", "Islamic Dress Standards"],
+    tags: ["youth"]
   },
   {
     id: 24,
@@ -546,7 +751,8 @@ export const lecturettes = [
     conclusion: "Channel your desire toward learning and excellence to achieve great things in life. Avoid material greed. Control ambition.",
     adminOnly: true,
     zeeshanRecommended: true,
-    alternativeTopics: ["Ambition vs Greed", "Greed for Knowledge", "What Drives Progress", "Limits of Desire"]
+    alternativeTopics: ["Ambition vs Greed", "Greed for Knowledge", "What Drives Progress", "Limits of Desire"],
+    tags: ["youth"]
   },
   {
     id: 25,
@@ -556,7 +762,8 @@ export const lecturettes = [
     conclusion: "Reserving it for extreme crimes with solid proof ensures justice and peace. It must be used carefully and transparently.",
     adminOnly: true,
     zeeshanRecommended: true,
-    alternativeTopics: ["Death Penalty Debate", "Human Rights and Criminals", "Deterrence to Crime", "Justice for Victims"]
+    alternativeTopics: ["Death Penalty Debate", "Human Rights and Criminals", "Deterrence to Crime", "Justice for Victims"],
+    tags: []
   },
   {
     id: 26,
@@ -566,27 +773,30 @@ export const lecturettes = [
     conclusion: "We must stand united as one nation and reject sectarian hatred to achieve lasting peace. Unity is our ultimate strength.",
     adminOnly: true,
     zeeshanRecommended: true,
-    alternativeTopics: ["Inter-sect Harmony", "Religious Extremism", "Unity of Muslim Ummah", "Causes of Sectarian Hatred"]
+    alternativeTopics: ["Inter-sect Harmony", "Religious Extremism", "Unity of Muslim Ummah", "Causes of Sectarian Hatred"],
+    tags: []
   },
   {
     id: 27,
-    title: "Why do youngsters disrespect their elders?",
+    title: "Why Younger Generation Hide Things from Parents",
     intro: "Respect for elders is a core value in Eastern culture. Recently, there is a rising concern over the lack of respect shown by the youth. This generation gap and lack of respect weakens our family bonds and destroys peace.",
     points: "Media influence and communication gaps cause disrespect. Lack of moral training at home and school makes youth rude. Youngsters feel elders do not understand technology, leading to arguments. We must bridge this gap.",
     conclusion: "Listen to the experience of elders and combine it with your modern energy for success. Respect is a moral duty.",
     adminOnly: true,
     zeeshanRecommended: true,
-    alternativeTopics: ["Generation Gap", "Moral Training of Youth", "Western Culture Influence", "Respecting Parents"]
+    alternativeTopics: ["Generation Gap", "Moral Training of Youth", "Western Culture Influence", "Respecting Parents"],
+    tags: ["youth"]
   },
   {
     id: 28,
-    title: "Why are physical games played less today than in the past?",
+    title: "Impact of Video Games on Youth",
     intro: "Physical games like football and hockey are essential for health. Today, youth spend much less time in playgrounds than previous generations. This decline in physical activities is creating a weak, passive, and screen-addicted generation.",
     points: "Mobile screens, video games, and lack of parks keep youth indoors. This causes health issues and limits teamwork skills. Playgrounds are getting empty, and cities are covered in concrete. Parents must limit screen time.",
     conclusion: "Balance technology with outdoor games to stay fit, active, and learn leadership. Go back to playgrounds for a healthy life.",
     adminOnly: true,
     zeeshanRecommended: true,
-    alternativeTopics: ["Mobile Addiction in Children", "Empty Playgrounds", "Importance of Outdoor Sports", "Physical Fitness Decline"]
+    alternativeTopics: ["Mobile Addiction in Children", "Empty Playgrounds", "Importance of Outdoor Sports", "Physical Fitness Decline"],
+    tags: ["youth"]
   },
   {
     id: 29,
@@ -596,7 +806,8 @@ export const lecturettes = [
     conclusion: "Learn to use AI as a tool to boost your productivity and prepare for the high-tech future. Direct technology responsibly.",
     adminOnly: true,
     zeeshanRecommended: true,
-    alternativeTopics: ["AI and Job Losses", "The Future of Technology", "Human-AI Collaboration", "Smarter Machines"]
+    alternativeTopics: ["AI and Job Losses", "The Future of Technology", "Human-AI Collaboration", "Smarter Machines"],
+    tags: ["youth"]
   },
   {
     id: 30,
@@ -606,6 +817,134 @@ export const lecturettes = [
     conclusion: "Sustainable progress requires public support and accountability, which only democracy can provide. Mature institutions are key.",
     adminOnly: true,
     zeeshanRecommended: true,
-    alternativeTopics: ["Is Democracy Best?", "Military Rule vs Political Rule", "Public Accountability", "Stability in Pakistan"]
+    alternativeTopics: ["Is Democracy Best?", "Military Rule vs Political Rule", "Public Accountability", "Stability in Pakistan"],
+    tags: []
+  },
+  // --- ADDITIONAL NEW YOUTH TOPICS ---
+  {
+    id: 31,
+    title: "Reason of Stress in Young Generation",
+    intro: "Stress in the young generation is a major psychological issue in modern times. Stress is the body's reaction to feeling under pressure, threatened, or unable to cope. Today, more than ever, teenagers and young adults complain of constant mental pressure, anxiety, and depression. Understanding the causes of this stress is essential to protect their mental health and future.",
+    points: "The primary causes are extreme academic competition, peer pressure, and high career expectations from parents. Youngsters also face digital comparison on social media, where they see others' highlights and feel insecure about their own lives. Additionally, a lack of regular physical play, poor sleep cycles, and the rising costs of higher education add to their daily mental load. We must help them manage it.",
+    conclusion: "In conclusion, youth stress is a silent challenge that needs collective care. We must change our mindset and value mental peace over social competition. By providing a supportive environment, encouraging healthy sports, and teaching stress management, we can help our young generation lead happy, productive, and successful lives.",
+    alternativeTopics: ["Youth Anxiety Causes", "Academic Pressure on Students", "How Social Media Causes Depression", "Mental Health in Universities"],
+    tags: ["youth"]
+  },
+  {
+    id: 32,
+    title: "Reason of Intolerance in Youth",
+    intro: "Intolerance means the unwillingness to accept opinions, beliefs, or behaviors that are different from one's own. Lately, there has been a rising concern about the increasing levels of intolerance and anger among the youth in Pakistan. This lack of patience leads to fights in colleges, street anger, and division in society.",
+    points: "The main causes are the negative influence of social media algorithms that highlight extreme views, a lack of quality moral training at home and school, and political radicalization. Jobless youth are easily frustrated by economic crises, inflation, and lack of opportunities. This frustration turns into public anger and intolerance toward different views. We must teach tolerance.",
+    conclusion: "In short, tolerance is the foundation of a peaceful society. We must help our youth realize that having different views is a sign of a healthy mind, not an enmity. By promoting dialogue, moral values, and tolerance, we can build a peaceful, united, and cooperative nation.",
+    alternativeTopics: ["Anger Management in Students", "Sectarian Intolerance", "Impact of Extreme Online Content", "How to Promote Peace"],
+    tags: ["youth"]
+  },
+  {
+    id: 33,
+    title: "Future of Youth of Pakistan",
+    intro: "The future of Pakistan is directly tied to the future of its youth, who make up over sixty percent of the population. This demographic asset holds the power to transform Pakistan into a developed, modern nation, or it can become a social burden if left unguided, uneducated, and unemployed. The path we choose today defines our future.",
+    points: "The future depends on the opportunities we provide. If the youth receive quality technical education, IT skills, and starting business loans, they will succeed. However, if they face low quality schools, inflation, and unemployment, they will suffer from hopelessness, brain drain, or get involved in anti-social activities. We must guide them to succeed.",
+    conclusion: "In conclusion, the future of our youth is bright if we invest in their skills and character today. They are the leaders of tomorrow. By providing them quality education, merit, and guidance, we can ensure a highly successful, self-reliant, and respected Pakistan on the world stage.",
+    alternativeTopics: ["Demographic Dividend in Pakistan", "Youth Opportunities and Challenges", "IT Future of Pakistan", "Brain Drain vs National Growth"],
+    tags: ["youth"]
+  },
+  {
+    id: 34,
+    title: "Why Celebrities Have Become Role Models for Youth",
+    intro: "A role model is a person whose behavior, success, or lifestyle is copied by others, especially by young minds. In the digital age, traditional role models like teachers and parents are being replaced by media celebrities, sports stars, and social media influencers. This shift has massive impacts on the psychology and dreams of the youth.",
+    points: "Celebrities have become role models due to the high reach of social media, television, and cinema. Youngsters see their wealthy lifestyles, fame, and attractive profiles daily. They copy them to look modern, fit in with friends, or escape their simple, daily routines. Often, local institutions fail to highlight real-life heroes like scientists or social workers. We must redirect this.",
+    conclusion: "In short, whom the youth copy defines what society becomes. While celebrity entertainment is fine, copy-pasting their lives is dangerous. We must guide our youth to value character, hard work, and moral integrity, choosing role models who contribute positively to the development of the human race and our nation.",
+    alternativeTopics: ["Celebrity Obsession in Teenagers", "Impact of Influencer Marketing", "Highlighting Real National Heroes", "Materialism in Youth"],
+    tags: ["youth"]
+  },
+  {
+    id: 35,
+    title: "How the Use of Offensive Language Affects Youth",
+    intro: "Language is the medium of communication that reflects a person's manners, education, and character. Recently, the use of offensive, abusive, and slang language has increased significantly among the youth, both in schools and on social media platforms. This habit destroys our social values and affects the personality growth of youngsters.",
+    points: "The main causes are the negative influence of modern movies, rap music, and social media content where abusive language is used to gain likes and views. Youngsters copy this to look cool, bold, or to show anger in front of friends. A lack of check by parents and a decrease in moral training in schools also contribute to this habit. We must fix this.",
+    conclusion: "In conclusion, clean language is a sign of a noble character. The use of offensive language only highlights a weak mind and bad manners. By focusing on moral training, monitoring media, and choosing polite words, we can help our youth develop a respected and attractive personality that contributes to a civilized society.",
+    alternativeTopics: ["Slang Language Impact", "Moral Decay in Students", "Role of Media in Bad Habits", "Improving Communication Skills"],
+    tags: ["youth"]
+  },
+  {
+    id: 36,
+    title: "Impatience in Youth Regarding Jobs",
+    intro: "Impatience means the irritation or frustration caused by delay or waiting. Today, a major issue among young graduates in Pakistan is their high impatience regarding jobs, salaries, and career growth. They want quick success, high salaries, and rapid promotions immediately after university, without spending time to learn the work.",
+    points: "This impatience is caused by looking at overnight success stories on social media and comparing themselves with top influencers. Private universities also promise high placements, building false hopes. Furthermore, rising inflation, family pressure to earn, and a lack of career counseling lead youth to search for shortcuts instead of building skills. We must guide them.",
+    conclusion: "In conclusion, there are no shortcuts to real success. Rome was not built in one day, and a stable career needs years of patience, learning, and grit. By focusing on skill development, keeping realistic expectations, and working consistently, our youth can build highly rewarding and stable careers.",
+    alternativeTopics: ["Job Hopping in Young Graduates", "Career Stress in Students", "Unrealistic Expectations in Careers", "Importance of Patience in Life"],
+    tags: ["youth"]
+  },
+  {
+    id: 37,
+    title: "Is Pakistan Idol a Good Platform for Our Youth",
+    intro: "Pakistan Idol was a famous music reality show designed to find local singing talent across the country. Reality shows attract millions of young viewers and applicants. Whether such media platforms are a good and productive outlet for our massive youth population is a subject of major discussion in our society.",
+    points: "It is considered a good platform because it provides a launching pad for talented youth from middle-class backgrounds, giving them national fame and a career. However, critics argue it highlights only entertainment (music and glamour) while ignoring critical fields like science, technology, coding, and entrepreneurship, which the country needs. We must balance media focus.",
+    conclusion: "In conclusion, platforms like Pakistan Idol are fine for entertainment and musical talent. However, a developing country like Pakistan needs platforms that promote science, IT skills, and entrepreneurship. We must balance media entertainment with productive challenges to guide our youth toward building a strong, modern nation.",
+    alternativeTopics: ["Impact of Reality Shows on Youth", "Science Competitions vs Music Shows", "Media Distractions for Students", "Role of Media in Skill Development"],
+    tags: ["youth"]
+  },
+  {
+    id: 38,
+    title: "Impact of Movies and Cinema on Youth",
+    intro: "Cinema and movies are powerful tools of media that combine stories, visuals, and music. Young minds are highly sensitive and learn quickly from what they see on the big screen. The impact of cinema on youth is massive, shaping their thoughts, fashion, behavior, and social values directly.",
+    points: "Cinema has a high impact because of its realistic and emotional storytelling. Youngsters watch movies for entertainment, but they also copy the actors' clothing, hairstyles, speech, and habits. Often, movies glorify bad habits like smoking, violence, and materialism, which young viewers adopt without realizing the bad results. We must monitor media content.",
+    conclusion: "To sum up, cinema is a mirror of society and an educator of minds. Its impact can be highly positive or dangerously negative. By promoting clean, educational, and inspiring movies, we can use cinema to educate our youth, build their character, and guide them toward a positive life.",
+    alternativeTopics: ["Media Influence on Teenagers", "Vulgarity in Cinema", "Patriotic Movies and Youth", "Character Building Through Media"],
+    tags: ["youth"]
+  },
+  {
+    id: 39,
+    title: "Should We Ban Cellphones for Youth?",
+    intro: "Smartphones have become a basic necessity of modern life, used for studies, communication, and entertainment. However, the rising mobile addiction among teenagers has sparked a serious debate. While cellphones are useful, their excessive use raises the question of whether we should ban them for youth.",
+    points: "A ban is suggested because cellphones cause severe screen addiction, distract students from their studies, and reduce physical activities. Youngsters are exposed to inappropriate online content, cyberbullying, and fake profiles. However, a complete ban is difficult today because cellphones are widely used for online classes, research, and safety. We need checks.",
+    conclusion: "In conclusion, cellphones are a useful tool but a bad master. A complete ban is not the solution in the digital age, as it stops learning. The solution is disciplined use, strict parental monitoring, and balancing screen time with physical games, ensuring technology is used only for growth and learning.",
+    alternativeTopics: ["Mobile Screen Time Limits", "Digital Detox for Students", "Impact of Phones on Mental Health", "Parental Control on Technology"],
+    tags: ["youth"]
+  },
+  {
+    id: 40,
+    title: "Youth Challenges and Social Issues in Pakistan",
+    intro: "Pakistan is a developing country with a massive youth population. While this youth bulge is a source of pride, our youngsters face serious social, economic, and educational challenges. Addressing these challenges is necessary to save our youth from desperation and ensure national stability and progress.",
+    points: "The main challenges are low-quality education, high youth unemployment, inflation, and a lack of career guidance. Youngsters are frustrated by political instability and corruption. Additionally, social issues like drug addiction, sectarian division, online propaganda, and pressure from families to earn quickly create high stress. We must fix social systems.",
+    conclusion: "To sum up, the challenges of our youth are the challenges of Pakistan. We cannot grow if our main workforce is stressed and jobless. By providing skills, merit, and a stable environment, we can help our youth overcome these social issues and lead Pakistan to a bright and successful future.",
+    alternativeTopics: ["Youth Unemployment in Pakistan", "Frustration in Young Graduates", "IT Startups and Job Creation", "Moral Crisis in Youth"],
+    tags: ["youth"]
+  },
+  {
+    id: 41,
+    title: "Role of Youth in Politics",
+    intro: "Politics defines the laws, governance, and future of a country. Since the youth make up the largest section of Pakistan's population, their role in politics is highly critical. Whether youth should actively participate in politics or focus only on studies is a major discussion with valid points on both sides.",
+    points: "Youth participation is vital because they bring fresh ideas, modern thoughts, and honesty, which can clean the corrupt political system. However, active involvement in political parties during student life often leads to campus violence, neglect of studies, and makes students tools in the hands of selfish politicians. We must train them nicely.",
+    conclusion: "In conclusion, youth should be politically aware but academically focused. They must use their votes wisely based on merit, not on emotional slogans. By building their education and character first, they can become mature, honest, and capable leaders who can run Pakistan successfully in the future.",
+    alternativeTopics: ["Student Unions in Pakistan", "Political Awareness in Youth", "How to Choose Leaders", "Campus Violence and Student Politics"],
+    tags: ["youth"]
+  },
+  {
+    id: 42,
+    title: "Are Today's Children More Disobedient?",
+    intro: "Respecting parents, teachers, and rules is the basic moral duty of children. Recently, many elders complain that today's children are more disobedient, rude, and hard to control compared to past generations. This shift in child behavior raises concerns about family values, parenting styles, and modern social changes.",
+    points: "The main reasons are the negative influence of internet and social media, which promote absolute independence and rude comedy. Parents are also busy with jobs, spending less time in moral training. Modern parenting has become soft, avoiding any discipline. Additionally, children spend more time on screens than talking to parents. We must fix home discipline.",
+    conclusion: "To sum up, today's children are not naturally bad, but they are exposed to massive digital distractions. Resolving disobedience requires loving guidance, firm discipline, and strong parent-child communication. By teaching respect and moral values, we can raise a polite, disciplined, and successful new generation.",
+    alternativeTopics: ["Modern Parenting Challenges", "Impact of Screens on Behavior", "Moral Education in Schools", "Building Respect in Families"],
+    tags: ["youth"]
+  },
+  {
+    id: 43,
+    title: "Should Children Be Allowed to Use Mobile Phones?",
+    intro: "Mobile phones are powerful computers that offer learning, games, and connectivity. Today, even small children spend hours on smartphones. Whether children under the age of twelve should be allowed to use mobile phones is a serious concern for parents, doctors, and teachers due to its deep impacts.",
+    points: "Phones are given for online studies, educational videos, and to keep in touch with parents. However, children lack the maturity to control phone use. They easily fall into mobile game addiction, watch inappropriate videos, and avoid study. It takes them away from healthy physical play and real family discussions. We must set rules.",
+    conclusion: "In conclusion, children should not have unchecked access to mobile phones. While technology is useful, physical and mental growth needs play, family time, and books. By setting strict time limits, filtering content, and encouraging sports, we can protect our children from mobile harms while allowing digital learning.",
+    alternativeTopics: ["Mobile Addiction in Kids", "Screen Time for Toddlers", "Outdoor Activities vs Video Games", "Healthy Technology Habits"],
+    tags: ["youth"]
+  },
+  {
+    id: 44,
+    title: "Best Things Youth is Doing These Days",
+    intro: "Usually, media highlight negative aspects of youth like mobile addiction and lack of focus. However, the modern youth of Pakistan are also doing some of the most positive, creative, and inspiring things in history. From digital business to social work, our youngsters are proving their high capability daily.",
+    points: "The rise of the internet, IT education, and startup culture has given youth new platforms. Youngsters are motivated to become financially independent, help their families at a young age, and solve local problems. They want to prove themselves on the global stage, using technology as their main weapon for growth. They do great charity works.",
+    conclusion: "To conclude, the positive work of our youth is the real hope of Pakistan. They are not just waiting for jobs; they are creating them. By supporting their startups, IT skills, and voluntary works, we can encourage a highly productive generation that will lead Pakistan to economic self-reliance and progress.",
+    alternativeTopics: ["Youth Achievements in IT", "Freelancing Trends in Pakistan", "Social Work by Students", "Young Entrepreneurs Startup Success"],
+    tags: ["youth"]
   }
 ];

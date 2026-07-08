@@ -9,6 +9,7 @@ const isAdmin = computed(() => authStore.profile?.role === 'admin')
 // Tabs: 'essays' or 'speech'
 const activeTab = ref('essays')
 const searchQuery = ref('')
+const selectedTagFilter = ref('all')
 
 // Selected details state
 const selectedEssay = ref(null)
@@ -123,6 +124,9 @@ const filteredEssays = computed(() => {
   if (!isAdmin.value) {
     list = list.filter(item => !item.adminOnly)
   }
+  if (selectedTagFilter.value === 'youth') {
+    list = list.filter(item => item.tags && item.tags.includes('youth'))
+  }
   const query = searchQuery.value.toLowerCase().trim()
   if (!query) return list
   return list.filter(item => 
@@ -136,6 +140,9 @@ const filteredSpeech = computed(() => {
   let list = lecturettes
   if (!isAdmin.value) {
     list = list.filter(item => !item.adminOnly)
+  }
+  if (selectedTagFilter.value === 'youth') {
+    list = list.filter(item => item.tags && item.tags.includes('youth'))
   }
   const query = searchQuery.value.toLowerCase().trim()
   if (!query) return list
@@ -164,6 +171,14 @@ const goBackToList = () => {
 
 // Reset mobile state on tab switch
 watch(activeTab, () => {
+  showDetailMobile.value = false
+  selectedTagFilter.value = 'all'
+})
+
+// Reset selections on filter change
+watch(selectedTagFilter, () => {
+  selectedEssay.value = null
+  selectedSpeech.value = null
   showDetailMobile.value = false
 })
 </script>
@@ -209,6 +224,25 @@ watch(activeTab, () => {
         />
         <button v-if="searchQuery" class="clear-btn" @click="searchQuery = ''">×</button>
       </div>
+    </div>
+
+    <!-- Tag Filtering Bar -->
+    <div class="tags-filter-bar glass-card">
+      <span class="filter-label">Filter by Theme:</span>
+      <button 
+        class="filter-tag-pill" 
+        :class="{ 'active': selectedTagFilter === 'all' }"
+        @click="selectedTagFilter = 'all'"
+      >
+        🌍 All Topics
+      </button>
+      <button 
+        class="filter-tag-pill" 
+        :class="{ 'active': selectedTagFilter === 'youth' }"
+        @click="selectedTagFilter = 'youth'"
+      >
+        🌟 Youth Topics Only
+      </button>
     </div>
 
     <!-- MAIN GRID LAYOUT -->
@@ -964,5 +998,57 @@ watch(activeTab, () => {
   border: 1px solid rgba(3, 194, 252, 0.15);
   padding: 0.15rem 0.5rem;
   border-radius: 4px;
+}
+
+/* Tag Filter Bar Styles */
+.tags-filter-bar {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none; /* Hide scrollbar Firefox */
+  border: 1px solid var(--border-color);
+}
+
+.tags-filter-bar::-webkit-scrollbar {
+  display: none; /* Hide scrollbar Chrome/Safari */
+}
+
+.filter-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-right: 0.25rem;
+}
+
+.filter-tag-pill {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-color);
+  padding: 0.45rem 1.2rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all var(--transition-smooth);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.filter-tag-pill:hover {
+  border-color: var(--accent-cyan);
+  color: var(--text-primary);
+  background: rgba(3, 194, 252, 0.05);
+}
+
+.filter-tag-pill.active {
+  background: rgba(3, 194, 252, 0.12);
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+  box-shadow: 0 0 12px rgba(3, 194, 252, 0.15);
+  font-weight: 600;
 }
 </style>
