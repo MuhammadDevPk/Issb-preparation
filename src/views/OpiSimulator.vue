@@ -30,6 +30,11 @@ const itemsPerPage = 10
 // Test Data State
 const activeQuestions = ref([])
 const userAnswers = ref({}) // qid -> numeric value (1 to 7)
+const activeExplanations = ref({})
+
+const toggleExplanation = (qid) => {
+  activeExplanations.value[qid] = !activeExplanations.value[qid]
+}
 
 // Likert Scale Definition
 const LIKERT_OPTIONS = [
@@ -86,6 +91,7 @@ const currentSessionDate = ref(null)
 const startTest = () => {
   activeQuestions.value = getBalancedQuestions(testSize.value)
   userAnswers.value = {}
+  activeExplanations.value = {}
   currentPage.value = 0
   testState.value = 'active'
   resetAnalysis()
@@ -512,8 +518,27 @@ const scoreClass = (score) => {
             <span class="q-number">#{{ currentPage * itemsPerPage + idx + 1 }}</span>
             <span class="q-dimension badge-dim">{{ q.dimension }}</span>
           </div>
-          <div class="question-text-block">
-            <h4 class="opi-statement">{{ q.statement }}</h4>
+          <div class="question-text-block" style="display: flex; flex-direction: column; gap: 0.5rem;">
+            <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+              <h4 class="opi-statement" style="margin: 0; line-height: 1.4;">{{ q.statement }}</h4>
+              <button 
+                class="explain-btn" 
+                @click="toggleExplanation(q.id)"
+                :title="q.simpleExplanation || 'Click to view simple explanation of this statement'"
+                style="background: rgba(3, 194, 252, 0.08); border: 1px solid rgba(3, 194, 252, 0.2); color: var(--accent-cyan); font-size: 0.75rem; padding: 0.15rem 0.55rem; border-radius: 4px; cursor: pointer; display: inline-flex; align-items: center; gap: 0.25rem; transition: all var(--transition-smooth);"
+              >
+                <span>💡 Explain</span>
+              </button>
+            </div>
+            
+            <!-- Explanation dropdown -->
+            <div 
+              v-if="activeExplanations[q.id]" 
+              class="explanation-detail-box" 
+              style="padding: 0.6rem 0.8rem; background: rgba(255, 255, 255, 0.02); border: 1px dashed var(--accent-cyan); border-radius: 6px; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; animation: slideDown 0.2s ease-out;"
+            >
+              <strong style="color: var(--accent-cyan);">Simple Meaning:</strong> {{ q.simpleExplanation }}
+            </div>
           </div>
 
           <!-- Likert dial selection row -->
