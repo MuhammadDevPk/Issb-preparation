@@ -524,7 +524,7 @@ const scoreClass = (score) => {
               <button 
                 class="explain-btn" 
                 @click="toggleExplanation(q.id)"
-                :title="q.simpleExplanation || 'Click to view simple explanation of this statement'"
+                :title="q.simpleExplanation + (q.urduExplanation ? '\n' + q.urduExplanation : '')"
                 style="background: rgba(3, 194, 252, 0.08); border: 1px solid rgba(3, 194, 252, 0.2); color: var(--accent-cyan); font-size: 0.75rem; padding: 0.15rem 0.55rem; border-radius: 4px; cursor: pointer; display: inline-flex; align-items: center; gap: 0.25rem; transition: all var(--transition-smooth);"
               >
                 <span>💡 Explain</span>
@@ -535,9 +535,16 @@ const scoreClass = (score) => {
             <div 
               v-if="activeExplanations[q.id]" 
               class="explanation-detail-box" 
-              style="padding: 0.6rem 0.8rem; background: rgba(255, 255, 255, 0.02); border: 1px dashed var(--accent-cyan); border-radius: 6px; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; animation: slideDown 0.2s ease-out;"
+              style="padding: 0.7rem 0.9rem; background: rgba(255, 255, 255, 0.02); border: 1px dashed var(--accent-cyan); border-radius: 6px; font-size: 0.85rem; line-height: 1.5; animation: slideDown 0.2s ease-out; display: flex; flex-direction: column; gap: 0.35rem;"
             >
-              <strong style="color: var(--accent-cyan);">Simple Meaning:</strong> {{ q.simpleExplanation }}
+              <div>
+                <strong style="color: var(--accent-cyan);">English Meaning:</strong> 
+                <span style="color: var(--text-primary); margin-left: 0.25rem;">{{ q.simpleExplanation }}</span>
+              </div>
+              <div v-if="q.urduExplanation" style="border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 0.35rem;">
+                <strong style="color: var(--accent-cyan);">Roman Urdu:</strong> 
+                <span style="color: var(--text-secondary); margin-left: 0.25rem; font-style: italic;">{{ q.urduExplanation }}</span>
+              </div>
             </div>
           </div>
 
