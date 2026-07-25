@@ -5,6 +5,7 @@ import { useAuthStore } from '../stores/auth'
 
 const authStore = useAuthStore()
 const isAdmin = computed(() => authStore.profile?.role === 'admin')
+const isPaidUser = computed(() => authStore.profile?.status === 'approved' || authStore.profile?.role === 'admin')
 
 // Tabs: 'essays' or 'speech'
 const activeTab = ref('essays')
@@ -121,7 +122,7 @@ const timerStatusText = computed(() => {
 // Search Filtering
 const filteredEssays = computed(() => {
   let list = essays
-  if (!isAdmin.value) {
+  if (!isPaidUser.value) {
     list = list.filter(item => !item.adminOnly)
   }
   if (selectedTagFilter.value === 'youth') {
@@ -138,7 +139,7 @@ const filteredEssays = computed(() => {
 
 const filteredSpeech = computed(() => {
   let list = lecturettes
-  if (!isAdmin.value) {
+  if (!isPaidUser.value) {
     list = list.filter(item => !item.adminOnly)
   }
   if (selectedTagFilter.value === 'youth') {
@@ -263,7 +264,7 @@ watch(selectedTagFilter, () => {
               <div class="topic-meta">
                 <div class="meta-top-row">
                   <span class="topic-number">Topic #{{ item.id }}</span>
-                  <span v-if="item.zeeshanRecommended && isAdmin" class="badge-recommended">
+                  <span v-if="item.zeeshanRecommended && isPaidUser" class="badge-recommended">
                     🏆 Zeeshan Recommended
                   </span>
                 </div>
@@ -290,7 +291,7 @@ watch(selectedTagFilter, () => {
               <div class="topic-meta">
                 <div class="meta-top-row">
                   <span class="topic-number">Topic #{{ item.id }}</span>
-                  <span v-if="item.zeeshanRecommended && isAdmin" class="badge-recommended">
+                  <span v-if="item.zeeshanRecommended && isPaidUser" class="badge-recommended">
                     🏆 Zeeshan Recommended
                   </span>
                 </div>
@@ -313,7 +314,7 @@ watch(selectedTagFilter, () => {
           <div v-if="selectedEssay" class="essay-viewer">
             <div class="viewer-header">
               <button class="back-list-btn" @click="goBackToList">⬅ Back to Topics List</button>
-              <div v-if="selectedEssay.zeeshanRecommended && isAdmin" class="badge-recommended-large">
+              <div v-if="selectedEssay.zeeshanRecommended && isPaidUser" class="badge-recommended-large">
                 🏆 Zeeshan Recommended (Group Discussion + Public Speaking)
               </div>
               <span class="badge badge-cyan">Structured Outline (1.5 Page Calibration)</span>
@@ -387,7 +388,7 @@ watch(selectedTagFilter, () => {
             <div class="viewer-header flex-header">
               <div class="header-left">
                 <button class="back-list-btn" @click="goBackToList">⬅ Back to Topics List</button>
-                <div v-if="selectedSpeech.zeeshanRecommended && isAdmin" class="badge-recommended-large">
+                <div v-if="selectedSpeech.zeeshanRecommended && isPaidUser" class="badge-recommended-large">
                   🏆 Zeeshan Recommended (Group Discussion + Public Speaking)
                 </div>
                 <span class="badge badge-cyan">2-Minute Lecturette Outline</span>
