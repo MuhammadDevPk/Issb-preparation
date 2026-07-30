@@ -812,7 +812,7 @@ const checkApprovalStatus = async () => {
         <div v-if="activeUploadSection === 'ai'" class="pending-upload-flow w-100">
           <div class="status-info">
             <h3>Upload Payment Receipt</h3>
-            <p>Please transfer the AI subscription fee of Rs. 999 to unlock unlimited handwriting evaluations.</p>
+            <p>Please transfer the AI subscription fee of Rs. 2999 to unlock unlimited handwriting evaluations.</p>
           </div>
 
           <!-- AI Payment Box -->
@@ -828,7 +828,7 @@ const checkApprovalStatus = async () => {
             </div>
             <div class="credential-row">
               <span class="lbl">AI Access Amount:</span>
-              <span class="val text-cyan" style="font-weight: 800; font-size: 1rem;">PKR 999</span>
+              <span class="val text-cyan" style="font-weight: 800; font-size: 1rem;">PKR 2999</span>
             </div>
             <div class="credential-row">
               <span class="lbl">Validity:</span>
@@ -908,7 +908,7 @@ const checkApprovalStatus = async () => {
 
           <!-- AI Payment Box -->
           <div class="payment-credentials-card" style="margin-top: 1.25rem; border-color: rgba(139, 92, 246, 0.3);">
-            <h4 style="color: #8b5cf6;">EasyPaisa Transfer Details (Rs. 999)</h4>
+            <h4 style="color: #8b5cf6;">EasyPaisa Transfer Details (Rs. 2999)</h4>
             <div class="credential-row">
               <span class="lbl">Account Number:</span>
               <span class="val text-cyan" style="font-weight: 700;">03458643910</span>
@@ -919,7 +919,7 @@ const checkApprovalStatus = async () => {
             </div>
             <div class="credential-row">
               <span class="lbl">AI Access Price:</span>
-              <span class="val text-cyan" style="font-weight: 800;">PKR 999</span>
+              <span class="val text-cyan" style="font-weight: 800;">PKR 2999</span>
             </div>
             <div class="credential-row">
               <span class="lbl">Validity:</span>
@@ -930,7 +930,7 @@ const checkApprovalStatus = async () => {
           <div class="support-info-card" style="margin-top: 1rem; border-color: rgba(139, 92, 246, 0.15); background: rgba(139, 92, 246, 0.02);">
             <strong style="color: #8b5cf6;">How to Get Unlimited AI Access:</strong>
             <ol style="margin-top: 0.35rem; padding-left: 1.2rem; font-size: 0.85rem; color: var(--text-secondary); text-align: left; display: flex; flex-direction: column; gap: 0.35rem;">
-              <li>Transfer <strong>Rs. 999</strong> to the EasyPaisa account details above.</li>
+              <li>Transfer <strong>Rs. 2999</strong> to the EasyPaisa account details above.</li>
               <li>Take a <strong>screenshot</strong> of the successful transaction receipt.</li>
               <li>Click <strong>"Upload Payment Screenshot"</strong> below, select your screenshot, and submit.</li>
               <li>Once verified (usually 1-2 hours), you will get 1 month of unlimited image-based handwriting evaluations.</li>
@@ -955,9 +955,9 @@ const checkApprovalStatus = async () => {
 
           <div style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem; width: 100%;">
             <button @click="activeUploadSection = 'ai'; clearAllSelectedFiles()" class="btn btn-primary w-full" style="background: #8b5cf6; border: none; padding: 0.75rem 1rem; font-weight: 600; color: white;">
-              Upload Payment Screenshot (Rs. 999)
+              Upload Payment Screenshot (Rs. 2999)
             </button>
-            <a href="https://wa.me/923456047058?text=Hi%20Umar,%20I%20want%20to%20purchase%20Unlimited%20AI%20Image%20Evaluation%20access%20for%20Rs.%20999.%20My%20email%20is%20" target="_blank" class="btn btn-secondary btn-whatsapp">
+            <a href="https://wa.me/923456047058?text=Hi%20Umar,%20I%20want%20to%20purchase%20Unlimited%20AI%20Image%20Evaluation%20access%20for%20Rs.%202999.%20My%20email%20is%20" target="_blank" class="btn btn-secondary btn-whatsapp">
               WhatsApp Verification / Questions
             </a>
           </div>

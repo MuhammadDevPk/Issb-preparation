@@ -1053,7 +1053,7 @@ onMounted(() => {
             <div class="warning-callout" style="border-left: 4px solid #7c3aed; background: rgba(124, 58, 237, 0.05); color: var(--text-primary);">
               <strong style="color: #7c3aed; display: block; margin-bottom: 0.5rem; font-size: 0.95rem;">💡 How to Unlock 30 Days Unlimited AI Access:</strong>
               <ol style="margin: 0; padding-left: 1.25rem; font-size: 0.88rem; line-height: 1.5; display: flex; flex-direction: column; gap: 0.4rem; text-align: left;">
-                <li>Transfer <strong>Rs. 999</strong> to EasyPaisa:
+                <li>Transfer <strong>Rs. 2999</strong> to EasyPaisa:
                   <div style="margin: 0.25rem 0; padding: 0.5rem; background: var(--bg-surface); border-radius: 4px; border: 1px dashed rgba(124, 58, 237, 0.25);">
                     <div><strong>Account Number:</strong> <span class="text-cyan" style="font-family: monospace; font-size: 0.95rem; font-weight: bold;">03458643910</span></div>
                     <div><strong>Account Name:</strong> <span class="text-cyan" style="font-weight: bold;">umar farooq</span></div>
@@ -1075,7 +1075,7 @@ onMounted(() => {
             <button @click="router.push('/status')" class="btn btn-ai shadow-glow-purple w-full text-center" style="background: #7c3aed; color: white; border: none; font-weight: 600; padding: 0.75rem 1rem; border-radius: var(--border-radius-md); cursor: pointer;">
               📤 Upload Screenshot on Status Page
             </button>
-            <a href="https://wa.me/923456047058?text=Hi%20Umar,%20I%20want%20to%20purchase%20unlimited%20AI%20evaluations%20for%20Rs.%20999%20for%201%20month.%20My%20email%20is%20" target="_blank" class="btn btn-secondary w-full text-center block" style="display: block; text-decoration: none; padding: 0.75rem 1rem; border-radius: var(--border-radius-md); text-align: center; font-weight: 500;">
+            <a href="https://wa.me/923456047058?text=Hi%20Umar,%20I%20want%20to%20purchase%20unlimited%20AI%20evaluations%20for%20Rs.%202999%20for%201%20month.%20My%20email%20is%20" target="_blank" class="btn btn-secondary w-full text-center block" style="display: block; text-decoration: none; padding: 0.75rem 1rem; border-radius: var(--border-radius-md); text-align: center; font-weight: 500;">
               💬 Purchase / Questions via WhatsApp
             </a>
             <button class="btn btn-secondary w-full" @click="showUpgradeModal = false">
@@ -1093,7 +1093,7 @@ onMounted(() => {
             <div class="warning-callout" style="border-left: 4px solid var(--accent-cyan); background: rgba(6, 182, 212, 0.05); color: var(--text-primary);">
               <strong style="color: var(--accent-cyan); display: block; margin-bottom: 0.5rem; font-size: 0.95rem;">⚠️ Account Registration Required:</strong>
               <p style="margin: 0 0 0.5rem 0; font-size: 0.88rem; line-height: 1.4; text-align: left;">
-                To unlock unlimited AI evaluations for 30 days (Rs. 999), you must first create a candidate account. Guests cannot purchase or activate subscription packages.
+                To unlock unlimited AI evaluations for 30 days (Rs. 2999), you must first create a candidate account. Guests cannot purchase or activate subscription packages.
               </p>
               <p style="margin: 0; font-size: 0.88rem; line-height: 1.4; font-weight: 500; text-align: left;">
                 After registering and logging in, you will transfer payment and upload your screenshot on the Status page to unlock unlimited access.
@@ -1113,7 +1113,7 @@ onMounted(() => {
             <button @click="router.push('/login')" class="btn btn-secondary w-full" style="font-weight: 500; cursor: pointer;">
               🔑 Log In to Existing Account
             </button>
-            <a href="https://wa.me/923456047058?text=Hi%20Umar,%20I%20want%20to%20register%20and%20purchase%20unlimited%20AI%20evaluations%20for%20Rs.%20999.%20My%20email%20is%20" target="_blank" class="btn btn-secondary w-full text-center block" style="display: block; text-decoration: none; padding: 0.75rem 1rem; border-radius: var(--border-radius-md); text-align: center; font-weight: 500;">
+            <a href="https://wa.me/923456047058?text=Hi%20Umar,%20I%20want%20to%20register%20and%20purchase%20unlimited%20AI%20evaluations%20for%20Rs.%202999.%20My%20email%20is%20" target="_blank" class="btn btn-secondary w-full text-center block" style="display: block; text-decoration: none; padding: 0.75rem 1rem; border-radius: var(--border-radius-md); text-align: center; font-weight: 500;">
               💬 Registration / Purchase Help on WhatsApp
             </a>
             <button class="btn btn-secondary w-full" @click="showUpgradeModal = false">
