@@ -27,6 +27,34 @@ const pageDescription = computed(() => {
   )
 })
 
+const jsonLdSchema = computed(() => ({
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebApplication',
+      '@id': 'https://issb-preparation.vercel.app/#webapp',
+      'name': 'ISSB Command',
+      'url': 'https://issb-preparation.vercel.app',
+      'description': 'Interactive timed psychologist simulators (WAT, SCT, SRT, OPI), 5-day curriculum roadmap, and GTO obstacle planning for ISSB military candidates.',
+      'applicationCategory': 'EducationalApplication',
+      'operatingSystem': 'Any modern web browser',
+      'offers': {
+        '@type': 'Offer',
+        'price': '0',
+        'priceCurrency': 'PKR',
+        'description': '30-minute free trial with full access to all test timers and study guides',
+      },
+    },
+    {
+      '@type': 'EducationalOrganization',
+      '@id': 'https://issb-preparation.vercel.app/#organization',
+      'name': 'ISSB Command Preparation Portal',
+      'url': 'https://issb-preparation.vercel.app',
+      'logo': 'https://issb-preparation.vercel.app/favicon.svg',
+    },
+  ],
+}))
+
 useHead(() => ({
   title: pageTitle.value,
   meta: [
@@ -36,14 +64,23 @@ useHead(() => ({
     { property: 'og:title', content: pageTitle.value },
     { property: 'og:description', content: pageDescription.value },
     { property: 'og:url', content: currentCanonical.value },
-    { property: 'og:image', content: 'https://issb-preparation.vercel.app/favicon.svg' },
+    { property: 'og:image', content: 'https://issb-preparation.vercel.app/og-image.png' },
+    { property: 'og:image:width', content: '1200' },
+    { property: 'og:image:height', content: '630' },
+    { property: 'og:image:type', content: 'image/png' },
     { name: 'twitter:card', content: 'summary_large_image' },
     { name: 'twitter:title', content: pageTitle.value },
     { name: 'twitter:description', content: pageDescription.value },
-    { name: 'twitter:image', content: 'https://issb-preparation.vercel.app/favicon.svg' },
+    { name: 'twitter:image', content: 'https://issb-preparation.vercel.app/og-image.png' },
   ],
   link: [
     { rel: 'canonical', href: currentCanonical.value },
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify(jsonLdSchema.value),
+    },
   ],
 }))
 
