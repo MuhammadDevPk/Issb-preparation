@@ -282,6 +282,11 @@ const srtGuides = ref([
   { title: 'E.g. SRT Statements & Answers', filename: 'e.g SRT statements and answer.jpeg' }
 ])
 
+const getSrtThumb = (filename) => {
+  const thumbName = filename.replace(/\.(png|jpe?g|webp)$/i, '.webp')
+  return `/media/images/tests-guides/SRT/thumbnails/${thumbName}`
+}
+
 const openSrtLightbox = (idx) => {
   srtLightboxIndex.value = idx
   srtLightboxOpen.value = true
@@ -350,7 +355,7 @@ const totalAnswered = computed(() => {
     <!-- SETUP VIEW -->
     <div class="setup-container glass-card" v-if="testState === 'setup'">
       <span class="badge badge-cyan">Psychology Simulators</span>
-      <h2>Situation Reaction Test (SRT) Trainer</h2>
+      <h1 class="page-title">Situation Reaction Test (SRT) Trainer</h1>
       <p>
         The Situation Reaction Test measures practical intelligence, courage, resourcefulness, and
         social cooperation. You are given **30 seconds** to write a brief, realistic, and
@@ -487,9 +492,11 @@ const totalAnswered = computed(() => {
           >
             <div class="guide-image-container">
               <img 
-                :src="'/media/images/tests-guides/SRT/' + item.filename" 
+                :src="getSrtThumb(item.filename)" 
                 :alt="item.title"
                 class="guide-thumbnail"
+                width="400"
+                height="250"
                 loading="lazy"
               />
               <div class="guide-card-overlay">
@@ -936,6 +943,8 @@ const totalAnswered = computed(() => {
             :src="'/media/images/tests-guides/SRT/' + srtGuides[srtLightboxIndex].filename" 
             :alt="srtGuides[srtLightboxIndex].title"
             class="lightbox-image"
+            width="1200"
+            height="750"
           />
           <div class="lightbox-caption">
             <span class="caption-category">SRT Guide</span>

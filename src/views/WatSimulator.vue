@@ -323,6 +323,7 @@ const avgLength = computed(() => {
 
 // Localhost Dev Gating
 const isLocalhost = computed(() => {
+  if (typeof window === 'undefined') return false
   return import.meta.env.DEV || 
          window.location.hostname === 'localhost' || 
          window.location.hostname === '127.0.0.1'
@@ -343,11 +344,11 @@ const watGuides = [
     description: 'Learn what WAT is, why it is conducted, and the exact test procedure.',
     items: [
       { title: 'What is WAT?', filename: 'What is WAT.jpeg' },
-      { title: 'Purpose of WAT', filename: 'Purpose of WAT.png' },
-      { title: 'Why WAT is Conducted', filename: 'Why WAT Conducted.png' },
-      { title: 'History of WAT', filename: 'history of WAT.jpg' },
-      { title: 'WAT Test Procedure & Time Limit', filename: 'WAT time limit and test procedure.png' },
-      { title: 'How WAT is Conducted', filename: 'how WAT is conducted.png' }
+      { title: 'Purpose of WAT', filename: 'Purpose of WAT.webp' },
+      { title: 'Why WAT is Conducted', filename: 'Why WAT Conducted.webp' },
+      { title: 'History of WAT', filename: 'history of WAT.webp' },
+      { title: 'WAT Test Procedure & Time Limit', filename: 'WAT time limit and test procedure.webp' },
+      { title: 'How WAT is Conducted', filename: 'how WAT is conducted.webp' }
     ]
   },
   {
@@ -362,7 +363,7 @@ const watGuides = [
       { title: 'How to Practice for WAT (Part 6)', filename: 'How to practice for WAT 7.jpeg' },
       { title: 'How to Practice for WAT (Part 7)', filename: 'How to practice for WAT 8.jpeg' },
       { title: 'How to Practice for WAT (Part 8)', filename: 'How to practice for WAT 9.jpeg' },
-      { title: 'Time Management in WAT', filename: 'Wat Time Management.png' },
+      { title: 'Time Management in WAT', filename: 'Wat Time Management.webp' },
       { title: 'Pro Tips for WAT', filename: 'Tips for wat.jpeg' }
     ]
   },
@@ -371,7 +372,7 @@ const watGuides = [
     description: 'Understand how psychologists analyze your sentences and detect fake positive behaviors.',
     items: [
       { title: 'Officer-Like Thinking', filename: 'OFFICER-LIKE THINKING in WAT.jpeg' },
-      { title: 'What Psychologists Observe (Part 1)', filename: 'what physologist observe durring wat 1.png' },
+      { title: 'What Psychologists Observe (Part 1)', filename: 'what physologist observe durring wat 1.webp' },
       { title: 'What Psychologists Observe (Part 2)', filename: 'what physologist observe durring wat 2.jpeg' },
       { title: 'How Psychologists Detect Fake Responses (Part 1)', filename: 'HOW PSYCHULUGISTS DETECT FAKE RESPONSES.jpeg' },
       { title: 'How Psychologists Detect Fake Responses (Part 2)', filename: 'HOW PSYCHULOGISTS DETECT FAKE RESPONSES 2.jpeg' }
@@ -384,21 +385,26 @@ const watGuides = [
       { title: 'Good WAT Responses Example', filename: 'Good WAT responsee.jpeg' },
       { title: 'Poor Responses Example (Part 1)', filename: 'Poor.jpeg' },
       { title: 'Poor Responses Example (Part 2)', filename: 'Poor 2.jpeg' },
-      { title: 'Real vs Fake Response Analysis', filename: 'WAT real vs fake response.png' }
+      { title: 'Real vs Fake Response Analysis', filename: 'WAT real vs fake response.webp' }
     ]
   },
   {
     category: 'Mistakes & Word Lists',
     description: 'Identify common myths, structural mistakes, and how to handle negative or neutral words.',
     items: [
-      { title: 'Myths About WAT (Part 1)', filename: 'MYTHS About WAT 1.png' },
-      { title: 'Myths About WAT (Part 2)', filename: 'MYTHS About WAT 2.png' },
-      { title: 'Handling Negative WAT Words', filename: 'Negative WAT words.png' },
-      { title: 'Handling Neutral WAT Words', filename: 'Neutral WAT words.png' },
-      { title: 'Common Mistakes in WAT', filename: 'mistakes in WAT.png' }
+      { title: 'Myths About WAT (Part 1)', filename: 'MYTHS About WAT 1.webp' },
+      { title: 'Myths About WAT (Part 2)', filename: 'MYTHS About WAT 2.webp' },
+      { title: 'Handling Negative WAT Words', filename: 'Negative WAT words.webp' },
+      { title: 'Handling Neutral WAT Words', filename: 'Neutral WAT words.webp' },
+      { title: 'Common Mistakes in WAT', filename: 'mistakes in WAT.webp' }
     ]
   }
 ]
+
+const getWatThumb = (filename) => {
+  const thumbName = filename.replace(/\.(png|jpe?g|webp)$/i, '.webp')
+  return `/media/images/tests-guides/wat/thumbnails/${thumbName}`
+}
 
 const openLightbox = (tabIdx, itemIdx) => {
   lightboxTab.value = tabIdx
@@ -459,7 +465,7 @@ onMounted(() => {
     <!-- SETUP VIEW -->
     <div class="setup-container glass-card" v-if="testState === 'setup'">
       <span class="badge badge-cyan">Psychology Simulators</span>
-      <h2>Word Association Test (WAT) Simulator</h2>
+      <h1 class="page-title">Word Association Test (WAT) Simulator</h1>
       <p>
         The Word Association Test flashes words for exactly **10 seconds** each. You must write a
         complete, positive, and spontaneous sentence. Leaving blank sentences or writing faked
@@ -616,9 +622,11 @@ onMounted(() => {
             >
               <div class="guide-image-container">
                 <img 
-                  :src="'/media/images/tests-guides/wat/' + item.filename" 
+                  :src="getWatThumb(item.filename)" 
                   :alt="item.title"
                   class="guide-thumbnail"
+                  width="400"
+                  height="250"
                   loading="lazy"
                 />
                 <div class="guide-card-overlay">
@@ -693,7 +701,7 @@ onMounted(() => {
       </div>
 
       <div class="word-display-area">
-        <h1 class="flash-word text-glow">{{ wordList[currentIndex] }}</h1>
+        <div class="flash-word text-glow" role="status" aria-live="assertive">{{ wordList[currentIndex] }}</div>
         <span class="urdu-meaning">{{ watUrduMeanings[wordList[currentIndex]] || '' }}</span>
       </div>
 
@@ -738,7 +746,7 @@ onMounted(() => {
       </div>
 
       <div class="word-display-area">
-        <h1 class="flash-word text-glow" style="font-size: 3.5rem;">{{ wordList[paperWordIndex] }}</h1>
+        <div class="flash-word text-glow" style="font-size: 3.5rem;" role="status" aria-live="assertive">{{ wordList[paperWordIndex] }}</div>
         <span class="urdu-meaning">{{ watUrduMeanings[wordList[paperWordIndex]] || '' }}</span>
       </div>
 
@@ -1142,6 +1150,8 @@ onMounted(() => {
             :src="'/media/images/tests-guides/wat/' + watGuides[lightboxTab].items[lightboxIndex].filename" 
             :alt="watGuides[lightboxTab].items[lightboxIndex].title"
             class="lightbox-image"
+            width="1200"
+            height="750"
           />
           <div class="lightbox-caption">
             <span class="caption-category">{{ watGuides[lightboxTab].category }}</span>

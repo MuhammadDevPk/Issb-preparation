@@ -47,6 +47,11 @@ export const useAuthStore = defineStore('auth', () => {
   let authSubscription = null
 
   const initialize = async () => {
+    if (typeof window === 'undefined') {
+      loading.value = false
+      return
+    }
+
     // Avoid double initialization if user/profile is already populated
     if (user.value || profile.value) {
       loading.value = false

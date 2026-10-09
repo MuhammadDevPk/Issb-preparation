@@ -623,7 +623,7 @@ const scrollToSection = (sectionId) => {
           <div v-if="activeShowcaseTab === 'dashboard'" class="showcase-panel fade-in">
             <div class="panel-layout">
               <div class="panel-preview">
-                <img src="/media/images/dashboard/dashboard.jpg" alt="ISSB Command Portal Central Dashboard" class="screenshot-img" width="1200" height="750" loading="lazy" />
+                <img src="/media/images/dashboard/dashboard.webp" alt="ISSB Command Portal Central Dashboard" class="screenshot-img" width="1200" height="750" loading="lazy" />
               </div>
               <div class="panel-info">
                 <h3>Your Central Hub for Officer Preparation</h3>
@@ -659,23 +659,23 @@ const scrollToSection = (sectionId) => {
             <div class="panel-layout">
               <!-- Day 1 Panel -->
               <div v-if="activeRoadmapSubTab === 'day1'" class="panel-preview fade-in">
-                <img src="/media/images/dashboard/5-Day Roadmap(Day 1: Arrival & Screening).jpg" alt="Roadmap Day 1" class="screenshot-img" width="1200" height="750" loading="lazy" />
+                <img src="/media/images/dashboard/day-1-screening.webp" alt="Roadmap Day 1" class="screenshot-img" width="1200" height="750" loading="lazy" />
               </div>
               <!-- Day 2 Panel -->
               <div v-if="activeRoadmapSubTab === 'day2'" class="panel-preview fade-in">
-                <img src="/media/images/dashboard/5-Day Roadmap(Day 2: Psychologist Day).jpg" alt="Roadmap Day 2" class="screenshot-img" width="1200" height="750" loading="lazy" />
+                <img src="/media/images/dashboard/day-2-psychologist.webp" alt="Roadmap Day 2" class="screenshot-img" width="1200" height="750" loading="lazy" />
               </div>
               <!-- Day 3 Panel -->
               <div v-if="activeRoadmapSubTab === 'day3'" class="panel-preview fade-in">
-                <img src="/media/images/dashboard/5-Day Roadmap(Day 3: GTO Tasks (Indoor & Out)).jpg" alt="Roadmap Day 3" class="screenshot-img" width="1200" height="750" loading="lazy" />
+                <img src="/media/images/dashboard/day-3-gto.webp" alt="Roadmap Day 3" class="screenshot-img" width="1200" height="750" loading="lazy" />
               </div>
               <!-- Day 4 Panel -->
               <div v-if="activeRoadmapSubTab === 'day4'" class="panel-preview fade-in">
-                <img src="/media/images/dashboard/5-Day Roadmap(Day 4: Individual Tasks & Interview).jpg" alt="Roadmap Day 4" class="screenshot-img" width="1200" height="750" loading="lazy" />
+                <img src="/media/images/dashboard/day-4-individual.webp" alt="Roadmap Day 4" class="screenshot-img" width="1200" height="750" loading="lazy" />
               </div>
               <!-- Day 5 Panel -->
               <div v-if="activeRoadmapSubTab === 'day5'" class="panel-preview fade-in">
-                <img src="/media/images/dashboard/5-Day Roadmap(Day 5: Conference & Results).jpg" alt="Roadmap Day 5" class="screenshot-img" width="1200" height="750" loading="lazy" />
+                <img src="/media/images/dashboard/day-5-conference.webp" alt="Roadmap Day 5" class="screenshot-img" width="1200" height="750" loading="lazy" />
               </div>
 
               <div class="panel-info">
@@ -710,15 +710,15 @@ const scrollToSection = (sectionId) => {
             <div class="panel-layout">
               <!-- WAT Simulator -->
               <div v-if="activeSimulatorSubTab === 'wat'" class="panel-preview fade-in">
-                <img src="/media/images/dashboard/wat simulator.jpg" alt="WAT Simulator" class="screenshot-img" width="1200" height="750" loading="lazy" />
+                <img src="/media/images/dashboard/wat-simulator.webp" alt="WAT Simulator" class="screenshot-img" width="1200" height="750" loading="lazy" />
               </div>
               <!-- SCT Simulator -->
               <div v-if="activeSimulatorSubTab === 'sct'" class="panel-preview fade-in">
-                <img src="/media/images/dashboard/SCT Simulator.jpg" alt="SCT Simulator" class="screenshot-img" width="1200" height="750" loading="lazy" />
+                <img src="/media/images/dashboard/sct-simulator.webp" alt="SCT Simulator" class="screenshot-img" width="1200" height="750" loading="lazy" />
               </div>
               <!-- SRT Simulator -->
               <div v-if="activeSimulatorSubTab === 'srt'" class="panel-preview fade-in">
-                <img src="/media/images/dashboard/SRT Trainer.jpg" alt="SRT Trainer" class="screenshot-img" width="1200" height="750" loading="lazy" />
+                <img src="/media/images/dashboard/srt-trainer.webp" alt="SRT Trainer" class="screenshot-img" width="1200" height="750" loading="lazy" />
               </div>
 
               <div class="panel-info">
@@ -749,7 +749,7 @@ const scrollToSection = (sectionId) => {
           <div v-if="activeShowcaseTab === 'obstacles'" class="showcase-panel fade-in">
             <div class="panel-layout">
               <div class="panel-preview">
-                <img src="/media/images/dashboard/GTO Obstacles.jpg" alt="GTO Obstacle sequence planner" class="screenshot-img" width="1200" height="750" loading="lazy" />
+                <img src="/media/images/dashboard/gto-obstacles.webp" alt="GTO Obstacle sequence planner" class="screenshot-img" width="1200" height="750" loading="lazy" />
               </div>
               <div class="panel-info">
                 <h3>Interactive GTO Individual Obstacles Planner</h3>
@@ -776,7 +776,7 @@ const scrollToSection = (sectionId) => {
           <div v-if="activeShowcaseTab === 'support'" class="showcase-panel fade-in">
             <div class="panel-layout">
               <div class="panel-preview">
-                <img src="/media/images/dashboard/Complaints and Ideas.jpg" alt="Ideas and Complaints board" class="screenshot-img" width="1200" height="750" loading="lazy" />
+                <img src="/media/images/dashboard/complaints-and-ideas.webp" alt="Ideas and Complaints board" class="screenshot-img" width="1200" height="750" loading="lazy" />
               </div>
               <div class="panel-info">
                 <h3>Improvements Suggestion Board & Private Helpdesk</h3>

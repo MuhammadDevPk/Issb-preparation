@@ -531,6 +531,13 @@ const getImgUrl = (item) => {
   return item.folder ? `${base}${item.folder}/${item.filename}` : `${base}${item.filename}`
 }
 
+const getThumbUrl = (item) => {
+  if (!item) return ''
+  const base = '/media/images/tests-guides/Deputy Interview guide/'
+  const thumbName = item.filename.replace(/\.(png|jpe?g|webp)$/i, '.webp')
+  return item.folder ? `${base}${item.folder}/thumbnails/${thumbName}` : `${base}thumbnails/${thumbName}`
+}
+
 onMounted(() => {
   window.addEventListener('keydown', handleOutfitLightboxKeys)
 })
@@ -924,9 +931,11 @@ onUnmounted(() => {
             >
               <div class="guide-image-container">
                 <img 
-                  :src="getImgUrl(item)" 
+                  :src="getThumbUrl(item)" 
                   :alt="item.title"
                   class="guide-thumbnail"
+                  width="400"
+                  height="250"
                   loading="lazy"
                 />
                 <div class="guide-card-overlay">
@@ -957,9 +966,11 @@ onUnmounted(() => {
             >
               <div class="guide-image-container">
                 <img 
-                  :src="getImgUrl(item)" 
+                  :src="getThumbUrl(item)" 
                   :alt="item.title"
                   class="guide-thumbnail"
+                  width="400"
+                  height="250"
                   loading="lazy"
                 />
                 <div class="guide-card-overlay">
@@ -990,9 +1001,11 @@ onUnmounted(() => {
             >
               <div class="guide-image-container">
                 <img 
-                  :src="getImgUrl(item)" 
+                  :src="getThumbUrl(item)" 
                   :alt="item.title"
                   class="guide-thumbnail"
+                  width="400"
+                  height="250"
                   loading="lazy"
                 />
                 <div class="guide-card-overlay">
@@ -1024,6 +1037,8 @@ onUnmounted(() => {
             :src="getImgUrl(flatOutfitGuides[outfitLightboxIndex])" 
             :alt="flatOutfitGuides[outfitLightboxIndex].title"
             class="lightbox-image"
+            width="1200"
+            height="750"
           />
           <div class="lightbox-caption">
             <span class="caption-category">Deputy Interview Prep Guide ➔ {{ flatOutfitGuides[outfitLightboxIndex].section }}</span>

@@ -312,7 +312,7 @@ const timeTaken = computed(() => {
     <!-- SETUP SCREEN -->
     <div class="setup-container glass-card" v-if="testState === 'setup'">
       <span class="badge badge-cyan">Psychology Simulators</span>
-      <h2>Sentence Completion Test (SCT) Simulator</h2>
+      <h1 class="page-title">Sentence Completion Test (SCT) Simulator</h1>
       <p>
         The Sentence Completion Test evaluates emotional conflicts, maturity, family relationships,
         and social adjustment. In ISSB, you get **26 incomplete sentences** and exactly **6

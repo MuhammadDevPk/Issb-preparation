@@ -48,7 +48,8 @@ const isLoadingReferrals = ref(false)
 
 const referralLink = computed(() => {
   if (!referralCode.value) return ''
-  return window.location.origin + '/r/' + referralCode.value
+  const origin = typeof window !== 'undefined' ? window.location.origin : 'https://issb-preparation.vercel.app'
+  return origin + '/r/' + referralCode.value
 })
 
 const copyStatus = ref('Copy Link')

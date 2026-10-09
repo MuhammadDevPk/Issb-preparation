@@ -23,6 +23,11 @@ const essayGuides = ref([
   { title: 'Tips to Score Better in Essay Writing', filename: 'TIPS TO SCORE BETTER in Essay Writting.jpeg' }
 ])
 
+const getEssayThumb = (filename) => {
+  const thumbName = filename.replace(/\.(png|jpe?g|webp)$/i, '.webp')
+  return `/media/images/tests-guides/Essay/thumbnails/${thumbName}`
+}
+
 const openEssayLightbox = (idx) => {
   essayLightboxIndex.value = idx
   essayLightboxOpen.value = true
@@ -524,9 +529,11 @@ const launchSimulator = (path) => {
               >
                 <div class="guide-image-container">
                   <img 
-                    :src="'/media/images/tests-guides/Essay/' + item.filename" 
+                    :src="getEssayThumb(item.filename)" 
                     :alt="item.title"
                     class="guide-thumbnail"
+                    width="400"
+                    height="250"
                     loading="lazy"
                   />
                   <div class="guide-card-overlay">
@@ -583,6 +590,8 @@ const launchSimulator = (path) => {
             :src="'/media/images/tests-guides/Essay/' + essayGuides[essayLightboxIndex].filename" 
             :alt="essayGuides[essayLightboxIndex].title"
             class="lightbox-image"
+            width="1200"
+            height="750"
           />
           <div class="lightbox-caption">
             <span class="caption-category">Essay Writing Guide</span>

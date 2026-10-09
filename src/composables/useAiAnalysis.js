@@ -6,7 +6,7 @@
 
 import { ref } from 'vue'
 import { analyzeWithAI, delay } from '../services/aiProvider.js'
-import { analyzeImage, delay as visionDelay } from '../services/visionProvider.js'
+import { analyzeImage } from '../services/visionProvider.js'
 
 // ---------------------------------------------------------------------------
 // ISSB System Prompts (trained on ISSB psychology standards)

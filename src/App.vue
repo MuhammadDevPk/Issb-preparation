@@ -1,6 +1,7 @@
 <script setup>
 import { RouterLink, RouterView, useRoute, useRouter } from 'vue-router'
 import { ref, onMounted, computed, watch, onBeforeUnmount } from 'vue'
+import { useHead } from '@unhead/vue'
 import { usePreparationStore } from './stores/preparation'
 import { useAuthStore } from './stores/auth'
 
@@ -9,6 +10,42 @@ const authStore = useAuthStore()
 const router = useRouter()
 const streak = ref(1)
 const route = useRoute()
+
+const currentCanonical = computed(() => {
+  const p = route.path === '/' ? '' : route.path
+  return `https://issb-preparation.vercel.app${p || '/'}`
+})
+
+const pageTitle = computed(() => {
+  return route.meta?.title || 'ISSB Command - Interactive Timed Simulators & 5-Day Roadmap'
+})
+
+const pageDescription = computed(() => {
+  return (
+    route.meta?.description ||
+    'Master the ISSB Selection Board tests. Practice real-time timed psychologist simulators (WAT, SCT, SRT), map your prep with our structured 5-day curriculum, and plan GTO obstacle routes.'
+  )
+})
+
+useHead(() => ({
+  title: pageTitle.value,
+  meta: [
+    { name: 'description', content: pageDescription.value },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:site_name', content: 'ISSB Command' },
+    { property: 'og:title', content: pageTitle.value },
+    { property: 'og:description', content: pageDescription.value },
+    { property: 'og:url', content: currentCanonical.value },
+    { property: 'og:image', content: 'https://issb-preparation.vercel.app/favicon.svg' },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:title', content: pageTitle.value },
+    { name: 'twitter:description', content: pageDescription.value },
+    { name: 'twitter:image', content: 'https://issb-preparation.vercel.app/favicon.svg' },
+  ],
+  link: [
+    { rel: 'canonical', href: currentCanonical.value },
+  ],
+}))
 
 const isFullScreenPage = computed(() => {
   return ['/', '/login', '/register', '/status'].includes(route.path)

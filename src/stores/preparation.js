@@ -18,6 +18,7 @@ export const usePreparationStore = defineStore('preparation', () => {
 
   // Initialize store from localStorage on mount
   const initializeStore = () => {
+    if (typeof window === 'undefined' || typeof localStorage === 'undefined') return
     const storedModules = localStorage.getItem('issb_completed_modules')
     if (storedModules) {
       try {

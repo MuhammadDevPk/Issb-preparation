@@ -423,7 +423,7 @@ const scoreClass = (score) => {
     <!-- SETUP PANEL -->
     <div class="setup-container glass-card" v-if="testState === 'setup'">
       <span class="badge badge-cyan">Psychological screening</span>
-      <h2>Occupational Personality Inventory (OPI) Simulator</h2>
+      <h1 class="page-title">Occupational Personality Inventory (OPI) Simulator</h1>
       <p class="intro-text">
         The OPI is a confirmatory psychometric test administered on the first day of the Inter Services Selection Board (ISSB) program. Structured around the Big Five OCEAN framework, it profiles your suitability for a military commission, cross-examining your consistency and alerting psychologists to any attempts to project an idealized persona.
       </p>

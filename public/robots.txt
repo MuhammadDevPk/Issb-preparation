@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /r/
 
 Sitemap: https://issb-preparation.vercel.app/sitemap.xml

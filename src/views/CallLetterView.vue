@@ -78,7 +78,8 @@ const centersData = {
 // Referral sharing
 const referralLink = computed(() => {
   const code = authStore.profile?.referral_code || ''
-  return window.location.origin + (code ? '/r/' + code : '/register')
+  const origin = typeof window !== 'undefined' ? window.location.origin : 'https://issb-preparation.vercel.app'
+  return origin + (code ? '/r/' + code : '/register')
 })
 
 const shareText = computed(() => {
@@ -150,7 +151,7 @@ const activeCenterInfo = computed(() => {
       <div class="header-content-wrapper">
         <div class="header-text-block">
           <span class="badge badge-cyan">Official Utilities</span>
-          <h2>ISSB Call Status & Call Letter Portal</h2>
+          <h1 class="page-title">ISSB Call Status & Call Letter Portal</h1>
           <p class="description">
             Track your official selection dates or generate a high-fidelity Practice Call Notice to plan your clothing
             checklist and boost your motivation.

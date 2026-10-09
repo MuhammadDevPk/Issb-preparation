@@ -193,7 +193,7 @@ const goToRoadmap = () => {
       <div class="header-flex">
         <div class="header-text-container">
           <span class="badge badge-cyan">GTO Tasks</span>
-          <h2>GTO Individual Obstacles Route Planner</h2>
+          <h1 class="page-title">GTO Individual Obstacles Route Planner</h1>
           <p>
             Individual Obstacles test your physical courage, agility, determination, and spatial
             decision-making under stress. You have exactly **3 minutes** to clear as many obstacles

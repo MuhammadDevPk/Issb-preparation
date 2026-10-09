@@ -4,7 +4,6 @@ import { essays, lecturettes } from '../data/essayLecturetteData'
 import { useAuthStore } from '../stores/auth'
 
 const authStore = useAuthStore()
-const isAdmin = computed(() => authStore.profile?.role === 'admin')
 const isPaidUser = computed(() => authStore.profile?.status === 'approved' || authStore.profile?.role === 'admin')
 
 // Tabs: 'essays' or 'speech'

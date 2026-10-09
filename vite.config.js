@@ -15,4 +15,11 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     },
   },
+  ssgOptions: {
+    includedRoutes: (paths) => paths.filter(p => 
+      ['/', '/simulator/wat', '/simulator/sct', '/simulator/srt', 
+       '/simulator/opi', '/simulator/obstacles', 
+       '/call-letter', '/deputy-interview'].includes(p)
+    ),
+  },
 })
