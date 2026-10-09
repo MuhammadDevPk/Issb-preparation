@@ -6,11 +6,16 @@ const BASE_URL = 'https://issb-preparation.vercel.app'
 // Public routes that search engines should index
 const publicRoutes = [
   { path: '/', priority: '1.0', changefreq: 'weekly' },
+  { path: '/join-pak-army', priority: '0.9', changefreq: 'weekly' },
+  { path: '/join-pak-navy', priority: '0.9', changefreq: 'weekly' },
+  { path: '/join-pak-airforce', priority: '0.9', changefreq: 'weekly' },
   { path: '/simulator/wat', priority: '0.9', changefreq: 'weekly' },
   { path: '/simulator/sct', priority: '0.9', changefreq: 'weekly' },
   { path: '/simulator/srt', priority: '0.9', changefreq: 'weekly' },
   { path: '/simulator/opi', priority: '0.9', changefreq: 'weekly' },
   { path: '/simulator/obstacles', priority: '0.8', changefreq: 'weekly' },
+  { path: '/roadmap', priority: '0.8', changefreq: 'weekly' },
+  { path: '/essays-speech', priority: '0.8', changefreq: 'weekly' },
   { path: '/call-letter', priority: '0.8', changefreq: 'weekly' },
   { path: '/deputy-interview', priority: '0.8', changefreq: 'weekly' },
   { path: '/login', priority: '0.6', changefreq: 'monthly' },

@@ -136,12 +136,6 @@ const isTrialCountdownActive = computed(() => {
   return new Date(authStore.profile.trial_ends_at).getTime() > Date.now()
 })
 
-const hasPremiumOrTrial = computed(() => {
-  const p = authStore.profile
-  if (!p) return false
-  const isTrialActive = p.trial_ends_at && new Date(p.trial_ends_at).getTime() > Date.now()
-  return p.status === 'approved' || p.role === 'admin' || isTrialActive
-})
 
 const formattedTrialTime = computed(() => {
   const minutes = Math.floor(trialTimeRemaining.value / 60)
@@ -160,10 +154,6 @@ const updateTrialTimer = () => {
   if (remainingMs <= 0) {
     trialTimeRemaining.value = 0
     clearInterval(countdownInterval)
-    // If on a restricted route, redirect immediately
-    if (['/roadmap'].includes(route.path)) {
-      router.push('/status')
-    }
   } else {
     trialTimeRemaining.value = Math.floor(remainingMs / 1000)
   }
@@ -342,7 +332,7 @@ onMounted(() => {
             <span>Dashboard</span>
           </RouterLink>
 
-          <RouterLink v-if="hasPremiumOrTrial" to="/roadmap" class="nav-item" active-class="active">
+          <RouterLink to="/roadmap" class="nav-item" active-class="active">
             <svg
               class="nav-icon"
               viewBox="0 0 24 24"

@@ -19,7 +19,8 @@ export default defineConfig({
     includedRoutes: (paths) => paths.filter(p => 
       ['/', '/simulator/wat', '/simulator/sct', '/simulator/srt', 
        '/simulator/opi', '/simulator/obstacles', 
-       '/call-letter', '/deputy-interview'].includes(p)
+       '/call-letter', '/deputy-interview',
+       '/join-pak-army', '/join-pak-navy', '/join-pak-airforce'].includes(p)
     ),
   },
 })

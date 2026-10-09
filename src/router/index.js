@@ -17,6 +17,9 @@ const SupportView = () => import('../views/SupportView.vue')
 const CallLetterView = () => import('../views/CallLetterView.vue')
 const DeputyInterviewView = () => import('../views/DeputyInterviewView.vue')
 const EssaysSpeechView = () => import('../views/EssaysSpeechView.vue')
+const JoinArmyView = () => import('../views/JoinArmyView.vue')
+const JoinNavyView = () => import('../views/JoinNavyView.vue')
+const JoinAirforceView = () => import('../views/JoinAirforceView.vue')
 const NotFoundView = () => import('../views/NotFoundView.vue')
 
 export const routes = [
@@ -81,8 +84,9 @@ export const routes = [
     name: 'dashboard',
     component: DashboardView,
     meta: {
-      requiresAuth: true,
       title: 'Cadet Dashboard & OLQ Profiler | ISSB Command',
+      description:
+        'Personalized candidate preparation dashboard, 14 Officer-Like Qualities assessment, and practice progress tracker.',
     },
   },
   {
@@ -90,9 +94,9 @@ export const routes = [
     name: 'roadmap',
     component: RoadmapView,
     meta: {
-      requiresAuth: true,
-      requiresApproval: true,
       title: '5-Day Complete ISSB Curriculum Roadmap | ISSB Command',
+      description:
+        'Comprehensive day-by-day ISSB test curriculum covering screening, psychological tests, GTO tasks, and interview schedule.',
     },
   },
   {
@@ -189,9 +193,39 @@ export const routes = [
     name: 'essays-speech',
     component: EssaysSpeechView,
     meta: {
-      requiresAuth: true,
-      requiresApproval: true,
       title: 'ISSB Essays & Public Speaking Topics | ISSB Command',
+      description:
+        'High-scoring English and Urdu essay samples, group discussion ideas, and 2-minute lecturette speech outlines for ISSB candidates.',
+    },
+  },
+  {
+    path: '/join-pak-army',
+    name: 'join-pak-army',
+    component: JoinArmyView,
+    meta: {
+      title: 'Join Pak Army Online Apply 2026 | Initial Test & ISSB Guide',
+      description:
+        'Complete guide to joining the Pakistan Army. Get online apply details, initial test syllabus, and practice with our free ISSB WAT and SRT simulators.',
+    },
+  },
+  {
+    path: '/join-pak-navy',
+    name: 'join-pak-navy',
+    component: JoinNavyView,
+    meta: {
+      title: 'Join Pak Navy Online Apply 2026 | Registration & ISSB Prep',
+      description:
+        'Step-by-step guide to Pak Navy online registration. Prepare for your ISSB with our interactive 5-day roadmap and psychological test simulators.',
+    },
+  },
+  {
+    path: '/join-pak-airforce',
+    name: 'join-pak-airforce',
+    component: JoinAirforceView,
+    meta: {
+      title: 'Join PAF Online Apply 2026 | Pakistan Air Force ISSB Guide',
+      description:
+        'How to join the Pakistan Air Force. Find online apply dates, initial test guidelines, and complete ISSB simulator practice.',
     },
   },
   {
@@ -232,6 +266,11 @@ export const setupRouterGuards = (routerInstance) => {
     if (to.meta.requiresAuth || to.meta.requiresApproval || to.meta.requiresAdmin || to.meta.guestOnly) {
       if (authStore.loading && !authStore.user) {
         await authStore.initialize()
+      }
+    } else {
+      // Background silent initialization for open-access routes without blocking guest navigation
+      if (authStore.loading && !authStore.user && typeof window !== 'undefined') {
+        authStore.initialize().catch(() => {})
       }
     }
 
