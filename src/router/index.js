@@ -67,7 +67,7 @@ export const routes = [
           console.error('Failed to increment referral clicks:', e)
         }
       }
-      next({ name: 'register' })
+      next({ name: 'roadmap' })
     },
   },
   {
@@ -288,9 +288,9 @@ export const setupRouterGuards = (routerInstance) => {
         await new Promise((r) => setTimeout(r, 400 * (attempt + 1)))
       }
       if (!profileLoaded) {
-        console.warn('Profile could not be loaded after retries. Redirecting to login.')
+        console.warn('Profile could not be loaded after retries. Redirecting to roadmap.')
         await authStore.logout()
-        return next({ name: 'login' })
+        return next({ name: 'roadmap' })
       }
     }
 
@@ -300,7 +300,10 @@ export const setupRouterGuards = (routerInstance) => {
 
     // 1. Guard for Authenticated Only routes
     if (to.meta.requiresAuth && !isAuthenticated) {
-      return next({ name: 'login' })
+      if (to.meta.requiresAdmin) {
+        return next({ name: 'login' })
+      }
+      return next({ name: 'roadmap' })
     }
 
     // 2. Guard for Guest Only routes (Login, Register)

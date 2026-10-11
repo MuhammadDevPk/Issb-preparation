@@ -1,5 +1,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
+import process from 'node:process'
+import { Buffer } from 'node:buffer'
 
 const distDir = path.resolve('dist')
 const pagesToCheck = [

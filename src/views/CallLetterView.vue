@@ -79,7 +79,7 @@ const centersData = {
 const referralLink = computed(() => {
   const code = authStore.profile?.referral_code || ''
   const origin = typeof window !== 'undefined' ? window.location.origin : 'https://issb-preparation.vercel.app'
-  return origin + (code ? '/r/' + code : '/register')
+  return origin + (code ? '/r/' + code : '/roadmap')
 })
 
 const shareText = computed(() => {

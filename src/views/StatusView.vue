@@ -413,7 +413,7 @@ const handleAiUpload = async () => {
 const handleSignOut = async () => {
   try {
     await authStore.logout()
-    router.push('/login')
+    router.push('/')
   } catch (e) {
     console.error('Logout failed:', e)
   }
@@ -442,7 +442,7 @@ const checkApprovalStatus = async () => {
         )
       }
     } else {
-      router.push('/login')
+      router.push('/roadmap')
     }
   } catch (e) {
     console.error('Error checking status:', e)
@@ -732,7 +732,7 @@ const checkApprovalStatus = async () => {
             <polyline points="16 17 21 12 16 7" />
             <line x1="21" y1="12" x2="9" y2="12" />
           </svg>
-          <span>Log Out / Sign In as different candidate</span>
+          <span>Sign Out</span>
         </button>
       </div>
     </div>

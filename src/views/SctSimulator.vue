@@ -788,12 +788,9 @@ const timeTaken = computed(() => {
             </p>
 
             <div class="warning-callout" style="border-left: 4px solid var(--accent-cyan); background: rgba(6, 182, 212, 0.05); color: var(--text-primary);">
-              <strong style="color: var(--accent-cyan); display: block; margin-bottom: 0.5rem; font-size: 0.95rem;">⚠️ Account Registration Required:</strong>
+              <strong style="color: var(--accent-cyan); display: block; margin-bottom: 0.5rem; font-size: 0.95rem;">💡 Daily Free AI Evaluation Limit:</strong>
               <p style="margin: 0 0 0.5rem 0; font-size: 0.88rem; line-height: 1.4; text-align: left;">
-                To unlock unlimited AI evaluations for 30 days (Rs. 2999), you must first create a candidate account. Guests cannot purchase or activate subscription packages.
-              </p>
-              <p style="margin: 0; font-size: 0.88rem; line-height: 1.4; font-weight: 500; text-align: left;">
-                After registering and logging in, you will transfer payment and upload your screenshot on the Status page to unlock unlimited access.
+                All timed simulators and 5-day syllabus resources are 100% free and open access. If you need unlimited real-time AI psychologist evaluations for 30 days (Rs. 2999), get in touch via WhatsApp.
               </p>
             </div>
 
@@ -804,17 +801,14 @@ const timeTaken = computed(() => {
             </div>
           </div>
           <div class="modal-footer-ai" style="display: flex; flex-direction: column; gap: 0.5rem;">
-            <button @click="router.push('/register')" class="btn btn-ai shadow-glow-purple w-full text-center" style="background: var(--accent-cyan); color: white; border: none; font-weight: 600; padding: 0.75rem 1rem; border-radius: var(--border-radius-md); cursor: pointer;">
-              👤 Create Candidate Account (Register)
+            <button @click="router.push('/roadmap')" class="btn btn-ai shadow-glow-purple w-full text-center" style="background: var(--accent-cyan); color: white; border: none; font-weight: 600; padding: 0.75rem 1rem; border-radius: var(--border-radius-md); cursor: pointer;">
+              🗺️ Continue with 5-Day Roadmap (Free)
             </button>
-            <button @click="router.push('/login')" class="btn btn-secondary w-full" style="font-weight: 500; cursor: pointer;">
-              🔑 Log In to Existing Account
-            </button>
-            <a href="https://wa.me/923456047058?text=Hi%20Umar,%20I%20want%20to%20register%20and%20purchase%20unlimited%20AI%20evaluations%20for%20Rs.%202999.%20My%20email%20is%20" target="_blank" class="btn btn-secondary w-full text-center block" style="display: block; text-decoration: none; padding: 0.75rem 1rem; border-radius: var(--border-radius-md); text-align: center; font-weight: 500;">
-              💬 Registration / Purchase Help on WhatsApp
+            <a href="https://wa.me/923456047058?text=Hi%20Umar,%20I%20want%20to%20purchase%20unlimited%20AI%20evaluations%20for%20Rs.%202999." target="_blank" class="btn btn-secondary w-full text-center block" style="display: block; text-decoration: none; padding: 0.75rem 1rem; border-radius: var(--border-radius-md); text-align: center; font-weight: 500;">
+              💬 Unlimited AI Evaluation Support on WhatsApp
             </a>
             <button class="btn btn-secondary w-full" @click="showUpgradeModal = false">
-              Wait 24 Hours / Review Manually
+              Review Manually / Close
             </button>
           </div>
         </template>

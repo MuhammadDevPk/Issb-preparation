@@ -76,8 +76,8 @@ const scrollToSection = (sectionId) => {
         <a href="#solved-notes" @click.prevent="scrollToSection('solved-notes')" class="nav-link-item">
           📚 Solved Notes (Paid)
         </a>
-        <RouterLink v-if="!authStore.user" to="/login" class="nav-link-item">
-          Log In
+        <RouterLink to="/roadmap" class="nav-link-item">
+          🗺️ 5-Day Roadmap
         </RouterLink>
         <!-- Status badge for logged-in users -->
         <RouterLink v-if="authStore.user && authStore.profile" to="/status" class="nav-status-badge"
@@ -91,8 +91,8 @@ const scrollToSection = (sectionId) => {
         </RouterLink>
       </div>
 
-      <RouterLink :to="authStore.user ? '/dashboard' : '/register'" class="btn btn-nav-portal">
-        {{ authStore.user ? 'Go to Dashboard' : 'Start Free Trial' }}
+      <RouterLink to="/roadmap" class="btn btn-nav-portal">
+        Start 5-Day Roadmap
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-icon">
           <line x1="5" y1="12" x2="19" y2="12" />
           <polyline points="12 5 19 12 12 19" />
@@ -129,7 +129,7 @@ const scrollToSection = (sectionId) => {
         <p class="hero-subtitle">
           Most ISSB candidates fail not because they lack potential, but because they study outdated
           guidebooks, try to fake their personalities, or freeze during timed psychologist tests.
-          Our structured portal simulates the exact 5-day cycle. <strong>Sign up now to instantly start a 30-minute free trial with access to all timers, simulators, and guides.</strong>
+          Our structured portal simulates the exact 5-day cycle. <strong>Enjoy 100% free open access to all timed psychologist simulators, 5-day curriculum, and interview guides.</strong>
         </p>
 
         <!-- Bullet Highlights -->
@@ -151,15 +151,15 @@ const scrollToSection = (sectionId) => {
             <span>Officer-Like Qualities (OLQ) Assessment</span>
           </div>
           <div class="bullet-item">
-            <span class="bullet-check">⏳</span>
-            <span><strong>30-Minute Free Trial</strong> (Unlock all features instantly upon signup)</span>
+            <span class="bullet-check">🎯</span>
+            <span><strong>100% Free Open Access</strong> (Explore all simulators and roadmaps instantly without signup)</span>
           </div>
         </div>
 
         <div class="hero-actions">
-          <RouterLink :to="authStore.user ? '/dashboard' : '/register'" class="btn btn-primary btn-large">Start 30-Min Free Trial</RouterLink>
-          <RouterLink :to="authStore.user ? '/dashboard' : '/register'" class="btn btn-secondary btn-large">
-            Explore Portal First
+          <RouterLink to="/roadmap" class="btn btn-primary btn-large">Start 5-Day Roadmap</RouterLink>
+          <RouterLink to="/dashboard" class="btn btn-secondary btn-large">
+            Explore Dashboard
           </RouterLink>
         </div>
       </div>
@@ -355,7 +355,7 @@ const scrollToSection = (sectionId) => {
             </p>
           </div>
           <div class="cta-actions">
-            <RouterLink :to="authStore.user ? '/dashboard' : '/register'" class="btn btn-primary shadow-glow-blue">Get Your Referral Link Now</RouterLink>
+            <RouterLink to="/roadmap" class="btn btn-primary shadow-glow-blue">Start 5-Day Roadmap</RouterLink>
             <a href="#pricing" @click.prevent="scrollToSection('pricing')" class="btn btn-secondary">See Full Pricing Details</a>
           </div>
         </div>
@@ -436,7 +436,7 @@ const scrollToSection = (sectionId) => {
           With just 3 friends registering, you get full lifetime premium access to solved playbooks and simulators for just <strong>PKR 100</strong>! 
           Become the preparation hub of your study group today.
         </p>
-        <RouterLink :to="authStore.user ? '/dashboard' : '/register'" class="btn btn-banner-cta">Get Your Invitation Link & Start Earning</RouterLink>
+        <RouterLink to="/roadmap" class="btn btn-banner-cta">Start 5-Day Roadmap</RouterLink>
       </div>
     </section>
 
@@ -585,7 +585,7 @@ const scrollToSection = (sectionId) => {
 
       <div class="ai-action-footer">
         <p>Our simulators analyze your <strong>entire test submission</strong>, generate your psychological profile, and show you exactly what to correct. You cannot find this in paper books or coaching academies.</p>
-        <RouterLink :to="authStore.user ? '/dashboard' : '/register'" class="btn btn-ai btn-large shadow-glow-purple">Evaluate Your Personality Now</RouterLink>
+        <RouterLink to="/simulator/wat" class="btn btn-ai btn-large shadow-glow-purple">Practice WAT Simulator (Free)</RouterLink>
       </div>
     </section>
 
@@ -641,7 +641,7 @@ const scrollToSection = (sectionId) => {
                     <strong>OLQ Quick Profiler Summary:</strong> Get immediate visual analysis of your strengths and weaknesses across planning, dynamic, and leadership traits.
                   </li>
                 </ul>
-                 <RouterLink :to="authStore.user ? '/dashboard' : '/register?redirect=/dashboard'" class="btn btn-primary">Enter Dashboard Now</RouterLink>
+                 <RouterLink to="/dashboard" class="btn btn-primary">Enter Dashboard Now</RouterLink>
               </div>
             </div>
           </div>
@@ -694,7 +694,7 @@ const scrollToSection = (sectionId) => {
                     <strong>Targeted Simulators:</strong> Access practicing simulators matched exactly to that day's scheduled psychologist testing.
                   </li>
                 </ul>
-                 <RouterLink :to="authStore.user ? '/roadmap' : '/register?redirect=/roadmap'" class="btn btn-primary">Open Roadmap Checklists</RouterLink>
+                 <RouterLink to="/roadmap" class="btn btn-primary">Open Roadmap Checklists</RouterLink>
               </div>
             </div>
           </div>
@@ -794,7 +794,7 @@ const scrollToSection = (sectionId) => {
                     <strong>Active Community Voice:</strong> Direct control of updates via candidate majority consensus.
                   </li>
                 </ul>
-                 <RouterLink :to="authStore.user ? '/support' : '/register?redirect=/support'" class="btn btn-primary">Submit Feature Request</RouterLink>
+                 <RouterLink to="/support" class="btn btn-primary">Submit Feature Request</RouterLink>
               </div>
             </div>
           </div>
@@ -1111,7 +1111,7 @@ const scrollToSection = (sectionId) => {
       <div class="cta-content">
         <h2>Take Command of Your Military Career</h2>
         <p>Prepare with precision. Practice under time constraints. Get recommended.</p>
-        <RouterLink :to="authStore.user ? '/dashboard' : '/register'" class="btn btn-primary btn-large">Enter Free Portal</RouterLink>
+        <RouterLink to="/roadmap" class="btn btn-primary btn-large">Start 5-Day Roadmap</RouterLink>
       </div>
     </section>
 

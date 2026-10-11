@@ -105,7 +105,7 @@ const experience = computed(() => store.xp)
 const handleLogout = async () => {
   try {
     await authStore.logout()
-    router.push('/login')
+    router.push('/')
   } catch (error) {
     console.error('Logout error:', error)
   }
@@ -541,7 +541,7 @@ onMounted(() => {
             </svg>
             <span>Sign Out</span>
           </button>
-          <RouterLink v-else to="/login" class="btn-logout-sidebar btn-login-sidebar">
+          <RouterLink v-else to="/roadmap" class="btn-logout-sidebar btn-login-sidebar">
             <svg
               class="nav-icon"
               viewBox="0 0 24 24"
@@ -549,11 +549,10 @@ onMounted(() => {
               stroke="currentColor"
               stroke-width="2"
             >
-              <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
-              <polyline points="10 17 15 12 10 7" />
-              <line x1="15" y1="12" x2="3" y2="12" />
+              <path d="M9 18l6-6-6-6" />
+              <circle cx="12" cy="12" r="10" />
             </svg>
-            <span>Sign In</span>
+            <span>5-Day Roadmap</span>
           </RouterLink>
         </div>
       </aside>
