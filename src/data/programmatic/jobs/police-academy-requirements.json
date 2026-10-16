@@ -9,10 +9,22 @@
   "headline": "Police Academy Requirements: 2026 Candidate Preparation Guide",
   "badge": "CAREER & SELECTION GUIDE",
   "stats": [
-    { "label": "Minimum Age", "value": "20.5 – 21 Years" },
-    { "label": "Education Requirement", "value": "High School / 60 College Credits" },
-    { "label": "Academy Duration", "value": "20–26 Weeks" },
-    { "label": "Physical Agility (PAT)", "value": "Standardized Benchmarks" }
+    {
+      "label": "Minimum Age",
+      "value": "20.5 – 21 Years"
+    },
+    {
+      "label": "Education Requirement",
+      "value": "High School / 60 College Credits"
+    },
+    {
+      "label": "Academy Duration",
+      "value": "20–26 Weeks"
+    },
+    {
+      "label": "Physical Agility (PAT)",
+      "value": "Standardized Benchmarks"
+    }
   ],
   "sections": [
     {

@@ -1,1 +1,65 @@
-{"badge":"OFFICER SELECTION","country":"UK","faqs":[{"a":"Regular officer candidates must be between 18 and 29 years old at the start of training. Soldier entry accepts applicants from 16, with enlistment before the 36th birthday. Reserve officer entry extends to age 48. Candidates under 18 need written permission from a parent or guardian to apply.","q":"What is the age limit to join the British Army as an officer?"},{"a":"The Royal Military Academy Sandhurst runs a 42-week Commissioning Course across three intakes each year in January, May and September. The course covers leadership, tactics, academic military studies, adventurous training and physical conditioning, ending with the Sovereign's Parade and commissioning as a Second Lieutenant.","q":"How long is officer training at Sandhurst?"},{"a":"Applicants must normally be British citizens, Irish citizens, or Commonwealth citizens with the legal right to live and work in the UK. A passport valid for at least two years is required for Commonwealth applicants, and refugees or asylum seekers are not accepted for Army service.","q":"Can Commonwealth citizens join the British Army as officers?"},{"a":"The fitness assessment includes the multistage bleep test, with male officer candidates typically needing level 10.2 and female candidates level 8.1, alongside strength and endurance events. Medical screening covers vision, hearing, musculoskeletal health and mental fitness, and all candidates must meet the Army's medical standards before selection.","q":"What fitness tests must British Army officer candidates pass?"}],"headline":"British Army Officer Recruitment 2026: Sandhurst Entry Guide","metaDescription":"British Army officer recruitment 2026: age 18-29, Sandhurst 42-week course, nationality rules, AOSB selection, fitness standards and starting pay explained.","niche":"defense","sections":[{"content":"British Army officers lead soldiers from day one, managing teams, planning operations and taking responsibility for training, discipline and welfare. Every officer, whether Regular or Reserve, completes initial officer training at the Royal Military Academy Sandhurst, which runs three intakes each year in January, May and September.\n\nThe 42-week Commissioning Course blends leadership development, tactics, academic military studies, physical conditioning and adventurous training. It concludes with the Sovereign's Parade, after which cadets commission as Second Lieutenants and proceed to specialist training with their chosen regiment or corps.","title":"The Officer Role and Sandhurst Training"},{"content":"Regular officer candidates must be aged 18 to 29 when training begins, while soldier entry starts at 16 with enlistment before the 36th birthday. Applicants must normally be British citizens, Irish citizens, or Commonwealth citizens holding the legal right to live and work in the United Kingdom.\n\nNo formal educational qualifications are mandatory for many roles, though technical and specialist trades require GCSEs or equivalents in English and Maths. Candidates attend an Army Officer Insight Day and must demonstrate leadership potential, motivation and the values the Army expects of its officers.","title":"Eligibility: Age, Nationality and Education"},{"content":"After the online application, candidates complete medical questionnaires and attend an Army Officer Selection Board (AOSB) briefing followed by the main board. The AOSB assesses leadership, teamwork, problem-solving and physical robustness through command tasks, interviews, written exercises and fitness assessments over several days.\n\nThe fitness component includes the multistage bleep test, where male candidates generally need level 10.2 and female candidates level 8.1, plus strength and endurance events. From application to starting training, candidates should expect a timeline of at least six months.","title":"AOSB Selection and Fitness Assessment"},{"content":"Newly commissioned officers earn a starting salary of around 35,925 pounds, rising with rank, seniority and specialist qualifications. Infantry officers, for example, are advertised in the 35,925 to 42,948 pound band. Officers also receive subsidised accommodation, medical and dental care, and a non-contributory pension.\n\nCareer progression runs from Second Lieutenant through Lieutenant, Captain, Major and beyond, with command appointments, staff roles and sponsored postgraduate education available. Many officers later transfer valuable leadership and management experience into civilian careers.","title":"Pay, Benefits and Career Progression"}],"slug":"uk-army-officer-recruitment-2026","stats":[{"label":"Age Limit","value":"18-29 Years"},{"label":"Training","value":"42 Weeks, Sandhurst"},{"label":"Starting Salary","value":"GBP 35,925"},{"label":"Nationality","value":"British/Irish/Commonwealth"}],"title":"British Army Officer Recruitment 2026: Sandhurst Guide"}
+{
+  "slug": "uk-army-officer-recruitment-2026",
+  "niche": "defense",
+  "country": "GB",
+  "hreflang": "en-GB",
+  "translationGroupId": "uk-army-officer-recruitment-2026",
+  "title": "British Army Officer Recruitment 2026: Sandhurst Guide",
+  "metaDescription": "British Army officer recruitment 2026: age 18-29, Sandhurst 42-week course, nationality rules, AOSB selection, fitness standards and starting pay explained.",
+  "headline": "British Army Officer Recruitment 2026: Sandhurst Entry Guide",
+  "badge": "OFFICER SELECTION",
+  "stats": [
+    {
+      "label": "Age Limit",
+      "value": "18-29 Years"
+    },
+    {
+      "label": "Training",
+      "value": "42 Weeks, Sandhurst"
+    },
+    {
+      "label": "Starting Salary",
+      "value": "GBP 35,925"
+    },
+    {
+      "label": "Nationality",
+      "value": "British/Irish/Commonwealth"
+    }
+  ],
+  "sections": [
+    {
+      "content": "British Army officers lead soldiers from day one, managing teams, planning operations and taking responsibility for training, discipline and welfare. Every officer, whether Regular or Reserve, completes initial officer training at the Royal Military Academy Sandhurst, which runs three intakes each year in January, May and September.\n\nThe 42-week Commissioning Course blends leadership development, tactics, academic military studies, physical conditioning and adventurous training. It concludes with the Sovereign's Parade, after which cadets commission as Second Lieutenants and proceed to specialist training with their chosen regiment or corps.",
+      "title": "The Officer Role and Sandhurst Training"
+    },
+    {
+      "content": "Regular officer candidates must be aged 18 to 29 when training begins, while soldier entry starts at 16 with enlistment before the 36th birthday. Applicants must normally be British citizens, Irish citizens, or Commonwealth citizens holding the legal right to live and work in the United Kingdom.\n\nNo formal educational qualifications are mandatory for many roles, though technical and specialist trades require GCSEs or equivalents in English and Maths. Candidates attend an Army Officer Insight Day and must demonstrate leadership potential, motivation and the values the Army expects of its officers.",
+      "title": "Eligibility: Age, Nationality and Education"
+    },
+    {
+      "content": "After the online application, candidates complete medical questionnaires and attend an Army Officer Selection Board (AOSB) briefing followed by the main board. The AOSB assesses leadership, teamwork, problem-solving and physical robustness through command tasks, interviews, written exercises and fitness assessments over several days.\n\nThe fitness component includes the multistage bleep test, where male candidates generally need level 10.2 and female candidates level 8.1, plus strength and endurance events. From application to starting training, candidates should expect a timeline of at least six months.",
+      "title": "AOSB Selection and Fitness Assessment"
+    },
+    {
+      "content": "Newly commissioned officers earn a starting salary of around 35,925 pounds, rising with rank, seniority and specialist qualifications. Infantry officers, for example, are advertised in the 35,925 to 42,948 pound band. Officers also receive subsidised accommodation, medical and dental care, and a non-contributory pension.\n\nCareer progression runs from Second Lieutenant through Lieutenant, Captain, Major and beyond, with command appointments, staff roles and sponsored postgraduate education available. Many officers later transfer valuable leadership and management experience into civilian careers.",
+      "title": "Pay, Benefits and Career Progression"
+    }
+  ],
+  "faqs": [
+    {
+      "a": "Regular officer candidates must be between 18 and 29 years old at the start of training. Soldier entry accepts applicants from 16, with enlistment before the 36th birthday. Reserve officer entry extends to age 48. Candidates under 18 need written permission from a parent or guardian to apply.",
+      "q": "What is the age limit to join the British Army as an officer?"
+    },
+    {
+      "a": "The Royal Military Academy Sandhurst runs a 42-week Commissioning Course across three intakes each year in January, May and September. The course covers leadership, tactics, academic military studies, adventurous training and physical conditioning, ending with the Sovereign's Parade and commissioning as a Second Lieutenant.",
+      "q": "How long is officer training at Sandhurst?"
+    },
+    {
+      "a": "Applicants must normally be British citizens, Irish citizens, or Commonwealth citizens with the legal right to live and work in the UK. A passport valid for at least two years is required for Commonwealth applicants, and refugees or asylum seekers are not accepted for Army service.",
+      "q": "Can Commonwealth citizens join the British Army as officers?"
+    },
+    {
+      "a": "The fitness assessment includes the multistage bleep test, with male officer candidates typically needing level 10.2 and female candidates level 8.1, alongside strength and endurance events. Medical screening covers vision, hearing, musculoskeletal health and mental fitness, and all candidates must meet the Army's medical standards before selection.",
+      "q": "What fitness tests must British Army officer candidates pass?"
+    }
+  ]
+}

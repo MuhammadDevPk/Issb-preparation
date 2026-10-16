@@ -9,10 +9,22 @@
   "headline": "AI Prompt Engineer Salary Guide 2026: Benchmarks & Career Outlook",
   "badge": "TECH COMPENSATION INSIGHTS",
   "stats": [
-    { "label": "Median Base Salary", "value": "$135,000 – $185,000" },
-    { "label": "Top Tier Total Comp", "value": "$240,000+" },
-    { "label": "Remote Availability", "value": "78% Positions" },
-    { "label": "Primary Tech Stack", "value": "Python, LangChain, RAG" }
+    {
+      "label": "Median Base Salary",
+      "value": "$135,000 – $185,000"
+    },
+    {
+      "label": "Top Tier Total Comp",
+      "value": "$240,000+"
+    },
+    {
+      "label": "Remote Availability",
+      "value": "78% Positions"
+    },
+    {
+      "label": "Primary Tech Stack",
+      "value": "Python, LangChain, RAG"
+    }
   ],
   "sections": [
     {

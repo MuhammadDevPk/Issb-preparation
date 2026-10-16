@@ -9,10 +9,22 @@
   "headline": "Join the United States Navy: Complete 2026 Selection Guide",
   "badge": "MILITARY SELECTION GUIDE",
   "stats": [
-    { "label": "Age Limit", "value": "18–39" },
-    { "label": "Education", "value": "Bachelor's Degree" },
-    { "label": "Service Obligation", "value": "4–8 Years Active" },
-    { "label": "Physical Readiness", "value": "PRT Standards (Pass)" }
+    {
+      "label": "Age Limit",
+      "value": "18–39"
+    },
+    {
+      "label": "Education",
+      "value": "Bachelor's Degree"
+    },
+    {
+      "label": "Service Obligation",
+      "value": "4–8 Years Active"
+    },
+    {
+      "label": "Physical Readiness",
+      "value": "PRT Standards (Pass)"
+    }
   ],
   "sections": [
     {
