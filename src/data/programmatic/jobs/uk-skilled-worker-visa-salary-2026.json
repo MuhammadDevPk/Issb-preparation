@@ -1,1 +1,65 @@
-{"slug": "uk-skilled-worker-visa-salary-2026", "niche": "jobs", "country": "UK", "hreflang": "en-GB", "translationGroupId": "uk-skilled-worker-visa-salary-2026", "title": "UK Skilled Worker Visa Salary Threshold 2026 Guide", "metaDescription": "UK Skilled Worker visa salary threshold 2026: 41,700 pounds general rate, going-rate rules, new entrant 33,400 pounds, RQF 6 roles and application steps.", "headline": "UK Skilled Worker Visa Salary Threshold 2026: Full Guide", "badge": "VISA SALARY RULES", "stats": [{"label": "General Threshold", "value": "GBP 41,700 / yr"}, {"label": "Hourly Floor", "value": "GBP 17.13"}, {"label": "New Entrant", "value": "GBP 33,400"}, {"label": "Skill Level", "value": "RQF 6"}], "sections": [{"content": "Every Skilled Worker application in 2026 faces a dual salary test: your pay must clear both the general threshold of 41,700 pounds per year and the published going rate for your occupation's SOC 2020 code, whichever is higher. A third check applies an hourly floor of 17.13 pounds across a maximum 48-hour week.\n\nThe 41,700 pound figure has applied to most new applications since 22 July 2025, replacing the previous 38,700 pound level. Only guaranteed basic gross pay counts toward it, so bonuses, commission and allowances cannot bridge a shortfall.", "title": "The 41,700 Pound Threshold Explained"}, {"content": "Going rates vary by occupation and often exceed the general threshold: software developers sit near 46,000 pounds, business analysts around 44,500 pounds, and marketing managers near 48,000 pounds. Always check the Home Office Appendix Skilled Occupations for your exact four-digit code.\n\nDiscounts exist for specific groups. New entrants, STEM PhD holders and Immigration Salary List roles can qualify at 33,400 pounds, while non-STEM PhD holders qualify at 37,500 pounds. Health and Care Worker visas follow a separate, lower scale.", "title": "Going Rates and Salary Discounts"}, {"content": "Since July 2025, most sponsored roles must sit at RQF Level 6, equivalent to degree level. This describes the job rather than the applicant, so a self-taught developer can still be sponsored if the role's duties genuinely match a qualifying occupation code.\n\nYour employer must hold a valid sponsor licence and assign you a Certificate of Sponsorship, which is a reference number rather than a physical document. The CoS records your job title, salary, start date and SOC code for the Home Office.", "title": "Skill Level and Sponsorship"}, {"content": "Start by finding a licensed sponsor with a genuine vacancy at the right skill and salary level. Your employer assigns the Certificate of Sponsorship, after which you apply online with your CoS reference, passport, proof of English at B1 level, and evidence of maintenance funds unless certified.\n\nStandard processing takes around three weeks from outside the UK, with priority services available. The visa lasts up to five years and can lead to settlement through indefinite leave to remain, though settlement rules are moving toward an earned model.", "title": "Application Steps and Timeline"}], "faqs": [{"a": "The general salary threshold is 41,700 pounds per year for most new Skilled Worker applications in 2026, following the July 2025 increase from 38,700 pounds. Your salary must also meet an hourly floor of 17.13 pounds and equal or exceed the published going rate for your occupation code, whichever is higher.", "q": "What is the UK Skilled Worker visa salary threshold in 2026?"}, {"a": "New entrants qualify for a reduced threshold of 33,400 pounds per year. You count as a new entrant if you are under 26, switching from a student or graduate visa, working toward a recognized professional qualification, or in the first year of a postdoctoral position. The reduced rate lasts up to four years.", "q": "Who qualifies for the new entrant salary discount?"}, {"a": "Yes, but the Immigration Salary List is being phased out by 31 December 2026 and replaced with a Temporary Shortage List covering a limited set of RQF Level 3 to 5 roles. Workers on the Temporary Shortage List cannot bring dependants and receive no salary discount beyond the standard figures.", "q": "Can shortage occupation roles still get sponsored in 2026?"}, {"a": "You need a job offer from a Home Office licensed sponsor, a Certificate of Sponsorship reference number, and a role at RQF Level 6 skill level or above. You must prove English at B1 level, show maintenance funds unless your sponsor certifies them, and provide a valid passport plus any required TB or criminal record certificates.", "q": "What documents do I need for a UK Skilled Worker visa?"}]}
+{
+  "slug": "uk-skilled-worker-visa-salary-2026",
+  "niche": "jobs",
+  "country": "GB",
+  "hreflang": "en-GB",
+  "translationGroupId": "uk-skilled-worker-visa-salary-2026",
+  "title": "UK Skilled Worker Visa Salary Threshold 2026 Guide",
+  "metaDescription": "UK Skilled Worker visa salary threshold 2026: 41,700 pounds general rate, going-rate rules, new entrant 33,400 pounds, RQF 6 roles and application steps.",
+  "headline": "UK Skilled Worker Visa Salary Threshold 2026: Full Guide",
+  "badge": "VISA SALARY RULES",
+  "stats": [
+    {
+      "label": "General Threshold",
+      "value": "GBP 41,700 / yr"
+    },
+    {
+      "label": "Hourly Floor",
+      "value": "GBP 17.13"
+    },
+    {
+      "label": "New Entrant",
+      "value": "GBP 33,400"
+    },
+    {
+      "label": "Skill Level",
+      "value": "RQF 6"
+    }
+  ],
+  "sections": [
+    {
+      "content": "Every Skilled Worker application in 2026 faces a dual salary test: your pay must clear both the general threshold of 41,700 pounds per year and the published going rate for your occupation's SOC 2020 code, whichever is higher. A third check applies an hourly floor of 17.13 pounds across a maximum 48-hour week.\n\nThe 41,700 pound figure has applied to most new applications since 22 July 2025, replacing the previous 38,700 pound level. Only guaranteed basic gross pay counts toward it, so bonuses, commission and allowances cannot bridge a shortfall.",
+      "title": "The 41,700 Pound Threshold Explained"
+    },
+    {
+      "content": "Going rates vary by occupation and often exceed the general threshold: software developers sit near 46,000 pounds, business analysts around 44,500 pounds, and marketing managers near 48,000 pounds. Always check the Home Office Appendix Skilled Occupations for your exact four-digit code.\n\nDiscounts exist for specific groups. New entrants, STEM PhD holders and Immigration Salary List roles can qualify at 33,400 pounds, while non-STEM PhD holders qualify at 37,500 pounds. Health and Care Worker visas follow a separate, lower scale.",
+      "title": "Going Rates and Salary Discounts"
+    },
+    {
+      "content": "Since July 2025, most sponsored roles must sit at RQF Level 6, equivalent to degree level. This describes the job rather than the applicant, so a self-taught developer can still be sponsored if the role's duties genuinely match a qualifying occupation code.\n\nYour employer must hold a valid sponsor licence and assign you a Certificate of Sponsorship, which is a reference number rather than a physical document. The CoS records your job title, salary, start date and SOC code for the Home Office.",
+      "title": "Skill Level and Sponsorship"
+    },
+    {
+      "content": "Start by finding a licensed sponsor with a genuine vacancy at the right skill and salary level. Your employer assigns the Certificate of Sponsorship, after which you apply online with your CoS reference, passport, proof of English at B1 level, and evidence of maintenance funds unless certified.\n\nStandard processing takes around three weeks from outside the UK, with priority services available. The visa lasts up to five years and can lead to settlement through indefinite leave to remain, though settlement rules are moving toward an earned model.",
+      "title": "Application Steps and Timeline"
+    }
+  ],
+  "faqs": [
+    {
+      "a": "The general salary threshold is 41,700 pounds per year for most new Skilled Worker applications in 2026, following the July 2025 increase from 38,700 pounds. Your salary must also meet an hourly floor of 17.13 pounds and equal or exceed the published going rate for your occupation code, whichever is higher.",
+      "q": "What is the UK Skilled Worker visa salary threshold in 2026?"
+    },
+    {
+      "a": "New entrants qualify for a reduced threshold of 33,400 pounds per year. You count as a new entrant if you are under 26, switching from a student or graduate visa, working toward a recognized professional qualification, or in the first year of a postdoctoral position. The reduced rate lasts up to four years.",
+      "q": "Who qualifies for the new entrant salary discount?"
+    },
+    {
+      "a": "Yes, but the Immigration Salary List is being phased out by 31 December 2026 and replaced with a Temporary Shortage List covering a limited set of RQF Level 3 to 5 roles. Workers on the Temporary Shortage List cannot bring dependants and receive no salary discount beyond the standard figures.",
+      "q": "Can shortage occupation roles still get sponsored in 2026?"
+    },
+    {
+      "a": "You need a job offer from a Home Office licensed sponsor, a Certificate of Sponsorship reference number, and a role at RQF Level 6 skill level or above. You must prove English at B1 level, show maintenance funds unless your sponsor certifies them, and provide a valid passport plus any required TB or criminal record certificates.",
+      "q": "What documents do I need for a UK Skilled Worker visa?"
+    }
+  ]
+}

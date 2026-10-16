@@ -1,1 +1,65 @@
-{"slug": "japan-software-engineer-salary-2026", "niche": "tech", "country": "Japan", "hreflang": "en-JP", "translationGroupId": "japan-software-engineer-salary-2026", "title": "Software Engineer Salary Japan 2026: Tokyo Pay Guide", "metaDescription": "Software engineer salary Japan 2026: Tokyo average 7.2-9.5M yen, entry 4-7M, senior 10-17M. See gaishikei premiums, top employers and hiring tips.", "headline": "Software Engineer Salary in Japan 2026: Tokyo Pay Guide", "badge": "TOKYO TECH PAY", "stats": [{"label": "Tokyo Average", "value": "JPY 7.2-9.5M / yr"}, {"label": "Entry Level", "value": "JPY 4-7M"}, {"label": "Senior Level", "value": "JPY 10-17M"}, {"label": "Foreign Firms", "value": "+35% Premium"}], "sections": [{"content": "Tokyo dominates Japan's software engineering pay landscape in 2026. Glassdoor data from over three thousand submissions puts the average Tokyo software engineer salary at approximately 7.2 million yen per year, with the typical range running from 5.5 million at the 25th percentile to 10.29 million at the 75th percentile.\n\nOther benchmarks run higher: Levels.fyi reports average total compensation of 8.5 million yen in the Greater Tokyo Area, and CareerCheck reports a median of 9.5 million yen. For practical purposes, most engineers in Tokyo earn between 7.2 and 9.5 million yen, with senior and specialized roles going much higher.", "title": "Average Software Engineer Salary in Tokyo for 2026"}, {"content": "Entry-level engineers with zero to two years earn between 4 and 7 million yen per year, with new graduates at traditional domestic firms near the bottom. Mid-level engineers with three to six years earn 7 to 12 million yen, which covers the Tokyo average band.\n\nSenior engineers with seven or more years earn 10 to 17 million yen, while staff and principal engineers at multinational firms earn 15 to 25 million yen. Top earners in the 90th percentile report up to 13.15 million yen across the broader market.", "title": "Salary by Experience Level"}, {"content": "International-headquartered companies pay a large premium in Japan: developers at gaishikei firms report median pay about 35 percent higher than peers at domestic companies. Google Tokyo, for example, reports median compensation around 24.4 million yen for levels L3 to L6.\n\nThe premium reflects global salary bands, equity grants and English-language workplaces. Domestic giants and startups are catching up, but the gap remains the single biggest lever an engineer in Japan can pull when changing jobs.", "title": "Gaishikei vs Domestic Firms"}, {"content": "Foreign engineers typically need a valid work visa, most commonly the Engineer, Specialist in Humanities and International Services status, which requires a relevant degree or ten years of experience. Many Tokyo tech firms now hire entirely in English, though Japanese ability opens far more options and speeds up promotions.\n\nBuilding skills in short supply, such as AI engineering, platform engineering or security, strengthens both visa sponsorship chances and salary offers. Contributing to open source and maintaining a strong GitHub profile also helps, since Japanese hiring managers weigh demonstrable output heavily.", "title": "How Foreigners Get Hired in Japan"}], "faqs": [{"a": "Software engineers in Tokyo earn an average of 7.2 to 9.5 million yen per year in 2026 depending on the survey. Glassdoor reports around 7.2 million yen from over three thousand submissions, while Levels.fyi places average total compensation near 8.5 million yen and CareerCheck reports a median of 9.5 million yen.", "q": "What is the average software engineer salary in Tokyo in 2026?"}, {"a": "Entry-level software engineers in Japan earn between 4 and 7 million yen per year. New graduates at traditional domestic firms start near the bottom of this range, while international companies and well-funded startups in Tokyo pay new graduates closer to 6 or 7 million yen.", "q": "How much do entry-level software engineers earn in Japan?"}, {"a": "Senior software engineers with seven or more years of experience earn between 10 and 17 million yen per year in Tokyo. Engineers at top multinational firms can exceed 20 million yen, and Google Tokyo reports median compensation around 24.4 million yen for mid-to-senior levels.", "q": "What do senior software engineers earn in Tokyo?"}, {"a": "Engineers at foreign-headquartered companies in Japan report median pay roughly 35 percent higher than those at domestic firms. The premium comes from global salary bands, equity compensation and English-language hiring. Targeting gaishikei firms, building in-demand skills like AI or infrastructure, and negotiating with competing offers maximize the gap.", "q": "Do foreign companies in Japan pay engineers more?"}]}
+{
+  "slug": "japan-software-engineer-salary-2026",
+  "niche": "tech",
+  "country": "JP",
+  "hreflang": "en-JP",
+  "translationGroupId": "japan-software-engineer-salary-2026",
+  "title": "Software Engineer Salary Japan 2026: Tokyo Pay Guide",
+  "metaDescription": "Software engineer salary Japan 2026: Tokyo average 7.2-9.5M yen, entry 4-7M, senior 10-17M. See gaishikei premiums, top employers and hiring tips.",
+  "headline": "Software Engineer Salary in Japan 2026: Tokyo Pay Guide",
+  "badge": "TOKYO TECH PAY",
+  "stats": [
+    {
+      "label": "Tokyo Average",
+      "value": "JPY 7.2-9.5M / yr"
+    },
+    {
+      "label": "Entry Level",
+      "value": "JPY 4-7M"
+    },
+    {
+      "label": "Senior Level",
+      "value": "JPY 10-17M"
+    },
+    {
+      "label": "Foreign Firms",
+      "value": "+35% Premium"
+    }
+  ],
+  "sections": [
+    {
+      "content": "Tokyo dominates Japan's software engineering pay landscape in 2026. Glassdoor data from over three thousand submissions puts the average Tokyo software engineer salary at approximately 7.2 million yen per year, with the typical range running from 5.5 million at the 25th percentile to 10.29 million at the 75th percentile.\n\nOther benchmarks run higher: Levels.fyi reports average total compensation of 8.5 million yen in the Greater Tokyo Area, and CareerCheck reports a median of 9.5 million yen. For practical purposes, most engineers in Tokyo earn between 7.2 and 9.5 million yen, with senior and specialized roles going much higher.",
+      "title": "Average Software Engineer Salary in Tokyo for 2026"
+    },
+    {
+      "content": "Entry-level engineers with zero to two years earn between 4 and 7 million yen per year, with new graduates at traditional domestic firms near the bottom. Mid-level engineers with three to six years earn 7 to 12 million yen, which covers the Tokyo average band.\n\nSenior engineers with seven or more years earn 10 to 17 million yen, while staff and principal engineers at multinational firms earn 15 to 25 million yen. Top earners in the 90th percentile report up to 13.15 million yen across the broader market.",
+      "title": "Salary by Experience Level"
+    },
+    {
+      "content": "International-headquartered companies pay a large premium in Japan: developers at gaishikei firms report median pay about 35 percent higher than peers at domestic companies. Google Tokyo, for example, reports median compensation around 24.4 million yen for levels L3 to L6.\n\nThe premium reflects global salary bands, equity grants and English-language workplaces. Domestic giants and startups are catching up, but the gap remains the single biggest lever an engineer in Japan can pull when changing jobs.",
+      "title": "Gaishikei vs Domestic Firms"
+    },
+    {
+      "content": "Foreign engineers typically need a valid work visa, most commonly the Engineer, Specialist in Humanities and International Services status, which requires a relevant degree or ten years of experience. Many Tokyo tech firms now hire entirely in English, though Japanese ability opens far more options and speeds up promotions.\n\nBuilding skills in short supply, such as AI engineering, platform engineering or security, strengthens both visa sponsorship chances and salary offers. Contributing to open source and maintaining a strong GitHub profile also helps, since Japanese hiring managers weigh demonstrable output heavily.",
+      "title": "How Foreigners Get Hired in Japan"
+    }
+  ],
+  "faqs": [
+    {
+      "a": "Software engineers in Tokyo earn an average of 7.2 to 9.5 million yen per year in 2026 depending on the survey. Glassdoor reports around 7.2 million yen from over three thousand submissions, while Levels.fyi places average total compensation near 8.5 million yen and CareerCheck reports a median of 9.5 million yen.",
+      "q": "What is the average software engineer salary in Tokyo in 2026?"
+    },
+    {
+      "a": "Entry-level software engineers in Japan earn between 4 and 7 million yen per year. New graduates at traditional domestic firms start near the bottom of this range, while international companies and well-funded startups in Tokyo pay new graduates closer to 6 or 7 million yen.",
+      "q": "How much do entry-level software engineers earn in Japan?"
+    },
+    {
+      "a": "Senior software engineers with seven or more years of experience earn between 10 and 17 million yen per year in Tokyo. Engineers at top multinational firms can exceed 20 million yen, and Google Tokyo reports median compensation around 24.4 million yen for mid-to-senior levels.",
+      "q": "What do senior software engineers earn in Tokyo?"
+    },
+    {
+      "a": "Engineers at foreign-headquartered companies in Japan report median pay roughly 35 percent higher than those at domestic firms. The premium comes from global salary bands, equity compensation and English-language hiring. Targeting gaishikei firms, building in-demand skills like AI or infrastructure, and negotiating with competing offers maximize the gap.",
+      "q": "Do foreign companies in Japan pay engineers more?"
+    }
+  ]
+}

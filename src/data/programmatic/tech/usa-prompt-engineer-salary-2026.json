@@ -1,1 +1,65 @@
-{"slug": "usa-prompt-engineer-salary-2026", "niche": "tech", "country": "US", "hreflang": "en-US", "translationGroupId": "usa-prompt-engineer-salary-2026", "title": "Prompt Engineer Salary USA 2026: Average & Top Pay", "metaDescription": "Prompt engineer salary USA 2026: average $98k-$123k, senior $150k-$180k+. Compare top-paying companies, best cities and skills that raise pay.", "headline": "Prompt Engineer Salary in the USA 2026: Complete Pay Guide", "badge": "AI CAREER PAY", "stats": [{"label": "Average Salary", "value": "~$98,000-123,000"}, {"label": "Senior Level", "value": "$150,000-180,000+"}, {"label": "Top Company", "value": "$230,000 / yr"}, {"label": "Best Cities", "value": "LA, NYC, Boston"}], "sections": [{"content": "Prompt engineering has matured into a well-paid specialty in the United States by 2026. National averages range from about 98,000 dollars on ZipRecruiter to 112,500 dollars on Indeed and around 123,000 dollars in industry salary guides, reflecting how differently sources measure the same young job title.\n\nThe spread is unusually wide because the title is still being renamed across the industry, frontier AI labs pay far above the broader market, and many employers list the work under different internal job codes. Understanding which segment of the market you are targeting matters more here than in most roles.", "title": "Average Prompt Engineer Salary in the US for 2026"}, {"content": "Entry-level prompt engineers earn between 70,000 and 110,000 dollars per year. Mid-level engineers with three to five years of experience earn 110,000 to 150,000 dollars, while senior engineers earn 150,000 to 180,000 dollars or more in base salary.\n\nAt frontier model labs the numbers detach from the broader market: OpenAI, Anthropic and Google DeepMind clear 380,000 to 620,000 dollars in total compensation for senior roles once equity vests. Even outside the labs, senior roles at defense and enterprise AI firms regularly exceed 200,000 dollars.", "title": "Salary by Experience and Seniority"}, {"content": "Lockheed Martin tops public postings at around 230,000 dollars per year, followed by Scale AI near 213,800 dollars and Red Hat around 226,000 dollars. These employers value prompt engineers who can work with domain experts and evaluation harnesses, not just clever wording.\n\nBig Tech firms including Google, Meta, Microsoft and OpenAI pay the highest overall packages, while AI startups often trade lower base pay for meaningful equity. Defense, finance and healthcare enterprises sit between the two, offering strong base salaries with less equity upside.", "title": "Highest-Paying Companies"}, {"content": "The best-paid prompt engineers combine NLP or machine learning fundamentals with software engineering discipline: versioned prompts, evaluation datasets, guardrails, latency and cost awareness. Experience with agent frameworks, retrieval-augmented generation and model fine-tuning lifts candidates into senior bands.\n\nLos Angeles, New York, Boston and San Francisco pay the most, but remote hiring has spread coastal pay inland. Building a portfolio of shipped AI features with measured quality improvements beats certificates when negotiating, since employers pay for demonstrated impact on model behavior.", "title": "Skills and Cities That Raise Pay"}], "faqs": [{"a": "Prompt engineers in the United States earn an average of roughly 98,000 to 123,000 dollars per year in 2026 depending on the data source. Indeed reports around 112,500 dollars from job postings, ZipRecruiter reports about 98,000 dollars, and industry guides place the national average near 123,000 dollars with wide regional variation.", "q": "What is the average prompt engineer salary in the US in 2026?"}, {"a": "Entry-level prompt engineers earn between 70,000 and 110,000 dollars per year. Mid-level engineers with three to five years earn 110,000 to 150,000 dollars, while senior prompt engineers earn 150,000 to 180,000 dollars or more, with frontier AI labs paying far above these bands.", "q": "How much do junior prompt engineers earn in the United States?"}, {"a": "The highest-paying employers include Lockheed Martin at around 230,000 dollars per year and Scale AI near 213,800 dollars. Frontier model labs such as OpenAI, Anthropic and Google DeepMind report total compensation between 380,000 and 620,000 dollars once equity vests for senior roles.", "q": "Which companies pay prompt engineers the most?"}, {"a": "Los Angeles leads at around 141,784 dollars per year, followed by New York at about 136,000 dollars and McLean, Virginia at 126,892 dollars. Boston and San Francisco also rank near the top. Remote roles at national firms increasingly match these coastal bands for experienced hires.", "q": "Which US cities pay prompt engineers the highest salaries?"}]}
+{
+  "slug": "usa-prompt-engineer-salary-2026",
+  "niche": "tech",
+  "country": "US",
+  "hreflang": "en-US",
+  "translationGroupId": "usa-prompt-engineer-salary-2026",
+  "title": "Prompt Engineer Salary USA 2026: Average & Top Pay",
+  "metaDescription": "Prompt engineer salary USA 2026: average $98k-$123k, senior $150k-$180k+. Compare top-paying companies, best cities and skills that raise pay.",
+  "headline": "Prompt Engineer Salary in the USA 2026: Complete Pay Guide",
+  "badge": "AI CAREER PAY",
+  "stats": [
+    {
+      "label": "Average Salary",
+      "value": "~$98,000-123,000"
+    },
+    {
+      "label": "Senior Level",
+      "value": "$150,000-180,000+"
+    },
+    {
+      "label": "Top Company",
+      "value": "$230,000 / yr"
+    },
+    {
+      "label": "Best Cities",
+      "value": "LA, NYC, Boston"
+    }
+  ],
+  "sections": [
+    {
+      "content": "Prompt engineering has matured into a well-paid specialty in the United States by 2026. National averages range from about 98,000 dollars on ZipRecruiter to 112,500 dollars on Indeed and around 123,000 dollars in industry salary guides, reflecting how differently sources measure the same young job title.\n\nThe spread is unusually wide because the title is still being renamed across the industry, frontier AI labs pay far above the broader market, and many employers list the work under different internal job codes. Understanding which segment of the market you are targeting matters more here than in most roles.",
+      "title": "Average Prompt Engineer Salary in the US for 2026"
+    },
+    {
+      "content": "Entry-level prompt engineers earn between 70,000 and 110,000 dollars per year. Mid-level engineers with three to five years of experience earn 110,000 to 150,000 dollars, while senior engineers earn 150,000 to 180,000 dollars or more in base salary.\n\nAt frontier model labs the numbers detach from the broader market: OpenAI, Anthropic and Google DeepMind clear 380,000 to 620,000 dollars in total compensation for senior roles once equity vests. Even outside the labs, senior roles at defense and enterprise AI firms regularly exceed 200,000 dollars.",
+      "title": "Salary by Experience and Seniority"
+    },
+    {
+      "content": "Lockheed Martin tops public postings at around 230,000 dollars per year, followed by Scale AI near 213,800 dollars and Red Hat around 226,000 dollars. These employers value prompt engineers who can work with domain experts and evaluation harnesses, not just clever wording.\n\nBig Tech firms including Google, Meta, Microsoft and OpenAI pay the highest overall packages, while AI startups often trade lower base pay for meaningful equity. Defense, finance and healthcare enterprises sit between the two, offering strong base salaries with less equity upside.",
+      "title": "Highest-Paying Companies"
+    },
+    {
+      "content": "The best-paid prompt engineers combine NLP or machine learning fundamentals with software engineering discipline: versioned prompts, evaluation datasets, guardrails, latency and cost awareness. Experience with agent frameworks, retrieval-augmented generation and model fine-tuning lifts candidates into senior bands.\n\nLos Angeles, New York, Boston and San Francisco pay the most, but remote hiring has spread coastal pay inland. Building a portfolio of shipped AI features with measured quality improvements beats certificates when negotiating, since employers pay for demonstrated impact on model behavior.",
+      "title": "Skills and Cities That Raise Pay"
+    }
+  ],
+  "faqs": [
+    {
+      "a": "Prompt engineers in the United States earn an average of roughly 98,000 to 123,000 dollars per year in 2026 depending on the data source. Indeed reports around 112,500 dollars from job postings, ZipRecruiter reports about 98,000 dollars, and industry guides place the national average near 123,000 dollars with wide regional variation.",
+      "q": "What is the average prompt engineer salary in the US in 2026?"
+    },
+    {
+      "a": "Entry-level prompt engineers earn between 70,000 and 110,000 dollars per year. Mid-level engineers with three to five years earn 110,000 to 150,000 dollars, while senior prompt engineers earn 150,000 to 180,000 dollars or more, with frontier AI labs paying far above these bands.",
+      "q": "How much do junior prompt engineers earn in the United States?"
+    },
+    {
+      "a": "The highest-paying employers include Lockheed Martin at around 230,000 dollars per year and Scale AI near 213,800 dollars. Frontier model labs such as OpenAI, Anthropic and Google DeepMind report total compensation between 380,000 and 620,000 dollars once equity vests for senior roles.",
+      "q": "Which companies pay prompt engineers the most?"
+    },
+    {
+      "a": "Los Angeles leads at around 141,784 dollars per year, followed by New York at about 136,000 dollars and McLean, Virginia at 126,892 dollars. Boston and San Francisco also rank near the top. Remote roles at national firms increasingly match these coastal bands for experienced hires.",
+      "q": "Which US cities pay prompt engineers the highest salaries?"
+    }
+  ]
+}

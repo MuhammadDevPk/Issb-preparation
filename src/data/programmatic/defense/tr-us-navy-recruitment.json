@@ -9,10 +9,22 @@
   "headline": "ABD Donanmasına Katılın: 2026 Kapsamlı Subay Seçim Rehberi",
   "badge": "ASKERİ SEÇİM KILAVUZU",
   "stats": [
-    { "label": "Yaş Sınırı", "value": "18–39" },
-    { "label": "Eğitim Şartı", "value": "Lisans Mezuniyeti" },
-    { "label": "Hizmet Süresi", "value": "4–8 Yıl Muvazzaf" },
-    { "label": "Fiziki Yeterlilik", "value": "PRT Standartları (Geçer)" }
+    {
+      "label": "Yaş Sınırı",
+      "value": "18–39"
+    },
+    {
+      "label": "Eğitim Şartı",
+      "value": "Lisans Mezuniyeti"
+    },
+    {
+      "label": "Hizmet Süresi",
+      "value": "4–8 Yıl Muvazzaf"
+    },
+    {
+      "label": "Fiziki Yeterlilik",
+      "value": "PRT Standartları (Geçer)"
+    }
   ],
   "sections": [
     {
