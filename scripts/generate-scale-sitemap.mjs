@@ -54,7 +54,9 @@ function getProgrammaticRoutes() {
               changefreq: 'weekly',
               category: niche,
               lastmod: fileDate || today,
-              country: content.country || 'GLOBAL'
+              country: content.country || 'GLOBAL',
+              hreflang: content.hreflang || null,
+              translationGroupId: content.translationGroupId || null,
             })
           }
         } catch (err) {
@@ -68,19 +70,49 @@ function getProgrammaticRoutes() {
   return routes
 }
 
-// 3. XML Builders
-function buildUrlsetXml(routes) {
+// 3. Build Translation Groups for Hreflang Alternates
+function buildTranslationGroups(routes) {
+  const groups = {}
+  for (const r of routes) {
+    if (r.translationGroupId && r.hreflang) {
+      if (!groups[r.translationGroupId]) {
+        groups[r.translationGroupId] = []
+      }
+      groups[r.translationGroupId].push(r)
+    }
+  }
+  return groups
+}
+
+// 4. XML Builders
+function buildUrlsetXml(routes, translationGroups = {}) {
   return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${routes
-  .map(
-    (r) => `  <url>
-    <loc>${BASE_URL}${r.path}</loc>
+  .map((r) => {
+    let xhtmlLinks = ''
+    if (r.translationGroupId && translationGroups[r.translationGroupId]) {
+      const group = translationGroups[r.translationGroupId]
+      // Identify English (en-*) route for x-default fallback
+      const englishRoute = group.find((m) => m.hreflang && m.hreflang.toLowerCase().startsWith('en'))
+      const xDefaultHref = englishRoute ? `${BASE_URL}${englishRoute.path}` : `${BASE_URL}${group[0].path}`
+
+      // Append alternate link for every localized URL in group (including self-reference)
+      const links = group.map(
+        (m) => `    <xhtml:link rel="alternate" hreflang="${m.hreflang}" href="${BASE_URL}${m.path}" />`
+      )
+      // Inject x-default global fallback link
+      links.push(`    <xhtml:link rel="alternate" hreflang="x-default" href="${xDefaultHref}" />`)
+      xhtmlLinks = '\n' + links.join('\n')
+    }
+
+    return `  <url>
+    <loc>${BASE_URL}${r.path}</loc>${xhtmlLinks}
     <lastmod>${r.lastmod || today}</lastmod>
     <changefreq>${r.changefreq || 'weekly'}</changefreq>
     <priority>${r.priority || '0.8'}</priority>
   </url>`
-  )
+  })
   .join('\n')}
 </urlset>
 `
@@ -101,7 +133,7 @@ ${childSitemaps
 `
 }
 
-// 4. File Output Helper
+// 5. File Output Helper & Stale Child Cleanup
 function writeOutputFiles(filename, content) {
   const publicDir = path.resolve('public')
   const distDir = path.resolve('dist')
@@ -116,18 +148,37 @@ function writeOutputFiles(filename, content) {
   }
 }
 
-// 5. Execution Pipeline
+function cleanupStaleChildSitemaps() {
+  for (const dir of [path.resolve('public'), path.resolve('dist')]) {
+    if (fs.existsSync(dir)) {
+      const files = fs.readdirSync(dir)
+      for (const file of files) {
+        if (file.startsWith('sitemap-') && file.endsWith('.xml')) {
+          fs.unlinkSync(path.join(dir, file))
+        }
+      }
+    }
+  }
+}
+
+// 6. Execution Pipeline
 const programmaticRoutes = getProgrammaticRoutes()
 const allRoutes = [...coreRoutes, ...programmaticRoutes]
+const translationGroups = buildTranslationGroups(programmaticRoutes)
 const totalUrls = allRoutes.length
 
-console.log(`[generate-scale-sitemap.mjs] Discovered ${coreRoutes.length} core routes and ${programmaticRoutes.length} programmatic routes.`)
+console.log(
+  `[generate-scale-sitemap.mjs] Discovered ${coreRoutes.length} core routes and ${programmaticRoutes.length} programmatic routes (${Object.keys(translationGroups).length} translation groups).`
+)
 
 if (totalUrls <= SITEMAP_MAX_URLS) {
-  // Single Unified Master Sitemap
-  const singleXml = buildUrlsetXml(allRoutes)
+  // Purge any old child sitemaps in single-sitemap mode
+  cleanupStaleChildSitemaps()
+
+  // Single Unified Master Sitemap with W3C xhtml:link hreflang annotations
+  const singleXml = buildUrlsetXml(allRoutes, translationGroups)
   writeOutputFiles('sitemap.xml', singleXml)
-  console.log(`[generate-scale-sitemap.mjs] Successfully generated unified sitemap.xml with ${totalUrls} URLs.`)
+  console.log(`[generate-scale-sitemap.mjs] Successfully generated unified sitemap.xml with ${totalUrls} URLs and hreflang annotations.`)
 } else {
   // Scalable Multi-Sitemap Architecture with Root Sitemap Index (> 5,000 URLs)
   console.log(`[generate-scale-sitemap.mjs] Total URLs (${totalUrls}) exceeds threshold (${SITEMAP_MAX_URLS}). Partitioning into category child sitemaps...`)
@@ -148,7 +199,7 @@ if (totalUrls <= SITEMAP_MAX_URLS) {
       const partSuffix = catRoutes.length > SITEMAP_MAX_URLS ? `-${Math.floor(i / SITEMAP_MAX_URLS) + 1}` : ''
       const filename = `sitemap-${catName}${partSuffix}.xml`
 
-      const chunkXml = buildUrlsetXml(chunk)
+      const chunkXml = buildUrlsetXml(chunk, translationGroups)
       writeOutputFiles(filename, chunkXml)
       childSitemaps.push({ filename, count: chunk.length })
       console.log(`[generate-scale-sitemap.mjs] Generated child sitemap ${filename} with ${chunk.length} URLs.`)

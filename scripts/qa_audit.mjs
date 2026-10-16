@@ -129,6 +129,7 @@ if (!fs.existsSync(sitemapPath)) {
     'https://issb-preparation.vercel.app/essays-speech',
     'https://issb-preparation.vercel.app/simulator/wat',
     'https://issb-preparation.vercel.app/explore/defense/us-navy-recruitment',
+    'https://issb-preparation.vercel.app/explore/defense/tr-us-navy-recruitment',
     'https://issb-preparation.vercel.app/explore/tech/ai-prompt-engineer-salary',
     'https://issb-preparation.vercel.app/explore/jobs/police-academy-requirements'
   ]
@@ -138,6 +139,17 @@ if (!fs.existsSync(sitemapPath)) {
       console.error(`❌ [FAIL] Expected URL missing in sitemap: ${url}`)
       totalErrors++
     }
+  }
+
+  // Verify W3C xhtml namespace and hreflang tags
+  if (!sitemapXml.includes('xmlns:xhtml="http://www.w3.org/1999/xhtml"')) {
+    console.error('❌ [FAIL] dist/sitemap.xml missing xmlns:xhtml namespace!')
+    totalErrors++
+  } else if (!sitemapXml.includes('xhtml:link') || !sitemapXml.includes('hreflang="x-default"')) {
+    console.error('❌ [FAIL] dist/sitemap.xml missing xhtml:link or x-default hreflang annotations!')
+    totalErrors++
+  } else {
+    console.log('✅ [PASS] dist/sitemap.xml contains valid W3C xhtml:link annotations and x-default fallback.')
   }
 }
 

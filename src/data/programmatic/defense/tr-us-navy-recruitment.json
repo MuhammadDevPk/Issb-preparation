@@ -1,0 +1,49 @@
+{
+  "slug": "tr-us-navy-recruitment",
+  "niche": "defense",
+  "country": "TR",
+  "hreflang": "tr-TR",
+  "translationGroupId": "us-navy-recruitment",
+  "title": "ABD Deniz Kuvvetleri Subay Alımı 2026: Şartlar, ASVAB ve Aşamalar",
+  "metaDescription": "Kapsamlı 2026 ABD Donanması subay alım kılavuzu. Başvuru şartları, OAR ve ASVAB sınav standartları, fiziki yeterlilik kriterleri ve seçim süreci.",
+  "headline": "ABD Donanmasına Katılın: 2026 Kapsamlı Subay Seçim Rehberi",
+  "badge": "ASKERİ SEÇİM KILAVUZU",
+  "stats": [
+    { "label": "Yaş Sınırı", "value": "18–39" },
+    { "label": "Eğitim Şartı", "value": "Lisans Mezuniyeti" },
+    { "label": "Hizmet Süresi", "value": "4–8 Yıl Muvazzaf" },
+    { "label": "Fiziki Yeterlilik", "value": "PRT Standartları (Geçer)" }
+  ],
+  "sections": [
+    {
+      "title": "Subay Aday Okulu (OCS) ve Görevlendirme Programları",
+      "content": "Amerika Birleşik Devletleri Deniz Kuvvetleri bünyesinde muvazzaf subay yetiştirme süreci dört ana kaynak üzerinden yürütülmektedir: Annapolis Deniz Harp Okulu (USNA), sivil üniversitelerdeki NROTC programları, üniversite mezunlarına yönelik Newport Subay Aday Okulu (OCS) ve tıp, hukuk gibi uzmanlık alanları için doğrudan görevlendirme (DCO) modeli. Newport, Rhode Island'da düzenlenen 13 haftalık yoğun OCS eğitimi; askeri disiplin, denizcilik tarihi, hasar kontrolü, seyir ve taktik liderlik prensiplerini kapsamaktadır."
+    },
+    {
+      "title": "Uygunluk Kriterleri ve Sağlık Standartları",
+      "content": "Subaylık başvurusu yapacak adayların ABD vatandaşı olması, tanınmış bir yükseköğretim kurumundan en az lisans diplomasına sahip bulunması ve branş koşullarına bağlı olarak 18 ile 39 yaş aralığında yer alması şarttır. Adaylar, Savunma Bakanlığı Tıbbi İnceleme Kurulu (DoDMERB) tarafından gerçekleştirilen kapsamlı kardiyovasküler, görme keskinliği, ortopedik ve nörolojik sağlık muayenelerinden tam not almak zorundadır."
+    },
+    {
+      "title": "Subay Yetenek Derecelendirmesi (OAR) ve ASVAB Testleri",
+      "content": "Subay adayları, matematiksel muhakeme, okuduğunu anlama ve mekanik kavrama becerilerini ölçen bilgisayar tabanlı Subay Yetenek Derecelendirme (OAR) sınavına tabi tutulurlar. Deniz Havacılığı ve İstihbarat gibi branşlarda 45 ila 55 üzeri OAR bileşik puanı aranırken; erbaş ve astsubaylıktan subaylığa geçiş yapan personelin ASVAB Genel Teknik (GT) puanının 110 eşiğini aşması beklenir."
+    },
+    {
+      "title": "Donanma Fiziki Hazırlık Testi (PRT) Standartları",
+      "content": "Adayların seçim sürecinde başarılı sayılabilmesi için yaş ve cinsiyete göre derecelendirilen Donanma Fiziki Hazırlık Testi (PRT) standartlarını karşılaması gerekmektedir. Test; 1,5 mil koşu, 2 dakikalık ön kol plank duruşu ve 2 dakikalık azami şınav bileşenlerini kapsar. Bu aşamada 'İyi' veya 'Mükemmel' derece elde etmek seçim kurulu değerlendirmesinde kritik avantaj sağlar."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "ABD Donanması subay adayları için gereken ASVAB veya OAR puanı kaçtır?",
+      "a": "ABD Donanması subay adayları standart ASVAB yerine Subay Yetenek Derecelendirme (OAR) testine tabi tutulur. Asgari yeterlilik puanı branşa göre 42 ile 50 arasında değişmektedir. Deniz Havacılığı, İstihbarat ve Su Üstü Harbi gibi yüksek rekabet içeren branşlarda 50 üzeri puan ve güçlü bir üniversite not ortalaması şarttır."
+    },
+    {
+      "q": "ABD Donanmasına subay olarak katılmak için üst yaş sınırı nedir?",
+      "a": "Üst yaş sınırı başvuru yapılan uzmanlık sınıfına göre değişiklik gösterir. Su Üstü Harbi ve İkmal subaylığı için adaylar 39 yaşına kadar başvurabilir. Donanma pilot adaylarının 32 yaşından önce atanması gerekirken, SEAL ve EOD özel kuvvetlerinde azami sınır genellikle 28 veya 29 olarak uygulanmaktadır."
+    },
+    {
+      "q": "Donanma Subay Aday Okulu (OCS) eğitimi ne kadar sürer?",
+      "a": "Newport, Rhode Island'da bulunan Donanma Subay Aday Okulu eğitimi yaklaşık 13 hafta sürer. Adaylar bu yoğun süreçte askeri liderlik, seyir, deniz silah sistemleri, hasar kontrolü ve yüksek tempolu kondisyon eğitimleri alırlar. Mezunlar ABD Donanmasında Teğmen rütbesiyle resmi olarak subaylık görevine başlarlar."
+    }
+  ]
+}

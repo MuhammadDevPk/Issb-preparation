@@ -69,7 +69,7 @@ const schemaOrgGraph = computed(() => {
       headline: pageData.value.title || pageData.value.headline,
       description: pageData.value.metaDescription,
       mainEntityOfPage: canonicalUrl.value,
-      inLanguage: 'en-US',
+      inLanguage: pageData.value.hreflang || 'en-US',
       datePublished: '2026-01-01T00:00:00Z',
       dateModified: new Date().toISOString(),
       image: 'https://issb-preparation.vercel.app/og-image.png',
@@ -126,9 +126,13 @@ useHead(() => {
   const p = pageData.value
   const title = p.title || `${p.headline} | ISSB Command`
   const description = p.metaDescription || ''
+  const langCode = p.hreflang ? p.hreflang.split('-')[0] : 'en'
 
   return {
     title,
+    htmlAttrs: {
+      lang: langCode,
+    },
     meta: [
       { name: 'description', content: description },
       { property: 'og:title', content: title },
