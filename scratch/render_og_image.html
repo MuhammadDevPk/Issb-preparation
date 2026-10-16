@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ISSB Command OG Image</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      width: 1200px;
+      height: 630px;
+      background-color: #080d1a;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(2, 132, 199, 0.35) 0%, transparent 45%),
+        radial-gradient(circle at 85% 85%, rgba(16, 185, 129, 0.25) 0%, transparent 45%),
+        radial-gradient(circle at 50% 40%, rgba(245, 158, 11, 0.1) 0%, transparent 55%),
+        linear-gradient(rgba(14, 165, 233, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(14, 165, 233, 0.04) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 32px 32px, 32px 32px;
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: #f8fafc;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 44px 56px;
+    }
+
+    /* Ambient Outer Border & Tactical Corner Accents */
+    .outer-frame {
+      position: absolute;
+      inset: 20px;
+      border: 1px solid rgba(14, 165, 233, 0.18);
+      border-radius: 16px;
+      pointer-events: none;
+    }
+
+    .corner {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border-color: #00e5ff;
+      border-style: solid;
+      pointer-events: none;
+    }
+    .corner-tl { top: 16px; left: 16px; border-width: 3px 0 0 3px; border-top-left-radius: 6px; }
+    .corner-tr { top: 16px; right: 16px; border-width: 3px 3px 0 0; border-top-right-radius: 6px; }
+    .corner-bl { bottom: 16px; left: 16px; border-width: 0 0 3px 3px; border-bottom-left-radius: 6px; }
+    .corner-br { bottom: 16px; right: 16px; border-width: 0 3px 3px 0; border-bottom-right-radius: 6px; }
+
+    /* Top Navigation Header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 10;
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand-logo-icon {
+      width: 52px;
+      height: 52px;
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.25) 0%, rgba(2, 132, 199, 0.05) 100%);
+      border: 1.5px solid #00e5ff;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 20px rgba(0, 229, 255, 0.3), inset 0 0 12px rgba(0, 229, 255, 0.15);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      color: #ffffff;
+      text-shadow: 0 0 12px rgba(0, 229, 255, 0.4);
+    }
+
+    .brand-tagline {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      color: #38bdf8;
+      text-transform: uppercase;
+    }
+
+    .live-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(34, 197, 94, 0.35);
+      padding: 8px 18px;
+      border-radius: 9999px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3), 0 0 15px rgba(34, 197, 94, 0.15);
+    }
+
+    .live-dot {
+      width: 9px;
+      height: 9px;
+      background: #22c55e;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #22c55e;
+    }
+
+    .live-text {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #4ade80;
+      text-transform: uppercase;
+    }
+
+    /* Hero Center Stage */
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      margin-top: 12px;
+      margin-bottom: 20px;
+    }
+
+    .category-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(14, 165, 233, 0.14);
+      border: 1px solid rgba(0, 229, 255, 0.4);
+      color: #38bdf8;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      margin-bottom: 14px;
+    }
+
+    .hero-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 46px;
+      font-weight: 800;
+      line-height: 1.15;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+      max-width: 980px;
+      margin-bottom: 12px;
+    }
+
+    .hero-title .gradient-text {
+      background: linear-gradient(90deg, #38bdf8 0%, #00e5ff 40%, #a7f3d0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-desc {
+      font-size: 18px;
+      color: #94a3b8;
+      max-width: 900px;
+      line-height: 1.5;
+      font-weight: 400;
+    }
+
+    /* Simulator Feature Pills Grid */
+    .simulator-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      position: relative;
+      z-index: 10;
+      margin-bottom: 14px;
+    }
+
+    .sim-card {
+      background: rgba(15, 23, 42, 0.78);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sim-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+    }
+
+    .sim-card-wat::before { background: linear-gradient(90deg, #00e5ff, transparent); }
+    .sim-card-sct::before { background: linear-gradient(90deg, #3b82f6, transparent); }
+    .sim-card-srt::before { background: linear-gradient(90deg, #f59e0b, transparent); }
+    .sim-card-opi::before { background: linear-gradient(90deg, #10b981, transparent); }
+
+    .sim-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .sim-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: #f1f5f9;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .sim-timer-pill {
+      font-size: 11px;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 6px;
+      font-family: monospace;
+    }
+
+    .pill-wat { background: rgba(0, 229, 255, 0.15); color: #00e5ff; border: 1px solid rgba(0, 229, 255, 0.3); }
+    .pill-sct { background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3); }
+    .pill-srt { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+    .pill-opi { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+
+    .sim-details {
+      font-size: 12px;
+      color: #94a3b8;
+      line-height: 1.35;
+    }
+
+    /* Footer Bottom Command Bar */
+    .footer-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(11, 19, 38, 0.85);
+      border: 1px solid rgba(14, 165, 233, 0.22);
+      border-radius: 12px;
+      padding: 12px 22px;
+      position: relative;
+      z-index: 10;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .footer-highlights {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .highlight-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #cbd5e1;
+    }
+
+    .highlight-item .icon {
+      color: #38bdf8;
+      font-size: 14px;
+    }
+
+    .highlight-separator {
+      width: 4px;
+      height: 4px;
+      background: #475569;
+      border-radius: 50%;
+    }
+
+    .portal-domain-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, rgba(2, 132, 199, 0.25) 0%, rgba(14, 165, 233, 0.15) 100%);
+      border: 1px solid rgba(0, 229, 255, 0.4);
+      padding: 6px 14px;
+      border-radius: 8px;
+    }
+
+    .domain-url {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #00e5ff;
+      letter-spacing: 0.02em;
+    }
+
+    .domain-arrow {
+      color: #38bdf8;
+      font-weight: 800;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Decorative Outer Framing & Tactical Bracket Accents -->
+  <div class="outer-frame"></div>
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-tr"></div>
+  <div class="corner corner-bl"></div>
+  <div class="corner corner-br"></div>
+
+  <!-- Top Header Navigation -->
+  <header class="header">
+    <div class="brand-wrap">
+      <div class="brand-logo-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="12 2 2 22 22 22 12 2"></polygon>
+          <circle cx="12" cy="14" r="2.5" fill="#00e5ff"></circle>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <span class="brand-name">ISSB COMMAND</span>
+        <span class="brand-tagline">PREPARATION & SIMULATION PORTAL</span>
+      </div>
+    </div>
+
+    <div class="live-badge">
+      <span class="live-dot"></span>
+      <span class="live-text">FREE 30-MIN TRIAL ACTIVE</span>
+    </div>
+  </header>
+
+  <!-- Central Hero Stage -->
+  <div class="hero-content">
+    <div class="category-pill">
+      <span>⚔️ PAKISTAN ARMED FORCES SELECTION BOARD PREP</span>
+    </div>
+    <h1 class="hero-title">
+      Interactive Timed Simulators &amp; <span class="gradient-text">Psychologist AI Evaluation</span>
+    </h1>
+    <p class="hero-desc">
+      Master the ISSB Selection Board testing batteries with authentic running exam clocks. Practice real-time WAT, SCT, SRT, OPI profiling, and interactive GTO obstacle planning.
+    </p>
+  </div>
+
+  <!-- Simulator Feature Grid -->
+  <div class="simulator-grid">
+    <div class="sim-card sim-card-wat">
+      <div class="sim-header">
+        <span class="sim-name">⚡ WAT Simulator</span>
+        <span class="sim-timer-pill pill-wat">10 SEC</span>
+      </div>
+      <p class="sim-details">Word Association Test with projector flash & Urdu meanings</p>
+    </div>
+
+    <div class="sim-card sim-card-sct">
+      <div class="sim-header">
+        <span class="sim-name">📝 SCT Simulator</span>
+        <span class="sim-timer-pill pill-sct">TIMED</span>
+      </div>
+      <p class="sim-details">English & Roman Urdu sentence completion practice sheets</p>
+    </div>
+
+    <div class="sim-card sim-card-srt">
+      <div class="sim-header">
+        <span class="sim-name">🛡️ SRT Trainer</span>
+        <span class="sim-timer-pill pill-srt">30 SEC</span>
+      </div>
+      <p class="sim-details">Military crisis reaction scenarios with tactical frameworks</p>
+    </div>
+
+    <div class="sim-card sim-card-opi">
+      <div class="sim-header">
+        <span class="sim-name">🧠 OPI Profiler</span>
+        <span class="sim-timer-pill pill-opi">150 Q</span>
+      </div>
+      <p class="sim-details">14 Officer-Like Qualities (OLQ) psychological profiling</p>
+    </div>
+  </div>
+
+  <!-- Bottom Command Bar -->
+  <footer class="footer-bar">
+    <div class="footer-highlights">
+      <div class="highlight-item">
+        <span class="icon">✓</span>
+        <span>Army • Navy • Air Force</span>
+      </div>
+      <span class="highlight-separator"></span>
+      <div class="highlight-item">
+        <span class="icon">✓</span>
+        <span>PMA Kakul & Cadet Colleges</span>
+      </div>
+      <span class="highlight-separator"></span>
+      <div class="highlight-item">
+        <span class="icon">✓</span>
+        <span>5-Day Comprehensive Roadmap</span>
+      </div>
+    </div>
+
+    <div class="portal-domain-badge">
+      <span class="domain-url">issb-preparation.vercel.app</span>
+      <span class="domain-arrow">↗</span>
+    </div>
+  </footer>
+</body>
+</html>
