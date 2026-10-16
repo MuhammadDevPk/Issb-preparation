@@ -20,6 +20,7 @@ const EssaysSpeechView = () => import('../views/EssaysSpeechView.vue')
 const JoinArmyView = () => import('../views/JoinArmyView.vue')
 const JoinNavyView = () => import('../views/JoinNavyView.vue')
 const JoinAirforceView = () => import('../views/JoinAirforceView.vue')
+const DynamicProgrammaticView = () => import('../views/DynamicProgrammaticView.vue')
 const NotFoundView = () => import('../views/NotFoundView.vue')
 
 export const routes = [
@@ -40,7 +41,8 @@ export const routes = [
     meta: {
       guestOnly: true,
       title: 'Candidate Sign In | ISSB Command',
-      description: 'Sign in to your ISSB Command cadet portal to continue your timed psychological preparation.',
+      description:
+        'Sign in to your ISSB Command cadet portal to continue your timed psychological preparation.',
     },
   },
   {
@@ -50,7 +52,8 @@ export const routes = [
     meta: {
       guestOnly: true,
       title: 'Candidate Registration - Start Free Trial | ISSB Command',
-      description: 'Register for ISSB Command to get full access to timed simulators, AI psychologist evaluation, and comprehensive 5-day roadmap.',
+      description:
+        'Register for ISSB Command to get full access to timed simulators, AI psychologist evaluation, and comprehensive 5-day roadmap.',
     },
   },
   {
@@ -229,12 +232,22 @@ export const routes = [
     },
   },
   {
+    path: '/explore/:niche/:slug',
+    name: 'programmatic-explore',
+    component: DynamicProgrammaticView,
+    meta: {
+      requiresAuth: false,
+      isProgrammatic: true,
+    },
+  },
+  {
     path: '/:pathMatch(.*)*',
     name: 'not-found',
     component: NotFoundView,
     meta: {
       title: '404 - Page Not Found | ISSB Command',
-      description: 'The requested mission coordinates could not be located. Return to ISSB Command headquarters.',
+      description:
+        'The requested mission coordinates could not be located. Return to ISSB Command headquarters.',
     },
   },
 ]
@@ -251,6 +264,11 @@ export const setupRouterGuards = (routerInstance) => {
       return next()
     }
 
+    // Instant unobstructed passage for programmatic explore pages - zero auth or Supabase overhead
+    if (to.path.startsWith('/explore')) {
+      return next()
+    }
+
     // Capture referral code if present in the URL query parameters
     if (typeof window !== 'undefined' && to.query.ref) {
       try {
@@ -263,7 +281,12 @@ export const setupRouterGuards = (routerInstance) => {
     const authStore = useAuthStore()
 
     // 1. Only await authStore.initialize() for routes requiring authentication or guest-only redirects
-    if (to.meta.requiresAuth || to.meta.requiresApproval || to.meta.requiresAdmin || to.meta.guestOnly) {
+    if (
+      to.meta.requiresAuth ||
+      to.meta.requiresApproval ||
+      to.meta.requiresAdmin ||
+      to.meta.guestOnly
+    ) {
       if (authStore.loading && !authStore.user) {
         await authStore.initialize()
       }
@@ -277,7 +300,11 @@ export const setupRouterGuards = (routerInstance) => {
     const isAuthenticated = !!authStore.user
 
     // Fetch profile if authenticated but profile isn't loaded (handles refresh/deep-link race)
-    if (isAuthenticated && !authStore.profile && (to.meta.requiresAuth || to.meta.requiresApproval || to.meta.requiresAdmin)) {
+    if (
+      isAuthenticated &&
+      !authStore.profile &&
+      (to.meta.requiresAuth || to.meta.requiresApproval || to.meta.requiresAdmin)
+    ) {
       let profileLoaded = false
       for (let attempt = 0; attempt < 3; attempt++) {
         const p = await authStore.fetchProfile(authStore.user.id)
@@ -295,7 +322,8 @@ export const setupRouterGuards = (routerInstance) => {
     }
 
     const profile = authStore.profile
-    const isApproved = profile?.status === 'approved' || profile?.role === 'admin' || isTrialActive(profile)
+    const isApproved =
+      profile?.status === 'approved' || profile?.role === 'admin' || isTrialActive(profile)
     const isAdmin = profile?.role === 'admin'
 
     // 1. Guard for Authenticated Only routes

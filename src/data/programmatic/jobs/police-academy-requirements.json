@@ -1,0 +1,47 @@
+{
+  "slug": "police-academy-requirements",
+  "niche": "jobs",
+  "country": "US",
+  "title": "Police Academy Requirements 2026: Physical Test, Age & Steps",
+  "metaDescription": "Complete 2026 guide to police academy entrance requirements. Learn age limits, physical agility test benchmarks, written exams, and psychological screening.",
+  "headline": "Police Academy Requirements: 2026 Candidate Preparation Guide",
+  "badge": "CAREER & SELECTION GUIDE",
+  "stats": [
+    { "label": "Minimum Age", "value": "20.5 – 21 Years" },
+    { "label": "Education Requirement", "value": "High School / 60 College Credits" },
+    { "label": "Academy Duration", "value": "20–26 Weeks" },
+    { "label": "Physical Agility (PAT)", "value": "Standardized Benchmarks" }
+  ],
+  "sections": [
+    {
+      "title": "Eligibility Criteria & Educational Baseline",
+      "content": "Candidates seeking admission to regional and state law enforcement training academies must be United States citizens or permanent lawful residents, possess a valid state driver's license with a clean driving record, and meet minimum age thresholds (typically 20.5 to 21 years old by date of appointment). While a high school diploma or GED represents the statutory minimum, premier municipal and state police agencies strongly favor candidates with an Associate degree, 60 accredited college credit hours, or honorable military service."
+    },
+    {
+      "title": "Physical Agility Testing (PAT) & Fitness Standards",
+      "content": "The Physical Agility Test (PAT) or Peace Officer Physical Abilities Test (POPAT) evaluates cardiovascular capacity, functional explosive strength, and core stability under timed stress. Common standards include a 1.5-mile run completed in under 14 minutes, a 300-meter tactical sprint, a minimum of 25 to 35 continuous push-ups, and a 14 to 16-inch vertical jump. Candidates failing even a single component are disqualified from the testing cohort."
+    },
+    {
+      "title": "Written Civil Service & Post Entry Exams",
+      "content": "Applicants must pass the National Police Officer Selection Test (NPOST), Law Enforcement Assessment Battery (LEAB), or state-certified Peace Officer Standards and Training (POST) examination. These standardized exams assess verbal reasoning, observational recall, arithmetic problem solving, and report writing under strict time limits."
+    },
+    {
+      "title": "Background Investigation & Psychological Evaluation",
+      "content": "The final stage involves an exhaustive background investigation, computerized polygraph examination, medical screening, and an Officer Personality Inventory (OPI) / MMPI-2-RF psychological interview conducted by a board-certified clinical psychologist to screen for emotional resilience, stress tolerance, and ethical integrity under pressure."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "What is the physical agility test required for police academy admission?",
+      "a": "Police academies administer a standardized Physical Agility Test (PAT) measuring functional fitness. Common benchmarks include a 1.5-mile run within 14 minutes, 30 continuous push-ups, 35 sit-ups within one minute, and a 300-meter sprint. Achieving top-tier scores requires four to six months of dedicated cardiovascular and calisthenic conditioning."
+    },
+    {
+      "q": "What disqualifies a candidate during the police academy background check?",
+      "a": "Common automatic disqualifiers include felony convictions, misdemeanor domestic violence convictions, recent illicit drug use, dishonorable military discharge, and serious driver license suspensions. Additionally, intentional deception or omission during background interviews or polygraph testing results in permanent disqualification across virtually all state and municipal law enforcement agencies."
+    },
+    {
+      "q": "How long does police academy training take to graduate?",
+      "a": "Police academy training typically spans 20 to 26 weeks of full-time instruction, totaling over 800 hours. The rigorous curriculum integrates firearms qualification, defensive tactics, emergency vehicle operations (EVOC), criminal law, crisis de-escalation, and situational field scenarios, followed by an additional three to six months of field training officer supervision."
+    }
+  ]
+}

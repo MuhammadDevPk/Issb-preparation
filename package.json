@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite-ssg build && node scripts/sitemap.mjs && node scripts/qa_audit.mjs",
+    "build": "node scripts/generate-scale-sitemap.mjs && vite-ssg build && node scripts/generate-scale-sitemap.mjs && node scripts/qa_audit.mjs",
     "audit": "node scripts/qa_audit.mjs",
-    "sitemap": "node scripts/sitemap.mjs",
+    "sitemap": "node scripts/generate-scale-sitemap.mjs",
     "preview": "vite preview",
     "lint": "run-s lint:*",
     "lint:oxlint": "oxlint . --fix",

@@ -18,13 +18,30 @@ const pagesToCheck = [
   'deputy-interview.html'
 ]
 
+// Dynamically discover all pre-rendered programmatic pages in dist/explore
+const exploreDir = path.join(distDir, 'explore')
+if (fs.existsSync(exploreDir)) {
+  function scanExploreDir(dir) {
+    const entries = fs.readdirSync(dir, { withFileTypes: true })
+    for (const entry of entries) {
+      const fullPath = path.join(dir, entry.name)
+      if (entry.isDirectory()) {
+        scanExploreDir(fullPath)
+      } else if (entry.isFile() && entry.name.endsWith('.html')) {
+        pagesToCheck.push(path.relative(distDir, fullPath))
+      }
+    }
+  }
+  scanExploreDir(exploreDir)
+}
+
 console.log('=== SENIOR ENGINEER & QA AUTOMATED AUDIT ===\n')
 
 let totalErrors = 0
 let totalWarnings = 0
 
 // 1. Audit Dist Pre-rendered HTML Pages
-console.log('--- 1. Auditing Pre-rendered HTML Artifacts ---')
+console.log(`--- 1. Auditing Pre-rendered HTML Artifacts (${pagesToCheck.length} Total Pages) ---`)
 for (const pageRel of pagesToCheck) {
   const filePath = path.join(distDir, pageRel)
   if (!fs.existsSync(filePath)) {
@@ -110,7 +127,10 @@ if (!fs.existsSync(sitemapPath)) {
     'https://issb-preparation.vercel.app/join-pak-airforce',
     'https://issb-preparation.vercel.app/roadmap',
     'https://issb-preparation.vercel.app/essays-speech',
-    'https://issb-preparation.vercel.app/simulator/wat'
+    'https://issb-preparation.vercel.app/simulator/wat',
+    'https://issb-preparation.vercel.app/explore/defense/us-navy-recruitment',
+    'https://issb-preparation.vercel.app/explore/tech/ai-prompt-engineer-salary',
+    'https://issb-preparation.vercel.app/explore/jobs/police-academy-requirements'
   ]
 
   for (const url of expectedUrls) {
@@ -127,7 +147,6 @@ const routerContent = fs.readFileSync(path.resolve('src/router/index.js'), 'utf-
 
 const openAccessRoutes = ['/dashboard', '/roadmap', '/essays-speech', '/simulator/wat']
 for (const routePath of openAccessRoutes) {
-  // Find route block
   const routeIdx = routerContent.indexOf(`path: '${routePath}'`)
   if (routeIdx !== -1) {
     const routeBlock = routerContent.substring(routeIdx, routeIdx + 300)
@@ -138,6 +157,17 @@ for (const routePath of openAccessRoutes) {
       console.log(`✅ [PASS] ${routePath} is open access (no requiresAuth).`)
     }
   }
+}
+
+// Verify Programmatic Route has open access and guard bypass
+if (!routerContent.includes("path: '/explore/:niche/:slug'")) {
+  console.error("❌ [FAIL] Programmatic route '/explore/:niche/:slug' is missing from router!")
+  totalErrors++
+} else if (!routerContent.includes("to.path.startsWith('/explore')")) {
+  console.error("❌ [FAIL] Programmatic route lacks early guard bypass in router.beforeEach!")
+  totalErrors++
+} else {
+  console.log("✅ [PASS] Programmatic explore route (/explore/:niche/:slug) is open access and has early guard bypass.")
 }
 
 // Check admin-users still requires admin & auth
