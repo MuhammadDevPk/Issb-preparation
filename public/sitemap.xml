@@ -91,10 +91,34 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://issb-preparation.vercel.app/explore/defense/bangladesh-army-sainik-recruitment-2026</loc>
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://issb-preparation.vercel.app/explore/defense/india-agniveer-army-recruitment-2026</loc>
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://issb-preparation.vercel.app/explore/defense/pakistan-army-medical-cadet-2026</loc>
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://issb-preparation.vercel.app/explore/defense/tr-us-navy-recruitment</loc>
     <xhtml:link rel="alternate" hreflang="tr-TR" href="https://issb-preparation.vercel.app/explore/defense/tr-us-navy-recruitment" />
     <xhtml:link rel="alternate" hreflang="en-US" href="https://issb-preparation.vercel.app/explore/defense/us-navy-recruitment" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://issb-preparation.vercel.app/explore/defense/us-navy-recruitment" />
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://issb-preparation.vercel.app/explore/defense/uk-army-officer-recruitment-2026</loc>
     <lastmod>2026-10-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
@@ -109,6 +133,24 @@
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>https://issb-preparation.vercel.app/explore/jobs/australia-skilled-worker-visa-2026</loc>
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://issb-preparation.vercel.app/explore/jobs/canada-express-entry-requirements-2026</loc>
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://issb-preparation.vercel.app/explore/jobs/germany-opportunity-card-visa-2026</loc>
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://issb-preparation.vercel.app/explore/jobs/police-academy-requirements</loc>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://issb-preparation.vercel.app/explore/jobs/police-academy-requirements" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://issb-preparation.vercel.app/explore/jobs/police-academy-requirements" />
@@ -117,9 +159,39 @@
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>https://issb-preparation.vercel.app/explore/jobs/uk-skilled-worker-visa-salary-2026</loc>
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://issb-preparation.vercel.app/explore/tech/ai-prompt-engineer-salary</loc>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://issb-preparation.vercel.app/explore/tech/ai-prompt-engineer-salary" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://issb-preparation.vercel.app/explore/tech/ai-prompt-engineer-salary" />
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://issb-preparation.vercel.app/explore/tech/germany-ai-engineer-salary-2026</loc>
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://issb-preparation.vercel.app/explore/tech/japan-software-engineer-salary-2026</loc>
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://issb-preparation.vercel.app/explore/tech/singapore-cybersecurity-salary-2026</loc>
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://issb-preparation.vercel.app/explore/tech/usa-prompt-engineer-salary-2026</loc>
     <lastmod>2026-10-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>

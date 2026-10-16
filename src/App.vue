@@ -85,7 +85,11 @@ useHead(() => ({
 }))
 
 const isFullScreenPage = computed(() => {
-  return ['/', '/login', '/register', '/status'].includes(route.path)
+  return (
+    ['/', '/login', '/register', '/status'].includes(route.path) ||
+    route.path.startsWith('/explore') ||
+    !!route.meta?.isProgrammatic
+  )
 })
 
 const rankTitle = computed(() => {
@@ -570,6 +574,13 @@ onMounted(() => {
 </template>
 
 <style scoped>
+.landing-layout {
+  inline-size: 100%;
+  min-block-size: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
 .app-container {
   display: flex;
   flex-direction: column;
