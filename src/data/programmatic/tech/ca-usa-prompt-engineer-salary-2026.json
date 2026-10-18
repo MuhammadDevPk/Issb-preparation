@@ -1,0 +1,65 @@
+{
+  "badge": "AI CAREER PAY",
+  "country": "CA",
+  "faqs": [
+    {
+      "a": "Prompt engineers in the United States earn an average of roughly US$98,000 to US$123,000 per year in 2026, about C$135,000 to C$170,000 depending on exchange rates. Indeed reports around US$112,500 from job postings, ZipRecruiter reports about US$98,000, and industry guides place the national average near US$123,000 with wide regional variation.",
+      "q": "What is the average prompt engineer salary in the US in 2026?"
+    },
+    {
+      "a": "Entry-level prompt engineers earn between US$70,000 and US$110,000 per year. Mid-level engineers with three to five years earn US$110,000 to US$150,000, while senior prompt engineers earn US$150,000 to US$180,000 or more, with frontier AI labs paying far above these bands.",
+      "q": "How much do junior prompt engineers earn in the United States?"
+    },
+    {
+      "a": "The highest-paying employers include Lockheed Martin at around US$230,000 per year and Scale AI near US$213,800. Frontier model labs such as OpenAI, Anthropic and Google DeepMind report total compensation between US$380,000 and US$620,000 once equity vests for senior roles. annually",
+      "q": "Which companies pay prompt engineers the most?"
+    },
+    {
+      "a": "Canadians have a real advantage: under the USMCA, most qualify for a TN visa, which skips the H-1B lottery and renews in one-year increments. Los Angeles, New York and Boston lead on pay at around US$137,000 to US$142,000, and remote roles at national firms increasingly match coastal bands for experienced hires.",
+      "q": "How can Canadians work as prompt engineers in the US?"
+    }
+  ],
+  "headline": "Prompt Engineer Salary in the USA 2026: A Guide for Canadians",
+  "hreflang": "en-CA",
+  "metaDescription": "Prompt engineer salary USA 2026, for Canadians: avg US$98k-123k, senior US$150k-180k+. Top companies, best cities, TN-visa options and skills that raise pay.",
+  "niche": "tech",
+  "sections": [
+    {
+      "content": "Prompt engineering has matured into a well-paid specialty in the United States by 2026 — one that is especially accessible to Canadians. National averages range from about US$98,000 on ZipRecruiter to US$112,500 on Indeed and around US$123,000 in industry salary guides (roughly C$135,000 to C$170,000), reflecting how differently sources measure the same young job title.\n\nThe spread is unusually wide because the title is still being renamed across the industry, frontier AI labs pay far above the broader market, and many employers list the work under different internal job codes. Understanding which segment of the market you are targeting matters more here than in most roles.",
+      "title": "Average Prompt Engineer Salary in the US for 2026"
+    },
+    {
+      "content": "Entry-level prompt engineers earn between US$70,000 and US$110,000 per year. Mid-level engineers with three to five years of experience earn US$110,000 to US$150,000, while senior engineers earn US$150,000 to US$180,000 or more in base salary.\n\nAt frontier model labs the numbers detach from the broader market: OpenAI, Anthropic and Google DeepMind clear US$380,000 to US$620,000 in total compensation for senior roles once equity vests. Even outside the labs, senior roles at defense and enterprise AI firms regularly exceed US$200,000.",
+      "title": "Salary by Experience and Seniority"
+    },
+    {
+      "content": "Lockheed Martin tops public postings at around US$230,000 per year, followed by Scale AI near US$213,800 and Red Hat around US$226,000. These employers value prompt engineers who can work with domain experts and evaluation harnesses, not just clever wording.\n\nBig Tech firms including Google, Meta, Microsoft and OpenAI pay the highest overall packages, while AI startups often trade lower base pay for meaningful equity. Defense, finance and healthcare enterprises sit between the two, offering strong base salaries with less equity upside.",
+      "title": "Highest-Paying Companies"
+    },
+    {
+      "content": "Canadians hold a structural advantage over other foreign hires: under the USMCA treaty, most qualify for a TN visa, which requires a qualifying offer and degree but skips the H-1B lottery entirely and renews in one-year increments. That makes US employers far more willing to sponsor Canadian applicants.\n\nThe best-paid prompt engineers combine NLP or machine learning fundamentals with software engineering discipline: versioned prompts, evaluation datasets, guardrails, latency and cost awareness. Los Angeles, New York and Boston pay the most, but remote roles at national firms increasingly match coastal bands for experienced hires, and building a portfolio of shipped AI features beats certificates when negotiating.",
+      "title": "Skills, Cities and the Canadian Advantage"
+    }
+  ],
+  "slug": "ca-usa-prompt-engineer-salary-2026",
+  "stats": [
+    {
+      "label": "Average Salary",
+      "value": "~US$98,000-123,000"
+    },
+    {
+      "label": "Senior Level",
+      "value": "US$150,000-180,000+"
+    },
+    {
+      "label": "Top Company",
+      "value": "US$230,000 / yr"
+    },
+    {
+      "label": "Best Cities",
+      "value": "LA, NYC, Boston"
+    }
+  ],
+  "title": "Prompt Engineer Salary USA 2026: Canadian's Guide",
+  "translationGroupId": "usa-prompt-engineer-salary-2026"
+}

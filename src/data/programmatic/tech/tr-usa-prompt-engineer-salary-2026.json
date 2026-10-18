@@ -1,0 +1,65 @@
+{
+  "badge": "YAPAY ZEKA KARİYER",
+  "country": "TR",
+  "faqs": [
+    {
+      "a": "2026'da ABD'de prompt mühendisleri veri kaynağına göre yılda yaklaşık 98.000-123.000 $ kazanıyor. Indeed iş ilanlarına göre 112.500 $, ZipRecruiter'a göre 98.000 $ civarında; sektör rehberleri ulusal ortalamayı 123.000 $ olarak veriyor, bölgesel farklar geniş. Uzaktan çalışma seçenekleri bu bölgesel farkları deneyimli adaylar için azaltıyor.",
+      "q": "ABD'de ortalama prompt mühendisi maaşı ne kadar?"
+    },
+    {
+      "a": "Giriş seviyesi prompt mühendisleri yılda 70.000-110.000 $ kazanıyor. Üç-beş yıl deneyimli orta seviye mühendisler 110.000-150.000 $ alırken, kıdemli prompt mühendisleri 150.000-180.000 $ veya daha fazlasını kazanıyor; öncü yapay zeka laboratuvarları bu bantların çok üzerinde ödüyor. Laboratuvar dışındaki kurumsal yapay zeka rollerinde de üst bantlara ulaşmak mümkün.",
+      "q": "ABD'de junior prompt mühendisleri ne kadar kazanıyor?"
+    },
+    {
+      "a": "En çok ödeyen işverenler arasında yılda yaklaşık 230.000 $ ile Lockheed Martin ve 213.800 $ ile Scale AI var. OpenAI, Anthropic ve Google DeepMind gibi öncü model laboratuvarları, hisse senetleri dahil kıdemli rollerde 380.000-620.000 $ toplam ücret bildiriyor. Bu şirketler özellikle değerlendirme sistemleri ve alan uzmanlarıyla çalışma becerisini ödüllendiriyor.",
+      "q": "Prompt mühendislerine en çok hangi şirketler ödüyor?"
+    },
+    {
+      "a": "Los Angeles yılda yaklaşık 141.784 $ ile önde, onu yaklaşık 136.000 $ ile New York ve 126.892 $ ile McLean, Virginia izliyor. Boston ve San Francisco da üst sıralarda. Ulusal şirketlerin uzaktan rolleri deneyimli işe alımlarda bu kıyı bantlarını giderek yakalıyor.",
+      "q": "ABD'de prompt mühendislerine en yüksek maaşı hangi şehirler veriyor?"
+    }
+  ],
+  "headline": "2026'da ABD'de Prompt Mühendisi Maaşı: Kapsamlı Ücret Rehberi",
+  "hreflang": "tr-TR",
+  "metaDescription": "ABD'de 2026 prompt mühendisi maaşı: ortalama 98.000-123.000 $, kıdemli 150.000-180.000 $+. En çok ödeyen şirketler, en iyi şehirler ve maaşı artıran beceriler.",
+  "niche": "tech",
+  "sections": [
+    {
+      "content": "Prompt mühendisliği 2026 itibarıyla ABD'de iyi maaşlı bir uzmanlık alanı haline geldi. ZipRecruiter'a göre ulusal ortalama yaklaşık 98.000 $, Indeed'e göre 112.500 $, sektör maaş rehberlerine göre ise 123.000 $ civarında; kaynaklar aynı genç unvanı farklı ölçüyor.\n\nFarkın bu kadar geniş olmasının nedeni, unvanın sektörde hâlâ yeniden adlandırılması, öncü yapay zeka laboratuvarlarının piyasanın çok üzerinde ödeme yapması ve birçok işverenin bu işi farklı dahili kodlarla listelemesi. Hangi piyasa segmentini hedeflediğinizi bilmek çoğu rolden daha önemli.",
+      "title": "2026'da ABD'de Ortalama Prompt Mühendisi Maaşı"
+    },
+    {
+      "content": "Giriş seviyesi prompt mühendisleri yılda 70.000-110.000 $ kazanıyor. Üç-beş yıl deneyimli orta seviye mühendisler 110.000-150.000 $, kıdemliler ise 150.000-180.000 $ veya daha fazla taban maaş alıyor.\n\nÖncü model laboratuvarlarında rakamlar piyasanın çok üstüne çıkıyor: OpenAI, Anthropic ve Google DeepMind, hisse senetleri dahil kıdemli rollerde 380.000-620.000 $ toplam ücrete ulaşıyor. Laboratuvarlar dışında bile savunma ve kurumsal yapay zeka şirketlerinde kıdemli roller düzenli olarak 200.000 $'ı aşıyor.",
+      "title": "Deneyim ve Kıdeme Göre Maaş"
+    },
+    {
+      "content": "Halka açık ilanlarda Lockheed Martin yılda yaklaşık 230.000 $ ile zirvede, onu 213.800 $ ile Scale AI ve 226.000 $ ile Red Hat izliyor. Bu işverenler, akıllıca kelime seçiminden çok, alan uzmanlarıyla ve değerlendirme sistemleriyle çalışabilen mühendislere değer veriyor.\n\nGoogle, Meta, Microsoft ve OpenAI dahil Büyük Teknoloji şirketleri toplam paketlerde en yüksek ücreti ödüyor; yapay zeka girişimleri ise düşük taban maaşı anlamlı hisse senedi payıyla takas ediyor. Savunma, finans ve sağlık şirketleri arada yer alıyor: hisse potansiyeli düşük ama güçlü taban maaş sunuyor.",
+      "title": "En Çok Ödeyen Şirketler"
+    },
+    {
+      "content": "En çok kazanan prompt mühendisleri, doğal dil işleme veya makine öğrenimi temellerini yazılım mühendisliği disipliniyle birleştiriyor: sürümlü promptlar, değerlendirme veri setleri, güvenlik korkulukları, gecikme ve maliyet bilinci. Ajan çerçeveleri, RAG ve model ince ayar deneyimi adayları kıdemli bantlara taşıyor.\n\nLos Angeles, New York, Boston ve San Francisco en çok ödeyen şehirler; ancak uzaktan işe alım kıyı maaşlarını iç bölgelere yaydı. Ölçülmüş kalite iyileştirmeleriyle hayata geçirilmiş yapay zeka özelliklerinden oluşan bir portföy, pazarlıkta sertifikalardan daha etkili; işverenler model davranışına gösterilen etkiye ödeme yapıyor.",
+      "title": "Maaşı Artıran Beceriler ve Şehirler"
+    }
+  ],
+  "slug": "tr-usa-prompt-engineer-salary-2026",
+  "stats": [
+    {
+      "label": "Ortalama Maaş",
+      "value": "~$98.000-123.000"
+    },
+    {
+      "label": "Kıdemli Seviye",
+      "value": "$150.000-180.000+"
+    },
+    {
+      "label": "En Çok Ödeyen",
+      "value": "$230.000 / yıl"
+    },
+    {
+      "label": "En İyi Şehirler",
+      "value": "LA, NYC, Boston"
+    }
+  ],
+  "title": "ABD'de Prompt Mühendisi Maaşı 2026: Rehber",
+  "translationGroupId": "usa-prompt-engineer-salary-2026"
+}

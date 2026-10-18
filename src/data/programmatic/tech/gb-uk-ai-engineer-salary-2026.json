@@ -1,0 +1,65 @@
+{
+  "badge": "AI ENGINEER PAY",
+  "country": "GB",
+  "faqs": [
+    {
+      "a": "Robert Half's 2026 salary guide puts UK AI engineers at GBP 50,000 to 90,000 nationally, with the 50th percentile at GBP 65,750. In London the midpoint is GBP 89,500, while ITJobsWatch reports a City of London median of GBP 88,750, up 7.6 percent year on year.",
+      "q": "What is the average AI engineer salary in the UK in 2026?"
+    },
+    {
+      "a": "Entry-level AI engineers earn GBP 50,000 to 75,000 in base salary, with total compensation of GBP 55,000 to 90,000 including bonuses. Graduate AI roles start lower, around GBP 35,700 to 39,500. AI engineers typically command a 15 to 25 percent premium over general software engineers at the same level.",
+      "q": "How much do junior AI engineers earn in the UK?"
+    },
+    {
+      "a": "Finance firms like Citadel and Two Sigma pay senior AI engineers GBP 120,000 to 265,000 or more, while Big Tech including Google DeepMind, Meta and Amazon sits near the top with large equity packages. AI startups often offer lower base salaries in exchange for meaningful equity upside.",
+      "q": "Which UK companies pay AI engineers the most?"
+    },
+    {
+      "a": "London pays the most by a clear margin: the capital's AI engineer midpoint is GBP 89,500 against GBP 65,750 nationally. Remote roles at national firms increasingly match London bands for experienced hires, while Manchester, Edinburgh and Bristol pay less but offer lower living costs, making them attractive on a cost-adjusted basis.",
+      "q": "Is London or a regional city better paid for AI engineers?"
+    }
+  ],
+  "headline": "AI Engineer Salary in the UK 2026: Complete Pay Guide",
+  "hreflang": "en-GB",
+  "metaDescription": "AI engineer salary UK 2026: national range GBP 50k-90k, London midpoint GBP 89.5k, senior 100k-140k. Compare ML engineer pay, top employers and hiring tips.",
+  "niche": "tech",
+  "sections": [
+    {
+      "content": "AI engineering is one of the best-paid software disciplines in Britain in 2026, with a 15 to 25 percent premium over general software engineers. Robert Half's 2026 salary guide places the national range at GBP 50,000 to 90,000, with the 50th percentile at GBP 65,750 — figures that reflect base salary before bonuses.\n\nLondon-focused data runs hotter: ITJobsWatch reported a City of London median AI engineer salary of GBP 88,750 in October 2026, up 7.6 percent year on year, and Indeed lists a London AI and machine learning engineer average of GBP 83,501. The spread between national and London figures shows how geography dominates UK tech pay.",
+      "title": "Average AI Engineer Salary in the UK for 2026"
+    },
+    {
+      "content": "Entry and junior AI engineers earn GBP 50,000 to 75,000 in base salary, with total compensation of GBP 55,000 to 90,000 once bonuses land. Graduate AI roles start lower, at roughly GBP 35,700 to 39,500, typically at larger employers with structured schemes.\n\nMid-level engineers with three to five years earn GBP 75,000 to 100,000 in base salary. Senior engineers earn GBP 100,000 to 140,000 base, with total compensation reaching GBP 180,000 or more when bonuses and equity are included — well above most other software specialisms.",
+      "title": "Salary by Seniority"
+    },
+    {
+      "content": "London sets the ceiling: Robert Half puts the capital's AI engineer midpoint at GBP 89,500. Regional hubs such as Manchester, Edinburgh and Bristol pay less in absolute terms but can win on a cost-of-living-adjusted basis, and remote roles at national firms increasingly match London bands for experienced hires.\n\nMachine learning engineers track closely: the national ML engineer range is GBP 60,000 to 95,000 with a GBP 75,000 midpoint, rising to a GBP 102,000 midpoint in London. Either title pays the AI premium; employers care more about what you ship than which label is on the posting.",
+      "title": "London vs Regional Cities and ML Engineer Pay"
+    },
+    {
+      "content": "The highest packages sit at frontier AI labs and elite finance. Google DeepMind is the reference employer for research-grade roles; Big Tech including Google, Meta and Amazon pay strongly with large equity components. In finance, firms like Citadel and Two Sigma pay senior AI engineers GBP 120,000 to 265,000 or more.\n\nAI startups often trade lower base salaries for meaningful equity upside, which can outperform in a successful exit but offers no guarantee. The fastest way to raise pay is specialization in scarce areas such as LLM fine-tuning, agentic systems or MLOps, backed by a portfolio of shipped AI work with measured impact — demonstrated output beats certificates when negotiating between competing offers.",
+      "title": "Highest-Paying Employers and How to Raise Pay"
+    }
+  ],
+  "slug": "gb-uk-ai-engineer-salary-2026",
+  "stats": [
+    {
+      "label": "National Range",
+      "value": "GBP 50,000-90,000"
+    },
+    {
+      "label": "London Midpoint",
+      "value": "GBP 89,500"
+    },
+    {
+      "label": "Senior Level",
+      "value": "GBP 100,000-140,000"
+    },
+    {
+      "label": "Top Employers",
+      "value": "DeepMind, Big Tech, Finance"
+    }
+  ],
+  "title": "AI Engineer Salary UK 2026: Pay Guide & Top Employers",
+  "translationGroupId": "gb-uk-ai-engineer-salary-2026"
+}

@@ -1,0 +1,65 @@
+{
+  "badge": "TITRE DE SÉJOUR",
+  "country": "FR",
+  "faqs": [
+    {
+      "a": "La carte Salarié qualifié demande un diplôme de niveau master (bac+5) ou cinq ans d'expérience équivalente, avec un contrat de travail d'au moins trois mois et un salaire annuel brut d'au moins 39 582 euros. L'emploi doit correspondre à votre qualification et l'employeur doit déposer la demande auprès de l'Ofii compétent.",
+      "q": "Quelles sont les conditions de la carte Passeport Talent – Salarié qualifié ?"
+    },
+    {
+      "a": "La Carte bleue européenne exige un diplôme de niveau bac+3 ou cinq ans d'expérience, avec un contrat d'au moins douze mois et un salaire annuel brut minimal de 59 373 euros. Un seuil réduit de 47 498 euros s'applique aux métiers en tension dans les secteurs STEM. Elle offre une mobilité européenne après dix-huit mois.",
+      "q": "Quels sont les seuils de la Carte bleue européenne en 2026 ?"
+    },
+    {
+      "a": "Oui, le Passeport Talent existe en version investissement : l'étranger doit investir au moins 300 000 euros dans une entreprise française et créer ou maintenir des emplois. Une variante créateur d'entreprise demande un projet économiquement viable avec 30 000 euros de fonds propres. Ces voies exigent un dossier financier solide et un accompagnement professionnel.",
+      "q": "Existe-t-il une voie Passeport Talent pour les investisseurs ?"
+    },
+    {
+      "a": "À partir du 1er janvier 2026, un nouvel examen civique devient obligatoire pour obtenir les cartes pluriannuelles, ainsi qu'un niveau de français A2 minimum. La carte Passeport Talent ouvre le droit au regroupement familial immédiat. Après cinq ans de résidence régulière, vous pouvez demander la carte de résident de dix ans.",
+      "q": "Quelles sont les nouveautés 2026 et les droits familiaux ?"
+    }
+  ],
+  "headline": "Passeport Talent France 2026 : conditions, salaires et démarches",
+  "hreflang": "fr-FR",
+  "metaDescription": "Passeport Talent France 2026 : séjour jusqu'à 4 ans, seuils 39 582 € et 59 373 €, Carte bleue UE, voies investisseur et créateur, nouveautés 2026 et famille.",
+  "niche": "jobs",
+  "sections": [
+    {
+      "content": "Le Passeport Talent est le titre de séjour pluriannuel français destiné aux étrangers hautement qualifiés, entrepreneurs et investisseurs. Valable jusqu'à quatre ans et renouvelable, il dispense de l'autorisation de travail préalable et autorise l'exercice professionnel dans la catégorie pour laquelle il a été délivré.\n\nIl se décline en plusieurs mentions : salarié qualifié, Carte bleue européenne, créateur d'entreprise, porteur de projet économique innovant, investisseur, ou encore profession artistique et culturelle. Chaque catégorie possède ses propres critères de diplôme, de rémunération ou de financement, mais toutes partagent une logique commune : attirer les talents qui contribuent à l'économie française.",
+      "title": "Le Passeport Talent : présentation générale"
+    },
+    {
+      "content": "La mention la plus demandée est celle de salarié qualifié : elle exige un diplôme de niveau master (bac+5) ou cinq ans d'expérience professionnelle équivalente, avec un contrat de travail d'au moins trois mois et un salaire annuel brut minimal de 39 582 euros, fixé par décret 2025-539 et l'arrêté ministériel du 29 août 2025. L'emploi occupé doit être en lien avec la qualification.\n\nLa Carte bleue européenne vise un niveau légèrement différent : diplôme bac+3 ou cinq ans d'expérience, contrat de douze mois minimum et salaire annuel brut d'au moins 59 373 euros. Pour les métiers en tension des secteurs scientifiques et techniques, un seuil intermédiaire de 47 498 euros s'applique, ce qui ouvre la voie aux ingénieurs et développeurs débutants.",
+      "title": "Salarié qualifié et Carte bleue européenne"
+    },
+    {
+      "content": "Les entrepreneurs disposent de deux voies dédiées. Le créateur d'entreprise doit présenter un projet économiquement viable et justifier de 30 000 euros de fonds propres, tandis que la voie investissement requiert un apport direct d'au moins 300 000 euros dans une société française, avec création ou maintien d'emplois. Un avis favorable d'un organisme public agréé sécurise le dossier.\n\nLes indépendants et professions libérales peuvent viser la mention activité économique, à condition de justifier de ressources au moins équivalentes au Smic, soit environ 22 404 euros annuels. Les artistes et auteurs reconnus bénéficient d'une mention spécifique fondée sur la notoriété de leur parcours.",
+      "title": "Entrepreneurs, investisseurs et indépendants"
+    },
+    {
+      "content": "À partir du 1er janvier 2026, les demandeurs de cartes pluriannuelles doivent réussir un nouvel examen civique portant sur les valeurs de la République, et justifier d'un niveau de français A2 minimum. Ces exigences s'ajoutent aux critères de revenus et de diplômes existants.\n\nLa demande se fait auprès de l'ambassade ou du consulat de France dans le pays de résidence, ou en préfecture pour les personnes déjà en France. Un avantage majeur : le Passeport Talent ouvre un droit immédiat au regroupement familial, le conjoint et les enfants recevant des titres de séjour pluriannuels. Après cinq ans de résidence régulière, le titulaire peut solliciter la carte de résident de dix ans.",
+      "title": "Nouveautés 2026, démarches et droits familiaux"
+    }
+  ],
+  "slug": "fr-france-talent-passport-visa-2026",
+  "stats": [
+    {
+      "label": "Durée du titre",
+      "value": "Jusqu'à 4 ans"
+    },
+    {
+      "label": "Salarié qualifié",
+      "value": "39 582 € / an"
+    },
+    {
+      "label": "Carte bleue UE",
+      "value": "59 373 € / an"
+    },
+    {
+      "label": "Investisseur",
+      "value": "300 000 €"
+    }
+  ],
+  "title": "Passeport Talent France 2026 : conditions et salaires",
+  "translationGroupId": "fr-france-talent-passport-visa-2026"
+}

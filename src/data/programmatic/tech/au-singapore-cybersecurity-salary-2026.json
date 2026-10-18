@@ -1,0 +1,65 @@
+{
+  "badge": "CYBERSECURITY PAY",
+  "country": "AU",
+  "faqs": [
+    {
+      "a": "Cybersecurity analysts in Singapore earn around SGD 90,000 to 116,000 per year in total compensation according to 2026 benchmarks, roughly A$100,000 to A$130,000 at typical exchange rates. Base-salary surveys report lower figures near SGD 52,000, while senior analysts at multinational banks and tech firms can exceed SGD 180,000 annually with bonuses.",
+      "q": "What is the average cybersecurity analyst salary in Singapore?"
+    },
+    {
+      "a": "Junior cybersecurity analysts with zero to two years of experience earn roughly SGD 65,000 to 81,000 per year, about A$73,000 to A$91,000. Entry roles in security operations centres start lower, while juniors with internships, certifications or degrees from recognized universities land nearer the top of the band.",
+      "q": "How much do junior cybersecurity analysts earn in Singapore?"
+    },
+    {
+      "a": "Senior cybersecurity analysts with six or more years of experience earn between SGD 121,000 and 188,000 per year. Specialists in incident response, threat hunting and cloud security at banks like JPMorgan Chase, which reports median packages above SGD 220,000, earn the most in the city-state.",
+      "q": "What do senior cybersecurity professionals earn in Singapore?"
+    },
+    {
+      "a": "Australians typically enter on an Employment Pass requiring a fixed monthly salary of at least SGD 5,600 in financial services or SGD 5,000 elsewhere, well below market rates for experienced analysts. English is the working language, income tax is lower than in Australia, and demand for security skills remains very strong.",
+      "q": "Can Australians work as cybersecurity analysts in Singapore?"
+    }
+  ],
+  "headline": "Cybersecurity Analyst Salary in Singapore 2026: A Guide for Australians",
+  "hreflang": "en-AU",
+  "metaDescription": "Cybersecurity analyst salary Singapore 2026, for Australians: SGD 90k-116k avg, junior 65k-81k, senior 121k-188k. Employers, EP visas and relocation tips.",
+  "niche": "tech",
+  "sections": [
+    {
+      "content": "Singapore is one of Asia's highest-paying markets for cybersecurity talent in 2026 — worth knowing for Australians weighing a move. Benchmark aggregators place average total compensation for cybersecurity analysts between SGD 90,000 and 116,000 per year (roughly A$100,000 to A$130,000 at typical exchange rates), though base-salary-only surveys report lower medians near SGD 52,000.\n\nThe gap reflects measurement: total-compensation benchmarks include bonuses and allowances common at banks and multinationals, while job-posting averages skew toward junior security operations roles. Either way, demand remains intense as financial services, government and tech firms expand security teams.",
+      "title": "Average Cybersecurity Pay in Singapore for 2026"
+    },
+    {
+      "content": "Junior analysts with zero to two years of experience earn roughly SGD 65,000 to 81,000 per year (about A$73,000 to A$91,000). Mid-level analysts with three to five years earn SGD 85,000 to 127,000, while senior analysts with six or more years earn SGD 121,000 to 188,000.\n\nThe top of the market sits at multinational banks and tech giants: JPMorgan Chase reports median analyst packages above SGD 220,000, and firms like Apple, Chevron and Bank of America are consistently among the highest payers in the city-state.",
+      "title": "Salary by Experience Level"
+    },
+    {
+      "content": "Most Australian cybersecurity professionals enter Singapore on an Employment Pass, which currently requires a fixed monthly salary of at least SGD 5,600 for financial services and SGD 5,000 for other sectors — comfortably below market rates for experienced analysts. English is the working language, making the transition smoother than most Asian postings.\n\nSingapore's lower personal income tax rates mean take-home pay often beats Sydney or Melbourne for the same nominal salary, though rents rival the priciest Australian suburbs. Permanent roles include Central Provident Fund contributions from the employer; contractors earn higher monthly rates but give up bonuses and medical cover.",
+      "title": "Moving to Singapore from Australia"
+    },
+    {
+      "content": "Certifications move the needle fastest in this market. CISSP suits governance and management tracks, OSCP proves hands-on penetration testing ability, and cloud security certifications from AWS, Azure or Google Cloud lift pay for infrastructure-focused roles.\n\nBeyond certificates, specializing in scarce areas such as OT security, detection engineering or AI-assisted threat hunting commands premiums. Building a public profile through CTF competitions, bug bounties or security research also strengthens offers, especially when negotiating between competing employers.",
+      "title": "How to Raise Your Cybersecurity Salary"
+    }
+  ],
+  "slug": "au-singapore-cybersecurity-salary-2026",
+  "stats": [
+    {
+      "label": "Average Salary",
+      "value": "~SGD 90,000-116,000"
+    },
+    {
+      "label": "Junior Level",
+      "value": "SGD 65,000-81,000"
+    },
+    {
+      "label": "Senior Level",
+      "value": "SGD 121,000-188,000"
+    },
+    {
+      "label": "Top Employer",
+      "value": "JPMorgan Chase"
+    }
+  ],
+  "title": "Cybersecurity Analyst Salary Singapore 2026: AU Guide",
+  "translationGroupId": "singapore-cybersecurity-salary-2026"
+}
