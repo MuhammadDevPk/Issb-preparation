@@ -1,0 +1,77 @@
+{
+  "slug": "machine-learning-engineer-salary-2026",
+  "niche": "tech",
+  "country": "US",
+  "hreflang": "en-US",
+  "translationGroupId": "machine-learning-engineer-salary-2026",
+  "title": "Machine Learning Engineer Salary 2026: US Guide",
+  "metaDescription": "Machine learning engineer salaries in the US for 2026 — average pay and total compensation, top-paying employers and cities, and the skill premiums that matter.",
+  "headline": "Machine Learning Engineer Salary in the US: 2026 Guide",
+  "badge": "2026 SALARY DATA",
+  "stats": [
+    {
+      "label": "Built In average base",
+      "value": "$162,080"
+    },
+    {
+      "label": "Built In average total comp",
+      "value": "~$212,022"
+    },
+    {
+      "label": "Levels.fyi median",
+      "value": "~$264,400"
+    },
+    {
+      "label": "Top employer: D.E. Shaw",
+      "value": "~$392,500"
+    },
+    {
+      "label": "San Francisco average",
+      "value": "~$223,000-$225,000"
+    }
+  ],
+  "sections": [
+    {
+      "title": "Average Machine Learning Engineer Salary in the US for 2026",
+      "content": "Machine learning engineers are among the highest-paid people in software. Built In's 2026 data puts the average base salary at $162,080 with average total compensation near $212,022 once bonuses and equity are included. Other sources read higher: Levels.fyi reports a median around $264,400, Indeed averages near $190,000 and Glassdoor sits at roughly $159,918. The spread mostly reflects which companies and seniority bands each source captures.\n\nWhatever the source, the direction is consistent: ML engineers earn well above the Bureau of Labor Statistics median for software developers, which is $133,080. Staff-level AI engineers carry a premium of about 18.7% over their non-AI peers, and the gap widens further at the senior levels where specialised expertise is scarce."
+    },
+    {
+      "title": "How Experience and Seniority Shape ML Pay",
+      "content": "Entry-level ML engineers typically start on base salaries in the low six figures, but the curve steepens fast. Senior engineers at major AI labs and tech giants — Google, Meta and OpenAI — can reach $400,000 to $786,000 in total compensation, with equity doing most of the heavy lifting. Staff and principal roles concentrate the highest pay because they own model architecture and research direction.\n\nThe key lever at every level is demonstrable impact on shipped models. Engineers who move a metric that matters — recommendation quality, inference cost, model accuracy in production — advance and get paid accordingly. Publications and open-source contributions help too, but production impact is what compensation committees reward."
+    },
+    {
+      "title": "Skill Premiums That Move the Needle",
+      "content": "Not all ML skills are priced equally. LLM fine-tuning commands the largest premium at 40 to 60% above base, reflecting how directly it maps to current product demand. MLOps skills — deploying, monitoring and scaling models in production — add 25 to 40%, while NLP specialisation carries a 20 to 35% premium. These premiums stack on top of already-high base salaries.\n\nThe underlying pattern is simple: pay follows scarcity and business value. Skills that are both hard to find and tied to revenue-critical products get the biggest multipliers. Engineers who combine deep learning fundamentals in Python, PyTorch or TensorFlow with data pipeline and production skills position themselves for the strongest offers."
+    },
+    {
+      "title": "Top Employers and Highest-Paying Cities",
+      "content": "Quantitative finance and top AI product companies set the ceiling. D.E. Shaw leads employer data at roughly $392,500, with Grammarly and Gusto both near $312,500. The common thread is companies where models directly drive the business — trading returns, writing products and financial infrastructure.\n\nGeography still matters. San Francisco averages roughly $223,000 to $225,000, followed by Mountain View at $213,000 to $215,000, Seattle near $203,000, New York around $200,000 and San Jose at $196,000 to $197,000. Remote roles at top companies have narrowed the gap, but the highest-paying teams still cluster in these hubs."
+    },
+    {
+      "title": "ML Engineer Pay vs. Other Software Roles",
+      "content": "Compared with the broader software market, ML engineering sits in a premium tier. The BLS median of $133,080 for software developers is a useful benchmark: mid-career ML engineers routinely earn 50% or more above it, and senior ML engineers at leading companies earn multiples of it. The staff-level AI premium of roughly 18.7% over non-AI peers captures the gap at the same seniority band.\n\nThat said, the premium is concentrated where AI creates measurable value. ML-adjacent software roles without model ownership pay closer to standard engineering rates. For engineers considering the switch, the investment in deep learning fundamentals and production ML skills is what unlocks the higher band — not the job title alone."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "What is the average machine learning engineer salary in 2026?",
+      "a": "Built In reports an average base of $162,080 with total compensation near $212,022 in 2026. Levels.fyi puts the median around $264,400, Indeed near $190,000 and Glassdoor at roughly $159,918. Differences reflect different company mixes and seniority bands, but every source places ML engineers well above typical software pay."
+    },
+    {
+      "q": "Which companies pay machine learning engineers the most?",
+      "a": "D.E. Shaw tops the data at roughly $392,500, followed by Grammarly and Gusto near $312,500. Senior engineers at Google, Meta and OpenAI reach $400,000 to $786,000 in total compensation. The highest payers are firms where models directly drive the business — trading, AI products and large-scale platforms."
+    },
+    {
+      "q": "Which skills increase a machine learning engineer's salary the most?",
+      "a": "LLM fine-tuning carries the biggest premium at 40 to 60% above base salary, followed by MLOps at 25 to 40% and NLP at 20 to 35%. Strong Python, PyTorch or TensorFlow fundamentals plus data pipeline and production deployment skills form the foundation that makes those premiums attainable in senior roles."
+    },
+    {
+      "q": "How does ML engineer pay compare to software developer pay?",
+      "a": "ML engineers earn well above the Bureau of Labor Statistics software developer median of $133,080. Staff-level AI engineers carry about an 18.7% premium over non-AI peers at the same level. At senior levels, the gap widens further — ML specialists at leading AI companies can earn multiples of standard software salaries."
+    },
+    {
+      "q": "Which US cities pay machine learning engineers the most?",
+      "a": "San Francisco leads at roughly $223,000 to $225,000, followed by Mountain View at $213,000 to $215,000, Seattle near $203,000, New York around $200,000 and San Jose at $196,000 to $197,000. Remote roles at top companies have narrowed geographic gaps, but the highest-paying ML teams still cluster in these hubs."
+    }
+  ]
+}
