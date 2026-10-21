@@ -1,0 +1,73 @@
+{
+  "badge": "MILITARY SELECTION GUIDE",
+  "country": "CA",
+  "faqs": [
+    {
+      "a": "Enlisted Airmen must be between 17 and 42 years old, following the 2023 increase that raised the maximum enlistment age to 42. Seventeen-year-olds need parental consent. Healthcare and ministry professionals can join up to age 48, and some specialised roles carry their own age limits.",
+      "q": "What is the age limit to join the US Air Force in 2026?"
+    },
+    {
+      "a": "Enlisted Airmen must be US citizens or lawful permanent residents holding a valid Green Card; officers must be native-born or naturalised US citizens. Canadians cannot enlist from abroad as an immigration route — American residency must already be established before a recruiter can process your application.",
+      "q": "Can Canadians join the US Air Force?"
+    },
+    {
+      "a": "The Air Force requires a minimum AFQT score that varies by Air Force Specialty Code, with most enlisted jobs needing 31 or higher and technical fields demanding more. GED holders generally need an AFQT of 65 or more. Your recruiter matches your line scores to the jobs you qualify for.",
+      "q": "What ASVAB score is required for the US Air Force?"
+    },
+    {
+      "a": "Basic Military Training lasts seven and a half weeks at Joint Base San Antonio-Lackland in Texas. The course covers military discipline, drill, Air Force heritage, weapons familiarisation and physical conditioning, preparing recruits for the technical training school that follows afterwards.",
+      "q": "How long is Air Force Basic Military Training?"
+    },
+    {
+      "a": "The Air Force uses a body mass index range of 17.5 to 27.5. Recruits outside that range take a body fat measurement, capped at 26 percent for males and 36 percent for females. Annual fitness assessments and periodic body composition checks continue throughout an Airman's career.",
+      "q": "What are the Air Force fitness and body standards?"
+    }
+  ],
+  "headline": "Joining the United States Air Force: 2026 Enlistment Guide for Canadians",
+  "hreflang": "en-CA",
+  "metaDescription": "US Air Force recruitment 2026: age 17-42, ASVAB score rules, MEPS medical screening, 7.5-week BMT at Lackland and fitness standards explained for Canadians.",
+  "niche": "defense",
+  "sections": [
+    {
+      "content": "The United States Air Force enlists Airmen through local recruiters who screen candidates before they attend the Military Entrance Processing Station, known as MEPS. The process typically takes weeks to months, covering initial screening, ASVAB testing, medical and moral evaluations, job selection, background checks and contract signing.\n\nAfter enlisting, recruits attend Basic Military Training at Joint Base San Antonio-Lackland in Texas for seven and a half weeks. BMT builds military discipline, drill, physical conditioning and Air Force heritage, and comes before technical training school, where Airmen learn their specific Air Force Specialty Code.",
+      "title": "Enlistment Paths and Basic Military Training"
+    },
+    {
+      "content": "Enlisted candidates must be between 17 and 42, with parental consent required at 17. The critical point for Canadian readers: you must be a US citizen or a lawful permanent resident with a valid Green Card — officers must be native-born or naturalised citizens. There is no pathway to enlist from Canada as a way into the United States; American residency has to be established first.\n\nA high school diploma or equivalent is required, and GED holders generally need an AFQT score of 65 or higher. The Air Force uses a body mass index range of 17.5 to 27.5; recruits outside it take a body fat measurement, capped at 26 percent for males and 36 percent for females. Waivers exist for some medical and moral disqualifiers.",
+      "title": "Eligibility: Age, Citizenship and Education"
+    },
+    {
+      "content": "Most enlisted jobs require an Armed Forces Qualification Test score of 31 or above, with line scores matched to each Air Force Specialty Code's demands. Technical career fields such as cyber, avionics and intelligence require significantly higher composite scores, so the ASVAB genuinely shapes which jobs are open to you.\n\nAt MEPS, candidates complete the ASVAB, a full medical examination, and a background and moral screening. Job availability depends on Air Force needs, ASVAB scores, physical qualifications and security clearance eligibility, so popular technical jobs fill quickly and flexibility with your job list helps a lot.",
+      "title": "ASVAB Scores and MEPS Screening"
+    },
+    {
+      "content": "Airmen must pass a fitness assessment built around push-ups, sit-ups and a 1.5-mile run, scored against age- and gender-adjusted tables. Arriving at BMT already able to pass makes the seven-and-a-half-week course far easier, since physical training is progressive and cumulative — falling behind early compounds quickly.\n\nBody composition standards apply throughout a career, not just at enlistment. Annual fitness assessments and periodic body composition checks mean staying in shape is an ongoing requirement, with waivers and retests available for temporary medical issues. Treat fitness as part of the job from day one and it never becomes a crisis.",
+      "title": "Fitness and Body Composition Standards"
+    }
+  ],
+  "slug": "ca-us-air-force-recruitment-2026",
+  "stats": [
+    {
+      "label": "Age limit",
+      "value": "17-42 years"
+    },
+    {
+      "label": "Basic training",
+      "value": "7.5 weeks, Lackland"
+    },
+    {
+      "label": "ASVAB minimum",
+      "value": "AFQT 31+ (varies by job)"
+    },
+    {
+      "label": "BMI range",
+      "value": "17.5-27.5"
+    },
+    {
+      "label": "Residency required",
+      "value": "US citizen or Green Card"
+    }
+  ],
+  "title": "US Air Force Recruitment 2026: Requirements Guide",
+  "translationGroupId": "us-air-force-recruitment-2026"
+}
