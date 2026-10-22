@@ -1,0 +1,77 @@
+{
+  "badge": "2026 SALARY DATA",
+  "country": "SG",
+  "faqs": [
+    {
+      "a": "The PERSOL Salary Guide 2026/2027 puts AI engineer monthly base salaries at S$6,000 to S$12,000. Morgan McKinley estimates the average annual salary for AI/ML engineers at S$100,000 to S$170,000. Senior annual base bands run S$150,000 to S$220,000, with staff and lead roles reaching S$200,000 to S$260,000 or more.",
+      "q": "What is the average AI engineer salary in Singapore in 2026?"
+    },
+    {
+      "a": "Deep learning expertise, MLOps skills, and production-system experience earn 25 to 40 percent above baseline rates. Large-language-model expertise, quantitative analysis, and AI governance are also cited as major salary drivers. AI and data analytics skills rank among the top 10 in-demand capabilities across all 14 industries in the PERSOL guide.",
+      "q": "Which skills raise an AI engineer's salary in Singapore?"
+    },
+    {
+      "a": "The 2026 Employment Pass floor is S$5,600 a month outside financial services (S$6,200 in finance), rising with age, and increasing to S$6,000 from January 2027 applications. Applicants must also score 40 points under the COMPASS framework. AI is on the Shortage Occupation List, and experienced professionals can qualify for a 5-year pass at S$10,700 a month or more.",
+      "q": "What is the Employment Pass minimum salary for AI engineers in Singapore?"
+    },
+    {
+      "a": "Banks and fintech firms, regional tech names like Grab, Shopee, and ByteDance, global cloud and AI companies, and Singapore's government tech agencies all hire AI engineers. Employers particularly seek talent who can support AI adoption, cloud optimisation, and cybersecurity resilience across banking, healthcare, and sustainability sectors.",
+      "q": "Which companies hire AI engineers in Singapore?"
+    },
+    {
+      "a": "Singapore offers some of the strongest senior AI compensation in Asia: senior AI architects earn S$130,000 to S$220,000 annually, ahead of Tokyo on an after-tax basis and broadly competitive with Beijing and Shenzhen. Singapore's top personal tax rate of 24 percent is favourable compared with Japan and China, though Dubai's zero tax remains the regional outlier.",
+      "q": "How does Singapore AI pay compare with other Asian hubs?"
+    }
+  ],
+  "headline": "AI Engineer Salary in Singapore: 2026 SGD Guide",
+  "hreflang": "en-SG",
+  "metaDescription": "AI engineer salary Singapore 2026: SGD pay bands from junior S$72k to lead S$260k+, PERSOL benchmarks, key employers, and Employment Pass salary rules.",
+  "niche": "tech",
+  "sections": [
+    {
+      "content": "AI engineers in Singapore command a clear premium. The PERSOL Singapore Salary Guide 2026/2027, released in October 2026, puts monthly base salaries for AI engineers at S$6,000 to S$12,000. Recruiter Morgan McKinley estimates the average annual salary for AI/ML engineers at S$100,000 to S$170,000, with detailed rate-card data showing juniors at S$7,000 to S$9,500 a month and leads or architects at S$18,000 to S$25,000.\n\nSingapore's pay environment is becoming more selective: 51% of employers plan to moderate wages or freeze pay in 2027, up from 48% in 2026, according to PERSOL. Yet AI and data analytics rank among the top 10 in-demand skills across all 14 functions and industries the guide covers — employers are paying more for workers who can support AI adoption even as broader hiring turns cautious.",
+      "title": "Average AI Engineer Salary in Singapore for 2026"
+    },
+    {
+      "content": "Level bands from 2026 benchmarks show a steep curve. Junior AI engineers with 0 to 3 years earn S$72,000 to S$110,000 in annual base; mid-level engineers with 4 to 7 years earn S$110,000 to S$170,000; seniors with 8 to 12 years earn S$150,000 to S$220,000; and staff or lead roles with 12-plus years reach S$200,000 to S$260,000 or more. Morgan McKinley's monthly view aligns: mid-level S$9,500 to S$13,500 and senior S$13,500 to S$18,000.\n\nThe jump to lead and architect levels is where compensation concentrates, because these roles own model roadmaps and AI platform bets across teams. Bonuses and, at some employers, restricted stock add meaningfully on top of base — particularly in finance and large tech companies where AI roles sit close to revenue.",
+      "title": "AI Engineer Pay by Level in Singapore"
+    },
+    {
+      "content": "Demand spreads well beyond tech firms: banking, healthcare, and sustainability employers all chase AI talent, alongside regional tech names like Grab, Shopee, and TikTok owner ByteDance, global cloud and AI labs, and Singapore's government tech agencies. The common thread is organisations investing in AI adoption, cloud optimisation, and cybersecurity resilience.\n\nSpecialisation moves the needle. Engineers with deep learning expertise, MLOps skills, and production-system experience earn 25 to 40 percent above baseline rates, while large-language-model expertise, quantitative analysis, and AI governance are also cited as major salary drivers. Hands-on experience shipping production models beats credentials on a CV.",
+      "title": "Key Employers and In-Demand AI Skills"
+    },
+    {
+      "content": "Foreign AI engineers need an Employment Pass, which has a minimum qualifying fixed salary of S$5,600 a month outside financial services in 2026 (S$6,200 in finance), rising with age and set to increase to S$6,000 from applications filed on or after 1 January 2027. Most applicants must also score at least 40 points under the COMPASS framework, which weighs salary relative to local peers, qualifications, and diversity.\n\nAI sits on the Ministry of Manpower's Shortage Occupation List, which helps under COMPASS, and experienced tech professionals in shortage occupations can qualify for a 5-year Employment Pass at fixed monthly salaries of at least S$10,700 (age 36 and below, rising with age). With Singapore's top personal income tax rate at 24%, strong gross packages translate into competitive take-home pay versus regional hubs.",
+      "title": "Employment Pass and Work Pass Rules for Foreign AI Engineers"
+    },
+    {
+      "content": "Across Asia, Singapore offers some of the strongest senior AI compensation. Asia-wide 2026 benchmarks put Singapore senior AI architects at S$130,000 to S$220,000 annually — ahead of Tokyo in yen terms after tax effects, though Japan's senior band runs JPY 13M to 20M-plus, and broadly competitive with Beijing and Shenzhen bands of CNY 600K to 2M. Junior bands are closer across hubs, at S$70,000 to S$110,000 in Singapore.\n\nNet pay matters as much as gross: Singapore's top personal rate of 24% compares favourably with progressive regimes in Japan and China once income tax, resident tax, and social contributions are counted, while Dubai's zero personal income tax remains the regional take-home outlier. For engineers weighing relocation, Singapore combines strong senior packages with a mature AI hiring market and English as a working language.",
+      "title": "How Singapore Compares with Other Asian Tech Hubs"
+    }
+  ],
+  "slug": "singapore-ai-engineer-salary-2026",
+  "stats": [
+    {
+      "label": "PERSOL monthly base (2026/27)",
+      "value": "S$6,000–S$12,000"
+    },
+    {
+      "label": "Morgan McKinley average",
+      "value": "S$100,000–S$170,000"
+    },
+    {
+      "label": "Senior annual base",
+      "value": "S$150,000–S$220,000"
+    },
+    {
+      "label": "Staff/lead annual base",
+      "value": "S$200,000–S$260,000+"
+    },
+    {
+      "label": "Top personal tax rate",
+      "value": "24%"
+    }
+  ],
+  "title": "AI Engineer Salary Singapore 2026: SGD Guide",
+  "translationGroupId": "singapore-ai-engineer-salary-2026"
+}

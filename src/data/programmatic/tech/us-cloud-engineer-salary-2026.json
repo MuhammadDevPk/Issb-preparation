@@ -1,0 +1,77 @@
+{
+  "badge": "2026 SALARY DATA",
+  "country": "US",
+  "faqs": [
+    {
+      "a": "Indeed's 2026 postings average near $135,000, ZipRecruiter puts the October 2026 average at $130,802, and Glassdoor reports about $152,699 from over 5,600 submitted salaries. The spread reflects different sampling methods. Most cloud engineers earn between roughly $111,500 at the 25th percentile and $149,000 at the 75th percentile.",
+      "q": "What is the average cloud engineer salary in the US in 2026?"
+    },
+    {
+      "a": "Entry-level cloud engineers with 0 to 2 years of experience earn $90,000 to $110,000 in 2026 benchmarks. Mid-level engineers with 3 to 5 years earn $120,000 to $140,000, while senior engineers with 6 or more years earn $150,000 to $175,000 or more. Certifications and hands-on production experience push offers toward the top of each range.",
+      "q": "How much do entry-level cloud engineers earn?"
+    },
+    {
+      "a": "The AWS Solutions Architect, AWS Certified DevOps Engineer – Professional, Azure Administrator (AZ-104), and GCP Professional Cloud Architect are the most cited certifications in 2026 guides. Industry benchmarks suggest certification can lift earning potential by 15 to 25 percent, with a further 15 to 20 percent premium for scarce GCP and machine-learning pipeline skills.",
+      "q": "Which cloud certifications increase salary the most?"
+    },
+    {
+      "a": "Seattle leads at roughly $151,000 to $154,000, followed by New York at $147,000 to $149,000, Washington DC near $144,000, and Chicago around $139,000, according to Indeed's 2026 posting data. Remote roles at top companies increasingly pay at or near these hub rates.",
+      "q": "Which US cities pay cloud engineers the most?"
+    },
+    {
+      "a": "Senior cloud engineers land $160,000 to $185,000 in total compensation, enterprise solutions architects reach $190,000 to $225,000, and principal cloud architects earn $230,000 to $275,000, according to 2026 compensation data. Equity and bonuses do most of the heavy lifting at the top of the ladder.",
+      "q": "What is the total compensation for senior cloud engineers?"
+    }
+  ],
+  "headline": "Cloud Engineer Salary in the US: 2026 Guide",
+  "hreflang": "en-US",
+  "metaDescription": "Cloud engineer salaries in the US for 2026: average pay $130k-$153k, junior to staff level bands, top-paying cities and employers, and certs that raise pay.",
+  "niche": "tech",
+  "sections": [
+    {
+      "content": "Cloud engineers in the United States earn comfortably into six figures, though the exact average depends on the source. Indeed's 2026 posting data puts the average near $135,000, ZipRecruiter's October 2026 figures land at $130,802, and Glassdoor reports a higher average of about $152,699 from more than 5,600 self-reported salaries. The spread reflects different sampling: postings skew toward mid-market roles, while Glassdoor captures more senior and coastal employees.\n\nThe typical range runs from roughly $111,500 at the 25th percentile to $149,000 at the 75th percentile, with top earners at the 90th percentile reaching $170,000, according to ZipRecruiter. Glassdoor's 25th-to-75th percentile band of $121,656 to $194,115 reads higher, and about 79% of cloud engineers report satisfaction with their salaries in anonymous ratings.",
+      "title": "Average Cloud Engineer Salary in the US for 2026"
+    },
+    {
+      "content": "Experience drives cloud pay sharply upward. 2026 benchmarks put entry-level cloud engineers with 0 to 2 years at $90,000 to $110,000, mid-level engineers with 3 to 5 years at $120,000 to $140,000, and senior engineers with 6 or more years at $150,000 to $175,000 or more. Staff and principal engineers, who own architecture and multi-region strategy, reach $190,000 to $250,000-plus.\n\nTotal compensation runs meaningfully above base at the top end: senior cloud engineers land $160,000 to $185,000 in total comp, enterprise solutions architects $190,000 to $225,000, and principal cloud architects $230,000 to $275,000. The pattern is consistent — engineers who design systems that scale and survive incidents earn at the top of every band.",
+      "title": "Cloud Engineer Pay by Experience Level"
+    },
+    {
+      "content": "A few employers pay far above the market. Indeed's posting data shows Skillz averaging around $321,000 for cloud engineers, Warner Bros. Discovery near $310,600, and Regeneron near $296,272. Finance and healthcare employers also rank among the highest-paying sectors, where compliance complexity and data sensitivity push compensation up.\n\nSeattle leads city averages at roughly $151,000 to $154,000, followed by New York at $147,000 to $149,000, Washington DC near $144,000, and Chicago around $139,000. Cloud hubs with heavy data-center footprints — Ashburn, Virginia and the Seattle metro — keep a steady pull on salaries, and remote roles at top companies pay at or near hub rates.",
+      "title": "Highest-Paying Employers and Cities"
+    },
+    {
+      "content": "AWS remains the dominant baseline requirement, but scarcity pays: GCP specialists operating machine-learning pipelines can negotiate a 15 to 20 percent premium over standard base rates, according to 2026 market guides, because data-driven companies rely heavily on tools like BigQuery and Vertex AI. DevOps and SRE hybrid skills add another 10 to 15 percent by turning infrastructure into automated, reliable delivery.\n\nCertifications validate the skills employers already want. The AWS Solutions Architect, AWS Certified DevOps Engineer – Professional, Azure Administrator (AZ-104), and GCP Professional Cloud Architect are the most cited, and industry benchmarks suggest certification can lift earning potential by 15 to 25%. Multi-cloud fluency plus infrastructure-as-code with Terraform or CloudFormation is the combination that consistently wins the strongest offers.",
+      "title": "Certifications and Skills That Raise Cloud Pay"
+    },
+    {
+      "content": "Cloud engineering sits in the upper tier of software pay once seniority is factored in. The midpoint — roughly $127,000 to $135,000 — runs close to the Bureau of Labor Statistics median for software developers of $133,080, while certified senior and staff-level cloud engineers earn well above it. The GCP scarcity premium and DevOps-hybrid roles push the top of the band into territory that rivals machine-learning-adjacent compensation.\n\nThe practical takeaway for engineers weighing a move: the title alone does not unlock the premium. What pays is demonstrable ownership of production infrastructure — multi-account AWS environments, cost optimization (FinOps), and Kubernetes at scale. Those are the skills hiring managers struggle to find, and the offers reflect it.",
+      "title": "Cloud Pay vs. Software Developer Pay"
+    }
+  ],
+  "slug": "us-cloud-engineer-salary-2026",
+  "stats": [
+    {
+      "label": "Indeed average (2026 postings)",
+      "value": "~$135,000"
+    },
+    {
+      "label": "ZipRecruiter average (Oct 2026)",
+      "value": "$130,802"
+    },
+    {
+      "label": "Glassdoor average (Oct 2026)",
+      "value": "~$152,699"
+    },
+    {
+      "label": "Entry level (0-2 yrs)",
+      "value": "$90,000-$110,000"
+    },
+    {
+      "label": "Top city: Seattle",
+      "value": "~$151,000-$154,000"
+    }
+  ],
+  "title": "Cloud Engineer Salary US 2026: Pay by Level",
+  "translationGroupId": "us-cloud-engineer-salary-2026"
+}

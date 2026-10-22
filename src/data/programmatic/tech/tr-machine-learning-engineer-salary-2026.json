@@ -1,0 +1,77 @@
+{
+  "badge": "MAKİNE ÖĞRENMESİ",
+  "country": "TR",
+  "faqs": [
+    {
+      "a": "Built In, 2026'da ortalama taban maaşın 162.080 dolar, toplam kazancın ise 212.022 dolara yakın olduğunu bildiriyor. Levels.fyi medyanı yaklaşık 264.400 dolar, Indeed 190.000 dolar civarında, Glassdoor ise yaklaşık 159.918 dolar gösteriyor. Farklar şirket karışımı ve kıdem bantlarından kaynaklanıyor, ancak her kaynak makine öğrenmesi mühendislerini tipik yazılım ücretlerinin çok üstüne koyuyor.",
+      "q": "2026'da ortalama makine öğrenmesi mühendisi maaşı nedir?"
+    },
+    {
+      "a": "D.E. Shaw yaklaşık 392.500 dolar ile verilerde zirvede; onu Grammarly ve Gusto 312.500 dolar civarıyla izliyor. Google, Meta ve OpenAI'daki kıdemli mühendisler 400.000 ila 786.000 dolar arasında toplam kazanca ulaşıyor. En yüksek ödeyenler, modellerin işi doğrudan beslediği şirketler: alım-satım, yapay zekâ ürünleri ve büyük ölçekli platformlar.",
+      "q": "Makine öğrenmesi mühendislerine en çok hangi şirketler ödeme yapıyor?"
+    },
+    {
+      "a": "Büyük dil modeli ince ayarı, taban maaşın %40 ila %60 üzerinde en büyük primi taşıyor; onu MLOps %25 ila %40 ile ve doğal dil işleme %20 ila %35 ile izliyor. Güçlü Python, PyTorch veya TensorFlow temelleri ile veri hattı ve üretimde dağıtım becerileri, bu primleri kıdemli rollerde erişilebilir kılan temeli oluşturuyor.",
+      "q": "Hangi beceriler makine öğrenmesi mühendisi maaşını en çok artırır?"
+    },
+    {
+      "a": "Makine öğrenmesi mühendisleri, ABD Çalışma İstatistikleri Bürosu'nun yazılım geliştiriciler için verdiği 133.080 dolarlık medyanın çok üzerinde kazanıyor. Kadrolu yapay zekâ mühendisleri aynı seviyede yapay zekâ dışı akranlarına karşı yaklaşık %18,7 prim alıyor. Kıdemli seviyelerde fark daha da açılıyor: önde gelen yapay zekâ şirketlerindeki uzmanlar standart yazılım maaşlarının katlarını kazanabiliyor.",
+      "q": "Makine öğrenmesi maaşı yazılım geliştirici maaşıyla nasıl karşılaştırılır?"
+    },
+    {
+      "a": "San Francisco yaklaşık 223.000 ila 225.000 dolar ile önde; onu Mountain View 213.000–215.000 dolarla, Seattle 203.000 dolar civarıyla, New York 200.000 dolar civarında ve San Jose 196.000–197.000 dolarla izliyor. Önde gelen şirketlerdeki uzaktan roller coğrafi farkları daralttı, ancak en yüksek maaşlı ekipler hâlâ bu merkezlerde yoğunlaşıyor.",
+      "q": "ABD'de makine öğrenmesi mühendislerine en çok hangi şehirler ödeme yapıyor?"
+    }
+  ],
+  "headline": "2026'da ABD'de Makine Öğrenmesi Mühendisi Maaşı Rehberi",
+  "hreflang": "tr-TR",
+  "metaDescription": "2026 yılında ABD'de makine öğrenmesi mühendisi maaşları: ortalama maaş ve toplam kazanç, en yüksek ödeyen işverenler, şehirler ve beceri primleri.",
+  "niche": "tech",
+  "sections": [
+    {
+      "content": "Makine öğrenmesi mühendisleri, yazılım dünyasının en yüksek maaşlı çalışanları arasında. Built In'in 2026 verilerine göre ortalama taban maaş 162.080 dolar, bonus ve hisse senedi dahil ortalama toplam kazanç ise yaklaşık 212.022 dolar. Diğer kaynaklar daha yüksek okuyor: Levels.fyi medyanı yaklaşık 264.400 dolar, Indeed ortalaması 190.000 dolar civarında, Glassdoor ise yaklaşık 159.918 dolar gösteriyor. Kaynaklar arasındaki fark, büyük ölçüde her birinin kapsadığı şirket ve kıdem karışımını yansıtıyor.\n\nKaynak ne olursa olsun yön aynı: makine öğrenmesi mühendisleri, ABD Çalışma İstatistikleri Bürosu'nun (BLS) yazılım geliştiriciler için verdiği 133.080 dolarlık medyanın çok üzerinde kazanıyor. Kıdemli seviyedeki yapay zekâ mühendisleri, yapay zekâ dışı akranlarına göre yaklaşık %18,7 prim alıyor ve bu fark, uzmanlığın nadir bulunduğu üst kıdemlerde daha da açılıyor.",
+      "title": "2026'da ABD'de Ortalama Makine Öğrenmesi Mühendisi Maaşı"
+    },
+    {
+      "content": "Başlangıç seviyesindeki makine öğrenmesi mühendisleri genellikle altı haneli maaşların alt bandından başlar, ancak eğri hızla yükselir. Google, Meta ve OpenAI gibi büyük yapay zekâ laboratuvarları ve teknoloji devlerindeki kıdemli mühendisler, 400.000 ile 786.000 dolar arasında toplam kazanca ulaşabilir; bu pastanın büyük kısmını hisse senetleri oluşturur. Kadrolu ve başmühendis roller, model mimarisi ve araştırma yönüne sahip oldukları için en yüksek maaşları toplar.\n\nHer seviyedeki kilit kaldıraç, üretime çıkan modellerde gösterilebilir etkidir. Öneri kalitesi, çıkarım maliyeti veya üretimdeki model doğruluğu gibi önem taşıyan bir metriği iyileştiren mühendisler terfi eder ve buna göre ücretlendirilir. Yayınlar ve açık kaynak katkılar yardımcı olur, ancak ücretlendirme komitelerinin ödüllendirdiği şey üretim etkisidir.",
+      "title": "Deneyim ve Kıdem Maaşı Nasıl Şekillendiriyor"
+    },
+    {
+      "content": "Tüm makine öğrenmesi becerileri aynı şekilde fiyatlanmıyor. Büyük dil modeli (LLM) ince ayar becerisi, mevcut ürün talebine doğrudan karşılık geldiği için taban maaşın %40 ila %60 üzerinde en büyük primi alıyor. Modelleri üretimde dağıtma, izleme ve ölçeklendirme anlamına gelen MLOps becerileri %25 ila %40, doğal dil işleme (NLP) uzmanlığı ise %20 ila %35 prim taşıyor. Bu primler, zaten yüksek olan taban maaşların üzerine ekleniyor.\n\nTemel kalıp basit: ücret, kıtlığı ve iş değerini takip ediyor. Hem bulunması zor hem de geliri doğrudan etkileyen ürünlere bağlı beceriler en yüksek çarpanları alıyor. Python'da derin öğrenme temellerini, PyTorch veya TensorFlow'u veri hattı ve üretim becerileriyle birleştiren mühendisler kendilerini en güçlü tekliflere konumlandırıyor.",
+      "title": "Fark Yaratan Beceri Primleri"
+    },
+    {
+      "content": "Kantitatif finans ve önde gelen yapay zekâ ürün şirketleri maaş tavanını belirliyor. D.E. Shaw, yaklaşık 392.500 dolar ile işveren verilerinde başı çekiyor; Grammarly ve Gusto ise 312.500 dolar civarında. Ortak nokta, modellerin işi doğrudan beslediği şirketler: alım-satım getirileri, yazım ürünleri ve finansal altyapı.\n\nCoğrafya hâlâ önemli. San Francisco ortalama 223.000 ila 225.000 dolarla önde, onu Mountain View 213.000–215.000 dolarla, Seattle yaklaşık 203.000 dolarla, New York 200.000 dolar civarıyla ve San Jose 196.000–197.000 dolarla izliyor. Önde gelen şirketlerdeki uzaktan roller farkı daralttı, ancak en yüksek maaşlı ekipler hâlâ bu merkezlerde toplanıyor.",
+      "title": "En Yüksek Ödeyen İşverenler ve Şehirler"
+    },
+    {
+      "content": "Daha geniş yazılım pazarıyla karşılaştırıldığında makine öğrenmesi mühendisliği primli bir katmanda yer alıyor. BLS'nin yazılım geliştiriciler için verdiği 133.080 dolarlık medyan kullanışlı bir ölçüt: orta kariyer makine öğrenmesi mühendisleri rutin olarak bunun %50 veya daha üzerinde kazanıyor, önde gelen şirketlerdeki kıdemli makine öğrenmesi mühendisleri ise bunun katları kadar kazanıyor. Aynı kıdem bandında yapay zekâ dışı akranlara karşı yaklaşık %18,7'lik kadrolu yapay zekâ primi, farkı yakalıyor.\n\nYine de prim, yapay zekânın ölçülebilir değer yarattığı yerlerde yoğunlaşıyor. Model sahipliği olmayan makine öğrenmesi yan rolleri standart mühendislik ücretlerine daha yakın ödeme alıyor. Geçiş düşünen mühendisler için yüksek banda açan anahtar iş unvanı değil; derin öğrenme temelleri ve üretimde makine öğrenmesi becerilerine yapılan yatırım.",
+      "title": "Makine Öğrenmesi Maaşı vs Diğer Yazılım Rolleri"
+    }
+  ],
+  "slug": "tr-machine-learning-engineer-salary-2026",
+  "stats": [
+    {
+      "label": "Built In ortalama taban",
+      "value": "$162.080"
+    },
+    {
+      "label": "Built In ortalama toplam kazanç",
+      "value": "~$212.022"
+    },
+    {
+      "label": "Levels.fyi medyan",
+      "value": "~$264.400"
+    },
+    {
+      "label": "En yüksek işveren: D.E. Shaw",
+      "value": "~$392.500"
+    },
+    {
+      "label": "San Francisco ortalaması",
+      "value": "~$223.000–225.000"
+    }
+  ],
+  "title": "ABD'de Makine Öğrenmesi Mühendisi Maaşı 2026",
+  "translationGroupId": "machine-learning-engineer-salary-2026"
+}
