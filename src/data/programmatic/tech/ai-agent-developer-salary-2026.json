@@ -1,0 +1,73 @@
+{
+  "badge": "2026 SALARY DATA",
+  "country": "US",
+  "faqs": [
+    {
+      "a": "There is no official BLS job title for AI agent developer yet, so salary aggregators disagree. Glassdoor reported a median of $173,482 in total pay for AI engineers in February 2026, while Built In showed an average base salary of $184,757 with total compensation near $211,243, and Levels.fyi put median total compensation around $211,000 once equity is included.",
+      "q": "What is the average AI agent developer salary in the US in 2026?"
+    },
+    {
+      "a": "Entry-level AI engineers typically earn $90,000 to $135,000 in base salary, with total compensation of $110,000 to $160,000 after signing bonuses and initial equity. Mid-level agent developers earn roughly $150,000 to $200,000 in base pay, while senior roles command $180,000 to $280,000 in base with total packages clearing $300,000 at major tech companies.",
+      "q": "How much do entry-level and senior AI agent developers earn?"
+    },
+    {
+      "a": "Yes. PwC's 2025 AI Jobs Barometer found a 56% wage premium for roles requiring AI skills versus the same roles without, up from 25% just one year earlier. Dice's 2025 Tech Salary Report found AI-skilled professionals earn roughly an 18% premium over other tech roles, and the premium is highest at senior levels.",
+      "q": "Do AI agent developers earn more than regular software developers?"
+    },
+    {
+      "a": "A mid-level AI agent developer working freelance in the United States commands $119 to $185 per hour, or roughly $19,000 to $29,600 per month at 160 billable hours, according to October 2026 rate benchmarks. Agents experience — shipping LangChain, LangGraph, or agentic framework systems to production — commands the top end of that range.",
+      "q": "What are the freelance hourly rates for AI agent developers?"
+    },
+    {
+      "a": "Employers pay for shipped production experience with real users, plus specialization in generative AI, LLM fine-tuning and multi-agent orchestration frameworks. Moving up to staff level roughly triples the AI pay premium, and the US Bureau of Labor Statistics projects 26% job growth for AI-related roles between 2023 and 2033, about six times faster than the average for all occupations.",
+      "q": "What skills increase an AI agent developer's salary most?"
+    }
+  ],
+  "headline": "AI Agent Developer Salary 2026: US Pay Guide",
+  "hreflang": "en-US",
+  "metaDescription": "AI agent developer salary 2026: US average base $170K-$185K, total comp up to $211K. Entry $90K-$135K, senior $180K-$280K base. 56% AI skills premium.",
+  "niche": "tech",
+  "sections": [
+    {
+      "content": "AI agent developer compensation varies widely depending on which source you trust, because each measures a different population. Robert Half's 2026 Salary Guide puts the AI/ML engineer mid-band at $170,750 in base salary, with a range of $134,000 to $193,250 across mainstream employers.\n\nGlassdoor reported median total pay of $173,482 for AI engineers in February 2026, while Built In showed an average base of $184,757 with total compensation near $211,243. Levels.fyi, which skews toward Big Tech, put median total compensation around $211,000. KORE1's real-offer data puts the practical range for AI engineers at $145,000 to $310,000 in 2026.",
+      "title": "What AI Agent Developers Earn in 2026"
+    },
+    {
+      "content": "The market is really two markets. Enterprise AI engineers at mainstream companies earn solid six-figure salaries, while frontier AI labs pay in a different universe — Levels.fyi reported software engineer median total compensation of $875,000 to $883,000 at OpenAI and Anthropic in October 2026, with stock making up most of the package above mid-level seniority.\n\nThe driver is base versus total compensation. Salary guides report base pay, which enterprise engineers compare against. Lab packages are mostly equity. For most developers building agent systems at startups and mid-size companies, base salary plus modest equity is the realistic structure.",
+      "title": "Why Salary Figures Look So Different"
+    },
+    {
+      "content": "Experience with agentic frameworks — LangChain, LangGraph, multi-agent orchestration, tool-use design and production LLM pipelines — commands the strongest premium in the applied AI market. Senior LLM and generative AI specialists see base salaries of $240,000 to $350,000+.\n\nEntry level typically means a CS degree plus master's coursework or significant project experience, starting at $90,000 to $135,000 in base. Mid-level engineers with shipped agent products earn $150,000 to $200,000, and moving up to staff level roughly triples the AI premium — with senior total packages at major tech companies clearing $300,000 and reaching $400,000 or more.",
+      "title": "How Experience Level Affects Pay"
+    },
+    {
+      "content": "A mid-level AI agent developer freelancing in the United States bills $119 to $185 per hour, equivalent to about $19,000 to $29,600 per month at 160 billable hours, per October 2026 benchmarks. Canada tracks similar rates, while the UK bills $74 to $115 per hour and Germany $66 to $102.\n\nThe 56% wage premium for AI skills found by PwC's 2025 AI Jobs Barometer — up from 25% a year earlier — suggests employers will keep paying up for agent expertise. The BLS projects 26% job growth for AI-related roles from 2023 to 2033, roughly six times the average for all occupations, so demand for shipped agent-building experience looks structural rather than speculative.",
+      "title": "Freelance Rates and Market Outlook"
+    }
+  ],
+  "slug": "ai-agent-developer-salary-2026",
+  "stats": [
+    {
+      "label": "Robert Half 2026 mid-band base",
+      "value": "$170,750"
+    },
+    {
+      "label": "Built In average base",
+      "value": "$184,757"
+    },
+    {
+      "label": "Levels.fyi median total comp",
+      "value": "~$211,000"
+    },
+    {
+      "label": "Real offer range (KORE1)",
+      "value": "$145K-$310K"
+    },
+    {
+      "label": "Freelance hourly (US mid-level)",
+      "value": "$119-$185"
+    }
+  ],
+  "title": "AI Agent Developer Salary 2026: US Averages & Ranges",
+  "translationGroupId": "ai-agent-developer-salary-2026"
+}
