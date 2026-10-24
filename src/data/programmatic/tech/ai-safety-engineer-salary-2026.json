@@ -1,0 +1,73 @@
+{
+  "slug": "ai-safety-engineer-salary-2026",
+  "niche": "tech",
+  "country": "US",
+  "hreflang": "en-US",
+  "translationGroupId": "ai-safety-engineer-salary-2026",
+  "title": "AI Safety Engineer Salary 2026: Pay & Skills",
+  "metaDescription": "AI safety engineer salary 2026: 160,000-280,000 dollars at senior levels, red teamers 80,000-220,000 dollars, hiring up 91%. Skills and employers explained.",
+  "headline": "AI Safety Engineer Salary 2026: Pay Bands, Skills & Demand",
+  "badge": "AI SAFETY PAY 2026",
+  "stats": [
+    {
+      "label": "Senior Range",
+      "value": "$160K - $280K+"
+    },
+    {
+      "label": "National Median (AI Security)",
+      "value": "$165K"
+    },
+    {
+      "label": "AI Red Teamer",
+      "value": "$80K - $220K Total Comp"
+    },
+    {
+      "label": "Hiring Growth (LinkedIn)",
+      "value": "+91% Year on Year"
+    },
+    {
+      "label": "Frontier-Lab Total Comp",
+      "value": "$300K+"
+    }
+  ],
+  "sections": [
+    {
+      "title": "Pay bands: from red teamer to frontier-lab specialist",
+      "content": "AI safety is currently the highest-premium specialisation in applied AI, paying roughly $40,000 to $60,000 above a comparable machine-learning engineering base. Published 2026 guides put senior AI safety engineers and red team researchers at $160,000 to $280,000 or more, while the broader AI security engineer median sits near $165,000.\n\nRed teamers specifically earn $80,000 to $220,000 in total compensation by seniority: juniors around $80,000 to $120,000, mid-level staff $120,000 to $170,000, and senior or staff specialists $170,000 to $220,000 or more. Frontier-lab roles push total compensation past $300,000 with equity, and agentic AI safety work adds a further 20 to 30% premium."
+    },
+    {
+      "title": "Why demand is surging in 2026",
+      "content": "LinkedIn reported AI safety hiring up 91% over the past year even as the overall hiring market stayed flat, reflecting regulation and risk: the EU AI Act, the NIST AI Risk Management Framework and enterprise governance rules now require documented safety work before models ship. Healthcare, finance, legal and government deployments are the most active buyers.\n\nThe talent pool is genuinely small because the role blends skills that rarely sit in one person: machine-learning engineering, application security, adversarial thinking and policy literacy. The US Bureau of Labor Statistics projects information security analyst jobs growing 21% over the decade to 2035, and AI safety sits on top of that trend with a scarcity premium."
+    },
+    {
+      "title": "Skills that move the salary most",
+      "content": "The highest-paid practitioners combine adversarial machine learning, red teaming methodology and interpretability tools such as SHAP and LIME with governance knowledge of the EU AI Act and NIST AI RMF. Python is the working language, and experience with LLM evaluation, prompt-injection testing and agent safety testing separates senior hires from generalists.\n\nPublished job data shows the premium clearly: OpenAI has listed safety-team data science roles up to $325,000, Anthropic listed a safety controls analyst near $285,000, and Google listed safety roles near $239,000 plus bonus and stock. A public portfolio of jailbreak findings, evaluations or safety tooling is often worth more than another certificate."
+    },
+    {
+      "title": "How to break in and where the ceiling sits",
+      "content": "The fastest entry is sideways: security engineers add LLM evaluation and red teaming, while ML engineers add adversarial testing and governance frameworks. Contract red teaming pays around $67.60 an hour on average, with senior specialists commanding $120 to $200 an hour on short, high-intensity engagements.\n\nThe ceiling keeps rising because the work is tied to deployment risk rather than headcount: every company wiring agents into real data and actions needs someone who can find failure modes before customers do. Expect senior bands to keep outpacing general ML engineering while regulation tightens and agent deployments spread."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "What is the average AI safety engineer salary in 2026?",
+      "a": "Senior AI safety engineers and red team researchers earn $160,000 to $280,000 or more in 2026, while the broader AI security engineer median is near $165,000. Red teamers specifically earn $80,000 to $220,000 in total compensation by seniority, and frontier-lab roles push total compensation past $300,000 with equity and bonuses."
+    },
+    {
+      "q": "Why do AI safety engineers earn more than ML engineers?",
+      "a": "AI safety commands a premium of roughly $40,000 to $60,000 over a comparable ML engineering base because the skill set is scarce and the work is tied to deployment risk. Employers in regulated sectors such as healthcare, finance and government need engineers who can find jailbreaks and failure modes before products ship."
+    },
+    {
+      "q": "What skills do AI safety engineer jobs require?",
+      "a": "Core skills are adversarial machine learning, red teaming methodology, interpretability tools such as SHAP and LIME, and governance frameworks including the EU AI Act and NIST AI RMF. Python is essential, and LLM evaluation, prompt-injection testing, agentic safety testing and constitutional AI concepts are the differentiators at senior levels."
+    },
+    {
+      "q": "Is AI safety hiring really growing?",
+      "a": "Yes, LinkedIn reported AI safety hiring up 91% over the past year while the overall hiring market stayed flat. Growth is driven by regulation, enterprise AI governance requirements and the spread of agentic systems, with the Bureau of Labor Statistics projecting 21% growth for information security analysts over the decade to 2035."
+    },
+    {
+      "q": "How do I become an AI safety engineer?",
+      "a": "Start from your nearer base: security engineers should add LLM evaluation and red teaming, while ML engineers should add adversarial testing and governance frameworks. Build a public portfolio of evaluations, jailbreak findings or safety tooling, since hiring managers weight demonstrated findings over certificates, and consider contract red teaming, averaging about $67.60 an hour, as a paid entry route."
+    }
+  ]
+}
