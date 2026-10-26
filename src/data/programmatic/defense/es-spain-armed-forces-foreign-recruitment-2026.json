@@ -1,0 +1,65 @@
+{
+  "badge": "RECLUTAMIENTO 2026",
+  "country": "ES",
+  "faqs": [
+    {
+      "a": "Pueden solicitarlo ciudadanos de 18 países, entre ellos Argentina, Colombia, México, Perú, Ecuador y Guinea Ecuatorial, el único país africano de la lista. Todos comparten el idioma español y, en la mayoría de los casos, vínculos históricos con España. La nacionalidad por sí sola no garantiza la plaza.",
+      "q": "¿Qué nacionalidades pueden alistarse en las Fuerzas Armadas españolas?"
+    },
+    {
+      "a": "Es necesario tener una tarjeta de residencia temporal o de larga duración en España, o una tarjeta de familiar de ciudadano comunitario, sin limitaciones para trabajar. El documento debe seguir vigente al menos hasta la fecha de incorporación al centro de formación asignado.",
+      "q": "¿Qué documento de residencia se exige a los extranjeros?"
+    },
+    {
+      "a": "El candidato debe haber alcanzado la mayoría de edad según la ley de su país de origen en la fecha de incorporación y no debe tener más de 29 años ese mismo día. Además, se exige no tener antecedentes penales en España ni en países anteriores de residencia.",
+      "q": "¿Cuál es el límite de edad para alistarse?"
+    },
+    {
+      "a": "Los ciudadanos peruanos deben acreditar que las autoridades de Perú han autorizado su alistamiento, o demostrar que han solicitado formalmente esa autorización. Es un requisito adicional que no se aplica a las demás nacionalidades admitidas en el programa. Este requisito adicional debe acreditarse con documentos oficiales antes de formalizar la incorporación al centro de formación.",
+      "q": "¿Hay algún requisito especial para los peruanos?"
+    }
+  ],
+  "headline": "Reclutamiento extranjero en España 2026: 18 países y 5 requisitos",
+  "hreflang": "es-ES",
+  "metaDescription": "España abre el alistamiento de tropa y marinería a ciudadanos de 18 países. Requisitos de residencia, edad máxima de 29 años, antecedentes y estudios en 2026.",
+  "niche": "defense",
+  "sections": [
+    {
+      "content": "El Ministerio de Defensa de España ha confirmado un programa de reclutamiento para ciudadanos extranjeros de 18 países. El programa cubre la categoría de tropa y marinería, es decir, soldados y marineros, no puestos de oficial.\n\nLa lista incluye países latinoamericanos como Argentina, Bolivia, Chile, Colombia, Costa Rica, Ecuador, El Salvador, Guatemala, Honduras, México, Nicaragua, Panamá, Paraguay, Perú, República Dominicana, Uruguay y Venezuela, además de Guinea Ecuatorial, el único país africano admitido.",
+      "title": "Un programa abierto a 18 nacionalidades"
+    },
+    {
+      "content": "El primer requisito es la nacionalidad de uno de los países admitidos. El segundo es la residencia legal en España con derecho a trabajar sin restricciones, acreditada con una tarjeta vigente hasta la incorporación.\n\nEl tercero es la edad: ser mayor de edad según la ley del país de origen y no superar los 29 años el día de la incorporación. El cuarto es carecer de antecedentes penales en España y en países anteriores de residencia por delitos reconocidos en la legislación española.",
+      "title": "Los cinco requisitos que hay que cumplir"
+    },
+    {
+      "content": "El quinto requisito es la titulación académica exigida para el puesto elegido. Quienes obtuvieron sus certificados fuera de España pueden necesitar el reconocimiento oficial de equivalencia con las titulaciones españolas correspondientes.\n\nLos ciudadanos peruanos tienen un paso adicional: deben presentar la autorización de sus autoridades para alistarse o la prueba de haberla solicitado formalmente. El Ministerio remite a los interesados a la web oficial de tropa y marinería para consultar todos los detalles.",
+      "title": "Estudios, equivalencias y el caso de Perú"
+    },
+    {
+      "content": "El programa ofrece a los extranjeros residentes una vía formal para aprender un oficio, obtener un empleo estable y profundizar su integración en la sociedad española mientras sirven en las Fuerzas Armadas. Está abierto tanto a hombres como a mujeres.\n\nAntes de solicitarlo, conviene verificar la nacionalidad, la vigencia de la residencia, la edad y la titulación. Una solicitud incompleta o con documentos caducados puede retrasar o impedir la incorporación al centro de formación.",
+      "title": "Qué ofrece el programa y cómo prepararse"
+    }
+  ],
+  "slug": "es-spain-armed-forces-foreign-recruitment-2026",
+  "stats": [
+    {
+      "label": "Países admitidos",
+      "value": "18"
+    },
+    {
+      "label": "Edad máxima",
+      "value": "29 años"
+    },
+    {
+      "label": "Categoría",
+      "value": "Tropa y marinería"
+    },
+    {
+      "label": "Residencia exigida",
+      "value": "Tarjeta vigente"
+    }
+  ],
+  "title": "Reclutamiento extranjero España 2026: requisitos",
+  "translationGroupId": "spain-armed-forces-foreign-recruitment-2026"
+}

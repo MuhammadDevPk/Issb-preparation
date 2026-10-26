@@ -1,0 +1,65 @@
+{
+  "badge": "CYBERSÉCURITÉ FRANCE",
+  "country": "FR",
+  "faqs": [
+    {
+      "a": "En France, un débutant en cybersécurité gagne généralement entre 40 000 et 50 000 euros bruts par an. Avec quelques années d'expérience, le salaire passe à 60 000-70 000 euros, et les profils seniors atteignent 85 000 à 100 000 euros, surtout à Paris et dans la finance.",
+      "q": "Quel salaire pour un débutant en cybersécurité en France ?"
+    },
+    {
+      "a": "Les spécialités les mieux payées sont la sécurité cloud, les tests d'intrusion et l'architecture de sécurité. Les certifications comme CISSP ou OSCP, ainsi que l'expérience en réponse aux incidents, permettent souvent de négocier un salaire nettement supérieur à la moyenne.",
+      "q": "Quelles spécialités de cybersécurité paient le mieux ?"
+    },
+    {
+      "a": "La directive européenne NIS2 et le RGPD obligent de nombreuses entreprises à renforcer leurs équipes de sécurité. Cette pression réglementaire crée une pénurie de professionnels qualifiés, ce qui soutient les salaires et multiplie les offres d'emploi dans toute la France.",
+      "q": "Pourquoi la demande en cybersécurité augmente-t-elle en France ?"
+    },
+    {
+      "a": "Paris concentre les salaires les plus élevés, grâce aux sièges sociaux et aux banques. Lyon, Toulouse et Sophia Antipolis offrent aussi de belles opportunités, notamment dans l'aéronautique et la technologie, avec un coût de la vie souvent plus bas qu'à Paris.",
+      "q": "Quelles villes françaises paient le mieux en cybersécurité ?"
+    }
+  ],
+  "headline": "Salaire cybersécurité France 2026 : guide complet par niveau",
+  "hreflang": "fr-FR",
+  "metaDescription": "Salaire cybersécurité France 2026 : junior 40 000-50 000 €, confirmé 60 000-70 000 €, senior 85 000-100 000 €. Villes, spécialités et certifications payées.",
+  "niche": "tech",
+  "sections": [
+    {
+      "content": "La cybersécurité est l'un des secteurs technologiques les plus dynamiques en France en 2026. Les entreprises de tous les secteurs recrutent des analystes, des ingénieurs et des architectes pour protéger leurs systèmes contre des attaques toujours plus sophistiquées.\n\nLes salaires reflètent cette tension : selon les estimations européennes, un junior gagne 40 000 à 50 000 euros, un profil intermédiaire 60 000 à 70 000 euros, et un senior 85 000 à 100 000 euros par an. Ces chiffres varient selon la ville, le secteur et les certifications.",
+      "title": "Un marché en forte tension en 2026"
+    },
+    {
+      "content": "Les débutants commencent souvent comme analystes SOC, où ils surveillent les alertes, analysent les incidents et participent à la réponse aux attaques. Avec deux à quatre ans d'expérience, ils évoluent vers des postes d'ingénieur sécurité ou de pentester.\n\nLes profils seniors pilotent l'architecture de sécurité, définissent les politiques et encadrent des équipes. Ils sont particulièrement recherchés dans la banque, l'assurance et les grandes entreprises technologiques, où la sécurité est un enjeu stratégique.",
+      "title": "Les niveaux de carrière et leurs salaires"
+    },
+    {
+      "content": "La réglementation européenne joue un rôle majeur : la directive NIS2 élargit les obligations de sécurité à de nombreux secteurs, tandis que le RGPD impose une protection rigoureuse des données personnelles. Les entreprises doivent donc investir dans des équipes qualifiées.\n\nCette demande réglementaire profite aux professionnels qui combinent compétences techniques et compréhension de la gouvernance, du risque et de la conformité. Les profils capables de parler à la fois aux équipes techniques et à la direction sont rares et bien rémunérés.",
+      "title": "NIS2, RGPD et la valeur des profils hybrides"
+    },
+    {
+      "content": "Paris reste la ville la mieux payée, mais son coût de la vie élevé réduit l'avantage réel. Lyon, Toulouse, Bordeaux et Sophia Antipolis offrent des salaires compétitifs avec une qualité de vie souvent supérieure.\n\nPour progresser, les certifications reconnues (CISSP, OSCP, certifications cloud) et les projets concrets, comme des laboratoires de sécurité ou des contributions open source, comptent autant que les diplômes. Le télétravail partiel est désormais courant dans le secteur.",
+      "title": "Villes, certifications et conseils de carrière"
+    }
+  ],
+  "slug": "fr-france-cybersecurity-salary-2026",
+  "stats": [
+    {
+      "label": "Salaire junior",
+      "value": "40 000–50 000 €"
+    },
+    {
+      "label": "Salaire confirmé",
+      "value": "60 000–70 000 €"
+    },
+    {
+      "label": "Salaire senior",
+      "value": "85 000–100 000 €"
+    },
+    {
+      "label": "Ville la mieux payée",
+      "value": "Paris"
+    }
+  ],
+  "title": "Salaire cybersécurité France 2026 : guide par niveau",
+  "translationGroupId": "france-cybersecurity-salary-2026"
+}

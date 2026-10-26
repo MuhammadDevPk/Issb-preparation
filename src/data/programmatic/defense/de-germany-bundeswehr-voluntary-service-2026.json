@@ -1,0 +1,65 @@
+{
+  "badge": "BUNDESWEHR 2026",
+  "country": "DE",
+  "faqs": [
+    {
+      "a": "Der neue freiwillige Wehrdienst richtet sich an junge Menschen, die freiwillig bei der Bundeswehr dienen möchten. Die Dienstzeit beträgt mindestens sechs Monate und kann auf bis zu elf Monate verlängert werden. Wer sich für mindestens zwölf Monate verpflichtet, wechselt in den Status von Soldatinnen und Soldaten auf Zeit.",
+      "q": "Wer kann den neuen freiwilligen Wehrdienst leisten?"
+    },
+    {
+      "a": "Freiwillig Dienstleistende erhalten etwa 2.600 Euro brutto im Monat, dazu Unterkunft und weitere Leistungen. Bei einer Verpflichtung ab zwölf Monaten unterstützt die Bundeswehr außerdem den Erwerb eines Führerscheins. Die Bezahlung steigt leicht mit Dienstgrad und Dauer der Verpflichtung. Außerdem profitieren Dienstleistende von kostenloser medizinischer Versorgung, Verpflegung und einer sicheren beruflichen Perspektive nach dem Dienst.",
+      "q": "Wie hoch ist die Bezahlung im freiwilligen Wehrdienst?"
+    },
+    {
+      "a": "Alle 18-Jährigen erhalten einen Fragebogen zu ihrem Interesse am Dienst, für Männer ist die Beantwortung verpflichtend. Ab Juli 2027 müssen Männer bei Vollendung des 18. Lebensjahres zudem eine verpflichtende Musterung absolvieren. Der Dienst selbst bleibt zunächst freiwillig, eine Bedarfserhebung bleibt dem Parlament vorbehalten.",
+      "q": "Gibt es eine Wehrpflicht oder nur einen Fragebogen?"
+    },
+    {
+      "a": "Die Bundeswehr will bis 2035 auf etwa 260.000 aktive Soldatinnen und Soldaten und rund 200.000 Reservisten wachsen. Der freiwillige Dienst soll vor allem die territoriale Verteidigung stärken, etwa durch Schutz von Infrastruktur, Überwachung und Sicherungsaufgaben, und den Weg in die Reserve offen halten.",
+      "q": "Welche Ziele verfolgt die Bundeswehr bis 2035?"
+    }
+  ],
+  "headline": "Freiwilliger Wehrdienst 2026: Bezahlung, Dauer und Ablauf",
+  "hreflang": "de-DE",
+  "metaDescription": "Der neue freiwillige Wehrdienst 2026 zahlt rund 2.600 Euro brutto im Monat. Dauer, Fragebogen, Musterung und Ziele der Bundeswehr bis 2035 im Überblick.",
+  "niche": "defense",
+  "sections": [
+    {
+      "content": "Deutschland baut seinen Wehrdienst 2026 grundlegend um. Der Bundestag hat ein Gesetz beschlossen, das den freiwilligen Dienst attraktiver machen soll, um die Streitkräfte angesichts wachsender Sicherheitsbedenken in Europa zu stärken.\n\nZiel ist es, die Zahl der aktiven Soldatinnen und Soldaten von derzeit etwa 180.000 auf rund 260.000 bis 2035 zu erhöhen. Hinzu kommen etwa 200.000 Reservisten, die im Ernstfall schnell verfügbar sein sollen.",
+      "title": "Warum Deutschland den Wehrdienst neu aufstellt"
+    },
+    {
+      "content": "Für den militärischen Dienst ist die deutsche Staatsangehörigkeit erforderlich, außerdem ein Mindestalter von 17 Jahren, wobei Minderjährige die Zustimmung der Eltern brauchen. Ein einwandfreies Führungszeugnis, die Bereitschaft zur freiheitlich-demokratischen Grundordnung und die gesundheitliche Eignung gehören ebenfalls zu den Voraussetzungen.\n\nEine pauschale Altersobergrenze gibt es nicht mehr: Die frühere Grenze von 29 Jahren für Offiziere wurde 2021 abgeschafft. Entscheidend sind Qualifikation und eine passende Verpflichtungsdauer.",
+      "title": "Voraussetzungen für eine Bewerbung"
+    },
+    {
+      "content": "Der freiwillige Dienst dauert mindestens sechs Monate, innerhalb des neuen Modells sechs bis elf Monate. Nach zwölf Monaten wechseln Dienstleistende in den Status von Soldatinnen und Soldaten auf Zeit mit einem anderen Vertragsmodell.\n\nDie Ausbildung umfasst Aufgaben der territorialen Verteidigung, etwa den Schutz von Infrastruktur, Überwachung und Sicherung. So bleiben die Dienstleistenden auch später als Reservisten mit der Bundeswehr verbunden.",
+      "title": "Dauer und Ausbildung im freiwilligen Dienst"
+    },
+    {
+      "content": "Der neue freiwillige Dienst beginnt mit etwa 2.600 Euro brutto im Monat, womit die bisherige Bezahlung um rund 450 Euro steigt. Unterkunft und bestimmte Leistungen übernimmt die Bundeswehr, und ab einem Jahr Verpflichtung gibt es Unterstützung beim Führerschein.\n\nWer eine zivile Laufbahn bei der Bundeswehr sucht, findet ebenfalls Wege: Zivile Stellen, etwa bei IT- oder Fuhrparkdienstleistern der Bundeswehr, stehen unter bestimmten Voraussetzungen auch Menschen ohne deutsche Staatsangehörigkeit offen, sofern sie eine gültige Aufenthaltserlaubnis mit Arbeitserlaubnis besitzen.",
+      "title": "Bezahlung und zivile Wege bei der Bundeswehr"
+    }
+  ],
+  "slug": "de-germany-bundeswehr-voluntary-service-2026",
+  "stats": [
+    {
+      "label": "Monatliche Bezahlung",
+      "value": "Ca. 2.600 € brutto"
+    },
+    {
+      "label": "Mindestdauer",
+      "value": "6 Monate"
+    },
+    {
+      "label": "Ziel bis 2035",
+      "value": "260.000 Soldaten"
+    },
+    {
+      "label": "Reservisten bis 2035",
+      "value": "200.000"
+    }
+  ],
+  "title": "Freiwilliger Wehrdienst Deutschland 2026: Gehalt und Dauer",
+  "translationGroupId": "germany-bundeswehr-voluntary-service-2026"
+}

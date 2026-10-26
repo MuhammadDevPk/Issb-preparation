@@ -1,0 +1,65 @@
+{
+  "badge": "SERVICE MILITAIRE 2026",
+  "country": "FR",
+  "faqs": [
+    {
+      "a": "Le service s'adresse aux jeunes citoyens français âgés de 18 à 25 ans qui souhaitent contribuer à la résilience du pays. Les candidats doivent être en bonne santé, motivés et prêts à servir sur le territoire français pendant dix mois, dans l'armée de terre, la marine ou l'armée de l'air et de l'espace.",
+      "q": "Qui peut s'inscrire au service militaire volontaire 2026 ?"
+    },
+    {
+      "a": "Les volontaires reçoivent environ 800 euros par mois, ainsi que le logement, les repas et l'équipement. Le service dure dix mois, dont un mois de formation initiale, puis neuf mois d'affectation dans une unité. Cette rémunération modeste s'accompagne d'une expérience professionnelle reconnue et valorisée.",
+      "q": "Combien gagne un volontaire et combien de temps dure le service ?"
+    },
+    {
+      "a": "Les volontaires peuvent exercer de nombreux métiers, comme opérateur de drone, mécanicien, électricien, boulanger ou personnel médical. Les missions incluent l'aide lors de catastrophes naturelles, la surveillance contre le terrorisme et le soutien aux populations, selon les besoins des armées et les profils des candidats.",
+      "q": "Quels métiers peut-on exercer pendant le service ?"
+    },
+    {
+      "a": "Après le service, plusieurs chemins sont possibles : retourner à la vie civile, devenir réserviste ou poursuivre une carrière militaire. La participation est aussi reconnue sur la plateforme Parcoursup, ce qui peut aider les jeunes qui souhaitent ensuite entrer dans l'enseignement supérieur.",
+      "q": "Que peut-on faire après le service militaire volontaire ?"
+    }
+  ],
+  "headline": "Service militaire volontaire 2026 : dix mois pour servir la France",
+  "hreflang": "fr-FR",
+  "metaDescription": "Service militaire volontaire 2026 : 3 000 jeunes de 18 à 25 ans recrutés pour dix mois, payés environ 800 euros par mois. Conditions, métiers et démarches.",
+  "niche": "defense",
+  "sections": [
+    {
+      "content": "La France a lancé en janvier 2026 une campagne de recrutement pour un nouveau service militaire volontaire de dix mois. Les premiers volontaires commencent leur service en septembre 2026, avec un objectif de 3 000 jeunes la première année, puis 4 000 en 2027 et 10 000 par an d'ici 2030.\n\nCe programme remplace l'ancien service national universel proposé aux mineurs. Il s'adresse uniquement à des volontaires majeurs et se déroule entièrement sur le territoire français, dans un contexte de sécurité européenne en évolution.",
+      "title": "Un nouveau service volontaire lancé en 2026"
+    },
+    {
+      "content": "Le service est ouvert à tous les jeunes citoyens français âgés de 18 à 25 ans, sans distinction de parcours scolaire. Les candidats doivent être motivés, en bonne condition physique et prêts à respecter la discipline militaire et les valeurs des armées.\n\nLa sélection tient compte de la motivation, des résultats du contrôle médical et des besoins des unités. Les femmes représentent environ 22 pour cent des candidatures, ce qui montre que le programme attire des profils variés.",
+      "title": "Conditions d'accès et sélection"
+    },
+    {
+      "content": "Après un mois de formation de base, les volontaires rejoignent une unité selon leur profil et les besoins des armées. Ils peuvent servir dans l'infanterie, la cavalerie, le génie, l'artillerie ou la logistique, mais aussi dans des fonctions techniques et de soutien.\n\nLes missions sont concrètes : aide aux populations lors de catastrophes, surveillance, soutien logistique et protection du territoire. Les volontaires acquièrent ainsi des compétences utiles dans la vie civile, comme le travail en équipe et la rigueur.",
+      "title": "Formation et missions au quotidien"
+    },
+    {
+      "content": "Chaque volontaire reçoit environ 800 euros par mois, avec le logement, les repas et l'équipement fournis. Le coût du programme est estimé à 150 millions d'euros en 2026, dans le cadre d'un effort plus large de renforcement des forces armées.\n\nÀ la fin du service, les jeunes peuvent choisir la vie civile, la réserve ou une carrière militaire. Cette souplesse fait du programme une année de transition utile, comparable à une année de césure avant les études ou l'emploi.",
+      "title": "Rémunération et avenir après le service"
+    }
+  ],
+  "slug": "fr-france-voluntary-military-service-2026",
+  "stats": [
+    {
+      "label": "Âge requis",
+      "value": "18–25 ans"
+    },
+    {
+      "label": "Durée du service",
+      "value": "10 mois"
+    },
+    {
+      "label": "Rémunération mensuelle",
+      "value": "Environ 800 €"
+    },
+    {
+      "label": "Recrutement 2026",
+      "value": "3 000 volontaires"
+    }
+  ],
+  "title": "Service militaire volontaire France 2026 : conditions",
+  "translationGroupId": "france-voluntary-military-service-2026"
+}

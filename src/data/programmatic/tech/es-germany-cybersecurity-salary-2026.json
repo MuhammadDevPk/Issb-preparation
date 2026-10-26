@@ -1,0 +1,65 @@
+{
+  "badge": "CIBERSEGURIDAD ALEMANIA",
+  "country": "ES",
+  "faqs": [
+    {
+      "a": "En Alemania, un ingeniero de ciberseguridad gana de media unos 70 000 euros brutos al año, según datos de 2026. El rango habitual va de unos 59 000 euros en el percentil 25 a unos 80 750 euros en el percentil 75, con valores superiores para perfiles senior y especialistas.",
+      "q": "¿Cuál es el salario medio en ciberseguridad en Alemania?"
+    },
+    {
+      "a": "Los puestos de entrada suelen situarse entre 50 000 y 55 000 euros anuales, sobre todo en roles de analista. Los analistas de ciberseguridad ganan de media unos 51 400 euros, mientras que los ingenieros de seguridad de TI rondan los 55 200 euros según las plataformas alemanas.",
+      "q": "¿Cuánto gana un principiante en ciberseguridad en Alemania?"
+    },
+    {
+      "a": "Berlín, Múnich y Fráncfort ofrecen los salarios más altos, gracias a la concentración de empresas tecnológicas, financieras e industriales. Hesse destaca como uno de los estados mejor pagados, aunque el coste de la vida en estas ciudades también es mayor.",
+      "q": "¿Qué ciudades alemanas pagan más en ciberseguridad?"
+    },
+    {
+      "a": "Las certificaciones CISSP y OSCP y las especializaciones en seguridad en la nube suelen aportar un plus salarial importante, en algunos casos de 8 000 a 15 000 euros. Además, alcanzar el umbral de ingresos facilita la Tarjeta Azul de la UE para profesionales extranjeros.",
+      "q": "¿Qué certificaciones aumentan el salario en Alemania?"
+    }
+  ],
+  "headline": "Salario ciberseguridad Alemania 2026: media, niveles y ciudades",
+  "hreflang": "es-ES",
+  "metaDescription": "Salario ciberseguridad Alemania 2026: media de 70 000 €, entrada 50 000-55 000 €, senior hasta 120 000 €. Ciudades, certificaciones CISSP y OSCP y Tarjeta Azul.",
+  "niche": "tech",
+  "sections": [
+    {
+      "content": "Alemania es uno de los mercados de ciberseguridad más sólidos de Europa en 2026. La demanda industrial, la regulación europea y la digitalización mantienen una escasez de profesionales que impulsa los salarios al alza en todo el país.\n\nSegún datos de 2026, un ingeniero de ciberseguridad gana de media unos 70 000 euros brutos al año. Los analistas se sitúan en torno a 51 400 euros y los ingenieros de seguridad de TI alrededor de 55 200 euros, con rangos amplios según la experiencia y la ciudad.",
+      "title": "El mercado alemán de ciberseguridad en 2026"
+    },
+    {
+      "content": "Los perfiles junior, como analista SOC o analista de seguridad, suelen empezar entre 50 000 y 55 000 euros anuales. Con dos a cuatro años de experiencia, los salarios suben al rango de 70 000 a 85 000 euros para perfiles intermedios.\n\nLos perfiles senior y especialistas, sobre todo en seguridad en la nube, pruebas de penetración y arquitectura de seguridad, pueden superar los 95 000 euros y llegar a 120 000 euros o más en grandes empresas y consultoras.",
+      "title": "Salarios por nivel de experiencia"
+    },
+    {
+      "content": "Berlín y Múnich concentran gran parte de la oferta, seguidas de Fráncfort, Hamburgo y el estado de Hesse. Las ciudades grandes pagan más, pero también exigen un coste de vida superior, por lo que conviene comparar el salario neto y los gastos reales.\n\nPara profesionales extranjeros, Alemania ofrece una vía clara a través de la Tarjeta Azul de la UE, sin lotería y con un umbral de ingresos alcanzable para profesiones reguladas. Dominar el inglés suele bastar en empresas tecnológicas, aunque el alemán abre más puertas.",
+      "title": "Ciudades y oportunidades para extranjeros"
+    },
+    {
+      "content": "Las certificaciones reconocidas marcan la diferencia: CISSP, OSCP y certificaciones de seguridad en la nube pueden añadir entre 8 000 y 15 000 euros al salario inicial. También ayudan un portafolio práctico con laboratorios, retos de seguridad y proyectos reales.\n\nLa normativa europea NIS2 y el RGPD seguirán impulsando la contratación en 2026, especialmente en infraestructuras críticas, automoción y finanzas. Quien combine técnica, cumplimiento normativo y comunicación tendrá ventaja en las negociaciones.",
+      "title": "Certificaciones y consejos para negociar"
+    }
+  ],
+  "slug": "es-germany-cybersecurity-salary-2026",
+  "stats": [
+    {
+      "label": "Salario medio",
+      "value": "70 000 €"
+    },
+    {
+      "label": "Nivel de entrada",
+      "value": "50 000–55 000 €"
+    },
+    {
+      "label": "Nivel senior",
+      "value": "95 000–120 000 €"
+    },
+    {
+      "label": "Ciudad destacada",
+      "value": "Berlín / Múnich"
+    }
+  ],
+  "title": "Salario ciberseguridad Alemania 2026: media y niveles",
+  "translationGroupId": "germany-cybersecurity-salary-2026"
+}
