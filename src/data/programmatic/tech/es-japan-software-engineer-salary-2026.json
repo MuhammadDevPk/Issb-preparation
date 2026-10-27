@@ -1,0 +1,65 @@
+{
+  "slug": "es-japan-software-engineer-salary-2026",
+  "niche": "tech",
+  "country": "ES",
+  "hreflang": "es-ES",
+  "translationGroupId": "japan-software-engineer-salary-2026",
+  "title": "Salario de ingeniero de software en Japón 2026: guía",
+  "metaDescription": "Guía completa de salarios de ingenieros de software en Japón en 2026: rangos por experiencia, visados de trabajo, nivel de japonés necesario y consejos para",
+  "headline": "Ingeniero de software en Japón: salarios y visados en 2026",
+  "badge": "SALARIOS TECH 2026",
+  "stats": [
+    {
+      "label": "Junior",
+      "value": "4 a 6 millones JPY"
+    },
+    {
+      "label": "Intermedio",
+      "value": "6 a 9 millones JPY"
+    },
+    {
+      "label": "Senior",
+      "value": "9 a 14 millones JPY"
+    },
+    {
+      "label": "Visado habitual",
+      "value": "Ingeniero / Especialista"
+    }
+  ],
+  "sections": [
+    {
+      "title": "El mercado tecnológico japonés",
+      "content": "Japón combina grandes corporaciones tradicionales con un ecosistema de startups en crecimiento, especialmente en Tokio, Osaka y Fukuoka, donde la demanda de ingenieros de software sigue siendo alta. La transformación digital de bancos, fabricantes y comercios ha impulsado la contratación de perfiles en desarrollo web, nube, datos e inteligencia artificial.\n\nAunque muchas empresas internacionales trabajan en inglés, la mayoría de las compañías japonesas siguen valorando el japonés, y dominarlo amplía enormemente las oportunidades. Los ingenieros que combinan experiencia técnica sólida con capacidad de comunicación intercultural suelen avanzar más rápido en su carrera."
+    },
+    {
+      "title": "Salarios según la experiencia",
+      "content": "Un ingeniero junior en Japón suele ganar entre cuatro y seis millones de yenes al año, dependiendo de la ciudad, el tamaño de la empresa y el sector. Los perfiles intermedios, con tres a cinco años de experiencia, se sitúan generalmente entre seis y nueve millones de yenes anuales.\n\nLos ingenieros senior y los líderes técnicos pueden superar los nueve millones de yenes y llegar a catorce millones en grandes empresas tecnológicas o financieras. Las bonificaciones semestrales, habituales en Japón, pueden añadir varios meses de salario adicional a la remuneración total anual."
+    },
+    {
+      "title": "Habilidades y tecnologías demandadas",
+      "content": "Las habilidades más demandadas incluyen TypeScript, React, Python, Go, Rust, AWS y GCP, además de experiencia en microservicios, bases de datos y prácticas de integración continua. El conocimiento de inteligencia artificial aplicada, especialmente en el uso de modelos de lenguaje, se ha convertido en un diferenciador importante.\n\nLas empresas valoran también la experiencia en pruebas automatizadas, seguridad y observabilidad, así como la capacidad de trabajar con equipos distribuidos. Un portafolio con proyectos reales y contribuciones a código abierto suele pesar más que una lista larga de certificados."
+    },
+    {
+      "title": "Visados, idioma y coste de vida",
+      "content": "La mayoría de los ingenieros extranjeros trabajan con el visado de Ingeniero, Especialista en Humanidades o Servicios Internacionales, que exige un título universitario o diez años de experiencia demostrable. El sistema de puntos para profesionales altamente cualificados ofrece una vía más rápida hacia la residencia permanente.\n\nEl nivel de japonés N2 abre la mayoría de las empresas locales, mientras que el N3 puede bastar en startups internacionales, aunque el inglés por sí solo limita las opciones. Tokio tiene un coste de vida elevado, sobre todo en vivienda, pero los salarios tecnológicos y las ayudas al transporte lo compensan en parte."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "¿Cuánto gana un ingeniero de software junior en Japón?",
+      "a": "Un ingeniero junior en Japón suele ganar entre cuatro y seis millones de yenes al año, según la ciudad, el tamaño de la empresa y el sector. Las grandes empresas tecnológicas de Tokio suelen pagar más, y las bonificaciones semestrales pueden añadir varios meses de salario adicional a la remuneración total."
+    },
+    {
+      "q": "¿Qué nivel de japonés se necesita para trabajar en tecnología?",
+      "a": "El nivel N2 de japonés abre la mayoría de las empresas locales, mientras que el N3 puede bastar en startups internacionales que trabajan en inglés. Dominar el japonés amplía enormemente las oportunidades, mejora la integración en el equipo y acelera las posibilidades de ascenso dentro de la empresa."
+    },
+    {
+      "q": "¿Qué visado necesitan los ingenieros extranjeros en Japón?",
+      "a": "La mayoría trabaja con el visado de Ingeniero, Especialista en Humanidades o Servicios Internacionales, que exige un título universitario o diez años de experiencia demostrable. El sistema de puntos para profesionales altamente cualificados ofrece además una vía más rápida hacia la residencia permanente en Japón."
+    },
+    {
+      "q": "¿Compensa el salario tecnológico el coste de vida en Tokio?",
+      "a": "Tokio tiene un coste de vida elevado, sobre todo en vivienda, pero los salarios de los ingenieros y las ayudas al transporte lo compensan en parte. Antes de aceptar una oferta, conviene comparar el salario bruto, las bonificaciones, las vacaciones, el seguro de salud y las ayudas a la vivienda."
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "slug": "fr-singapore-ai-engineer-salary-2026",
+  "niche": "tech",
+  "country": "FR",
+  "hreflang": "fr-FR",
+  "translationGroupId": "singapore-ai-engineer-salary-2026",
+  "title": "Salaire ingénieur IA à Singapour 2026 : guide complet",
+  "metaDescription": "Guide complet des salaires des ingénieurs IA à Singapour en 2026 : fourchettes par expérience, compétences recherchées, visas de travail et conseils pour",
+  "headline": "Ingénieur IA à Singapour : salaires et carrières en 2026",
+  "badge": "SALAIRES TECH 2026",
+  "stats": [
+    {
+      "label": "Débutant",
+      "value": "5 000 à 7 000 SGD"
+    },
+    {
+      "label": "Confirmé",
+      "value": "8 000 à 12 000 SGD"
+    },
+    {
+      "label": "Senior",
+      "value": "13 000 à 18 000 SGD"
+    },
+    {
+      "label": "Visa principal",
+      "value": "Employment Pass"
+    }
+  ],
+  "sections": [
+    {
+      "title": "Le marché de l'IA à Singapour",
+      "content": "Singapour s'est imposée comme l'un des principaux pôles d'intelligence artificielle en Asie, portée par des investissements publics, des laboratoires de recherche et la présence de grandes entreprises technologiques mondiales. La demande d'ingénieurs en apprentissage automatique, en traitement du langage naturel et en vision par ordinateur continue de croître dans la finance, la santé et la logistique.\n\nLes employeurs recherchent des profils capables de passer du prototype à la production, avec une maîtrise des frameworks modernes, du déploiement cloud et des bonnes pratiques de gouvernance des modèles. Les candidats qui combinent compétences techniques et compréhension métier obtiennent généralement les offres les plus attractives."
+    },
+    {
+      "title": "Salaires par niveau d'expérience",
+      "content": "Un ingénieur IA débutant à Singapour gagne généralement entre cinq mille et sept mille dollars singapouriens par mois, selon la taille de l'entreprise et le secteur. Les profils confirmés, avec trois à cinq ans d'expérience, se situent plutôt entre huit mille et douze mille dollars par mois.\n\nLes ingénieurs seniors et les leads techniques peuvent dépasser treize mille dollars par mois, et atteindre dix-huit mille dollars dans les grandes entreprises ou les fonds d'investissement. Les bonus annuels, les actions et les primes de performance peuvent ajouter une part significative à la rémunération totale."
+    },
+    {
+      "title": "Compétences et technologies demandées",
+      "content": "Les compétences les plus demandées incluent Python, PyTorch, TensorFlow, les grands modèles de langage, la recherche d'information et l'ingénierie des données. La maîtrise du fine-tuning, de l'évaluation des modèles et des architectures d'agents IA est devenue un atout majeur depuis l'essor de l'IA générative.\n\nLes employeurs valorisent aussi l'expérience en MLOps, avec des outils comme Docker, Kubernetes et les pipelines de déploiement continu, ainsi qu'une bonne connaissance des enjeux de sécurité et de confidentialité des données. Un portfolio de projets concrets pèse souvent plus qu'une liste de diplômes."
+    },
+    {
+      "title": "Visas, coût de la vie et négociation",
+      "content": "Les professionnels étrangers travaillent généralement avec un Employment Pass, qui exige un salaire mensuel minimum fixé par les autorités et une entreprise sponsor. D'autres dispositifs, comme le visa Tech.Pass pour les profils très expérimentés, offrent davantage de flexibilité pour changer d'employeur ou créer une entreprise.\n\nLe coût de la vie à Singapour reste élevé, notamment pour le logement, mais les salaires technologiques le compensent en partie. Avant d'accepter une offre, il est conseillé de comparer le salaire brut, les bonus, les congés, l'assurance santé et les aides au logement, plutôt que de se focaliser sur le seul salaire mensuel."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Quel est le salaire d'un ingénieur IA débutant à Singapour ?",
+      "a": "Un ingénieur IA débutant gagne généralement entre cinq mille et sept mille dollars singapouriens par mois, selon l'entreprise, le secteur et le niveau de formation. Les grandes entreprises technologiques et les institutions financières proposent souvent les salaires les plus élevés, ainsi que des bonus annuels attractifs."
+    },
+    {
+      "q": "Quelles compétences sont les plus recherchées en IA à Singapour ?",
+      "a": "Les compétences les plus demandées incluent Python, PyTorch, TensorFlow, les grands modèles de langage, la recherche d'information et l'ingénierie des données. L'expérience en MLOps, avec Docker et Kubernetes, ainsi que la maîtrise du fine-tuning et de l'évaluation des modèles, constituent des atouts majeurs pour les candidats."
+    },
+    {
+      "q": "Quel visa faut-il pour travailler comme ingénieur IA à Singapour ?",
+      "a": "La plupart des professionnels étrangers travaillent avec un Employment Pass, qui exige un salaire minimum et une entreprise sponsor basée à Singapour. Les profils très expérimentés peuvent aussi envisager le visa Tech.Pass, qui offre davantage de flexibilité pour changer d'employeur ou lancer une activité indépendante."
+    },
+    {
+      "q": "Le coût de la vie à Singapour est-il compensé par les salaires tech ?",
+      "a": "Le coût de la vie reste élevé, surtout pour le logement, mais les salaires des ingénieurs IA le compensent en partie, notamment chez les profils confirmés et seniors. Il est conseillé de comparer le salaire brut, les bonus, les congés, l'assurance santé et les aides au logement avant d'accepter une offre."
+    }
+  ]
+}

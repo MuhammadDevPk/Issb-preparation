@@ -1,0 +1,65 @@
+{
+  "slug": "it-canada-ai-engineer-salary-2026",
+  "niche": "tech",
+  "country": "IT",
+  "hreflang": "it-IT",
+  "translationGroupId": "canada-ai-engineer-salary-2026",
+  "title": "Stipendio ingegnere AI in Canada 2026: guida completa",
+  "metaDescription": "Guida completa agli stipendi degli ingegneri AI in Canada nel 2026: fasce per esperienza, competenze richieste, visti di lavoro e consigli per negoziare",
+  "headline": "Ingegnere AI in Canada: stipendi e carriere nel 2026",
+  "badge": "STIPENDI TECH 2026",
+  "stats": [
+    {
+      "label": "Junior",
+      "value": "85.000-115.000 CAD"
+    },
+    {
+      "label": "Intermedio",
+      "value": "120.000-160.000 CAD"
+    },
+    {
+      "label": "Senior",
+      "value": "165.000-220.000 CAD"
+    },
+    {
+      "label": "Poli principali",
+      "value": "Toronto e Montreal"
+    }
+  ],
+  "sections": [
+    {
+      "title": "Il mercato dell'IA in Canada",
+      "content": "Il Canada è uno dei paesi leader nella ricerca sull'intelligenza artificiale, grazie a istituti di fama mondiale a Toronto, Montreal ed Edmonton e a un ecosistema vivace di startup e grandi aziende tecnologiche. La domanda di ingegneri di machine learning, elaborazione del linguaggio naturale e visione artificiale cresce nei settori finanziario, sanitario e manifatturiero.\n\nI datori di lavoro cercano professionisti in grado di portare i modelli dal prototipo alla produzione, con competenze in cloud, ingegneria dei dati e governance dei modelli. Chi unisce solide capacità tecniche a una buona comprensione del business ottiene generalmente le offerte più interessanti."
+    },
+    {
+      "title": "Stipendi per livello di esperienza",
+      "content": "Un ingegnere AI junior in Canada guadagna generalmente tra ottantacinquemila e centodicinquemila dollari canadesi all'anno, a seconda della città e del settore. I profili intermedi, con tre-cinque anni di esperienza, si collocano in genere tra centoventimila e centosessantamila dollari canadesi.\n\nGli ingegneri senior e i lead tecnici possono superare i centosessantacinquemila dollari canadesi e arrivare a duecentoventimila dollari nelle grandi aziende tecnologiche o finanziarie. Bonus annuali, azioni e piani di partecipazione azionaria possono aggiungere una quota significativa alla retribuzione totale."
+    },
+    {
+      "title": "Competenze e tecnologie richieste",
+      "content": "Le competenze più richieste includono Python, PyTorch, TensorFlow, grandi modelli linguistici, retrieval-augmented generation e ingegneria dei dati. La padronanza del fine-tuning, della valutazione dei modelli e delle architetture ad agenti è diventata un vantaggio decisivo con la diffusione dell'IA generativa.\n\nI datori di lavoro apprezzano anche l'esperienza in MLOps, con Docker, Kubernetes e pipeline di distribuzione continua, oltre a una buona conoscenza di sicurezza e riservatezza dei dati. Un portfolio di progetti concreti conta spesso più di una lunga lista di certificazioni."
+    },
+    {
+      "title": "Visti, immigrazione e costo della vita",
+      "content": "Molti professionisti stranieri arrivano tramite Express Entry, spesso con il supporto di un'offerta di lavoro canadese, oppure tramite il Global Talent Stream, che accelera i permessi di lavoro per le professioni tecnologiche. Le province offrono anche programmi dedicati ai candidati con competenze tecnologiche richieste localmente.\n\nIl costo della vita varia molto tra le città: Toronto e Vancouver sono le più care, soprattutto per gli affitti, mentre Montreal ed Edmonton risultano più accessibili. Prima di accettare un'offerta conviene confrontare stipendio lordo, bonus, ferie, assicurazione sanitaria e possibilità di lavoro da remoto."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Quanto guadagna un ingegnere AI junior in Canada?",
+      "a": "Un ingegnere AI junior guadagna generalmente tra ottantacinquemila e centodicinquemila dollari canadesi all'anno, a seconda della città, del settore e della formazione. Le grandi aziende tecnologiche e le istituzioni finanziarie di Toronto offrono spesso gli stipendi più alti, oltre a bonus annuali interessanti."
+    },
+    {
+      "q": "Quali competenze sono più richieste in IA in Canada?",
+      "a": "Le competenze più richieste includono Python, PyTorch, TensorFlow, grandi modelli linguistici, retrieval-augmented generation e ingegneria dei dati. L'esperienza in MLOps, con Docker e Kubernetes, e la padronanza del fine-tuning e della valutazione dei modelli rappresentano vantaggi decisivi per i candidati."
+    },
+    {
+      "q": "Quale visto serve per lavorare come ingegnere AI in Canada?",
+      "a": "Molti professionisti stranieri arrivano tramite Express Entry, spesso con un'offerta di lavoro canadese, oppure tramite il Global Talent Stream per le professioni tecnologiche. Le province offrono anche programmi dedicati ai candidati con competenze tecnologiche richieste, con tempi di elaborazione generalmente più rapidi."
+    },
+    {
+      "q": "Il costo della vita in Canada è compensato dagli stipendi tech?",
+      "a": "Il costo della vita varia molto: Toronto e Vancouver sono le città più care, soprattutto per gli affitti, mentre Montreal ed Edmonton sono più accessibili. Prima di accettare un'offerta conviene confrontare stipendio lordo, bonus, ferie, assicurazione sanitaria e possibilità di lavoro da remoto."
+    }
+  ]
+}
