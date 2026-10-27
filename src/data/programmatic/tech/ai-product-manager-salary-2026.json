@@ -1,0 +1,65 @@
+{
+  "slug": "ai-product-manager-salary-2026",
+  "niche": "tech",
+  "country": "US",
+  "hreflang": "en-US",
+  "translationGroupId": "ai-product-manager-salary-2026",
+  "title": "AI Product Manager Salary 2026: US Pay Guide",
+  "metaDescription": "2026 guide to AI product manager pay in the US: salaries by experience, staff ranges, top employers, cities, equity and top skills. See ranges inside.",
+  "headline": "AI Product Manager Salary 2026: What US Employers Pay",
+  "badge": "TECH SALARY GUIDE",
+  "stats": [
+    {
+      "label": "US Average",
+      "value": "$165,000-$195,000"
+    },
+    {
+      "label": "Senior Range",
+      "value": "$200,000-$260,000"
+    },
+    {
+      "label": "Staff / Principal",
+      "value": "$260,000-$340,000+"
+    },
+    {
+      "label": "Top Hubs",
+      "value": "SF Bay Area, NYC, Seattle"
+    }
+  ],
+  "sections": [
+    {
+      "title": "AI Product Manager Pay in the US for 2026",
+      "content": "AI product managers sit at the intersection of product strategy and machine learning, and employers pay a premium for that combination. In 2026, US base salaries for mid-level AI product managers typically fall between 165,000 and 195,000 dollars, with total compensation running higher once equity and bonuses are included.\n\nThe premium over general product management reflects scarcity: few product managers can evaluate model quality, reason about data pipelines and translate AI capabilities into shipped features. Companies building foundation models, AI platforms and enterprise AI tools compete hardest for this profile."
+    },
+    {
+      "title": "Pay by Experience Level",
+      "content": "Entry-level and early-career AI product managers, often moving from product analyst or associate roles, typically earn base salaries between 120,000 and 150,000 dollars. Mid-level managers with three to five years of experience and shipped AI features land in the 165,000 to 195,000 dollar band.\n\nSenior product managers leading AI product lines earn roughly 200,000 to 260,000 dollars in base pay, while staff and principal product managers, who set AI product strategy across teams, can reach 260,000 to 340,000 dollars or more in total compensation at large technology companies."
+    },
+    {
+      "title": "Employers and Cities That Pay Most",
+      "content": "The highest total compensation comes from foundation-model labs, hyperscalers and large AI platform companies, where equity grants can exceed base salary for senior roles. Startups may offer lower base pay but larger equity stakes, a trade-off that only pays off if the company grows substantially.\n\nGeography still matters: the San Francisco Bay Area, New York City and Seattle lead US pay for AI product roles, driven by dense competition for AI talent. Remote roles at US companies typically pay 85 to 95 percent of Bay Area levels, adjusted for location and company policy."
+    },
+    {
+      "title": "Skills That Raise AI Product Manager Pay",
+      "content": "The highest-paid AI product managers combine product judgement with technical fluency: understanding model evaluation, retrieval-augmented generation, fine-tuning trade-offs, latency and cost constraints, and AI safety and compliance requirements. These skills let them make credible trade-offs with engineering teams.\n\nBusiness skills matter just as much: pricing AI features, measuring adoption and retention, managing enterprise customer requirements and navigating data privacy rules. Candidates who can show shipped AI products with measurable outcomes command the strongest offers and fastest promotions."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "What is the average AI product manager salary in the US in 2026?",
+      "a": "Mid-level AI product managers in the US typically earn base salaries between 165,000 and 195,000 dollars in 2026, with total compensation running higher once equity and bonuses are included. Entry-level roles start around 120,000 to 150,000 dollars, while senior and staff roles can exceed 260,000 dollars in total compensation."
+    },
+    {
+      "q": "Do AI product managers earn more than regular product managers?",
+      "a": "Yes, AI product managers typically earn a premium over general product managers because few candidates combine product strategy with machine learning fluency. Employers building foundation models, AI platforms and enterprise AI tools compete hardest for this profile, pushing base salaries and equity grants above standard product management ranges."
+    },
+    {
+      "q": "Which companies pay AI product managers the most?",
+      "a": "Foundation-model labs, hyperscalers and large AI platform companies offer the highest total compensation, where equity grants can exceed base salary for senior roles. Startups may offer lower base pay but larger equity stakes, a trade-off that only pays off if the company grows substantially, so candidates should weigh risk carefully."
+    },
+    {
+      "q": "What skills increase an AI product manager's salary?",
+      "a": "The highest-paid AI product managers combine product judgement with technical fluency in model evaluation, retrieval-augmented generation, fine-tuning trade-offs, latency and cost constraints, and AI safety requirements. Business skills such as pricing AI features, measuring adoption and navigating data privacy rules also drive stronger offers and faster promotions."
+    }
+  ]
+}
