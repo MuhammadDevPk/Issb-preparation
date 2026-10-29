@@ -1,0 +1,69 @@
+{
+  "badge": "AI SALARY 2026",
+  "country": "US",
+  "faqs": [
+    {
+      "a": "The 2026 average AI solutions architect salary in the US sits around $195,000 to $210,000 a year, with Glassdoor listing roughly $214,000 and other benchmarks slightly lower. Mid-level architects earn about $166,000 to $205,000, while senior architects earn roughly $215,000 to $254,000.",
+      "q": "What is the average AI solutions architect salary in the US?"
+    },
+    {
+      "a": "Lead AI architects average about $181,816 a year on Indeed, based on 138 salaries from job postings, with a range from roughly $121,172 to $272,812. Principal AI architects average higher, around $194,218 a year, with a range from about $126,273 to $298,722.",
+      "q": "What do lead and principal AI architects earn?"
+    },
+    {
+      "a": "San Jose pays the most for lead AI architects at about $252,752 a year, followed by New York at roughly $185,731, San Francisco at about $184,233, Seattle at around $182,155 and Boston at approximately $178,435. Principal architects show a similar pattern, with San Jose near $279,502.",
+      "q": "Which cities pay AI architects the most?"
+    },
+    {
+      "a": "Employers typically want five or more years of software or data engineering experience, hands-on work with large language models and retrieval systems, and a track record of shipping production AI systems. Cloud architecture skills, especially on AWS, Azure or Google Cloud, plus knowledge of evaluation, guardrails and cost management, are now standard expectations.",
+      "q": "What skills do employers want?"
+    },
+    {
+      "a": "Start by leading AI projects inside your current role, such as building a retrieval-augmented generation system or an internal agent, and document the business impact in measurable terms. Earn a cloud solutions architect certification, learn the major model providers' APIs and orchestration frameworks, and build a portfolio of reference architectures.",
+      "q": "How do I become an AI solutions architect?"
+    }
+  ],
+  "headline": "AI Solutions Architect Salary in the US for 2026",
+  "hreflang": "en-US",
+  "metaDescription": "AI solutions architect salary 2026: US average $195,000–$210,000, senior $215,000–$254,000, lead $181,816, top cities, required skills and how to break in.",
+  "niche": "tech",
+  "sections": [
+    {
+      "content": "An AI solutions architect designs how artificial intelligence fits into a company's products and operations, choosing models, data pipelines, infrastructure and safety controls. Unlike a pure machine learning engineer, the architect owns the full system design: which model to use, how it retrieves company data, how it is evaluated, and how it scales under real user traffic.\n\nThe role has exploded as companies move from AI experiments to production systems. Employers now need people who can balance capability against cost, latency and risk, and who can explain those trade-offs to non-technical executives. That blend of technical depth and business judgment is why the role commands a premium over general software engineering.",
+      "title": "What an AI Solutions Architect Does"
+    },
+    {
+      "content": "The 2026 average AI solutions architect salary in the US is around $195,000 to $210,000 a year in base pay, with Glassdoor listing roughly $214,000. Mid-level architects earn about $166,000 to $205,000, while senior architects earn roughly $215,000 to $254,000, and principal architects average around $194,218 on Indeed, with top earners approaching $300,000. These figures are base salary only; equity and bonuses at large technology companies can add tens of thousands more.\n\nPosted salary data tells a slightly different story: a tally of salaries actually listed in US job ads in early 2026 put the median for solutions architects at $218,000, with the middle half of postings between $184,000 and $238,000. The gap between posted medians and survey averages reflects which companies are hiring: AI labs and well-funded startups post higher bands than the broader market average.",
+      "title": "Salary by Seniority in 2026"
+    },
+    {
+      "content": "Location remains one of the biggest pay levers. Lead AI architects in San Jose earn about $252,752 a year on average, compared with roughly $185,731 in New York, $184,233 in San Francisco, $182,155 in Seattle and $178,435 in Boston. Principal architects show the same pattern, with San Jose near $279,502, McLean near $223,208 and Austin near $209,143.\n\nIndustry matters too: AI labs, fintech and large cloud providers pay at the top of the range, while agencies and traditional enterprises pay less but often offer better work-life balance. Remote roles typically pay 85 to 95 percent of on-site salaries at US companies, so location arbitrage is real but limited, and senior roles with equity still concentrate in the major hubs.",
+      "title": "What Drives the Pay Gap"
+    },
+    {
+      "content": "The fastest path into the role runs through senior software or data engineering, plus visible ownership of production AI systems. Employers look for hands-on experience with large language models, retrieval-augmented generation, agent frameworks such as LangChain or LangGraph, and cloud architecture on AWS, Azure or Google Cloud. Evaluation, guardrails and cost management are now expected skills, not extras.\n\nCertifications help but do not substitute for shipped work: a cloud solutions architect certification plus a portfolio of reference architectures carries more weight than a certificate alone. Documenting business impact, such as cost saved or support tickets deflected by an AI system you designed, is the strongest negotiating lever, because architects are ultimately paid for outcomes, not for knowing model names.",
+      "title": "How to Break Into the Role"
+    }
+  ],
+  "slug": "ai-solutions-architect-salary-2026",
+  "stats": [
+    {
+      "label": "US Average",
+      "value": "$195,000–$210,000"
+    },
+    {
+      "label": "Senior Range",
+      "value": "$215,000–$254,000"
+    },
+    {
+      "label": "Lead Average",
+      "value": "$181,816"
+    },
+    {
+      "label": "Top-Paying City",
+      "value": "San Jose, CA"
+    }
+  ],
+  "title": "AI Solutions Architect Salary 2026: US Pay Guide",
+  "translationGroupId": "ai-solutions-architect-salary-2026"
+}

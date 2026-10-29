@@ -1,0 +1,69 @@
+{
+  "badge": "SALARIOS UK 2026",
+  "country": "ES",
+  "faqs": [
+    {
+      "a": "Según Glassdoor, el salario medio de un Software Engineer en Londres es de unas 69.530 £ al año, con un rango entre 49.954 £ y 101.659 £. Los benchmarks de Ravio de octubre de 2026 indican una mediana de 77.000 £ para un ingeniero de nivel intermedio en Londres, frente a 74.000 £ en el resto del Reino Unido.",
+      "q": "¿Cuál es el salario medio de un Software Engineer en Reino Unido?"
+    },
+    {
+      "a": "En Londres, la mediana para un ingeniero senior es de 96.500 £, frente a 93.100 £ en el resto del Reino Unido, una prima de alrededor del 4%. Un Engineering Manager senior alcanza 135.700 £ en Londres frente a 126.900 £ en el resto del país, cerca de un 7% más.",
+      "q": "¿Cuánto más se gana en Londres?"
+    },
+    {
+      "a": "Los ingenieros DevOps y Data Engineer ganan algo menos que los generalistas en Reino Unido: en nivel intermedio, la mediana es de 72.200 £ para DevOps y 68.300 £ para Data Engineer, frente a 74.000 £ para generalistas. En nivel senior, las medianas son 91.600 £ para DevOps y 86.900 £ para Data Engineer.",
+      "q": "¿Qué especializaciones pagan más?"
+    },
+    {
+      "a": "El salario crece con la antigüedad: Glassdoor estima una trayectoria desde unas 50.825 £ al inicio hasta 113.658 £ en los niveles más altos. Las palancas más eficaces son cambiar a una empresa que pague mejor, especializarse en áreas demandadas como IA o plataformas cloud y asumir responsabilidades de liderazgo técnico.",
+      "q": "¿Cómo aumentar el salario?"
+    },
+    {
+      "a": "Sí, pero con un matiz: muchas empresas remotas pagan según la ubicación del empleado o aplican una banda nacional, por lo que se puede ganar menos que en un puesto en Londres. Sin embargo, el ahorro en alquiler y transporte suele compensar la diferencia, y las empresas con bandas nacionales permiten mantener el salario londinense viviendo en otra ciudad.",
+      "q": "¿Conviene trabajar en remoto fuera de Londres?"
+    }
+  ],
+  "headline": "Salario de Software Engineer en Reino Unido 2026",
+  "hreflang": "es-ES",
+  "metaDescription": "Salario Software Engineer UK 2026: media en Londres 69.530 £, mediana mid-level 77.000 £, senior 96.500 £, comparativa Londres-resto del país.",
+  "niche": "tech",
+  "sections": [
+    {
+      "content": "El salario de un Software Engineer en Reino Unido varía mucho según el nivel, la ubicación y la especialización, pero los datos de 2026 ofrecen un panorama claro. Según Glassdoor, la media en Londres es de unas 69.530 £ al año, con un rango típico entre 49.954 £ y 101.659 £, basada en más de 31.800 salarios declarados. Los benchmarks de Ravio de octubre de 2026 indican una mediana de 74.000 £ para un ingeniero de nivel intermedio en todo el Reino Unido.\n\nLa diferencia entre media y mediana depende del método de cálculo: Glassdoor agrega todos los niveles, mientras Ravio los separa. Para comparar ofertas correctamente, es esencial mirar la mediana de tu propio nivel, no la media general, y comprobar si la cifra incluye bonus y acciones.",
+      "title": "Panorama de salarios en 2026"
+    },
+    {
+      "content": "Londres paga entre un 4% y un 7% más que el resto del Reino Unido, según el nivel. La mediana para un ingeniero intermedio es de 77.000 £ en Londres frente a 74.000 £ en el resto del país, mientras que para un senior es de 96.500 £ frente a 93.100 £. Un Engineering Manager senior llega a 135.700 £ en Londres frente a 126.900 £ en otras ciudades.\n\nLa prima londinense es modesta frente al coste de vida en la capital, y eso explica que muchos ingenieros opten por el trabajo remoto con bandas nacionales. Las empresas que aplican bandas salariales nacionales permiten mantener el salario londinense viviendo en ciudades más baratas, una combinación cada vez más demandada por los candidatos.",
+      "title": "Londres frente al resto del Reino Unido"
+    },
+    {
+      "content": "La especialización influye en el salario, aunque en menor medida que el nivel de antigüedad. En Reino Unido, los ingenieros DevOps y Data Engineer ganan algo menos que los generalistas: en nivel intermedio, las medianas son 72.200 £ y 68.300 £ respectivamente, frente a 74.000 £ para generalistas. En nivel senior, las medianas son 91.600 £ para DevOps y 86.900 £ para Data Engineer, frente a 93.100 £ para generalistas.\n\nEn 2026, sin embargo, las áreas altamente cualificadas como la IA y las herramientas para desarrolladores han visto cómo las expectativas salariales se equiparaban con mercados más consolidados como Alemania. Para quien busque el máximo salarial, especializarse en IA, plataformas cloud o seguridad sigue siendo la palanca más eficaz después del cambio de nivel.",
+      "title": "Salarios por especialización"
+    },
+    {
+      "content": "El salario crece con la antigüedad: Glassdoor estima una trayectoria desde unas 50.825 £ al inicio hasta 113.658 £ en los niveles más altos. Las palancas más eficaces para subir la retribución son cambiar a una empresa que pague mejor, especializarse en áreas demandadas y asumir responsabilidades de liderazgo técnico o gestión de equipos.\n\nEl trabajo freelance y la consultoría también pueden complementar los ingresos, sobre todo para perfiles senior con una red de contactos sólida. Por último, negociar es fundamental: las bandas publicadas suelen ser negociables, y una oferta competidora sigue siendo la herramienta más potente para lograr un ajuste, especialmente en un mercado donde la demanda de ingenieros expertos sigue alta.",
+      "title": "Cómo aumentar el salario"
+    }
+  ],
+  "slug": "es-uk-software-engineer-salary-2026",
+  "stats": [
+    {
+      "label": "Media en Londres",
+      "value": "£69.530/año"
+    },
+    {
+      "label": "Mediana mid-level Londres",
+      "value": "£77.000"
+    },
+    {
+      "label": "Mediana senior Londres",
+      "value": "£96.500"
+    },
+    {
+      "label": "Rango típico",
+      "value": "£49.954–£101.659"
+    }
+  ],
+  "title": "Salario Ingeniero de Software UK 2026: Guía Completa",
+  "translationGroupId": "uk-software-engineer-salary-2026"
+}

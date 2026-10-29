@@ -1,0 +1,69 @@
+{
+  "badge": "GO SALARY 2026",
+  "country": "US",
+  "faqs": [
+    {
+      "a": "Glassdoor puts the average Golang developer salary in the US at $140,000 a year as of June 2026, with a typical range from $107,892 at the 25th percentile to $183,160 at the 75th percentile. ZipRecruiter reports a lower average of $120,086, with most salaries between $98,500 and $142,000.",
+      "q": "What is the average Golang developer salary in the US?"
+    },
+    {
+      "a": "Senior Go roles advertise a median base salary of $205,000 in the US, with a typical range of $179,000 to $224,000, according to the September 2026 Go Hiring Report. Staff and principal roles advertise a median of $226,875, with the top quarter at $256,000 or more.",
+      "q": "What do senior Golang developers earn?"
+    },
+    {
+      "a": "Go developers in infrastructure and cloud roles often earn 5 to 15 percent more than Python developers in comparable positions, because Go is especially valued where performance and concurrency matter. The highest-paying Go roles are site reliability and cloud platform engineering, followed by infrastructure and cryptocurrency positions.",
+      "q": "Do Go developers earn more than Python developers?"
+    },
+    {
+      "a": "Remote Go developers typically earn 85 to 95 percent of on-site US salaries when working for US-based companies, which still puts most remote roles well above $100,000. Cloud infrastructure companies, which heavily use Go, are often remote-friendly and competitive on pay.",
+      "q": "What do remote Golang developers earn?"
+    },
+    {
+      "a": "The most valuable skills are cloud-native development with Kubernetes, distributed systems design, and experience with high-throughput services, since that is where Go dominates. Concurrency patterns, performance profiling and observability are core expectations, and familiarity with gRPC, Terraform and major cloud platforms strengthens a profile.",
+      "q": "Which Go skills raise pay the most?"
+    }
+  ],
+  "headline": "Golang Developer Salary in the US for 2026",
+  "hreflang": "en-US",
+  "metaDescription": "Golang developer salary 2026: US average $120,000–$140,000, senior median $205,000, staff $226,875, remote rates at 85–95% of on-site pay and top skills.",
+  "niche": "tech",
+  "sections": [
+    {
+      "content": "Go, usually called Golang, is the language behind much of modern cloud infrastructure: Kubernetes, Docker and Terraform are all written in it. Its simple syntax, fast compilation and built-in concurrency make it a favourite for backend services, APIs and infrastructure tooling that must handle heavy traffic reliably.\n\nDemand for Go developers has stayed strong through 2026 because cloud-native adoption keeps growing and the pool of experienced Go engineers remains smaller than for Python or JavaScript. Employers hiring for platform, infrastructure and high-throughput backend roles routinely list Go as a required or strongly preferred skill, which supports the salary premium.",
+      "title": "Why Golang Developers Are in Demand"
+    },
+    {
+      "content": "Salary benchmarks for Go developers vary by source, so comparing them carefully matters. Glassdoor reports an average of $140,000 a year in the US as of June 2026, with a typical range from $107,892 to $183,160, while ZipRecruiter reports an average of $120,086, with most salaries between $98,500 and $142,000. Web3-focused data puts the average higher, around $160,000, reflecting the crypto premium.\n\nThe spread is explained by methodology: Glassdoor leans towards senior engineers at tech-sector companies, while ZipRecruiter aggregates across a broader set of employers and geographies. For fintech specifically, median pay sits closer to $140,000, consistent with the premium that cloud-native and high-throughput financial infrastructure commands.",
+      "title": "Salary Benchmarks by Source"
+    },
+    {
+      "content": "Seniority moves pay more than any other factor in Go roles. US job postings advertise a median base salary of $205,000 for senior Go developers, with a typical range of $179,000 to $224,000, and $226,875 for staff and principal roles, with the top quarter at $256,000 or more. Removing one high-volume poster, Capital One, drops the senior median to $195,000, which shows how a single employer can skew posted medians.\n\nBy role, site reliability and cloud platform engineering pay the most for Go developers, followed by infrastructure and cryptocurrency positions. Equity and bonuses come on top of base pay, so total compensation at large tech companies and funded startups can run far above the advertised base salary bands.",
+      "title": "Salary by Seniority and Role"
+    },
+    {
+      "content": "Remote Go developers typically earn 85 to 95 percent of on-site US salaries at US-based companies, which keeps most remote roles competitive. Cloud infrastructure companies are often remote-friendly, and hiring remotely lets employers tap talent outside the expensive coastal hubs while still paying well above local market rates in most regions.\n\nTo raise pay fastest, focus on the skills employers pay for: Kubernetes and cloud-native architecture, distributed systems design, concurrency and performance tuning, and observability tooling. Go developers in infrastructure and cloud roles already earn 5 to 15 percent more than comparable Python developers, and adding platform engineering experience pushes that premium higher still.",
+      "title": "Remote Work and How to Earn More"
+    }
+  ],
+  "slug": "golang-developer-salary-2026",
+  "stats": [
+    {
+      "label": "Glassdoor Average",
+      "value": "$140,000/year"
+    },
+    {
+      "label": "ZipRecruiter Average",
+      "value": "$120,086/year"
+    },
+    {
+      "label": "Senior Median",
+      "value": "$195,000–$205,000"
+    },
+    {
+      "label": "Remote Rate",
+      "value": "85–95% of onsite"
+    }
+  ],
+  "title": "Golang Developer Salary 2026: US Pay & Remote Rates",
+  "translationGroupId": "golang-developer-salary-2026"
+}
