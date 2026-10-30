@@ -1,0 +1,65 @@
+{
+  "slug": "us-ai-security-engineer-salary-2026",
+  "niche": "tech",
+  "country": "US",
+  "hreflang": "en-US",
+  "translationGroupId": "us-ai-security-engineer-salary-2026",
+  "title": "AI Security Engineer Salary USA 2026: Pay by Level",
+  "metaDescription": "AI security engineer salary USA 2026: median pay around $165,000, AI skill premium over standard security roles, top-employer bands and skills that raise pay.",
+  "headline": "AI Security Engineer Salary USA 2026: What the Role Pays",
+  "badge": "AI SECURITY ENGINEER PAY",
+  "stats": [
+    {
+      "label": "National median",
+      "value": "About $165,000"
+    },
+    {
+      "label": "AI skill premium",
+      "value": "About $32,500"
+    },
+    {
+      "label": "Top 10% total pay",
+      "value": "Above $260,000"
+    },
+    {
+      "label": "US postings Jan–Sep 2026",
+      "value": "2,409"
+    }
+  ],
+  "sections": [
+    {
+      "title": "What the role pays in 2026",
+      "content": "AI security engineers in the United States earn a national median of about $165,000, according to 2026 career guides, with advertised US ranges typically running from about $125,000 at the low end to well above $200,000 for senior roles.\n\nGlassdoor figures put median total pay for AI security engineers near $192,000, with the top 10 percent above roughly $260,000. At frontier AI and chip companies, total pay including stock can be far higher, with some staff-level listings reaching $450,000 to $600,000."
+    },
+    {
+      "title": "The AI skill premium is real",
+      "content": "Among US cybersecurity engineer postings with disclosed pay, the median base salary was $160,000 for postings requiring newer AI skills, versus $127,525 for postings without them, a gap of about $32,500. The analysis covered 5,379 postings in June 2026.\n\nThat gap needs context: AI-requiring postings skew more senior and cluster in software and technology employers, which pay above average anyway. Still, AI agents, large language models and retrieval-augmented generation are now the most requested newer skills in security postings."
+    },
+    {
+      "title": "Pay by level and employer",
+      "content": "Entry-level security engineers typically earn $90,000 to $115,000 in base pay, mid-level engineers $110,000 to $150,000, and senior engineers $150,000 to $185,000, before any AI premium. Cloud and application security specialists can reach $180,000 to $260,000 at senior level.\n\nLarge technology employers pay materially more: Google security engineer total compensation ranges from about $188,000 at junior level to $484,000 at senior staff level. A MITRE AI security engineer listing advertised $121,600 to $182,400, while a principal industry role listed $230,400 to $288,000."
+    },
+    {
+      "title": "Skills that raise pay",
+      "content": "The highest-paying work combines classic security engineering with AI-specific skills: adversarial testing of models, prompt-injection defense, AI agent guardrails, threat modeling for LLM applications, and governance under frameworks such as MITRE ATLAS and the NIST AI Risk Management Framework.\n\nDemand is growing fast: CyberSN counted 2,409 US AI security engineer postings from January to September 2026, up 268 percent from the same months in 2025. Candidates with red-teaming experience, cloud security depth and a public portfolio of AI security work command the strongest offers."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "What is the average AI security engineer salary in the US?",
+      "a": "The national median is about $165,000 in 2026 career guides, while Glassdoor puts median total pay near $192,000 with the top 10 percent above roughly $260,000. Advertised US ranges typically run from about $125,000 for junior roles to well above $200,000 for senior roles. Total pay at frontier AI companies can be far higher once stock is included."
+    },
+    {
+      "q": "Do AI skills raise security engineer pay?",
+      "a": "Yes, measurably. Among US cybersecurity engineer postings with disclosed pay in June 2026, the median base salary was $160,000 for postings requiring newer AI skills, versus $127,525 for postings without them, a gap of about $32,500. AI agents led the newer skills at 8.8 percent of postings, ahead of large language models at 6.8 percent."
+    },
+    {
+      "q": "What skills do AI security engineer jobs require?",
+      "a": "Employers typically ask for security engineering fundamentals plus AI-specific skills: adversarial testing, prompt-injection and jailbreak defense, threat modeling for LLM applications, AI agent guardrails, and governance frameworks such as MITRE ATLAS, the OWASP Top 10 for LLM Applications and the NIST AI Risk Management Framework."
+    },
+    {
+      "q": "Is AI security engineer demand growing?",
+      "a": "Yes, very fast. CyberSN counted 2,409 US AI security engineer postings from January through September 2026, up 268.3 percent from the same months in 2025, based on deduplicated JobSpikr data pulled on 7 October 2026. These figures count advertisements, not hires, but the direction is clear as AI systems move into production."
+    }
+  ]
+}
