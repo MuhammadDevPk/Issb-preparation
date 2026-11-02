@@ -1,0 +1,65 @@
+{
+  "slug": "tr-kubernetes-engineer-salary-2026",
+  "niche": "tech",
+  "country": "TR",
+  "hreflang": "tr-TR",
+  "translationGroupId": "kubernetes-engineer-salary-2026",
+  "title": "Kubernetes Mühendisi Maaşı 2026: Türkiye Rehberi",
+  "metaDescription": "Kubernetes mühendisi maaşı 2026: ABD ortalaması yaklaşık 135.000 dolar, öne çıkan beceriler, sertifikalar ve platform mühendisliğine pratik giriş yolu.",
+  "headline": "Kubernetes Mühendisi Maaşı 2026: Türkiye Rehberi",
+  "badge": "KUBERNETES MAAŞI 2026",
+  "stats": [
+    {
+      "label": "ABD ortalaması",
+      "value": "Yılda yaklaşık 135.000 dolar"
+    },
+    {
+      "label": "ABD aralığı",
+      "value": "Yaklaşık 118.000-140.000 dolar"
+    },
+    {
+      "label": "Temel beceriler",
+      "value": "Kubernetes, Docker, Helm"
+    },
+    {
+      "label": "Talep nedeni",
+      "value": "Bulut ve yapay zekâ platformları"
+    }
+  ],
+  "sections": [
+    {
+      "title": "Kubernetes mühendisi ne yapar?",
+      "content": "Bir Kubernetes mühendisi, modern uygulamaları büyük ölçekte çalıştıran konteyner platformlarını tasarlar, dağıtır ve işletir. Günlük işler arasında küme kurmak, Helm grafikleri ve bildirimler yazmak, ağ ve depolamayı yönetmek, gözlemlenebilirlik kurmak ve yükseltme ile geri alma işlemlerini otomatikleştirmek bulunur.\n\nBu rol, yazılım mühendisliği ile altyapı arasında yer alır: mühendisler denetleyiciler, operatörler ve otomasyon için kod yazar, ancak aynı zamanda çalışma süresi, güvenlik ve maliyet için üretim sorumluluğu da taşır. Güçlü Linux, ağ ve bulut becerileri, Kubernetes bilgisinin kendisi kadar önemlidir."
+    },
+    {
+      "title": "2026 yılında Kubernetes mühendisi maaşları",
+      "content": "2026 yılı Amerika Birleşik Devletleri maaş verileri, ortalama bir Kubernetes mühendisini yılda yaklaşık 135.000 dolar olarak gösterir ve konuma, deneyime ve işverene bağlı olarak genellikle yaklaşık 118.000 ila 140.000 dolar arasında bir aralık bildirilir. Büyük teknoloji şirketlerindeki kıdemli platform rolleri, özellikle hisse senediyle birlikte, bu aralığın çok üzerinde ödeme yapabilir.\n\nAmerika Birleşik Devletleri dışında ücret, pazara, vergiye ve işveren türüne göre keskin biçimde değişir. Adaylar yalnızca temel maaşı değil toplam ücreti karşılaştırmalı ve kendi şehirleri için yerel maaş anketlerini incelemelidir, çünkü uzaktan roller yine de işverenin konumuna göre kıyaslanabilir."
+    },
+    {
+      "title": "Kubernetes maaşını artıran beceriler",
+      "content": "Certified Kubernetes Administrator ve Certified Kubernetes Application Developer gibi sertifikalar yardımcı olur, ancak üretim deneyimi daha önemlidir: çok kümeli operasyonlar, GitOps, hizmet ağı, güvenlik politikaları ve maliyet optimizasyonu, işe alım yöneticilerinin en çok sorduğu becerilerdir. Büyük bir bulut sağlayıcısıyla deneyim de ücreti artırır.\n\nGo ve Python, platform çalışmaları için en yararlı dillerdir, çünkü Kubernetes ekosisteminin büyük bölümü Go ile yazılmıştır. Ağ sorunlarını giderebilen, arızaya dayanıklı tasarım yapabilen ve manuel işleri otomatikleştirebilen mühendisler, kıdemli ve personel platform rollerine en hızlı ilerleme eğilimindedir."
+    },
+    {
+      "title": "Kubernetes mühendisi nasıl olunur?",
+      "content": "Önce Docker temelleriyle başlayın, ardından Kubernetes temel kavramlarını öğrenin: pod, deployment, service, ingress, config map, secret ve kalıcı birim. Bir ev laboratuvarı veya küçük bir bulut kümesi kurun, gerçek bir uygulama dağıtın, izleme ve yedekleme ekleyin, yükseltme ve olay müdahalesi pratiği yapın.\n\nArdından GitOps araçları, kod olarak altyapı ve bir bulut sertifikası ekleyin; açık kaynaklı veya iş yeri platform projelerine katkıda bulunun. Çalışan bir küme, otomasyon kodu ve olay yazılarını gösteren bir portföy, mülakatlarda çoğu zaman tek başına sertifikalardan daha ikna edicidir."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "2026 yılında bir Kubernetes mühendisi ne kadar kazanır?",
+      "a": "2026 yılı Amerika Birleşik Devletleri verileri, ortalama bir Kubernetes mühendisini yılda yaklaşık 135.000 dolar olarak gösterir ve genellikle yaklaşık 118.000 ila 140.000 dolar arasında bir aralık bildirilir. Ücret konuma, deneyime ve işverene göre değişir; büyük şirketlerdeki kıdemli platform rolleri, hisse senedi ve primler dahil çok daha fazla ödeyebilir."
+    },
+    {
+      "q": "Kubernetes mühendisi işleri hangi becerileri gerektirir?",
+      "a": "İşverenler genellikle Kubernetes küme operasyonları, Docker, Helm, Linux, ağ, bulut platformları ve kod olarak altyapı ister. GitOps, gözlemlenebilirlik, güvenlik politikaları ve otomasyon deneyimi de yardımcı olur; üretim ortamlarında denetleyiciler, operatörler ve platform araçları için Go veya Python da istenir. Büyük bir bulut sağlayıcısıyla deneyim, ağ bilgisi ve güvenlik farkındalığı da adayların iş bulma şansını ve maaşını belirgin biçimde artırır."
+    },
+    {
+      "q": "Kubernetes sertifikası maaş için değerli midir?",
+      "a": "Certified Kubernetes Administrator gibi sertifikalar elemeyi geçmenize yardımcı olabilir ve daha yüksek bir başlangıç teklifini destekleyebilir, ancak kıdemli ücret için üretim deneyimi genellikle daha önemlidir. En güçlü adaylar, sertifikayı gerçek kümeler, otomasyon kodu ve olay deneyimi içeren bir portföyle birleştirir."
+    },
+    {
+      "q": "Kubernetes mühendisliği kariyerine nasıl başlanır?",
+      "a": "Önce Docker öğrenin, ardından Kubernetes temel kavramlarını öğrenin ve izleme, yedekleme ve otomatik dağıtımla gerçek bir uygulama çalıştıran küçük bir küme kurun. GitOps, kod olarak altyapı ve bir bulut sertifikası ekleyin, ardından üretim küme sorumluluğu veren platform, DevOps veya site güvenilirliği rolleri arayın."
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "slug": "us-navy-seal-recruitment-2026",
+  "niche": "defense",
+  "country": "US",
+  "hreflang": "en-US",
+  "translationGroupId": "us-navy-seal-recruitment-2026",
+  "title": "US Navy SEAL Recruitment 2026: Requirements Guide",
+  "metaDescription": "US Navy SEAL recruitment 2026: ages 18-28, citizenship, PST standards, BUD/S and Hell Week, plus a realistic preparation plan for SEAL candidates.",
+  "headline": "US Navy SEAL Recruitment 2026: Requirements Guide",
+  "badge": "NAVY SEALS 2026",
+  "stats": [
+    {
+      "label": "Candidate ages",
+      "value": "18-28 years"
+    },
+    {
+      "label": "PST swim",
+      "value": "500 yards in 12:30"
+    },
+    {
+      "label": "BUD/S length",
+      "value": "Around 6 months"
+    },
+    {
+      "label": "Full pipeline",
+      "value": "2-3 years"
+    }
+  ],
+  "sections": [
+    {
+      "title": "Who can become a Navy SEAL?",
+      "content": "Navy SEAL candidates must be United States citizens, generally aged 18 to 28, with a high school diploma or equivalent, although waivers may be available for highly qualified candidates up to age 30. They must pass a dive physical, meet vision standards correctable to 20/25, and qualify for a Secret security clearance.\n\nCandidates also need strong Armed Services Vocational Aptitude Battery scores, with the commonly cited combinations totalling 170 or 220 across specified sections. A clean record, good mental health and no drug dependence are essential, because the clearance and medical process screens out many applicants early."
+    },
+    {
+      "title": "The Physical Screening Test",
+      "content": "Before training, candidates work with a Naval Special Warfare mentor and take the Physical Screening Test, which includes a 500-yard swim in 12 minutes 30 seconds or less, plus push-ups, sit-ups, pull-ups and a timed run. Meeting only the minimum scores gives a very low chance of finishing BUD/S, so competitive candidates aim far above the minimums.\n\nMentors help candidates train, administer the first test, and prepare them for repeat tests before boot camp and during the pipeline. Consistent swimming, running, calisthenics and injury prevention matter more than short bursts of intense training before a test date."
+    },
+    {
+      "title": "BUD/S and Hell Week",
+      "content": "Basic Underwater Demolition/SEAL training, known as BUD/S, lasts around six months and tests endurance, teamwork, swimming, diving and small-unit tactics. The first phase includes Hell Week, with only about four hours of sleep over five and a half days, huge running distances and more than 20 hours of daily physical training.\n\nAttrition is very high, with only a minority of starters graduating, so mental resilience matters as much as fitness. Candidates who survive BUD/S move on to parachute training and SEAL Qualification Training, and the full journey to an operational team can take two to three years."
+    },
+    {
+      "title": "How to apply and prepare",
+      "content": "Start by speaking to a Navy recruiter, confirming SEAL eligibility, and connecting with a Naval Special Warfare mentor for a realistic training plan. Build a base of swimming, running, push-ups, sit-ups and pull-ups over many months, and practise in open water and cold conditions where it is safe to do so.\n\nDo not rush the process: injuries from overtraining are a common reason for failure. A steady programme, good sleep, proper nutrition and honest self-assessment of PST scores will tell you whether you are ready to enter the pipeline."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "How old do you have to be to become a Navy SEAL?",
+      "a": "Navy SEAL candidates are generally aged 18 to 28, although 17-year-olds can enter with parental permission and waivers may be available for highly qualified candidates up to age 30. Officers follow different age limits, and every candidate must be a United States citizen with a high school diploma or equivalent qualification."
+    },
+    {
+      "q": "What is the Navy SEAL Physical Screening Test?",
+      "a": "The Physical Screening Test includes a 500-yard swim in 12 minutes 30 seconds or less, push-ups and sit-ups in two minutes, pull-ups, and a timed 1.5-mile run. Meeting only the minimum scores gives a very low chance of completing BUD/S, so successful candidates usually train far beyond those minimum standards before applying."
+    },
+    {
+      "q": "What happens during Hell Week?",
+      "a": "Hell Week is part of the first phase of BUD/S training and involves about four hours of sleep over five and a half days, more than 200 miles of running in total, and over 20 hours of physical training each day. It tests teamwork, resilience and leadership under exhaustion, and many candidates leave during this phase."
+    },
+    {
+      "q": "How long does it take to become an operational SEAL?",
+      "a": "The full pipeline from enlistment to an operational SEAL team typically takes two to three years, including boot camp, BUD/S, parachute training and SEAL Qualification Training. Graduating from BUD/S alone does not make someone operational; further tactical, diving and weapons training follows before joining a team."
+    }
+  ]
+}
