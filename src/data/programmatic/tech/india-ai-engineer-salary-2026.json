@@ -1,0 +1,69 @@
+{
+  "badge": "INDIA AI SALARY GUIDE",
+  "country": "IN",
+  "faqs": [
+    {
+      "a": "The average AI engineer salary in India in 2026 is around INR 11 LPA according to Glassdoor, but the real range is far wider. Freshers earn INR 5 to 10 LPA, mid-level engineers earn INR 12 to 30 LPA, and senior engineers earn INR 30 to 60 LPA or more, depending on company type, city and specialization.",
+      "q": "What is the average AI engineer salary in India in 2026?"
+    },
+    {
+      "a": "Freshers with 0 to 2 years of experience earn INR 5 to 10 LPA at most companies. IT services firms pay INR 5.8 to 9 LPA, while product companies and startups pay INR 8 to 12 LPA for freshers with strong generative AI portfolios. Graduates from top institutes joining large global firms can start at INR 15 LPA or more.",
+      "q": "How much do fresher AI engineers earn in India?"
+    },
+    {
+      "a": "Bengaluru pays the highest AI engineering salaries in India, followed by Hyderabad and Gurugram, with a 15 to 25 percent premium over Pune and Chennai. Bengaluru hosts the largest concentration of product companies and global capability centres, which is why senior roles there command the biggest packages and the most equity.",
+      "q": "Which Indian cities pay AI engineers the most?"
+    },
+    {
+      "a": "Generative AI, LLM fine-tuning, MLOps and AI agent development command a 25 to 45 percent premium over generalist AI engineering pay. Employers pay more for engineers who ship production systems, own deployment pipelines and show measurable business impact. A portfolio of working AI projects matters more than certificates alone.",
+      "q": "Which AI skills earn the highest salary premium in India?"
+    }
+  ],
+  "headline": "AI Engineer Salary in India 2026: Complete Pay Guide",
+  "hreflang": "en-IN",
+  "metaDescription": "AI engineer salary India 2026: average INR 11 LPA, freshers INR 5-10 LPA, mid-level INR 12-30 LPA, senior INR 30-60 LPA+. Bengaluru and Hyderabad pay compared.",
+  "niche": "tech",
+  "sections": [
+    {
+      "content": "AI engineers are among the highest-paid technology professionals in India in 2026, but the headline average hides an enormous range. Surveys place the national average around INR 11 LPA, yet actual offers span from INR 5 LPA for freshers at IT services firms to INR 80 LPA or more for senior specialists at global capability centres and top product companies. The gap reflects how differently employers value production AI skills.\n\nThe role itself has also shifted. Employers no longer hire for model prototyping alone; they want engineers who build, deploy and operate AI systems in production. That includes retrieval-augmented generation, LLM fine-tuning, agent frameworks and MLOps pipelines. Engineers who own the full lifecycle consistently earn more than those who only train models in notebooks.",
+      "title": "Average AI Engineer Pay in India for 2026"
+    },
+    {
+      "content": "Freshers with 0 to 2 years of experience typically earn INR 5 to 10 LPA. IT services firms such as TCS and Infosys pay INR 5.8 to 9 LPA, while product companies and startups offer INR 8 to 12 LPA to freshers with strong generative AI portfolios. Graduates from IITs and NITs joining large global firms can start at INR 15 LPA or higher.\n\nMid-level engineers with 3 to 6 years of experience earn INR 12 to 30 LPA, and senior engineers with 7 or more years earn INR 30 to 60 LPA, with specialists in generative AI and LLM systems crossing INR 70 LPA at top employers. Principal engineers and AI architects at global firms can reach INR 80 LPA or more, often with stock options on top of base pay.",
+      "title": "Salary by Experience Level"
+    },
+    {
+      "content": "Bengaluru pays the highest AI engineering salaries in India, driven by product companies, global capability centres and a dense startup ecosystem, with a 15 to 25 percent premium over Pune and Chennai. Hyderabad ranks second, followed by Gurugram, both home to large global firms and growing AI teams. Mumbai pays well in finance and consulting AI roles but has fewer pure product openings.\n\nCompany type matters as much as city. Global capability centres pay freshers INR 10 to 22 LPA and seniors INR 40 to 80 LPA, well above IT services bands. Startups pay less in base salary but offer equity that can be valuable if the company grows. Remote roles for US and European clients can pay USD 15,000 to 120,000 per year depending on seniority.",
+      "title": "Top-Paying Cities and Company Types"
+    },
+    {
+      "content": "The largest salary premiums go to generative AI, LLM fine-tuning, MLOps and AI agent development, which command 25 to 45 percent above generalist pay. Production skills matter most: deployment pipelines, evaluation frameworks, monitoring and cost optimization for LLM systems. Employers increasingly test candidates on building working systems rather than reciting theory.\n\nA strong portfolio is the fastest route to higher pay. Open-source contributions, shipped products and measurable results, such as reduced inference costs or improved retrieval accuracy, strengthen negotiation far more than certificates. Engineers who combine Python and LangChain or LangGraph expertise with cloud and Kubernetes skills are in the strongest position for 2026 roles.",
+      "title": "Skills That Raise Your Salary"
+    }
+  ],
+  "slug": "india-ai-engineer-salary-2026",
+  "stats": [
+    {
+      "label": "Average Salary",
+      "value": "~INR 11 LPA"
+    },
+    {
+      "label": "Fresher Level",
+      "value": "INR 5-10 LPA"
+    },
+    {
+      "label": "Mid-Level",
+      "value": "INR 12-30 LPA"
+    },
+    {
+      "label": "Senior Level",
+      "value": "INR 30-60 LPA+"
+    },
+    {
+      "label": "Top City",
+      "value": "Bengaluru"
+    }
+  ],
+  "title": "AI Engineer Salary India 2026: Fresher to Senior Pay",
+  "translationGroupId": "india-ai-engineer-salary-2026"
+}

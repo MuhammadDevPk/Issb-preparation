@@ -1,0 +1,69 @@
+{
+  "badge": "FRANCE AI SALARY GUIDE",
+  "country": "FR",
+  "faqs": [
+    {
+      "a": "The average AI engineer salary in France in 2026 is around EUR 73,500 per year, according to SalaryExpert, with a typical range of EUR 55,000 to EUR 130,000. Junior engineers earn EUR 45,000 to 65,000, mid-level engineers earn EUR 65,000 to 90,000, and senior engineers earn EUR 90,000 to 130,000, with top labs paying more.",
+      "q": "What is the average AI engineer salary in France in 2026?"
+    },
+    {
+      "a": "Paris pays the most, with senior AI engineers earning up to EUR 130,000 and staff or principal roles reaching EUR 180,000 or more at top labs. Lyon and Toulouse offer lower pay but also lower living costs, roughly 10 to 20 percent below Paris. The Paris premium reflects the concentration of frontier AI labs and venture-backed startups.",
+      "q": "Which French cities pay AI engineers the highest salaries?"
+    },
+    {
+      "a": "Mistral AI and Hugging Face anchor the French AI ecosystem, along with Dataiku, Criteo, Doctolib and Alan. Big tech labs such as Google DeepMind Paris and Meta FAIR also hire in France, often paying 20 to 30 percent above market. Station F in Paris hosts hundreds of AI startups and remains the largest startup campus in Europe.",
+      "q": "Which companies hire AI engineers in France?"
+    },
+    {
+      "a": "LLM engineering, CUDA optimization and MLOps command the largest premiums in France. Specialists who own production model deployment, including Kubernetes, monitoring and evaluation pipelines, earn well above generalist rates. French language skills help at traditional employers, though most international AI labs hire in English and value shipped models over certificates.",
+      "q": "Which AI specializations pay the most in France?"
+    }
+  ],
+  "headline": "AI Engineer Salary in France 2026: Complete Pay Guide",
+  "hreflang": "en-FR",
+  "metaDescription": "AI engineer salary France 2026: average EUR 73,500, junior EUR 45,000-65,000, senior EUR 90,000-130,000. Paris and Lyon pay, top employers and premium skills.",
+  "niche": "tech",
+  "sections": [
+    {
+      "content": "France has become one of Europe's strongest AI hiring markets in 2026, anchored by frontier labs and a deep startup ecosystem. The national average AI engineer salary sits around EUR 73,500 per year, with a typical market range of EUR 55,000 to EUR 130,000 depending on experience, specialization and city. Senior engineers at top Paris labs can reach EUR 150,000 or more with equity.\n\nThe French market has two tiers: mainstream employers paying EUR 50,000 to 75,000 for most roles, and AI-native companies paying EUR 90,000 to 130,000 or more for frontier work. France secured over EUR 109 billion in announced private AI investment commitments at the 2025 AI Action Summit, which continues to fuel hiring across Paris and regional hubs.",
+      "title": "Average AI Engineer Pay in France for 2026"
+    },
+    {
+      "content": "Junior AI engineers with 0 to 2 years of experience earn EUR 45,000 to 65,000 per year in France. Mid-level engineers with 3 to 5 years earn EUR 65,000 to 90,000, while senior engineers with 5 or more years earn EUR 90,000 to 130,000. Staff and principal engineers at leading labs reach EUR 130,000 to 180,000 or more, and total compensation at big tech labs can exceed EUR 200,000 with stock grants.\n\nNet pay is lower than gross figures suggest, because French social charges and income tax are substantial. A gross salary of EUR 92,000 plus a EUR 9,200 bonus translates to roughly EUR 5,300 to 5,600 per month after deductions. In return, employees get excellent healthcare, five or more weeks of vacation and strong worker protections.",
+      "title": "Salary by Experience Level"
+    },
+    {
+      "content": "Paris dominates French AI hiring and pay, home to Mistral AI, Hugging Face, Dataiku and hundreds of startups at Station F, plus research labs from Google DeepMind and Meta FAIR. Senior engineers in Paris earn up to EUR 130,000 in base salary, with equity potentially doubling total compensation at funded startups. Big tech offices typically pay 20 to 30 percent above the local market.\n\nLyon offers a growing AI scene with living costs 10 to 20 percent below Paris, making its EUR 55,000 to 90,000 bands attractive in real terms. Toulouse benefits from aerospace AI demand, while Grenoble draws on its research institutes. For engineers prioritizing quality of life over headline salary, regional hubs offer a compelling trade-off.",
+      "title": "Top-Paying Cities Compared"
+    },
+    {
+      "content": "The highest-paid AI engineers in France combine LLM expertise with production skills: fine-tuning, retrieval systems, CUDA optimization and MLOps ownership. MLOps engineers earn EUR 65,000 to 95,000, while applied scientists with PhDs earn EUR 70,000 to 115,000 or more. Employers pay a premium for engineers who own deployment, monitoring, evaluation and reliability, not just prototyping.\n\nFrench language skills help at traditional industrial employers and public-sector-adjacent firms, though most international AI labs hire in English. A portfolio of shipped models, open-source contributions and measurable business impact strengthens negotiation far more than certificates alone. Engineers with experience at recognized labs or venture-backed startups command the strongest offers.",
+      "title": "Skills That Raise Your Salary"
+    }
+  ],
+  "slug": "france-ai-engineer-salary-2026",
+  "stats": [
+    {
+      "label": "Average Salary",
+      "value": "~EUR 73,500 / yr"
+    },
+    {
+      "label": "Junior Level",
+      "value": "EUR 45,000-65,000"
+    },
+    {
+      "label": "Senior Level",
+      "value": "EUR 90,000-130,000"
+    },
+    {
+      "label": "Top City",
+      "value": "Paris"
+    },
+    {
+      "label": "Top Employers",
+      "value": "Mistral, Hugging Face"
+    }
+  ],
+  "title": "AI Engineer Salary France 2026: Paris Pay Guide",
+  "translationGroupId": "france-ai-engineer-salary-2026"
+}
