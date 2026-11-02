@@ -1,0 +1,61 @@
+{
+  "slug": "de-cybersecurity-analyst-salary-2026",
+  "niche": "tech",
+  "country": "DE",
+  "hreflang": "de-DE",
+  "translationGroupId": "cybersecurity-analyst-salary-2026",
+  "title": "Cybersecurity-Analyst Gehalt 2026: USA im Überblick",
+  "metaDescription": "Cybersecurity-Analyst Gehalt 2026 USA: Median 129.180 Dollar, Einstieg um 90.000 Dollar, Senior um 180.000 Dollar, Jobwachstum 21 Prozent bis 2035.",
+  "headline": "Cybersecurity-Analyst Gehalt 2026: Der komplette US-Leitfaden",
+  "badge": "CYBERSECURITY GEHALT",
+  "stats": [
+    {
+      "label": "Median-Gehalt",
+      "value": "129.180 US-Dollar pro Jahr"
+    },
+    {
+      "label": "Einstiegsgehalt",
+      "value": "etwa 90.000 US-Dollar"
+    },
+    {
+      "label": "Senior-Gehalt",
+      "value": "etwa 180.000 US-Dollar"
+    },
+    {
+      "label": "Jobwachstum bis 2035",
+      "value": "21 Prozent prognostiziert"
+    }
+  ],
+  "sections": [
+    {
+      "title": "Was Cybersecurity-Analysten 2026 verdienen",
+      "content": "Das US Bureau of Labor Statistics beziffert den Medianlohn für Information Security Analysts auf 129.180 US-Dollar pro Jahr, basierend auf Daten von Mai 2025. Das unterste Zehntel verdient weniger als 75.090 Dollar, das oberste Zehntel mehr als 199.850 Dollar. Jobportale melden niedrigere Durchschnitte von rund 100.000 Dollar, weil sie Junior- und Senior-Rollen anders mischen.\n\nDaten von Levels.fyi aus großen Technologie- und Finanzunternehmen zeigen eine mittlere Gesamtvergütung von rund 125.000 Dollar, wobei das oberste Zehntel etwa 240.000 Dollar erreicht. Die Spanne zeigt, wie wichtig ein fairer Vergleich von ähnlichen Rollen, Branchen und Standorten ist."
+    },
+    {
+      "title": "Gehalt nach Erfahrung und Zertifikat",
+      "content": "Einsteiger starten meist zwischen 75.000 und 95.000 Dollar, während Analysten mit drei bis fünf Jahren Erfahrung oft 110.000 bis 140.000 Dollar erreichen. Senior-Analysten und Security Engineers mit Cloud- und Detection-Erfahrung liegen häufig bei 150.000 bis 180.000 Dollar und darüber.\n\nZertifikate wie Security+, CISSP oder Cloud-Security-Nachweise erhöhen die Verhandlungsposition deutlich. Auch der Sektor zählt: Finanzdienstleister und große Tech-Konzerne zahlen in der Regel über dem Durchschnitt, Behörden oft darunter."
+    },
+    {
+      "title": "Karrierechancen und Nachfrage",
+      "content": "Die Nachfrage bleibt hoch, weil Ransomware, Cloud-Risiken und neue KI-Angriffe die Sicherheitsbudgets treiben. Das BLS prognostiziert bis 2035 ein Wachstum von 21 Prozent, deutlich schneller als der Durchschnitt aller Berufe.\n\nWer von der Analyst-Rolle in Richtung Detection Engineering, Incident Response oder Security Architecture wechselt, kann sein Gehalt spürbar steigern. Praktische Erfahrung in einem SOC und Skriptkenntnisse in Python sind dabei besonders gefragt."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Wie hoch ist das Median-Gehalt eines Cybersecurity-Analysten 2026?",
+      "a": "Das US Bureau of Labor Statistics nennt für Information Security Analysts einen Median von 129.180 US-Dollar pro Jahr, basierend auf Daten von Mai 2025. Das unterste Zehntel verdient unter 75.090 Dollar, das oberste Zehntel über 199.850 Dollar. Portale mit Stellenanzeigen melden niedrigere Durchschnitte, weil sie Junior- und Senior-Rollen unterschiedlich gewichten."
+    },
+    {
+      "q": "Was verdienen Einsteiger in der Cybersicherheit?",
+      "a": "Einsteiger starten 2026 meist bei etwa 75.000 bis 95.000 US-Dollar pro Jahr, abhängig von Standort, Branche und Zertifikaten. Rollen in einem Security Operations Center sind ein typischer Einstieg. Mit Security+ und praktischer Erfahrung in Monitoring-Tools steigen die Chancen auf Gehälter über 100.000 Dollar nach ein bis zwei Jahren deutlich."
+    },
+    {
+      "q": "Welche Zertifikate lohnen sich am meisten?",
+      "a": "Security+ ist der Standard für den Einstieg, während CISSP, CISM und Cloud-Zertifikate von AWS, Azure oder Google für Senior-Rollen besonders wertvoll sind. Arbeitgeber honorieren außerdem praktische Nachweise wie Hacking-Labs, Capture-the-Flag-Erfolge oder ein eigenes Homelab. Zertifikate ersetzen keine Erfahrung, stärken aber die Gehaltsverhandlung spürbar."
+    },
+    {
+      "q": "Wie sind die Jobaussichten bis 2035?",
+      "a": "Die Aussichten sind sehr gut: Das BLS prognostiziert ein Wachstum von 21 Prozent bis 2035, weil Unternehmen ihre Cloud-Umgebungen, KI-Systeme und Lieferketten absichern müssen. Besonders gefragt sind Detection Engineering, Incident Response und Cloud Security. Wer sich in diesen Bereichen spezialisiert, hat langfristig die besten Gehalts- und Karrierechancen."
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "slug": "de-us-air-force-pilot-requirements-2026",
+  "niche": "defense",
+  "country": "DE",
+  "hreflang": "de-DE",
+  "translationGroupId": "us-air-force-pilot-requirements-2026",
+  "title": "US-Air-Force-Pilot 2026: Alter, Studium, AFOQT, Sehtest",
+  "metaDescription": "Voraussetzungen für US-Air-Force-Piloten 2026: Altersgrenze, Bachelorabschluss, AFOQT- und TBAS-Werte, Seh- und Gesundheitsstandards und Flugausbildung.",
+  "headline": "US-Air-Force-Pilot werden 2026: Der komplette Leitfaden",
+  "badge": "AIR-FORCE-PILOT",
+  "stats": [
+    {
+      "label": "Altersgrenze",
+      "value": "Vor dem 33. Geburtstag"
+    },
+    {
+      "label": "Abschluss",
+      "value": "Bachelorabschluss nötig"
+    },
+    {
+      "label": "AFOQT-Pilotwert",
+      "value": "Mindestens 25"
+    },
+    {
+      "label": "Dienstverpflichtung",
+      "value": "10 Jahre nach den Schwingen"
+    }
+  ],
+  "sections": [
+    {
+      "title": "Wer kann Air-Force-Pilot werden?",
+      "content": "Wer Pilot der United States Air Force werden will, muss zunächst Offizier werden. Dafür sind die US-Staatsbürgerschaft und ein Bachelorabschluss einer anerkannten Hochschule erforderlich. Das Fach ist frei wählbar, doch unter erfolgreichen Bewerbern sind Abschlüsse in Naturwissenschaften, Technik, Ingenieurwesen und Mathematik häufig.\n\nOffiziere kommen über die Air Force Academy, das Air-Force-ROTC-Programm während des Studiums oder die Officer Training School nach dem Abschluss in den Dienst. Bewerber müssen in der Regel vor ihrem 33. Geburtstag für die Pilotengrundausbildung ausgewählt werden, weshalb ein früher Start Zeit für Tests, ärztliche Untersuchungen und einen Ausbildungsplatz lässt."
+    },
+    {
+      "title": "Tests, Sehvermögen und Gesundheitsstandards",
+      "content": "Pilotenkandidaten absolvieren den Air Force Officer Qualifying Test, einen langen Eignungstest zu Wortschatz, Mathematik und Luftfahrtwissen, sowie den Test of Basic Aviation Skills, der Koordination, räumliches Vorstellungsvermögen und Multitasking misst. Beide Ergebnisse ergeben zusammen mit zivilen Flugstunden den Pilot Candidate Selection Method Score.\n\nDie Gesundheitsstandards sind streng: Kandidaten brauchen eine flugmedizinische Untersuchung der Klasse I, eine unkorrigierte Fernsicht von 20/70 je Auge, korrigierbar auf 20/20, und keine Vorgeschichte von Asthma, Heuschnupfen oder Allergien nach dem zwölften Lebensjahr."
+    },
+    {
+      "title": "Ausbildungsweg und Dienstverpflichtung",
+      "content": "Ausgewählte Kandidaten durchlaufen die etwa einjährige Undergraduate Pilot Training: vom Unterricht und Simulator über echte Flugzeuge bis zur weiterführenden Ausbildung auf einem bestimmten Muster wie Jagdflugzeug, Tanker oder Transporter. Danach folgen Überlebenstraining und Einsatzqualifikation.\n\nNach dem Erhalt ihrer Schwingen verpflichten sich Piloten für etwa zehn Jahre aktiven Dienst. Die lange Verpflichtung spiegelt die Ausbildungskosten wider, bringt aber auch ein sicheres Gehalt, Flugstunden auf modernen Maschinen und einen klaren Weg in Führungspositionen."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Wie hoch ist die Altersgrenze für US-Air-Force-Piloten im Jahr 2026?",
+      "a": "Pilotenkandidaten müssen in der Regel vor ihrem 33. Geburtstag für die Pilotengrundausbildung ausgewählt werden, und Ausnahmen darüber hinaus sind selten und liegen im Ermessen der Dienststelle. Da Ernennung, Tests, flugmedizinische Eignung und Sicherheitsüberprüfung Monate dauern, beginnen starke Bewerber meist Anfang zwanzig, um bei Verzögerungen noch Spielraum zu haben."
+    },
+    {
+      "q": "Braucht man ein bestimmtes Studium, um Air-Force-Pilot zu werden?",
+      "a": "Nein, die Air Force verlangt einen Bachelorabschluss, schreibt aber kein bestimmtes Fach vor, sodass auch Absolventen in Geschichte, Wirtschaft oder Ingenieurwesen um Pilotenslots konkurrieren können. Wettbewerbsfähige Bewerber haben meist einen Notendurchschnitt von 3,0 oder besser, und ein Hintergrund in Luftfahrt oder MINT-Fächern hilft bei Eignungstests und in der frühen Ausbildung."
+    },
+    {
+      "q": "Welchen AFOQT-Wert brauchen Piloten?",
+      "a": "Pilotenkandidaten müssen im Pilotenteil des Air Force Officer Qualifying Test mindestens 25 Punkte, im Navigatorenteil mindestens 10 Punkte und kombiniert mindestens 50 Punkte erreichen. Wettbewerbsfähige Bewerber liegen meist deutlich höher, oft im 80. Perzentil oder darüber, weil die Pilotenslots begrenzt und die Auswahl hart umkämpft ist."
+    },
+    {
+      "q": "Kann man mit Brille oder Kontaktlinsen Pilot werden?",
+      "a": "Ja, mit korrigierter Sehkraft ist eine Eignung möglich, solange die unkorrigierte Fernsicht je Auge bei 20/70 oder besser liegt und auf 20/20 korrigiert werden kann. Laseroperationen wie PRK oder LASIK können nach einer Wartezeit und einer Ausnahmegenehmigung ebenfalls akzeptiert werden; Bewerber sollten ihren Fall mit einem Fliegerarzt klären."
+    }
+  ]
+}

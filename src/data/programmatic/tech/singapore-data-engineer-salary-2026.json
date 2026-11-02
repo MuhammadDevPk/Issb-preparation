@@ -1,0 +1,57 @@
+{
+  "slug": "singapore-data-engineer-salary-2026",
+  "niche": "tech",
+  "country": "SG",
+  "hreflang": "en-SG",
+  "translationGroupId": "singapore-data-engineer-salary-2026",
+  "title": "Data engineer salary Singapore 2026 guide",
+  "metaDescription": "Data engineer salary Singapore 2026: pay around S$7,400 a month, junior to senior ranges, top-paying finance and tech sectors, and skills that lift offers",
+  "headline": "How much does a data engineer earn in Singapore in 2026?",
+  "badge": "DATA ENGINEER PAY 2026",
+  "stats": [
+    {
+      "label": "Average monthly pay",
+      "value": "About S$7,400"
+    },
+    {
+      "label": "Typical monthly range",
+      "value": "S$4,700-S$11,800"
+    },
+    {
+      "label": "Entry-level annual",
+      "value": "S$85,000-S$100,000"
+    },
+    {
+      "label": "Senior annual",
+      "value": "S$150,000-S$160,000+"
+    }
+  ],
+  "sections": [
+    {
+      "title": "What data engineers earn in Singapore",
+      "content": "Singapore data engineers earn on average about S$7,400 to S$7,500 a month, based on hundreds of salaries reported on Indeed in late 2026, with a typical range of roughly S$4,700 to S$11,800 a month depending on experience and employer. Annual guides put entry-level roles at S$85,000 to S$100,000, mid-level roles at S$120,000 to S$140,000 and senior roles at S$150,000 to S$160,000 or more.\n\nFinance and large technology employers pay the most, with government technology roles also featuring among the highest-paying postings. Contract and remote roles for international clients can pay more still, but they usually demand strong written English and overlap with client time zones."
+    },
+    {
+      "title": "Skills and sectors that pay above the median",
+      "content": "The best-paid data engineers combine pipeline engineering with cloud platforms, streaming data, data modelling and orchestration, plus strong SQL and Python. Employers in fintech and government tech projects prize reliability, data quality checks and cost-aware pipeline design, not just the ability to move data.\n\nSector matters as much as seniority: financial services and major tech headquarters in Singapore set many of the top benchmarks, while smaller firms and startups may pay less base salary but offer equity. Location within Singapore also shifts pay, with central districts reporting higher averages than the national figure."
+    },
+    {
+      "title": "How to negotiate a stronger data engineer offer",
+      "content": "Anchor your negotiation in Singapore-specific evidence, not global averages: cite the S$7,400 monthly average, the S$4,700 to S$11,800 typical range, and comparable roles at similar employers. A portfolio showing pipelines you built, data volumes handled and incidents prevented is more persuasive than a list of tools.\n\nAsk about total compensation, not just base pay: bonuses, stock, training budgets and on-call allowances can change the real value of an offer by a large margin. Also weigh cost of living honestly, since Singapore is a premium market with high housing costs, even though there is no capital gains tax."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "What is the average data engineer salary in Singapore?",
+      "a": "The average data engineer salary in Singapore is about S$7,400 to S$7,500 a month, based on Indeed salary reports from late 2026 covering hundreds of salaries. That works out to roughly S$89,000 to S$90,000 a year before bonuses. The typical range runs from about S$4,700 a month at the low end to about S$11,800 at the high end."
+    },
+    {
+      "q": "Which Singapore sectors pay data engineers the most?",
+      "a": "Financial services and large technology companies pay data engineers the most in Singapore, with government technology roles also among the highest-paying postings. Banks, fintech firms and major tech headquarters set the top benchmarks, while smaller companies may offer lower base pay with equity instead. Remote roles for overseas clients can pay more, but expect higher expectations around availability and communication."
+    },
+    {
+      "q": "Do data engineers need a degree in Singapore?",
+      "a": "A degree helps, but it is not the only route into data engineering in Singapore. Employers weigh demonstrable pipeline experience, cloud skills and a portfolio of working projects heavily, especially for mid-level and senior roles. Relevant certifications, internships and open-source contributions can strengthen an application, but production experience remains the strongest signal for most hiring managers."
+    }
+  ]
+}

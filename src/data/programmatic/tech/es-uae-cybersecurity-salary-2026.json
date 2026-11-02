@@ -1,0 +1,61 @@
+{
+  "slug": "es-uae-cybersecurity-salary-2026",
+  "niche": "tech",
+  "country": "ES",
+  "hreflang": "es-ES",
+  "translationGroupId": "uae-cybersecurity-salary-2026",
+  "title": "Salario ciberseguridad EAU 2026: guía en AED",
+  "metaDescription": "Salario ciberseguridad EAU 2026: sueldos por nivel, de 8.000 a más de 45.000 AED al mes, sin impuesto sobre la renta, certificaciones clave y mejores ciudades.",
+  "headline": "Salario de ciberseguridad en EAU 2026: guía completa",
+  "badge": "CIBERSEGURIDAD EAU",
+  "stats": [
+    {
+      "label": "Salario medio anual",
+      "value": "unos 318.000 AED"
+    },
+    {
+      "label": "Nivel inicial",
+      "value": "8.000-15.000 AED al mes"
+    },
+    {
+      "label": "Nivel medio",
+      "value": "18.000-30.000 AED al mes"
+    },
+    {
+      "label": "Nivel senior",
+      "value": "30.000-45.000+ AED al mes"
+    }
+  ],
+  "sections": [
+    {
+      "title": "Cuánto se gana en ciberseguridad en EAU",
+      "content": "Los datos de portales de empleo de 2026 sitúan el salario medio de un profesional de ciberseguridad en Emiratos Árabes Unidos en torno a 318.000 AED al año, es decir, unos 26.500 AED al mes. Las cifras varían mucho según la fuente, porque mezclan roles junior, senior y de liderazgo de formas distintas.\n\nPayScale calcula un salario base medio de 222.282 AED al año para especialistas en seguridad de la información, con profesionales de 1 a 4 años en torno a 144.000 AED y de 5 a 9 años en torno a 216.000 AED. La horquilla amplia refleja la diversidad del mercado entre Dubái, Abu Dabi y otros emiratos."
+    },
+    {
+      "title": "Salario por nivel de experiencia",
+      "content": "Los perfiles de entrada, como analista SOC junior, suelen empezar entre 8.000 y 15.000 AED al mes. El nivel medio, con 3 a 6 años de experiencia, se mueve entre 18.000 y 30.000 AED, mientras que ingenieros senior, arquitectos y pentesters alcanzan 30.000 a 45.000 AED.\n\nLos puestos de liderazgo, como gerente de seguridad o CISO, superan los 45.000 AED mensuales y pueden llegar a 100.000 AED en grandes organizaciones. Las certificaciones CISSP, CISM, CEH y OSCP, junto con experiencia en nube, aportan primas salariales claras."
+    },
+    {
+      "title": "Dónde hay trabajo y qué piden las empresas",
+      "content": "La contratación crece con fuerza: la demanda en Dubái ha subido más del 60 por ciento y Abu Dabi concentra alrededor de 1.586 vacantes activas, según análisis de 2026. Contratan grandes tecnológicas, bancos, telecos, empresas de energía, organismos públicos y consultoras de seguridad.\n\nNo existe impuesto sobre la renta personal, y los paquetes suelen incluir vivienda o subsidio, seguro médico y billetes anuales. Por eso el valor efectivo de una oferta en EAU puede superar ofertas equivalentes en Londres o San Francisco."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "¿Cuál es el salario medio en ciberseguridad en EAU?",
+      "a": "Según Jooble, el profesional medio de ciberseguridad en EAU gana unos 318.084 AED al año en 2026, es decir, unos 26.507 AED al mes, con un rango entre 303.144 y 333.000 AED. PayScale, en cambio, calcula 222.282 AED de salario base medio para especialistas. La diferencia se explica porque cada fuente mezcla roles y niveles de experiencia distintos."
+    },
+    {
+      "q": "¿Cuánto gana un perfil junior en EAU?",
+      "a": "Un analista SOC junior o un técnico de soporte de seguridad suele empezar entre 8.000 y 15.000 AED al mes, según guías de mercado de 2026. Con certificaciones como Security+ o CEH y uno o dos años de experiencia en un centro de operaciones de seguridad, el salto al rango medio de 18.000 a 30.000 AED es realista."
+    },
+    {
+      "q": "¿Qué certificaciones pagan más en EAU?",
+      "a": "CISSP y CISM son las más valoradas para roles senior y de gestión, mientras que OSCP destaca en pentesting y las certificaciones de seguridad de AWS y Azure en seguridad cloud. Los empleadores de banca, gobierno e infraestructuras críticas suelen pagar los salarios más altos y exigen certificaciones reconocidas además de experiencia demostrable en incidentes reales."
+    },
+    {
+      "q": "¿Hay impuesto sobre la renta en EAU?",
+      "a": "No, Emiratos Árabes Unidos no aplica impuesto sobre la renta personal, lo que hace que el salario neto sea igual al bruto pactado. Además, muchos contratos incluyen vivienda o subsidio de vivienda, seguro médico y billetes de avión anuales. Por eso conviene comparar el paquete completo, no solo el salario mensual, al valorar una oferta."
+    }
+  ]
+}

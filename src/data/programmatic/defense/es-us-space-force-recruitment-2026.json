@@ -1,0 +1,57 @@
+{
+  "slug": "es-us-space-force-recruitment-2026",
+  "niche": "defense",
+  "country": "ES",
+  "hreflang": "es-ES",
+  "translationGroupId": "us-space-force-recruitment-2026",
+  "title": "Fuerza Espacial de EE. UU.: requisitos 2026",
+  "metaDescription": "Guía 2026 para alistarse en la Fuerza Espacial de EE. UU.: edad de 17 a 42 años, ciudadanía, diploma, puntuación ASVAB y formación básica para Guardianes.",
+  "headline": "Cómo unirse a la Fuerza Espacial de EE. UU. en 2026",
+  "badge": "FUERZA ESPACIAL 2026",
+  "stats": [
+    {
+      "label": "Edad para alistarse",
+      "value": "De 17 a 42 años"
+    },
+    {
+      "label": "Ciudadanía",
+      "value": "Ciudadano estadounidense"
+    },
+    {
+      "label": "Puntuación ASVAB mínima",
+      "value": "36 para titulados"
+    },
+    {
+      "label": "Formación básica",
+      "value": "Unas 7,5 semanas"
+    }
+  ],
+  "sections": [
+    {
+      "title": "Quién puede alistarse como Guardian",
+      "content": "La Fuerza Espacial acepta candidatos de entre 17 y 42 años que sean ciudadanos estadounidenses y tengan un diploma de educación secundaria o un equivalente. Los menores de 18 años necesitan el consentimiento de sus padres, y todos los aspirantes deben cumplir las normas morales, médicas y físicas del Departamento de Defensa.\n\nEs la rama más pequeña y selectiva de las fuerzas armadas estadounidenses, centrada en operaciones espaciales, cibernéticas e inteligencia. Por eso, aunque la puntuación mínima oficial puede bastar para ser elegible, los candidatos competitivos suelen presentar resultados mucho más altos en el examen ASVAB."
+    },
+    {
+      "title": "El examen ASVAB y las especialidades",
+      "content": "El ASVAB mide aptitudes en áreas como razonamiento aritmético, conocimientos matemáticos, comprensión lectora y electrónica. La puntuación mínima AFQT es de 36 para quienes tienen diploma de secundaria y de 50 para titulares de un GED basado en examen, según la política vigente del Departamento de la Fuerza Aérea.\n\nLas especialidades técnicas exigen además puntuaciones por áreas: operaciones cibernéticas, operaciones de sistemas espaciales e inteligencia suelen pedir resultados altos en las secciones general y electrónica. Un buen resultado amplía mucho las opciones de destino dentro de la Fuerza Espacial."
+    },
+    {
+      "title": "Formación y vida como Guardian",
+      "content": "La formación básica se realiza junto a la Fuerza Aérea en la base conjunta de San Antonio-Lackland, en Texas, y dura unas siete semanas y media, con un módulo adicional propio de la Fuerza Espacial. Después, cada Guardian sigue una formación técnica según su especialidad asignada.\n\nLas carreras incluyen operaciones espaciales, ciberdefensa, inteligencia y mantenimiento de sistemas. El reclutamiento se gestiona a través de las oficinas de reclutamiento de la Fuerza Aérea, así que el primer paso práctico es hablar con un reclutador y preparar el ASVAB con antelación."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "¿Cuál es la edad mínima y máxima para alistarse?",
+      "a": "Debes tener entre 17 y 42 años para alistarte como Guardian. Si tienes 17 años, necesitas el consentimiento de tus padres; a partir de los 18 puedes alistarte por tu cuenta. La edad se comprueba al inicio del proceso, y las excepciones son muy limitadas, por lo que conviene iniciar la solicitud con tiempo suficiente antes de cumplir 42 años."
+    },
+    {
+      "q": "¿Qué puntuación ASVAB necesito para la Fuerza Espacial?",
+      "a": "La puntuación mínima AFQT es de 36 para candidatos con diploma de secundaria y de 50 para titulares de GED, según la política actual. Sin embargo, la Fuerza Espacial es muy selectiva y la mayoría de las especialidades técnicas exigen puntuaciones en torno a los 60 o más, así que prepararse bien es clave."
+    },
+    {
+      "q": "¿Necesito ser ciudadano estadounidense para unirme?",
+      "a": "Sí, debes ser ciudadano estadounidense para alistarte en la Fuerza Espacial. También debes superar un examen médico, una comprobación de antecedentes y una prueba de drogas. Los oficiales, por su parte, suelen necesitar un título universitario y superar el examen de cualificación de oficiales de la Fuerza Aérea."
+    }
+  ]
+}
