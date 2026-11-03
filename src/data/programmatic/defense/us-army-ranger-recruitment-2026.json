@@ -1,0 +1,65 @@
+{
+  "badge": "ARMY RANGER RECRUITMENT GUIDE",
+  "country": "US",
+  "faqs": [
+    {
+      "a": "You must be a US citizen aged 17 to 34, hold a high school diploma or equivalent, and score at least 105 on the General Technical section of the ASVAB. You must also be eligible for a secret security clearance and pass the Army fitness and medical standards.",
+      "q": "What are the basic requirements to become an Army Ranger?"
+    },
+    {
+      "a": "The most direct route is signing an Option 40 contract, usually tied to the 11X infantry designation, which guarantees a place at Airborne School and the Ranger Assessment and Selection Program. Serving soldiers can also volunteer for RASP through their chain of command.",
+      "q": "What is an Option 40 contract and why does it matter?"
+    },
+    {
+      "a": "RASP 1 lasts about eight weeks for enlisted soldiers from private through sergeant, while RASP 2 lasts about three weeks for staff sergeants through majors and officers. Both test fitness, endurance, leadership and performance under extreme pressure. Preparation should include rucking, swimming, running and leadership practice well before reporting.",
+      "q": "How long does RASP last?"
+    },
+    {
+      "a": "Ranger School lasts about 62 days across the Darby, Mountain and Florida phases, and graduates earn the Ranger Tab. Serving in the 75th Ranger Regiment requires passing RASP, while the tab itself is a leadership qualification open to soldiers from many units.",
+      "q": "What is the difference between RASP and Ranger School?"
+    }
+  ],
+  "headline": "US Army Ranger Recruitment 2026: Requirements Guide",
+  "hreflang": "en-US",
+  "metaDescription": "US Army Ranger recruitment in 2026: age 17-34, ASVAB GT 105, Option 40 contracts, RASP selection and Ranger School. Guide to the 75th Ranger Regiment.",
+  "niche": "defense",
+  "sections": [
+    {
+      "content": "Army Rangers serve in the 75th Ranger Regiment, the Army's premier special operations light infantry unit, headquartered at Fort Benning, Georgia. The regiment covers more than 110 officer and enlisted specialties, from infantry and medics to mechanics and communicators, all held to the same demanding standard.\n\nRangers specialize in missions deep inside enemy territory, including raids, airfield seizures and reconnaissance. That mission set explains why selection is so strict: small teams operate with little support, so every member must be physically fit, disciplined and reliable under stress.",
+      "title": "What Army Rangers do"
+    },
+    {
+      "content": "To qualify, you must be a US citizen aged 17 to 34, hold a high school diploma or equivalent, and score at least 105 on the General Technical section of the ASVAB. Enlisted soldiers must be eligible for a secret security clearance, while officers need top secret eligibility, and no drug or alcohol incidents are allowed within the previous 24 months.\n\nThe fastest route for new recruits is an Option 40 contract, usually tied to the 11X infantry designation, which guarantees Airborne School and a RASP place. Serving soldiers can also volunteer, subject to screening by Ranger Regiment leaders, a process that can take eight to twelve weeks.",
+      "title": "Eligibility and the Option 40 route"
+    },
+    {
+      "content": "The pipeline for new recruits runs through Infantry OSUT for 22 weeks, then Airborne School for three weeks, then RASP. RASP 1 lasts about eight weeks for enlisted soldiers from private through sergeant, while officers and senior non-commissioned officers attend RASP 2, a three-week leadership-focused selection course.\n\nBefore RASP, candidates must pass a fitness test including 58 push-ups, a five-mile run in 40 minutes or less, six chin-ups, a 15-meter swim in uniform and a 12-mile foot march with a 35-pound rucksack in under three hours. RASP itself tests endurance, marksmanship, small-unit tactics and leadership under sleep deprivation and constant pressure.",
+      "title": "The RASP pipeline and fitness test"
+    },
+    {
+      "content": "After RASP, soldiers can volunteer for Ranger School, a 62-day leadership course across the Darby, Mountain and Florida phases that ends with the Ranger Tab. The tab is a qualification, not a unit assignment: many tabbed soldiers serve in conventional units, while Regiment service requires passing RASP.\n\nWomen have been eligible for Ranger School and the Regiment since combat specialties opened to all soldiers, meeting the same standards as men. Candidates who fail RASP or Ranger School are typically reassigned according to the needs of the Army, so applicants should be prepared for that outcome too.",
+      "title": "Ranger School and the Ranger Tab"
+    }
+  ],
+  "slug": "us-army-ranger-recruitment-2026",
+  "stats": [
+    {
+      "label": "Age range",
+      "value": "17–34 years"
+    },
+    {
+      "label": "ASVAB GT score",
+      "value": "105 or higher"
+    },
+    {
+      "label": "RASP 1 duration",
+      "value": "~8 weeks"
+    },
+    {
+      "label": "Ranger School",
+      "value": "~62 days"
+    }
+  ],
+  "title": "US Army Ranger Recruitment 2026: Requirements Guide",
+  "translationGroupId": "us-army-ranger-recruitment-2026"
+}

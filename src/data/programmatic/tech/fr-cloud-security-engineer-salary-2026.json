@@ -1,0 +1,65 @@
+{
+  "badge": "GUIDE SALAIRE SÉCURITÉ CLOUD",
+  "country": "FR",
+  "faqs": [
+    {
+      "a": "Selon ZipRecruiter, le salaire annuel moyen aux États-Unis est d'environ 152 773 dollars, tandis que Glassdoor indique un salaire total médian d'environ 169 000 dollars et PayScale un salaire de base moyen d'environ 136 485 dollars. Les écarts viennent des méthodes de collecte.",
+      "q": "Quel est le salaire moyen d'un ingénieur sécurité cloud aux États-Unis ?"
+    },
+    {
+      "a": "En début de carrière, le salaire se situe généralement entre 86 000 et 105 000 dollars par an. Une certification cloud de base et une expérience pratique permettent souvent de démarrer vers le haut de cette fourchette. Une certification de base et une expérience pratique améliorent nettement les chances.",
+      "q": "Combien gagne un débutant dans ce métier ?"
+    },
+    {
+      "a": "Un profil intermédiaire gagne entre 120 000 et 155 000 dollars, un profil senior entre 150 000 et 195 000 dollars. Les postes staff ou principal dépassent parfois 240 000 dollars en rémunération totale, actions comprises. Les grandes entreprises technologiques proposent souvent les rémunérations les plus élevées du marché.",
+      "q": "Quel salaire pour un ingénieur sécurité cloud senior ?"
+    },
+    {
+      "a": "La certification AWS Security Specialty est la plus reconnue, suivie de près par CCSP et CISSP. Les titulaires d'une certification AWS Security Specialty touchent souvent 10 à 15 pour cent de plus que leurs pairs non certifiés à niveau égal.",
+      "q": "Quelles certifications font augmenter le salaire ?"
+    }
+  ],
+  "headline": "Salaire ingénieur sécurité cloud 2026 : guide USA",
+  "hreflang": "fr-FR",
+  "metaDescription": "Salaire 2026 des ingénieurs sécurité cloud aux USA : moyenne, fourchettes par expérience, certifications valorisées et conseils pour négocier. Guide complet.",
+  "niche": "tech",
+  "sections": [
+    {
+      "content": "Selon les données ZipRecruiter de novembre 2026, l'ingénieur sécurité cloud moyen aux États-Unis gagne environ 152 773 dollars par an, soit environ 73,45 dollars de l'heure. La plupart des offres se situent entre 143 000 et 158 500 dollars, tandis que les 10 pour cent les mieux payés atteignent 205 000 dollars.\n\nGlassdoor indique un salaire total médian d'environ 169 000 dollars, alors que PayScale rapporte un salaire de base moyen d'environ 136 485 dollars. Il faut donc distinguer salaire de base et rémunération totale, qui inclut bonus et actions, avant de comparer les chiffres entre eux.",
+      "title": "Le salaire moyen en 2026"
+    },
+    {
+      "content": "L'expérience reste le facteur le plus déterminant. En début de carrière, le salaire va de 86 000 à 105 000 dollars ; un profil intermédiaire gagne de 120 000 à 155 000 dollars, et un senior de 150 000 à 195 000 dollars par an. Les postes staff ou principal dépassent parfois 240 000 dollars en rémunération totale.\n\nLes grandes entreprises technologiques et le secteur financier proposent les rémunérations les plus élevées. Une expérience dans des environnements cloud natifs et une pratique avérée de la réponse aux incidents constituent de solides arguments en négociation salariale.",
+      "title": "Salaires par niveau d'expérience"
+    },
+    {
+      "content": "La certification AWS Certified Security Specialty est l'une des plus reconnues par les employeurs. Ses titulaires touchent souvent 10 à 15 pour cent de plus que leurs pairs non certifiés au même niveau. La certification CCSP est également très valorisée, avec une rémunération totale moyenne d'environ 171 500 dollars aux États-Unis.\n\nUne certification seule ne suffit pas : elle doit s'accompagner d'une expérience réelle d'exploitation d'environnements cloud. La maîtrise d'AWS, d'Azure ou de Google Cloud, combinée à l'automatisation de l'infrastructure, augmente nettement la valeur sur le marché.",
+      "title": "Certifications et compétences valorisées"
+    },
+    {
+      "content": "Pour augmenter son salaire, il est efficace de se spécialiser dans des domaines très demandés : conception de sécurité cloud native, déploiement du modèle zéro confiance, sécurisation des conteneurs et de Kubernetes, et automatisation de la sécurité.\n\nLors d'un changement d'emploi, comparez la rémunération totale, actions et bonus inclus, et pas seulement le salaire de base. En interne, présentez des données de marché et décrivez vos résultats concrets, comme les risques réduits ou les processus améliorés, pour appuyer votre demande.",
+      "title": "Comment augmenter son salaire"
+    }
+  ],
+  "slug": "fr-cloud-security-engineer-salary-2026",
+  "stats": [
+    {
+      "label": "Salaire annuel moyen",
+      "value": "environ 152 773 $"
+    },
+    {
+      "label": "Médiane Glassdoor",
+      "value": "environ 169 000 $"
+    },
+    {
+      "label": "Fourchette la plus courante",
+      "value": "143 000–158 500 $"
+    },
+    {
+      "label": "Top 10 pour cent",
+      "value": "environ 205 000 $"
+    }
+  ],
+  "title": "Salaire ingénieur sécurité cloud 2026 : moyennes USA",
+  "translationGroupId": "cloud-security-engineer-salary-2026"
+}

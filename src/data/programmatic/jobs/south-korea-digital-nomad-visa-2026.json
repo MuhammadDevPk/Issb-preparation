@@ -1,0 +1,65 @@
+{
+  "badge": "KOREA WORKATION VISA GUIDE",
+  "country": "KR",
+  "faqs": [
+    {
+      "a": "The 2026 thresholds depend on age and location. Applicants aged 35 and over need twice GNI per capita in the Seoul capital area, about 104.83 million won, but 1.5 times elsewhere, about 78.62 million won. Applicants aged 18 to 34 need 1.5 times in Seoul and once GNI per capita, about 52.41 million won, elsewhere.",
+      "q": "How much income is needed for South Korea's digital nomad visa in 2026?"
+    },
+    {
+      "a": "The F-1-D visa is granted for one year at a time and can be renewed up to a three-year maximum under the permanent rules introduced in June 2026. Each renewal requires continued remote work for an overseas employer and valid health insurance cover.",
+      "q": "How long can you stay on the F-1-D visa?"
+    },
+    {
+      "a": "You must be at least 18 years old, have at least one year of experience in your current field, and work remotely for a company or business registered outside South Korea. Local employment and work for Korean clients are not permitted on this visa.",
+      "q": "Who qualifies for the South Korea workation visa?"
+    },
+    {
+      "a": "You need private health insurance covering at least 100 million won for hospital treatment and repatriation. To qualify for the lower income threshold outside the Seoul area, you must show a lease of at least one month or a booking at a workation facility there.",
+      "q": "What insurance and proof of stay are required?"
+    }
+  ],
+  "headline": "South Korea Digital Nomad Visa 2026: Workation Guide",
+  "hreflang": "en-US",
+  "metaDescription": "South Korea's F-1-D workation visa in 2026: income thresholds by age and region, eligibility, health insurance and renewals up to three years. Complete guide.",
+  "niche": "jobs",
+  "sections": [
+    {
+      "content": "South Korea launched its digital nomad visa, officially the F-1-D workation visa, on 1 January 2024, and made the program permanent on 30 June 2026. It is designed for remote professionals who earn their income abroad and want to live in South Korea while experiencing its culture, food and cities.\n\nThe visa is issued by Korean embassies and consulates abroad for first applications, with renewals handled by the Korea Immigration Service. It is not a path to permanent residency or citizenship: it is explicitly a temporary cultural and professional experience for established remote workers.",
+      "title": "What is the F-1-D workation visa?"
+    },
+    {
+      "content": "The income threshold is tied to South Korea's gross national income per capita, and the 2026 rules vary by age and location. Applicants aged 35 and over need twice GNI per capita in the Seoul capital area, about 104.83 million won or roughly 74,000 dollars, but only 1.5 times elsewhere, about 78.62 million won or roughly 55,000 dollars.\n\nApplicants aged 18 to 34 face a lower bar: 1.5 times GNI per capita in the Seoul area and once GNI per capita, about 52.41 million won, elsewhere. The capital area covers Seoul, Incheon and Gyeonggi Province, although designated population-decline areas inside it count as elsewhere for this purpose.",
+      "title": "Income thresholds by age and region"
+    },
+    {
+      "content": "Beyond income, applicants must be at least 18 years old and have at least one year of experience in their current field. Employment must be with a company outside South Korea, or a self-employed business registered abroad; anyone contracted to a Korean employer does not qualify.\n\nPrivate health insurance covering at least 100 million won for hospital treatment and repatriation is mandatory. Applicants seeking the lower threshold outside the capital area must prove they will actually live there, with a lease of at least one month or a workation facility booking.",
+      "title": "Eligibility and required documents"
+    },
+    {
+      "content": "The visa is granted for one year at a time and can be renewed up to a three-year maximum under the permanent rules. Each renewal requires continued overseas employment, valid insurance and compliance with the visa conditions, including the ban on local work.\n\nStaying 183 days or more in South Korea can make you a Korean tax resident on worldwide income, and Korea's progressive income tax rates run from 6 to 45 percent plus local tax. Applicants should therefore plan their tax position before arrival, especially if they intend to stay for the full three years.",
+      "title": "Stay duration, renewals and tax"
+    }
+  ],
+  "slug": "south-korea-digital-nomad-visa-2026",
+  "stats": [
+    {
+      "label": "Visa type",
+      "value": "F-1-D workation"
+    },
+    {
+      "label": "Seoul threshold (35+)",
+      "value": "~₩104.8M/year"
+    },
+    {
+      "label": "Outside Seoul (35+)",
+      "value": "~₩78.6M/year"
+    },
+    {
+      "label": "Maximum stay",
+      "value": "3 years"
+    }
+  ],
+  "title": "South Korea Digital Nomad Visa 2026: F-1-D Guide",
+  "translationGroupId": "south-korea-digital-nomad-visa-2026"
+}

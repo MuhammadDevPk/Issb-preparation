@@ -1,0 +1,65 @@
+{
+  "badge": "GUIDA STIPENDI GO",
+  "country": "IT",
+  "faqs": [
+    {
+      "a": "Secondo ZipRecruiter, lo stipendio medio annuo negli Stati Uniti è di circa 120.086 dollari, mentre Glassdoor indica circa 140.000 dollari. La maggior parte delle retribuzioni si colloca tra 98.500 e 142.000 dollari, e il 10 percento più pagato supera i 162.000 dollari. Confrontare più fonti aiuta a valutare correttamente ogni offerta.",
+      "q": "Qual è lo stipendio medio di uno sviluppatore Go negli Stati Uniti?"
+    },
+    {
+      "a": "A livello iniziale lo stipendio annuo è in genere tra 70.000 e 90.000 dollari. Esperienze di tirocinio, progetti personali e conoscenze di base del cloud aumentano le probabilità di partire vicino al limite superiore di questa fascia. Un portfolio solido può migliorare ulteriormente la posizione negoziale iniziale.",
+      "q": "Quanto guadagna uno sviluppatore Go junior?"
+    },
+    {
+      "a": "A livello senior la fascia tipica è tra 120.000 e 160.000 dollari, anche se la mediana degli annunci per ruoli senior si avvicina ai 200.000 dollari. L'esperienza con sistemi distribuiti su larga scala è il fattore che più spinge verso i massimi.",
+      "q": "Quanto guadagna uno sviluppatore Go senior?"
+    },
+    {
+      "a": "Kubernetes, gRPC, progettazione di microservizi, ottimizzazione di database e infrastruttura cloud sono molto richiesti. Anche la conoscenza del settore finanziario e fintech porta un premio, mentre progetti concreti rafforzano la negoziazione salariale. Progetti concreti e contributi open source rafforzano molto la candidatura.",
+      "q": "Quali competenze aumentano lo stipendio?"
+    }
+  ],
+  "headline": "Stipendio sviluppatore Go 2026: guida completa USA",
+  "hreflang": "it-IT",
+  "metaDescription": "Stipendio 2026 degli sviluppatori Go : dati, fasce per esperienza, differenze tra città e settori e strategie per aumentare la retribuzione. Leggi la guida.",
+  "niche": "tech",
+  "sections": [
+    {
+      "content": "Secondo i dati ZipRecruiter di novembre 2026, lo sviluppatore Go medio negli Stati Uniti guadagna circa 120.086 dollari all'anno, pari a circa 57,73 dollari l'ora. La maggior parte delle offerte si colloca tra 98.500 e 142.000 dollari, mentre il 10 percento più pagato arriva a 162.000 dollari annui.\n\nGlassdoor, invece, indica una media di circa 140.000 dollari. La differenza dipende dal campione e dal metodo di calcolo, quindi conviene confrontare più fonti invece di fidarsi di un solo numero. In ogni caso, gli sviluppatori Go restano tra i profili tecnici meglio retribuiti negli Stati Uniti.",
+      "title": "Lo stipendio medio nel 2026"
+    },
+    {
+      "content": "L'esperienza è il fattore che incide di più sulla retribuzione. A livello iniziale si va da 70.000 a 90.000 dollari, a livello intermedio da 90.000 a 120.000 dollari e a livello senior da 120.000 a 160.000 dollari all'anno. La mediana degli annunci per ruoli senior, tuttavia, si avvicina ai 200.000 dollari.\n\nGli sviluppatori con esperienza in sistemi distribuiti, infrastruttura cloud e ottimizzazione delle prestazioni sono particolarmente apprezzati. Conoscere solo la sintassi di Go non basta: progettare e gestire sistemi su larga scala è ciò che conta davvero in una trattativa salariale.",
+      "title": "Stipendi per livello di esperienza"
+    },
+    {
+      "content": "Nei grandi poli tecnologici come Silicon Valley e New York gli stipendi sono circa il 20-30 percento sopra la media nazionale. Il settore finanziario paga circa il 15 percento in più della media, e anche blockchain e fintech offrono retribuzioni elevate.\n\nGli sviluppatori Go in remoto per aziende statunitensi ricevono in genere l'85-95 percento dello stipendio di un collega in sede. Chi punta a un alto stipendio vivendo in una città più piccola dovrebbe quindi confrontare con attenzione le fasce retributive delle offerte remote.",
+      "title": "Differenze tra città e settori"
+    },
+    {
+      "content": "Il modo più affidabile per aumentare lo stipendio è acquisire competenze richieste dal mercato. Kubernetes, gRPC, progettazione di microservizi, ottimizzazione di database e sicurezza sono molto apprezzati dai datori di lavoro. Anche contributi open source e progetti personali solidi rafforzano una candidatura.\n\nQuando si cambia lavoro, è importante valutare la retribuzione totale, inclusi azioni e bonus, e non solo lo stipendio base. Per una trattativa interna, mostrare dati di mercato e presentare i propri risultati con numeri concreti resta la strategia più efficace.",
+      "title": "Come aumentare lo stipendio"
+    }
+  ],
+  "slug": "it-golang-developer-salary-2026",
+  "stats": [
+    {
+      "label": "Stipendio medio annuo",
+      "value": "circa 120.086 $"
+    },
+    {
+      "label": "Fascia più comune",
+      "value": "98.500–142.000 $"
+    },
+    {
+      "label": "Top 10 percento",
+      "value": "circa 162.000 $"
+    },
+    {
+      "label": "Tariffa oraria",
+      "value": "circa 57,73 $"
+    }
+  ],
+  "title": "Stipendio sviluppatore Go 2026: medie USA e fasce",
+  "translationGroupId": "golang-developer-salary-2026"
+}

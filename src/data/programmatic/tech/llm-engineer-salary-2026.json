@@ -1,0 +1,65 @@
+{
+  "badge": "LLM ENGINEER SALARY GUIDE",
+  "country": "US",
+  "faqs": [
+    {
+      "a": "Glassdoor puts average total pay near 160,000 dollars, while ZipRecruiter reports an average of about 142,663 dollars a year. Specialist guides place most mid-to-senior base pay between 150,000 and 265,000 dollars, so the realistic range depends heavily on seniority and employer type.",
+      "q": "What is the average LLM engineer salary in 2026?"
+    },
+    {
+      "a": "Junior LLM engineers typically earn 120,000 to 180,000 dollars in base pay, with one to two years of AI experience plus at least six months of hands-on LLM work. Production deployment experience, even on a small project, moves candidates toward the top of this band.",
+      "q": "How much does a junior LLM engineer earn?"
+    },
+    {
+      "a": "Mid-level base pay runs about 155,000 to 225,000 dollars, and senior base pay about 245,000 to 355,000 dollars. At frontier AI labs, total compensation can reach 480,000 to 750,000 dollars or more once equity vests. Remote roles and startups may pay differently, so compare total compensation carefully before deciding.",
+      "q": "What do mid-level and senior LLM engineers earn?"
+    },
+    {
+      "a": "Retrieval-augmented generation, fine-tuning, evaluation design, prompt engineering at scale, and production inference are the most valued skills. Employers also pay premiums for LangChain or LangGraph experience, agent frameworks, and a record of shipping LLM features to real users. Strong portfolios with shipped features consistently outperform certificates alone in hiring decisions.",
+      "q": "Which LLM skills command the highest pay?"
+    }
+  ],
+  "headline": "LLM Engineer Salary 2026: US Pay Guide",
+  "hreflang": "en-US",
+  "metaDescription": "LLM engineer salary in 2026: average pay near $160,000, junior to senior bands, frontier-lab pay and the skills that raise pay. Full US guide with ranges.",
+  "niche": "tech",
+  "sections": [
+    {
+      "content": "LLM engineering is one of the highest-paid software specializations of 2026, but the headline numbers vary widely by source. Glassdoor puts average total pay near 160,000 dollars, ZipRecruiter reports an average of about 142,663 dollars a year, and specialist staffing guides place most mid-to-senior base pay between 150,000 and 265,000 dollars.\n\nThe spread reflects a bimodal market: contractor postings and broad job boards pull averages down, while funded startups and frontier labs pull them sharply up. Comparing base pay and total compensation separately is essential before judging any offer.",
+      "title": "Average LLM engineer pay in 2026"
+    },
+    {
+      "content": "Junior LLM engineers with one to two years of AI experience and at least six months of hands-on LLM work typically earn 120,000 to 180,000 dollars in base pay. Mid-level engineers earn about 155,000 to 225,000 dollars, and senior engineers about 245,000 to 355,000 dollars in base pay.\n\nStaff and principal specialists can clear 300,000 dollars in base pay, with total compensation at frontier labs running past 700,000 dollars. Location matters too: San Francisco and Seattle add roughly 10 to 20 percent to national bands, driven by frontier-lab hiring.",
+      "title": "Pay by experience level"
+    },
+    {
+      "content": "The skills that command the largest premiums are retrieval-augmented generation, fine-tuning, evaluation design and production inference at scale. Employers also value LangChain and LangGraph experience, agent frameworks, guardrails and observability for LLM systems.\n\nA portfolio showing shipped LLM features matters more than certificates alone. Candidates who can describe retrieval quality, latency trade-offs and evaluation results from a real deployment consistently negotiate stronger offers than those with only tutorial projects.",
+      "title": "Skills that raise LLM pay"
+    },
+    {
+      "content": "To negotiate well, gather at least three data points for your level and city, and separate base pay from equity and bonuses. Frontier-lab offers look dramatically higher because equity dominates, while mid-market offers may be steadier but lower in total terms.\n\nAsk about evaluation ownership, on-call load and model costs, since these shape day-to-day work as much as pay does. Finally, target employers whose LLM work is core to revenue: they pay more and offer faster progression than companies treating AI as a side project.",
+      "title": "How to negotiate an LLM offer"
+    }
+  ],
+  "slug": "llm-engineer-salary-2026",
+  "stats": [
+    {
+      "label": "Average total pay",
+      "value": "~$160,000"
+    },
+    {
+      "label": "Mid-level base",
+      "value": "$155K–$225K"
+    },
+    {
+      "label": "Senior base",
+      "value": "$245K–$355K"
+    },
+    {
+      "label": "Frontier-lab total",
+      "value": "$480K–$750K+"
+    }
+  ],
+  "title": "LLM Engineer Salary 2026: US Pay & Bands Guide",
+  "translationGroupId": "llm-engineer-salary-2026"
+}
