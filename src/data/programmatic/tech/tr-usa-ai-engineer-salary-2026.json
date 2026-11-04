@@ -1,0 +1,65 @@
+{
+  "slug": "tr-usa-ai-engineer-salary-2026",
+  "niche": "tech",
+  "country": "TR",
+  "hreflang": "tr-TR",
+  "translationGroupId": "usa-ai-engineer-salary-2026",
+  "title": "ABD Yapay Zeka Mühendisi Maaşı 2026: Ücret Rehberi",
+  "metaDescription": "ABD yapay zeka mühendisi maaşı 2026 rehberi: seviyeye göre tipik ücretler, yapay zeka beceri primi, işe alım talebi ve role geçiş yolları. rehberi",
+  "headline": "ABD Yapay Zeka Mühendisi Maaşı 2026: Mühendisler Ne Kazanıyor?",
+  "badge": "YZ MAAŞ REHBERİ 2026",
+  "stats": [
+    {
+      "label": "Giriş düzeyi",
+      "value": "75.000–90.000 $"
+    },
+    {
+      "label": "Orta düzey",
+      "value": "130.000–150.000 $"
+    },
+    {
+      "label": "Kıdemli düzey",
+      "value": "180.000–220.000 $+"
+    },
+    {
+      "label": "YZ beceri primi",
+      "value": "2+ YZ becerisi için %43"
+    }
+  ],
+  "sections": [
+    {
+      "title": "2026'da yapay zeka mühendisleri ne kadar kazanıyor?",
+      "content": "2026'da ABD'de yapay zeka becerisine sahip yazılım mühendisleri belirgin bir ücret primi alıyor. Derlenen maaş verilerine göre giriş düzeyi yazılımcılar yaklaşık 75.000 ile 90.000 dolar, orta düzey mühendisler 130.000 ile 150.000 dolar, kıdemli mühendisler ise 180.000 ile 220.000 dolar veya daha fazla temel ücret alıyor.\n\nİki veya daha fazla yapay zeka becerisine sahip mühendisler, bu becerisi olmayan meslektaşlarına göre yaklaşık %43 daha fazla kazanıyor. Büyük teknoloji şirketlerinde hisse ve primler toplam ücretin büyük bölümünü oluşturduğu için toplam kazanç çok daha yüksek olabilir."
+    },
+    {
+      "title": "Yapay zeka becerileri neden daha fazla kazandırıyor?",
+      "content": "İşverenler yalnızca sohbet robotu kullanan değil, büyük dil modelleri, geri getirme sistemleri, ajanlar ve üretim yapay zeka altyapısıyla ürün geliştiren mühendislere ödeme yapıyor. 2026 piyasası LLM entegrasyonu, MLOps, bulut altyapısı ve güvenlik mühendisliğini ödüllendiriyor.\n\nPwC'nin 2026 Küresel YZ İşleri Barometresi, yapay zeka becerisi isteyen işlerin benzer rollere göre ortalama %62 daha yüksek ücret ilan ettiğini bildiriyor. Bu prim kıtlığı yansıtıyor: kanıtlanmış yapay zeka geliştiricilerine talep, üretim deneyimi olan mühendis arzını hâlâ aşıyor."
+    },
+    {
+      "title": "Hangi roller ve beceriler işe alımda öne çıkıyor?",
+      "content": "Yazılım mühendisi ilanları 2026'da yaklaşık %30 arttı ve bu artışın büyük bölümünü yapay zeka destekli roller sağladı. En çok talep gören işler arasında yapay zeka ajanı geliştirme, LLM uygulama mühendisliği, veri mühendisliği, bulut altyapısı ve siber güvenlik bulunuyor.\n\nGitHub Copilot, Cursor ve LLM API'leri artık günlük geliştirme işinin temel parçalarıdır. Yapay zeka destekli kodu yalnızca üretmekle kalmayıp güvenli biçimde inceleyebilen, test edebilen ve yayınlayabilen mühendisler mülakatlarda en çok öne çıkıyor."
+    },
+    {
+      "title": "Daha yüksek ücretli bir yapay zeka rolüne nasıl geçilir?",
+      "content": "Gerçek bir sorunu çözen bir portföy projesiyle başlayın: yalnızca bir demo değil, geri getirme, değerlendirme ve yayına alma içeren bir LLM uygulaması. Bulut yayını, test ve gözlemlenebilirlik ekleyin, ardından işe alım yöneticileri için ödünleşimleri ve maliyetleri açıkça belgeleyin.\n\nMevcut gücünüze uyan rolleri hedefleyin; örneğin arka uç mühendisleri LLM API'lerine, veri mühendisleri geri getirme sistemlerine geçebilir. Yalnızca temel ücret üzerinden değil, hisse ve prim dahil toplam ücret üzerinden pazarlık yapın, çünkü temel maaş yapay zeka rollerinin kazancını eksik gösterir."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "2026'da ABD'de ortalama yapay zeka mühendisi maaşı nedir?",
+      "a": "Giriş düzeyi yazılımcılar genellikle 75.000 ile 90.000 dolar, orta düzey mühendisler ortalama 130.000 ile 150.000 dolar, kıdemli mühendisler ise 180.000 ile 220.000 dolar veya daha fazla temel ücret alır. İki veya daha fazla yapay zeka becerisi olanlar yaklaşık %43 daha fazla kazanır."
+    },
+    {
+      "q": "Yapay zeka becerileri yazılımcı maaşını gerçekten artırıyor mu?",
+      "a": "Evet, birden fazla 2026 maaş kaynağı büyük bir prim gösteriyor. PwC, yapay zeka becerisi isteyen işlerde ortalama %62 ilan edilen ücret primi bildirirken, derlenen ilanlar iki veya daha fazla yapay zeka becerisi olan mühendislerde yaklaşık %43 daha yüksek ücret gösteriyor."
+    },
+    {
+      "q": "2026'da en çok talep gören yapay zeka becerileri hangileridir?",
+      "a": "En çok talep gören beceriler arasında LLM entegrasyonu, geri getirmeyle güçlendirilmiş üretim, yapay zeka ajanı geliştirme, MLOps, bulut altyapısı ve güvenlik mühendisliği bulunuyor. İşverenler ayrıca komut tasarımı, değerlendirme, test ve yapay zeka sistemlerinin güvenli yayınına değer veriyor. Ayrıca güçlü yazılım mühendisliği temelleri, sistem tasarımı ve güvenli yayına alma becerileri de aranıyor."
+    },
+    {
+      "q": "Bir yazılımcı yapay zeka rollerine nasıl girebilir?",
+      "a": "Geri getirme, değerlendirme ve bulut yayını içeren gerçek bir LLM veya ajan projesi geliştirin, ardından ödünleşimlerini açıkça anlatın. Mevcut gücünüze yakın rollere odaklanın, yapay zeka sistemleri için sistem tasarımı çalışın ve yalnızca temel maaş değil hisse ve prim dahil toplam ücret üzerinden pazarlık yapın."
+    }
+  ]
+}
