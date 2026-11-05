@@ -1,0 +1,65 @@
+{
+  "badge": "ARMY RANGER REKRUTIERUNG",
+  "country": "DE",
+  "faqs": [
+    {
+      "a": "Um Army Ranger zu werden, müssen Sie US-Bürger im Alter von 17 bis 34 Jahren sein, einen Schulabschluss besitzen und mindestens 105 Punkte im General-Technical-Teil des ASVAB erreichen. Außerdem brauchen Sie eine Sicherheitsfreigabe, müssen die medizinischen Standards erfüllen und den Fitnesstest bestehen, bevor die Auswahl beginnt.",
+      "q": "Was braucht man, um Army Ranger zu werden?"
+    },
+    {
+      "a": "Ein Option-40-Vertrag ist die direkteste Route für neue Rekruten, meist verbunden mit der Infanterielaufbahn 11X. Er garantiert einen Platz in der Fallschirmspringerschule und im Ranger Assessment and Selection Program. Dienende Soldaten können sich alternativ über ihre Vorgesetzten freiwillig für RASP melden und durchlaufen dann eine Prüfung.",
+      "q": "Was ist ein Option-40-Vertrag und warum ist er wichtig?"
+    },
+    {
+      "a": "RASP 1 dauert etwa acht Wochen für Mannschaften vom Private bis zum Sergeant, während RASP 2 etwa drei Wochen für Staff Sergeants bis Majors und Offiziere dauert. Beide Kurse prüfen Fitness, Ausdauer, Führung und Leistung unter extremem Druck. Zur Vorbereitung gehören Marschieren mit Gepäck, Schwimmen, Laufen und Führungstraining lange vor dem Antritt.",
+      "q": "Wie lange dauert RASP?"
+    },
+    {
+      "a": "Die Ranger School dauert etwa 62 Tage in den Phasen Darby, Mountain und Florida, und Absolventen erhalten das Ranger Tab. Der Dienst im 75th Ranger Regiment erfordert den bestandenen RASP, während das Tab selbst eine Führungsqualifikation ist, die Soldaten aus vielen Einheiten offensteht.",
+      "q": "Was ist der Unterschied zwischen RASP und Ranger School?"
+    }
+  ],
+  "headline": "US Army Ranger 2026: Der Weg ins 75th Ranger Regiment",
+  "hreflang": "de-DE",
+  "metaDescription": "Army Ranger werden 2026: Alter 17–34, ASVAB GT 105, Option-40-Vertrag, RASP-Auswahl und Ranger School. Voraussetzungen, Fitnesstest und Ablauf im Überblick.",
+  "niche": "defense",
+  "sections": [
+    {
+      "content": "Army Ranger dienen im 75th Ranger Regiment, der Elite-Leichtinfanterie der US-Armee mit Sitz in Fort Benning, Georgia. Das Regiment umfasst mehr als 110 Offiziers- und Mannschaftslaufbahnen, von Infanterie und Sanitätern bis zu Mechanikern und Fernmeldern, die alle denselben hohen Standard erfüllen müssen.\n\nRanger führen Einsätze tief im feindlichen Gebiet durch, darunter Razzien, die Einnahme von Flugplätzen und Aufklärung. Kleine Teams arbeiten mit wenig Unterstützung, deshalb muss jedes Mitglied körperlich fit, diszipliniert und unter Stress zuverlässig sein.",
+      "title": "Was Army Ranger tun"
+    },
+    {
+      "content": "Um sich zu bewerben, müssen Sie US-Bürger im Alter von 17 bis 34 Jahren sein, einen Schulabschluss besitzen und mindestens 105 Punkte im General-Technical-Teil des ASVAB erreichen. Mannschaften brauchen eine Sicherheitsfreigabe der Stufe Secret, Offiziere eine der Stufe Top Secret, und Drogen- oder Alkoholvorfälle in den letzten 24 Monaten sind ausgeschlossen.\n\nDer schnellste Weg für neue Rekruten ist ein Option-40-Vertrag, meist mit der Infanteriebezeichnung 11X, der einen Platz in der Fallschirmspringerschule und im RASP garantiert. Dienende Soldaten können sich ebenfalls freiwillig melden, sofern sie von den Regimentsführern geprüft werden, ein Vorgang, der acht bis zwölf Wochen dauern kann.",
+      "title": "Voraussetzungen und der Option-40-Weg"
+    },
+    {
+      "content": "Der Weg für neue Rekruten führt über 22 Wochen Infanterie-Grundausbildung (OSUT), dann drei Wochen Fallschirmspringerschule und schließlich RASP. RASP 1 dauert etwa acht Wochen für Mannschaften vom Private bis zum Sergeant, während Offiziere und höhere Unteroffiziere RASP 2 besuchen, einen dreiwöchigen Kurs mit Schwerpunkt Führung.\n\nVor RASP müssen Bewerber einen Fitnesstest bestehen: 58 Liegestütze, ein Fünf-Meilen-Lauf in höchstens 40 Minuten, sechs Klimmzüge, 15 Meter Schwimmen in Uniform und ein Zwölf-Meilen-Marsch mit 35 Pfund Gepäck in unter drei Stunden. RASP selbst prüft Ausdauer, Treffsicherheit, Taktik kleiner Einheiten und Führung bei Schlafentzug und ständigem Druck.",
+      "title": "RASP: Ablauf und Fitnesstest"
+    },
+    {
+      "content": "Nach RASP können Soldaten sich freiwillig für die Ranger School melden, einen 62-tägigen Führungskurs in den Phasen Darby, Mountain und Florida, der mit dem Ranger Tab endet. Das Tab ist eine Qualifikation, keine Verwendung: Viele Soldaten mit Tab dienen in regulären Einheiten, während der Dienst im Regiment den bestandenen RASP voraussetzt.\n\nFrauen sind seit der Öffnung aller Kampfverwendungen für die Ranger School und das Regiment zugelassen und müssen dieselben Standards erfüllen wie Männer. Wer RASP oder die Ranger School nicht besteht, wird in der Regel nach den Bedürfnissen der Armee versetzt, worauf Bewerber sich einstellen sollten.",
+      "title": "Ranger School und das Ranger Tab"
+    }
+  ],
+  "slug": "de-us-army-ranger-recruitment-2026",
+  "stats": [
+    {
+      "label": "Alter",
+      "value": "17–34 Jahre"
+    },
+    {
+      "label": "ASVAB GT",
+      "value": "105 oder mehr"
+    },
+    {
+      "label": "RASP 1",
+      "value": "Etwa 8 Wochen"
+    },
+    {
+      "label": "Ranger School",
+      "value": "Etwa 62 Tage"
+    }
+  ],
+  "title": "US Army Ranger 2026: Voraussetzungen, RASP & Auswahl",
+  "translationGroupId": "us-army-ranger-recruitment-2026"
+}

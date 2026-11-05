@@ -1,0 +1,65 @@
+{
+  "badge": "GUIDE OFFICIER MARINE",
+  "country": "FR",
+  "faqs": [
+    {
+      "a": "Oui, tous les officiers de l'US Navy doivent détenir au moins une licence d'une université reconnue. Les diplômés peuvent postuler directement à l'OCS de Newport, tandis que les étudiants peuvent rejoindre le NROTC pendant leurs études. Certaines spécialités médicales ou juridiques acceptent aussi des diplômes professionnels spécifiques.",
+      "q": "Faut-il un diplôme pour devenir officier de la Marine ?"
+    },
+    {
+      "a": "L'âge limite dépend de la spécialité choisie. Pour la guerre de surface et le ravitaillement, les candidats peuvent postuler jusqu'à 39 ans. Les pilotes doivent être nommés avant 32 ans, et les SEAL ou les spécialistes du déminage acceptent généralement les candidats jusqu'à 28 ou 29 ans.",
+      "q": "Quel âge faut-il avoir pour rejoindre la Marine comme officier ?"
+    },
+    {
+      "a": "L'école des candidats officiers de Newport, dans le Rhode Island, dure environ 13 semaines. Les candidats y suivent une formation intensive en leadership militaire, navigation, systèmes d'armes navals, contrôle des avaries et conditionnement physique exigeant. Les diplômés commencent ensuite leur service comme enseignes.",
+      "q": "Combien de temps dure l'école des candidats officiers (OCS) ?"
+    },
+    {
+      "a": "L'OCS est un programme de 13 semaines pour les diplômés universitaires, tandis que le NROTC forme les officiers pendant leurs études dans une université civile, avec des cours navals et un entraînement d'été. Les deux voies mènent au grade d'enseigne, mais le NROTC offre une bourse pendant les études.",
+      "q": "Quelle est la différence entre l'OCS et le NROTC ?"
+    }
+  ],
+  "headline": "Officier de l'US Navy 2026 : conditions, OCS et carrière",
+  "hreflang": "fr-FR",
+  "metaDescription": "Devenir officier de l'US Navy en 2026 : diplôme, âge de 18 à 39 ans, école OCS de 13 semaines à Newport, test OAR et préparation physique. Guide complet.",
+  "niche": "defense",
+  "sections": [
+    {
+      "content": "La Marine américaine forme ses officiers par quatre voies principales : l'Académie navale d'Annapolis (USNA), le programme NROTC dans les universités civiles, l'école des candidats officiers de Newport (OCS) pour les diplômés, et la nomination directe (DCO) pour les spécialités comme la médecine ou le droit. L'OCS de Newport, dans le Rhode Island, dure 13 semaines intensives.\n\nPendant l'OCS, les candidats étudient la discipline militaire, l'histoire navale, le contrôle des avaries, la navigation et les principes du leadership tactique. Le programme exige une condition physique élevée et une capacité à décider vite sous pression, car les futurs officiers commanderont des équipages dès leur première affectation.",
+      "title": "Les quatre voies vers le grade d'officier"
+    },
+    {
+      "content": "Pour postuler comme officier, vous devez être citoyen américain, détenir au moins une licence d'une université reconnue et avoir entre 18 et 39 ans selon la spécialité choisie. Les candidats passent un examen médical complet du DoDMERB, qui vérifie le cœur, la vue, l'orthopédie et la santé neurologique.\n\nLes pilotes doivent être nommés avant 32 ans, tandis que les SEAL et les spécialistes du déminage acceptent généralement les candidats jusqu'à 28 ou 29 ans. Un casier judiciaire vierge et l'éligibilité à une habilitation de sécurité sont également exigés pour la plupart des spécialités.",
+      "title": "Conditions d'éligibilité et santé"
+    },
+    {
+      "content": "Les candidats officiers passent le test OAR (Officer Aptitude Rating), un examen informatisé qui mesure le raisonnement mathématique, la compréhension écrite et la compréhension mécanique. Le score minimal de qualification varie de 42 à 50 selon la spécialité, et les filières très compétitives comme l'aviation navale exigent souvent plus de 50.\n\nLes militaires du rang qui veulent devenir officiers passent l'ASVAB et doivent dépasser 110 au score General Technical. Une bonne moyenne universitaire renforce fortement le dossier, surtout pour les spécialités sélectives comme le renseignement ou la guerre de surface.",
+      "title": "Le test OAR et l'ASVAB"
+    },
+    {
+      "content": "Les candidats doivent réussir le test de préparation physique (PRT) de la Marine, noté selon l'âge et le sexe. Il comprend une course de 1,5 mile, une planche avant de deux minutes et un maximum de pompes en deux minutes. Obtenir une mention Bien ou Excellent donne un avantage décisif devant le jury de sélection.\n\nLa préparation doit commencer plusieurs mois avant la candidature : course régulière, musculation du tronc et natation. Les candidats qui échouent au PRT peuvent voir leur dossier rejeté, même avec d'excellents résultats académiques.",
+      "title": "Le test physique PRT de la Marine"
+    }
+  ],
+  "slug": "fr-us-navy-officer-recruitment-2026",
+  "stats": [
+    {
+      "label": "Durée de l'OCS",
+      "value": "13 semaines"
+    },
+    {
+      "label": "Lieu de l'OCS",
+      "value": "Newport, Rhode Island"
+    },
+    {
+      "label": "Diplôme requis",
+      "value": "Licence universitaire"
+    },
+    {
+      "label": "Premier grade",
+      "value": "Enseigne (O-1)"
+    }
+  ],
+  "title": "Officier de la Marine américaine 2026 : guide complet",
+  "translationGroupId": "us-navy-officer-recruitment-2026"
+}

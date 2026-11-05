@@ -1,0 +1,73 @@
+{
+  "badge": "GUÍA NÓMADA DIGITAL",
+  "country": "ES",
+  "faqs": [
+    {
+      "a": "En 2026, el solicitante principal debe demostrar al menos 2.849 euros al mes, el 200% del salario mínimo español. El primer familiar añade unos 1.068 euros mensuales y cada familiar adicional unos 356 euros. El umbral cambia cada año cuando España actualiza el SMI.",
+      "q": "¿Cuál es el ingreso mínimo para la visa de nómada digital de España en 2026?"
+    },
+    {
+      "a": "Sí, hay dos vías: un visado de un año en el consulado del país de origen, o un permiso de residencia de hasta tres años solicitando desde España a través de la UGE. La renovación dura dos años en ambos casos, siempre que se mantengan las condiciones originales.",
+      "q": "¿Se puede solicitar la visa desde dentro de España?"
+    },
+    {
+      "a": "Se necesita un título universitario o experiencia profesional equivalente, además de al menos tres meses de trabajo remoto para una empresa o clientes extranjeros. También se exige seguro médico, antecedentes penales limpios y un contrato o acuerdos con clientes que acrediten la actividad remota.",
+      "q": "¿Qué experiencia o titulación se necesita?"
+    },
+    {
+      "a": "Sí, pero con un límite estricto: como máximo el 20% de los ingresos anuales puede proceder de clientes o empleadores españoles. La UGE audita este tope en las renovaciones de 2026, y superarlo puede provocar la denegación de la renovación o el cambio a un permiso de trabajo estándar.",
+      "q": "¿Pueden los autónomos ganar dinero de clientes españoles?"
+    },
+    {
+      "a": "La ley Beckham es un régimen fiscal especial que grava los ingresos hasta 600.000 euros a un tipo fijo del 24% durante un máximo de seis años. Los titulares de la visa de nómada digital pueden solicitarlo en los primeros seis meses de estancia, lo que reduce mucho la carga fiscal frente a los tipos progresivos.",
+      "q": "¿Qué es la ley Beckham y se aplica a los nómadas digitales?"
+    }
+  ],
+  "headline": "Visa de nómada digital España 2026: requisitos y renovación",
+  "hreflang": "es-ES",
+  "metaDescription": "Visa de nómada digital en España 2026: ingresos de 2.849 € al mes, permiso de 3 años, renovación de 2 años y ley Beckham. Requisitos y solicitud.",
+  "niche": "jobs",
+  "sections": [
+    {
+      "content": "La visa de nómada digital de España, creada por la Ley de Startups 28/2022, permite a trabajadores remotos de fuera de la Unión Europea vivir en España mientras trabajan para empresas o clientes extranjeros. Es una de las rutas más populares de Europa para profesionales remotos.\n\nHay dos vías: un visado de un año en el consulado, renovable por dos años, o un permiso de residencia de hasta tres años si se solicita desde España. En ambos casos, la renovación es de dos años mientras se sigan cumpliendo las condiciones.",
+      "title": "Qué es la visa de nómada digital"
+    },
+    {
+      "content": "En 2026, el solicitante principal debe demostrar al menos 2.849 euros al mes, es decir, el 200% del salario mínimo interprofesional (SMI). El SMI de 2026 es de 1.221 euros al mes en 14 pagas, o 17.094 euros al año, según el Real Decreto 126/2026.\n\nCada familiar añade un porcentaje del SMI: el primer familiar suma unos 1.068 euros al mes y cada familiar adicional unos 356 euros. Los ingresos se acreditan con extractos bancarios o nóminas de los últimos meses, y el umbral se actualiza cada año con el SMI.",
+      "title": "El umbral de ingresos en 2026"
+    },
+    {
+      "content": "Para solicitarla hay que demostrar trabajo remoto para una empresa o clientes fuera de España, con al menos tres meses de relación laboral o de actividad como autónomo. También se exige título universitario o experiencia profesional equivalente, seguro médico y antecedentes penales limpios.\n\nLos autónomos deben respetar un límite clave: como máximo el 20% de sus ingresos anuales puede proceder de clientes españoles. La UGE audita este límite de forma activa en las renovaciones de 2026, por lo que conviene vigilarlo desde el primer día.",
+      "title": "Requisitos y documentación"
+    },
+    {
+      "content": "Los titulares de la visa pueden acogerse al régimen especial de la ley Beckham: un tipo fijo del 24% sobre los ingresos hasta 600.000 euros durante un máximo de seis años. La solicitud debe presentarse en los primeros seis meses de estancia en España.\n\nPara renovar hay que acreditar al menos 183 días de presencia física al año en España, ingresos continuados y cumplimiento fiscal y de Seguridad Social. La solicitud de renovación se presenta desde 60 días antes del vencimiento y hasta 90 días después.",
+      "title": "Impuestos y la ley Beckham"
+    }
+  ],
+  "slug": "es-spain-digital-nomad-visa-2026",
+  "stats": [
+    {
+      "label": "Ingreso mensual",
+      "value": "2.849 € (200% SMI)"
+    },
+    {
+      "label": "Permiso en España",
+      "value": "3 años"
+    },
+    {
+      "label": "Visa consular",
+      "value": "1 año"
+    },
+    {
+      "label": "Renovación",
+      "value": "2 años"
+    },
+    {
+      "label": "Límite ingresos españoles",
+      "value": "20%"
+    }
+  ],
+  "title": "Visa nómada digital España 2026: ingresos y trámites",
+  "translationGroupId": "spain-digital-nomad-visa-2026"
+}

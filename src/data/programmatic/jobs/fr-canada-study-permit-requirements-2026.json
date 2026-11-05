@@ -1,0 +1,65 @@
+{
+  "badge": "GUIDE PERMIS D'ÉTUDES",
+  "country": "FR",
+  "faqs": [
+    {
+      "a": "Depuis le 1er septembre 2026, un candidat seul hors Québec doit montrer 23 448 $ CA pour une année de frais de subsistance, en plus des frais de scolarité et du voyage. Au Québec, le montant est de 24 617 $ CA. IRCC révise ces seuils chaque année selon le coût de la vie.",
+      "q": "Combien de fonds faut-il prouver pour un permis d'études en 2026 ?"
+    },
+    {
+      "a": "Non, le certificat de placement garanti n'est pas obligatoire, mais c'est une preuve de fonds très acceptée. IRCC accepte aussi les relevés bancaires, les lettres de prêt étudiant, les preuves de bourse et les reçus de paiement des frais de scolarité et du logement.",
+      "q": "Le CPG est-il obligatoire pour un permis d'études canadien ?"
+    },
+    {
+      "a": "Oui, la plupart des candidats au premier cycle et au collégial doivent joindre une PAL de la province où se trouve leur établissement. Une PAL délivrée en 2026 est valable jusqu'au 31 décembre 2026 et ne peut pas être réutilisée d'une année de plafond à l'autre.",
+      "q": "Faut-il une lettre d'attestation provinciale (PAL) en 2026 ?"
+    },
+    {
+      "a": "Oui, depuis le 1er janvier 2026, les étudiants qui commencent une maîtrise ou un doctorat dans un établissement public désigné n'ont plus besoin de PAL. Les élèves du primaire et du secondaire et certains groupes prioritaires du gouvernement sont également exemptés.",
+      "q": "Les étudiants de maîtrise et de doctorat sont-ils exemptés de la PAL ?"
+    }
+  ],
+  "headline": "Permis d'études Canada 2026 : exigences et preuve de fonds",
+  "hreflang": "fr-FR",
+  "metaDescription": "Permis d'études Canada 2026 : lettre d'acceptation EED, attestation provinciale PAL, 23 448 $ CA de fonds et frais de 150 $. Guide complet des démarches.",
+  "niche": "jobs",
+  "sections": [
+    {
+      "content": "Le permis d'études est le document dont les étudiants internationaux ont besoin pour suivre un programme de plus de six mois dans un établissement canadien. Il est délivré par Immigration, Réfugiés et Citoyenneté Canada (IRCC) et s'accompagne en général d'un visa de résident temporaire ou d'une autorisation de voyage électronique.\n\nPour être admissible, il faut une lettre d'acceptation d'un établissement d'enseignement désigné (EED), prouver que l'on peut payer les frais de scolarité et les frais de subsistance, et, pour la plupart des candidats, joindre une lettre d'attestation provinciale (PAL).",
+      "title": "Qu'est-ce que le permis d'études ?"
+    },
+    {
+      "content": "Depuis le 22 janvier 2024, la plupart des demandes de permis d'études doivent inclure une PAL (ou TAL dans les territoires), délivrée par la province où se trouve l'établissement. Le Canada applique un plafond national : environ 408 000 permis devraient être délivrés en 2026.\n\nDepuis le 1er janvier 2026, les étudiants qui commencent une maîtrise ou un doctorat dans un EED public sont exemptés de la PAL, tout comme les élèves du primaire et du secondaire. Une PAL délivrée en 2026 est valable jusqu'au 31 décembre 2026.",
+      "title": "La PAL et le plafond national"
+    },
+    {
+      "content": "Depuis le 1er septembre 2026, un candidat seul qui étudie hors Québec doit montrer au moins 23 448 $ CA pour une année de frais de subsistance, en plus des frais de scolarité de la première année et du voyage. Le montant augmente avec chaque membre de la famille qui accompagne l'étudiant.\n\nLes preuves acceptées incluent un certificat de placement garanti (CPG), les relevés bancaires des derniers mois, une lettre de prêt étudiant, une preuve de bourse ou un reçu de paiement des frais de scolarité et du logement.",
+      "title": "La preuve de fonds en 2026"
+    },
+    {
+      "content": "Le permis d'études coûte 150 $ CA par personne, plus 85 $ CA pour la biométrie. La demande se fait en ligne sur le site d'IRCC, avec le passeport, les photos, la lettre d'acceptation, la PAL et les preuves de fonds. Au Québec, il faut aussi un Certificat d'acceptation du Québec (CAQ).\n\nLes délais varient selon le pays de dépôt : par exemple, le délai affiché par IRCC pour les demandes déposées depuis le Pakistan était de 7 semaines en septembre 2026. Vérifiez toujours les chiffres en vigueur sur canada.ca avant de déposer votre demande.",
+      "title": "Démarches, frais et délais"
+    }
+  ],
+  "slug": "fr-canada-study-permit-requirements-2026",
+  "stats": [
+    {
+      "label": "Fonds de subsistance",
+      "value": "23 448 $ CA / an"
+    },
+    {
+      "label": "Frais",
+      "value": "150 $ CA + 85 $ biométrie"
+    },
+    {
+      "label": "PAL",
+      "value": "Requise (1er cycle)"
+    },
+    {
+      "label": "Plafond 2026",
+      "value": "408 000 permis"
+    }
+  ],
+  "title": "Permis d'études Canada 2026 : conditions et fonds",
+  "translationGroupId": "canada-study-permit-requirements-2026"
+}

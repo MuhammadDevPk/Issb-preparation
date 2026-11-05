@@ -1,0 +1,69 @@
+{
+  "badge": "GEHALT GUIDE 2026",
+  "country": "DE",
+  "faqs": [
+    {
+      "a": "Das Durchschnittsgehalt liegt 2026 bei etwa 70.000 bis 79.000 Euro brutto pro Jahr. Berufseinsteiger verdienen rund 45.000 bis 58.000 Euro, Entwickler mit mittlerer Erfahrung etwa 60.000 bis 75.000 Euro und Senior-Entwickler 75.000 bis 110.000 Euro, je nach Stadt und Spezialisierung.",
+      "q": "Was ist das Durchschnittsgehalt für Softwareentwickler in Deutschland 2026?"
+    },
+    {
+      "a": "München zahlt mit rund 82.000 Euro Durchschnitt am besten, gefolgt von Frankfurt, Hamburg und Berlin. In Berlin gibt es die meisten Start-up-Jobs, während München die höchsten Durchschnittsgehälter bietet. Kleinere Städte zahlen weniger, haben aber deutlich niedrigere Mieten, und Remote-Arbeit kann beides verbinden.",
+      "q": "Welche deutschen Städte zahlen Softwareentwicklern am meisten?"
+    },
+    {
+      "a": "Bei 60.000 Euro brutto bleiben etwa 35.000 bis 38.000 Euro netto pro Jahr übrig. Die Gesamtbelastung aus Einkommensteuer und vier Pflichtversicherungen liegt bei rund 40 Prozent. Die genaue Nettohöhe hängt auch von Steuerklasse, Kirchensteuer und Krankenversicherung ab, und dafür sind alle Sozialleistungen enthalten.",
+      "q": "Wie viel Steuern zahlen Softwareentwickler in Deutschland?"
+    },
+    {
+      "a": "Ja, über die Blaue Karte EU, das Fachkräftevisum oder die Chancenkarte. Die Blaue Karte verlangt 2026 ein Gehalt von 48.300 Euro, in Mangelberufen etwa 43.760 Euro. Ein anerkannter Abschluss ist nötig, und in internationalen Teams reicht oft Englisch, während Deutsch die Karrierechancen verbessert.",
+      "q": "Können Nicht-EU-Entwickler in Deutschland arbeiten?"
+    },
+    {
+      "a": "Typische Vorteile sind 20 bis 30 Urlaubstage, flexible Arbeitszeiten, Homeoffice, betriebliche Altersvorsorge und Weiterbildungsbudgets. Viele Firmen bieten außerdem Aktienoptionen, Boni, kostenlose Verpflegung oder Zuschüsse zum Nahverkehr an. Dazu kommen Krankenversicherung, Rentenversicherung und Arbeitslosenversicherung, die in den Sozialabgaben enthalten sind. Auch ein 13. Gehalt oder ein Jahresbonus ist in vielen Unternehmen üblich.",
+      "q": "Welche Vorteile bieten Tech-Jobs in Deutschland?"
+    }
+  ],
+  "headline": "Softwareentwickler-Gehalt Deutschland 2026: Städte & Level",
+  "hreflang": "de-DE",
+  "metaDescription": "Softwareentwickler-Gehalt in Deutschland 2026: Junior 45.000–58.000 €, Senior 75.000–110.000 €, München am besten bezahlt. Städte, Steuern und Vorteile.",
+  "niche": "tech",
+  "sections": [
+    {
+      "content": "Softwareentwickler in Deutschland verdienen 2026 im Durchschnitt etwa 70.000 bis 79.000 Euro brutto pro Jahr. Die Spanne ist groß: Berufseinsteiger starten bei rund 45.000 bis 58.000 Euro, während erfahrene Senior-Entwickler 75.000 bis 110.000 Euro erreichen. Die Zahlen stammen aus Gehaltsstudien von Ravio, Glassdoor und Levels.fyi.\n\nKI- und Cloud-Spezialisten erhalten einen Aufschlag von etwa 12 bis 30 Prozent gegenüber Generalisten auf demselben Level. Auch die Unternehmensgröße spielt eine Rolle: Große Tech-Unternehmen und DAX-Konzerne zahlen oft deutlich mehr als kleine Agenturen oder Start-ups.",
+      "title": "Durchschnittsgehalt 2026"
+    },
+    {
+      "content": "München ist mit einem Durchschnitt von etwa 82.000 Euro die bestbezahlte Stadt für Softwareentwickler, gefolgt von Frankfurt, Hamburg und Berlin. In Berlin liegt der Durchschnitt etwas niedriger, dafür gibt es dort die meisten Start-up-Jobs und internationale Teams.\n\nKleinere Städte wie Leipzig oder Dresden zahlen weniger, bieten aber deutlich niedrigere Mieten. Wer remote arbeitet, kann ein Münchner Gehalt mit Lebenshaltungskosten einer kleineren Stadt kombinieren, sofern der Arbeitgeber das erlaubt.",
+      "title": "Städtevergleich: Wo zahlt man am besten?"
+    },
+    {
+      "content": "Bei einem Bruttogehalt von 60.000 Euro bleiben nach Steuern und Sozialabgaben etwa 35.000 bis 38.000 Euro netto pro Jahr übrig. Deutschland hat hohe Abgaben: Einkommensteuer plus vier Pflichtversicherungen ergeben bei diesem Gehalt eine Gesamtbelastung von rund 40 Prozent.\n\nDafür sind Krankenversicherung, Rentenversicherung und Arbeitslosenversicherung inklusive. Viele Arbeitgeber zahlen zusätzlich eine betriebliche Altersvorsorge, Jobticket oder Homeoffice-Pauschale, was das Gesamtpaket verbessert.",
+      "title": "Steuern, Netto und Sozialabgaben"
+    },
+    {
+      "content": "Nicht-EU-Entwickler können über die Blaue Karte EU, das Fachkräftevisum oder die Chancenkarte nach Deutschland kommen. Für die Blaue Karte liegt die Gehaltsschwelle 2026 bei 48.300 Euro, in Mangelberufen bei etwa 43.760 Euro. Ein anerkannter Abschluss oder eine vergleichbare Qualifikation ist Voraussetzung.\n\nTypische Zusatzleistungen sind 20 bis 30 Urlaubstage, flexible Arbeitszeiten, Homeoffice und Weiterbildungsbudgets. Englisch reicht in vielen internationalen Teams aus, aber Deutschkenntnisse verbessern die Karrierechancen und das Gehalt deutlich.",
+      "title": "Arbeiten als Nicht-EU-Entwickler"
+    }
+  ],
+  "slug": "de-germany-software-engineer-salary-2026",
+  "stats": [
+    {
+      "label": "Junior (0–2 Jahre)",
+      "value": "45.000–58.000 €"
+    },
+    {
+      "label": "Senior (6–10 Jahre)",
+      "value": "75.000–110.000 €"
+    },
+    {
+      "label": "Beste Stadt",
+      "value": "München ~82.000 €"
+    },
+    {
+      "label": "Urlaub",
+      "value": "20–30 Tage"
+    }
+  ],
+  "title": "Softwareentwickler Gehalt Deutschland 2026: Überblick",
+  "translationGroupId": "germany-software-engineer-salary-2026"
+}

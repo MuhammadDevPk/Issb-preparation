@@ -1,0 +1,69 @@
+{
+  "badge": "GUÍA CUERPO DE MARINES",
+  "country": "ES",
+  "faqs": [
+    {
+      "a": "Para alistarse como tropa hay que tener entre 17 y 28 años, y los menores de 18 necesitan el consentimiento de sus padres. Los aspirantes a oficial pueden ser algo mayores según el programa: la OCS acepta candidatos hasta los 28 años en la mayoría de los casos, con excepciones limitadas.",
+      "q": "¿Cuál es el límite de edad del Cuerpo de Marines en 2026?"
+    },
+    {
+      "a": "La Prueba de Fuerza Inicial mide la condición física mínima antes del boot camp. Incluye dominadas o flexiones, abdominales y una carrera de 1,5 millas con tiempos límite según la edad y el sexo. Superarla demuestra que el aspirante está listo para soportar el entrenamiento básico.",
+      "q": "¿Qué es la Prueba de Fuerza Inicial (IST)?"
+    },
+    {
+      "a": "Sí, los residentes permanentes legales (titulares de la tarjeta verde) pueden alistarse en el Cuerpo de Marines, aunque solo en ciertas especialidades y sin acceso a puestos que exigen autorización de seguridad. Para ser oficial es obligatorio ser ciudadano estadounidense, sin excepciones.",
+      "q": "¿Pueden alistarse los residentes permanentes?"
+    },
+    {
+      "a": "El boot camp del Cuerpo de Marines dura 13 semanas, el entrenamiento básico más largo de las fuerzas armadas estadounidenses. Se realiza en Parris Island o en San Diego, y termina con The Crucible, una prueba final de 54 horas que marca la transformación de recluta a Marine.",
+      "q": "¿Cuánto dura el boot camp de los Marines?"
+    },
+    {
+      "a": "La vía más directa para graduados es la OCS de Quantico, un curso de 10 semanas que evalúa liderazgo y resistencia. También existen la Academia Naval, el NROTC y el programa PLC para estudiantes universitarios. Tras la OCS, todos los oficiales cursan la Escuela Básica de seis meses.",
+      "q": "¿Cómo se llega a oficial de Marines en 2026?"
+    }
+  ],
+  "headline": "Cuerpo de Marines 2026: requisitos, boot camp y oficiales",
+  "hreflang": "es-ES",
+  "metaDescription": "Incorpórate al Cuerpo de Marines de EE. UU. en 2026: edad de 17 a 28 años, campamento de 13 semanas, prueba IST y vía de oficial OCS. Requisitos y pasos.",
+  "niche": "defense",
+  "sections": [
+    {
+      "content": "El Cuerpo de Marines, fundado el 10 de noviembre de 1775, es la fuerza de respuesta rápida de Estados Unidos, entrenada para combatir en tierra, mar y aire. Sus unidades de infantería, aviación y logística se despliegan en todo el mundo, a menudo como primera fuerza en llegar a una crisis.\n\nLa reputación de los Marines se basa en la disciplina, el espíritu de cuerpo y un estándar físico muy alto. Cada Marine, sea cual sea su especialidad, se entrena primero como fusilero, y esa identidad común define toda la cultura del Cuerpo.",
+      "title": "Qué hacen los Marines"
+    },
+    {
+      "content": "Para alistarse hay que tener entre 17 y 28 años, ser ciudadano estadounidense o residente permanente legal y tener un diploma de secundaria o equivalente. También hay que aprobar el examen ASVAB: los aspirantes a oficial necesitan al menos 74 puntos en el AFQT, una de las puntuaciones mínimas más altas de las fuerzas armadas.\n\nAdemás, se exige superar un examen médico completo y no tener antecedentes penales graves. El proceso incluye una entrevista con un reclutador, la revisión de documentos y la Prueba de Fuerza Inicial (IST) antes de firmar el contrato.",
+      "title": "Requisitos de alistamiento y el ASVAB"
+    },
+    {
+      "content": "El entrenamiento básico de los Marines dura 13 semanas en Parris Island, Carolina del Sur, o en San Diego, California. Los reclutas aprenden instrucción de orden cerrado, tiro con fusil, combate cuerpo a cuerpo, primeros auxilios y trabajo en equipo, todo bajo una presión física y mental constante.\n\nLa fase final, llamada The Crucible, es una prueba de 54 horas con marchas, obstáculos y poco sueño ni comida. Quien la supera recibe el emblema del águila, el globo y el ancla, y se convierte oficialmente en Marine.",
+      "title": "El boot camp: 13 semanas de transformación"
+    },
+    {
+      "content": "Para ser oficial de Marines hay varias vías: la Academia Naval, el NROTC, el programa PLC para universitarios y la Escuela de Candidatos a Oficial (OCS) de Quantico, Virginia, de 10 semanas. La OCS evalúa liderazgo, resistencia y toma de decisiones bajo estrés.\n\nLos graduados de la OCS asisten después a la Escuela Básica (TBS), de unos seis meses, donde aprenden a dirigir un pelotón de infantería. Solo entonces reciben su especialidad definitiva, que puede ser infantería, aviación, logística o inteligencia.",
+      "title": "Cómo ser oficial: la OCS de Quantico"
+    }
+  ],
+  "slug": "es-us-marine-corps-recruitment-2026",
+  "stats": [
+    {
+      "label": "Fundado",
+      "value": "10 de noviembre de 1775"
+    },
+    {
+      "label": "Edad de alistamiento",
+      "value": "17 a 28 años"
+    },
+    {
+      "label": "Boot camp",
+      "value": "13 semanas"
+    },
+    {
+      "label": "OCS",
+      "value": "10 semanas, Quantico"
+    }
+  ],
+  "title": "Cuerpo de Marines de EE. UU. 2026: reclutamiento y guía",
+  "translationGroupId": "us-marine-corps-recruitment-2026"
+}

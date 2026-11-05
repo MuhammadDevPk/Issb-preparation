@@ -1,0 +1,69 @@
+{
+  "badge": "PROMPT ENGINEER PAY GUIDE",
+  "country": "US",
+  "faqs": [
+    {
+      "a": "The average prompt engineer salary in the US is around $126,000 in median total pay, according to Glassdoor, with standalone roles ranging from $63,000 to $180,000. Indeed reports about $113,000 in average base pay, and ZipRecruiter about $98,000. Each source measures a different slice of pay.",
+      "q": "What is the average prompt engineer salary in 2026?"
+    },
+    {
+      "a": "Entry-level prompt engineers with strong technical portfolios earn $85,000 to $120,000 in base pay, with total compensation of $93,000 to $135,000. A portfolio of real AI projects, evaluation work or shipped features matters more than a certificate when applying for these roles.",
+      "q": "How much do entry-level prompt engineers earn?"
+    },
+    {
+      "a": "Senior prompt engineers earn $160,000 to $216,000 in base pay, with total compensation of $185,000 to $260,000. Lead and principal roles reach $216,000 to $375,000 in base. The highest pay goes to people who combine prompting with production AI engineering.",
+      "q": "How much do senior prompt engineers earn?"
+    },
+    {
+      "a": "Frontier AI labs pay $280,000 to $425,000 in base salary, with total compensation reaching $500,000 to $900,000 including equity. Anthropic listed a Claude Code prompt engineer role at $300,000 to $405,000, asking for Python, TypeScript and engineering-level evaluation skills. These roles also require strong coding skills and experience shipping production AI systems.",
+      "q": "What do frontier labs pay prompt engineers?"
+    },
+    {
+      "a": "Standalone prompt engineer titles are shrinking, but the skill is becoming more valuable inside AI engineering roles. Employers now hire AI engineers with prompt and evaluation depth rather than pure prompt writers. The career path runs toward applied AI engineering, evaluation and agent systems.",
+      "q": "Is prompt engineering still a real career in 2026?"
+    }
+  ],
+  "headline": "Prompt Engineer Salary 2026: What US Employers Pay",
+  "hreflang": "en-US",
+  "metaDescription": "Prompt engineer salary 2026: median about $126,000, standalone roles $63,000–$180,000, senior $160,000–$216,000. Levels, cities and skills that pay most.",
+  "niche": "tech",
+  "sections": [
+    {
+      "content": "Prompt engineers earn a median of around $126,000 in total pay in the United States in 2026, according to Glassdoor, with standalone roles ranging from roughly $63,000 to $180,000. Indeed puts average base pay near $113,000, while ZipRecruiter reports about $98,000. The spread exists because sources measure different things.\n\nThe title covers three different jobs: marketing AI work paying $75,000 to $140,000, applied AI roles paying $135,000 to $275,000, and frontier-lab roles paying $280,000 to $425,000 in base salary. Total compensation at frontier labs can exceed $500,000 with equity.",
+      "title": "What prompt engineers earn in 2026"
+    },
+    {
+      "content": "Entry-level prompt engineers with strong portfolios earn $85,000 to $120,000 in base pay. Mid-level practitioners earn $120,000 to $160,000, and senior prompt engineers earn $160,000 to $216,000. Lead and principal roles reach $216,000 to $375,000 in base, with total compensation up to $450,000.\n\nThere is no dedicated occupation code for prompt engineering, so the Bureau of Labor Statistics tracks the work under software developers, whose median is $135,980. The highest pay attaches to people who are AI engineers with prompt and evaluation depth, not standalone prompt writers.",
+      "title": "Pay by experience level"
+    },
+    {
+      "content": "Pay is highest in San Francisco, Seattle and New York, where frontier labs and big tech companies cluster. Anthropic's closed Claude Code prompt engineer role listed $300,000 to $405,000 and asked for Python and TypeScript, showing how engineering-level evaluation and coding skills command top pay.\n\nStandalone prompt engineer postings are shrinking as the skill becomes part of broader AI engineering roles. The best-documented postings now ask for evaluation design, retrieval systems and production LLM experience, not just clever prompting.",
+      "title": "Cities, employers and the job market"
+    },
+    {
+      "content": "The skills that pay most are evaluation design, retrieval-augmented generation (RAG), LLM fine-tuning and production deployment. Python and TypeScript are the most requested languages, and experience with LangChain, vector databases and agent frameworks adds a clear premium.\n\nA portfolio of shipped AI features beats a certificate. Show before-and-after evaluation results, cost reductions from prompt optimisation, or a production agent you built. Employers pay for measured impact, and the strongest candidates combine prompting with real software engineering.",
+      "title": "Skills that raise your pay"
+    }
+  ],
+  "slug": "prompt-engineer-salary-2026",
+  "stats": [
+    {
+      "label": "Median total pay",
+      "value": "~$126,000"
+    },
+    {
+      "label": "Standalone range",
+      "value": "$63K–$180K"
+    },
+    {
+      "label": "Entry level",
+      "value": "$85K–$120K"
+    },
+    {
+      "label": "Senior level",
+      "value": "$160K–$216K"
+    }
+  ],
+  "title": "Prompt Engineer Salary 2026: US Pay Guide",
+  "translationGroupId": "prompt-engineer-salary-2026"
+}

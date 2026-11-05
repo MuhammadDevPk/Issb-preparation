@@ -1,0 +1,65 @@
+{
+  "badge": "GUIDA UFFICIALE MARINA",
+  "country": "IT",
+  "faqs": [
+    {
+      "a": "Sì, tutti gli ufficiali della Marina USA devono possedere almeno una laurea di un'università riconosciuta. I laureati possono candidarsi direttamente all'OCS di Newport, mentre gli studenti possono entrare nel NROTC durante gli studi. Alcune specialità mediche o legali accettano anche titoli professionali specifici.",
+      "q": "Serve una laurea per diventare ufficiale della Marina?"
+    },
+    {
+      "a": "Il limite di età dipende dalla specialità scelta. Per la guerra di superficie e l'approvvigionamento i candidati possono presentarsi fino a 39 anni. I piloti devono essere nominati prima dei 32 anni, mentre i SEAL e gli specialisti di bonifica ordigni accettano in genere candidati fino a 28 o 29 anni.",
+      "q": "Quale età serve per entrare in Marina come ufficiale?"
+    },
+    {
+      "a": "La Scuola Allievi Ufficiali di Newport, nel Rhode Island, dura circa 13 settimane. I candidati seguono una formazione intensiva in leadership militare, navigazione, sistemi d'arma navali, controllo dei danni e preparazione fisica impegnativa. I diplomati iniziano poi il servizio come guardiamarina.",
+      "q": "Quanto dura la Scuola Allievi Ufficiali (OCS)?"
+    },
+    {
+      "a": "L'OCS è un programma di 13 settimane per i laureati, mentre il NROTC forma gli ufficiali durante gli studi in un'università civile, con corsi navali e addestramento estivo. Entrambi i percorsi portano al grado di guardiamarina, ma il NROTC offre una borsa di studio durante gli studi.",
+      "q": "Qual è la differenza tra OCS e NROTC?"
+    }
+  ],
+  "headline": "Ufficiale della Marina USA 2026: requisiti, OCS e carriera",
+  "hreflang": "it-IT",
+  "metaDescription": "Diventare ufficiale della Marina USA nel 2026: laurea, età 18–39 anni, corso OCS di 13 settimane a Newport, test OAR e forma fisica. Guida completa.",
+  "niche": "defense",
+  "sections": [
+    {
+      "content": "La Marina degli Stati Uniti forma i suoi ufficiali attraverso quattro percorsi principali: l'Accademia Navale di Annapolis (USNA), il programma NROTC nelle università civili, la Scuola Allievi Ufficiali di Newport (OCS) per i laureati e la nomina diretta (DCO) per specialità come medicina e diritto. Il corso OCS di Newport, nel Rhode Island, dura 13 settimane intensive.\n\nDurante l'OCS i candidati studiano disciplina militare, storia navale, controllo dei danni, navigazione e principi di leadership tattica. Il programma richiede un'ottima forma fisica e la capacità di decidere rapidamente sotto pressione, perché i futuri ufficiali comanderanno equipaggi fin dal primo incarico.",
+      "title": "Le quattro vie per diventare ufficiale"
+    },
+    {
+      "content": "Per candidarsi come ufficiale occorre essere cittadini statunitensi, possedere almeno una laurea di un'università riconosciuta e avere tra i 18 e i 39 anni a seconda della specialità scelta. I candidati sostengono una visita medica completa del DoDMERB, che verifica cuore, vista, apparato ortopedico e salute neurologica.\n\nI piloti devono essere nominati prima dei 32 anni, mentre i SEAL e gli specialisti di bonifica ordigni accettano in genere candidati fino a 28 o 29 anni. Sono richiesti anche fedina penale pulita e idoneità a un nulla osta di sicurezza per la maggior parte delle specialità.",
+      "title": "Requisiti di idoneità e salute"
+    },
+    {
+      "content": "I candidati ufficiali sostengono il test OAR (Officer Aptitude Rating), un esame computerizzato che misura ragionamento matematico, comprensione del testo e comprensione meccanica. Il punteggio minimo di idoneità varia da 42 a 50 a seconda della specialità, e i settori più competitivi come l'aviazione navale richiedono spesso oltre 50 punti.\n\nI militari di truppa che vogliono diventare ufficiali sostengono l'ASVAB e devono superare 110 nel punteggio General Technical. Una buona media universitaria rafforza molto la candidatura, soprattutto per specialità selettive come intelligence o guerra di superficie.",
+      "title": "Il test OAR e l'ASVAB"
+    },
+    {
+      "content": "I candidati devono superare il test di preparazione fisica (PRT) della Marina, valutato in base a età e sesso. Comprende una corsa di 1,5 miglia, due minuti di plank e il massimo numero di flessioni in due minuti. Ottenere un giudizio Buono o Eccellente dà un vantaggio decisivo davanti alla commissione di selezione.\n\nLa preparazione deve iniziare diversi mesi prima della candidatura: corsa regolare, allenamento del core e nuoto. Chi fallisce il PRT può vedere la candidatura respinta, anche con ottimi risultati accademici.",
+      "title": "Il test fisico PRT della Marina"
+    }
+  ],
+  "slug": "it-us-navy-officer-recruitment-2026",
+  "stats": [
+    {
+      "label": "Corso OCS",
+      "value": "13 settimane"
+    },
+    {
+      "label": "Sede OCS",
+      "value": "Newport, Rhode Island"
+    },
+    {
+      "label": "Laurea",
+      "value": "Laurea richiesta"
+    },
+    {
+      "label": "Primo grado",
+      "value": "Guardiamarina (O-1)"
+    }
+  ],
+  "title": "Ufficiale della Marina USA 2026: guida completa",
+  "translationGroupId": "us-navy-officer-recruitment-2026"
+}

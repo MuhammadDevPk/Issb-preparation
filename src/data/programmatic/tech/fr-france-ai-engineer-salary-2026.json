@@ -1,0 +1,69 @@
+{
+  "badge": "GUIDE SALAIRE IA 2026",
+  "country": "FR",
+  "faqs": [
+    {
+      "a": "Le salaire moyen est d'environ 73 500 euros bruts par an en 2026. Les juniors gagnent 45 000 à 65 000 euros, les profils confirmés 65 000 à 90 000 euros et les seniors 90 000 à 130 000 euros. Les primes et les stock-options peuvent ajouter plusieurs milliers d'euros.",
+      "q": "Quel est le salaire moyen d'un ingénieur IA en France en 2026 ?"
+    },
+    {
+      "a": "Paris paie le mieux, avec des salaires 15 à 20 % supérieurs à la province. Lyon, Toulouse, Bordeaux et Lille offrent des salaires plus modestes, mais un coût de la vie nettement inférieur. Le télétravail permet parfois de combiner un salaire parisien et une vie en région.",
+      "q": "Quelles villes françaises paient le mieux les ingénieurs IA ?"
+    },
+    {
+      "a": "Mistral AI et Hugging Face sont les employeurs les plus recherchés, avec des salaires au-dessus du marché. Les grands groupes comme Capgemini, Thales, Safran et BNP Paribas recrutent aussi massivement. Les start-up compensent des salaires de base plus bas par des BSPCE.",
+      "q": "Quelles entreprises recrutent des ingénieurs IA en France ?"
+    },
+    {
+      "a": "Les grands modèles de langage, l'IA générative et le MLOps paient le plus, avec des primes de 15 à 30 %. Les compétences clés sont Python, PyTorch, les frameworks de LLM comme LangChain et le déploiement cloud. Les projets concrets en production comptent autant qu'un diplôme.",
+      "q": "Quelles spécialités IA paient le plus en France ?"
+    }
+  ],
+  "headline": "Salaire ingénieur IA France 2026 : Paris et régions",
+  "hreflang": "fr-FR",
+  "metaDescription": "Salaire ingénieur IA en France 2026 : environ 73 500 € en moyenne, junior 45 000–65 000 €, senior 90 000–130 000 €. Paris, employeurs et spécialités.",
+  "niche": "tech",
+  "sections": [
+    {
+      "content": "Un ingénieur IA en France gagne en moyenne environ 73 500 euros bruts par an en 2026. Les juniors démarrent entre 45 000 et 65 000 euros, les profils confirmés entre 65 000 et 90 000 euros, et les seniors entre 90 000 et 130 000 euros. Les chiffres proviennent des données de Ravio, Glassdoor et Levels.fyi.\n\nL'IA paie mieux que le développement classique : les ingénieurs IA gagnent 5 à 16 % de plus que les ingénieurs logiciels au même niveau. Les primes, l'intéressement et les stock-options peuvent ajouter plusieurs milliers d'euros, surtout dans les start-up et les grands groupes technologiques.",
+      "title": "Le salaire moyen d'un ingénieur IA en 2026"
+    },
+    {
+      "content": "Paris concentre la plupart des postes IA et les salaires les plus élevés, avec des moyennes supérieures de 15 à 20 % à la province. Les grands employeurs parisiens, les laboratoires de recherche et les start-up de l'écosystème Station F se disputent les meilleurs profils.\n\nLyon, Toulouse, Bordeaux et Lille offrent des salaires plus modestes, mais un coût de la vie nettement inférieur. Le télétravail, désormais courant, permet de toucher un salaire parisien tout en vivant en région, selon la politique de l'employeur.",
+      "title": "Paris et les autres villes"
+    },
+    {
+      "content": "Les champions français de l'IA, Mistral AI et Hugging Face, sont les employeurs les plus recherchés, avec des salaires au-dessus du marché et des avantages en actions. Les grands groupes comme Capgemini, Thales, Safran et BNP Paribas recrutent aussi massivement pour leurs équipes data et IA.\n\nLes start-up en croissance rapide offrent souvent des salaires de base plus bas, mais compensent avec des BSPCE et une progression rapide. Les profils avec une expérience en production, MLOps ou modèles de langage sont les plus demandés.",
+      "title": "Qui recrute les ingénieurs IA ?"
+    },
+    {
+      "content": "Les spécialités les mieux payées sont les grands modèles de langage (LLM), l'IA générative et le MLOps, avec des primes de 15 à 30 % par rapport aux postes généralistes. Les experts en vision par ordinateur pour l'industrie et la défense sont également très recherchés.\n\nPour augmenter son salaire, il faut maîtriser Python, PyTorch, les frameworks de LLM comme LangChain, et le déploiement cloud. Un diplôme d'une grande école ou un doctorat en machine learning reste un atout, mais les projets concrets en production comptent autant.",
+      "title": "Les spécialités les mieux payées"
+    }
+  ],
+  "slug": "fr-france-ai-engineer-salary-2026",
+  "stats": [
+    {
+      "label": "Salaire moyen",
+      "value": "~73 500 € / an"
+    },
+    {
+      "label": "Junior",
+      "value": "45 000–65 000 €"
+    },
+    {
+      "label": "Senior",
+      "value": "90 000–130 000 €"
+    },
+    {
+      "label": "Ville la mieux payée",
+      "value": "Paris"
+    },
+    {
+      "label": "Top employeurs",
+      "value": "Mistral, Hugging Face"
+    }
+  ],
+  "title": "Salaire ingénieur IA France 2026 : guide Paris",
+  "translationGroupId": "france-ai-engineer-salary-2026"
+}
