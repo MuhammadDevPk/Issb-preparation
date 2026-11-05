@@ -1,0 +1,65 @@
+{
+ "slug": "gb-us-navy-recruitment",
+ "niche": "defense",
+ "country": "GB",
+ "hreflang": "en-GB",
+ "translationGroupId": "us-navy-recruitment",
+ "title": "US Navy Recruitment 2026: UK Applicant Guide",
+ "metaDescription": "US Navy recruitment 2026 for UK applicants: age limits 17 to 41, ASVAB scores, MEPS checks, boot camp at Great Lakes and residency rules explained.",
+ "headline": "US Navy Recruitment 2026: A Guide for Applicants in the UK",
+ "badge": "US NAVY GUIDE 2026",
+ "stats": [
+  {
+   "label": "Enlisted age range",
+   "value": "17 to 41 years"
+  },
+  {
+   "label": "Minimum AFQT score",
+   "value": "31"
+  },
+  {
+   "label": "Boot camp location",
+   "value": "Great Lakes, Illinois"
+  },
+  {
+   "label": "Citizenship rule",
+   "value": "US citizen or permanent resident"
+  }
+ ],
+ "sections": [
+  {
+   "title": "Who can join the US Navy",
+   "content": "The US Navy accepts enlisted applicants aged 17 to 41, with parental consent required for 17-year-olds. Applicants must normally be US citizens or lawful permanent residents, and they must pass a medical examination and background checks before enlisting. Officer age limits vary by programme, so officer candidates should check their specific route.\n\nEducation rules are flexible but not absent. Most applicants hold a high school diploma or equivalent, and applicants without a diploma may still qualify with a higher test score. Your recruiter will confirm which education and residency documents apply to your situation before you sign a contract."
+  },
+  {
+   "title": "The ASVAB and MEPS process",
+   "content": "The Armed Services Vocational Aptitude Battery, or ASVAB, measures aptitude across areas such as maths, word knowledge and technical reasoning. The minimum Armed Forces Qualification Test score for Navy enlistment is published as 31, although individual ratings, or jobs, may require higher scores.\n\nAfter testing, applicants attend a Military Entrance Processing Station, known as MEPS, for a medical examination and job selection. This is also where fitness, height and weight standards are checked. Preparing for the ASVAB and arriving with complete documents can shorten what is often a multi-week process."
+  },
+  {
+   "title": "Boot camp and Navy careers",
+   "content": "Enlisted sailors complete boot camp at Naval Station Great Lakes in Illinois, where training covers military discipline, fitness, seamanship and damage control. The course is demanding by design, and recruits who prepare physically before arrival tend to settle in faster.\n\nAfter boot camp, sailors move to specialist training for their rating, from engineering and aviation to intelligence, medical and information technology roles. A Navy career can include sea postings, shore assignments and funded education, with promotion based on performance, qualifications and time in service."
+  },
+  {
+   "title": "Applying from the United Kingdom",
+   "content": "British citizens cannot normally enlist directly unless they hold US lawful permanent resident status, commonly called a green card. Applicants in this position should speak to a US Navy recruiter about residency evidence, since recruiters cannot waive the citizenship or residency requirement.\n\nIf you hold a green card and live in the UK, allow extra time for travel to MEPS and for document verification. Keep your residency card, identification and school records ready, and confirm your ship date carefully, since Navy rules require recruits to report to boot camp before turning 42."
+  }
+ ],
+ "faqs": [
+  {
+   "q": "What is the age limit to join the US Navy?",
+   "a": "Enlisted applicants must be aged 17 to 41, and 17-year-olds need parental consent. Recruits must also report to boot camp before their 42nd birthday, so older applicants should confirm ship dates early. Officer programmes have their own age limits, which vary by community and commissioning route."
+  },
+  {
+   "q": "What ASVAB score do I need for the Navy?",
+   "a": "The published minimum Armed Forces Qualification Test score for Navy enlistment is 31. Many ratings require higher scores in specific subtests, so a stronger overall result opens more job choices. Taking practice tests before the official exam is the simplest way to improve your options."
+  },
+  {
+   "q": "Can a British citizen join the US Navy?",
+   "a": "Normally you must be a US citizen or a lawful permanent resident, known as a green card holder, to enlist. British citizenship alone does not qualify you. If you hold US permanent residency, a recruiter can advise on the documents and travel needed for testing and processing."
+  },
+  {
+   "q": "What happens at MEPS?",
+   "a": "At a Military Entrance Processing Station you take the ASVAB if not already completed, undergo a medical examination, and choose an available rating. Staff also check fitness, height and weight standards and background information. Passing MEPS is a major step toward signing an enlistment contract."
+  }
+ ]
+}

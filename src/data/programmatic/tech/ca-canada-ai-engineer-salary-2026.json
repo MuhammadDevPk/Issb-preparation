@@ -1,0 +1,65 @@
+{
+ "slug": "ca-canada-ai-engineer-salary-2026",
+ "niche": "tech",
+ "country": "CA",
+ "hreflang": "en-CA",
+ "translationGroupId": "canada-ai-engineer-salary-2026",
+ "title": "Canada AI Engineer Salary 2026: Full Guide",
+ "metaDescription": "Canada AI engineer salary 2026: indicative pay ranges by seniority, top hiring cities, in-demand AI skills and how to negotiate a stronger offer in Canada.",
+ "headline": "Canada AI Engineer Salary 2026: What Engineers Actually Earn",
+ "badge": "AI SALARY GUIDE 2026",
+ "stats": [
+  {
+   "label": "Indicative annual range",
+   "value": "CAD 90,000 - CAD 180,000"
+  },
+  {
+   "label": "Top hiring hubs",
+   "value": "Toronto, Vancouver, Montreal"
+  },
+  {
+   "label": "Highest demand skills",
+   "value": "LLMs, RAG, MLOps"
+  },
+  {
+   "label": "Pay driver",
+   "value": "Production AI experience"
+  }
+ ],
+ "sections": [
+  {
+   "title": "AI engineer pay in Canada",
+   "content": "AI engineer pay in Canada varies widely by city, seniority and company size, with indicative annual ranges running roughly from CAD 90,000 for junior roles to CAD 180,000 or more for senior and lead engineers. Toronto, Vancouver and Montreal host the largest hiring pools, while remote roles for US-funded companies can pay above local market rates.\n\nTreat any single salary figure with caution, since published guides mix base pay, total compensation and contract rates. The most reliable comparison is a like-for-like offer: same seniority, same city, same scope, with bonuses and equity stated separately from base salary."
+  },
+  {
+   "title": "What drives the premium",
+   "content": "Demand is strongest for engineers who can ship production AI systems, not just train models in notebooks. Employers pay most for retrieval-augmented generation, agent frameworks, evaluation and observability, plus the cloud and data engineering needed to keep systems reliable and affordable at scale.\n\nDomain knowledge also matters. Finance, health care and public sector employers value engineers who understand regulation, data governance and security, and they often pay above the general market for that combination. Strong portfolios with deployed systems beat certificates alone in most hiring processes."
+  },
+  {
+   "title": "Skills employers ask for in 2026",
+   "content": "Common requirements include Python, modern LLM frameworks, vector databases, prompt and agent design, and experience with cloud platforms such as AWS, Azure or Google Cloud. Data pipeline skills, SQL and MLOps tooling are increasingly expected, since AI features fail without clean data and dependable deployment.\n\nSoft skills matter too, because AI engineers work closely with product, design and business teams. Clear communication about model limits, costs and risks is now a core part of the role, especially where AI output affects customers, compliance decisions or safety-critical workflows."
+  },
+  {
+   "title": "Negotiating and next steps",
+   "content": "When comparing offers, look beyond base salary to bonuses, equity, learning budgets and the scope of the team. A role with real production ownership and senior mentors can be worth more over two years than a slightly higher salary in a team that only maintains demos.\n\nAsk whether the figure quoted is annual or monthly, basic or total compensation, and whether equity is included. Canadian offers often include stock options or restricted units that vest over several years, so value them separately and confirm the vesting schedule before accepting."
+  }
+ ],
+ "faqs": [
+  {
+   "q": "How much does an AI engineer earn in Canada?",
+   "a": "Indicative annual pay runs roughly from CAD 90,000 for junior engineers to CAD 180,000 or more for senior and lead roles, depending on city, company and scope. Toronto, Vancouver and Montreal pay the most on average, while remote roles for international companies can sit above local ranges. Always compare base pay and total compensation separately."
+  },
+  {
+   "q": "Which Canadian cities pay AI engineers most?",
+   "a": "Toronto, Vancouver and Montreal host the largest AI hiring markets and generally pay the highest salaries, followed by Ottawa, Waterloo and Calgary. Remote roles can break the city pattern, since employers may pay national or international rates. Cost of living varies sharply between these cities, so compare take-home pay, not headline salary."
+  },
+  {
+   "q": "What skills raise an AI engineer's salary most?",
+   "a": "Production skills raise pay most: retrieval-augmented generation, agent frameworks, evaluation, MLOps, cloud deployment and data engineering. Domain knowledge in finance, health care or government technology also commands a premium. A portfolio of deployed systems usually matters more than certificates alone."
+  },
+  {
+   "q": "Should I take a contract or permanent AI role?",
+   "a": "Contract roles often pay higher headline rates but carry no paid leave, benefits or job security, while permanent roles add bonuses, equity, benefits and stability. Compare total annual value, including time between contracts, before choosing. Early-career engineers usually gain more from permanent roles with mentorship and production ownership."
+  }
+ ]
+}
