@@ -1,0 +1,73 @@
+{
+  "badge": "SKILLED MIGRATION",
+  "country": "AU",
+  "faqs": [
+    {
+      "a": "You need at least 65 points to submit an Expression of Interest, but 65 alone rarely wins an invitation. In 2026, competitive scores are typically 85 to 95 for subclass 189, 70 to 85 for subclass 190, and 65 to 80 for subclass 491, depending on your occupation.",
+      "q": "How many points do I need for Australian skilled migration?"
+    },
+    {
+      "a": "Subclass 189 is a permanent visa with no sponsor or nominator, awarded by invitation through SkillSelect. Subclass 190 needs nomination by a state or territory government, which adds 5 points, and it is also permanent. Subclass 491 is a provisional regional visa that adds 15 points.",
+      "q": "What is the difference between subclasses 189, 190 and 491?"
+    },
+    {
+      "a": "Yes, you must be under 45 when you are invited to apply. Age is also one of the biggest points factors: 25 to 32 years earns the maximum 30 points, 33 to 39 earns 25, and 40 to 44 earns 15 points. There is no age points award for applicants aged 45 or over.",
+      "q": "Is there an age limit for skilled migration to Australia?"
+    },
+    {
+      "a": "You need an occupation on the relevant skilled occupation list, a positive skills assessment from the authorised assessing body for your occupation, and at least competent English. You then submit an Expression of Interest in SkillSelect and wait for an invitation before lodging the visa application.",
+      "q": "What do I need before I can apply?"
+    },
+    {
+      "a": "The base application charge for a main applicant is AUD 6,135 for subclass 189 and AUD 6,140 for subclasses 190 and 491, based on Home Affairs figures checked in late October 2026. Fees change regularly, so confirm the current charge on the Home Affairs website before lodging.",
+      "q": "How much does a skilled migration visa cost?"
+    }
+  ],
+  "headline": "Australia Skilled Migration Visa 2026: Points, Visas and How to Apply",
+  "hreflang": "en-AU",
+  "metaDescription": "Australia skilled migration visa 2026: 65-point minimum, subclasses 189, 190 and 491 compared, points table, skills assessment and fees from AUD 6,135.",
+  "niche": "jobs",
+  "sections": [
+    {
+      "content": "Australia runs its skilled migration program on a points test covering age, English, skilled employment, qualifications and partner skills. You submit an Expression of Interest through SkillSelect, and the Department of Home Affairs invites the highest-ranked candidates to apply for a visa.\n\nThe 2026 permanent migration planning level is 185,000 places, with more than 70 percent allocated to the Skilled Stream. There is no single skilled visa: the right pathway depends on your occupation, your points score, and whether a state or an employer will nominate you.",
+      "title": "The three main pathways"
+    },
+    {
+      "content": "The Skilled Independent visa (subclass 189) is permanent and needs no sponsor or nominator; you must be under 45 when invited. The Skilled Nominated visa (subclass 190) needs nomination by a state or territory, which adds 5 points, and is also permanent. The Skilled Work Regional visa (subclass 491) is provisional, needs state nomination or eligible family sponsorship, and adds 15 points.\n\nAll three require an occupation on the relevant skilled list, a suitable skills assessment and an invitation through SkillSelect. The 491 can lead to permanent residence through subclass 191 after meeting regional living and income conditions.",
+      "title": "Subclasses 189, 190 and 491 compared"
+    },
+    {
+      "content": "You need at least 65 points to lodge an Expression of Interest, but reaching 65 does not guarantee an invitation. In 2026, realistic competitive scores are 85 to 95 for subclass 189, 70 to 85 for subclass 190, and 65 to 80 for subclass 491, depending on the occupation.\n\nThe biggest levers are age, with 30 points for ages 25 to 32, and English, with 20 points for superior English such as IELTS 8.0 or PTE 79+. Skilled employment can add up to 15 points overseas or 20 in Australia, and a bachelor degree or higher adds 15 points.",
+      "title": "The points test: what actually wins invitations"
+    },
+    {
+      "content": "First, check that your occupation is on the relevant skilled occupation list and get a positive skills assessment from the authorised body, such as Engineers Australia, CPA or ANMAC. Then sit an English test and aim for superior English if you can, since it is worth 20 points.\n\nNext, submit your Expression of Interest in SkillSelect with your points claim. If invited, you generally have 60 days to lodge the visa application with your documents and pay the base charge, which is AUD 6,135 for subclass 189 and AUD 6,140 for subclasses 190 and 491.",
+      "title": "How to apply step by step"
+    }
+  ],
+  "slug": "australia-skilled-migration-visa-requirements-2026",
+  "stats": [
+    {
+      "label": "Minimum points",
+      "value": "65 to lodge EOI"
+    },
+    {
+      "label": "Subclass 189 fee",
+      "value": "AUD 6,135"
+    },
+    {
+      "label": "Subclass 190 fee",
+      "value": "AUD 6,140"
+    },
+    {
+      "label": "Age limit at invitation",
+      "value": "Under 45"
+    },
+    {
+      "label": "2026 planning level",
+      "value": "185,000 places"
+    }
+  ],
+  "title": "Australia Skilled Migration Visa 2026 Guide",
+  "translationGroupId": "australia-skilled-migration-visa-requirements-2026"
+}

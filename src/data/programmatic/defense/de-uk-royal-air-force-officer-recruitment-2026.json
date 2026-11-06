@@ -1,0 +1,69 @@
+{
+  "badge": "RAF OFFIZIER",
+  "country": "DE",
+  "faqs": [
+    {
+      "a": "Die meisten Offiziersrollen akzeptieren Bewerber zwischen 17,5 und 47 Jahren, wobei man vor dem 48. Geburtstag eintreten muss. Piloten müssen vor ihrem 25. Geburtstag eintreten, und medizinische Offiziere können bis 54 einsteigen. Das genaue Höchstalter hängt immer von der gewählten Rolle ab.",
+      "q": "In welchem Alter kann man RAF-Offizier werden?"
+    },
+    {
+      "a": "Mindestens fünf GCSEs mit Note 4 oder besser, darunter Englisch und Mathematik, sowie mindestens 64 UCAS-Punkte aus A-Levels oder gleichwertigen Abschlüssen. Wer einen britischen Abschluss mit 2:2 oder besser hat, braucht nur die GCSEs in Englisch und Mathematik. Ingenieur-, Medizin- und einige Luftfahrtrollen verlangen einen passenden Abschluss, während Stipendien Studierende unterstützen können.",
+      "q": "Welche Qualifikationen braucht man als RAF-Offizier?"
+    },
+    {
+      "a": "Der Test umfasst einen 2,4-Kilometer-Lauf und Kraftübungen, dazu eine medizinische Untersuchung mit Seh- und Hörtest und einem Body-Mass-Index zwischen 18 und 28. Fliegende Rollen brauchen zusätzlich den CBAT-Eignungstest und eine flugmedizinische Untersuchung am OASC. Bewerber sollten Monate vorher regelmäßig trainieren, denn Fitnesstests begleiten die gesamte Ausbildung.",
+      "q": "Wie sieht der Fitnesstest für RAF-Offiziere aus?"
+    },
+    {
+      "a": "Die Grundausbildung zum Offizier dauert 24 Wochen am RAF College Cranwell und kombiniert Führung, militärische Fähigkeiten und körperliches Training. Danach folgt die Fachausbildung für die eigene Rolle, etwa als Pilot, Ingenieur oder Logistikoffizier, bevor der erste Dienstposten angetreten wird und der Dienst als Offizier beginnt.",
+      "q": "Wie lange dauert die RAF-Offiziersausbildung?"
+    }
+  ],
+  "headline": "RAF-Offizier werden 2026: Anforderungen und Ablauf",
+  "hreflang": "de-DE",
+  "metaDescription": "RAF-Offizier werden 2026: Alter 17,5 bis 47 Jahre, 64 UCAS-Punkte, GCSE-Noten, Fitnesstest mit 2,4-km-Lauf und OASC-Auswahl am RAF Cranwell im Überblick.",
+  "niche": "defense",
+  "sections": [
+    {
+      "content": "Offiziere der Royal Air Force führen Teams in der Luft, am Boden und in technischen Bereichen. Bewerber müssen britische Staatsangehörige sein oder eine doppelte Staatsangehörigkeit besitzen; für manche Rollen gelten auch Commonwealth-Bürger. Das Alter liegt je nach Rolle zwischen 17,5 und 47 Jahren.\n\nPiloten müssen deutlich jünger sein: Sie müssen vor ihrem 25. Geburtstag eintreten, viele andere Offiziersrollen akzeptieren Bewerber bis 47. Wer unter 18 ist, braucht die Zustimmung der Eltern.",
+      "title": "Wer kann RAF-Offizier werden?"
+    },
+    {
+      "content": "Mindestens braucht man GCSEs der Note 4 (C) oder besser in Englisch, Mathematik und drei weiteren Fächern sowie mindestens 64 UCAS-Punkte aus bis zu drei Qualifikationen, darunter A-Levels oder gleichwertige Abschlüsse.\n\nWer einen britischen Hochschulabschluss mit mindestens 2:2 hat, braucht nur die GCSEs in Englisch und Mathematik. Medizinische, technische und einige fliegerische Rollen verlangen einen passenden Abschluss oder eine Berufszulassung.",
+      "title": "Qualifikationen je nach Rolle"
+    },
+    {
+      "content": "Alle Bewerber müssen einen Fitnesstest bestehen, zu dem ein 2,4-Kilometer-Lauf und Kraftübungen gehören, sowie eine umfassende medizinische Untersuchung mit Seh- und Hörtest. Der Body-Mass-Index liegt normalerweise zwischen 18 und 28.\n\nFür fliegende Rollen kommen zusätzlich der Computer-Based Aptitude Test (CBAT) und eine spezielle flugmedizinische Untersuchung hinzu. Regelmäßiges Training vor der Bewerbung macht einen echten Unterschied.",
+      "title": "Fitness und medizinische Standards"
+    },
+    {
+      "content": "Der Prozess beginnt mit einer Online-Bewerbung, einem Eignungstest und einem Gespräch zur Eignung, gefolgt von Gesundheits- und Fitnesstests. Danach folgt das Officer and Aircrew Selection Centre (OASC) in Cranwell, wo Führung, Teamarbeit, Kommunikation und Problemlösung geprüft werden.\n\nErfolgreiche Bewerber beginnen die 24-wöchige Offiziersausbildung am RAF College Cranwell. Danach folgt die Fachausbildung für die eigene Rolle, bevor der erste Einsatz als Offizier beginnt.",
+      "title": "Der Bewerbungsprozess"
+    }
+  ],
+  "slug": "de-uk-royal-air-force-officer-recruitment-2026",
+  "stats": [
+    {
+      "label": "Offiziersalter",
+      "value": "17,5–47 Jahre"
+    },
+    {
+      "label": "Piloten-Höchstalter",
+      "value": "23 Jahre"
+    },
+    {
+      "label": "Mindestdienstzeit",
+      "value": "12 Jahre"
+    },
+    {
+      "label": "Fitnesstest",
+      "value": "2,4-km-Lauf"
+    },
+    {
+      "label": "Ausbildungsort",
+      "value": "RAF Cranwell"
+    }
+  ],
+  "title": "RAF-Offizier werden 2026: Voraussetzungen",
+  "translationGroupId": "uk-royal-air-force-officer-recruitment-2026"
+}

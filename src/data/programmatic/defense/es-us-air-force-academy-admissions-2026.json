@@ -1,0 +1,65 @@
+{
+  "badge": "ACADEMIA MILITAR",
+  "country": "ES",
+  "faqs": [
+    {
+      "a": "Debes tener entre 17 y 23 años el 1 de julio del año en que ingresas. La Academia exige además ser ciudadano estadounidense, estar soltero y no tener dependientes. Los estudiantes internacionales nominados por su gobierno siguen la misma regla de edad, pero su proceso de nominación es distinto.",
+      "q": "¿Cuál es el límite de edad para la Academia de la Fuerza Aérea?"
+    },
+    {
+      "a": "Sí. Necesitas una nominación del Congreso o una nominación vinculada al servicio, como la de un padre o madre militar. La nominación se solicita por separado y en paralelo a la solicitud a la Academia, que debe recibir todas las nominaciones antes del 31 de enero.",
+      "q": "¿Necesito una nominación para solicitar plaza?"
+    },
+    {
+      "a": "El SAT medio de la clase de 2029 fue de 1362, con el 50 % central entre 1250 y 1450, y el ACT medio fue de 30. La Academia valora sobre todo las matemáticas: una puntuación inferior a 580 en SAT de matemáticas no se considera competitiva para los candidatos internacionales.",
+      "q": "¿Qué puntuación de SAT o ACT necesito?"
+    },
+    {
+      "a": "La CFA es la prueba física de admisión, que mide fuerza, resistencia y agilidad con ejercicios como flexiones, abdominales, lanzamiento de balón, carrera de ida y vuelta, dominadas y carrera de una milla. Debes entrenar durante meses y superar los mínimos para que tu solicitud siga adelante.",
+      "q": "¿Qué es la Evaluación de Aptitud del Candidato (CFA)?"
+    }
+  ],
+  "headline": "Admisión a la Academia de la Fuerza Aérea 2026",
+  "hreflang": "es-ES",
+  "metaDescription": "Guía 2026 de admisión a la Academia de la Fuerza Aérea de EE. UU.: edad de 17 a 23 años, nominación del Congreso, GPA medio de 3,86 y SAT de 1250 a 1450.",
+  "niche": "defense",
+  "sections": [
+    {
+      "content": "La Academia de la Fuerza Aérea de Estados Unidos (USAFA), en Colorado Springs, forma a los futuros oficiales de la Fuerza Aérea y de la Fuerza Espacial en un programa universitario de cuatro años con matrícula, alojamiento y manutención totalmente gratuitos.\n\nLos graduados reciben el título de grado y el nombramiento como subtenientes, con un compromiso mínimo de servicio de cinco años en activo. La vida de cadete combina estudios exigentes, entrenamiento militar y deporte.",
+      "title": "Qué es la Academia de la Fuerza Aérea"
+    },
+    {
+      "content": "Para solicitarlo hay que ser ciudadano estadounidense, tener entre 17 y 23 años el 1 de julio del año de ingreso, estar soltero y no tener dependientes. También se exige un expediente de secundaria sólido y carácter moral intachable.\n\nA diferencia de la Academia de la Guardia Costera, aquí sí se necesita una nominación, normalmente de un miembro del Congreso o vinculada al servicio militar. La nominación es un paso independiente de la solicitud a la Academia y debe gestionarse en paralelo.",
+      "title": "Elegibilidad y la nominación"
+    },
+    {
+      "content": "La clase de 2029 tuvo un GPA medio de 3,86 y un SAT medio de 1362, con el 50 % central entre 1250 y 1450 y el ACT entre 26 y 33. La Academia valora el expediente, la dificultad de las asignaturas y la posición en la clase, no solo las notas.\n\nLa selección usa una puntuación compuesta de 1.000 puntos que combina lo académico, el liderazgo y el deporte, con el SAT o ACT de matemáticas con un peso importante. Un resultado alto puede compensar un GPA algo más bajo.",
+      "title": "Académicos, SAT/ACT y la puntuación global"
+    },
+    {
+      "content": "Todos los candidatos deben superar la Evaluación de Aptitud del Candidato (CFA), que mide fuerza, velocidad y resistencia con flexiones, abdominales, carrera y otros ejercicios. El entrenamiento regular durante meses es la mejor preparación.\n\nAdemás, hay que pasar el examen médico de DoDMERB, la junta médica del Departamento de Defensa. Una buena nota y una nominación no bastan: sin la aptitud médica no se puede recibir el nombramiento.",
+      "title": "Prueba física y calificación médica"
+    }
+  ],
+  "slug": "es-us-air-force-academy-admissions-2026",
+  "stats": [
+    {
+      "label": "Edad",
+      "value": "17–23 años"
+    },
+    {
+      "label": "Nombramientos 2029",
+      "value": "1.112"
+    },
+    {
+      "label": "GPA medio",
+      "value": "3,86"
+    },
+    {
+      "label": "Programa",
+      "value": "4 años, matrícula gratuita"
+    }
+  ],
+  "title": "Admisión Academia Fuerza Aérea EE. UU. 2026",
+  "translationGroupId": "us-air-force-academy-admissions-2026"
+}

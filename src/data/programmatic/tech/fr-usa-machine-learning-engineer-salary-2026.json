@@ -1,0 +1,65 @@
+{
+  "badge": "SALAIRE ML 2026",
+  "country": "FR",
+  "faqs": [
+    {
+      "a": "L'ingénieur machine learning médian aux États-Unis gagne environ 150 000 dollars de salaire de base en 2026, avec un salaire d'entrée proche de 110 000 dollars et jusqu'à 300 000 dollars au niveau principal. Les offres vérifiées incluant les actions montrent une rémunération totale médiane proche de 260 000 dollars.",
+      "q": "Quel est le salaire moyen d'un ingénieur machine learning aux États-Unis ?"
+    },
+    {
+      "a": "Les ingénieurs machine learning de niveau intermédiaire gagnent généralement de 145 000 à 165 000 dollars de salaire de base, avec une rémunération totale en espèces de 160 000 à 210 000 dollars avant les actions. Les entreprises technologiques orientées produit paient au niveau supérieur ou au-dessus de ces fourchettes.",
+      "q": "Combien gagnent les ingénieurs machine learning de niveau intermédiaire ?"
+    },
+    {
+      "a": "La spécialisation fait plus bouger la paie que l'ancienneté : le travail sur les grands modèles de langage, l'IA générative, la génération augmentée par récupération et le MLOps porte les primes les plus fortes, avec des fourchettes de rémunération totale typiques de 200 000 à 400 000 dollars et plus.",
+      "q": "Quelles spécialisations paient le plus pour les ingénieurs ML ?"
+    },
+    {
+      "a": "Les sources de salaires ne concordent pas parce qu'elles mesurent des choses différentes : les enquêtes d'employeurs se situent près de 110 000 dollars, les agrégateurs d'offres près de 188 000 dollars, et les données d'offres vérifiées incluant les actions dépassent 260 000 dollars. Comparez toujours le salaire de base, les bonus et les actions ensemble.",
+      "q": "Pourquoi les rapports de salaire ML divergent-ils autant ?"
+    }
+  ],
+  "headline": "Salaire Ingénieur Machine Learning USA 2026",
+  "hreflang": "fr-FR",
+  "metaDescription": "Salaire ingénieur machine learning USA 2026 : base médiane proche de 150 000 $, fourchettes junior et senior, rémunération totale et spécialisations.",
+  "niche": "tech",
+  "sections": [
+    {
+      "content": "Les ingénieurs machine learning aux États-Unis gagnent un salaire de base médian d'environ 150 000 dollars en 2026, avec un salaire de base allant d'environ 112 000 dollars en début de carrière à 300 000 dollars au niveau principal. La rémunération totale raconte une histoire plus complète : les offres vérifiées atteignent en moyenne environ 261 000 dollars une fois les bonus et les actions inclus, et les ingénieurs seniors des grandes entreprises déclarent des totaux de 344 000 à 450 000 dollars.\n\nLes agrégateurs d'offres d'emploi dressent un tableau plus prudent, avec une enquête d'octobre 2026 situant le salaire annuel moyen à 128 769 dollars et la fourchette médiane de 101 500 à 155 000 dollars. L'écart reflète ce que chaque source compte : le salaire de base seul contre la rémunération totale incluant les actions, et les enquêtes d'employeurs contre les offres individuelles vérifiées.",
+      "title": "Vue d'ensemble des salaires"
+    },
+    {
+      "content": "Les ingénieurs machine learning de niveau intermédiaire gagnent de 145 000 à 165 000 dollars de salaire de base, avec une rémunération totale en espèces de 160 000 à 210 000 dollars avant les actions. Les entreprises technologiques centrées sur le produit paient au niveau supérieur ou au-dessus, avec un salaire de base intermédiaire de 150 000 à 190 000 dollars et une rémunération totale de 220 000 à 300 000 dollars ou plus dans les grands pôles technologiques.\n\nLes entreprises traditionnelles paient souvent 10 à 25 % de moins que les références des entreprises technologiques pour la rémunération en espèces, tandis que les petites startups offrent des salaires de base plus faibles, proches des médianes nationales, mais des pourcentages d'actions plus élevés. Les candidats qui pèsent les offres de startups doivent évaluer les actions de manière réaliste plutôt que de comparer le salaire de base seul.",
+      "title": "Salaire par expérience et employeur"
+    },
+    {
+      "content": "La spécialisation est le plus grand moteur de paie après le niveau de l'entreprise. Le travail sur les grands modèles de langage, l'IA générative et la génération augmentée par récupération, combiné aux compétences MLOps pour déployer et exploiter des modèles en production, porte des fourchettes de rémunération totale typiques de 200 000 à 400 000 dollars et plus.\n\nLe lieu compte aussi : les grands pôles comme la région de la baie de San Francisco, Seattle et New York paient des primes par rapport aux marchés à coût modéré, où le salaire de base d'entrée peut commencer près de 110 000 dollars. Les rôles à distance s'alignent de plus en plus sur la paie des pôles, mais de nombreux employeurs ajustent encore selon le lieu de l'employé.",
+      "title": "Ce qui augmente le salaire"
+    },
+    {
+      "content": "Les ingénieurs qui visent le niveau supérieur doivent privilégier les compétences de production : déployer des modèles, construire des pipelines d'évaluation et de surveillance, et optimiser le coût et la latence de l'inférence. Un portfolio de systèmes livrés, des contributions open source et des descriptions claires des compromis faits sous contraintes réelles convainquent davantage les recruteurs que les seuls certificats.\n\nLa négociation doit comparer l'ensemble du package, y compris le salaire de base, l'objectif de bonus, le calendrier d'acquisition des actions et les attributions de renouvellement. Comme les actions peuvent dépasser le salaire de base aux niveaux seniors, comprendre l'acquisition et la valorisation de l'entreprise compte autant que le chiffre du salaire affiché.",
+      "title": "Comment passer au niveau supérieur"
+    }
+  ],
+  "slug": "fr-usa-machine-learning-engineer-salary-2026",
+  "stats": [
+    {
+      "label": "Salaire de base médian 2026",
+      "value": "~150 000 $"
+    },
+    {
+      "label": "Salaire de base intermédiaire",
+      "value": "145 000–165 000 $"
+    },
+    {
+      "label": "Salaire de base débutant",
+      "value": "~110 000–112 000 $"
+    },
+    {
+      "label": "Rémunération totale médiane",
+      "value": "~261 000 $"
+    }
+  ],
+  "title": "Salaire Ingénieur Machine Learning USA 2026",
+  "translationGroupId": "usa-machine-learning-engineer-salary-2026"
+}

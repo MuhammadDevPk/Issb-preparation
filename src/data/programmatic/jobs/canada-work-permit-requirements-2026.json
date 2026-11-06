@@ -1,0 +1,69 @@
+{
+  "badge": "WORK IN CANADA",
+  "country": "CA",
+  "faqs": [
+    {
+      "a": "You need a valid passport, a job offer or proof you qualify for an open permit, proof of funds, and a clean record. Employer-specific permits also need a positive LMIA or an LMIA-exempt offer number. Most applications are filed online through an IRCC secure account.",
+      "q": "What documents do I need for a Canada work permit?"
+    },
+    {
+      "a": "An employer-specific permit ties you to one employer, job and location named on the permit, and usually needs an LMIA. An open permit lets you work for almost any Canadian employer without a job offer or LMIA, but only if you fall into an eligible category.",
+      "q": "What is the difference between open and employer-specific permits?"
+    },
+    {
+      "a": "An LMIA is a document your employer gets from Employment and Social Development Canada proving no qualified Canadian or permanent resident was available for the job. The employer applies and pays a $1,000 fee; once it is positive, you use it to apply for your permit.",
+      "q": "What is an LMIA and who applies for it?"
+    },
+    {
+      "a": "LMIA-based applications typically take 4 to 14 weeks, depending on the stream and your country of residence. The permit fee is $155, plus a $100 open work permit holder fee for open permits. You cannot legally start working until the permit is issued.",
+      "q": "How long does a Canada work permit take and what does it cost?"
+    }
+  ],
+  "headline": "Canada Work Permit Requirements 2026: Full Guide",
+  "hreflang": "en-CA",
+  "metaDescription": "Canada work permit requirements 2026: open vs employer-specific permits, LMIA rules, $155 fee, and processing times of 4 to 14 weeks explained.",
+  "niche": "jobs",
+  "sections": [
+    {
+      "content": "A Canada work permit is an official document from Immigration, Refugees and Citizenship Canada (IRCC) that lets a foreign national work legally in Canada for a set period. Every permit falls into one of two families: employer-specific permits tied to one job, and open permits that let you work for almost any employer.\n\nWhich type fits you depends on your job offer, your family situation and where you studied. The rules changed several times in 2024 and 2025, so check the current IRCC guidance before you apply rather than relying on older guides.",
+      "title": "The two types of work permit"
+    },
+    {
+      "content": "Most employer-specific permits need a Labour Market Impact Assessment (LMIA). The employer applies to Employment and Social Development Canada and shows that no Canadian citizen or permanent resident was available for the role, paying a $1,000 LMIA fee. After a positive LMIA, you apply for the permit with the LMIA number.\n\nSome jobs skip the LMIA under the International Mobility Program, for example intra-company transfers, trade-agreement roles and Francophone mobility. The employer still submits the offer through the IRCC Employer Portal and pays a $230 compliance fee, but there is no labour market test.",
+      "title": "The LMIA and employer-specific permits"
+    },
+    {
+      "content": "Open work permits are only available in specific situations: international graduates on a Post-Graduation Work Permit, spouses of skilled workers or students, bridging open permit applicants, and a short list of other categories. They are not available to any applicant on request.\n\nSpousal open work permit rules tightened on January 21, 2025. Your spouse or partner in Canada must now generally be in a TEER 0 or 1 occupation, or a selected TEER 2 or 3 role, for you to qualify. Even an open permit cannot be used for employers on the ineligible list.",
+      "title": "Open work permits: who qualifies"
+    },
+    {
+      "content": "First, confirm which permit type fits your situation and whether your job needs an LMIA. Your employer then obtains the LMIA or submits the offer through the Employer Portal, and gives you the LMIA letter or offer number.\n\nThen gather your documents: a valid passport, the job offer letter, proof of funds, and police and medical certificates if requested. Apply online through your IRCC secure account and pay the $155 permit fee. Processing typically takes 4 to 14 weeks for LMIA-based permits, and you must wait for the permit before starting work.",
+      "title": "How to apply step by step"
+    }
+  ],
+  "slug": "canada-work-permit-requirements-2026",
+  "stats": [
+    {
+      "label": "Permit fee",
+      "value": "$155 CAD"
+    },
+    {
+      "label": "Open permit extra fee",
+      "value": "$100 CAD"
+    },
+    {
+      "label": "LMIA fee (employer)",
+      "value": "$1,000 CAD"
+    },
+    {
+      "label": "LMIA processing",
+      "value": "4–14 weeks"
+    },
+    {
+      "label": "PGWP route",
+      "value": "Open permit"
+    }
+  ],
+  "title": "Canada Work Permit Requirements 2026: Full Guide",
+  "translationGroupId": "canada-work-permit-requirements-2026"
+}
