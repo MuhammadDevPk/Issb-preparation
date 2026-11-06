@@ -1,0 +1,65 @@
+{
+  "slug": "canada-royal-canadian-air-force-recruitment-2026",
+  "niche": "defense",
+  "country": "CA",
+  "hreflang": "en-CA",
+  "translationGroupId": "canada-royal-canadian-air-force-recruitment-2026",
+  "title": "RCAF Recruitment 2026: Join the Royal Canadian Air Force",
+  "metaDescription": "Complete 2026 guide to joining the Royal Canadian Air Force. Trades, officer entry, pilot requirements, basic training, pay and how to apply.",
+  "headline": "Join the Royal Canadian Air Force: Complete 2026 Guide",
+  "badge": "RCAF RECRUITMENT GUIDE",
+  "stats": [
+    {
+      "label": "Minimum Age",
+      "value": "17 (with Consent)"
+    },
+    {
+      "label": "Basic Training",
+      "value": "10 Weeks (BMQ)"
+    },
+    {
+      "label": "Entry Routes",
+      "value": "Officer or NCM"
+    },
+    {
+      "label": "Citizenship",
+      "value": "Canadian Citizen or PR"
+    }
+  ],
+  "sections": [
+    {
+      "title": "Who Can Join the RCAF",
+      "content": "The Royal Canadian Air Force is part of the Canadian Armed Forces, and its members apply through the same national recruiting system. Applicants must be Canadian citizens or permanent residents, and at least 17 years old with parental consent, or 18 to apply independently. There is generally no upper age limit for most trades, though pilot and some specialist roles have their own limits.\n\nEducation requirements depend on the trade. Non-commissioned member trades usually require a high school diploma, while officer trades require a university degree or enrolment in a degree program. Applicants must pass medical, fitness and security screening, and be willing to serve anywhere in Canada or abroad."
+    },
+    {
+      "title": "Officer, NCM and Pilot Entry Routes",
+      "content": "There are two main entry routes: officer and non-commissioned member. Officers lead teams and manage operations, and most officer trades require a bachelor's degree. The Royal Military College of Canada offers a subsidized route where the Forces pay for your degree in exchange for service. Non-commissioned members are the skilled technicians and specialists who keep aircraft flying.\n\nPilot is the most competitive RCAF trade. Applicants need strong math and physics, excellent vision and medical fitness, and must pass aircrew selection testing. Pilot training takes several years, from basic flying training through to operational conversion on a specific aircraft type."
+    },
+    {
+      "title": "Basic Training and Trade Training",
+      "content": "All recruits start with Basic Military Qualification, a 10-week course that teaches drill, physical fitness, weapons handling, first aid and military law. Officer candidates take the Basic Military Officer Qualification instead, which adds leadership training. Both courses run at the Canadian Forces Leadership and Recruit School in Saint-Jean, Quebec.\n\nAfter basic training, members move to trade-specific schools. Aircraft technicians train in Borden, Ontario, while aircrew train at various wings across Canada. Most trades reach the operational force within one to two years of enrolling, depending on the length of the trade course."
+    },
+    {
+      "title": "Pay, Benefits and Life in the RCAF",
+      "content": "Canadian Armed Forces pay is set by rank and years of service, with regular increases and allowances for deployments and specialist skills. Members receive full medical and dental coverage, a pension plan, paid leave and subsidized housing options on many bases. Education support is available for further qualifications during service.\n\nRCAF members serve at wings across Canada, from Comox in British Columbia to Greenwood in Nova Scotia, and on operations overseas. The work ranges from search and rescue and Arctic patrols to airlift, fighter operations and space support, so no two postings are quite alike."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "How do I join the Royal Canadian Air Force?",
+      "a": "Apply online through the Canadian Armed Forces recruiting website or visit a local recruiting centre. You will complete an aptitude test, a medical examination, a fitness test and an interview, then be offered a trade based on your results and the needs of the service."
+    },
+    {
+      "q": "What education do I need for the RCAF?",
+      "a": "Most non-commissioned member trades require a high school diploma, while officer trades require a university degree or enrolment in a degree program. The Royal Military College offers a subsidized degree route for officer candidates. Pilot applicants need strong grades in mathematics and physics. Specific trades such as avionics technician may require particular high school science and math courses."
+    },
+    {
+      "q": "How long is RCAF basic training?",
+      "a": "Basic Military Qualification lasts ten weeks and runs at the Canadian Forces Leadership and Recruit School in Saint-Jean, Quebec. Officer candidates take the Basic Military Officer Qualification, which is longer and adds leadership training. After basic training, members attend trade-specific courses that can last from a few months to over a year depending on the occupation."
+    },
+    {
+      "q": "Can permanent residents join the RCAF?",
+      "a": "Yes, permanent residents of Canada can apply to the Canadian Armed Forces, including the Royal Canadian Air Force. However, some trades that require higher security clearances are open only to Canadian citizens. Permanent residents should also be aware that citizenship can speed up career progression into restricted occupations. All applicants must meet the same medical, fitness and aptitude standards."
+    }
+  ]
+}
