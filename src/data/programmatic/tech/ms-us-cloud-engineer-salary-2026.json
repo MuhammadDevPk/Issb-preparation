@@ -1,0 +1,69 @@
+{
+  "slug": "ms-us-cloud-engineer-salary-2026",
+  "niche": "tech",
+  "country": "MY",
+  "hreflang": "ms-MY",
+  "translationGroupId": "us-cloud-engineer-salary-2026",
+  "title": "Gaji Jurutera Awan Amerika Syarikat 2026",
+  "metaDescription": "Gaji jurutera awan di Amerika Syarikat pada 2026: purata, julat mengikut pengalaman dan platform AWS, Azure serta GCP. Panduan lengkap kerjaya dan sijil.",
+  "headline": "Gaji Jurutera Awan Amerika Syarikat 2026",
+  "badge": "GAJI TEKNOLOGI",
+  "stats": [
+    {
+      "label": "Gaji purata",
+      "value": "AS$131,000 setahun"
+    },
+    {
+      "label": "Peringkat permulaan",
+      "value": "AS$90,000-115,000"
+    },
+    {
+      "label": "Peringkat kanan",
+      "value": "AS$139,000-200,000+"
+    },
+    {
+      "label": "Platform tertinggi",
+      "value": "GCP AS$151,500 median"
+    },
+    {
+      "label": "Arkitek awan",
+      "value": "AS$148,000-332,000"
+    }
+  ],
+  "sections": [
+    {
+      "title": "Berapa Gaji Jurutera Awan pada 2026?",
+      "content": "Jurutera awan di Amerika Syarikat memperoleh purata sekitar AS$131,000 setahun pada 2026, menurut data ZipRecruiter dan Glassdoor. Julat gaji keseluruhan adalah luas: jurutera peringkat permulaan memperoleh AS$90,000 hingga AS$115,000, peringkat pertengahan AS$118,000 hingga AS$160,000, manakala jurutera kanan menerima AS$139,000 hingga lebih AS$200,000.\n\nLokasi memainkan peranan besar. Negeri seperti Washington dan New York membayar purata AS$140,000 hingga AS$145,000, manakala kerja jarak jauh kini menawarkan gaji yang hampir setaraf dengan jawatan di pejabat. Jumlah pampasan sebenar selalunya lebih tinggi apabila bonus, ekuiti dan elaun ditambah."
+    },
+    {
+      "title": "Gaji Mengikut Platform: AWS, Azure dan GCP",
+      "content": "Platform awan yang anda kuasai mempengaruhi gaji anda. Jurutera AWS memperoleh median sekitar AS$142,500, Azure sekitar AS$140,000, manakala jurutera Google Cloud (GCP) mencatat median tertinggi sekitar AS$151,500. AWS masih mempunyai pasaran pekerjaan terbesar, dengan lebih 55,000 jawatan aktif berbanding kira-kira 42,000 untuk Azure dan 20,000 untuk GCP.\n\nKemahiran merentas platform memberikan premium gaji 15 hingga 20 peratus. Majikan semakin menghargai jurutera yang boleh bekerja dengan lebih daripada satu platform awan, kerana syarikat besar sering menggunakan strategi berbilang awan untuk mengelakkan pergantungan kepada satu pembekal."
+    },
+    {
+      "title": "Kemahiran yang Meningkatkan Gaji",
+      "content": "Kemahiran mendalam tertentu membawa premium yang ketara. Kebolehcerapan (observability) menambah kira-kira AS$16,700 kepada gaji median, Kubernetes menambah AS$12,600, dan keselamatan awan menambah AS$12,100. Kemahiran ini lebih penting daripada sijil semata-mata, walaupun sijil seperti AWS Solutions Architect Associate masih muncul dalam 80 peratus iklan jawatan.\n\nInfrastruktur sebagai kod (Terraform atau CloudFormation), kontena, dan pengalaman dengan sistem teragih juga sangat dihargai. Jurutera yang menggabungkan kemahiran awan dengan keselamatan atau pembelajaran mesin boleh menuntut gaji di hujung atas julat."
+    },
+    {
+      "title": "Laluan Kerjaya dan Permintaan Pasaran",
+      "content": "Permintaan terhadap jurutera awan kekal kukuh pada 2026, dengan ribuan jawatan dibuka setiap bulan di seluruh Amerika Syarikat. Laluan kerjaya biasa bermula sebagai jurutera awan junior, kemudian naik ke peringkat kanan, dan akhirnya ke jawatan arkitek awan atau pengurus kejuruteraan. Arkitek awan kanan boleh memperoleh AS$148,000 hingga AS$332,000.\n\nUntuk memasuki bidang ini, mulakan dengan asas rangkaian, Linux dan satu bahasa pengaturcaraan, kemudian kuasai satu platform awan dan bina projek sebenar. Sijil peringkat associate dan portfolio projek praktikal sering lebih meyakinkan majikan berbanding ijazah semata-mata."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Berapakah gaji purata jurutera awan di Amerika Syarikat pada 2026?",
+      "a": "Jurutera awan di Amerika Syarikat memperoleh purata sekitar AS$131,000 setahun pada 2026, menurut ZipRecruiter. Data iklan jawatan menunjukkan median AS$142,400, manakala Glassdoor melaporkan purata sekitar AS$151,000 apabila bonus dimasukkan. Julat keseluruhan adalah AS$90,000 hingga lebih AS$200,000 bergantung pada pengalaman, lokasi dan platform."
+    },
+    {
+      "q": "Platform awan manakah yang membayar gaji tertinggi?",
+      "a": "Google Cloud (GCP) membayar median tertinggi sekitar AS$151,500, diikuti AWS sekitar AS$142,500 dan Azure sekitar AS$140,000. Namun AWS mempunyai pasaran pekerjaan terbesar dengan lebih 55,000 jawatan aktif. Jurutera berbilang platform memperoleh premium 15 hingga 20 peratus berbanding pakar satu platform sahaja."
+    },
+    {
+      "q": "Berapakah gaji jurutera awan peringkat permulaan?",
+      "a": "Jurutera awan peringkat permulaan dengan pengalaman 0 hingga 2 tahun memperoleh AS$90,000 hingga AS$115,000 setahun pada 2026. Mereka yang mempunyai sijil AWS Solutions Architect Associate dan projek praktikal boleh bermula di hujung atas julat ini. Gaji meningkat dengan cepat selepas dua hingga tiga tahun pengalaman."
+    },
+    {
+      "q": "Sijil apakah yang paling membantu jurutera awan?",
+      "a": "AWS Certified Solutions Architect Associate adalah sijil paling dikenali dan muncul dalam 80 peratus iklan jawatan. Azure Administrator (AZ-104) penting untuk sektor perusahaan dan kerajaan, manakala Google Associate Cloud Engineer sesuai untuk peranan GCP. Sijil peringkat profesional seperti AWS Solutions Architect Professional boleh meningkatkan gaji ke tahap kanan."
+    }
+  ]
+}
