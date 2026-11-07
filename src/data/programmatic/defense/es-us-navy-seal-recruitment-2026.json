@@ -1,0 +1,65 @@
+{
+  "slug": "es-us-navy-seal-recruitment-2026",
+  "niche": "defense",
+  "country": "ES",
+  "hreflang": "es-ES",
+  "translationGroupId": "us-navy-seal-recruitment-2026",
+  "title": "Reclutamiento Navy SEAL 2026: Guía de Requisitos",
+  "metaDescription": "Cómo ser Navy SEAL en 2026: edad, prueba física PST, entrenamiento BUD/S y pasos para solicitar plaza en las fuerzas especiales de la Marina de EE. UU.",
+  "headline": "Reclutamiento Navy SEAL 2026: Cómo Unirse a la Élite",
+  "badge": "ÚNETE A LOS NAVY SEAL",
+  "stats": [
+    {
+      "label": "Edad de los candidatos",
+      "value": "18 a 28 años"
+    },
+    {
+      "label": "Natación PST",
+      "value": "500 yardas en 12:30"
+    },
+    {
+      "label": "Duración del BUD/S",
+      "value": "Unos 6 meses"
+    },
+    {
+      "label": "Proceso completo",
+      "value": "2 a 3 años"
+    }
+  ],
+  "sections": [
+    {
+      "title": "¿Quién puede ser Navy SEAL?",
+      "content": "Los Navy SEALs son la fuerza de operaciones especiales de la Marina de Estados Unidos, dedicada a misiones marítimas, reconocimiento y lucha contra el terrorismo. Para presentarse hay que ser ciudadano estadounidense, tener entre 17 y 28 años y poseer un diploma de educación secundaria o equivalente. Los jóvenes de 17 años pueden alistarse con permiso paterno, y existen exenciones hasta los 30 años para candidatos excepcionales.\n\nTambién hay que superar el examen médico de buceo, obtener una autorización de seguridad secreta y lograr las puntuaciones exigidas en el ASVAB, la prueba de aptitud militar. La combinación de ciencias generales, comprensión mecánica e información electrónica debe sumar 170 puntos, o 220 puntos en la otra combinación aceptada. La visión debe ser corregible a 20/25, y el daltonismo es causa de exclusión."
+    },
+    {
+      "title": "La prueba de selección física",
+      "content": "La Prueba de Selección Física, o PST, es la primera puerta de entrada. Consta de cinco pruebas encadenadas: 500 yardas de natación en 12 minutos 30 como máximo, 50 flexiones en dos minutos, 50 abdominales en dos minutos, 10 dominadas sin límite de tiempo y una carrera de 1,5 millas en 10 minutos 30. Estos mínimos permiten presentarse, pero los candidatos seleccionados rinden mucho mejor.\n\nLas marcas competitivas rondan los 9 minutos en natación, 80 a 100 flexiones y abdominales, 15 a 20 dominadas y 9 minutos en la carrera. La preparación debe empezar al menos un año antes de la prueba, con entrenamiento regular de natación, carrera y fuerza, además de recuperación y prevención de lesiones."
+    },
+    {
+      "title": "BUD/S y la semana del infierno",
+      "content": "Tras el PST, los seleccionados entran en el BUD/S, el curso básico de demolición submarina, que dura unos seis meses en Coronado, California. La formación se divide en tres fases: acondicionamiento físico, buceo de combate y tácticas terrestres. La semana más famosa es la Hell Week, cinco días y medio de esfuerzo casi continuo con apenas unas horas de sueño.\n\nSolo alrededor del 9,5 por ciento de los candidatos que inician el proceso se gradúan. Después del BUD/S, los graduados siguen varios meses de formación avanzada antes de incorporarse a un equipo SEAL operativo. El proceso completo, desde el alistamiento hasta la primera asignación, suele durar entre dos y tres años."
+    },
+    {
+      "title": "Cómo solicitar plaza y prepararse",
+      "content": "El proceso empieza con un reclutador de la Marina, solicitando un contrato SEAL, llamado Special Operator. El reclutador verifica la elegibilidad, organiza el ASVAB y el PST, y acompaña al candidato hasta el alistamiento. Los marineros que ya están en servicio pueden presentar un expediente para obtener un contrato SEAL.\n\nLa mejor preparación combina natación en aguas abiertas, carrera con y sin carga, musculación y trabajo mental. Los mentores de guerra especial naval, presentes en cada región, ofrecen entrenamiento supervisado y pruebas simuladas. Prepararse a fondo durante doce meses antes del PST es lo habitual entre los candidatos que lo consiguen."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "¿Qué edad hay que tener para ser Navy SEAL?",
+      "a": "Los candidatos a Navy SEAL suelen tener entre 18 y 28 años, aunque los jóvenes de 17 años pueden entrar con permiso paterno y existen exenciones hasta los 30 años para candidatos muy cualificados. Los oficiales siguen límites de edad distintos. Todo candidato debe ser ciudadano estadounidense y tener un diploma de educación secundaria o equivalente."
+    },
+    {
+      "q": "¿Qué puntuación ASVAB se necesita para los SEALs?",
+      "a": "Hay que lograr 170 puntos en la combinación de ciencias generales, comprensión mecánica e información electrónica, o 220 puntos en la combinación de expresión verbal, matemáticas, mecánica y velocidad de codificación. También se exigen 110 puntos en expresión verbal más razonamiento aritmético, con un mínimo de 50 en comprensión mecánica. Quienes superan el BUD/S suelen tener un AFQT de 78 o más."
+    },
+    {
+      "q": "¿Cuánto dura la formación de los Navy SEALs?",
+      "a": "El curso BUD/S dura unos seis meses, seguido de varios meses de formación avanzada antes de incorporarse a un equipo operativo. El proceso completo, desde el alistamiento hasta la primera asignación en un equipo SEAL, suele durar entre dos y tres años. La Hell Week, en el centro del BUD/S, dura cinco días y medio de esfuerzo casi continuo."
+    },
+    {
+      "q": "¿Pueden las mujeres ser Navy SEALs?",
+      "a": "Sí, las mujeres pueden presentarse desde la apertura de todos los puestos de combate a las mujeres, pero los estándares son idénticos para todos los candidatos. Ninguna mujer había completado aún la formación SEAL, lo que muestra la extrema exigencia del proceso. Los criterios físicos, médicos y de aptitud se aplican igual a cada candidato, sin distinción."
+    }
+  ]
+}

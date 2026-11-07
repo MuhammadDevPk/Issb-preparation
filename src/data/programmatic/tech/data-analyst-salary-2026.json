@@ -1,0 +1,65 @@
+{
+  "slug": "data-analyst-salary-2026",
+  "niche": "tech",
+  "country": "US",
+  "hreflang": "en-US",
+  "translationGroupId": "data-analyst-salary-2026",
+  "title": "Data Analyst Salary 2026: Average Pay in the US",
+  "metaDescription": "Data analyst salary 2026: US median around $85,000, entry near $68,000 and senior roles up to $138,500, with pay by experience, city and skills.",
+  "headline": "Data Analyst Salary 2026: What You Can Earn",
+  "badge": "DATA ANALYST PAY 2026",
+  "stats": [
+    {
+      "label": "Median pay",
+      "value": "About $85,000"
+    },
+    {
+      "label": "BLS median",
+      "value": "$88,940"
+    },
+    {
+      "label": "Entry level",
+      "value": "About $68,000"
+    },
+    {
+      "label": "Senior roles",
+      "value": "Up to $138,500"
+    }
+  ],
+  "sections": [
+    {
+      "title": "What data analysts earn in 2026",
+      "content": "Data analysts in the United States earn a median of roughly $82,000 to $87,000 in base pay in 2026, based on a composite of ZipRecruiter, Glassdoor, Salary.com and Indeed. The Bureau of Labor Statistics, which tracks the closest occupation of operations research analysts, reports a median of $88,940, and Glassdoor's median total pay sits near $94,000. The widely quoted $112,590 BLS figure covers data scientists and overstates titled analyst pay.\n\nThe realistic range runs from about $58,000 at the bottom to $150,000 at the top, depending on industry, tools and seniority. Senior analysts in major metros clear $130,000 in base pay, while entry-level roles at smaller employers start near $58,000 to $68,000. Treat any single number with caution, because sources measure different populations and count bonuses differently."
+    },
+    {
+      "title": "Pay by experience level",
+      "content": "Entry-level analysts with up to two years of experience average around $68,000, according to ZipRecruiter data, and can reach the role in months with strong SQL and dashboard skills. Mid-level analysts, the working median, earn $82,000 to $87,000, while senior analysts average roughly $99,000, with the ceiling stretching into the $160,000s for experienced analysts at larger companies or in specialised domains.\n\nThe climb is fast relative to the starting salary. Robert Half's 2026 salary guide puts senior, technology-focused analyst roles at $138,500, and analysts who add cloud BI, Python and statistics to their toolkit move up fastest. Promotions to analytics manager, with total pay of $112,000 to $190,000, are the next step for many."
+    },
+    {
+      "title": "Pay by city and industry",
+      "content": "Location matters a great deal. Colorado posts one of the highest state medians at about $129,880, and major metros such as San Francisco, New York and Seattle pay well above the national figure. Finance, technology and healthcare pay more than retail, education and non-profit employers, and large tech companies sit at the top of the range.\n\nRemote analyst roles exist in large numbers, but pay often adjusts to the employer's location band rather than the analyst's. Candidates who combine SQL depth with cloud BI tools such as Snowflake, dbt or Looker, and who can present findings to non-technical stakeholders, command the strongest offers in any market."
+    },
+    {
+      "title": "How to earn more as a data analyst",
+      "content": "Specialising beyond basic reporting is the clearest path to higher pay. Analysts who own a business domain, such as pricing, marketing analytics or product analytics, and who can run experiments and build models, move toward the $110,000 to $145,000 senior band. Learning Python, statistics and a modern data stack adds the most value.\n\nCertifications help less than a portfolio of real analyses. A public portfolio showing dashboards, SQL queries and written insights, plus a track record of decisions influenced, is what hiring managers weigh most. With more than 97,000 active US listings on LinkedIn in 2026, demand is broad, but the best-paid roles go to analysts who combine technical skill with business judgement."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "What is the average data analyst salary in 2026?",
+      "a": "The defensible US median for a titled data analyst in 2026 is around $82,000 to $87,000 in base pay, based on ZipRecruiter's average of $82,640 and Glassdoor's figures. The BLS median for the closest tracked occupation is $88,940, and Glassdoor's median total pay is about $94,000. Entry roles average near $68,000 and senior analysts near $99,000."
+    },
+    {
+      "q": "How much does an entry-level data analyst make?",
+      "a": "Entry-level data analysts earn about $63,500 to $68,500 a year, according to PayScale and ZipRecruiter 2026 data, with some roles at small companies starting near $58,000. The role is reachable in months with strong SQL, spreadsheet and dashboard skills, and pay rises quickly once you add Python, cloud BI tools and business-domain experience."
+    },
+    {
+      "q": "What is the highest data analyst salary?",
+      "a": "Senior data analysts in major metros earn $110,000 to $145,000 in base pay, and the ceiling stretches into the $160,000s for experienced analysts at large companies or in specialised domains. Robert Half's 2026 guide puts senior, technology-focused roles at $138,500. Moving into analytics management lifts total pay to roughly $112,000 to $190,000."
+    },
+    {
+      "q": "Is data analyst a good career in 2026?",
+      "a": "Yes, demand is broad, with more than 97,000 active US listings on LinkedIn in 2026 and the BLS projecting 12 percent growth for the closest occupation between 2025 and 2035. The ceiling is lower than the data science track, where senior roles pass $200,000, but the entry bar is lower too, and analysts who specialise in a domain and modern tooling earn well."
+    }
+  ]
+}

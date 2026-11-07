@@ -1,0 +1,65 @@
+{
+  "slug": "site-reliability-engineer-salary-2026",
+  "niche": "tech",
+  "country": "US",
+  "hreflang": "en-US",
+  "translationGroupId": "site-reliability-engineer-salary-2026",
+  "title": "Site Reliability Engineer Salary 2026: SRE Pay in the US",
+  "metaDescription": "Site reliability engineer salary 2026: US base around $131,000, Glassdoor average $172,000, total comp median $200,000, senior SREs $160,000-$210,000.",
+  "headline": "Site Reliability Engineer Salary 2026: What SREs Earn",
+  "badge": "SRE PAY 2026",
+  "stats": [
+    {
+      "label": "Built In base",
+      "value": "About $131,000"
+    },
+    {
+      "label": "Glassdoor average",
+      "value": "About $172,000"
+    },
+    {
+      "label": "Levels.fyi total",
+      "value": "$200,200"
+    },
+    {
+      "label": "Senior base",
+      "value": "$160,000-$210,000"
+    }
+  ],
+  "sections": [
+    {
+      "title": "What SREs earn in 2026",
+      "content": "Site reliability engineers in the United States earn a base salary of roughly $130,000 to $210,000 in 2026, with mid-level engineers toward the lower half of that band and seniors toward the top. Built In reports an average base near $131,000, Glassdoor reports an average around $172,000 including additional pay, and Levels.fyi puts median total compensation, including equity and bonus, at about $200,000. Jobicy's benchmark sits near $133,800 in base pay.\n\nThe spread between sources is a methodology story, not an error: base-pay aggregators report what lands on the offer letter, while total-comp sites add stock and bonus, which at big tech employers can be half the package. For budgeting, plan on $130,000 to $170,000 in base for a mid-level SRE outside the largest tech firms."
+    },
+    {
+      "title": "Pay by experience level",
+      "content": "Junior SREs with up to two years of experience earn $84,000 to $135,000 in base pay, with total compensation of $110,000 to $150,000. Mid-level SREs with three to five years earn $130,000 to $175,000 in base, or $150,000 to $220,000 in total comp. Senior SREs with six to nine years earn $160,000 to $210,000 in base, or $200,000 to $300,000 all-in.\n\nStaff and principal SREs at strong employers clear $300,000 in total compensation, and at Google the median total runs near $327,000, with senior staff roles exceeding $768,000. SREs typically earn 15 to 25 percent more than DevOps engineers at equivalent levels, reflecting the deeper software engineering skill the role demands."
+    },
+    {
+      "title": "What drives SRE pay up or down",
+      "content": "Employer type is the biggest factor: large tech and finance firms pay far more than mid-size companies outside major metros, where Glassdoor shows senior base salaries of $130,000 to $160,000. Location matters too, with the Bay Area, Seattle and New York at the top, and fully remote SRE postings show a median near $145,000.\n\nOn-call load, scale and reliability ownership also move pay. Engineers who own services serving millions of users, run incident response and set service-level objectives command more than those maintaining small internal systems. Kubernetes, Go, observability tooling and incident management experience are the skills most often tied to higher offers."
+    },
+    {
+      "title": "How to become an SRE and grow pay",
+      "content": "Most SREs arrive from software engineering or DevOps, with strong programming, Linux, networking and cloud skills, plus experience running production systems. There is no dedicated BLS occupation code for SREs, but the closest category, software developers, shows a median wage of $133,080 and 15 percent job growth from 2024 to 2034.\n\nTo grow pay, deepen software engineering skills rather than only operations: automation, capacity planning and reliability design are what separate senior SREs from operators. Contributing to open-source infrastructure, earning cloud certifications and documenting incident reviews you led will strengthen both your resume and your negotiating position."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "What is the average site reliability engineer salary in 2026?",
+      "a": "A mid-level SRE in the US can reasonably expect total compensation of $170,000 to $200,000 in 2026. Base-pay aggregators report $131,000 to $133,000 on average, Glassdoor reports about $172,000 including additional pay, and Levels.fyi puts median total compensation at $200,200. Senior SREs earn $160,000 to $210,000 in base salary before equity and bonus."
+    },
+    {
+      "q": "How much does a junior SRE earn?",
+      "a": "Junior SREs with up to two years of experience earn $84,000 to $135,000 in base pay, with total compensation of $110,000 to $150,000 at companies that pay bonuses and equity. Entry-level ranges on Glassdoor run $95,000 to $161,000. Strong programming skills and cloud experience lift junior offers fastest, and Levels.fyi shows total comp near $180,000 even at junior levels at top firms."
+    },
+    {
+      "q": "Do SREs earn more than DevOps engineers?",
+      "a": "Yes, SREs typically earn 15 to 25 percent more than DevOps engineers at equivalent experience levels. The gap reflects the heavier software engineering demands of SRE work, including writing code to automate operations, designing for reliability and owning service-level objectives. Both roles overlap, but SRE postings at large tech firms carry the higher pay bands."
+    },
+    {
+      "q": "Is SRE a good career in 2026?",
+      "a": "Yes, demand is high, with one salary benchmark reporting 20 percent annual growth in demand and postings going unfilled for about 49 days on average. The BLS projects 15 percent growth for software development roles from 2024 to 2034, and SRE sits squarely in that category. Pay is strong at every level, and the skills transfer well to platform engineering and staff engineering roles."
+    }
+  ]
+}

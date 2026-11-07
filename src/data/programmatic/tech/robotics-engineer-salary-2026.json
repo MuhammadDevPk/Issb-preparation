@@ -1,0 +1,65 @@
+{
+  "slug": "robotics-engineer-salary-2026",
+  "niche": "tech",
+  "country": "US",
+  "hreflang": "en-US",
+  "translationGroupId": "robotics-engineer-salary-2026",
+  "title": "Robotics Engineer Salary 2026: Average Pay in the US",
+  "metaDescription": "Robotics engineer salary 2026: US median pay around $123,000, top earners above $185,000, plus pay by experience, city, industry and specialisation.",
+  "headline": "Robotics Engineer Salary 2026: What You Can Earn",
+  "badge": "ROBOTICS PAY 2026",
+  "stats": [
+    {
+      "label": "Median pay",
+      "value": "$122,930"
+    },
+    {
+      "label": "Indeed average",
+      "value": "About $132,000"
+    },
+    {
+      "label": "Glassdoor total",
+      "value": "About $147,000"
+    },
+    {
+      "label": "Top earners",
+      "value": "$185,000+"
+    }
+  ],
+  "sections": [
+    {
+      "title": "What robotics engineers earn in 2026",
+      "content": "Robotics engineers in the United States earn a median of about $122,930 a year, according to the Bureau of Labor Statistics data for the occupation group that covers them. Job-board figures cluster in the same range: Indeed reports an average base near $132,000 from recent postings, Salary.com puts the average around $133,000, and Glassdoor's median total pay, including bonuses, sits near $147,000. Entry-level roles typically start around $84,000 to $102,000.\n\nThe spread between sources is real and worth understanding. Government data groups robotics engineers with other engineers, which understates specialist pay, while Glassdoor leans on large tech employers that pay more. For planning purposes, a working median of roughly $123,000 to $133,000 in base pay is the honest figure for 2026."
+    },
+    {
+      "title": "Pay by experience and specialisation",
+      "content": "Experience is the biggest lever. Junior robotics engineers earn roughly $84,000 to $107,000, mid-level engineers $111,000 to $148,000, and senior engineers $160,000 to $185,000 or more. Robot learning specialists, who train manipulation and locomotion policies with modern machine learning, command the highest packages, with senior total compensation reaching $185,000 to $280,000 including equity at top employers.\n\nSpecialisation matters as much as seniority. Autonomous-vehicle and robotics-AI software roles pay well above industrial manufacturing roles, which cluster near $102,000. Skills in ROS2 and computer vision are reported to add $20,000 to $40,000 to an offer, and aerospace and defence employers pay a median near $134,000, although many of those roles require US citizenship."
+    },
+    {
+      "title": "Where robotics engineers earn the most",
+      "content": "Location sets the ceiling. California pays the highest average, around $147,000, driven by employers in the Bay Area such as Google, Tesla and autonomous-vehicle firms. The San Francisco Bay Area pays roughly 1.25 times the national figure, and Boston, Seattle and Austin also sit well above the median thanks to dense robotics and automation clusters.\n\nRemote and hybrid roles exist, but much of the work is tied to hardware labs, so fully remote robotics jobs are rarer than in pure software. Engineers willing to relocate to a robotics hub, or to work on-site at a frontier employer, can expect the largest premium over the national median."
+    },
+    {
+      "title": "How to raise your robotics salary",
+      "content": "The fastest pay gains come from skills that are scarce: ROS2, real-time control, computer vision, robot learning and simulation. A master's degree in robotics or a related field helps at research-heavy employers, and a portfolio of working robots, open-source contributions or competition results can matter more than a second degree.\n\nNegotiation also pays. Equity can lift total compensation 30 to 60 percent above base at growth-stage and large tech employers, so compare total packages, not base salary alone. Candidates with offers from two or more employers, especially in autonomous vehicles or humanoids, hold the strongest hand in 2026."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "What is the average robotics engineer salary in 2026?",
+      "a": "Most US sources place the median or average base salary between $100,000 and $133,000 in 2026. The Bureau of Labor Statistics median is $122,930, Indeed reports an average base near $132,000, and Glassdoor's median total pay including bonuses is about $147,000. Senior specialists at frontier employers can earn far more once equity is included."
+    },
+    {
+      "q": "How much does an entry-level robotics engineer earn?",
+      "a": "Entry-level robotics engineers typically earn $84,000 to $102,000 a year at mid-tier employers, with the range stretching to $120,000 or more at top-tier tech and aerospace firms. ZipRecruiter's lower figures reflect a broader sample including smaller employers, while specialist postings at firms such as Boston Dynamics advertise $178,000 to $230,000 for experienced test roles."
+    },
+    {
+      "q": "Which robotics specialisation pays the most?",
+      "a": "Robot learning and autonomous-vehicle software pay the most, with senior total compensation reaching $185,000 to $280,000 including equity. Industrial and manufacturing robotics roles cluster near $102,000, while aerospace and defence roles sit around $134,000 at the median. Skills in ROS2 and computer vision add a reported $20,000 to $40,000 to an offer."
+    },
+    {
+      "q": "Is robotics engineering a good career in 2026?",
+      "a": "Yes, demand is strong and pay is rising, with the median up about 14 percent since 2024 according to one 2026 compensation survey. Growth is driven by autonomous vehicles, humanoid robots, warehouse automation and defence systems. The main risk is concentration: the highest pay sits at a small number of frontier employers, so building scarce skills in ROS2, control and robot learning matters."
+    }
+  ]
+}

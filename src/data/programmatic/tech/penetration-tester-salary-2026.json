@@ -1,0 +1,65 @@
+{
+  "slug": "penetration-tester-salary-2026",
+  "niche": "tech",
+  "country": "US",
+  "hreflang": "en-US",
+  "translationGroupId": "penetration-tester-salary-2026",
+  "title": "Penetration Tester Salary 2026: Ethical Hacker Pay Guide",
+  "metaDescription": "Penetration tester salary 2026: US average near $120,000, Glassdoor median $155,000, senior red team roles up to $206,000, plus certs that raise pay.",
+  "headline": "Penetration Tester Salary 2026: What Ethical Hackers Earn",
+  "badge": "PEN TESTER PAY 2026",
+  "stats": [
+    {
+      "label": "ZipRecruiter average",
+      "value": "$119,895"
+    },
+    {
+      "label": "Glassdoor median",
+      "value": "$155,000"
+    },
+    {
+      "label": "Entry level",
+      "value": "$70,000-$96,000"
+    },
+    {
+      "label": "Senior roles",
+      "value": "$140,000-$180,000"
+    }
+  ],
+  "sections": [
+    {
+      "title": "What penetration testers earn in 2026",
+      "content": "Penetration testers in the United States earn an average base salary of about $119,895 a year, according to ZipRecruiter data, with most testers landing between $96,000 and $141,000 and the top 10 percent reaching around $158,500. Glassdoor, which counts bonuses and additional pay, reports a median total of $155,000, while Indeed reports an average base near $123,000 to $125,000. The BLS groups testers with information security analysts, a category with a median wage of $124,910.\n\nThe range is wide because sources measure different things: base pay only, or total pay with bonuses. A sensible working range for 2026 is roughly $95,000 to $180,000 in base pay, with senior and red team roles stretching well above it. Treat each platform's figure as a benchmark, not a promise."
+    },
+    {
+      "title": "Pay by experience level",
+      "content": "Entry-level testers with up to two years of experience earn $70,000 to $96,000, typically starting as junior testers or security analysts running tests under supervision. Mid-level testers with two to five years earn $96,000 to $140,000, testing independently, chaining exploits and writing reports. Senior testers and red team operators with five to ten years earn $140,000 to $180,000, and lead or principal roles reach $185,000 to $250,000 or more.\n\nCloud security specialisation adds a reported 25 percent premium, and red team operators with OSCP plus a specialisation certification routinely close at $160,000 to $200,000 in major metros. Major cities such as New York, San Francisco and Washington DC pay significantly above the national median."
+    },
+    {
+      "title": "Certifications that raise pay",
+      "content": "The OSCP is the single most in-demand certification, appearing in about 35 percent of job postings and commanding a significant premium. CompTIA PenTest+ is a solid intermediate credential, with certified testers averaging around $105,000, while the CEH appears in about 30 percent of postings but carries less technical weight among practitioners, even though HR filters often ask for it.\n\nBeyond certificates, hands-on skill is what employers pay for: web application testing, Active Directory exploitation, cloud environments and clear reporting. A portfolio of lab work, bug bounty results or capture-the-flag rankings can open doors faster than another entry-level certificate."
+    },
+    {
+      "title": "Job outlook and how to get in",
+      "content": "The outlook is strong. The BLS forecasts 29 to 33 percent growth for information security analysts through 2033 or 2034, with around 16,000 openings a year, far faster than the average occupation. Meta, Atlassian and Amazon Web Services are among the highest-paying employers for testers.\n\nThe usual path starts in a security analyst or SOC role, builds networking and Linux fundamentals, then adds a certification and a home lab. Many testers move from IT support or system administration, and a degree is helpful but not required if the practical skills and certifications are strong."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "What is the average penetration tester salary in 2026?",
+      "a": "The average base salary for a penetration tester in the US is about $119,895 a year, according to ZipRecruiter, with most testers earning $96,000 to $141,000. Glassdoor's median total pay, including bonuses, is $155,000, and Indeed reports an average base near $123,000. Senior testers earn $140,000 to $180,000, and lead roles can pass $200,000."
+    },
+    {
+      "q": "How much does an entry-level penetration tester earn?",
+      "a": "Entry-level penetration testers earn $70,000 to $96,000 a year, typically starting as junior testers or security analysts. PayScale puts entry-level total compensation near $63,000 to $70,000 in some samples, while Glassdoor's entry figure is around $117,000 including additional pay. The OSCP and PenTest+ certifications, plus a strong home lab, lift starting offers fastest."
+    },
+    {
+      "q": "Do penetration testers need a degree?",
+      "a": "No, a degree is helpful but not required. Employers weigh practical skills, certifications such as OSCP and PenTest+, and a portfolio of lab work or bug bounty results more heavily than a diploma. Many testers enter from IT support, system administration or security analyst roles, and the BLS groups the work with information security analysts, a field growing about 29 percent to 2034."
+    },
+    {
+      "q": "What is the highest penetration tester salary?",
+      "a": "Senior penetration testers earn $140,000 to $180,000, with some reports putting senior averages near $188,000, and lead or principal red team operators earn $185,000 to $250,000 or more. Glassdoor's top end for the role reaches $206,000. Cloud specialisation adds about a 25 percent premium, and major metros such as San Francisco and New York pay the most."
+    }
+  ]
+}
