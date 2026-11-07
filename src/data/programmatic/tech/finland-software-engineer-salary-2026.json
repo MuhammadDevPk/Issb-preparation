@@ -1,0 +1,65 @@
+{
+  "badge": "2026 SALARY DATA",
+  "country": "FI",
+  "faqs": [
+    {
+      "a": "Software engineers in Finland earn an average of €48,000 to €67,000 gross a year in 2026. Junior developers earn €35,000 to €45,000, mid-level engineers €50,000 to €70,000 and senior engineers €65,000 to €100,000 or more. Levels.fyi reports a median total compensation of €66,400 a year, with Helsinki paying above the national average.",
+      "q": "How much does a software engineer earn in Finland?"
+    },
+    {
+      "a": "Helsinki pays the most, with average software engineer salaries of €55,000 to €71,000, thanks to its tech clusters in Espoo and the capital region. Top-paying companies include Mapbox, Wolt and Unity. Smaller cities pay less but offer lower living costs, so the net difference is smaller than the gross gap suggests.",
+      "q": "Which Finnish city pays software engineers the most?"
+    },
+    {
+      "a": "Yes, and it is one of the cleaner routes for non-EU engineers. The Specialist Permit for IT roles requires a minimum gross salary of €3,937 a month in 2026. Finland also runs a fast-track residence permit process for specialists, with decisions targeted within 14 days for complete applications filed online.",
+      "q": "Can a non-EU engineer get a work visa for Finland?"
+    },
+    {
+      "a": "AI, cloud and data skills add the biggest premium, boosting earnings by 10 to 25 percent. Employers pay most for Python, TypeScript, Kubernetes and AWS or Azure experience, plus product sense and system design at senior level. Finnish language is rarely required in international tech teams, though it helps outside Helsinki.",
+      "q": "Which skills pay the most in Finland?"
+    }
+  ],
+  "headline": "Finland Software Engineer Salary 2026",
+  "hreflang": "en-US",
+  "metaDescription": "Finland software engineer salary 2026: average €48,000–€67,000, pay by level, Helsinki premiums, top employers and the Specialist Permit route for foreigners.",
+  "niche": "tech",
+  "sections": [
+    {
+      "content": "Software engineers in Finland earn an average of €48,000 to €67,000 gross a year in 2026, with after-tax net pay of roughly €3,000 to €4,500 a month. Junior developers earn €35,000 to €45,000, mid-level engineers €50,000 to €70,000 and senior engineers €65,000 to €100,000 or more. Levels.fyi reports a median total compensation of €66,400 a year based on 167 reported salaries.\n\nPay is mid-tier for Europe: below Switzerland and Denmark but above Eastern Europe. The trade-off is strong work-life balance, generous parental leave and a stable labour market. Finland has no single national minimum wage; pay floors are set through sector collective agreements, and the national average gross income is around €55,462 a year.",
+      "title": "Average salary in 2026"
+    },
+    {
+      "content": "Location matters. Helsinki software engineers average €55,000 to €71,000, driven by tech clusters in the capital region and Espoo, home to companies like Wolt, Unity and Nokia's research teams. Mapbox is the highest-paying company in the country, with a median total compensation of €120,000 a year.\n\nSenior and specialist roles in Helsinki typically earn €5,500 to €6,500 a month, and lead or architect positions can reach €8,000 to €12,000 a month. Outside the capital, salaries run lower but so do housing costs, and remote-first employers increasingly pay the same band regardless of location within Finland.",
+      "title": "Helsinki vs the rest of Finland"
+    },
+    {
+      "content": "Demand is strong: more than 8,000 software developer openings are projected for 2026, with IT jobs for foreign engineers paying €50,000 to €80,000 a year. Finland's tech sector keeps growing around AI infrastructure, cloud services and digital public services, and employers actively recruit internationally.\n\nFor non-EU engineers, the Specialist Permit is the main route, requiring a minimum gross salary of €3,937 a month in 2026. Finland's fast-track process targets decisions within 14 days for complete online applications. The EU pay transparency directive, effective from 2026, is also pushing employers toward clearer salary bands and audits.",
+      "title": "Job market and visas"
+    },
+    {
+      "content": "AI, cloud and data skills carry the biggest premium, boosting earnings by 10 to 25 percent. Employers pay most for Python, TypeScript, React, Kubernetes and AWS or Azure experience. AI and ML engineers earn €63,000 to €148,000, well above the general software band.\n\nFinnish language is rarely required in international tech teams, though it helps for life outside Helsinki. Career progression is steady rather than steep: pay typically grows 10 to 15 percent every two to three years, from around €40,000 at entry to €60,000 by year five and €80,000 or more by year eight to ten.",
+      "title": "Skills and career growth"
+    }
+  ],
+  "slug": "finland-software-engineer-salary-2026",
+  "stats": [
+    {
+      "label": "Average salary",
+      "value": "€48,000–€67,000"
+    },
+    {
+      "label": "Junior developer",
+      "value": "€35,000–€45,000"
+    },
+    {
+      "label": "Senior engineer",
+      "value": "€65,000–€100,000+"
+    },
+    {
+      "label": "Median total comp",
+      "value": "€66,400 / year"
+    }
+  ],
+  "title": "Finland Software Engineer Salary 2026",
+  "translationGroupId": "finland-software-engineer-salary-2026"
+}

@@ -1,0 +1,65 @@
+{
+  "badge": "DATA GAJI 2026",
+  "country": "MY",
+  "faqs": [
+    {
+      "a": "Di Amerika Syarikat, penganalisis keselamatan siber memperoleh antara $58,000 hingga $227,000 setahun pada 2026, bergantung pada pengalaman. Penganalisis SOC peringkat permulaan bermula antara $58,000 hingga $75,000, manakala gaji median bagi keseluruhan kerjaya ialah $124,910 menurut BLS. Penganalisis kanan memperoleh kira-kira $146,000 hingga $180,000.",
+      "q": "Berapa gaji penganalisis keselamatan siber pada 2026?"
+    },
+    {
+      "a": "Laluan paling biasa adalah peranan penganalisis SOC. CompTIA Security+ ialah sijil permulaan yang paling diiktiraf. Ramai majikan juga mahukan asas rangkaian, Linux dan pengetahuan awan. Latihan amali, kerja makmal dan projek makmal rumah membantu calon tanpa pengalaman menonjol dalam permohonan.",
+      "q": "Bagaimana untuk bermula dalam keselamatan siber peringkat permulaan?"
+    },
+    {
+      "a": "Ya, ini antara bidang yang paling cepat berkembang di AS. Biro Statistik Buruh menjangkakan peranan penganalisis keselamatan maklumat berkembang 33% menjelang 2033, kira-kira empat kali ganda purata semua pekerjaan. Kajian ISC2 2025 menganggarkan 4.8 juta jawatan keselamatan siber kosong di seluruh dunia.",
+      "q": "Adakah keselamatan kerja dalam keselamatan siber baik?"
+    },
+    {
+      "a": "Security+ ialah sijil paling berharga untuk permulaan. Kemudian datang CEH dan sijil GIAC. Bagi peranan kanan, CISSP dianggap piawaian emas industri dan boleh meningkatkan gaji dengan ketara. Sijil keselamatan awan AWS dan Azure juga menaikkan gaji, tetapi sijil sahaja tidak cukup kerana pengalaman praktikal turut diperlukan.",
+      "q": "Sijil manakah yang meningkatkan gaji?"
+    }
+  ],
+  "headline": "Gaji Penganalisis Keselamatan Siber 2026",
+  "hreflang": "ms-MY",
+  "metaDescription": "Gaji penganalisis keselamatan siber di AS 2026: julat gaji peringkat permulaan, pertengahan dan kanan, sijil paling berharga serta prospek pasaran kerja.",
+  "niche": "tech",
+  "sections": [
+    {
+      "content": "Pada 2026, gaji penganalisis keselamatan siber di Amerika Syarikat berbeza luas mengikut pengalaman. Penganalisis SOC peringkat permulaan memperoleh $58,000 hingga $75,000 setahun. Menurut Biro Statistik Buruh, gaji median penganalisis keselamatan maklumat ialah $124,910, manakala 10% teratas memperoleh lebih $186,420.\n\nPenganalisis pertengahan memperoleh $75,000 hingga $137,000, manakala penganalisis kanan memperoleh purata kira-kira $146,000 dan boleh melebihi $180,000. Lokasi membuat perbezaan besar: bandar seperti Washington DC dan San Francisco membayar 10% hingga 25% lebih tinggi daripada purata negara.",
+      "title": "Gaji mengikut tahap"
+    },
+    {
+      "content": "Permintaan dalam keselamatan siber berkembang jauh lebih pantas daripada bekalan. Biro Statistik Buruh menjangkakan peranan penganalisis keselamatan maklumat berkembang 33% menjelang 2033, kira-kira empat kali ganda purata semua pekerjaan. Kajian ISC2 2025 mendapati 4.8 juta jawatan keselamatan siber kosong di seluruh dunia.\n\nDi AS, dianggarkan lebih 500,000 jawatan keselamatan siber kini kosong. Kekosongan ini mencipta peluang kukuh walaupun bagi calon peringkat permulaan, namun majikan biasanya mencari 2 hingga 4 tahun pengalaman IT terlebih dahulu. Peranan penganalisis SOC adalah pintu masuk paling biasa ke bidang ini.",
+      "title": "Mengapa pasaran kerja begitu kukuh?"
+    },
+    {
+      "content": "CompTIA Security+ ialah sijil permulaan paling diiktiraf dalam bidang ini dan diminta dalam kebanyakan iklan kerja peringkat permulaan. Seterusnya datang CCNA Security untuk keselamatan rangkaian dan CEH untuk penggodaman beretika. Bagi peranan kanan, CISSP dianggap piawaian emas industri dan boleh meningkatkan gaji dengan ketara.\n\nSijil keselamatan awan juga semakin berharga: AWS Certified Security dan Microsoft Azure Security Engineer meningkatkan gaji penganalisis yang bekerja dalam persekitaran awan. Namun sijil sahaja tidak mencukupi; majikan juga mahu melihat pengalaman makmal praktikal dan amalan tindak balas insiden sebenar.",
+      "title": "Sijil paling berharga"
+    },
+    {
+      "content": "Kenaikan gaji dalam keselamatan siber boleh berlaku dengan pantas. Seseorang yang bermula sebagai penganalisis SOC Tier 1 boleh beralih ke peranan Tier 2 atau tindak balas insiden dalam 2 hingga 4 tahun dan menaikkan gaji kepada $85,000 hingga $110,000. Mereka yang memasuki kejuruteraan atau seni bina keselamatan boleh melebihi $150,000.\n\nPengkhususan penting: keselamatan awan, pemburuan ancaman dan tadbir urus-risiko-pematuhan (GRC) adalah antara pengkhususan yang paling cepat berkembang. Penganalisis GRC dalam industri terkawal bermula antara $60,000 hingga $80,000 dan naik dengan cepat. Pembelajaran berterusan adalah wajib kerana ancaman sentiasa berubah.",
+      "title": "Laluan kerjaya dan kenaikan"
+    }
+  ],
+  "slug": "ms-cybersecurity-analyst-salary-2026",
+  "stats": [
+    {
+      "label": "SOC peringkat permulaan",
+      "value": "$58,000–$75,000"
+    },
+    {
+      "label": "Gaji median (BLS)",
+      "value": "$124,910"
+    },
+    {
+      "label": "Penganalisis kanan",
+      "value": "$146,000–$180,000"
+    },
+    {
+      "label": "Pertumbuhan (hingga 2033)",
+      "value": "33%"
+    }
+  ],
+  "title": "Gaji Penganalisis Keselamatan Siber 2026",
+  "translationGroupId": "cybersecurity-analyst-salary-2026"
+}

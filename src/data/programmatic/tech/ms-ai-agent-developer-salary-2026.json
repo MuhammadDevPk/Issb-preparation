@@ -1,0 +1,65 @@
+{
+  "badge": "DATA GAJI 2026",
+  "country": "MY",
+  "faqs": [
+    {
+      "a": "Di Amerika Syarikat, pembangun ejen AI memperoleh gaji asas antara $110,000 hingga $320,000 setahun pada 2026, bergantung pada tahap. Peranan junior membayar $110,000 hingga $150,000, tahap pertengahan $150,000 hingga $220,000, manakala peranan kanan $185,000 hingga $280,000. Saham dan bonus menjadikan jumlah pampasan jauh lebih tinggi.",
+      "q": "Berapa gaji pembangun ejen AI pada 2026?"
+    },
+    {
+      "a": "Gaji tertinggi adalah pada tahap staf dan ketua, dengan gaji asas $220,000 hingga $320,000 dan jumlah pampasan mencecah $400,000 hingga $600,000. Di makmal terkemuka seperti OpenAI dan Anthropic, jumlah pampasan boleh melebihi $500,000. Peranan ini biasanya memerlukan lebih 8 tahun pengalaman serta tanggungjawab membina platform ejen.",
+      "q": "Tahap manakah yang menerima gaji tertinggi?"
+    },
+    {
+      "a": "Membina ejen produksi dengan LangChain dan LangGraph, mereka bentuk sistem RAG, membina infrastruktur penilaian dan mereka bentuk kawalan keselamatan adalah kemahiran yang paling meningkatkan gaji. Pengetahuan Python, platform awan dan penggunaan alatan juga penting. Pengalaman menjalankan ejen dalam sistem sebenar jauh lebih dihargai berbanding pengetahuan teori semata-mata.",
+      "q": "Kemahiran apakah yang paling meningkatkan gaji?"
+    },
+    {
+      "a": "Permintaan sangat tinggi: iklan kerja yang menyebut kemahiran ejen meningkat kira-kira tiga kali ganda pada awal 2026 berbanding tahun sebelumnya. Mengisi peranan kanan mengambil masa purata lebih 90 hari. Calon dengan portfolio kukuh dan pengalaman produksi cepat mendapat kerja, namun persaingan juga meningkat, jadi pengkhususan semakin penting.",
+      "q": "Sukar kah mencari kerja dalam bidang ini?"
+    }
+  ],
+  "headline": "Gaji Pembangun Ejen AI 2026 di Amerika Syarikat",
+  "hreflang": "ms-MY",
+  "metaDescription": "Berapa gaji pembangun ejen AI di AS pada 2026? Ketahui julat gaji junior, pertengahan dan kanan, jumlah pampasan serta kemahiran paling berharga di sini.",
+  "niche": "tech",
+  "sections": [
+    {
+      "content": "Pada 2026, gaji pembangun ejen AI di Amerika Syarikat berbeza besar mengikut pengalaman. Pembangun junior memperoleh $110,000 hingga $150,000 setahun, manakala jurutera pertengahan dengan 3 hingga 5 tahun pengalaman memperoleh $150,000 hingga $220,000. Jurutera kanan pula memperoleh $185,000 hingga $280,000.\n\nJurutera tahap staf dan ketua bermula dengan gaji asas melebihi $220,000 dan boleh melepasi $320,000. Di makmal terkemuka seperti OpenAI dan Anthropic, jumlah pampasan boleh melebihi $500,000. Lokasi juga penting: peranan di kawasan San Francisco Bay biasanya membayar jauh lebih tinggi daripada purata negara.",
+      "title": "Bagaimanakah gaji berubah mengikut tahap?"
+    },
+    {
+      "content": "Gaji asas hanyalah sebahagian daripada cerita. Di banyak syarikat, saham, bonus dan bonus tandatangan meningkatkan jumlah pampasan dengan ketara. Jumlah pampasan jurutera pertengahan adalah antara $190,000 hingga $275,000, manakala pada tahap kanan ia meningkat kepada $260,000 hingga $400,000.\n\nSaham boleh membentuk sehingga separuh daripada jumlah bayaran di syarikat teknologi besar. Oleh itu, apabila membandingkan dua tawaran, lihat bukan sahaja gaji asas tetapi juga jadual peletakhakan saham, bonus dan faedah. Bagi kerja kontrak, jurutera kanan memperoleh $150 hingga $250 sejam.",
+      "title": "Mengapa jumlah pampasan lebih tinggi daripada gaji asas?"
+    },
+    {
+      "content": "Membina sistem produksi dengan rangka kerja ejen seperti LangChain dan LangGraph adalah antara kemahiran paling dicari. Pengetahuan tentang retrieval-augmented generation (RAG), penggunaan alatan, sistem penilaian dan kawalan keselamatan juga meningkatkan gaji secara langsung. Python kekal sebagai bahasa utama bidang ini.\n\nPengetahuan tentang reka bentuk keselamatan dan pemantauan amat bernilai untuk ejen yang menulis ke sistem sebenar. Jurutera yang boleh membina infrastruktur penilaian, mengukur kesilapan ejen dan memastikan operasi yang boleh dipercayai dalam produksi naik ke peranan kanan lebih cepat. Pengalaman awan dan MLOps juga membezakan.",
+      "title": "Kemahiran yang paling menguntungkan"
+    },
+    {
+      "content": "Mempunyai projek ejen yang berjalan dalam produksi adalah alat rundingan paling kuat. Sumbangan sumber terbuka, penulisan teknikal dan portfolio yang menunjukkan hasil terukur menyerlahkan calon dalam proses pengambilan. Pengalaman sistem sebenar lebih dihargai berbanding sijil.\n\nDalam rundingan gaji, penting untuk mendapatkan beberapa tawaran dan membandingkan jumlah pampasan. Iklan kerja meningkat kira-kira tiga kali ganda pada awal 2026, jadi kuasa rundingan berada di tangan calon. Pengkhususan, terutamanya dalam penilaian dan keselamatan ejen, membawa kenaikan pantas.",
+      "title": "Apa yang perlu dilakukan untuk menaikkan gaji?"
+    }
+  ],
+  "slug": "ms-ai-agent-developer-salary-2026",
+  "stats": [
+    {
+      "label": "Pembangun junior",
+      "value": "$110,000–$150,000"
+    },
+    {
+      "label": "Tahap pertengahan",
+      "value": "$150,000–$220,000"
+    },
+    {
+      "label": "Jurutera kanan",
+      "value": "$185,000–$280,000"
+    },
+    {
+      "label": "Staf / ketua",
+      "value": "$220,000–$320,000+"
+    }
+  ],
+  "title": "Gaji Pembangun Ejen AI 2026",
+  "translationGroupId": "ai-agent-developer-salary-2026"
+}
