@@ -1,0 +1,65 @@
+{
+  "slug": "ai-engineer-salary-2026",
+  "niche": "tech",
+  "country": "US",
+  "hreflang": "en-US",
+  "translationGroupId": "ai-engineer-salary-2026",
+  "title": "AI Engineer Salary 2026: US Pay by Level and City",
+  "metaDescription": "AI engineer salary 2026: US median base about $145,000, average total pay $211,000, senior packages above $300,000. Levels, cities and skills that raise pay.",
+  "headline": "AI Engineer Salary 2026: What US AI Engineers Earn",
+  "badge": "AI ENGINEER PAY 2026",
+  "stats": [
+    {
+      "label": "Median base pay",
+      "value": "$145,070 (Glassdoor)"
+    },
+    {
+      "label": "Average total comp",
+      "value": "$211,243 (Built In)"
+    },
+    {
+      "label": "Entry level, 1-3 years",
+      "value": "$121,513"
+    },
+    {
+      "label": "AI skills wage premium",
+      "value": "+56% (PwC)"
+    }
+  ],
+  "sections": [
+    {
+      "title": "What AI Engineers Earn in 2026",
+      "content": "There is no single agreed figure for AI engineer pay in 2026, because the major salary databases measure different parts of the market. Glassdoor reports a median base salary of about 145,070 dollars across the broad US market, while Built In, which focuses on tech companies, reports an average base of 184,757 dollars and average total compensation of 211,243 dollars. Levels.fyi, which tracks verified offers weighted toward big tech, puts median total compensation near 245,000 dollars.\n\nThe honest summary is a range. Most US AI engineers earn roughly 145,000 to 185,000 dollars in base salary, with total compensation of 211,000 to 277,000 dollars once bonuses and equity are included. Big tech pays far more, at roughly 210,000 to 450,000 dollars in total compensation, and frontier AI labs pay senior engineers 600,000 to 1.15 million dollars or more."
+    },
+    {
+      "title": "Pay by Experience Level",
+      "content": "Experience is the strongest predictor of AI engineer pay. Entry-level engineers with one to three years of experience average about 121,513 dollars in base salary. Mid-level engineers with four to nine years earn roughly 138,000 to 155,000 dollars, and senior engineers with ten or more years average about 172,000 to 186,000 dollars in base pay, before bonuses and equity.\n\nTotal compensation rises much faster than base pay at senior levels. Senior engineers at large tech companies regularly clear 300,000 dollars in total compensation, and staff-level engineers at frontier labs can exceed 600,000 dollars. The gap between the broad market and the top of the market has widened as AI talent has become the most contested skill in tech."
+    },
+    {
+      "title": "Cities, Companies and the AI Premium",
+      "content": "Location still matters. Glassdoor puts the average AI engineer salary in San Francisco at about 212,859 dollars, well above the national median, and New York and Seattle also pay large premiums. Remote roles are increasingly benchmarked to the national median instead of a local rate, which narrows the gap for engineers outside the big hubs.\n\nThe clearest tailwind is the AI skills premium. PwC Global AI Jobs Barometer measured a 56 percent wage premium for workers with AI skills in 2025, up from 25 percent two years earlier. Employers pay that premium because AI engineers who can ship production systems, not just train models, remain scarce."
+    },
+    {
+      "title": "Skills That Raise Your Pay and How to Get There",
+      "content": "The highest-paid AI engineers combine software engineering with applied AI: building LLM applications, retrieval-augmented generation systems and AI agents with tools like LangChain and LangGraph, plus MLOps, evaluation and cloud deployment. Python is the core language, and production experience with APIs, vector databases and model serving matters more than academic credentials.\n\nThe Bureau of Labor Statistics does not yet track AI engineer as its own occupation. Its closest category, computer and information research scientists, had a median wage of 140,300 dollars in May 2025, and software developers a median of 133,080 dollars. Both are projected to grow far faster than the average occupation, so demand for AI engineering skills should stay strong through 2026 and beyond."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "What is the average AI engineer salary in the US in 2026?",
+      "a": "It depends on the source, because each database measures a different slice of the market. Glassdoor reports a median base salary of about 145,070 dollars, Built In reports an average base of 184,757 dollars with total compensation of 211,243 dollars, and Levels.fyi puts median total compensation near 245,000 dollars. Most engineers earn 145,000 to 185,000 dollars in base pay."
+    },
+    {
+      "q": "How much do entry-level AI engineers earn?",
+      "a": "Entry-level AI engineers with one to three years of experience earn an average base salary of about 121,513 dollars, according to 2026 benchmarks. Total compensation is higher once bonuses and equity are included, especially at larger companies. Engineers who can already ship production LLM applications, retrieval systems or AI agents tend to start above the entry-level average."
+    },
+    {
+      "q": "Which AI engineer roles pay the most?",
+      "a": "Senior and staff AI engineers at big tech companies earn the most in the broad market, regularly clearing 300,000 dollars in total compensation. Frontier AI labs pay even more, with senior packages of 600,000 to 1.15 million dollars or above. Specialists in LLM systems, agents, evaluation and production MLOps command the largest premiums over generalist software roles."
+    },
+    {
+      "q": "Is AI engineering a good career in 2026?",
+      "a": "Yes, AI engineering is one of the best-paid and fastest-growing tech careers in 2026. PwC measured a 56 percent wage premium for AI skills in 2025, up from 25 percent two years earlier, and demand for engineers who can ship production AI systems remains high. The Bureau of Labor Statistics projects the closest occupations to grow far faster than average."
+    }
+  ]
+}
