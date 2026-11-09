@@ -1,0 +1,65 @@
+{
+  "slug": "software-engineer-salary-2026",
+  "niche": "tech",
+  "country": "US",
+  "hreflang": "en-US",
+  "translationGroupId": "software-engineer-salary-2026",
+  "title": "Software Engineer Salary 2026: US Pay by Level",
+  "metaDescription": "Software engineer salary 2026: US median about $133,000, entry $75,000-95,000, senior $140,000-180,000, top total pay above $400,000. Levels, cities, skills.",
+  "headline": "Software Engineer Salary 2026: What US Engineers Earn",
+  "badge": "SOFTWARE ENGINEER PAY 2026",
+  "stats": [
+    {
+      "label": "BLS Median Pay",
+      "value": "$133,080 per year"
+    },
+    {
+      "label": "Entry Level",
+      "value": "$75,000-$95,000"
+    },
+    {
+      "label": "Senior Base Pay",
+      "value": "$140,000-$180,000"
+    },
+    {
+      "label": "Median Total Comp",
+      "value": "About $195,000"
+    }
+  ],
+  "sections": [
+    {
+      "title": "What Software Engineers Earn in 2026",
+      "content": "The most authoritative figure comes from the US Bureau of Labor Statistics, which reported a median annual wage of $133,080 for software developers in May 2024, and $135,980 in its May 2025 data. Combining BLS figures with Glassdoor, Payscale and Levels.fyi reports, most US software engineers in 2026 fall into a base salary band of $95,000 to $175,000, with a typical midpoint near $130,000 to $145,000.\n\nTotal compensation tells a different story at large tech companies. Levels.fyi reports a median total compensation of about $195,000 across US engineers, with the top tenth reaching $388,000 once stock and bonuses are included. The gap between base pay and total pay is widest at public technology companies and AI-native startups."
+    },
+    {
+      "title": "Pay by Experience Level",
+      "content": "Entry-level engineers with zero to two years of experience typically earn $75,000 to $95,000 in base pay, though new graduates at top-tier companies can see total packages above $180,000. Mid-level engineers with two to five years earn roughly $120,000 to $170,000 in base pay, with total compensation often reaching $200,000 to $300,000.\n\nSenior engineers with five to ten years commonly earn $140,000 to $180,000 in base pay, and total compensation at large companies frequently lands between $250,000 and $400,000. Staff and principal engineers reach $200,000 to $280,000 in base pay, with total packages of $400,000 to $600,000 at the top employers."
+    },
+    {
+      "title": "Pay by City and Industry",
+      "content": "Location moves pay by roughly 20 to 40 percent between metro areas. San Francisco, Seattle and New York pay the most, driven by big tech headquarters and venture-funded startups, while Austin, Denver and Raleigh offer strong pay at a lower cost of living. Remote roles are common, but many employers now adjust pay to the employee's location band.\n\nIndustry matters too. Finance, AI labs and large platform companies pay at the top of the range, while agencies, non-profits and smaller regional employers sit lower. Engineers in AI, infrastructure and security specialisations generally command premiums over generalist web development roles."
+    },
+    {
+      "title": "Skills That Raise Your Pay",
+      "content": "The fastest route to higher pay is depth in systems that companies find hard to hire for: distributed systems, cloud infrastructure, AI and machine learning engineering, and security. Engineers who can design reliable systems, own production services and mentor others move into senior bands faster than those who only ship features.\n\nChanging employers after two to three years of strong results remains the most reliable way to jump a pay band, because internal raises rarely match market rates. A public portfolio of shipped work, open-source contributions and measurable impact, such as latency or cost improvements, strengthens every negotiation."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "What is the average software engineer salary in the US in 2026?",
+      "a": "The Bureau of Labor Statistics reports a median of about $133,000 to $136,000 for software developers, and most engineers fall into a base salary band of $95,000 to $175,000. Levels.fyi reports median total compensation near $195,000, because stock and bonuses add a large share of pay at big tech companies."
+    },
+    {
+      "q": "How much do entry-level software engineers earn?",
+      "a": "Entry-level software engineers typically earn $75,000 to $95,000 in base pay at most employers, with total compensation of $85,000 to $110,000. New graduates at top-tier technology companies can see total packages above $180,000, while a first job at a non-tech employer or agency is more realistically $70,000 to $95,000."
+    },
+    {
+      "q": "How much do senior software engineers earn?",
+      "a": "Senior software engineers commonly earn $140,000 to $180,000 in base pay, with total compensation at large public technology companies frequently landing between $250,000 and $400,000 once stock and bonuses are added. Staff and principal engineers can reach $200,000 to $280,000 in base pay and far more in total compensation."
+    },
+    {
+      "q": "Which US cities pay software engineers the most?",
+      "a": "San Francisco, Seattle and New York pay the most, with senior total compensation often exceeding $300,000 at large employers. Austin, Denver and Boston also pay strongly. Pay varies by about 20 to 40 percent between metros, and many remote employers now adjust salaries to the employee's location."
+    }
+  ]
+}
