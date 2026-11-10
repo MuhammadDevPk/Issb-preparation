@@ -1,0 +1,65 @@
+{
+  "slug": "es-us-air-force-recruitment-2026",
+  "niche": "defense",
+  "country": "ES",
+  "hreflang": "es-ES",
+  "translationGroupId": "us-air-force-recruitment-2026",
+  "title": "Fuerza Aérea de EE. UU. 2026: Requisitos y Reclutamiento",
+  "metaDescription": "Fuerza Aérea de EE. UU. 2026: edad de 17 a 42 años, formación básica de 7,5 semanas en Lackland, examen ASVAB y guía completa para alistarse.",
+  "headline": "Fuerza Aérea de EE. UU. 2026: requisitos, ASVAB y alistamiento",
+  "badge": "FUERZA AÉREA EE. UU. 2026",
+  "stats": [
+    {
+      "label": "Límite de edad",
+      "value": "17-42 años"
+    },
+    {
+      "label": "Formación básica",
+      "value": "7,5 semanas en Lackland"
+    },
+    {
+      "label": "Examen ASVAB",
+      "value": "Según la especialidad AFSC"
+    },
+    {
+      "label": "Rango de IMC",
+      "value": "17,5-27,5"
+    }
+  ],
+  "sections": [
+    {
+      "title": "Requisitos básicos para alistarse en la Fuerza Aérea",
+      "content": "Para alistarse en la Fuerza Aérea de Estados Unidos en 2026 hay que tener entre 17 y 42 años. Los menores de 18 años necesitan el consentimiento de un padre o tutor legal. También hay que ser ciudadano estadounidense o residente permanente legal, tener un diploma de educación secundaria y superar un examen médico en la estación de procesamiento de entrada militar, conocida como MEPS.\n\nEl índice de masa corporal debe estar entre 17,5 y 27,5, y hay que cumplir los estándares médicos y de antecedentes penales. La Fuerza Aérea es la rama con el límite de edad más alto de las fuerzas armadas estadounidenses, lo que la convierte en una opción real para quienes deciden cambiar de carrera en la treintena."
+    },
+    {
+      "title": "El examen ASVAB y las especialidades AFSC",
+      "content": "Todos los aspirantes deben hacer el examen ASVAB, la batería de aptitud vocacional de las fuerzas armadas. La puntuación mínima varía según la especialidad, llamada AFSC, y determina a qué trabajos se puede optar: desde mantenimiento de aeronaves y ciberoperaciones hasta medicina, logística e inteligencia.\n\nConviene prepararse con antelación, porque una puntuación más alta abre más especialidades y mejores destinos. Las especialidades técnicas, como las relacionadas con la aviación y la ciberseguridad, suelen exigir puntuaciones más altas en las secciones de matemáticas y razonamiento mecánico del examen."
+    },
+    {
+      "title": "La formación básica en Lackland",
+      "content": "La formación básica dura siete semanas y media y se realiza en la Base Aérea de Lackland, en Texas. Allí los reclutas aprenden disciplina militar, forma física, manejo de armas y trabajo en equipo, en un entorno exigente y muy estructurado. La mayoría de los reclutas la completa sin problemas si llega en buena forma física.\n\nTras la formación básica sigue la formación técnica de la especialidad elegida, cuya duración varía de unas semanas a más de un año en los puestos más técnicos. Después, el aviador es asignado a su primera base, en Estados Unidos o en el extranjero."
+    },
+    {
+      "title": "Sueldo, beneficios y vida en la Fuerza Aérea",
+      "content": "El sueldo inicial depende del grado, y un aviador raso empieza con un salario base mensual que sube con cada ascenso y año de servicio. Además del sueldo, la Fuerza Aérea ofrece alojamiento, asistencia sanitaria gratuita, educación y un plan de jubilación, lo que convierte el servicio en una opción atractiva y estable.\n\nLa Fuerza Aérea destaca por sus oportunidades en tecnología, aviación y espacio, con misiones en todo el mundo. Quienes completan su servicio pueden usar los beneficios educativos del GI Bill para estudiar una carrera universitaria, una ventaja que muchos veteranos aprovechan al terminar."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "¿Cuál es la edad máxima para alistarse en la Fuerza Aérea?",
+      "a": "La edad máxima es de 42 años, la más alta de todas las ramas militares de Estados Unidos. La edad mínima es de 17 años, con consentimiento de los padres para los menores de 18. Este amplio rango permite alistarse tanto a recién graduados como a adultos que cambian de carrera."
+    },
+    {
+      "q": "¿Qué puntuación ASVAB necesito para la Fuerza Aérea?",
+      "a": "La puntuación mínima del ASVAB varía según la especialidad AFSC a la que se aspira. No hay una única nota de corte para toda la Fuerza Aérea. Las especialidades técnicas y de aviación suelen pedir puntuaciones más altas, por lo que prepararse bien puede abrir más opciones de trabajo."
+    },
+    {
+      "q": "¿Cuánto dura la formación básica de la Fuerza Aérea?",
+      "a": "La formación básica dura siete semanas y media y se realiza en la Base Aérea de Lackland, en Texas. Incluye disciplina militar, forma física, manejo de armas y trabajo en equipo. Después sigue la formación técnica de la especialidad, que puede durar desde unas semanas hasta más de un año."
+    },
+    {
+      "q": "¿Necesito ser ciudadano estadounidense para alistarme?",
+      "a": "Hay que ser ciudadano estadounidense o residente permanente legal con tarjeta verde. También hay que tener un diploma de secundaria, superar el examen médico del MEPS y cumplir los estándares de índice de masa corporal, que deben estar entre 17,5 y 27,5."
+    }
+  ]
+}

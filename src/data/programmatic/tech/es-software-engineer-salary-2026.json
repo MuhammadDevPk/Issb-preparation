@@ -1,0 +1,65 @@
+{
+  "slug": "es-software-engineer-salary-2026",
+  "niche": "tech",
+  "country": "ES",
+  "hreflang": "es-ES",
+  "translationGroupId": "software-engineer-salary-2026",
+  "title": "Salario Ingeniero de Software 2026: Sueldo en EE. UU.",
+  "metaDescription": "Salario de ingeniero de software 2026 en EE. UU.: mediana de 133.080 dólares según el BLS, sueldos de entrada de 75.000 a 95.000 y senior de 140.000 a 180.000.",
+  "headline": "Salario Ingeniero de Software 2026: cuánto se gana en EE. UU.",
+  "badge": "SALARIO INGENIERO SOFTWARE 2026",
+  "stats": [
+    {
+      "label": "Mediana del BLS",
+      "value": "133.080 dólares al año"
+    },
+    {
+      "label": "Nivel de entrada",
+      "value": "75.000-95.000 dólares"
+    },
+    {
+      "label": "Salario base senior",
+      "value": "140.000-180.000 dólares"
+    },
+    {
+      "label": "Compensación total mediana",
+      "value": "Cerca de 195.000 dólares"
+    }
+  ],
+  "sections": [
+    {
+      "title": "Cuánto gana un ingeniero de software en 2026",
+      "content": "Según la Oficina de Estadísticas Laborales de Estados Unidos, el salario mediano de los desarrolladores de software fue de 133.080 dólares al año en 2025, una cifra que sigue siendo la referencia oficial para 2026. La mediana total, contando bonos y acciones, ronda los 195.000 dólares en las grandes empresas tecnológicas, aunque en empresas más pequeñas los paquetes son más modestos.\n\nLa horquilla es amplia porque el mercado mezcla empresas de todos los tamaños. Los ingenieros que empiezan ganan entre 75.000 y 95.000 dólares de salario base, mientras que los senior con varios años de experiencia llegan a 140.000-180.000 dólares de base, antes de bonos y acciones. En las Big Tech, la compensación total de un senior supera a menudo los 250.000 dólares."
+    },
+    {
+      "title": "Salario según el nivel de experiencia",
+      "content": "La experiencia es el factor que más pesa en el salario. Un ingeniero junior, con menos de dos años, suele empezar entre 75.000 y 95.000 dólares. A mitad de carrera, con tres a cinco años, el salario base sube a unos 110.000-140.000 dólares, y los senior con más de cinco años alcanzan 140.000-180.000 dólares de base.\n\nLa compensación total crece aún más rápido, porque los bonos y las acciones pesan más en los niveles altos. Un ingeniero principal o staff en una gran tecnológica puede superar los 300.000 dólares de compensación total. La diferencia entre el mercado general y la cima es grande, y depende mucho de la empresa y de la ciudad."
+    },
+    {
+      "title": "Ciudades y empresas que mejor pagan",
+      "content": "La ubicación sigue marcando diferencias. San Francisco, Seattle y Nueva York pagan los salarios más altos, con medianas muy por encima de la media nacional, aunque el coste de la vida también es mucho mayor. El trabajo remoto ha suavizado estas diferencias, porque muchas empresas pagan ahora según la mediana nacional y no según la ciudad.\n\nLas empresas que mejor pagan son las grandes tecnológicas y las startups bien financiadas, sobre todo en inteligencia artificial, nube y ciberseguridad. Los ingenieros con experiencia en sistemas distribuidos, arquitectura y liderazgo técnico son los que más opciones tienen para negociar un paquete alto."
+    },
+    {
+      "title": "Habilidades que aumentan el salario",
+      "content": "Las habilidades mejor pagadas en 2026 son las relacionadas con la inteligencia artificial aplicada: aplicaciones con modelos de lenguaje, sistemas RAG y agentes de IA. También se valoran mucho la experiencia en nube, con AWS o Google Cloud, y el trabajo con Kubernetes, microservicios y bases de datos a gran escala.\n\nLa Oficina de Estadísticas Laborales prevé que el empleo de desarrolladores de software crezca mucho más rápido que la media en la próxima década. La demanda sigue alta, y los ingenieros que combinan código con conocimientos de IA, datos y sistemas son los que tienen más poder de negociación en las entrevistas."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "¿Cuál es el salario mediano de un ingeniero de software en 2026?",
+      "a": "Según la Oficina de Estadísticas Laborales de Estados Unidos, la mediana es de 133.080 dólares al año. La compensación total mediana, sumando bonos y acciones, ronda los 195.000 dólares. Los salarios varían mucho según la experiencia, la ciudad y el tamaño de la empresa."
+    },
+    {
+      "q": "¿Cuánto gana un ingeniero de software recién graduado?",
+      "a": "Un ingeniero de software que empieza suele ganar entre 75.000 y 95.000 dólares de salario base. En las grandes tecnológicas, la compensación total de entrada puede ser mayor gracias a los bonos y las acciones. Quien llega con prácticas o proyectos reales suele empezar por encima de la media."
+    },
+    {
+      "q": "¿Cuánto gana un ingeniero de software senior?",
+      "a": "Un ingeniero senior con más de cinco años de experiencia gana entre 140.000 y 180.000 dólares de salario base. Con bonos y acciones, la compensación total supera a menudo los 250.000 dólares, y en las Big Tech puede pasar de los 300.000 dólares en los niveles de staff o principal."
+    },
+    {
+      "q": "¿Qué habilidades pagan más en 2026?",
+      "a": "Las habilidades mejor pagadas son la inteligencia artificial aplicada, los sistemas con modelos de lenguaje y los agentes de IA, además de la nube, Kubernetes y los sistemas distribuidos. Los ingenieros que combinan programación con IA, datos y arquitectura tienen más opciones para negociar un salario alto."
+    }
+  ]
+}
