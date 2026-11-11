@@ -1,0 +1,65 @@
+{
+  "slug": "quantum-computing-engineer-salary-2026",
+  "niche": "tech",
+  "country": "US",
+  "hreflang": "en-US",
+  "translationGroupId": "quantum-computing-engineer-salary-2026",
+  "title": "Quantum Computing Engineer Salary 2026: US Guide",
+  "metaDescription": "Quantum engineer salary 2026: $130K-$250K+ in the US. Pay by role, experience and location, plus skills and employers hiring now. See the guide.",
+  "headline": "Quantum Computing Engineer Pay in 2026",
+  "badge": "QUANTUM PAY 2026",
+  "stats": [
+    {
+      "label": "US salary range",
+      "value": "$130K-$250K+"
+    },
+    {
+      "label": "Entry level",
+      "value": "$110K-$130K"
+    },
+    {
+      "label": "Senior specialists",
+      "value": "$200K-$250K+"
+    },
+    {
+      "label": "Global quantum workforce",
+      "value": "~16,500"
+    }
+  ],
+  "sections": [
+    {
+      "title": "What quantum engineers earn in 2026",
+      "content": "Quantum computing engineers in the US currently earn roughly $130,000 to $250,000 or more, depending on role and seniority. Entry-level roles typically start between $110,000 and $130,000. Mid-level engineers with three to seven years of experience command $150,000 to $190,000, with total compensation often exceeding $200,000 once equity is included.\n\nSenior specialists and researchers at major tech companies such as IBM, Google and Microsoft regularly earn $200,000 to $250,000 in base salary, with top performers significantly above that figure. Quantum algorithm researchers and senior hardware engineers command the highest pay in the field, reflecting how rare genuine expertise is."
+    },
+    {
+      "title": "Pay by role and specialisation",
+      "content": "Quantum software engineers earn about $130,000 to $200,000, working with Qiskit, Cirq and PennyLane on compilers, SDKs and circuit design. Quantum hardware engineers earn roughly $140,000 to $220,000, building the physical systems that create and control qubits, including dilution refrigerators, microwave electronics and laser systems.\n\nQuantum algorithm developers earn $150,000 to $250,000 and above, needing deep mathematics and algorithm theory. Quantum machine learning engineers earn $140,000 to $210,000, combining ML with quantum methods. Quantum error correction specialists are among the scarcest, earning $150,000 to $210,000 at entry level and $300,000 to $400,000 at senior levels."
+    },
+    {
+      "title": "Location and employers",
+      "content": "Geography still moves pay significantly. Silicon Valley quantum roles average around $175,000, roughly 15 to 20% above the national average, with Boston and New York around 5 to 10% above. Bay Area, New York and London roles can add 20 to 40% to base figures. Government and national laboratory roles typically pay 15 to 25% below industry but offer stronger benefits and research freedom.\n\nThe global pure-play quantum workforce reached nearly 16,500 professionals in 2025, adding 2,000 workers in a single year, according to the QED-C State of the Global Quantum Industry 2026 report. Major employers include IBM, Google, Microsoft, AWS, IonQ and Rigetti, alongside national labs and a growing startup ecosystem."
+    },
+    {
+      "title": "Skills and how to break in",
+      "content": "Most senior technical roles expect a master's or PhD in physics, computer science or electrical engineering. Key technical skills include Python, quantum SDKs such as Qiskit and Cirq, linear algebra, quantum mechanics and compiler design. Hardware roles add cryogenics, device physics and FPGA control systems.\n\nFor those starting out, a strong bachelor's degree plus research experience can open entry-level roles. Building projects with Qiskit, contributing to open-source quantum software, and completing online courses in quantum computing are practical first steps. Demand is outpacing the talent supply, and projections point to 250,000 new quantum sector jobs by 2030."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "What is the average quantum computing engineer salary in 2026?",
+      "a": "US quantum computing engineers earn roughly $130,000 to $250,000 or more. Entry-level roles start at $110,000 to $130,000, mid-level engineers earn $150,000 to $190,000, and senior specialists earn $200,000 to $250,000 in base salary. Total compensation often exceeds these figures once equity is included."
+    },
+    {
+      "q": "Which quantum computing role pays the most?",
+      "a": "Quantum algorithm researchers and senior quantum hardware engineers command the highest pay, at $150,000 to $250,000 and above. Quantum error correction specialists are among the scarcest, earning $150,000 to $210,000 at entry level and $300,000 to $400,000 at senior levels."
+    },
+    {
+      "q": "Do you need a PhD to work in quantum computing?",
+      "a": "Most senior technical roles expect a master's or PhD in physics, computer science or electrical engineering. However, entry-level roles can be reached with a strong bachelor's degree plus research experience. Practical skills in Python, Qiskit and quantum algorithms matter as much as formal credentials."
+    },
+    {
+      "q": "Where are quantum computing jobs located?",
+      "a": "The highest-paying roles are in the San Francisco Bay Area, Boston and New York, which typically run 15 to 40% above national averages. Major employers include IBM, Google, Microsoft, AWS, IonQ and Rigetti, plus national labs such as Fermilab and Oak Ridge. Remote roles exist but are less common for hardware work."
+    }
+  ]
+}
