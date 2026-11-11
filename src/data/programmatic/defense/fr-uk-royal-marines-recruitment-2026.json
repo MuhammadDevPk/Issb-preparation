@@ -1,0 +1,65 @@
+{
+  "badge": "RECRUTEMENT ROYAL MARINES",
+  "country": "FR",
+  "faqs": [
+    {
+      "a": "Il faut avoir entre 16 et 32 ans au début de la formation initiale. On peut postuler dès 15 ans et 9 mois, mais il faut avoir 16 ans à l'entrée. Les ressortissants du Commonwealth qui postulent depuis leur pays doivent avoir au moins 18 ans. Pour devenir officier, l'âge requis est de 18 à 25 ans.",
+      "q": "Quel âge faut-il avoir pour rejoindre les Royal Marines ?"
+    },
+    {
+      "a": "Non, aucun diplôme n'est exigé pour devenir commando des Royal Marines. La sélection repose sur la forme physique, la santé et la motivation. Pour devenir officier, il faut généralement 5 GCSE avec des notes de 9 à 4, dont l'anglais et les mathématiques, ainsi que 2 A levels. Un test d'aptitude et un examen médical sont obligatoires.",
+      "q": "Faut-il un diplôme pour devenir commando ?"
+    },
+    {
+      "a": "Le test physique avant l'engagement, appelé PJFT+, comprend deux courses de 2,4 kilomètres sur tapis roulant : la première en 12 minutes 30 secondes et la seconde en 10 minutes 30 secondes, avec une minute de repos entre les deux. Il faut aussi réussir un test de natation et un examen médical complet.",
+      "q": "En quoi consiste le test physique des Royal Marines ?"
+    },
+    {
+      "a": "La formation initiale dure 32 semaines au Commando Training Centre Royal Marines de Lympstone, dans le Devon. Elle comprend le maniement des armes, le combat urbain, la survie et les opérations amphibies. La dernière semaine est consacrée aux tests commando, avec une marche de 48 kilomètres et un parcours d'assaut. Les recrues qui réussissent reçoivent le béret vert.",
+      "q": "Combien de temps dure la formation des Royal Marines ?"
+    }
+  ],
+  "headline": "Rejoindre les Royal Marines : guide complet 2026",
+  "hreflang": "fr-FR",
+  "metaDescription": "Recrutement Royal Marines 2026 : âge de 16 à 32 ans, tests physiques, formation de 32 semaines à Lympstone, salaire et étapes de candidature expliqués.",
+  "niche": "defense",
+  "sections": [
+    {
+      "content": "Les Royal Marines, l'infanterie d'élite de la Royal Navy britannique, recrutent des candidats âgés de 16 à 32 ans au début de la formation initiale. Aucun diplôme n'est exigé pour devenir commando : la sélection repose avant tout sur la forme physique, la détermination et l'aptitude mentale. Il faut mesurer au moins 145 centimètres, peser au minimum 65 kilogrammes et présenter un indice de masse corporelle inférieur à 28.\n\nLa nationalité est une condition importante : il faut être ressortissant du Royaume-Uni, d'Irlande ou d'un pays du Commonwealth. Les candidats du Commonwealth qui postulent depuis leur pays d'origine doivent avoir au moins 18 ans, tandis que ceux qui résident déjà au Royaume-Uni peuvent postuler dès 16 ans. Les femmes sont recrutées dans toutes les spécialités, avec les mêmes normes physiques et salariales que les hommes.",
+      "title": "Qui peut rejoindre les Royal Marines ?"
+    },
+    {
+      "content": "La sélection commence par un test d'aptitude de la Défense, suivi d'un examen médical complet et d'un test de natation. Le test de condition physique avant l'engagement, appelé PJFT+, comprend deux courses de 2,4 kilomètres sur tapis roulant : la première en 12 minutes 30 secondes et la seconde en 10 minutes 30 secondes, avec une minute de repos entre les deux. Ces normes sont exigeantes et demandent plusieurs mois de préparation sérieuse.\n\nLes candidats retenus participent ensuite au cours de sélection des Royal Marines, une épreuve de quatre jours qui teste l'endurance, le travail en équipe et la résistance au stress. Un entretien de motivation complète le parcours. Seuls les candidats qui réussissent chaque étape sont admis à la formation initiale au Commando Training Centre Royal Marines de Lympstone, dans le Devon.",
+      "title": "Les tests de sélection physiques et médicaux"
+    },
+    {
+      "content": "La formation initiale dure 32 semaines et compte parmi les plus difficiles au monde. Les recrues apprennent le maniement des armes, le combat en milieu urbain, la survie, les techniques amphibies et les opérations en conditions extrêmes. Le programme progresse par étapes : condition physique, compétences de terrain, puis exercices de combat réalistes, avec des évaluations éliminatoires à chaque phase.\n\nLe point culminant est la semaine des tests commando, qui comprend une marche de 48 kilomètres avec sac à dos, un parcours d'assaut chronométré et des épreuves d'endurance. Les recrues qui réussissent reçoivent le béret vert, symbole des Royal Marines, lors d'une cérémonie officielle. Elles sont ensuite affectées à une unité opérationnelle, en Grande-Bretagne ou à l'étranger.",
+      "title": "La formation de 32 semaines à Lympstone"
+    },
+    {
+      "content": "Le salaire de départ d'un commando en formation est d'environ 15 600 livres par an, et il progresse rapidement avec le grade, l'ancienneté et les spécialités : un caporal ou un sergent expérimenté peut dépasser 50 000 livres par an. Les Royal Marines proposent aussi des indemnités de déploiement, un logement et une formation continue gratuite, y compris des qualifications civiles reconnues.\n\nLa carrière offre de nombreuses spécialités : tireur d'élite, conducteur, opérateur radio, instructeur d'escalade ou membre des forces spéciales. Après le service, les anciens commandos sont très recherchés dans la sécurité, la logistique et le management. La durée d'engagement initiale est généralement de quatre ans, avec la possibilité de prolonger ou de passer officier.",
+      "title": "Salaire, carrière et vie de commando"
+    }
+  ],
+  "slug": "fr-uk-royal-marines-recruitment-2026",
+  "stats": [
+    {
+      "label": "Âge requis",
+      "value": "16 à 32 ans"
+    },
+    {
+      "label": "Formation initiale",
+      "value": "32 semaines"
+    },
+    {
+      "label": "Taille minimum",
+      "value": "145 cm"
+    },
+    {
+      "label": "Centre de formation",
+      "value": "Lympstone"
+    }
+  ],
+  "title": "Royal Marines 2026 : conditions, tests et recrutement",
+  "translationGroupId": "uk-royal-marines-recruitment-2026"
+}

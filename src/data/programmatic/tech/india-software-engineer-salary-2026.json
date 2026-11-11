@@ -1,0 +1,65 @@
+{
+  "badge": "SOFTWARE ENGINEER SALARY INDIA",
+  "country": "IN",
+  "faqs": [
+    {
+      "a": "The median software engineer in India earns around ₹16–22 LPA in 2026. Entry-level engineers at IT services firms start at ₹3.5–7 LPA, while product companies offer ₹7–18 LPA to freshers. Mid-level engineers with five to eight years of experience earn ₹22–40 LPA, and senior engineers with more than twelve years can cross ₹60 LPA.",
+      "q": "What is the average software engineer salary in India in 2026?"
+    },
+    {
+      "a": "Bengaluru pays a 10–15% premium over other metros and remains the highest-paying city, followed closely by Hyderabad. Mumbai, Pune, Chennai and Delhi NCR also offer strong salaries. Tier-2 cities such as Jaipur, Indore and Coimbatore pay less but come with a lower cost of living. Remote roles for international clients can pay far more than local jobs in any city.",
+      "q": "Which Indian city pays software engineers the most?"
+    },
+    {
+      "a": "Product companies and global capability centres pay 25–40% more than IT services firms for the same role and experience. The gap is widest at senior levels: a seven-year engineer at a Bengaluru product company can earn ₹35 LPA while a peer at a services firm earns ₹16 LPA. Startups sit in between, often compensating with equity.",
+      "q": "Do product companies pay more than IT services firms?"
+    },
+    {
+      "a": "AI, machine learning, distributed systems and cloud skills command the biggest premiums. Engineers with AI and distributed systems depth cross ₹60 LPA at senior levels, and principal engineers reach ₹1.2 crore at top global capability centres. Data engineering, DevOps and cybersecurity also pay well.",
+      "q": "Which skills earn the highest salaries in India?"
+    }
+  ],
+  "headline": "Software Engineer Salary in India 2026: The Complete Guide",
+  "hreflang": "en-IN",
+  "metaDescription": "Software engineer salary in India 2026: median ₹16–22 LPA, freshers ₹3.5–18 LPA, mid-level ₹22–40 LPA, seniors ₹60 LPA+, Bengaluru premium and top skills.",
+  "niche": "tech",
+  "sections": [
+    {
+      "content": "The median software engineer in India earns around ₹16–22 LPA in 2026, with the range stretching from ₹6 LPA for fresh graduates at IT services firms to more than ₹1 crore for staff and principal engineers at product companies. Entry-level engineers with zero to two years of experience earn ₹6–12 LPA, mid-level engineers with five to eight years command ₹22–40 LPA, and senior engineers with twelve or more years cross ₹60 LPA.\n\nThese figures are total cost to company, which includes base pay, bonuses and stock. The spread is wide because the Indian market has two very different employers: IT services firms that hire in bulk at lower pay, and product companies and global capability centres that compete for top talent. The Stack Overflow developer survey puts the median employed developer in India at about $19,761 a year, which reflects the large services workforce.",
+      "title": "Salary by Experience Level in 2026"
+    },
+    {
+      "content": "Bengaluru remains the highest-paying city, with a 10–15% premium over tier-2 metros, and Hyderabad has closed the gap thanks to its concentration of global capability centres. Mumbai, Pune, Chennai and Delhi NCR also offer strong pay. A mid-level engineer in Bengaluru can expect ₹22–40 LPA at a product company, while the same role in a tier-2 city may pay 20–30% less.\n\nThe city premium is driven by the density of product companies, startups and global capability centres. However, remote work has blurred the lines: engineers in smaller cities increasingly work for Bengaluru-based or international employers at metro-level pay. Cost of living still matters, and a ₹20 LPA salary goes much further in Indore or Jaipur than in Bengaluru or Mumbai.",
+      "title": "Salary by City: Bengaluru, Hyderabad and Beyond"
+    },
+    {
+      "content": "Product companies and global capability centres pay 25–40% above IT services firms for the same role and experience. A seven-year engineer at a Bengaluru product company can earn ₹35 LPA while a peer at a Pune services firm earns ₹16 LPA for arguably similar work. The gap is widest at senior levels, where product companies offer large equity components.\n\nStartups sit in between: base pay is usually lower than product companies, but equity can be life-changing if the company succeeds. FAANG and top unicorns offer the highest total compensation in India, with staff and principal engineers reaching ₹1.2 crore. Freshers should weigh the learning and brand value of their first employer, not just the starting salary.",
+      "title": "Product Companies vs IT Services vs Startups"
+    },
+    {
+      "content": "AI, machine learning, distributed systems and cloud skills command the biggest salary premiums in 2026. Senior engineers with AI and distributed systems depth cross ₹60 LPA, and principal engineers reach ₹1.2 crore at top global capability centres and unicorns. India now produces more software engineers than any other country, and 2026 has cemented its position as the second-most expensive market for senior engineering talent in Asia, behind only Singapore.\n\nData engineering, DevOps, cybersecurity and mobile development also pay well, but the AI premium is the largest. Engineers who combine strong system design with hands-on AI experience are the most sought after. Continuous learning matters: the market rewards engineers who keep up with new frameworks, cloud platforms and AI tooling, while those who stay on legacy stacks see slower growth.",
+      "title": "Top-Paying Skills and Career Outlook"
+    }
+  ],
+  "slug": "india-software-engineer-salary-2026",
+  "stats": [
+    {
+      "label": "Median Salary",
+      "value": "₹16–22 LPA"
+    },
+    {
+      "label": "Entry-Level",
+      "value": "₹6–12 LPA"
+    },
+    {
+      "label": "Mid-Level (5–8 yrs)",
+      "value": "₹22–40 LPA"
+    },
+    {
+      "label": "Senior / Principal",
+      "value": "₹60 LPA–₹1.2 Cr"
+    }
+  ],
+  "title": "Software Engineer Salary in India 2026: Full Guide",
+  "translationGroupId": "india-software-engineer-salary-2026"
+}

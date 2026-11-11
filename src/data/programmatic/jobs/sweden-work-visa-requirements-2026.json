@@ -1,0 +1,65 @@
+{
+  "badge": "SWEDEN WORK PERMIT GUIDE",
+  "country": "SE",
+  "faqs": [
+    {
+      "a": "Since 16 June 2026, a Swedish work permit requires a monthly salary of at least SEK 34,470 gross, which is 90% of the Swedish median salary of SEK 38,300. Some shortage occupations only need 75% of the median, or SEK 28,725 a month. The threshold resets annually when Statistics Sweden publishes a new median.",
+      "q": "What is the minimum salary for a Swedish work permit in 2026?"
+    },
+    {
+      "a": "No. You need a concrete job offer from a Swedish employer first, and the employer starts the work permit application. There is no general visa that lets you come to Sweden to look for a job, unless you have completed higher education or research.",
+      "q": "Can I move to Sweden without a job offer?"
+    },
+    {
+      "a": "The employer initiates the application through the Swedish Migration Agency, known as Migrationsverket. The employer submits the job offer, and the relevant trade union gives a written opinion on the employment terms. You then complete your part of the application online, including your passport and supporting documents.",
+      "q": "How does the work permit application process work?"
+    },
+    {
+      "a": "For complete applications, the Migration Agency reports that 75% of highly qualified job cases are decided within one month, and 75% of other job cases within four months. Incomplete applications take considerably longer, so prepare all documents carefully. Since 1 June 2026, comprehensive health insurance is also required for short employment.",
+      "q": "How long does a Swedish work permit take?"
+    }
+  ],
+  "headline": "Sweden Work Permit 2026: Requirements and Salary Rules",
+  "hreflang": "en-US",
+  "metaDescription": "Sweden work permit 2026: salary of at least SEK 34,470 a month, job offer first, employer-led application, trade union opinion, insurance and processing times.",
+  "niche": "jobs",
+  "sections": [
+    {
+      "content": "To get a Swedish work permit you first need a job offer from an employer in Sweden, and that one job has to meet every requirement on its own. Since 16 June 2026, the monthly salary must be at least SEK 34,470 gross, which is 90% of the median salary of SEK 38,300 published by Statistics Sweden. A reduced 75% tier of SEK 28,725 applies to shortage occupations listed in the Aliens Ordinance, such as IT technicians, assistant nurses, welders and childcare assistants.\n\nThe salary requirement replaced the older maintenance requirement on 1 June 2026. The figure resets annually when Statistics Sweden publishes a new median, and the figure that applies is the one valid on the day you submit your application. Your employment terms must also be at least on par with Swedish collective agreements or common practice in your profession or industry.",
+      "title": "The 2026 Salary Requirement"
+    },
+    {
+      "content": "The process is employer-driven: your employer starts the application through the Swedish Migration Agency, known as Migrationsverket. The job must have been advertised in Sweden, the EU/EEA and Switzerland for at least 10 days before the offer is made, unless it is an intra-company transfer. The relevant trade union must review the employment terms and submit a written opinion, which is mandatory for every application.\n\nThe employer must provide health, life, occupational injury and pension insurance on the level required by collective agreements. Since 1 June 2026, comprehensive health insurance is also required for employment lasting up to one year. Stricter good-conduct checks apply from 13 July 2026, and the agency can refuse a permit if the employer has been convicted of or is suspected of certain crimes.",
+      "title": "How the Application Works"
+    },
+    {
+      "content": "Besides the standard work permit, Sweden offers an EU Blue Card for highly qualified workers. Since 15 July 2026, the Blue Card requires a salary of at least SEK 53,625 a month, or 1.25 times the average gross salary, and now runs for up to four years. It needs a binding job offer of at least six months and a higher education qualification. There is also a job seeker permit for people who have completed higher education or research and want to look for work in Sweden.\n\nSome jobs cannot lead to a work permit at all: since 1 June 2026, the agency does not grant work permits for forest berry pickers or personal assistants. Seasonal work, ICT transfers, au pair stays and self-employment each have their own rules, so check the route that fits your situation before applying.",
+      "title": "Other Routes: EU Blue Card and Job Seeker Permit"
+    },
+    {
+      "content": "For complete applications, the Migration Agency reports that 75% of highly qualified job cases are decided within one month, and 75% of other job cases within four months. Incomplete applications take considerably longer, so check every document before submitting. You apply from outside Sweden if this is your first work permit, and you must have a valid passport.\n\nAfter several years of legal work and residence in Sweden, you can apply for a permanent residence permit. The exact requirements depend on your permit type and how long you have lived and worked in the country. Keep records of your employment, salary and insurance, since the agency checks that your pay stayed at or above the threshold throughout the full permit period.",
+      "title": "Processing Times and the Path to Settlement"
+    }
+  ],
+  "slug": "sweden-work-visa-requirements-2026",
+  "stats": [
+    {
+      "label": "Minimum Salary",
+      "value": "SEK 34,470 / month"
+    },
+    {
+      "label": "Shortage Occupations",
+      "value": "SEK 28,725 / month"
+    },
+    {
+      "label": "EU Blue Card",
+      "value": "SEK 53,625 / month"
+    },
+    {
+      "label": "Decision Time",
+      "value": "1–4 months (75%)"
+    }
+  ],
+  "title": "Sweden Work Permit 2026: Salary and Requirements",
+  "translationGroupId": "sweden-work-visa-requirements-2026"
+}

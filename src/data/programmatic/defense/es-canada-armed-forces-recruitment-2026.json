@@ -1,0 +1,65 @@
+{
+  "badge": "FUERZAS ARMADAS DE CANADÁ",
+  "country": "ES",
+  "faqs": [
+    {
+      "a": "Para alistarse como miembro no comisionado basta haber completado el grado 10 o la Secundaria IV de Quebec; algunos oficios exigen más estudios. Para ser oficial se necesita el grado 12 y estar cursando o haber terminado una licenciatura. Si los estudios se completaron fuera de Canadá, hay que obtener una evaluación de credenciales antes de presentar la solicitud.",
+      "q": "¿Qué estudios se necesitan para entrar en las Fuerzas Armadas de Canadá?"
+    },
+    {
+      "a": "Se puede solicitar desde los 17 años con el consentimiento de los padres; los programas de educación pagada y la reserva primaria aceptan candidatos desde los 16 años. No hay una edad máxima fija: el límite depende de poder completar la formación y el primer periodo de servicio antes de la jubilación obligatoria a los 60 años.",
+      "q": "¿Cuál es la edad mínima y máxima para alistarse?"
+    },
+    {
+      "a": "Las Fuerzas Armadas de Canadá incorporaron 7.310 nuevos miembros de la Fuerza Regular en el periodo 2025-26, una cifra récord reciente. Hay más de 100 oficios disponibles, desde infantería y piloto hasta medicina, ingeniería y ciberdefensa. Las vacantes varían por oficio y por región, por lo que conviene consultar la lista actualizada en el portal oficial forces.ca.",
+      "q": "¿Cuántas vacantes hay en 2026?"
+    },
+    {
+      "a": "El proceso tiene seis pasos: solicitud en línea, prueba de aptitud, examen médico, entrevista, verificación de seguridad y oferta de empleo. Después llega la formación militar básica, de unas diez semanas, seguida de la formación del oficio elegido. Todo el proceso puede tardar varios meses, por lo que se recomienda empezar pronto.",
+      "q": "¿Cómo es el proceso de selección paso a paso?"
+    }
+  ],
+  "headline": "Fuerzas Armadas de Canadá 2026: guía completa de alistamiento",
+  "hreflang": "es-ES",
+  "metaDescription": "Reclutamiento de las Fuerzas Armadas de Canadá 2026: edad desde los 17 años, estudios mínimos, más de 100 oficios, sueldos y proceso de selección completo.",
+  "niche": "defense",
+  "sections": [
+    {
+      "content": "Las Fuerzas Armadas de Canadá aceptan ciudadanos canadienses y residentes permanentes que vivan en el país. Para alistarse como miembro no comisionado hay que tener al menos 17 años y haber completado el grado 10 o la Secundaria IV de Quebec; los programas de educación pagada y la reserva primaria aceptan jóvenes desde los 16 años. Para ser oficial se exige el grado 12 y estar cursando o haber terminado una licenciatura.\n\nNo existe una edad máxima fija: el límite depende de poder completar la formación y el primer periodo de servicio antes de la jubilación obligatoria, fijada a los 60 años. Además, hay que superar un examen médico, una prueba de aptitud y una verificación de seguridad. Los residentes permanentes deben demostrar tres años de presencia física en Canadá y, si estudiaron fuera del país, presentar una evaluación de credenciales educativas.",
+      "title": "Requisitos de edad, ciudadanía y estudios"
+    },
+    {
+      "content": "Las Fuerzas Armadas de Canadá ofrecen más de 100 oficios en el Ejército, la Marina Real Canadiense y la Real Fuerza Aérea. Entre los más buscados están infantería, piloto, ingeniero de combate, técnico médico, especialista en ciberdefensa y oficial de logística. En el periodo 2025-26 se incorporaron 7.310 nuevos miembros de la Fuerza Regular, una cifra récord que refleja el impulso actual de reclutamiento.\n\nMuchos oficios no exigen experiencia previa: las Fuerzas Armadas pagan la formación completa. Además, existen programas de educación pagada que cubren los estudios universitarios a cambio de un compromiso de servicio. El portal oficial forces.ca permite filtrar los oficios por intereses, nivel de estudios y tipo de servicio, a tiempo completo o en la reserva.",
+      "title": "Más de 100 oficios y vacantes en 2026"
+    },
+    {
+      "content": "El proceso de selección tiene seis pasos: solicitud en línea, prueba de aptitud, examen médico, entrevista, verificación de antecedentes y oferta de empleo. La prueba de aptitud evalúa razonamiento verbal, capacidad espacial y resolución de problemas. La entrevista sirve para conocer la motivación del candidato y confirmar que el oficio elegido se ajusta a su perfil.\n\nUna vez aceptado, el recluta realiza la formación militar básica, de unas diez semanas, en la que aprende disciplina, tiro, primeros auxilios y trabajo en equipo. Después sigue la formación específica de su oficio, cuya duración varía de unas semanas a más de un año. Todo el proceso, desde la solicitud hasta el inicio del servicio, puede tardar varios meses.",
+      "title": "El proceso de selección paso a paso"
+    },
+    {
+      "content": "El sueldo inicial de un miembro no comisionado ronda los 4.000 dólares canadienses al mes y aumenta con el grado y la antigüedad; en 2026 se anunciaron mejoras salariales que incluyen un aumento del factor militar del 20 % para los grados inferiores. Además del sueldo, los miembros reciben alojamiento subvencionado, atención médica y dental gratuita, y una pensión pública.\n\nLa carrera militar canadiense ofrece ascensos regulares, formación continua y la posibilidad de estudiar mientras se sirve. Después del servicio, las competencias adquiridas —liderazgo, gestión y habilidades técnicas— son muy valoradas en el mercado civil. El compromiso inicial suele ser de tres a nueve años según el oficio, con opción de renovar o pasar a la reserva.",
+      "title": "Sueldo, beneficios y vida militar"
+    }
+  ],
+  "slug": "es-canada-armed-forces-recruitment-2026",
+  "stats": [
+    {
+      "label": "Edad mínima",
+      "value": "17 años"
+    },
+    {
+      "label": "Estudios mínimos",
+      "value": "Grado 10"
+    },
+    {
+      "label": "Oficios disponibles",
+      "value": "Más de 100"
+    },
+    {
+      "label": "Incorporaciones 2025-26",
+      "value": "7.310"
+    }
+  ],
+  "title": "Fuerzas Armadas de Canadá 2026: requisitos y alistamiento",
+  "translationGroupId": "canada-armed-forces-recruitment-2026"
+}

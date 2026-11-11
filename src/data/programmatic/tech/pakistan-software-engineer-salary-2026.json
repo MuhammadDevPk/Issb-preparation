@@ -1,0 +1,65 @@
+{
+  "badge": "SOFTWARE ENGINEER SALARY PAKISTAN",
+  "country": "PK",
+  "faqs": [
+    {
+      "a": "The national average software engineer salary in Pakistan is around PKR 90,000–110,000 per month, according to major job platforms. Entry-level engineers earn PKR 50,000–100,000 a month, mid-level engineers PKR 100,000–250,000, and senior or lead engineers PKR 250,000–500,000 or more. Specialists in AI, cloud and DevOps can earn even more, and remote international jobs reach PKR 400,000–1,000,000+ a month.",
+      "q": "What is the average software engineer salary in Pakistan in 2026?"
+    },
+    {
+      "a": "Fresh graduates typically start at PKR 50,000–100,000 per month, with many starting around PKR 60,000–80,000. Top software houses such as Systems Limited pay fresh graduates around PKR 120,000 a month. Engineers who build strong portfolios in modern stacks can double their pay within two to three years.",
+      "q": "How much do fresh software engineers earn in Pakistan?"
+    },
+    {
+      "a": "Lahore, Karachi and Islamabad pay 10–30% more than smaller cities, because most software houses and startups are based there. ERI SalaryExpert puts the average software engineer salary in Lahore at PKR 3.74 million annually, about 7% above the national average.",
+      "q": "Which Pakistani city pays software engineers the most?"
+    },
+    {
+      "a": "Remote international jobs offer the highest pay by far, reaching PKR 400,000–1,000,000+ per month for engineers working with US or UK clients. These roles usually require strong English communication, experience with modern stacks such as React, Next.js, Node.js or Python, and the ability to work across time zones.",
+      "q": "Can Pakistani engineers earn international salaries remotely?"
+    }
+  ],
+  "headline": "Software Engineer Salary in Pakistan 2026: The Complete Guide",
+  "hreflang": "en-PK",
+  "metaDescription": "Software engineer salary in Pakistan 2026: average PKR 90,000–110,000 a month, freshers PKR 50,000–100,000, seniors PKR 250,000–500,000+, remote pay and cities.",
+  "niche": "tech",
+  "sections": [
+    {
+      "content": "The national average software engineer salary in Pakistan is around PKR 90,000–110,000 per month, or roughly PKR 1.1–1.3 million per year, according to major job platforms. Indeed reports an average of about PKR 92,003 a month based on hundreds of reported salaries, while Glassdoor data from early 2026 shows an average of PKR 86,667 a month, with top earners reaching PKR 285,625 a month.\n\nThe range is wide because the market mixes local software houses, startups, product companies and remote international roles. The Stack Overflow developer survey puts the median employed developer in Pakistan at about $9,937 a year, which reflects the large local-services workforce. Engineers who move into AI, cloud, DevOps or remote international work earn several times the local median.",
+      "title": "Average Salary in Pakistan in 2026"
+    },
+    {
+      "content": "Entry-level engineers with zero to two years of experience typically earn PKR 50,000–100,000 per month, with many fresh graduates starting around PKR 60,000–80,000. Mid-level engineers with two to five years earn PKR 100,000–250,000 a month, depending on skills and company. Senior and lead engineers with five or more years often earn PKR 250,000–500,000+ a month.\n\nSpecialists in AI, cloud and DevOps can earn even more than the senior range. The fastest pay growth comes from switching jobs strategically: engineers who build strong portfolios in modern stacks such as React, Next.js, Node.js, Laravel or Python can double their pay within two to three years by moving to product companies or remote roles.",
+      "title": "Salary by Experience Level"
+    },
+    {
+      "content": "Lahore, Karachi and Islamabad are Pakistan's main tech hubs and pay 10–30% more than smaller cities. ERI SalaryExpert puts the average software engineer salary in Lahore at PKR 3.74 million annually, about 7% above the national average. Most software houses, startups and multinational offices are concentrated in these three cities, and they compete for experienced talent.\n\nHowever, remote work is changing the geography of pay. Engineers in smaller cities such as Sargodha, Faisalabad or Multan can now earn international-level salaries while living at a much lower cost. A PKR 150,000 monthly salary goes considerably further in Lahore or Islamabad than the same figure would in comparable tech hubs in India, Bangladesh or the Gulf.",
+      "title": "Salary by City: Lahore, Karachi and Islamabad"
+    },
+    {
+      "content": "Remote international jobs offer the highest pay available to Pakistani engineers, reaching PKR 400,000–1,000,000+ per month for those working with US or UK clients. These roles usually require strong English communication, experience with modern stacks, and the ability to work across time zones. Platforms such as Upwork, Toptal and direct hiring by foreign startups are the main routes in.\n\nFreelancing is another option, though income varies widely and depends on reputation and client base. For engineers who stay in the local market, the best-paying employers are product companies and well-funded startups, followed by established software houses. Whatever the route, AI, cloud and full-stack skills pay the biggest premiums in 2026.",
+      "title": "Remote Work and the Highest-Paying Routes"
+    }
+  ],
+  "slug": "pakistan-software-engineer-salary-2026",
+  "stats": [
+    {
+      "label": "National Average",
+      "value": "PKR 90,000–110,000/mo"
+    },
+    {
+      "label": "Entry-Level",
+      "value": "PKR 50,000–100,000/mo"
+    },
+    {
+      "label": "Senior / Lead",
+      "value": "PKR 250,000–500,000+/mo"
+    },
+    {
+      "label": "Remote International",
+      "value": "PKR 400,000–1,000,000+/mo"
+    }
+  ],
+  "title": "Software Engineer Salary in Pakistan 2026: Guide",
+  "translationGroupId": "pakistan-software-engineer-salary-2026"
+}
